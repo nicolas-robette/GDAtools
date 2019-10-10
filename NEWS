@@ -1,0 +1,53 @@
+## ========
+Version 1.4
+
+New functions:
+  - translate.logit(): translates logit models coefficients into percentages
+  - tabcontrib(): displays the categories contributing most to MCA dimensions
+
+Changes in existing functions:
+  - varsup(): with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud
+  - textvarsup(): with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud
+  - conc.ellipse(): with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud
+  - plot.multiMCA(): 'threshold' argument, aimed at selecting the categories most associated to axes
+  - plot.stMCA(): 'threshold' argument, aimed at selecting the categories most associated to axes
+
+
+## ========
+Version 1.3
+
+Changes in existing functions:
+  - dimdesc.MCA(): now uses weights
+
+Bug fixes:
+  - dimdesc.MCA(): problem of compatibility next to a FactoMineR update
+
+
+## ========
+Version 1.2
+
+New functions:
+  - dimvtest(): computes test-values for supplementary variables
+
+Changes in existing functions:
+  - dimeta2(): now allows 'stMCA' objects
+
+
+## ========
+Version 1.1
+
+New functions:
+  - wtable(): works as table() but allows weights and shows NAs as default
+  - prop.wtable(): works as prop.table() but allows weights and shows NAs as default
+
+Changes in existing functions:
+  - multiMCA(): RV computation is now an option, with FALSE as default,
+    which makes the function execute faster
+
+Bug fixes:
+  - textvarsup(): there was an error with the supplementary 
+    variable labels when resmca was of class "csMCA".
+
+Error fixes:
+  - textvarsup(): plots supplementary variables on the cloud of categories (and not
+    the cloud of individuals as it was mentioned in help).
