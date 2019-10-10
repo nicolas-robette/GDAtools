@@ -1,2 +1,2 @@
 # GDAtools
-GDAtools is an R package for geomatric data analysis
+GDAtools is an R package for geometric data analysis
