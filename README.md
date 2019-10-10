@@ -14,6 +14,7 @@ It provides functions for :
 
 It also provides functions 	for the translation of logit models coefficients into percentages, weighted contingency tables and an association measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM).
 
+
 ## References
 
 Bry X., Robette N., Roueff O., 2016, « A dialogue of the deaf in the statistical theater? Adressing structural effects within a geometric data analysis framework », *Quality & Quantity*, 50(3), pp 1009–1020 [https://link.springer.com/article/10.1007/s11135-015-0187-z]
