@@ -3,7 +3,8 @@ import(FactoMineR,nleqslv,nnet)
   importFrom("grDevices", "col2rgb", "rainbow", "rgb")
   importFrom("graphics", "abline", "lines", "plot", "points", "text")
   importFrom("stats", "aggregate", "as.formula", "cor", "glm", "lm",
-             "quantile", "residuals", "weighted.mean")
+             "quantile", "residuals", "weighted.mean", "aov", "chisq.test",
+             "cor.test", "median", "sd", "summary.lm")
   importFrom("utils", "installed.packages")
 
 S3method(plot, speMCA)
@@ -11,4 +12,4 @@ S3method(plot, csMCA)
 S3method(plot, multiMCA)
 S3method(plot, stMCA)
 
-export(burt,conc.ellipse,contrib,csMCA,dichotom,dimcontrib,dimdesc.MCA,dimeta2,dimvtest,getindexcat,homog.test,indsup,medoids,modif.rate,multiMCA,pem,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,prop.wtable,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,wtable)
+export(assoc.catcat,assoc.catcont,burt,catdesc,conc.ellipse,condesc,contrib,csMCA,dichotom,dimcontrib,dimdesc.MCA,dimeta2,dimvtest,getindexcat,homog.test,indsup,medoids,modif.rate,multiMCA,pem,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,prop.wtable,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,wtable)

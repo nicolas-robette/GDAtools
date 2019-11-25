@@ -1,18 +1,18 @@
 Package: GDAtools
 Type: Package
-Title: A Toolbox for the Analysis of Categorical Data in Social
-        Sciences, and Especially Geometric Data Analysis
-Version: 1.4
-Date: 2017-03-07
+Title: A Toolbox for Geometric Data Analysis
+Version: 1.5
+Date: 2019-10-11
 Author: Nicolas Robette
 Maintainer: Nicolas Robette <nicolas.robette@uvsq.fr>
 Depends: FactoMineR, nleqslv, nnet
-Suggests: cluster, WeightedCluster
-Description: Contains functions for 'specific' MCA (Multiple Correspondence Analysis), 
-	'class specific' MCA, computing and plotting structuring factors and concentration ellipses, 
-	Multiple Factor Analysis, 'standardized' MCA, inductive tests and others tools for Geometric Data Analysis. It also provides functions
-	for the translation of logit models coefficients into percentages, weighted contingency tables and an association 
-        measure - i.e. Percentages of Maximum Deviation from Independence (PEM).
+Suggests: cluster, WeightedCluster, moreparty
+Description: Contains functions for 'specific' Multiple Correspondence Analysis (speMCA), 
+	Class Specific Analysis, Multiple Factor Analysis, 'standardized' MCA, computing and plotting structuring factors and concentration ellipses, 
+	inductive tests and others tools for Geometric Data Analysis. It also provides functions
+	for the translation of logit models coefficients into percentages, weighted contingency tables, an association 
+  measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM) and some tools to measure bivariate associations between variables
+  (phi, Cramer's V, correlation coefficient, eta-squared...).
 License: GPL (>= 2)
 URL: http://nicolas.robette.free.fr/outils_eng.html
 NeedsCompilation: no

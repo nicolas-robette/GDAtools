@@ -12,7 +12,12 @@ It provides functions for :
 * guides for interpretation (test-values, contributions, etc.)
 * the analysis of structuring factors (concentration ellipses, etc.)
 
-It also provides functions 	for the translation of logit models coefficients into percentages, weighted contingency tables and an association measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM).
+Besides Geometric Data Analysis, it also provides functions for :
+
+* the translation of logit models coefficients into percentages
+* weighted contingency tables
+* an association measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM)
+* bivariate associations between variables (phi, Cramer's V, correlation coefficient, eta-squared, etc.)
 
 
 ## References
@@ -25,4 +30,6 @@ Le Roux B. and Rouanet H., 2004, *Geometric Data Analysis: From Correspondence A
 
 Deauvieau, J., 2010, « Comment traduire sous forme de probabilites les resultats d'une modelisation logit ? », *Bulletin de Methodologie Sociologique*, 105(1), 5-23.
 
-Cibois P., 1993, « Le PEM, pourcentage de l'ecart maximum : un indice de liaison entre modalites d'un tableau de contingence », *Bulletin de Methodologie Sociologique*, 40, pp 43-63 [http://cibois.pagesperso-orange.fr/bms93.pdf]
+Cibois P., 1993, « Le PEM, pourcentage de l'ecart maximum : un indice de liaison entre modalites d'un tableau de contingence », *Bulletin de Methodologie Sociologique*, 40, pp 43-63, [http://cibois.pagesperso-orange.fr/bms93.pdf]
+
+Rakotomalala R., « Comprendre la taille d'effet (effect size) », [http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf]
