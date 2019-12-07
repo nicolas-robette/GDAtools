@@ -31,7 +31,7 @@ catdesc <- function(y,x,min.phi=NULL) {
       categories <- data.frame(categories=names(xcat.dic),
                                pct.ycat.in.xcat=round(pct.ycat.in.xcat,3),
                                pct.xcat.in.ycat=round(pct.xcat.in.ycat,3),
-                               pct.xcat.global=round(pct.xcat.global),3),
+                               pct.xcat.global=round(pct.xcat.global,3),
                                phi=round(phi,3))
       categories <- categories[order(-categories$phi),]
       if(!is.null(min.phi)) categories <- categories[abs(categories$phi)>=min.phi,]
