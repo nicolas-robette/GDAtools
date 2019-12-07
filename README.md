@@ -19,6 +19,17 @@ Besides Geometric Data Analysis, it also provides functions for :
 * an association measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM)
 * bivariate associations between variables (phi, Cramer's V, correlation coefficient, eta-squared, etc.)
 
+## installation
+
+Execute the following code within `R`:
+
+``` r
+if (!require(devtools)){
+    install.packages('devtools')
+    library(devtools)
+}
+install_github("nicolas-robette/GDAtools")
+```
 
 ## References
 
