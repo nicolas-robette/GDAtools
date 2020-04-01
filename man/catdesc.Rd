@@ -38,14 +38,12 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 \code{\link{catdes}}, \code{\link[moreparty]{BivariateAssoc}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x) 
-{
-  }
+data(Taste)
+getindexcat(Taste[,1:5])
+mca <- speMCA(Taste[,1:5],excl=c(3,6,9,12,15))
+hc <- hclust(dist(mca$ind$coord))
+clust <- as.factor(cutree(hc,5))
+catdesc(clust, Taste[,c('Gender','Age')])
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

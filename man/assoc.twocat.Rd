@@ -41,14 +41,8 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', http://eric.univ-
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x) 
-{
-  }
+data(Music)
+assoc.twocat(Music$Jazz,Music$Age)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

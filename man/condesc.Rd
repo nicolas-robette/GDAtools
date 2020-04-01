@@ -3,7 +3,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Bivariate associations}
 \description{
-Measures the association between a categorical variable and some continuous and/or categorical variables}
+Measures the association between a continuous variable and some continuous and/or categorical variables}
 \usage{
 condesc(y,x,min.cor=NULL)
 }
@@ -36,14 +36,10 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x) 
-{
-  }
+data(Taste)
+getindexcat(Taste[,1:5])
+mca <- speMCA(Taste[,1:5],excl=c(3,6,9,12,15))
+condesc(mca$ind$coord[,1], Taste[,c('Gender','Age')])
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

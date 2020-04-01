@@ -35,14 +35,10 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x) 
-{
-  }
+data(Taste)
+getindexcat(Taste[,1:5])
+mca <- speMCA(Taste[,1:5],excl=c(3,6,9,12,15))
+assoc.catcont(Taste$Gender,mca$ind$coord[,1])
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
