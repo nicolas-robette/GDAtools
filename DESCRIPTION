@@ -1,11 +1,11 @@
 Package: GDAtools
 Type: Package
-Title: A Toolbox for Geometric Data Analysis
+Title: A Toolbox for Geometric Data Analysis and More
 Version: 1.5
-Date: 2019-10-11
+Date: 2020-04-22
 Author: Nicolas Robette
 Maintainer: Nicolas Robette <nicolas.robette@uvsq.fr>
-Depends: FactoMineR, nleqslv, nnet
+Imports: FactoMineR, nleqslv, nnet, ggplot2, ggrepel, RColorBrewer, rlang
 Suggests: cluster, WeightedCluster, moreparty
 Description: Contains functions for 'specific' Multiple Correspondence Analysis (speMCA), 
 	Class Specific Analysis, Multiple Factor Analysis, 'standardized' MCA, computing and plotting structuring factors and concentration ellipses, 

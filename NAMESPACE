@@ -1,4 +1,4 @@
-import(FactoMineR,nleqslv,nnet)
+import(FactoMineR,nleqslv,nnet,ggplot2,ggrepel,RColorBrewer)
 
   importFrom("grDevices", "col2rgb", "rainbow", "rgb")
   importFrom("graphics", "abline", "lines", "plot", "points", "text")
@@ -7,10 +7,11 @@ import(FactoMineR,nleqslv,nnet)
              "cor.test", "median", "sd", "summary.lm",
              "addmargins")
   importFrom("utils", "installed.packages")
-
+  importFrom("rlang", ".data")
+  
 S3method(plot, speMCA)
 S3method(plot, csMCA)
 S3method(plot, multiMCA)
 S3method(plot, stMCA)
 
-export(assoc.twocat,assoc.catcont,burt,catdesc,conc.ellipse,condesc,contrib,csMCA,dichotom,dimcontrib,dimdesc.MCA,dimeta2,dimvtest,getindexcat,homog.test,indsup,medoids,modif.rate,multiMCA,pem,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,prop.wtable,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,wtable)
+export(assoc.twocat,assoc.catcont,burt,catdesc,conc.ellipse,condesc,contrib,csMCA,dichotom,dimcontrib,dimdesc.MCA,dimeta2,dimvtest,getindexcat,ggadd_ellipses,ggadd_interaction,ggadd_supvar,ggcloud_indiv,ggcloud_variables,homog.test,indsup,medoids,modif.rate,multiMCA,pem,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,prop.wtable,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,wtable)

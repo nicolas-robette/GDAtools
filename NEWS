@@ -6,6 +6,11 @@ New functions:
   - assoc.catcont(): measures the association between a categorical variable and a continuous variable
   - catdesc(): measures the association between a categorical variable and some continuous and/or categorical variables
   - condesc(): measures the association between a continuous variable and some continuous and/or categorical variables}
+  - ggcloud_indiv(): cloud of individuals using ggplot
+  - ggcloud_variables(): cloud of variables using ggplot
+  - ggadd_supvar(): adds a supplementary variable to a cloud of variables using ggplot
+  - ggadd_interaction(): adds the interaction between two variables to a cloud of variables using ggplot
+  - ggadd_ellipses(): adds concentration ellipses to a cloud of individuals using ggplot
 
 Changes in existing functions:
   - conc.ellipses(): additional options
