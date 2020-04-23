@@ -13,9 +13,7 @@ assoc.catcont(x,y)
   \item{x}{the categorical variable (must be a factor)}
   \item{y}{the continuous variable (must be a factor)}
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
 A list with the following elements :
 \item{eta.squared}{eta-squared between the two variables}
@@ -25,14 +23,9 @@ A list with the following elements :
 Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf]
 }
 \author{Nicolas Robette}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{assoc.twocatp}}, \code{\link{condesc}}, \code{\link{catdesc}}
 }
 \examples{
 data(Taste)

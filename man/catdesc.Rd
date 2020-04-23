@@ -13,9 +13,7 @@ catdesc(y,x,min.phi=NULL)
   \item{x}{a data frame with continuous and/or categorical variables}
   \item{min.phi}{for the relationship between y and a categorical variable, only associations higher or equal to min.phi will be displayed. If NULL (default), they are all displayed.}
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
 A list of the following items :
 \item{variables}{associations between y and the variables in x, computed with BivariateAssoc function from package moreparty}
@@ -28,11 +26,6 @@ Each element in bylevel has the following items :
 Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf]
 }
 \author{Nicolas Robette}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 \code{\link{catdes}}, \code{\link[moreparty]{BivariateAssoc}}

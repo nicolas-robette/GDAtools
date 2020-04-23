@@ -49,7 +49,7 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 data(Music)
 getindexcat(Music[,1:5])
 mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-p <- ggcloud_variables(mca, col='lightgrey', shapes=FALSE)
+p <- ggcloud_variables(mca, palette='lightgrey', shapes=FALSE)
 ggadd_interaction(p, mca, Music$Gender, Music$Age)
 }
 

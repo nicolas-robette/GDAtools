@@ -11,6 +11,7 @@ It provides functions for :
 * inductive tests
 * guides for interpretation (test-values, contributions, etc.)
 * the analysis of structuring factors (concentration ellipses, etc.)
+* graphical representations (with and without ggplot)
 
 Besides Geometric Data Analysis, it also provides functions for :
 
