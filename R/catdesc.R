@@ -5,11 +5,17 @@ catdesc <- function(y,x,min.phi=NULL) {
   old.warn <- options()$warn
   options(warn = -1)
   
-  xcat <- x[,sapply(x,is.factor)]
-  xcat <- as.data.frame(xcat)
+  # xcat <- x[,sapply(x,is.factor)]
+  # xcat <- as.data.frame(xcat)
+  icat <- which(sapply(x,is.factor))
+  xcat <- as.data.frame(x[,icat])
+  names(xcat) <- names(x)[icat]
   if(ncol(xcat)>0) xcat.dic <- dichotom(xcat)
-  xcon <- x[,sapply(x,is.numeric) | sapply(x,is.integer)]
-  xcon <- as.data.frame(xcon)
+  # xcon <- x[,sapply(x,is.numeric) | sapply(x,is.integer)]
+  # xcon <- as.data.frame(xcon)
+  icon <- which(sapply(x, function(x) is.numeric(x) | is.integer(x)))
+  xcon <- as.data.frame(x[,icon])
+  names(xcon) <- names(x)[icon]
   
   resbycat <- list()
   for(i in 1:nlevels(y)) {

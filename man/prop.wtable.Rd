@@ -34,7 +34,7 @@ prop.wtable(Music$Jazz,Music$Gender)
 prop.wtable(Music$Jazz,Music$Gender,dir=1)
 prop.wtable(Music$Jazz,Music$Gender,dir=2)
 
-weight <- sample(0:20,nrow(Music),TRUE)/10
+weight <- rep(c(0,0.5,1,1.5,2), length.out=nrow(Music))
 prop.wtable(Music$Jazz,w=weight)
 prop.wtable(Music$Jazz,Music$Age,weight)
 prop.wtable(Music$Jazz,Music$Age,weight,dir=1)

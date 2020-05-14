@@ -1,8 +1,11 @@
 #' @importFrom moreparty BivariateAssoc
 
 condesc <- function(y,x,min.cor=NULL){
-  xcat <- x[,sapply(x,is.factor)]
-  xcat <- as.data.frame(xcat)
+  # xcat <- x[,sapply(x,is.factor)]
+  # xcat <- as.data.frame(xcat)
+  icat <- which(sapply(x,is.factor))
+  xcat <- as.data.frame(x[,icat])
+  names(xcat) <- names(x)[icat]
   xcat.dic <- dichotom(xcat)
   corr.coef <- numeric()
   median.y.in.xcat <- numeric()

@@ -43,10 +43,10 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', shapes=TRUE, pr
   p <- ggplot2::ggplot(vcoord, ggplot2::aes(x = .data$axeX, y = .data$axeY))
   
   # if(shapes==TRUE & is.null(palette) & is.null(prop)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables), size = shapesize, colour = col, alpha = alpha) + 
-  #                                                              ggrepel::geom_text_repel(data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), size = textsize, segment.alpha = segment.alpha, colour = col, alpha = alpha) + # transparence du petit tiret qui relie si besoin le libellé au point
+  #                                                              ggrepel::geom_text_repel(data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), size = textsize, segment.alpha = segment.alpha, colour = col, alpha = alpha) + 
   #                                                              ggplot2::scale_shape_manual(name="", values = 0:20)
   # if(shapes==TRUE & is.null(palette) & !is.null(prop)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, size = .data$prop), colour = col, alpha = alpha) + 
-  #                                                               ggrepel::geom_text_repel(data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), size = textsize, segment.alpha = segment.alpha, colour = col, alpha = alpha) + # transparence du petit tiret qui relie si besoin le libellé au point
+  #                                                               ggrepel::geom_text_repel(data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), size = textsize, segment.alpha = segment.alpha, colour = col, alpha = alpha) + 
   #                                                               ggplot2::scale_shape_manual(name="", values = 0:20)
   
   if(shapes==TRUE & is.null(prop)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, color = .data$variables), size = shapesize, alpha = alpha) + 

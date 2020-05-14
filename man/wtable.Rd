@@ -30,7 +30,7 @@ data(Music)
 wtable(Music$Jazz)
 wtable(Music$Jazz,Music$Age)
 
-weight <- sample(0:20,nrow(Music),TRUE)/10
+weight <- rep(c(0,0.5,1,1.5,2), length.out=nrow(Music))
 wtable(Music$Jazz,w=weight,digits=1)
 wtable(Music$Jazz,Music$Age,weight,1)
 }

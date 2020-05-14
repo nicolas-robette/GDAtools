@@ -25,7 +25,7 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{assoc.twocatp}}, \code{\link{condesc}}, \code{\link{catdesc}}
+\code{\link{assoc.twocat}}, \code{\link{condesc}}, \code{\link{catdesc}}
 }
 \examples{
 data(Taste)

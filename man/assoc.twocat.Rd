@@ -15,9 +15,7 @@ assoc.twocat(x,y,w=rep.int(1,length(x)),na=TRUE)
   \item{w}{an optional numeric vector of weights (by default, a vector of 1 for uniform weights)}
   \item{na}{logical. If TRUE (default), 'NA' are treated as a category. If FALSE, they are ignored}
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
 A list with the following elements :
 \item{freq}{cross-tabulation}
@@ -31,14 +29,9 @@ A list with the following elements :
 Rakotomalala R., 'Comprendre la taille d'effet (effect size)', http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf
 }
 \author{Nicolas Robette}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{assoc.catcont}}, \code{\link{condesc}}, \code{\link{catdesc}}
 }
 \examples{
 data(Music)
