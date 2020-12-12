@@ -22,8 +22,8 @@ A list with the following elements :
 \item{prop}{percentages}
 \item{rprop}{raw percentages}
 \item{cprop}{column percentages}
-\item{v2.cramer}{Cramer's V2 between the two variables}
-\item{phi}{the matrix of the phi values for each pair of levels}
+\item{cramer.v}{Cramer's V between the two variables}
+\item{phi}{the matrix of the phi coefficients for each pair of levels}
 }
 \references{
 Rakotomalala R., 'Comprendre la taille d'effet (effect size)', http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf

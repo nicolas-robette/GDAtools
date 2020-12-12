@@ -1,4 +1,14 @@
 ## ========
+Version 1.6
+
+New function:
+  - phi.table() : computes phi coefficient for every cells of a contingency table
+  
+Changes in existing functions:
+  - assoc.twocat() : Cramer's V instead of V-squared
+
+
+## ========
 Version 1.5
 
 New functions:

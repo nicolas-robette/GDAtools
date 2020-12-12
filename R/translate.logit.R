@@ -106,7 +106,7 @@ translate.binom <- function(ff,dd,Nit) {
     #nval <- nrow(res$percents)*ncol(res$percents)
     nval <- prod(dim(res$percents))
     Z1 <- unlist(lapply(1:Nit,function(x) as.numeric(as.matrix(translate(ff,dd[sample(1:nrow(dd),replace=TRUE),])$percents))))
-    rm(.GlobalEnv$.Random.seed) #, envir=globalenv())
+    #rm(.GlobalEnv$.Random.seed) #, envir=globalenv())
     Z2 <- lapply(1:nval,function(x) Z1[seq.int(from=x,to=nval*(Nit-1)+x,by=nval)])
     Z3 <- lapply(Z2,function(x) paste('[',paste(round(quantile(x, c(0.025, 0.975), na.rm=TRUE),4),collapse=';'),']',sep=''))
     boot <- data.frame(matrix(unlist(Z3),nrow=nrow(res$percents),ncol=ncol(res$percents)))
@@ -161,7 +161,7 @@ if(nlevels(vdep)>=3) {
   if(nit>0) {
     mboot <- vector("list", 4)
     W1 <- lapply(1:nit,function(x) translate2(formula,data[sample(1:nrow(data),replace=TRUE),]))
-    rm(.GlobalEnv$.Random.seed) #, envir=globalenv())
+    #rm(.GlobalEnv$.Random.seed) #, envir=globalenv())
     nval <- prod(dim(W1[[1]][[1]]))
     for(i in 1:4) {
       W2 <- unlist(lapply(W1,function(x) x[[i]]))

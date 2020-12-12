@@ -40,13 +40,12 @@ Deauvieau, J. (2011), 'Est-il possible et souhaitable traduire sous forme de pro
 }
 
 \examples{
-## An example for binomial logit regression
-data(Music)
-translate.logit(Daily ~ Gender + Age,Music)
-translate.logit(Daily ~ Gender + Age,Music,100)
-
-## An example for multinomial logit regression
-translate.logit(OnlyMus ~ Gender + Age,Music)
+  ## An example for binomial logit regression
+  data(Music)
+  translate.logit(Daily ~ Gender + Age, Music)
+  
+  ## An example for multinomial logit regression
+  translate.logit(OnlyMus ~ Gender + Age, Music)
 }
 
 \keyword{ multivariate }
