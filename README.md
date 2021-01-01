@@ -8,9 +8,9 @@ This R package provides functions for :
 * Class Specific Analysis
 * Multiple Factor Analysis
 * "standardized" MCA
-* inductive tests
 * guides for interpretation (test-values, contributions, etc.)
-* the analysis of structuring factors (concentration ellipses, interactions, etc.)
+* inductive tests
+* analysis of structuring factors (concentration ellipses, interactions, etc.)
 * graphical representations (with and without ggplot2)
 
 Besides Geometric Data Analysis, it also provides :
