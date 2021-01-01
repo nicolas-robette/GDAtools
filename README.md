@@ -1,8 +1,8 @@
 # GDAtools <img src="man/figures/GDAtools.png" height=140px width=120px align="right" />
 
-## an R package for Geometric Data Analysis
+## Geometric Data Analysis and other descriptive techniques
 
-It provides functions for :
+This R package provides functions for :
 
 * "specific" Multiple Correspondence Analysis
 * Class Specific Analysis
@@ -10,15 +10,15 @@ It provides functions for :
 * "standardized" MCA
 * inductive tests
 * guides for interpretation (test-values, contributions, etc.)
-* the analysis of structuring factors (concentration ellipses, etc.)
-* graphical representations (with and without ggplot)
+* the analysis of structuring factors (concentration ellipses, interactions, etc.)
+* graphical representations (with and without ggplot2)
 
-Besides Geometric Data Analysis, it also provides functions for :
+Besides Geometric Data Analysis, it also provides :
 
-* bivariate associations between variables (phi, Cramer's V, correlation coefficient, eta-squared, etc.)
-* the translation of logit models coefficients into percentages
-* weighted contingency tables
-* an association measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM)
+* several functions for bivariate associations between variables (phi, Cramer's V, correlation coefficient, eta-squared, etc.),
+* the translation of logit models coefficients into percentages,
+* weighted contingency tables,
+* an underrated association measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM).
 
 
 ## installation
