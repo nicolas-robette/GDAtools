@@ -1,4 +1,4 @@
-# GDAtools
+# GDAtools <img src="man/figures/GDAtools.png" height=140px width=120px align="right" />
 
 ## an R package for Geometric Data Analysis
 
@@ -15,10 +15,11 @@ It provides functions for :
 
 Besides Geometric Data Analysis, it also provides functions for :
 
+* bivariate associations between variables (phi, Cramer's V, correlation coefficient, eta-squared, etc.)
 * the translation of logit models coefficients into percentages
 * weighted contingency tables
 * an association measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM)
-* bivariate associations between variables (phi, Cramer's V, correlation coefficient, eta-squared, etc.)
+
 
 ## installation
 
