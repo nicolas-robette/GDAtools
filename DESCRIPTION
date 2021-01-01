@@ -14,6 +14,5 @@ Description: Contains functions for 'specific' Multiple Correspondence Analysis,
   measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM, see Cibois (1993) <doi:10.1177/075910639304000103>) and some tools to measure bivariate associations between variables
   (phi, Cramér V, correlation coefficient, eta-squared...).
 License: GPL (>= 2)
-URL: http://nicolas.robette.free.fr/outils_eng.html
-NeedsCompilation: no
-Packaged: 2017-03-07 09:38:07 UTC; nicolas
+Encoding: UTF-8
+URL: https://github.com/nicolas-robette/GDAtools
