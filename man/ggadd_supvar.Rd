@@ -1,7 +1,7 @@
 \name{ggadd_supvar}
 \alias{ggadd_supvar}
 
-\title{Adds a categorical supplementary variable to a MCA cloud of variables}
+\title{Adds a categorical supplementary variable to a MCA cloud of variables with ggplot2}
 
 \description{
 Adds a categorical supplementary variable to a MCA cloud of variables, using the ggplot2 framework.

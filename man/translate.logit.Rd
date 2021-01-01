@@ -1,7 +1,7 @@
 \name{translate.logit}
 \alias{translate.logit}
 
-\title{Translate logit regression coefficients into percentages}
+\title{Translates logit regression coefficients into percentages}
 \description{Performs a logit regression and then computes the effects of covariates expressed in percentages
              (through two methods: 'pure' effects and 'experimental' effects; see Deauvieau, 2010)}
 \usage{translate.logit(formula,data,nit=0)}

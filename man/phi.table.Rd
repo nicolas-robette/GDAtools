@@ -1,7 +1,7 @@
 \name{phi.table}
 \alias{phi.table}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Phi coefficients}
+\title{Computes the phi coefficient for every cells of a contingency table}
 \description{
 Computes the phi coefficient for every cells of the cross-tabulation between two categorical variables
 }

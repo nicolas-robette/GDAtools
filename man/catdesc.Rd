@@ -1,7 +1,7 @@
 \name{catdesc}
 \alias{catdesc}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Bivariate associations}
+\title{Measures the association between a categorical variable and some continuous and/or categorical variables}
 \description{
 Measures the association between a categorical variable and some continuous and/or categorical variables}
 \usage{
@@ -28,7 +28,7 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{catdes}}, \code{\link[moreparty]{BivariateAssoc}}
+\code{\link[FactoMineR]{catdes}}, \code{\link[moreparty]{BivariateAssoc}}
 }
 \examples{
 data(Taste)

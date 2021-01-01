@@ -1,7 +1,7 @@
 \name{ggcloud_indiv}
 \alias{ggcloud_indiv}
 
-\title{Plots MCA cloud of individuals}
+\title{Plots MCA cloud of individuals with ggplot2}
 
 \description{
 Plots a Multiple Correspondence Analysis cloud of individuals, using ggplots functions.

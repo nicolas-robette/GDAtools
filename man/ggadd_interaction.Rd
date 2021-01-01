@@ -2,7 +2,7 @@
 \alias{ggadd_interaction}
 
 \title{
-Adds the interaction between two categorical supplementary variables to a MCA cloud of variables
+Adds the interaction between two categorical supplementary variables to a MCA cloud of variables with ggplot2
 }
 
 \description{
@@ -22,7 +22,7 @@ axes=c(1,2), col=NULL, textsize=5, legend='right')
   \item{sel1}{Numeric vector of indexes of the categories of the first supplementary variable to be used in interaction. By default, every categories are used.}
   \item{sel2}{Numeric vector of indexes of the categories of the second supplementary variable to be used in interaction. By default, every categories are used.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
-  \item{col}{Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses \code{scale_color_grey()}), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of \code{ggplot2} is used.}
+  \item{col}{Colors for the labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses \code{scale_color_grey()}), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of \code{ggplot2} is used.}
   \item{textsize}{Size of the labels of categories. Default is 5.}
   \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.}
 }
@@ -49,7 +49,7 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 data(Music)
 getindexcat(Music[,1:5])
 mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-p <- ggcloud_variables(mca, palette='lightgrey', shapes=FALSE)
+p <- ggcloud_variables(mca, col='lightgrey', shapes=FALSE)
 ggadd_interaction(p, mca, Music$Gender, Music$Age)
 }
 

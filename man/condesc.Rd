@@ -1,7 +1,7 @@
 \name{condesc}
 \alias{condesc}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Bivariate associations}
+\title{Measures the association between a continuous variable and some continuous and/or categorical variables}
 \description{
 Measures the association between a continuous variable and some continuous and/or categorical variables}
 \usage{
@@ -27,7 +27,7 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{condes}}, \code{\link[moreparty]{BivariateAssoc}}
+\code{\link[FactoMineR]{condes}}, \code{\link[moreparty]{BivariateAssoc}}
 
 }
 \examples{

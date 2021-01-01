@@ -1,7 +1,7 @@
 \name{ggadd_ellipses}
 \alias{ggadd_ellipses}
 
-\title{Adds concentration ellipses to a MCA cloud of individuals}
+\title{Adds concentration ellipses to a MCA cloud of individuals with ggplot2}
 
 \description{
 Adds concentration ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework.
@@ -36,7 +36,7 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{ggcloud_variables}}, \code{\link{ggcloud_indiv}}, \code{\link{ggadd_ellipses}}, \code{\link{ggadd_interaction}}
+\code{\link{ggcloud_variables}}, \code{\link{ggcloud_indiv}}, \code{\link{ggadd_supvar}}, \code{\link{ggadd_interaction}}
 }
 
 \examples{
@@ -48,5 +48,5 @@ data(Music)
 getindexcat(Music[,1:5])
 mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
 p <- ggcloud_indiv(mca, col='lightgrey')
-ggadd_supvar(p, mca, Music$Age)
+ggadd_ellipses(p, mca, Music$Age)
 }
