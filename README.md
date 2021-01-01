@@ -29,7 +29,7 @@ Besides, it also provides :
 
 ## Documentation
 
-Please visit [https://strengejacke.github.io/sjstats/](https://nicolas-robette.github.io/GDAtools/) for documentation
+Please visit [https://nicolas-robette.github.io/GDAtools/](https://nicolas-robette.github.io/GDAtools/) for documentation
 
 ## Installation
 
