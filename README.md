@@ -1,6 +1,9 @@
-# GDAtools <img src="man/figures/GDAtools.png" height=140px width=120px align="right" />
+# GDAtools
 
-## Geometric Data Analysis and other descriptive techniques
+## Geometric Data Analysis
+## and other descriptive techniques
+
+<img src="man/figures/GDAtools.png" height=140px width=120px align="right" />
 
 <!-- badges: start -->
   [![R build status](https://github.com/nicolas-robette/GDAtools/workflows/R-CMD-check/badge.svg)](https://github.com/nicolas-robette/GDAtools/actions)
