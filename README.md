@@ -1,16 +1,15 @@
-# GDAtools
+# **GDAtools** <img src="man/figures/GDAtools.png" height=140px width=120px alt="" align="right" />
 
 ## Geometric Data Analysis
-## and other descriptive techniques
-
-<img src="man/figures/GDAtools.png" height=140px width=120px align="right" />
+### and other descriptive techniques
 
 <!-- badges: start -->
   [![R build status](https://github.com/nicolas-robette/GDAtools/workflows/R-CMD-check/badge.svg)](https://github.com/nicolas-robette/GDAtools/actions)
   [![](https://www.r-pkg.org/badges/version/GDAtools?color=blue)](https://cran.r-project.org/package=GDAtools)
-  <!-- badges: end -->
+  [![](http://cranlogs.r-pkg.org/badges/last-month/badger?color=orange)](https://cran.r-project.org/package=badger)
+<!-- badges: end -->
 
-This R package provides functions for Geometric Data Analysis :
+[`GDAtools`](https://nicolas-robette.github.io/GDAtools/) provides functions for Geometric Data Analysis :
 
 * specific Multiple Correspondence Analysis
 * Class Specific Analysis
@@ -19,7 +18,7 @@ This R package provides functions for Geometric Data Analysis :
 * guides for interpretation (test-values, contributions, etc.)
 * inductive tests
 * analysis of structuring factors (concentration ellipses, interactions, etc.)
-* graphical representations (with and without ggplot2)
+* graphical representations (with and without [`ggplot2`](https://ggplot2.tidyverse.org/))
 
 Besides, it also provides :
 
@@ -28,6 +27,9 @@ Besides, it also provides :
 * weighted contingency tables,
 * an underrated association measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM).
 
+## Documentation
+
+Please visit [https://strengejacke.github.io/sjstats/](https://nicolas-robette.github.io/GDAtools/) for documentation
 
 ## installation
 
@@ -49,7 +51,7 @@ Le Roux B. and Rouanet H., 2010, *Multiple Correspondence Analysis*, SAGE, Serie
 
 Le Roux B. and Rouanet H., 2004, *Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis*, Kluwer Academic Publishers, Dordrecht.
 
-Deauvieau, J., 2010, « Comment traduire sous forme de probabilites les resultats d'une modelisation logit ? », *Bulletin de Methodologie Sociologique*, 105(1), 5-23.
+Deauvieau J., 2010, « Comment traduire sous forme de probabilites les resultats d'une modelisation logit ? », *Bulletin de Methodologie Sociologique*, 105(1), 5-23.
 
 Cibois P., 1993, « Le PEM, pourcentage de l'ecart maximum : un indice de liaison entre modalites d'un tableau de contingence », *Bulletin de Methodologie Sociologique*, 40, pp 43-63, [http://cibois.pagesperso-orange.fr/bms93.pdf]
 
