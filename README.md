@@ -2,6 +2,10 @@
 
 ## Geometric Data Analysis and other descriptive techniques
 
+<!-- badges: start -->
+  [![R build status](https://github.com/nicolas-robette/GDAtools/workflows/R-CMD-check/badge.svg)](https://github.com/nicolas-robette/GDAtools/actions)
+  <!-- badges: end -->
+
 This R package provides functions for :
 
 * "specific" Multiple Correspondence Analysis
