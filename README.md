@@ -7,7 +7,7 @@
   [![](https://www.r-pkg.org/badges/version/GDAtools?color=blue)](https://cran.r-project.org/package=GDAtools)
   <!-- badges: end -->
 
-This R package provides functions for :
+This R package provides functions for Geometric Data Analysis :
 
 * "specific" Multiple Correspondence Analysis
 * Class Specific Analysis
@@ -18,7 +18,7 @@ This R package provides functions for :
 * analysis of structuring factors (concentration ellipses, interactions, etc.)
 * graphical representations (with and without ggplot2)
 
-Besides Geometric Data Analysis, it also provides :
+Besides, it also provides :
 
 * several functions for bivariate associations between variables (phi, Cramer's V, correlation coefficient, eta-squared, etc.),
 * the translation of logit models coefficients into percentages,
