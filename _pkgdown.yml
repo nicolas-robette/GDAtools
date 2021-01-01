@@ -1,3 +1,8 @@
+url: https://nicolas-robette.github.io/GDAtools/
+
+development:
+  mode: auto
+
 authors:
   Nicolas Robette:
     href: https://github.com/nicolas-robette
@@ -14,6 +19,7 @@ reference:
   - csMCA
   - multiMCA
   - stMCA
+  
 - title: Interpreting MCA
 - desc: Tools to help for the interpretation of a MCA
 - contents:
@@ -27,6 +33,7 @@ reference:
   - homog.test
   - varsup
   - indsup
+  
 - title: Plotting MCA
 - desc: Plotting tools for MCA
 - contents:
@@ -42,6 +49,7 @@ reference:
   - ggadd_supvar
   - ggadd_ellipses
   - ggadd_interaction
+  
 - title: Descriptive analysis
 - desc: Tools to describe statistical bivariate associations between variables
 - contents:
@@ -54,6 +62,7 @@ reference:
   - phi.table
   - wtable
   - prop.wtable
+  
 - title: Miscellaneous
 - desc: A few additional tools
 - contents:
@@ -62,6 +71,7 @@ reference:
   - getindexcat
   - medoids
   - translate.logit
+  
 - title: Datasets
 - desc: Datasets used in the examples
 - contents:
