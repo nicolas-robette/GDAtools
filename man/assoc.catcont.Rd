@@ -1,22 +1,24 @@
 \name{assoc.catcont}
 \alias{assoc.catcont}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Bivariate association}
+\title{Measures the association between a categorical variable and a continuous variable}
 \description{
 Measures the association between a categorical variable and a continuous variable
 }
 \usage{
-assoc.catcont(x,y)
+assoc.catcont(x,y,nperm=1000)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{the categorical variable (must be a factor)}
-  \item{y}{the continuous variable (must be a factor)}
+  \item{y}{the continuous variable (must be a numeric vector)}
+  \item{nperm}{numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed.}
 }
 
 \value{
 A list with the following elements :
 \item{eta.squared}{eta-squared between the two variables}
+\item{permutation.pvalue}{p-value from a permutation (so non-parametric) test of independance}
 \item{cor.coeff}{correlation coefficient between the two variables, for each level of the categorical variable}
 }
 \references{
@@ -25,13 +27,16 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{assoc.twocat}}, \code{\link{condesc}}, \code{\link{catdesc}}
+\code{\link{assoc.twocat}}, \code{\link{assoc.twocont}}, \code{\link{condesc}}, \code{\link{catdesc}}
 }
 \examples{
-data(Taste)
-getindexcat(Taste[,1:5])
-mca <- speMCA(Taste[,1:5],excl=c(3,6,9,12,15))
-assoc.catcont(Taste$Gender,mca$ind$coord[,1])
+## Annette Dobson (1990) "An Introduction to Generalized Linear Models".
+## Page 9: Plant Weight Data.
+ctl <- c(4.17,5.58,5.18,6.11,4.50,4.61,5.17,4.53,5.33,5.14)
+trt <- c(4.81,4.17,4.41,3.59,5.87,3.83,6.03,4.89,4.32,4.69)
+group <- gl(2, 10, 20, labels = c("Ctl","Trt"))
+weight <- c(ctl, trt)
+assoc.catcont(group,weight)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,4 +1,4 @@
-assoc.twocat <- function(x, y, w=rep.int(1,length(x)), na=TRUE) {
+assoc.twocat <- function(x, y, w=rep.int(1,length(x)), na=TRUE, nperm=1000) {
 
   x <- factor(x)
   y <- factor(y)  # to drop empty levels
@@ -20,9 +20,22 @@ assoc.twocat <- function(x, y, w=rep.int(1,length(x)), na=TRUE) {
   phi <- phi.table(x,y)
     
   t <- table(x,y)
-  cramer.v <- suppressWarnings(sqrt(chisq.test(t)$statistic / (length(Y)*(min(nrow(t),ncol(t))-1))))
-  names(cramer.v) <- NULL
+  expected <- rowSums(t) %*% t(colSums(t)) / sum(t)
+  chi.squared <- sum((t-expected)*(t-expected)/expected)
+  cramer.v <- sqrt(chi.squared / (length(x)*(min(nrow(t),ncol(t))-1)))
+  expected <- as.table(expected)
+  dimnames(expected) <- dimnames(t)
   
-  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'cramer.v'=cramer.v, 'phi'=phi))
+  if(!is.null(nperm)) {
+    h0distrib <- numeric()
+    for(i in 1:nperm) {
+      permt <- table(x,sample(y))
+      permexp <- rowSums(permt) %*% t(colSums(permt)) / sum(permt)
+      h0distrib[i] <- sum((permt-permexp)*(permt-permexp)/permexp)
+    }
+    permutation.pvalue <- 1-sum(chi.squared>h0distrib)/nperm
+  }
+  if(is.null(nperm)) permutation.pvalue <- NULL
+  
+  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared,'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue,'phi'=phi))
 }
-
