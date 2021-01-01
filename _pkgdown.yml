@@ -1,0 +1,69 @@
+authors:
+  Nicolas Robette:
+    href: https://github.com/nicolas-robette
+
+template:
+  params:
+    bootswatch: flatly
+    
+reference:
+- title: MCA
+- desc: Performing MCA and other kinds of GDA techniques
+- contents:
+  - speMCA
+  - csMCA
+  - multiMCA
+  - stMCA
+- title: Interpreting MCA
+- desc: Tools to help for the interpretation of a MCA
+- contents:
+  - modif.rate
+  - contrib
+  - tabcontrib
+  - dimcontrib
+  - dimdesc.MCA
+  - dimeta2
+  - dimvtest
+  - homog.test
+  - varsup
+  - indsup
+- title: Plotting MCA
+- desc: Plotting tools for MCA
+- contents:
+  - plot.speMCA
+  - plot.csMCA
+  - plot.multiMCA
+  - plot.stMCA
+  - textvarsup
+  - textindsup
+  - conc.ellipse
+  - ggcloud_indiv
+  - ggcloud_variables
+  - ggadd_supvar
+  - ggadd_ellipses
+  - ggadd_interaction
+- title: Descriptive analysis
+- desc: Tools to describe statistical bivariate associations between variables
+- contents:
+  - assoc.catcont
+  - assoc.twocat
+  - assoc.twocont
+  - catdesc
+  - condesc
+  - pem
+  - phi.table
+  - wtable
+  - prop.wtable
+- title: Miscellaneous
+- desc: A few additional tools
+- contents:
+  - burt
+  - dichotom
+  - getindexcat
+  - medoids
+  - translate.logit
+- title: Datasets
+- desc: Datasets used in the examples
+- contents:
+  - Music
+  - Taste
