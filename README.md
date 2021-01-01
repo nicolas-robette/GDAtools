@@ -1,7 +1,6 @@
 # **GDAtools** <img src="man/figures/GDAtools.png" height=140px width=120px alt="" align="right" />
 
-## Geometric Data Analysis
-### and other descriptive techniques
+## Geometric Data Analysis and other descriptive techniques
 
 <!-- badges: start -->
   [![R build status](https://github.com/nicolas-robette/GDAtools/workflows/R-CMD-check/badge.svg)](https://github.com/nicolas-robette/GDAtools/actions)
@@ -32,7 +31,7 @@ Besides, it also provides :
 
 Please visit [https://strengejacke.github.io/sjstats/](https://nicolas-robette.github.io/GDAtools/) for documentation
 
-## installation
+## Installation
 
 Execute the following code within `R`:
 

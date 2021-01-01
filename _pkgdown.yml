@@ -7,10 +7,6 @@ authors:
   Nicolas Robette:
     href: https://github.com/nicolas-robette
 
-template:
-  params:
-    bootswatch: flatly
-    
 reference:
 - title: MCA
 - desc: Performing MCA and other kinds of GDA techniques
