@@ -9,7 +9,7 @@
 
 This R package provides functions for Geometric Data Analysis :
 
-* "specific" Multiple Correspondence Analysis
+* specific Multiple Correspondence Analysis
 * Class Specific Analysis
 * Multiple Factor Analysis
 * "standardized" MCA
