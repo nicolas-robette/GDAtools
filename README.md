@@ -11,10 +11,10 @@
 
 [`GDAtools`](https://nicolas-robette.github.io/GDAtools/) provides functions for Geometric Data Analysis :
 
-* specific Multiple Correspondence Analysis
-* Class Specific Analysis
-* Multiple Factor Analysis
-* "standardized" MCA
+* specific Multiple Correspondence Analysis (speMCA)
+* Class Specific Analysis (csMCA)
+* Multiple Factor Analysis (multiMCA)
+* "standardized" Multiple Correspondence Analysis (stMCA)
 * guides for interpretation (test-values, contributions, etc.)
 * inductive tests
 * analysis of structuring factors (concentration ellipses, interactions, etc.)
@@ -22,7 +22,7 @@
 
 Besides, it also provides :
 
-* several functions for bivariate associations between variables (phi, Cramer's V, correlation coefficient, eta-squared, etc.),
+* several functions for bivariate associations between variables (phi coefficients, Cramer's V, correlation coefficients, eta-squared, etc.),
 * the translation of logit models coefficients into percentages,
 * weighted contingency tables,
 * an underrated association measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM).
