@@ -5,7 +5,7 @@
 <!-- badges: start -->
   [![R build status](https://github.com/nicolas-robette/GDAtools/workflows/R-CMD-check/badge.svg)](https://github.com/nicolas-robette/GDAtools/actions)
   [![](https://www.r-pkg.org/badges/version/GDAtools?color=blue)](https://cran.r-project.org/package=GDAtools)
-  [![](http://cranlogs.r-pkg.org/badges/last-month/badger?color=orange)](https://cran.r-project.org/package=badger)
+  [![](http://cranlogs.r-pkg.org/badges/last-month/GDAtools?color=orange)](https://cran.r-project.org/package=GDAtools)
   [![CodeFactor](https://www.codefactor.io/repository/github/nicolas-robette/gdatools/badge)](https://www.codefactor.io/repository/github/nicolas-robette/gdatools)
 <!-- badges: end -->
 
