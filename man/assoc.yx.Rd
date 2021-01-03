@@ -2,7 +2,7 @@
 \alias{assoc.yx}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-  Bivariate association measures for supervised learning tasks.
+  Bivariate association measures between a response and predictor variables.
 }
 \description{
   Computes bivariate association measures between a response and predictor variables (and, optionnaly, between every pairs of predictor variables.)

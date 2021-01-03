@@ -9,6 +9,7 @@
 
 * `phi.table()` : computes phi coefficient for every cells of a contingency table
 * `assoc.twocont()` : measures the association between two continuous variables with Pearson, Spearman and Kendall correlations and a permutation test.
+* `assoc.xy()` : computes bivariate association measures between a response and predictor variables
   
 ## Changes in existing functions:
 
