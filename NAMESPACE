@@ -5,7 +5,8 @@ import(FactoMineR,nleqslv,nnet,ggplot2,ggrepel,RColorBrewer)
   importFrom("stats", "aggregate", "as.formula", "cor", "glm", "lm",
              "quantile", "residuals", "weighted.mean", "aov", "chisq.test",
              "cor.test", "median", "sd", "summary.lm",
-             "addmargins")
+             "addmargins",
+             "pnorm")
   importFrom("utils", "installed.packages")
   importFrom("rlang", ".data")
   

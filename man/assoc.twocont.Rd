@@ -6,13 +6,14 @@
 Measures the association between two continuous variables with Pearson, Spearman and Kendall correlations.
 }
 \usage{
-assoc.twocont(x,y,nperm=1000)
+assoc.twocont(x,y,nperm=1000,distrib="asympt")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{a continuous variable (must be a numeric vector)}
   \item{y}{a continuous variable (must be a numeric vector)}
   \item{nperm}{numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed.}
+  \item{distrib}{the null distribution of permutation test of independence can be approximated by its asymptotic distribution (\code{"asympt"}, default) or via Monte Carlo resampling (\code{"approx"}.}
 }
 
 \value{

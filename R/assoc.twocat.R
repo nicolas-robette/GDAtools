@@ -1,4 +1,4 @@
-assoc.twocat <- function(x, y, w=rep.int(1,length(x)), na=TRUE, nperm=1000) {
+assoc.twocat <- function(x, y, w=rep.int(1,length(x)), na=TRUE, nperm=1000, distrib="asympt") {
 
   x <- factor(x)
   y <- factor(y)  # to drop empty levels
@@ -33,9 +33,14 @@ assoc.twocat <- function(x, y, w=rep.int(1,length(x)), na=TRUE, nperm=1000) {
       permexp <- rowSums(permt) %*% t(colSums(permt)) / sum(permt)
       h0distrib[i] <- sum((permt-permexp)*(permt-permexp)/permexp)
     }
-    permutation.pvalue <- 1-sum(chi.squared>h0distrib)/nperm
+    if(distrib=='approx') {
+      permutation.pvalue <- sum(chi.squared<=h0distrib)/nperm
+    } else {
+      fit <- MASS::fitdistr(h0distrib,"normal")$estimate
+      permutation.pvalue <- 1-stats::pnorm(chi.squared,fit[1],fit[2])   
+    }
   }
   if(is.null(nperm)) permutation.pvalue <- NULL
   
-  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared,'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue,'phi'=phi))
+  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'phi'=phi))
 }
