@@ -5,8 +5,8 @@ Version: 1.5
 Date: 2020-05-14
 Author: Nicolas Robette
 Maintainer: Nicolas Robette <nicolas.robette@uvsq.fr>
-Imports: FactoMineR, nleqslv, nnet, ggplot2, ggrepel, RColorBrewer, rlang, moreparty
-Suggests: cluster, WeightedCluster
+Imports: MASS, FactoMineR, nleqslv, nnet, ggplot2, ggrepel, RColorBrewer, rlang
+Suggests: cluster, WeightedCluster, moreparty
 Description: Contains functions for 'specific' Multiple Correspondence Analysis, 
 	Class Specific Analysis, Multiple Factor Analysis, 'standardized' MCA, computing and plotting structuring factors and concentration ellipses, 
 	inductive tests and others tools for Geometric Data Analysis (Le Roux & Rouanet (2005) <doi:10.1007/1-4020-2236-0>). It also provides functions

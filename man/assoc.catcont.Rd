@@ -28,7 +28,7 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{assoc.twocat}}, \code{\link{assoc.twocont}}, \code{\link{condesc}}, \code{\link{catdesc}}
+\code{\link{assoc.twocat}}, \code{\link{assoc.twocont}}, \code{\link{assoc.yx}}, \code{\link{condesc}}, \code{\link{catdesc}}
 }
 \examples{
 ## Annette Dobson (1990) "An Introduction to Generalized Linear Models".

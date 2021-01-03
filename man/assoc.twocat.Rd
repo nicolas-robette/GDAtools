@@ -37,7 +37,7 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', http://eric.univ-
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{assoc.catcont}}, \code{\link{assoc.twocont}}, \code{\link{condesc}}, \code{\link{catdesc}}
+\code{\link{assoc.catcont}}, \code{\link{assoc.twocont}}, \code{\link{assoc.yx}}, \code{\link{condesc}}, \code{\link{catdesc}}
 }
 \examples{
 data(Music)

@@ -28,7 +28,7 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link[FactoMineR]{catdes}}, \code{\link[moreparty]{BivariateAssoc}}
+\code{\link[FactoMineR]{catdes}}, \code{\link{condesc}}, \code{\link{assoc.yx}}
 }
 \examples{
 data(Taste)

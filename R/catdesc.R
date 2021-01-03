@@ -1,9 +1,7 @@
-#' @importFrom moreparty BivariateAssoc
-
 catdesc <- function(y,x,min.phi=NULL) {
   
-  old.warn <- options()$warn
-  options(warn = -1)
+  # old.warn <- options()$warn
+  # options(warn = -1)
   
   # xcat <- x[,sapply(x,is.factor)]
   # xcat <- as.data.frame(xcat)
@@ -26,8 +24,10 @@ catdesc <- function(y,x,min.phi=NULL) {
       phi <- numeric()
       for(j in 1:ncol(xcat.dic)) {
         tab22 <- table(y==levels(y)[i], xcat.dic[,j])
-        khi2 <- suppressWarnings({chisq.test(tab22)})
-        khi2 <- khi2$statistic
+        # khi2 <- suppressWarnings({chisq.test(tab22)})
+        # khi2 <- khi2$statistic
+        expected <- rowSums(tab22) %*% t(colSums(tab22)) / sum(tab22)
+        khi2 <- sum((tab22-expected)*(tab22-expected)/expected)
         signe <- sign(tab22[2,2]/rowSums(tab22)[2]-tab22[1,2]/rowSums(tab22)[1])
         phi[j] <- round(signe*sqrt(khi2/sum(tab22)),3)
         pct.ycat.in.xcat[j] <- prop.table(tab22,2)[2,2]
@@ -65,8 +65,8 @@ catdesc <- function(y,x,min.phi=NULL) {
     resbycat[[i]] <- list(categories=categories,continuous.var=continuous.var)
   }
   names(resbycat) <- levels(y)
-  res <- list(variables=moreparty::BivariateAssoc(y,x,xx=FALSE)$YX, bylevel=resbycat)
+  res <- list(variables=assoc.yx(y,x,xx=FALSE)$YX, bylevel=resbycat)
   
-  options(warn = old.warn)
+  # options(warn = old.warn)
   return(res)
 }

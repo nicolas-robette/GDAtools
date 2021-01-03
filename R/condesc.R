@@ -1,6 +1,6 @@
 #' @importFrom moreparty BivariateAssoc
 
-condesc <- function(y,x,min.cor=NULL){
+condesc2 <- function(y,x,min.cor=NULL){
   # xcat <- x[,sapply(x,is.factor)]
   # xcat <- as.data.frame(xcat)
   icat <- which(sapply(x,is.factor))
@@ -23,6 +23,6 @@ condesc <- function(y,x,min.cor=NULL){
   categories <- categories[order(-categories$corr.coef),]
   categories$corr.coef <- round(categories$corr.coef,3)
   if(!is.null(min.cor)) categories <- categories[abs(categories$corr.coef)>=min.cor,]
-  res <- list(variables=moreparty::BivariateAssoc(y,x,xx=FALSE)$YX, categories=categories)
+  res <- list(variables=GDAtools::assoc.yx(y,x,xx=FALSE)$YX, categories=categories)
   return(res)
 }
