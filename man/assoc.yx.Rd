@@ -50,7 +50,7 @@ The function computes an association measure : Pearson's, Spearman's or Kendall'
   data(iris)
   iris2 = iris
   iris2$Species = factor(iris$Species == "versicolor")
-  assoc.yx(iris2$Species,iris2[,1:4])
+  assoc.yx(iris2$Species,iris2[,1:4],nperm=100)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,6 +1,6 @@
-#' @importFrom moreparty BivariateAssoc
+# @importFrom moreparty BivariateAssoc
 
-condesc2 <- function(y,x,min.cor=NULL){
+condesc <- function(y,x,min.cor=NULL){
   # xcat <- x[,sapply(x,is.factor)]
   # xcat <- as.data.frame(xcat)
   icat <- which(sapply(x,is.factor))

@@ -147,7 +147,7 @@
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/FactoMineR/man/condes.html'>condes</a></code>, <code><a href='https://rdrr.io/pkg/moreparty/man/BivariateAssoc.html'>BivariateAssoc</a></code></p></div>
+    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/FactoMineR/man/condes.html'>condes</a></code>, <code><a href='catdesc.html'>catdesc</a></code>, <code><a href='assoc.yx.html'>assoc.yx</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>)</span>
@@ -158,9 +158,9 @@
 #&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA" </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>condesc</span><span class='op'>(</span><span class='va'>mca</span><span class='op'>$</span><span class='va'>ind</span><span class='op'>$</span><span class='va'>coord</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span>, <span class='va'>Taste</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Gender'</span>,<span class='st'>'Age'</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $variables
-#&gt;   variable measure assoc p.value criterion
-#&gt; 1      Age    eta2 0.099 0.00000 0.0000000
-#&gt; 2   Gender    eta2 0.000 0.53618 0.7682489
+#&gt;   variable measure association permutation.pvalue
+#&gt; 1      Age    Eta2       0.103              0.000
+#&gt; 2   Gender    Eta2       0.002              0.511
 #&gt; 
 #&gt; $categories
 #&gt;     categories median.y.in.xcat median.y.global sd.y.in.xcat sd.y.global

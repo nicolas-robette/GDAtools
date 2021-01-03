@@ -52,6 +52,7 @@ reference:
   - assoc.catcont
   - assoc.twocat
   - assoc.twocont
+  - assoc.yx
   - catdesc
   - condesc
   - pem

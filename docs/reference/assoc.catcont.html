@@ -114,7 +114,7 @@
     <p>Measures the association between a categorical variable and a continuous variable</p>
     </div>
 
-    <pre class="usage"><span class='fu'>assoc.catcont</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,nperm<span class='op'>=</span><span class='fl'>1000</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>assoc.catcont</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,nperm<span class='op'>=</span><span class='fl'>1000</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -130,6 +130,10 @@
     <tr>
       <th>nperm</th>
       <td><p>numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed.</p></td>
+    </tr>
+    <tr>
+      <th>distrib</th>
+      <td><p>the null distribution of permutation test of independence can be approximated by its asymptotic distribution (<code>"asympt"</code>, default) or via Monte Carlo resampling (<code>"approx"</code>.</p></td>
     </tr>
     </table>
 
@@ -148,7 +152,7 @@
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='assoc.twocat.html'>assoc.twocat</a></code>, <code><a href='assoc.twocont.html'>assoc.twocont</a></code>, <code><a href='condesc.html'>condesc</a></code>, <code><a href='catdesc.html'>catdesc</a></code></p></div>
+    <div class='dont-index'><p><code><a href='assoc.twocat.html'>assoc.twocat</a></code>, <code><a href='assoc.twocont.html'>assoc.twocont</a></code>, <code><a href='assoc.yx.html'>assoc.yx</a></code>, <code><a href='condesc.html'>condesc</a></code>, <code><a href='catdesc.html'>catdesc</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Annette Dobson (1990) "An Introduction to Generalized Linear Models".</span>
@@ -159,10 +163,10 @@
 <span class='va'>weight</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>ctl</span>, <span class='va'>trt</span><span class='op'>)</span>
 <span class='fu'>assoc.catcont</span><span class='op'>(</span><span class='va'>group</span>,<span class='va'>weight</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $eta.squared
-#&gt; [1] 0.073
+#&gt; [1] 0.0730776
 #&gt; 
 #&gt; $permutation.pvalue
-#&gt; [1] 0.251
+#&gt; [1] 0.394193
 #&gt; 
 #&gt; $cor.coeff
 #&gt;   Ctl   Trt 
