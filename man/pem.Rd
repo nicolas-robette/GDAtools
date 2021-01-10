@@ -2,9 +2,9 @@
 
 \alias{pem}
 
-\title{Computes the local and global Percentages of Maximum Deviation from Independance (PEM)}
+\title{Computes the local and global Percentages of Maximum Deviation from Independence (PEM)}
 
-\description{Computes the local and global Percentages of Maximum Deviation from Independance (PEM) of a contingency table.}
+\description{Computes the local and global Percentages of Maximum Deviation from Independence (PEM) of a contingency table.}
 
 \usage{
 pem(x,y,weights=rep(1,length(x)),digits=1,sort=TRUE)
@@ -19,14 +19,14 @@ pem(x,y,weights=rep(1,length(x)),digits=1,sort=TRUE)
 }
 
 \details{
-The Percentage of Maximum Deviation from Independance (PEM) is an association measure for contingency tables and also provides attraction (resp. repulsion) measures in each cell of the crosstabulation (see Cibois, 1993). 
+The Percentage of Maximum Deviation from Independence (PEM) is an association measure for contingency tables and also provides attraction (resp. repulsion) measures in each cell of the crosstabulation (see Cibois, 1993). 
 It is an alternative to khi2, Cramer's V coefficient, etc.
 }
 
 \value{
 Returns a list:
-  \item{peml }{Table with local percentages of maximum deviation from independance}
-  \item{pemg }{Numeric value, i.e. the global percentage of maximum deviation from independance}
+  \item{peml }{Table with local percentages of maximum deviation from independence}
+  \item{pemg }{Numeric value, i.e. the global percentage of maximum deviation from independence}
 }
 
 \references{

@@ -11,6 +11,6 @@ phi.table <- function(x,y,weights=rep(1,length(x)),digits=3) {
   tab <- as.table(tab)
   rownames(tab) <- levels(factor(x))
   colnames(tab) <- levels(factor(y))
-  tab <- round(tab,digits)
+  if(!is.null(digits)) tab <- round(tab,digits)
   return(tab)
 }

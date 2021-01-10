@@ -1,13 +1,13 @@
-assoc.twocat <- function(x, y, w=rep.int(1,length(x)), na=TRUE, nperm=1000, distrib="asympt") {
+assoc.twocat2 <- function(x, y, weights=rep.int(1,length(x)), na=TRUE, nperm=1000, distrib="asympt") {
 
   x <- factor(x)
   y <- factor(y)  # to drop empty levels
   if(na) x <- addNA(x, TRUE)
   if(na) y <- addNA(y, TRUE)
   
-  xdic <- as.matrix(dichotom(x, out='numeric'))
-  ydic <- as.matrix(dichotom(y, out='numeric'))
-  tab <- t(xdic)%*%diag(w)%*%ydic
+  xdic <- as.matrix(GDAtools::dichotom(x, out='numeric'))
+  ydic <- as.matrix(GDAtools::dichotom(y, out='numeric'))
+  tab <- t(xdic)%*%diag(weights)%*%ydic
   tab <- as.table(tab)
   rownames(tab) <- gsub('data.','',rownames(tab))
   colnames(tab) <- gsub('data.','',colnames(tab))
@@ -17,14 +17,19 @@ assoc.twocat <- function(x, y, w=rep.int(1,length(x)), na=TRUE, nperm=1000, dist
   rprop <- round(100*apply(freq, 2, function(x) 2*x/rowSums(freq)),1)
   cprop <- t(round(100*apply(freq, 1, function(x) 2*x/colSums(freq)),1))
 
-  phi <- phi.table(x,y)
+  phi <- phi.table(x,y,weights=weights,digits=NULL)
+  
+  pem <- GDAtools::pem(x,y,weights=weights)
     
-  t <- table(x,y)
+  t <- t(xdic)%*%diag(weights)%*%ydic
   expected <- rowSums(t) %*% t(colSums(t)) / sum(t)
   chi.squared <- sum((t-expected)*(t-expected)/expected)
   cramer.v <- sqrt(chi.squared / (length(x)*(min(nrow(t),ncol(t))-1)))
   expected <- as.table(expected)
   dimnames(expected) <- dimnames(t)
+  
+  stdres <- (t-expected)/sqrt(expected)
+  stdres <- as.table(stdres)
   
   if(!is.null(nperm)) {
     h0distrib <- numeric()
@@ -42,5 +47,5 @@ assoc.twocat <- function(x, y, w=rep.int(1,length(x)), na=TRUE, nperm=1000, dist
   }
   if(is.null(nperm)) permutation.pvalue <- NULL
   
-  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'phi'=phi))
+  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'pearson.residuals'=stdres, 'phi'=phi, 'local.pem'=pem$peml, 'global.pem'=pem$pemg))
 }
