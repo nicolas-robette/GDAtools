@@ -9,13 +9,15 @@
 
 * `phi.table()` : computes phi coefficient for every cells of a contingency table
 * `assoc.twocont()` : measures the association between two continuous variables with Pearson, Spearman and Kendall correlations and a permutation test.
-* `assoc.xy()` : computes bivariate association measures between a response and predictor variables
+* `assoc.yx()` : computes bivariate association measures between a response and predictor variables
   
 ## Changes in existing functions:
 
-* `assoc.twocat()` : Cramer's V instead of V-squared, permutation p-value
+* `assoc.twocat()` : Cramer's V instead of V-squared, permutation p-value, Pearson residuals, percentage of maximum deviation from independence
 * `assoc.catcont()` : permutation p-value
 * `ggcloud_variables()` : improved color management
+* `pem()` : one can choose to sort rows and columns or not
+* weights are now allowed in functions `phi.table()`, `pem()`, `assoc.twocat()`, `assoc.twocont()`, `assoc.catcont()` and `assoc.yx()`
 
 
 
