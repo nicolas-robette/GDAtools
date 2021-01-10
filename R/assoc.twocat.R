@@ -1,4 +1,4 @@
-assoc.twocat2 <- function(x, y, weights=rep.int(1,length(x)), na=TRUE, nperm=1000, distrib="asympt") {
+assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na=TRUE, nperm=1000, distrib="asympt") {
 
   x <- factor(x)
   y <- factor(y)  # to drop empty levels
@@ -17,7 +17,7 @@ assoc.twocat2 <- function(x, y, weights=rep.int(1,length(x)), na=TRUE, nperm=100
   rprop <- round(100*apply(freq, 2, function(x) 2*x/rowSums(freq)),1)
   cprop <- t(round(100*apply(freq, 1, function(x) 2*x/colSums(freq)),1))
 
-  phi <- phi.table(x,y,weights=weights,digits=NULL)
+  phi <- GDAtools::phi.table(x,y,weights=weights,digits=NULL)
   
   pem <- GDAtools::pem(x,y,weights=weights)
     

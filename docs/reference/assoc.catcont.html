@@ -114,7 +114,8 @@
     <p>Measures the association between a categorical variable and a continuous variable</p>
     </div>
 
-    <pre class="usage"><span class='fu'>assoc.catcont</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,nperm<span class='op'>=</span><span class='fl'>1000</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>assoc.catcont</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>,
+              nperm<span class='op'>=</span><span class='fl'>1000</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span>,digits<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -128,12 +129,20 @@
       <td><p>the continuous variable (must be a numeric vector)</p></td>
     </tr>
     <tr>
+      <th>weights</th>
+      <td><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></td>
+    </tr>
+    <tr>
       <th>nperm</th>
       <td><p>numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed.</p></td>
     </tr>
     <tr>
       <th>distrib</th>
       <td><p>the null distribution of permutation test of independence can be approximated by its asymptotic distribution (<code>"asympt"</code>, default) or via Monte Carlo resampling (<code>"approx"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>digits</th>
+      <td><p>integer. The number of digits (default is 3).</p></td>
     </tr>
     </table>
 
