@@ -120,25 +120,41 @@
     <p>Computes the local and global Percentages of Maximum Deviation from Independance (PEM) of a contingency table.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pem</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pem</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>,digits<span class='op'>=</span><span class='fl'>1</span>,sort<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Contingency table. Accepted formats are matrices and 'table' objects.</p></td>
+      <td><p>the first categorical variable</p></td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td><p>the second categorical variable</p></td>
+    </tr>
+    <tr>
+      <th>weights</th>
+      <td><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></td>
+    </tr>
+    <tr>
+      <th>digits</th>
+      <td><p>integer. The number of digits (default is 3).</p></td>
+    </tr>
+    <tr>
+      <th>sort</th>
+      <td><p>logical. Whether rows and columns are sorted according to a correspondence analysis or not (default is TRUE).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The Percentage of Maximum Deviation from Independance (PEM) is an association measure for contingency tables (see Cibois, 1993). 
-It is an alternative to khi2, Cramer coefficient, etc.</p>
+    <p>The Percentage of Maximum Deviation from Independance (PEM) is an association measure for contingency tables and also provides attraction (resp. repulsion) measures in each cell of the crosstabulation (see Cibois, 1993). 
+It is an alternative to khi2, Cramer's V coefficient, etc.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Returns a list:</p>
-<dt>peml </dt><dd><p>Matrix with local percentages of maximum deviation from independance</p></dd>
+<dt>peml </dt><dd><p>Table with local percentages of maximum deviation from independance</p></dd>
   <dt>pemg </dt><dd><p>Numeric value, i.e. the global percentage of maximum deviation from independance</p></dd>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -150,21 +166,19 @@ It is an alternative to khi2, Cramer coefficient, etc.</p>
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/r/base/table.html'>table</a></code>, <code><a href='https://rdrr.io/r/stats/chisq.test.html'>chisq.test</a></code>, <code>assocstats</code></p></div>
+    <div class='dont-index'><p><code><a href='https://rdrr.io/r/base/table.html'>table</a></code>, <code><a href='https://rdrr.io/r/stats/chisq.test.html'>chisq.test</a></code>, <code><a href='phi.table.html'>phi.table</a></code>, <code>assocstats</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Computes the PEM for the contingency table</span>
 <span class='co'>## of jazz and age variables</span>
 <span class='co'>## from the 'Music' example data set</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>$</span><span class='va'>Jazz</span>,<span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
-<span class='fu'>pem</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='fu'>pem</span><span class='op'>(</span><span class='va'>Music</span><span class='op'>$</span><span class='va'>Jazz</span>,<span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $peml
-#&gt;      
-#&gt;        15-24 25-49   50+
-#&gt;   No    12.8   4.1  -6.5
-#&gt;   Yes   -9.5  -6.7   7.5
-#&gt;   NA  -100.0  44.3 -25.3
+#&gt;          data.15-24 data.25-49 data.50+
+#&gt; data.No        12.8        4.1     -6.5
+#&gt; data.Yes       -9.5       -6.7      7.5
+#&gt; data.NA      -100.0       44.3    -25.3
 #&gt; 
 #&gt; $pemg
 #&gt; [1] 5.5
