@@ -6,14 +6,14 @@
 Computes the phi coefficient for every cells of the cross-tabulation between two categorical variables
 }
 \usage{
-phi.table(x,y,weights=rep(1,length(x)),dec=3)
+phi.table(x,y,weights=rep(1,length(x)),digits=3)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{the first categorical variable}
   \item{y}{the second categorical variable}
   \item{weights}{an optional numeric vector of weights (by default, a vector of 1 for uniform weights)}
-  \item{dec}{integer. The number of decimals (default is 3).}
+  \item{digits}{integer. The number of digits (default is 3).}
 }
 
 \value{

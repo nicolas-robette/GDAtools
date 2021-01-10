@@ -1,9 +1,10 @@
-pem <- function(x) {
-  if(is.matrix(x)) cont <- x
-  if(is.table(x)) {
-     cont <- matrix(x,nrow=nrow(x))
-     dimnames(cont) <- dimnames(x)
-     }
+pem <- function(x,y,weights=rep(1,length(x)),digits=1,sort=TRUE) {
+  # if(is.matrix(x)) cont <- x
+  # if(is.table(x)) {
+  #    cont <- matrix(x,nrow=nrow(x))
+  #    dimnames(cont) <- dimnames(x)
+  # }
+  cont <- t(as.matrix(GDAtools::dichotom(x,out='numeric')))%*%diag(weights)%*%as.matrix(GDAtools::dichotom(y,out='numeric'))
   tota <- colSums(cont)
   totb <- rowSums(cont)
   total <- sum(cont)
@@ -21,10 +22,14 @@ pem <- function(x) {
     pem[i,j] <- ifelse(ecart[i,j]>=0,ecart[i,j]/emax[i,j]*100,0-ecart[i,j]/emax[i,j]*100)
     }}
   dimnames(pem) <- dimnames(cont)
-  cor <- CA(cont,ncp=1,graph=FALSE)
-  z <- cont[order(cor$row$coord),order(cor$col$coord)]
-  #cor <- corresp(x,nf=1)
-  #z <- x[order(cor$rscore),order(cor$cscore)]
+  # cor <- FactoMineR::CA(cont,ncp=1,graph=FALSE)
+  # z <- cont[order(cor$row$coord),order(cor$col$coord)]
+  if(sort) {
+    cor <- MASS::corresp(cont,nf=1)
+    z <- cont[order(cor$rscore),order(cor$cscore)]
+  } else {
+    z <- cont
+  }
   tota <- colSums(z)
   totb <- rowSums(z)
   maxc <- matrix(0,nrow=nrow(z),ncol=ncol(z))
@@ -38,8 +43,8 @@ pem <- function(x) {
     if(tota[j]==0) j <- j+1
     if(totb[i]==0) i <- i+1
   }
-  pemg <- (sum(ecart)+sum(abs(ecart)))/(sum(maxc-theo[order(cor$row$coord),order(cor$col$coord)])+sum(abs(maxc-theo[order(cor$row$coord),order(cor$col$coord)])))
+  pemg <- (sum(ecart)+sum(abs(ecart)))/(sum(maxc-theo[order(cor$rscore),order(cor$cscore)])+sum(abs(maxc-theo[order(cor$rscore),order(cor$cscore)])))
   #rm(tota,totb,total,theo,ecart,max,emax,cor,z,m,maxc,i,j)
-  PEM <- list(peml=round(pem,1),pemg=round(100*pemg,1))
+  PEM <- list(peml=round(as.table(pem),digits),pemg=round(100*pemg,digits))
   return(PEM)
 }

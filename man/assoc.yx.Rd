@@ -8,7 +8,8 @@
   Computes bivariate association measures between a response and predictor variables (and, optionnaly, between every pairs of predictor variables.)
 }
 \usage{
-  assoc.yx(y, x, xx = TRUE, twocont="kendall", nperm=1000, distrib="asympt", dec.a=3, dec.p=3)
+  assoc.yx(y, x, xx = TRUE, twocont="kendall",
+           nperm=1000, distrib="asympt", dec.a=3, dec.p=3)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

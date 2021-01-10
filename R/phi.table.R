@@ -1,4 +1,4 @@
-phi.table <- function(x,y,weights=rep(1,length(x)),dec=3) {
+phi.table <- function(x,y,weights=rep(1,length(x)),digits=3) {
   # tab <- cor(dichotom(factor(x),out='numeric'),
   #            dichotom(factor(y),out='numeric'),
   #            method='pearson',
@@ -11,5 +11,6 @@ phi.table <- function(x,y,weights=rep(1,length(x)),dec=3) {
   tab <- as.table(tab)
   rownames(tab) <- levels(factor(x))
   colnames(tab) <- levels(factor(y))
-  return(round(tab,dec))
+  tab <- round(tab,digits)
+  return(tab)
 }
