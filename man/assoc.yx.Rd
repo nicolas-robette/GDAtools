@@ -8,8 +8,7 @@
   Computes bivariate association measures between a response and predictor variables (and, optionnaly, between every pairs of predictor variables.)
 }
 \usage{
-  assoc.yx(y, x, xx = TRUE, twocont="kendall", nperm=1000, distrib="asympt",
-           dec.a=3, dec.p=3)
+  assoc.yx(y, x, xx = TRUE, twocont="kendall", nperm=1000, distrib="asympt", dec.a=3, dec.p=3)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,7 +17,7 @@
   \item{xx}{whether the association measures should be computed for couples of predictor variables (default) or not. With a lot of predictors, consider setting xx to FALSE (for reasons of computation time).}
   \item{twocont}{character. The type of measure of correlation measure to use between two continuous variables : "pearson", "spearman" or "kendall" (default).}
   \item{nperm}{numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed.}
-  \item{distrib}{the null distribution of permutation test of independence can be approximated by its asymptotic distribution (\code{"asympt"}, default) or via Monte Carlo resampling (\code{"approx"}.}
+  \item{distrib}{the null distribution of permutation test of independence can be approximated by its asymptotic distribution (\code{"asympt"}, default) or via Monte Carlo resampling (\code{"approx"}).}
   \item{dec.a}{integer. Number of decimals for association values. Default is 3.}
   \item{dec.p}{integer. Number of decimals for permutation p-values. Default is 3.}
 }
