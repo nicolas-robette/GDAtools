@@ -114,7 +114,7 @@
     <p>Computes bivariate association measures between a response and predictor variables (and, optionnaly, between every pairs of predictor variables.)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>assoc.yx</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, xx <span class='op'>=</span> <span class='cn'>TRUE</span>, twocont<span class='op'>=</span><span class='st'>"kendall"</span>,
+    <pre class="usage"><span class='fu'>assoc.yx</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>, xx <span class='op'>=</span> <span class='cn'>TRUE</span>, twocont<span class='op'>=</span><span class='st'>"kendall"</span>,
            nperm<span class='op'>=</span><span class='fl'>1000</span>, distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec.a<span class='op'>=</span><span class='fl'>3</span>, dec.p<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -127,6 +127,10 @@
     <tr>
       <th>x</th>
       <td><p>the predictor variables</p></td>
+    </tr>
+    <tr>
+      <th>weights</th>
+      <td><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></td>
     </tr>
     <tr>
       <th>xx</th>
