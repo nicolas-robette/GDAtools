@@ -156,8 +156,9 @@
 
     <p>A list with the following elements :</p>
 <dt>eta.squared</dt><dd><p>eta-squared between the two variables</p></dd>
-<dt>permutation.pvalue</dt><dd><p>p-value from a permutation (so non-parametric) test of independance</p></dd>
+<dt>permutation.pvalue</dt><dd><p>p-value from a permutation (so non-parametric) test of independence</p></dd>
 <dt>cor.coeff</dt><dd><p>correlation coefficient between the two variables, for each level of the categorical variable</p></dd>
+<dt>cor.perm.pval</dt><dd><p>permutation p-value of the correlation coefficient between the two variables, for each level of the categorical variable</p></dd>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -186,6 +187,10 @@
 #&gt; $cor.coeff
 #&gt;   Ctl   Trt 
 #&gt;  0.27 -0.27 
+#&gt; 
+#&gt; $cor.perm.pval
+#&gt;      Ctl      Trt 
+#&gt; 0.129668 0.117947 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
