@@ -4,6 +4,7 @@
 
 * `assoc.twocat()` : bug fix with warning
 * `ggcloud_variables()` : bug fix when `prop` not NULL.
+* `pem()` : bug fix with NA values
 
 ## New functions
 
@@ -13,8 +14,8 @@
   
 ## Changes in existing functions:
 
-* `assoc.twocat()` : Cramer's V instead of V-squared, permutation p-value, Pearson residuals, percentage of maximum deviation from independence
-* `assoc.catcont()` : permutation p-value
+* `assoc.twocat()` : Cramer's V instead of V-squared, permutation p-values, Pearson residuals, percentage of maximum deviation from independence
+* `assoc.catcont()` : permutation p-values
 * `ggcloud_variables()` : improved color management
 * `pem()` : one can choose to sort rows and columns or not
 * weights are now allowed in functions `phi.table()`, `pem()`, `assoc.twocat()`, `assoc.twocont()`, `assoc.catcont()` and `assoc.yx()`

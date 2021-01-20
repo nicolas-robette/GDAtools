@@ -158,6 +158,7 @@
 <dt>permutation.pvalue</dt><dd><p>p-value from a permutation (so non-parametric) test of independence</p></dd>
 <dt>pearson.residuals</dt><dd><p>the table of Pearson residuals, i.e. (observed - expected) / sqrt(expected).</p></dd>
 <dt>phi</dt><dd><p>the table of the phi coefficients for each pair of levels</p></dd>
+<dt>phi.perm.pval</dt><dd><p>the table of permutation p-values for each pair of levels</p></dd>
 <dt>local.pem</dt><dd><p>local percentages of maximum deviation from independence</p></dd>
 <dt>global.pem</dt><dd><p>the global percentage of maximum deviation from independence</p></dd>
 
@@ -215,7 +216,7 @@
 #&gt; [1] 0.04158046
 #&gt; 
 #&gt; $permutation.pvalue
-#&gt; [1] 0.7991757
+#&gt; [1] 0.8015164
 #&gt; 
 #&gt; $pearson.residuals
 #&gt;          data.15-24 data.25-49   data.50+
@@ -228,6 +229,12 @@
 #&gt; No   0.02419438  0.01497545 -0.03224618
 #&gt; Yes -0.01762660 -0.02403369  0.03643730
 #&gt; NA  -0.03289321  0.04193900 -0.01760985
+#&gt; 
+#&gt; $phi.perm.pval
+#&gt;         15-24     25-49       50+
+#&gt; No  0.2717609 0.3686974 0.2215349
+#&gt; Yes 0.3208135 0.2948716 0.1945620
+#&gt; NA  0.2277871 0.1765021 0.3523111
 #&gt; 
 #&gt; $local.pem
 #&gt;          data.15-24 data.25-49 data.50+
