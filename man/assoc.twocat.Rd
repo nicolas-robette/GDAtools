@@ -31,6 +31,7 @@ A list with the following elements :
 \item{permutation.pvalue}{p-value from a permutation (so non-parametric) test of independence}
 \item{pearson.residuals}{the table of Pearson residuals, i.e. (observed - expected) / sqrt(expected).}
 \item{phi}{the table of the phi coefficients for each pair of levels}
+\item{phi.perm.pval}{the table of permutation p-values for each pair of levels}
 \item{local.pem}{local percentages of maximum deviation from independence}
 \item{global.pem}{the global percentage of maximum deviation from independence}
 }

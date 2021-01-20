@@ -20,7 +20,7 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na=TRUE, nperm=1000
   phi <- GDAtools::phi.table(x,y,weights=weights,digits=NULL)
   
   pem <- GDAtools::pem(x,y,weights=weights)
-    
+
   t <- t(xdic)%*%diag(weights)%*%ydic
   expected <- rowSums(t) %*% t(colSums(t)) / sum(t)
   chi.squared <- sum((t-expected)*(t-expected)/expected)
@@ -46,6 +46,28 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na=TRUE, nperm=1000
     }
   }
   if(is.null(nperm)) permutation.pvalue <- NULL
+
+  if(!is.null(nperm)) {  
+    ar <- array(NA, dim=c(nperm,nrow(phi),ncol(phi)))
+    for(i in 1:nperm) ar[i,,] <- GDAtools::phi.table(x,sample(y),weights=weights,digits=NULL)
+    ppval <- matrix(nrow=nrow(phi), ncol=ncol(phi))
+    for(i in 1:nrow(ppval)) { 
+      for(j in 1:ncol(ppval)) {
+        h0 <- ar[,i,j]
+        obs <- phi[i,j]
+        if(distrib=='approx') {
+          if(obs>=0) ppval[i,j] <- sum(obs<=h0)/nperm
+          if(obs<0) ppval[i,j] <- sum(obs>h0)/nperm
+        } else {
+          fit <- MASS::fitdistr(h0,"normal")$estimate
+          if(obs>=0) ppval[i,j] <- 1-stats::pnorm(obs,fit[1],fit[2])
+          if(obs<0) ppval[i,j] <- stats::pnorm(obs,fit[1],fit[2])
+        }
+    }}
+    ppval <- as.table(ppval)
+    dimnames(ppval) <- dimnames(phi)
+  }
+  if(is.null(nperm)) ppval <- NULL
   
-  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'pearson.residuals'=stdres, 'phi'=phi, 'local.pem'=pem$peml, 'global.pem'=pem$pemg))
+  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'pearson.residuals'=stdres, 'phi'=phi, 'phi.perm.pval'=ppval, 'local.pem'=pem$peml, 'global.pem'=pem$pemg))
 }
