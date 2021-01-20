@@ -22,8 +22,9 @@ assoc.catcont(x,y,weights=rep(1,length(x)),
 \value{
 A list with the following elements :
 \item{eta.squared}{eta-squared between the two variables}
-\item{permutation.pvalue}{p-value from a permutation (so non-parametric) test of independance}
+\item{permutation.pvalue}{p-value from a permutation (so non-parametric) test of independence}
 \item{cor.coeff}{correlation coefficient between the two variables, for each level of the categorical variable}
+\item{cor.perm.pval}{permutation p-value of the correlation coefficient between the two variables, for each level of the categorical variable}
 }
 \references{
 Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf]
