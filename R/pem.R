@@ -4,7 +4,12 @@ pem <- function(x,y,weights=rep(1,length(x)),digits=1,sort=TRUE) {
   #    cont <- matrix(x,nrow=nrow(x))
   #    dimnames(cont) <- dimnames(x)
   # }
-  cont <- t(as.matrix(GDAtools::dichotom(x,out='numeric')))%*%diag(weights)%*%as.matrix(GDAtools::dichotom(y,out='numeric'))
+  idnona <- !is.na(x) & !is.na(y)
+  X <- x[idnona]
+  Y <- y[idnona]
+  W <- weights[idnona]
+  
+  cont <- t(as.matrix(GDAtools::dichotom(X,out='numeric')))%*%diag(W)%*%as.matrix(GDAtools::dichotom(Y,out='numeric'))
   tota <- colSums(cont)
   totb <- rowSums(cont)
   total <- sum(cont)
