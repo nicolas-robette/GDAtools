@@ -32,8 +32,6 @@ A list with the following elements :
 \item{pearson.residuals}{the table of Pearson residuals, i.e. (observed - expected) / sqrt(expected).}
 \item{phi}{the table of the phi coefficients for each pair of levels}
 \item{phi.perm.pval}{the table of permutation p-values for each pair of levels}
-\item{local.pem}{local percentages of maximum deviation from independence}
-\item{global.pem}{the global percentage of maximum deviation from independence}
 }
 \references{
 Rakotomalala R., 'Comprendre la taille d'effet (effect size)', http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf

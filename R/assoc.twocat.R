@@ -19,7 +19,7 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na=TRUE, nperm=1000
 
   phi <- GDAtools::phi.table(x,y,weights=weights,digits=NULL)
   
-  pem <- GDAtools::pem(x,y,weights=weights)
+  # pem <- GDAtools::pem(x,y,weights=weights)
 
   t <- t(xdic)%*%diag(weights)%*%ydic
   expected <- rowSums(t) %*% t(colSums(t)) / sum(t)
@@ -69,5 +69,5 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na=TRUE, nperm=1000
   }
   if(is.null(nperm)) ppval <- NULL
   
-  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'pearson.residuals'=stdres, 'phi'=phi, 'phi.perm.pval'=ppval, 'local.pem'=pem$peml, 'global.pem'=pem$pemg))
+  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'pearson.residuals'=stdres, 'phi'=phi, 'phi.perm.pval'=ppval)) #, 'local.pem'=pem$peml, 'global.pem'=pem$pemg))
 }
