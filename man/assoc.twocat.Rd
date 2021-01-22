@@ -43,7 +43,7 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', http://eric.univ-
 }
 \examples{
 data(Music)
-assoc.twocat(Music$Jazz,Music$Age)
+assoc.twocat(Music$Jazz,Music$Age,nperm=100)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

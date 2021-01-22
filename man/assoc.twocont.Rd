@@ -35,7 +35,7 @@ A data frame with Pearson, Spearman and Kendall correlations. The correlation va
 ##  9 lots of canned tuna.
 x <- c(44.4, 45.9, 41.9, 53.3, 44.7, 44.1, 50.7, 45.2, 60.1)
 y <- c( 2.6,  3.1,  2.5,  5.0,  3.6,  4.0,  5.2,  2.8,  3.8)
-assoc.twocont(x,y)
+assoc.twocont(x,y,nperm=100)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
