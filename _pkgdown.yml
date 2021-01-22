@@ -55,6 +55,7 @@ reference:
   - assoc.yx
   - catdesc
   - condesc
+  - emulreg
   - pem
   - phi.table
   - wtable

@@ -44,7 +44,7 @@ The function computes an association measure : Pearson's, Spearman's or Kendall'
 %% ~Make other sections like Warning with \section{Warning }{....} ~
   
   \seealso{
-    \code{\link{assoc.twocat}}, \code{\link{assoc.twocont}}, \code{\link{assoc.catcont}}, \code{\link{condesc}}, \code{\link{catdesc}}
+    \code{\link{emulreg}}, \code{\link{assoc.twocat}}, \code{\link{assoc.twocont}}, \code{\link{assoc.catcont}}, \code{\link{condesc}}, \code{\link{catdesc}}
   }
 
 \examples{

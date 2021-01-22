@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bivariate association measures between a response and predictor variables. — assoc.yx • GDAtools</title>
+<title>Bivariate association measures between a response and predictor variables. — emulreg • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Bivariate association measures between a response and predictor variables. — assoc.yx" />
-<meta property="og:description" content="Computes bivariate association measures between a response and predictor variables (and, optionnaly, between every pairs of predictor variables.)" />
+<meta property="og:title" content="Bivariate association measures between a response and predictor variables. — emulreg" />
+<meta property="og:description" content="Computes bivariate association measures between a response and predictor variables, producing a summary looking like a regression one." />
 
 
 
@@ -107,15 +107,15 @@
     <div class="page-header">
     <h1>Bivariate association measures between a response and predictor variables.</h1>
     
-    <div class="hidden name"><code>assoc.yx.Rd</code></div>
+    <div class="hidden name"><code>emulreg.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Computes bivariate association measures between a response and predictor variables (and, optionnaly, between every pairs of predictor variables.)</p>
+    <p>Computes bivariate association measures between a response and predictor variables, producing a summary looking like a regression one.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>assoc.yx</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>, xx <span class='op'>=</span> <span class='cn'>TRUE</span>, twocont<span class='op'>=</span><span class='st'>"kendall"</span>,
-           nperm<span class='op'>=</span><span class='fl'>1000</span>, distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec.a<span class='op'>=</span><span class='fl'>3</span>, dec.p<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>emulreg</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>, target<span class='op'>=</span><span class='fl'>1</span>, twocont<span class='op'>=</span><span class='st'>"kendall"</span>,
+          nperm<span class='op'>=</span><span class='fl'>1000</span>, distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec.a<span class='op'>=</span><span class='fl'>3</span>, dec.p<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,8 +133,8 @@
       <td><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></td>
     </tr>
     <tr>
-      <th>xx</th>
-      <td><p>whether the association measures should be computed for couples of predictor variables (default) or not. With a lot of predictors, consider setting xx to FALSE (for reasons of computation time).</p></td>
+      <th>target</th>
+      <td><p>rank or name of the category of interest when y is categorical</p></td>
     </tr>
     <tr>
       <th>twocont</th>
@@ -160,45 +160,27 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function computes an association measure : Pearson's, Spearman's or Kendall's correlation for pairs of numeric variables, Cramer's V for pairs of factors and eta-squared for pairs numeric-factor. It can also compute the p-value of a permutation test of association for each pair of variables.</p>
+    <p>The function computes association measures (phi, correlation coefficient, Kendall's correlation) between the variable of interest and the other variables. It can also compute the p-values permutation tests.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of the following items :</p>
-<dt>YX</dt><dd><p>: a table with the association measures between the response and predictor variables</p></dd>
-  <dt>XX</dt><dd><p>: a table with the association measures between every pairs of predictor variables</p></dd>
-  In each table :
-  <dt>measure</dt><dd><p>: name of the association measure</p></dd>
-  <dt>association</dt><dd><p>: value of the association measure</p></dd>
-  <dt>permutation.pvalue</dt><dd><p>: p-value from the permutation test</p></dd>
-
+    <p>A data frame</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='emulreg.html'>emulreg</a></code>, <code><a href='assoc.twocat.html'>assoc.twocat</a></code>, <code><a href='assoc.twocont.html'>assoc.twocont</a></code>, <code><a href='assoc.catcont.html'>assoc.catcont</a></code>, <code><a href='condesc.html'>condesc</a></code>, <code><a href='catdesc.html'>catdesc</a></code></p></div>
+    <div class='dont-index'><p><code><a href='assoc.yx.html'>assoc.yx</a></code>, <code><a href='assoc.twocat.html'>assoc.twocat</a></code>, <code><a href='assoc.twocont.html'>assoc.twocont</a></code>, <code><a href='assoc.catcont.html'>assoc.catcont</a></code>, <code><a href='condesc.html'>condesc</a></code>, <code><a href='catdesc.html'>catdesc</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>
   <span class='va'>iris2</span> <span class='op'>=</span> <span class='va'>iris</span>
   <span class='va'>iris2</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>$</span><span class='va'>Species</span> <span class='op'>==</span> <span class='st'>"versicolor"</span><span class='op'>)</span>
-  <span class='fu'>assoc.yx</span><span class='op'>(</span><span class='va'>iris2</span><span class='op'>$</span><span class='va'>Species</span>,<span class='va'>iris2</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span>,nperm<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $YX
-#&gt;       variable measure association permutation.pvalue
-#&gt; 1  Sepal.Width    Eta2       0.219              0.000
-#&gt; 2 Petal.Length    Eta2       0.041              0.003
-#&gt; 3  Petal.Width    Eta2       0.014              0.202
-#&gt; 4 Sepal.Length    Eta2       0.006              0.470
-#&gt; 
-#&gt; $XX
-#&gt;      variable1    variable2       measure association permutation.pvalue
-#&gt; 1 Petal.Length  Petal.Width Kendall's tau       0.807              0.000
-#&gt; 2 Sepal.Length Petal.Length Kendall's tau       0.719              0.000
-#&gt; 3 Sepal.Length  Petal.Width Kendall's tau       0.655              0.000
-#&gt; 4  Sepal.Width Petal.Length Kendall's tau      -0.186              0.001
-#&gt; 5  Sepal.Width  Petal.Width Kendall's tau      -0.157              0.002
-#&gt; 6 Sepal.Length  Sepal.Width Kendall's tau      -0.077              0.076
-#&gt; </div></pre>
+  <span class='fu'>emulreg</span><span class='op'>(</span><span class='va'>iris2</span><span class='op'>$</span><span class='va'>Species</span>, <span class='va'>iris2</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span>, target<span class='op'>=</span><span class='fl'>2</span>, nperm<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;       variable category percent association perm.pvalue
+#&gt; 1 Sepal.Length               NA       0.079       0.540
+#&gt; 2  Sepal.Width               NA      -0.468       0.000
+#&gt; 3 Petal.Length               NA       0.202       0.000
+#&gt; 4  Petal.Width               NA       0.118       0.166</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
