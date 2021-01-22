@@ -18,11 +18,23 @@ assoc.twocont <- function(x,y,weights=rep(1,length(x)),nperm=1000,distrib="asymp
       kendall <- c(kendall, sum(kendall<=h0K)/nperm)
     } else {
       fit <- MASS::fitdistr(h0P,"normal")$estimate
-      pearson <- c(pearson, 1-stats::pnorm(pearson,fit[1],fit[2]))
+      if(pearson>=0) { 
+        pearson <- c(pearson, 1-stats::pnorm(pearson,fit[1],fit[2]))
+      } else {
+        pearson <- c(pearson, stats::pnorm(pearson,fit[1],fit[2]))
+      }
       fit <- MASS::fitdistr(h0S,"normal")$estimate
-      spearman <- c(spearman, 1-stats::pnorm(spearman,fit[1],fit[2]))
+      if(spearman>=0) {
+        spearman <- c(spearman, 1-stats::pnorm(spearman,fit[1],fit[2]))
+      } else {
+        spearman <- c(spearman, stats::pnorm(spearman,fit[1],fit[2]))
+      }  
       fit <- MASS::fitdistr(h0K,"normal")$estimate
-      kendall <- c(kendall, 1-stats::pnorm(kendall,fit[1],fit[2]))
+      if(kendall>=0) {
+        kendall <- c(kendall, 1-stats::pnorm(kendall,fit[1],fit[2]))
+      } else {
+        kendall <- c(kendall, stats::pnorm(kendall,fit[1],fit[2]))
+      }
     }
   }
   res <- data.frame(pearson,spearman,kendall)
