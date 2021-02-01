@@ -1,9 +1,5 @@
 pem <- function(x,y,weights=rep(1,length(x)),digits=1,sort=TRUE) {
-  # if(is.matrix(x)) cont <- x
-  # if(is.table(x)) {
-  #    cont <- matrix(x,nrow=nrow(x))
-  #    dimnames(cont) <- dimnames(x)
-  # }
+
   idnona <- !is.na(x) & !is.na(y)
   X <- x[idnona]
   Y <- y[idnona]
@@ -49,7 +45,11 @@ pem <- function(x,y,weights=rep(1,length(x)),digits=1,sort=TRUE) {
     if(totb[i]==0) i <- i+1
   }
   pemg <- (sum(ecart)+sum(abs(ecart)))/(sum(maxc-theo[order(cor$rscore),order(cor$cscore)])+sum(abs(maxc-theo[order(cor$rscore),order(cor$cscore)])))
-  #rm(tota,totb,total,theo,ecart,max,emax,cor,z,m,maxc,i,j)
+
+  pem <- as.table(pem)
+  rownames(pem) <- gsub('data.','',rownames(pem))
+  colnames(pem) <- gsub('data.','',colnames(pem))
+  
   PEM <- list(peml=round(as.table(pem),digits),pemg=round(100*pemg,digits))
   return(PEM)
 }
