@@ -177,20 +177,20 @@
 <span class='va'>trt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4.81</span>,<span class='fl'>4.17</span>,<span class='fl'>4.41</span>,<span class='fl'>3.59</span>,<span class='fl'>5.87</span>,<span class='fl'>3.83</span>,<span class='fl'>6.03</span>,<span class='fl'>4.89</span>,<span class='fl'>4.32</span>,<span class='fl'>4.69</span><span class='op'>)</span>
 <span class='va'>group</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/gl.html'>gl</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>10</span>, <span class='fl'>20</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Ctl"</span>,<span class='st'>"Trt"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>weight</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>ctl</span>, <span class='va'>trt</span><span class='op'>)</span>
-<span class='fu'>assoc.catcont</span><span class='op'>(</span><span class='va'>group</span>,<span class='va'>weight</span><span class='op'>)</span>
+<span class='fu'>assoc.catcont</span><span class='op'>(</span><span class='va'>group</span>,<span class='va'>weight</span>,nperm<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $eta.squared
 #&gt; [1] 0.0730776
 #&gt; 
 #&gt; $permutation.pvalue
-#&gt; [1] 0.394193
+#&gt; [1] 0.3973848
 #&gt; 
 #&gt; $cor.coeff
 #&gt;   Ctl   Trt 
 #&gt;  0.27 -0.27 
 #&gt; 
 #&gt; $cor.perm.pval
-#&gt;      Ctl      Trt 
-#&gt; 0.129668 0.117947 
+#&gt;       Ctl       Trt 
+#&gt; 0.1244044 0.1318132 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

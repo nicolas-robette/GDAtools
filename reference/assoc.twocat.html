@@ -120,7 +120,7 @@
     <p>Cross-tabulation and measures of association between two categorical variables</p>
     </div>
 
-    <pre class="usage"><span class='fu'>assoc.twocat</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep.int</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>,na<span class='op'>=</span><span class='cn'>TRUE</span>,nperm<span class='op'>=</span><span class='fl'>1000</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>assoc.twocat</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep.int</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>,na_value<span class='op'>=</span><span class='cn'>NULL</span>,nperm<span class='op'>=</span><span class='fl'>1000</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,8 +138,8 @@
       <td><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></td>
     </tr>
     <tr>
-      <th>na</th>
-      <td><p>logical. If TRUE (default), 'NA' are treated as a category. If FALSE, they are ignored</p></td>
+      <th>na_value</th>
+      <td><p>character. Name of the level for NA category. If NULL (default), NA values are ignored.</p></td>
     </tr>
     <tr>
       <th>nperm</th>
@@ -156,7 +156,7 @@
     <p>A list with the following elements :</p>
 <dt>freq</dt><dd><p>cross-tabulation</p></dd>
 <dt>prop</dt><dd><p>percentages</p></dd>
-<dt>rprop</dt><dd><p>raw percentages</p></dd>
+<dt>rprop</dt><dd><p>row percentages</p></dd>
 <dt>cprop</dt><dd><p>column percentages</p></dd>
 <dt>expected</dt><dd><p>expected values</p></dd>
 <dt>chi.squared</dt><dd><p>chi-squared value</p></dd>
@@ -165,8 +165,9 @@
 <dt>pearson.residuals</dt><dd><p>the table of Pearson residuals, i.e. (observed - expected) / sqrt(expected).</p></dd>
 <dt>phi</dt><dd><p>the table of the phi coefficients for each pair of levels</p></dd>
 <dt>phi.perm.pval</dt><dd><p>the table of permutation p-values for each pair of levels</p></dd>
-<dt>local.pem</dt><dd><p>local percentages of maximum deviation from independence</p></dd>
-<dt>global.pem</dt><dd><p>the global percentage of maximum deviation from independence</p></dd>
+<dt>local.pem</dt><dd><p>the table of local Percentages of Maximum Deviation from Independences</p></dd>
+<dt>global.pem</dt><dd><p>value of the global Percentage of Maximum Deviation from Independence</p></dd>
+<dt>gather</dt><dd><p>a data frame gathering informations, with one row per cell of the cross-tabulation</p></dd>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -180,7 +181,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
-<span class='fu'>assoc.twocat</span><span class='op'>(</span><span class='va'>Music</span><span class='op'>$</span><span class='va'>Jazz</span>,<span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
+<span class='fu'>assoc.twocat</span><span class='op'>(</span><span class='va'>Music</span><span class='op'>$</span><span class='va'>Jazz</span>,<span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span>,nperm<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $freq
 #&gt;     15-24 25-49 50+ Sum
 #&gt; No     65   169 183 417
@@ -210,10 +211,10 @@
 #&gt; Sum 100.0 100.0 100.0 100.0
 #&gt; 
 #&gt; $expected
-#&gt;          data.15-24 data.25-49 data.50+
-#&gt; data.No      63.384    167.634  185.982
-#&gt; data.Yes     12.160     32.160   35.680
-#&gt; data.NA       0.456      1.206    1.338
+#&gt;       15-24   25-49     50+
+#&gt; No   63.384 167.634 185.982
+#&gt; Yes  12.160  32.160  35.680
+#&gt; NA    0.456   1.206   1.338
 #&gt; 
 #&gt; $chi.squared
 #&gt; [1] 1.728935
@@ -222,13 +223,13 @@
 #&gt; [1] 0.04158046
 #&gt; 
 #&gt; $permutation.pvalue
-#&gt; [1] 0.8015164
+#&gt; [1] 0.8189024
 #&gt; 
 #&gt; $pearson.residuals
-#&gt;          data.15-24 data.25-49   data.50+
-#&gt; data.No   0.2029792  0.1055042 -0.2186614
-#&gt; data.Yes -0.3326528 -0.3808866  0.5558091
-#&gt; data.NA  -0.6752777  0.7230142 -0.2922057
+#&gt;          15-24      25-49        50+
+#&gt; No   0.2029792  0.1055042 -0.2186614
+#&gt; Yes -0.3326528 -0.3808866  0.5558091
+#&gt; NA  -0.6752777  0.7230142 -0.2922057
 #&gt; 
 #&gt; $phi
 #&gt;           15-24       25-49         50+
@@ -238,18 +239,40 @@
 #&gt; 
 #&gt; $phi.perm.pval
 #&gt;         15-24     25-49       50+
-#&gt; No  0.2717609 0.3686974 0.2215349
-#&gt; Yes 0.3208135 0.2948716 0.1945620
-#&gt; NA  0.2277871 0.1765021 0.3523111
+#&gt; No  0.3185468 0.3674241 0.2339112
+#&gt; Yes 0.3710255 0.2914890 0.2035863
+#&gt; NA  0.2547834 0.1419382 0.3015651
 #&gt; 
 #&gt; $local.pem
-#&gt;          data.15-24 data.25-49 data.50+
-#&gt; data.No        12.8        4.1     -6.5
-#&gt; data.Yes       -9.5       -6.7      7.5
-#&gt; data.NA      -100.0       44.3    -25.3
+#&gt;      15-24  25-49    50+
+#&gt; No    12.8    4.1   -6.5
+#&gt; Yes   -9.5   -6.7    7.5
+#&gt; NA  -100.0   44.3  -25.3
 #&gt; 
 #&gt; $global.pem
 #&gt; [1] 5.5
+#&gt; 
+#&gt; $gather
+#&gt;   Var1  Var2 Freq  prop     rprop       cprop expected std.residuals
+#&gt; 1   No 15-24   65 0.130 0.1558753 0.855263158   63.384     0.2029792
+#&gt; 2  Yes 15-24   11 0.022 0.1375000 0.144736842   12.160    -0.3326528
+#&gt; 3   NA 15-24    0 0.000 0.0000000 0.000000000    0.456    -0.6752777
+#&gt; 4   No 25-49  169 0.338 0.4052758 0.840796020  167.634     0.1055042
+#&gt; 5  Yes 25-49   30 0.060 0.3750000 0.149253731   32.160    -0.3808866
+#&gt; 6   NA 25-49    2 0.004 0.6666667 0.009950249    1.206     0.7230142
+#&gt; 7   No   50+  183 0.366 0.4388489 0.820627803  185.982    -0.2186614
+#&gt; 8  Yes   50+   39 0.078 0.4875000 0.174887892   35.680     0.5558091
+#&gt; 9   NA   50+    1 0.002 0.3333333 0.004484305    1.338    -0.2922057
+#&gt;           phi perm.pval local.pem
+#&gt; 1  0.02419438 0.3185468      12.8
+#&gt; 2 -0.01762660 0.3710255      -9.5
+#&gt; 3 -0.03289321 0.2547834    -100.0
+#&gt; 4  0.01497545 0.3674241       4.1
+#&gt; 5 -0.02403369 0.2914890      -6.7
+#&gt; 6  0.04193900 0.1419382      44.3
+#&gt; 7 -0.03224618 0.2339112      -6.5
+#&gt; 8  0.03643730 0.2035863       7.5
+#&gt; 9 -0.01760985 0.3015651     -25.3
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
