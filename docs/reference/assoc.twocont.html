@@ -160,10 +160,10 @@
 <span class='co'>##  9 lots of canned tuna.</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>44.4</span>, <span class='fl'>45.9</span>, <span class='fl'>41.9</span>, <span class='fl'>53.3</span>, <span class='fl'>44.7</span>, <span class='fl'>44.1</span>, <span class='fl'>50.7</span>, <span class='fl'>45.2</span>, <span class='fl'>60.1</span><span class='op'>)</span>
 <span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>2.6</span>,  <span class='fl'>3.1</span>,  <span class='fl'>2.5</span>,  <span class='fl'>5.0</span>,  <span class='fl'>3.6</span>,  <span class='fl'>4.0</span>,  <span class='fl'>5.2</span>,  <span class='fl'>2.8</span>,  <span class='fl'>3.8</span><span class='op'>)</span>
-<span class='fu'>assoc.twocont</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span><span class='op'>)</span>
+<span class='fu'>assoc.twocont</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,nperm<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;                       pearson   spearman    kendall
 #&gt; value              0.57118156 0.60000000 0.44444444
-#&gt; permutation.pvalue 0.05985307 0.05253001 0.05683518</div></pre>
+#&gt; permutation.pvalue 0.02551669 0.03068824 0.03320006</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

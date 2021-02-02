@@ -1,4 +1,4 @@
-import(wdm,FactoMineR,nleqslv,nnet,ggplot2,ggrepel,RColorBrewer)
+import(wdm,MASS,FactoMineR, nleqslv,nnet,ggplot2,ggrepel,RColorBrewer)
 
   importFrom("grDevices", "col2rgb", "rainbow", "rgb")
   importFrom("graphics", "abline", "lines", "plot", "points", "text")
