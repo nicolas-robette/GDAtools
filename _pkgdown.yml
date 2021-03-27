@@ -55,12 +55,11 @@ reference:
   - assoc.yx
   - catdesc
   - condesc
-  - emulreg
+  - desc_as_reg
   - pem
   - phi.table
   - wtable
-  - prop.wtable
-  
+
 - title: Miscellaneous
 - desc: A few additional tools
 - contents:

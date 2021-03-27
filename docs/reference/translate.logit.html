@@ -141,11 +141,11 @@
     <p>This function works with binomial as well as multinomial regression models. If the dependant variable has two factors, <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code> is used,
 if it has more than two factors <code>multinom</code> function (from <code>nnet</code> package) is used.
 The function expresses the regression coefficients as percentages through three distinct methods: raw percentages, 'pure effects' percentages and 
-'experimental effects' percentages (see Deauvieau, 2010).</p>
+'experimental effects' percentages (see Deauvieau, 2010). Bootstrap confidence interval are available only for binomial regressions.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The function returns a list:</p>
-<dt>reg</dt><dd><p>An object of class <code>glm</code> or <code>nnet</code> (depending on the number of factors of the dependent variable)</p></dd>
+<dt>glm</dt><dd><p>An object of class <code>glm</code> or <code>nnet</code> (depending on the number of factors of the dependent variable)</p></dd>
   <dt>summary</dt><dd><p>The results of <code>summary</code> function applied to <code>reg</code> element</p></dd>
   <dt>percents</dt><dd><p>A matrix or a list of matrices (depending on the number of factors of the dependent variable)
                   with regression coefficients expressed as percentages</p></dd>
@@ -254,37 +254,73 @@ The function expresses the regression coefficients as percentages through three 
 #&gt; AIC: 1058.583 
 #&gt; 
 #&gt; $percents
-#&gt; $percents$raw
-#&gt;                   Daily     Often       Rare      Never
-#&gt; Gender.Men   0.10222225 0.5911110 0.12000000 0.18666671
-#&gt; Gender.Women 0.05454517 0.5636365 0.11272727 0.26909101
-#&gt; Age.15-24    0.25000024 0.4605262 0.19736821 0.09210534
-#&gt; Age.25-49    0.05970139 0.4875621 0.12935332 0.32338314
-#&gt; Age.50+      0.03139028 0.6950672 0.07623315 0.19730939
+#&gt; $percents$by_category
+#&gt; $percents$by_category$Daily
+#&gt;                    raw      expe      pure  expe.lin
+#&gt; Gender.Men   -1.038718 -1.088876 -1.053494 -1.086410
+#&gt; Gender.Women -1.417139 -1.377074 -1.400616 -1.374922
+#&gt; Age.15-24    -0.358555 -0.394201 -0.364940 -0.386604
+#&gt; Age.25-49    -1.419276 -1.416552 -1.420195 -1.416449
+#&gt; Age.50+      -1.527868 -1.510954 -1.514854 -1.508834
 #&gt; 
-#&gt; $percents$expe
-#&gt;                   Daily     Often       Rare      Never
-#&gt; Gender.Men   0.08844704 0.5922322 0.12456289 0.19475791
-#&gt; Gender.Women 0.06449072 0.5630783 0.10921103 0.26321993
-#&gt; Age.15-24    0.23630229 0.4608261 0.20309632 0.09977534
-#&gt; Age.25-49    0.05926615 0.4882654 0.12811804 0.32435043
-#&gt; Age.50+      0.03481593 0.6947751 0.07566188 0.19474704
+#&gt; $percents$by_category$Often
+#&gt;                   raw     expe     pure expe.lin
+#&gt; Gender.Men   0.852564 0.854181 0.850012 0.853844
+#&gt; Gender.Women 0.911765 0.910862 0.914107 0.910590
+#&gt; Age.15-24    0.648148 0.648570 0.644266 0.648316
+#&gt; Age.25-49    0.890909 0.892194 0.892703 0.892128
+#&gt; Age.50+      0.956790 0.956388 0.956866 0.955907
 #&gt; 
-#&gt; $percents$pure
-#&gt;                   Daily     Often       Rare      Never
-#&gt; Gender.Men   0.10014664 0.5893417 0.12386956 0.18664216
-#&gt; Gender.Women 0.05624330 0.5650843 0.10956129 0.26911108
-#&gt; Age.15-24    0.24812642 0.4577679 0.20212687 0.09197876
-#&gt; Age.25-49    0.05781476 0.4885439 0.12814507 0.32549624
-#&gt; Age.50+      0.03372942 0.6951224 0.07570041 0.19544778
+#&gt; $percents$by_category$Rare
+#&gt;                   raw     expe     pure expe.lin
+#&gt; Gender.Men   0.540000 0.560533 0.557413 0.560036
+#&gt; Gender.Women 0.673913 0.652892 0.654986 0.652135
+#&gt; Age.15-24    0.441176 0.453980 0.451813 0.452802
+#&gt; Age.25-49    0.684211 0.677677 0.677820 0.677444
+#&gt; Age.50+      0.708333 0.703025 0.703383 0.702577
 #&gt; 
-#&gt; $percents$expe.lin
-#&gt;                   Daily     Often       Rare      Never
-#&gt; Gender.Men   0.08926260 0.5919985 0.12445244 0.19428644
-#&gt; Gender.Women 0.06514893 0.5629102 0.10908440 0.26285648
-#&gt; Age.15-24    0.23911884 0.4606456 0.20256932 0.09766626
-#&gt; Age.25-49    0.05927124 0.4882293 0.12807399 0.32442552
-#&gt; Age.50+      0.03548596 0.6944257 0.07561367 0.19447466
+#&gt; $percents$by_category$Never
+#&gt;                   raw     expe     pure expe.lin
+#&gt; Gender.Men   0.646154 0.674162 0.646069 0.672530
+#&gt; Gender.Women 0.831461 0.813320 0.831523 0.812197
+#&gt; Age.15-24    0.269231 0.291651 0.268861 0.285486
+#&gt; Age.25-49    0.844156 0.846681 0.849672 0.846877
+#&gt; Age.50+      0.862745 0.851541 0.854605 0.850350
+#&gt; 
+#&gt; 
+#&gt; $percents$by_method
+#&gt; $percents$by_method$raw
+#&gt;                  Daily    Often     Rare    Never
+#&gt; Gender.Men   -1.038718 0.852564 0.540000 0.646154
+#&gt; Gender.Women -1.417139 0.911765 0.673913 0.831461
+#&gt; Age.15-24    -0.358555 0.648148 0.441176 0.269231
+#&gt; Age.25-49    -1.419276 0.890909 0.684211 0.844156
+#&gt; Age.50+      -1.527868 0.956790 0.708333 0.862745
+#&gt; 
+#&gt; $percents$by_method$expe
+#&gt;                  Daily    Often     Rare    Never
+#&gt; Gender.Men   -1.088876 0.854181 0.560533 0.674162
+#&gt; Gender.Women -1.377074 0.910862 0.652892 0.813320
+#&gt; Age.15-24    -0.394201 0.648570 0.453980 0.291651
+#&gt; Age.25-49    -1.416552 0.892194 0.677677 0.846681
+#&gt; Age.50+      -1.510954 0.956388 0.703025 0.851541
+#&gt; 
+#&gt; $percents$by_method$pure
+#&gt;                  Daily    Often     Rare    Never
+#&gt; Gender.Men   -1.053494 0.850012 0.557413 0.646069
+#&gt; Gender.Women -1.400616 0.914107 0.654986 0.831523
+#&gt; Age.15-24    -0.364940 0.644266 0.451813 0.268861
+#&gt; Age.25-49    -1.420195 0.892703 0.677820 0.849672
+#&gt; Age.50+      -1.514854 0.956866 0.703383 0.854605
+#&gt; 
+#&gt; $percents$by_method$expe.lin
+#&gt;                  Daily    Often     Rare    Never
+#&gt; Gender.Men   -1.086410 0.853844 0.560036 0.672530
+#&gt; Gender.Women -1.374922 0.910590 0.652135 0.812197
+#&gt; Age.15-24    -0.386604 0.648316 0.452802 0.285486
+#&gt; Age.25-49    -1.416449 0.892128 0.677444 0.846877
+#&gt; Age.50+      -1.508834 0.955907 0.702577 0.850350
+#&gt; 
 #&gt; 
 #&gt; </div></pre>
   </div>

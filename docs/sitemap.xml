@@ -40,6 +40,9 @@
     <loc>https://nicolas-robette.github.io/GDAtools//reference/csMCA.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools//reference/desc_as_reg.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools//reference/dichotom.html</loc>
   </url>
   <url>
@@ -53,9 +56,6 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools//reference/dimvtest.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/emulreg.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools//reference/getindexcat.html</loc>
@@ -107,9 +107,6 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools//reference/plot.stMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/prop.wtable.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools//reference/speMCA.html</loc>
