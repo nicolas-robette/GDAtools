@@ -1,8 +1,5 @@
 assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nperm=1000, distrib="asympt") {
 
-  # if(na) x <- addNA(xx, TRUE)
-  # if(na) y <- addNA(yy, TRUE)
-  
   # add na level
   if(!is.null(na_value)) {
     x <- factor(x, levels=c(levels(x), na_value))
@@ -21,12 +18,13 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
   Y <- y[idnona]
   W <- weights[idnona]
     
-  xdic <- as.matrix(dichotom(X, out='numeric'))
-  ydic <- as.matrix(dichotom(Y, out='numeric'))
-  tab <- t(xdic)%*%diag(W)%*%ydic
-  tab <- as.table(tab)
-  rownames(tab) <- gsub('data.','',rownames(tab))
-  colnames(tab) <- gsub('data.','',colnames(tab))
+  # xdic <- as.matrix(dichotom(X, out='numeric'))
+  # ydic <- as.matrix(dichotom(Y, out='numeric'))
+  # t <- t(xdic)%*%diag(W)%*%ydic
+  t <- tapply(W, list(X,Y), sum)
+  tab <- as.table(t)
+  # rownames(tab) <- gsub('data.','',rownames(tab))
+  # colnames(tab) <- gsub('data.','',colnames(tab))
 
   freq <- addmargins(tab)
   prop <- round(400*prop.table(freq),1)
@@ -37,8 +35,9 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
   
   pem <- pem(x,y,weights=weights)
 
-  t <- t(xdic)%*%diag(W)%*%ydic
-  expected <- rowSums(t) %*% t(colSums(t)) / sum(t)
+  # t <- t(xdic)%*%diag(W)%*%ydic
+  # expected <- rowSums(t) %*% t(colSums(t)) / sum(t)
+  expected <- sapply(colSums(t), function(x) x*rowSums(t)/sum(t))
   chi.squared <- sum((t-expected)*(t-expected)/expected)
   cramer.v <- sqrt(chi.squared / (length(x)*(min(nrow(t),ncol(t))-1)))
   expected <- as.table(expected)
