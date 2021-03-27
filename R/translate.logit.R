@@ -120,7 +120,7 @@ if(nlevels(vdep)>=3) {
   for(i in 2:nlevels(data[,nom.vdep])) {
     newdt <- data[data[,nom.vdep] %in% levels(data[,nom.vdep])[c(1,i)],]
     newdt[,nom.vdep] <- factor(newdt[,nom.vdep])
-    res[[i]] <- translate.binom(formula, newdt, nit=0)$percents
+    res[[i]] <- translate.binom(formula, newdt, Nit=0)$percents
     res[[1]] <- res[[1]] - res[[i]]
   }
   names(res) <- levels(data[,nom.vdep])
