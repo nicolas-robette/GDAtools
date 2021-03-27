@@ -1,5 +1,5 @@
-\name{emulreg}
-\alias{emulreg}
+\name{desc_as_reg}
+\alias{desc_as_reg}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
   Bivariate association measures between a response and predictor variables.
@@ -8,7 +8,7 @@
   Computes bivariate association measures between a response and predictor variables, producing a summary looking like a regression one.
 }
 \usage{
-  emulreg(y, x, weights=rep(1,length(y)), target=1, twocont="kendall",
+  desc_as_reg(y, x, weights=rep(1,length(y)), target=1, twocont="kendall",
           nperm=1000, distrib="asympt", dec.a=3, dec.p=3)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -45,7 +45,7 @@ The function computes association measures (phi, correlation coefficient, Kendal
   data(iris)
   iris2 = iris
   iris2$Species = factor(iris$Species == "versicolor")
-  emulreg(iris2$Species, iris2[,1:4], target=2, nperm=100)
+  desc_as_reg(iris2$Species, iris2[,1:4], target=2, nperm=100)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,18 +1,4 @@
-# y = titanic$Survived
-# x = titanic[,-1]
-# 
-# y = dfh[1:1000,"ecart"]
-# x = dfh[1:1000,-1]
-# 
-# weights=rep(1,length(y))
-# target="Yes"
-# twocont="kendall"
-# nperm=1000
-# distrib="asympt"
-# dec.a=3
-# dec.p=3
-
-emulreg <- function(y,x,weights=rep(1,length(y)),target=1,twocont="kendall",nperm=1000,distrib="asympt",dec.a=3,dec.p=3) {
+desc_as_reg <- function(y,x,weights=rep(1,length(y)),target=1,twocont="kendall",nperm=1000,distrib="asympt",dec.a=3,dec.p=3) {
   
   weighted.quantile <- function(x, w, probs = .5, method = "raw") {
     if(method=="raw") {
