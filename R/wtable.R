@@ -1,40 +1,55 @@
-wtable <- function(var1,var2=NULL,w=rep.int(1,length(var1)),digits=0,mar=TRUE,na=TRUE) {
-  #v1 <- factor(var1)
-  if(na==TRUE) {
-    ww <- w
-    v1 <- factor(var1) #new
-    levels(v1) <- c(levels(v1),'NA')
-    v1[is.na(v1)] <- 'NA'
-    v2 <- var2
-    if(!is.null(v2)) {
-      v2 <- factor(v2)
-      levels(v2) <- c(levels(v2),'NA')
-      v2[is.na(v2)] <- 'NA'
-      }
+wtable <- function(x, y=NULL, weights=rep.int(1,length(x)), stat="freq", digits=1, mar=TRUE, na_value=NULL) {
+  
+  # add na level
+  if(!is.null(na_value)) {
+    x <- factor(x, levels=c(levels(x), na_value))
+    x[is.na(x)] <- na_value
+    x <- factor(x)
+    if(!is.null(y)) {
+      y <- factor(y, levels=c(levels(y), na_value))
+      y[is.na(y)] <- na_value
+      y <- factor(y)
     }
-  if(na==FALSE & is.null(var2)) {
-    ww <- w[!is.na(var1)]
-    v1 <- factor(var1[!is.na(var1)]) #new
-    }
-  if(na==FALSE & !is.null(var2)) {
-    ww <- w[!is.na(var1) & !is.na(var2)]
-    v1 <- factor(var1[!is.na(var1) & !is.na(var2)]) #new
-    v2 <- factor(var2[!is.na(var1) & !is.na(var2)]) #new
-    }    
-  x <- as.matrix(dichotom(v1,out='numeric'))
-  if(is.null(var2)) {
-    wtab <- t(x)%*%ww
-    wtab <- rbind(wtab,sum(wtab))
-    rownames(wtab) <- c(levels(v1),'tot')
-    if(mar==FALSE) wtab <- as.matrix(wtab[-length(wtab),])
+  }
+  
+  # remove obs with na
+  if(!is.null(y)) {
+    idnona <- !is.na(x) & !is.na(y)
+    X <- x[idnona]
+    Y <- y[idnona]
+    W <- weights[idnona]    
   } else {
-    y <- as.matrix(dichotom(v2,out='numeric'))
-    wtab <- t(x)%*%diag(ww)%*%y
-    wtab <- cbind(wtab,rowSums(wtab))
-    wtab <- rbind(wtab,colSums(wtab))
-    dimnames(wtab) <- list(c(levels(v1),'tot'),c(levels(v2),'tot'))
-    if(mar==FALSE) wtab <- wtab[-nrow(wtab),-ncol(wtab)]
+    idnona <- !is.na(x)
+    X <- x[idnona]
+    W <- weights[idnona]    
+  }
+
+  if(!is.null(y)) {
+    t <- tapply(W, list(X,Y), sum)
+    tab <- as.table(t)
+    if(mar) tab <- addmargins(tab)
+    if(stat=="prop") {
+      tab <- 100*prop.table(tab)
+      if(mar) tab <- 4*tab
     }
-  wtab <- round(wtab,digits)
-  return(wtab)
+    if(stat=="rprop") {
+      tab <- 100*apply(tab, 2, function(x) x/rowSums(tab))
+      if(mar) tab <- 2*tab
+    }
+    if(stat=="cprop") {
+      tab <- t(100*apply(tab, 1, function(x) x/colSums(tab)))
+      if(mar) tab <- 2*tab}
+  } else {
+    t <- tapply(W, list(X), sum)
+    tab <- as.table(t)
+    if(mar) tab <- addmargins(tab)
+    if(stat=="prop") {
+      tab <- 100*prop.table(tab)
+      if(mar) tab <- 2*tab
+    }
+  }
+
+  if(!is.null(digits)) tab <- round(tab, digits)
+  
+  return(tab)
   }
