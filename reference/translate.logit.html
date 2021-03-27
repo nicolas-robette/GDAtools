@@ -147,11 +147,11 @@
     <p>This function works with binomial as well as multinomial regression models. If the dependant variable has two factors, <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code> is used,
 if it has more than two factors <code>multinom</code> function (from <code>nnet</code> package) is used.
 The function expresses the regression coefficients as percentages through three distinct methods: raw percentages, 'pure effects' percentages and 
-'experimental effects' percentages (see Deauvieau, 2010).</p>
+'experimental effects' percentages (see Deauvieau, 2010). Bootstrap confidence interval are available only for binomial regressions.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The function returns a list:</p>
-<dt>reg</dt><dd><p>An object of class <code>glm</code> or <code>nnet</code> (depending on the number of factors of the dependent variable)</p></dd>
+<dt>glm</dt><dd><p>An object of class <code>glm</code> or <code>nnet</code> (depending on the number of factors of the dependent variable)</p></dd>
   <dt>summary</dt><dd><p>The results of <code>summary</code> function applied to <code>reg</code> element</p></dd>
   <dt>percents</dt><dd><p>A matrix or a list of matrices (depending on the number of factors of the dependent variable)
                   with regression coefficients expressed as percentages</p></dd>
@@ -222,77 +222,7 @@ The function expresses the regression coefficients as percentages through three 
 #&gt; </div><div class='input'>  
   <span class='co'>## An example for multinomial logit regression</span>
   <span class='fu'>translate.logit</span><span class='op'>(</span><span class='va'>OnlyMus</span> <span class='op'>~</span> <span class='va'>Gender</span> <span class='op'>+</span> <span class='va'>Age</span>, <span class='va'>Music</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; # weights:  20 (12 variable)
-#&gt; initial  value 693.147181 
-#&gt; iter  10 value 523.422256
-#&gt; iter  20 value 517.291266
-#&gt; final  value 517.291260 
-#&gt; converged</div><div class='output co'>#&gt; $glm
-#&gt; Call:
-#&gt; multinom(formula = formula, data = data, model = TRUE)
-#&gt; 
-#&gt; Coefficients:
-#&gt;       (Intercept) GenderWomen Age25-49   Age50+
-#&gt; Often   0.3208702   0.6041445 1.505462 2.495331
-#&gt; Rare   -0.5168063   0.5867388 1.025430 1.132162
-#&gt; Never  -1.5484260   1.0323400 2.715564 2.851505
-#&gt; 
-#&gt; Residual Deviance: 1034.583 
-#&gt; AIC: 1058.583 
-#&gt; 
-#&gt; $summary
-#&gt; Call:
-#&gt; multinom(formula = formula, data = data, model = TRUE)
-#&gt; 
-#&gt; Coefficients:
-#&gt;       (Intercept) GenderWomen Age25-49   Age50+
-#&gt; Often   0.3208702   0.6041445 1.505462 2.495331
-#&gt; Rare   -0.5168063   0.5867388 1.025430 1.132162
-#&gt; Never  -1.5484260   1.0323400 2.715564 2.851505
-#&gt; 
-#&gt; Std. Errors:
-#&gt;       (Intercept) GenderWomen  Age25-49    Age50+
-#&gt; Often   0.3312592   0.3683094 0.4205172 0.4821502
-#&gt; Rare    0.4019397   0.4288224 0.4930179 0.5681422
-#&gt; Never   0.4920802   0.4020913 0.5476175 0.6053303
-#&gt; 
-#&gt; Residual Deviance: 1034.583 
-#&gt; AIC: 1058.583 
-#&gt; 
-#&gt; $percents
-#&gt; $percents$raw
-#&gt;                   Daily     Often       Rare      Never
-#&gt; Gender.Men   0.10222225 0.5911110 0.12000000 0.18666671
-#&gt; Gender.Women 0.05454517 0.5636365 0.11272727 0.26909101
-#&gt; Age.15-24    0.25000024 0.4605262 0.19736821 0.09210534
-#&gt; Age.25-49    0.05970139 0.4875621 0.12935332 0.32338314
-#&gt; Age.50+      0.03139028 0.6950672 0.07623315 0.19730939
-#&gt; 
-#&gt; $percents$expe
-#&gt;                   Daily     Often       Rare      Never
-#&gt; Gender.Men   0.08844704 0.5922322 0.12456289 0.19475791
-#&gt; Gender.Women 0.06449072 0.5630783 0.10921103 0.26321993
-#&gt; Age.15-24    0.23630229 0.4608261 0.20309632 0.09977534
-#&gt; Age.25-49    0.05926615 0.4882654 0.12811804 0.32435043
-#&gt; Age.50+      0.03481593 0.6947751 0.07566188 0.19474704
-#&gt; 
-#&gt; $percents$pure
-#&gt;                   Daily     Often       Rare      Never
-#&gt; Gender.Men   0.10014664 0.5893417 0.12386956 0.18664216
-#&gt; Gender.Women 0.05624330 0.5650843 0.10956129 0.26911108
-#&gt; Age.15-24    0.24812642 0.4577679 0.20212687 0.09197876
-#&gt; Age.25-49    0.05781476 0.4885439 0.12814507 0.32549624
-#&gt; Age.50+      0.03372942 0.6951224 0.07570041 0.19544778
-#&gt; 
-#&gt; $percents$expe.lin
-#&gt;                   Daily     Often       Rare      Never
-#&gt; Gender.Men   0.08926260 0.5919985 0.12445244 0.19428644
-#&gt; Gender.Women 0.06514893 0.5629102 0.10908440 0.26285648
-#&gt; Age.15-24    0.23911884 0.4606456 0.20256932 0.09766626
-#&gt; Age.25-49    0.05927124 0.4882293 0.12807399 0.32442552
-#&gt; Age.50+      0.03548596 0.6944257 0.07561367 0.19447466
-#&gt; 
-#&gt; </div></pre>
+</div><div class='output co'>#&gt; <span class='error'>Error in translate.binom(formula, newdt, nit = 0): unused argument (nit = 0)</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
