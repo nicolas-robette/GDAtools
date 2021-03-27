@@ -222,7 +222,113 @@ The function expresses the regression coefficients as percentages through three 
 #&gt; </div><div class='input'>  
   <span class='co'>## An example for multinomial logit regression</span>
   <span class='fu'>translate.logit</span><span class='op'>(</span><span class='va'>OnlyMus</span> <span class='op'>~</span> <span class='va'>Gender</span> <span class='op'>+</span> <span class='va'>Age</span>, <span class='va'>Music</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in translate.binom(formula, newdt, nit = 0): unused argument (nit = 0)</span></div></pre>
+</div><div class='output co'>#&gt; # weights:  20 (12 variable)
+#&gt; initial  value 693.147181 
+#&gt; iter  10 value 523.422256
+#&gt; iter  20 value 517.291266
+#&gt; final  value 517.291260 
+#&gt; converged</div><div class='output co'>#&gt; $glm
+#&gt; Call:
+#&gt; multinom(formula = formula, data = data, model = TRUE)
+#&gt; 
+#&gt; Coefficients:
+#&gt;       (Intercept) GenderWomen Age25-49   Age50+
+#&gt; Often   0.3208702   0.6041445 1.505462 2.495331
+#&gt; Rare   -0.5168063   0.5867388 1.025430 1.132162
+#&gt; Never  -1.5484260   1.0323400 2.715564 2.851505
+#&gt; 
+#&gt; Residual Deviance: 1034.583 
+#&gt; AIC: 1058.583 
+#&gt; 
+#&gt; $summary
+#&gt; Call:
+#&gt; multinom(formula = formula, data = data, model = TRUE)
+#&gt; 
+#&gt; Coefficients:
+#&gt;       (Intercept) GenderWomen Age25-49   Age50+
+#&gt; Often   0.3208702   0.6041445 1.505462 2.495331
+#&gt; Rare   -0.5168063   0.5867388 1.025430 1.132162
+#&gt; Never  -1.5484260   1.0323400 2.715564 2.851505
+#&gt; 
+#&gt; Std. Errors:
+#&gt;       (Intercept) GenderWomen  Age25-49    Age50+
+#&gt; Often   0.3312592   0.3683094 0.4205172 0.4821502
+#&gt; Rare    0.4019397   0.4288224 0.4930179 0.5681422
+#&gt; Never   0.4920802   0.4020913 0.5476175 0.6053303
+#&gt; 
+#&gt; Residual Deviance: 1034.583 
+#&gt; AIC: 1058.583 
+#&gt; 
+#&gt; $percents
+#&gt; $percents$by_category
+#&gt; $percents$by_category$Daily
+#&gt;                    raw      expe      pure  expe.lin
+#&gt; Gender.Men   -1.038718 -1.088876 -1.053494 -1.086410
+#&gt; Gender.Women -1.417139 -1.377074 -1.400616 -1.374922
+#&gt; Age.15-24    -0.358555 -0.394201 -0.364940 -0.386604
+#&gt; Age.25-49    -1.419276 -1.416552 -1.420195 -1.416449
+#&gt; Age.50+      -1.527868 -1.510954 -1.514854 -1.508834
+#&gt; 
+#&gt; $percents$by_category$Often
+#&gt;                   raw     expe     pure expe.lin
+#&gt; Gender.Men   0.852564 0.854181 0.850012 0.853844
+#&gt; Gender.Women 0.911765 0.910862 0.914107 0.910590
+#&gt; Age.15-24    0.648148 0.648570 0.644266 0.648316
+#&gt; Age.25-49    0.890909 0.892194 0.892703 0.892128
+#&gt; Age.50+      0.956790 0.956388 0.956866 0.955907
+#&gt; 
+#&gt; $percents$by_category$Rare
+#&gt;                   raw     expe     pure expe.lin
+#&gt; Gender.Men   0.540000 0.560533 0.557413 0.560036
+#&gt; Gender.Women 0.673913 0.652892 0.654986 0.652135
+#&gt; Age.15-24    0.441176 0.453980 0.451813 0.452802
+#&gt; Age.25-49    0.684211 0.677677 0.677820 0.677444
+#&gt; Age.50+      0.708333 0.703025 0.703383 0.702577
+#&gt; 
+#&gt; $percents$by_category$Never
+#&gt;                   raw     expe     pure expe.lin
+#&gt; Gender.Men   0.646154 0.674162 0.646069 0.672530
+#&gt; Gender.Women 0.831461 0.813320 0.831523 0.812197
+#&gt; Age.15-24    0.269231 0.291651 0.268861 0.285486
+#&gt; Age.25-49    0.844156 0.846681 0.849672 0.846877
+#&gt; Age.50+      0.862745 0.851541 0.854605 0.850350
+#&gt; 
+#&gt; 
+#&gt; $percents$by_method
+#&gt; $percents$by_method$raw
+#&gt;                  Daily    Often     Rare    Never
+#&gt; Gender.Men   -1.038718 0.852564 0.540000 0.646154
+#&gt; Gender.Women -1.417139 0.911765 0.673913 0.831461
+#&gt; Age.15-24    -0.358555 0.648148 0.441176 0.269231
+#&gt; Age.25-49    -1.419276 0.890909 0.684211 0.844156
+#&gt; Age.50+      -1.527868 0.956790 0.708333 0.862745
+#&gt; 
+#&gt; $percents$by_method$expe
+#&gt;                  Daily    Often     Rare    Never
+#&gt; Gender.Men   -1.088876 0.854181 0.560533 0.674162
+#&gt; Gender.Women -1.377074 0.910862 0.652892 0.813320
+#&gt; Age.15-24    -0.394201 0.648570 0.453980 0.291651
+#&gt; Age.25-49    -1.416552 0.892194 0.677677 0.846681
+#&gt; Age.50+      -1.510954 0.956388 0.703025 0.851541
+#&gt; 
+#&gt; $percents$by_method$pure
+#&gt;                  Daily    Often     Rare    Never
+#&gt; Gender.Men   -1.053494 0.850012 0.557413 0.646069
+#&gt; Gender.Women -1.400616 0.914107 0.654986 0.831523
+#&gt; Age.15-24    -0.364940 0.644266 0.451813 0.268861
+#&gt; Age.25-49    -1.420195 0.892703 0.677820 0.849672
+#&gt; Age.50+      -1.514854 0.956866 0.703383 0.854605
+#&gt; 
+#&gt; $percents$by_method$expe.lin
+#&gt;                  Daily    Often     Rare    Never
+#&gt; Gender.Men   -1.086410 0.853844 0.560036 0.672530
+#&gt; Gender.Women -1.374922 0.910590 0.652135 0.812197
+#&gt; Age.15-24    -0.386604 0.648316 0.452802 0.285486
+#&gt; Age.25-49    -1.416449 0.892128 0.677444 0.846877
+#&gt; Age.50+      -1.508834 0.955907 0.702577 0.850350
+#&gt; 
+#&gt; 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

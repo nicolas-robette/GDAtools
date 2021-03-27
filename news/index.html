@@ -128,6 +128,8 @@
 <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : bug fix when <code>prop</code> not NULL.</li>
 <li>
 <code><a href="../reference/pem.html">pem()</a></code> : bug fix with NA values</li>
+<li>
+<code><a href="../reference/translate.logit.html">translate.logit()</a></code> : results for multinomial models were instable</li>
 </ul>
 </div>
 <div id="new-functions" class="section level2">
@@ -141,7 +143,7 @@
 <li>
 <code><a href="../reference/assoc.yx.html">assoc.yx()</a></code> : computes bivariate association measures between a response and predictor variables</li>
 <li>
-<code><a href="../reference/emulreg.html">emulreg()</a></code> : computes bivariate association measures between a response and predictor variables, producing a summary looking like a regression one.</li>
+<code><a href="../reference/desc_as_reg.html">desc_as_reg()</a></code> : computes bivariate association measures between a response and predictor variables, producing a summary looking like a regression one.</li>
 </ul>
 </div>
 <div id="changes-in-existing-functions" class="section level2">
@@ -149,7 +151,13 @@
 <a href="#changes-in-existing-functions" class="anchor"></a>Changes in existing functions:</h2>
 <ul>
 <li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : Cramer’s V instead of V-squared, permutation p-values, Pearson residuals, percentage of maximum deviation from independence, summary data frame; better handling of NAs</li>
+<code><a href="../reference/wtable.html">wtable()</a></code> : can now compute percentages (<code>prop.wtable()</code> is removed)</li>
+<li>
+<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : Cramer’s V instead of V-squared, permutation p-values, Pearson residuals, percentage of maximum deviation from independence, summary data frame</li>
+<li>
+<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : better handling of NAs</li>
+<li>
+<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : faster computation</li>
 <li>
 <code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> : permutation p-values</li>
 <li>
@@ -282,7 +290,7 @@
 <li>
 <code><a href="../reference/wtable.html">wtable()</a></code>: works as <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> but allows weights and shows NAs as default</li>
 <li>
-<code><a href="../reference/prop.wtable.html">prop.wtable()</a></code>: works as <code><a href="https://rdrr.io/r/base/proportions.html">prop.table()</a></code> but allows weights and shows NAs as default</li>
+<code>prop.wtable()</code>: works as <code><a href="https://rdrr.io/r/base/proportions.html">prop.table()</a></code> but allows weights and shows NAs as default</li>
 </ul>
 </div>
 <div id="changes-in-existing-functions-5" class="section level2">
