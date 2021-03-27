@@ -17,11 +17,11 @@
 This function works with binomial as well as multinomial regression models. If the dependant variable has two factors, \code{\link{glm}} is used,
 if it has more than two factors \code{\link{multinom}} function (from \code{nnet} package) is used.
 The function expresses the regression coefficients as percentages through three distinct methods: raw percentages, 'pure effects' percentages and 
-'experimental effects' percentages (see Deauvieau, 2010).
+'experimental effects' percentages (see Deauvieau, 2010). Bootstrap confidence interval are available only for binomial regressions.
 }
 \value{
 The function returns a list:
-  \item{reg}{An object of class \code{glm} or \code{nnet} (depending on the number of factors of the dependent variable)}
+  \item{glm}{An object of class \code{glm} or \code{nnet} (depending on the number of factors of the dependent variable)}
   \item{summary}{The results of \code{summary} function applied to \code{reg} element}
   \item{percents}{A matrix or a list of matrices (depending on the number of factors of the dependent variable)
                   with regression coefficients expressed as percentages}

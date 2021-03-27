@@ -1,13 +1,5 @@
 translate.logit <- function(formula,data,nit=0) {
 
-  #z <- installed.packages()
-  #if(sum(z[,1] == "nleqslv") == 0) stop("nleqslv package not installed")
-
-  #z <- search()
-  #if(sum(z == "package:nleqslv") == 0) library(nleqslv,quietly=TRUE)
-
-#f=formula
-#d=subdata
 translate <- function(f,d) {
   
   reg <- glm(f, family="binomial", d)
@@ -119,61 +111,29 @@ translate.binom <- function(ff,dd,Nit) {
 nom.vdep <- all.vars(as.formula(formula))[1]
 if(is.factor(data[,nom.vdep])==FALSE) data[,nom.vdep] <- factor(data[,nom.vdep])
 vdep <- data[,nom.vdep]
+
 if(nlevels(vdep)==2) return(translate.binom(formula,data,nit))
+
 if(nlevels(vdep)>=3) {
-  #z <- search()
-  #if(sum(z == "package:nnet") == 0) library(nnet,quietly=TRUE)
-  nom.vind <- all.vars(as.formula(formula))[-1]
-  ncat <- sum(unlist(lapply(nom.vind,function(x) nlevels(data[,x]))))
-  rowtot <- unlist(apply(as.data.frame(data[,nom.vind]),2,function(x) as.numeric(table(x)))) #new
-  
-  translate2 <- function(fff,ddd) {
-    raw <- matrix(0,nrow=ncat,ncol=nlevels(vdep))
-    expe <- matrix(0,nrow=ncat,ncol=nlevels(vdep))
-    pure <- matrix(0,nrow=ncat,ncol=nlevels(vdep))
-    expe.lin <- matrix(0,nrow=ncat,ncol=nlevels(vdep))
-    for(i in 2:nlevels(ddd[,nom.vdep])){
-      subdata <- ddd[ddd[,nom.vdep] %in% levels(ddd[,nom.vdep])[c(1,i)],]
-      subdata[,nom.vdep] <- factor(subdata[,nom.vdep])	
-      subrowtot <- unlist(apply(as.data.frame(subdata[,nom.vind]),2,function(x) as.numeric(table(x))))  #new
-      binom <- translate.binom(fff,subdata,0)
-      raw[,i] <- binom$percents[,'raw']*subrowtot/rowtot
-      expe[,i] <- binom$percents[,'expe']*subrowtot/rowtot
-      pure[,i] <- binom$percents[,'pure']*subrowtot/rowtot
-      expe.lin[,i] <- binom$percents[,'expe.lin']*subrowtot/rowtot
-      }
-    raw[,1] <- 1-rowSums(raw)
-    expe[,1] <- 1-rowSums(expe)
-    pure[,1] <- 1-rowSums(pure)
-    expe.lin[,1] <- 1-rowSums(expe.lin)
-    dimnames(raw) <- list(colnames(dichotom(ddd[,nom.vind])),levels(vdep))
-    dimnames(expe) <- list(colnames(dichotom(ddd[,nom.vind])),levels(vdep))
-    dimnames(pure) <- list(colnames(dichotom(ddd[,nom.vind])),levels(vdep))
-    dimnames(expe.lin) <- list(colnames(dichotom(ddd[,nom.vind])),levels(vdep))
-    pct <- list(raw=raw,expe=expe,pure=pure,expe.lin=expe.lin)
-    return(pct)
-    }
-  
+  res <- list()
+  res[[1]] <- 1
+  for(i in 2:nlevels(data[,nom.vdep])) {
+    newdt <- data[data[,nom.vdep] %in% levels(data[,nom.vdep])[c(1,i)],]
+    newdt[,nom.vdep] <- factor(newdt[,nom.vdep])
+    res[[i]] <- translate.binom(formula, newdt, nit=0)$percents
+    res[[1]] <- res[[1]] - res[[i]]
+  }
+  names(res) <- levels(data[,nom.vdep])
+  res2 <- list()
+  res2[[1]] <- do.call("cbind.data.frame",lapply(res, function(x) x$raw))
+  res2[[2]] <- do.call("cbind.data.frame",lapply(res, function(x) x$expe))
+  res2[[3]] <- do.call("cbind.data.frame",lapply(res, function(x) x$pure))
+  res2[[4]] <- do.call("cbind.data.frame",lapply(res, function(x) x$expe.lin))
+  names(res2) <- c("raw","expe","pure","expe.lin")
+  dimnames(res2[["raw"]]) <- dimnames(res2[["expe"]]) <- dimnames(res2[["pure"]]) <- dimnames(res2[["expe.lin"]]) <- list(rownames(res[[1]]), names(res))
+  resfin <- list("by_category"=res, "by_method"=res2)
   reg <- multinom(formula,data,model=TRUE)
-  res <- list(glm=reg,summary=summary(reg),percents=translate2(formula,data))
-  
-  if(nit==0) mboot <- NULL
-  if(nit>0) {
-    mboot <- vector("list", 4)
-    W1 <- lapply(1:nit,function(x) translate2(formula,data[sample(1:nrow(data),replace=TRUE),]))
-    #rm(.GlobalEnv$.Random.seed) #, envir=globalenv())
-    nval <- prod(dim(W1[[1]][[1]]))
-    for(i in 1:4) {
-      W2 <- unlist(lapply(W1,function(x) x[[i]]))
-      W3 <- lapply(1:nval,function(x) W2[seq(from=x,to=nval*(nit-1)+x,by=nval)])
-      W4 <- lapply(W3,function(x) paste('[',paste(round(quantile(x, c(0.025, 0.975), na.rm=TRUE),4),collapse=';'),']',sep=''))  #new
-      mboot[[i]] <- data.frame(matrix(unlist(W4),nrow=nrow(W1[[1]][[1]]),ncol=ncol(W1[[1]][[1]])))
-      dimnames(mboot[[i]]) <- dimnames(W1[[1]][[1]])
-      }
-    names(mboot) <- c('raw','expe','pure','expe.lin') 
-    res$boot.ci <- mboot
-    }
-    
+  res <- list(glm=reg, summary=summary(reg),percents=resfin)
   return(res)
   }
 }
