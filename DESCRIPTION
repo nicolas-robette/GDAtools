@@ -1,8 +1,8 @@
 Package: GDAtools
 Type: Package
 Title: A Toolbox for Geometric Data Analysis and More
-Version: 1.5
-Date: 2020-05-14
+Version: 1.6
+Date: 2021-03-28
 Author: Nicolas Robette
 Maintainer: Nicolas Robette <nicolas.robette@uvsq.fr>
 Imports: MASS, wdm, FactoMineR, nleqslv, nnet, ggplot2, ggrepel, RColorBrewer, rlang

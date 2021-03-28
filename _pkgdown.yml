@@ -49,16 +49,16 @@ reference:
 - title: Descriptive analysis
 - desc: Tools to describe statistical bivariate associations between variables
 - contents:
-  - assoc.catcont
+  - wtable
+  - phi.table
+  - pem
   - assoc.twocat
+  - assoc.catcont
   - assoc.twocont
-  - assoc.yx
   - catdesc
   - condesc
-  - desc_as_reg
-  - pem
-  - phi.table
-  - wtable
+  - assoc.yx
+  - darma
 
 - title: Miscellaneous
 - desc: A few additional tools

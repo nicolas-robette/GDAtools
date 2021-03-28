@@ -27,7 +27,7 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[FactoMineR]{condes}}, \code{\link{catdesc}}, \code{\link{assoc.yx}}
+\code{\link[FactoMineR]{condes}}, \code{\link{catdesc}}, \code{\link{assoc.yx}}, \code{\link{darma}}
 
 }
 \examples{

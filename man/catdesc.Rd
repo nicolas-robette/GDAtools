@@ -28,15 +28,11 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link[FactoMineR]{catdes}}, \code{\link{condesc}}, \code{\link{assoc.yx}}
+\code{\link[FactoMineR]{catdes}}, \code{\link{condesc}}, \code{\link{assoc.yx}}, \code{\link{darma}}
 }
 \examples{
 data(Taste)
-getindexcat(Taste[,1:5])
-mca <- speMCA(Taste[,1:5],excl=c(3,6,9,12,15))
-hc <- hclust(dist(mca$ind$coord))
-clust <- as.factor(cutree(hc,5))
-catdesc(clust, Taste[,c('Gender','Age')])
+catdesc(Taste$Comedy, Taste[,c('Gender','Age')])
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

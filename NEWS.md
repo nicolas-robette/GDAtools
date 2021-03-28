@@ -12,7 +12,7 @@
 * `phi.table()` : computes phi coefficient for every cells of a contingency table
 * `assoc.twocont()` : measures the association between two continuous variables with Pearson, Spearman and Kendall correlations and a permutation test.
 * `assoc.yx()` : computes bivariate association measures between a response and predictor variables
-* `desc_as_reg()` : computes bivariate association measures between a response and predictor variables, producing a summary looking like a regression one.
+* `darma()` : computes bivariate association measures between a response and predictor variables, producing a summary looking like a regression one.
   
 ## Changes in existing functions:
 

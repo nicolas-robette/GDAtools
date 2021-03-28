@@ -31,7 +31,7 @@ Returns a list:
 
 \references{
 Cibois P., 1993, Le PEM, pourcentage de l'ecart maximum : un indice de liaison entre modalites d'un tableau de contingence, 
-\emph{ Bulletin de methodologie sociologique}, n40, p.43-63. \url{http://cibois.pagesperso-orange.fr/bms93.pdf}
+\emph{ Bulletin de methodologie sociologique}, n40, p.43-63. \url{https://cibois.pagesperso-orange.fr/bms93.pdf}
 }
 
 \author{Nicolas Robette}

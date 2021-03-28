@@ -1,4 +1,4 @@
-desc_as_reg <- function(y,x,weights=rep(1,length(y)),target=1,twocont="kendall",nperm=1000,distrib="asympt",dec.a=3,dec.p=3) {
+darma <- function(y,x,weights=rep(1,length(y)),target=1,twocont="kendall",nperm=1000,distrib="asympt",dec.a=3,dec.p=3) {
   
   weighted.quantile <- function(x, w, probs = .5, method = "raw") {
     if(method=="raw") {
