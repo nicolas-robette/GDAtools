@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Measures the association between two continuous variables — assoc.twocont • GDAtools</title>
+<title>Plots counts and associations of a crosstabulation — ggassoc_crosstab • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Measures the association between two continuous variables — assoc.twocont" />
-<meta property="og:description" content="Measures the association between two continuous variables with Pearson, Spearman and Kendall correlations." />
+<meta property="og:title" content="Plots counts and associations of a crosstabulation — ggassoc_crosstab" />
+<meta property="og:description" content="For a cross-tabulation, plots the number of observations by using rectangles with proportional areas, and the phi measures of association between the categories with a diverging gradient of colour, using ggplot2." />
 
 
 
@@ -105,66 +105,62 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Measures the association between two continuous variables</h1>
+    <h1>Plots counts and associations of a crosstabulation</h1>
     
-    <div class="hidden name"><code>assoc.twocont.Rd</code></div>
+    <div class="hidden name"><code>ggassoc_crosstab.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Measures the association between two continuous variables with Pearson, Spearman and Kendall correlations.</p>
+    <p>For a cross-tabulation, plots the number of observations by using rectangles with proportional areas, and the phi measures of association between the categories with a diverging gradient of colour, using ggplot2.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>assoc.twocont</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>,
-              nperm<span class='op'>=</span><span class='fl'>1000</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ggassoc_crosstab</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>mapping</span>, maxphi<span class='op'>=</span><span class='fl'>.8</span>, axes.labs<span class='op'>=</span><span class='cn'>TRUE</span>, ticks.labs<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>a continuous variable (must be a numeric vector)</p></td>
+      <th>data</th>
+      <td><p>dataset to use for plot</p></td>
     </tr>
     <tr>
-      <th>y</th>
-      <td><p>a continuous variable (must be a numeric vector)</p></td>
+      <th>mapping</th>
+      <td><p>aesthetic being used. It must specify x and y.</p></td>
     </tr>
     <tr>
-      <th>weights</th>
-      <td><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></td>
+      <th>maxphi</th>
+      <td><p>numeric value, specifying the lower and upper limit of the scale for the color gradient filling the rectangles, i.e. for the phi measures of association. It corresponds to the maximum absolute value of phi one wants to represent in the plot.</p></td>
     </tr>
     <tr>
-      <th>nperm</th>
-      <td><p>numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed.</p></td>
+      <th>axes.labs</th>
+      <td><p>Whether to display the labels of the axes, i.e. the names of x and y. Default is TRUE.</p></td>
     </tr>
     <tr>
-      <th>distrib</th>
-      <td><p>the null distribution of permutation test of independence can be approximated by its asymptotic distribution (<code>"asympt"</code>, default) or via Monte Carlo resampling (<code>"approx"</code>.</p></td>
+      <th>ticks.labs</th>
+      <td><p>Whether to display the labels of the categories of x and y. Default is TRUE.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The phi measure of association measures how much each combination of categories of x and y is over/under-represented.</p>
+<p>Cramer's V measure of global association between x and y is displayed in upper-left corner of the plot.</p>
+<p>This function can be used as a high-level plot with <code>ggduo</code> and <code>ggpairs</code> functions of the <code>GGally</code> package.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with Pearson, Spearman and Kendall correlations. The correlation value is in the first row and a p-value from a permutation (so non parametric) test of independence is in the second row.</p>
+    <p>a ggplot object</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='assoc.twocat.html'>assoc.twocat</a></code>, <code><a href='assoc.catcont.html'>assoc.catcont</a></code>, <code><a href='assoc.yx.html'>assoc.yx</a></code>, <code><a href='condesc.html'>condesc</a></code>,
-<code><a href='catdesc.html'>catdesc</a></code>, <code><a href='darma.html'>darma</a></code>, <code><a href='ggassoc_scatter.html'>ggassoc_scatter</a></code></p></div>
+    <div class='dont-index'><p><code><a href='assoc.twocat.html'>assoc.twocat</a></code>, <code><a href='phi.table.html'>phi.table</a></code>, <code><a href='catdesc.html'>catdesc</a></code>,
+ <code><a href='assoc.yx.html'>assoc.yx</a></code>, <code><a href='darma.html'>darma</a></code>, <code><a href='ggassoc_phiplot.html'>ggassoc_phiplot</a></code>, <code><a href='https://ggobi.github.io/ggally/reference/ggpairs.html'>ggpairs</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Hollander &amp; Wolfe (1973), p. 187f.</span>
-<span class='co'>## Assessment of tuna quality.  We compare the Hunter L measure of</span>
-<span class='co'>##  lightness to the averages of consumer panel scores (recoded as</span>
-<span class='co'>##  integer values from 1 to 6 and averaged over 80 such values) in</span>
-<span class='co'>##  9 lots of canned tuna.</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>44.4</span>, <span class='fl'>45.9</span>, <span class='fl'>41.9</span>, <span class='fl'>53.3</span>, <span class='fl'>44.7</span>, <span class='fl'>44.1</span>, <span class='fl'>50.7</span>, <span class='fl'>45.2</span>, <span class='fl'>60.1</span><span class='op'>)</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>2.6</span>,  <span class='fl'>3.1</span>,  <span class='fl'>2.5</span>,  <span class='fl'>5.0</span>,  <span class='fl'>3.6</span>,  <span class='fl'>4.0</span>,  <span class='fl'>5.2</span>,  <span class='fl'>2.8</span>,  <span class='fl'>3.8</span><span class='op'>)</span>
-<span class='fu'>assoc.twocont</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,nperm<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                       pearson   spearman    kendall
-#&gt; value              0.57118156 0.60000000 0.44444444
-#&gt; permutation.pvalue 0.02551669 0.03068824 0.03320006</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>)</span>
+<span class='fu'>ggassoc_crosstab</span><span class='op'>(</span>data<span class='op'>=</span><span class='va'>Taste</span>, mapping<span class='op'>=</span><span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Age</span>, y<span class='op'>=</span><span class='va'>Classical</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='img'><img src='ggassoc_crosstab-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

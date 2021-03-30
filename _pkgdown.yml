@@ -59,6 +59,10 @@ reference:
   - condesc
   - assoc.yx
   - darma
+  - ggassoc_crosstab
+  - ggassoc_phiplot
+  - ggassoc_boxplot
+  - ggassoc_scatter
 
 - title: Miscellaneous
 - desc: A few additional tools
