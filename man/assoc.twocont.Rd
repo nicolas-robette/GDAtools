@@ -25,7 +25,8 @@ A data frame with Pearson, Spearman and Kendall correlations. The correlation va
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{assoc.twocat}}, \code{\link{assoc.catcont}}, \code{\link{assoc.yx}}, \code{\link{condesc}}, \code{\link{catdesc}}
+\code{\link{assoc.twocat}}, \code{\link{assoc.catcont}}, \code{\link{assoc.yx}}, \code{\link{condesc}},
+\code{\link{catdesc}}, \code{\link{darma}}, \code{\link{ggassoc_scatter}}
 }
 \examples{
 ## Hollander & Wolfe (1973), p. 187f.

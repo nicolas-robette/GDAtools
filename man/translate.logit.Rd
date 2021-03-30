@@ -32,6 +32,9 @@ The function returns a list:
 Deauvieau, J. (2010), 'Comment traduire sous forme de probabilites les resultats d'une modelisation logit ?', Bulletin of Sociological Methodology / Bulletin de Methodologie Sociologique 105(1), 5-23.
 
 Deauvieau, J. (2011), 'Est-il possible et souhaitable traduire sous forme de probabilites un coefficient logit ? Reponse aux remarques formulees par Marion Selz a propos de mon article paru dans le BMS en 2010', Bulletin of Sociological Methodology / Bulletin de Methodologie Sociologique 112(1), 32-42.
+
+Deauvieau, J. (2019), 'Comparer les resultats d’un modele logit dichotomique ou polytomique entre plusieurs groupes a partir
+des probabilites estimees', Bulletin of Sociological Methodology / Bulletin de Methodologie Sociologique 142(1), 7-31.
 }
 \author{Nicolas Robette}
 
