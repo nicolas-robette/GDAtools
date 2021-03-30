@@ -23,6 +23,7 @@
 Besides, it also provides :
 
 * several functions for bivariate associations between variables (phi coefficients, Cramer's V, correlation coefficients, eta-squared, etc.),
+* plotting functions for bivariate associations between variables,
 * the translation of logit models coefficients into percentages,
 * weighted contingency tables,
 * an underrated association measure for contingency tables ("Percentages of Maximum Deviation from Independence", aka PEM).
@@ -51,7 +52,8 @@ Le Roux B. and Rouanet H., 2010, *Multiple Correspondence Analysis*, SAGE, Serie
 
 Le Roux B. and Rouanet H., 2004, *Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis*, Kluwer Academic Publishers, Dordrecht.
 
-Deauvieau J., 2010, « Comment traduire sous forme de probabilites les resultats d'une modelisation logit ? », *Bulletin de Methodologie Sociologique*, 105(1), 5-23.
+Deauvieau J., 2019, « Comparer les resultats d’un modele logit dichotomique ou polytomique entre plusieurs groupes a partir
+des probabilites estimees »,  *Bulletin de Methodologie Sociologique*, 142(1), 7-31.
 
 Cibois P., 1993, « Le PEM, pourcentage de l'ecart maximum : un indice de liaison entre modalites d'un tableau de contingence », *Bulletin de Methodologie Sociologique*, 40, pp 43-63, [http://cibois.pagesperso-orange.fr/bms93.pdf]
 

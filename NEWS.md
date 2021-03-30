@@ -1,3 +1,14 @@
+# GDAtools 1.7
+
+## New functions
+
+* `ggassoc_crosstab()` : plots counts and associations of a crosstabulation, using ggplot2
+* `ggassoc_phiplot()` : bar plot of phi measures of association of a crosstabulation, using ggplot2
+* `ggassoc_boxplot()` : displays of boxplot and combines it with a violin plot, using ggplot2
+* `ggassoc_scatter()` : scatter plot with a smoothing line, using ggplot2
+
+
+
 # GDAtools 1.6
 
 ## Bug fixes
