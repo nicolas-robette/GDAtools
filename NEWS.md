@@ -2,10 +2,11 @@
 
 ## New functions
 
-* `ggassoc_crosstab()` : plots counts and associations of a crosstabulation, using ggplot2
-* `ggassoc_phiplot()` : bar plot of phi measures of association of a crosstabulation, using ggplot2
-* `ggassoc_boxplot()` : displays of boxplot and combines it with a violin plot, using ggplot2
-* `ggassoc_scatter()` : scatter plot with a smoothing line, using ggplot2
+* `ggadd_corr()`: adds a heatmap of under/over-representation of a supplementary variable to a cloud of individuals
+* `ggassoc_crosstab()` : plots counts and associations of a crosstabulation, using ggplot
+* `ggassoc_phiplot()` : bar plot of phi measures of association of a crosstabulation, using ggplot
+* `ggassoc_boxplot()` : displays of boxplot and combines it with a violin plot, using ggplot
+* `ggassoc_scatter()` : scatter plot with a smoothing line, using ggplot
 * `dimdescr()` : replaces `dimdesc.MCA()`. It works with `condesc()` instead of FactoMineR::condes().
 
 ## Changes in existing functions
@@ -61,11 +62,11 @@
 * `assoc.catcont()`: measures the association between a categorical variable and a continuous variable
 * `catdesc()`: measures the association between a categorical variable and some continuous and/or categorical variables
 * `condesc()`: measures the association between a continuous variable and some continuous and/or categorical variables}
-* `ggcloud_indiv()`: cloud of individuals using ggplot
-* `ggcloud_variables()`: cloud of variables using ggplot
-* `ggadd_supvar()`: adds a supplementary variable to a cloud of variables using ggplot
-* `ggadd_interaction()`: adds the interaction between two variables to a cloud of variables using ggplot
-* `ggadd_ellipses()`: adds concentration ellipses to a cloud of individuals using ggplot
+* `ggcloud_indiv()`: cloud of individuals, using ggplot
+* `ggcloud_variables()`: cloud of variables, using ggplot
+* `ggadd_supvar()`: adds a supplementary variable to a cloud of variables, using ggplot
+* `ggadd_interaction()`: adds the interaction between two variables to a cloud of variables, using ggplot
+* `ggadd_ellipses()`: adds concentration ellipses to a cloud of individuals, using ggplot
 
 ## Changes in existing functions
 
