@@ -9,7 +9,7 @@ Plots a Multiple Correspondence Analysis cloud of individuals, using ggplots fun
 
 \usage{
 ggcloud_indiv(resmca, type='i', points='all', axes=1:2, 
-col='dodgerblue4', palette='Set2', alpha=0.6, repel=FALSE)
+col='dodgerblue4', palette='Set2', size = 0.5, alpha=0.6, repel=FALSE)
 }
 
 \arguments{
@@ -22,6 +22,7 @@ col='dodgerblue4', palette='Set2', alpha=0.6, repel=FALSE)
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
   \item{col}{If a factor, points or labels are colored according to their category regarding this factor. If a string with color name, every points or labels have the same color. Default is 'dodgerblue4'.}
   \item{palette}{If \code{col} is a factor, can be the name of a \code{RColorBrewer} palette, 'bw' for a black and white palette (uses \code{scale_color_grey()}) or a character vector with a custom palette. If NULL, \code{ggplot2} palette is used. Default is 'Set2'.}
+  \item{size}{Size of the points or labels of individuals. Default is 0.5.}
   \item{alpha}{Transparency of the points or labels of individuals. Default is 0.6.}
   \item{repel}{Logical. When type='inames', should labels of individuals be repeled ? Default is FALSE.}
 }
