@@ -6,9 +6,11 @@
 * `ggassoc_phiplot()` : bar plot of phi measures of association of a crosstabulation, using ggplot2
 * `ggassoc_boxplot()` : displays of boxplot and combines it with a violin plot, using ggplot2
 * `ggassoc_scatter()` : scatter plot with a smoothing line, using ggplot2
+* `dimdescr()` : replaces `dimdesc.MCA()`. It works with `condesc()` instead of FactoMineR::condes().
 
 ## Changes in existing functions
 
+* `ggcloud_indiv()` : the density of points can be represented as an additional layer through contours or hexagon bins
 * `catdesc()` and `condesc()` : new nperm and distrib options
 * `assoc.twocont()`, `assoc.twocat()` and `assoc.catcont()` : nperm option is set to NULL by default
 * `darma()` : nperm is set to 100 by default
