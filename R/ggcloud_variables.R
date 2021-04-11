@@ -1,18 +1,3 @@
-# resmca = ACM
-# axes=c(1,2)
-# points='all'
-# shapes=TRUE
-# prop=NULL
-# textsize=3
-# shapesize=3
-# col="black"
-# palette=NULL
-# alpha=1
-# segment.alpha=0.5
-# vlab=TRUE
-# sep='.'
-# legend='right'
-
 ggcloud_variables <- function(resmca, axes=c(1,2), points='all', shapes=TRUE, prop=NULL, textsize=3, shapesize=3, col=NULL, palette=NULL, alpha=1, segment.alpha=0.5, vlab=TRUE, sep='.', legend='right') {
 
   dim1 <- axes[1]
@@ -100,7 +85,8 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', shapes=TRUE, pr
     }
   }
       
-  p + ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", size=.1) + 
+  p <- p + 
+      ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", size=.1) + 
       ggplot2::geom_vline(xintercept = 0, colour = "darkgrey", size=.1) + 
     
       ggplot2::xlab(paste0("Axe ", dim1, " (", round(resmca$eig$mrate[dim1],1), " %)")) +
