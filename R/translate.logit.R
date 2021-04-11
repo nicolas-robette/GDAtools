@@ -1,5 +1,7 @@
 translate.logit <- function(formula,data,nit=0) {
 
+data <- as.data.frame(data)  
+  
 translate <- function(f,d) {
   
   reg <- glm(f, family="binomial", d)
