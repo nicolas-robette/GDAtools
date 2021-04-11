@@ -41,7 +41,7 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{dimcontrib}}, \code{\link{dimdesc}}, \code{\link{dimdesc.MCA}}, \code{\link{dimeta2}}, \code{\link{condes}}, \code{\link{speMCA}}, \code{\link{csMCA}}
+\code{\link{dimcontrib}}, \code{\link{dimdesc}}, \code{\link{dimdescr}}, \code{\link{dimeta2}}, \code{\link{condes}}, \code{\link{speMCA}}, \code{\link{csMCA}}
 }
 
 \examples{

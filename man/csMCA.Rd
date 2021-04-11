@@ -44,7 +44,7 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 
 \seealso{
 \code{\link{getindexcat}}, \code{\link{plot.csMCA}}, \code{\link{varsup}}, \code{\link{contrib}}, 
-\code{\link{modif.rate}}, \code{\link{dimdesc.MCA}}, \code{\link{speMCA}}, \code{\link{MCA}}
+\code{\link{modif.rate}}, \code{\link{dimdescr}}, \code{\link{speMCA}}, \code{\link{MCA}}
 }
 
 \examples{

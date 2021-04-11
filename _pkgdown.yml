@@ -23,7 +23,7 @@ reference:
   - contrib
   - tabcontrib
   - dimcontrib
-  - dimdesc.MCA
+  - dimdescr
   - dimeta2
   - dimvtest
   - homog.test
