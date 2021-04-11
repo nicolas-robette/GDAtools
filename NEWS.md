@@ -7,16 +7,22 @@
 * `ggassoc_boxplot()` : displays of boxplot and combines it with a violin plot, using ggplot2
 * `ggassoc_scatter()` : scatter plot with a smoothing line, using ggplot2
 
+## Changes in existing functions
 
-
-# GDAtools 1.6
+* `catdesc()` and `condesc()` : new nperm and distrib options
+* `assoc.twocont()`, `assoc.twocat()` and `assoc.catcont()` : nperm option is set to NULL by default
+* `darma()` : nperm is set to 100 by default
+* `ggcloud_variables()` and `ggcloud_indiv()` : a few changes in the theme (grids are removed, etc.)
+* `ggcloud_indiv()` and `ggadd_ellipses()` : new size option
 
 ## Bug fixes
 
-* `assoc.twocat()` : bug fix with warning
-* `ggcloud_variables()` : bug fix when `prop` not NULL.
-* `pem()` : bug fix with NA values
-* `translate.logit()` : results for multinomial models were instable
+* `csMCA()`, `speMCA()` and `translate.logit()` : now work with tibbles
+* `ggcloud_variables()` : now works when shapes=TRUE and there are many variables
+
+
+
+# GDAtools 1.6
 
 ## New functions
 
@@ -24,8 +30,15 @@
 * `assoc.twocont()` : measures the association between two continuous variables with Pearson, Spearman and Kendall correlations and a permutation test.
 * `assoc.yx()` : computes bivariate association measures between a response and predictor variables
 * `darma()` : computes bivariate association measures between a response and predictor variables, displaying results in a form looking like the summary of a regression model analysis.
+
+## Bug fixes
+
+* `assoc.twocat()` : bug fix with warning
+* `ggcloud_variables()` : bug fix when `prop` not NULL.
+* `pem()` : bug fix with NA values
+* `translate.logit()` : results for multinomial models were instable
   
-## Changes in existing functions:
+## Changes in existing functions
 
 * `wtable()` : can now compute percentages (`prop.wtable()` is removed)
 * `assoc.twocat()` : Cramer's V instead of V-squared, permutation p-values, Pearson residuals, percentage of maximum deviation from independence, summary data frame
@@ -61,10 +74,12 @@
 # GDAtools 1.4
 
 ## New functions
-  - `translate.logit()`: translates logit models coefficients into percentages
-  - `tabcontrib()`: displays the categories contributing most to MCA dimensions
+
+* `translate.logit()`: translates logit models coefficients into percentages
+* `tabcontrib()`: displays the categories contributing most to MCA dimensions
 
 ## Changes in existing functions
+
 * `varsup()`: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud
 * `textvarsup()`: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud
 * `conc.ellipse()`: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud

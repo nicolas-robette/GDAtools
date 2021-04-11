@@ -114,7 +114,7 @@
     <p>Measures the association between a categorical variable and some continuous and/or categorical variables</p>
     </div>
 
-    <pre class="usage"><span class='fu'>catdesc</span><span class='op'>(</span><span class='va'>y</span>,<span class='va'>x</span>,min.phi<span class='op'>=</span><span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>catdesc</span><span class='op'>(</span><span class='va'>y</span>,<span class='va'>x</span>,min.phi<span class='op'>=</span><span class='cn'>NULL</span>,nperm<span class='op'>=</span><span class='fl'>10</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -130,6 +130,14 @@
     <tr>
       <th>min.phi</th>
       <td><p>for the relationship between y and a categorical variable, only associations higher or equal to min.phi will be displayed. If NULL (default), they are all displayed.</p></td>
+    </tr>
+    <tr>
+      <th>nperm</th>
+      <td><p>numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed.</p></td>
+    </tr>
+    <tr>
+      <th>distrib</th>
+      <td><p>the null distribution of permutation test of independence can be approximated by its asymptotic distribution (<code>"asympt"</code>, default) or via Monte Carlo resampling (<code>"approx"</code>).</p></td>
     </tr>
     </table>
 
@@ -157,7 +165,7 @@ Each element in bylevel has the following items :
 <span class='fu'>catdesc</span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>$</span><span class='va'>Comedy</span>, <span class='va'>Taste</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Gender'</span>,<span class='st'>'Age'</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $variables
 #&gt;   variable    measure association permutation.pvalue
-#&gt; 1   Gender Cramer's V       0.052              0.631
+#&gt; 1   Gender Cramer's V       0.052              0.646
 #&gt; 2      Age Cramer's V          NA                 NA
 #&gt; 
 #&gt; $bylevel

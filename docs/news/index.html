@@ -126,25 +126,37 @@
 <code><a href="../reference/ggassoc_scatter.html">ggassoc_scatter()</a></code> : scatter plot with a smoothing line, using ggplot2</li>
 </ul>
 </div>
+<div id="changes-in-existing-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changes-in-existing-functions" class="anchor"></a>Changes in existing functions</h2>
+<ul>
+<li>
+<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : new nperm and distrib options</li>
+<li>
+<code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code>, <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> and <code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> : nperm option is set to NULL by default</li>
+<li>
+<code><a href="../reference/darma.html">darma()</a></code> : nperm is set to 100 by default</li>
+<li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> and <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : a few changes in the theme (grids are removed, etc.)</li>
+<li>
+<code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> and <code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code> : new size option</li>
+</ul>
 </div>
-    <div id="gdatools-16" class="section level1">
-<h1 class="page-header" data-toc-text="1.6">
-<a href="#gdatools-16" class="anchor"></a>GDAtools 1.6<small> 2021-03-28 </small>
-</h1>
 <div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : bug fix with warning</li>
+<code><a href="../reference/csMCA.html">csMCA()</a></code>, <code><a href="../reference/speMCA.html">speMCA()</a></code> and <code><a href="../reference/translate.logit.html">translate.logit()</a></code> : now work with tibbles</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : bug fix when <code>prop</code> not NULL.</li>
-<li>
-<code><a href="../reference/pem.html">pem()</a></code> : bug fix with NA values</li>
-<li>
-<code><a href="../reference/translate.logit.html">translate.logit()</a></code> : results for multinomial models were instable</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : now works when shapes=TRUE and there are many variables</li>
 </ul>
 </div>
+</div>
+    <div id="gdatools-16" class="section level1">
+<h1 class="page-header" data-toc-text="1.6">
+<a href="#gdatools-16" class="anchor"></a>GDAtools 1.6<small> 2021-03-28 </small>
+</h1>
 <div id="new-functions-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#new-functions-1" class="anchor"></a>New functions</h2>
@@ -159,9 +171,23 @@
 <code><a href="../reference/darma.html">darma()</a></code> : computes bivariate association measures between a response and predictor variables, displaying results in a form looking like the summary of a regression model analysis.</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions" class="anchor"></a>Changes in existing functions:</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>
+<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : bug fix with warning</li>
+<li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : bug fix when <code>prop</code> not NULL.</li>
+<li>
+<code><a href="../reference/pem.html">pem()</a></code> : bug fix with NA values</li>
+<li>
+<code><a href="../reference/translate.logit.html">translate.logit()</a></code> : results for multinomial models were instable</li>
+</ul>
+</div>
+<div id="changes-in-existing-functions-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changes-in-existing-functions-1" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code><a href="../reference/wtable.html">wtable()</a></code> : can now compute percentages (<code>prop.wtable()</code> is removed)</li>
@@ -210,9 +236,9 @@
 <code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code>: adds concentration ellipses to a cloud of individuals using ggplot</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions-1" class="section level2">
+<div id="changes-in-existing-functions-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-1" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-2" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code>conc.ellipses()</code>: additional options</li>
@@ -233,9 +259,9 @@
 <code><a href="../reference/tabcontrib.html">tabcontrib()</a></code>: displays the categories contributing most to MCA dimensions</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions-2" class="section level2">
+<div id="changes-in-existing-functions-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-2" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-3" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code><a href="../reference/varsup.html">varsup()</a></code>: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud</li>
@@ -254,17 +280,17 @@
 <h1 class="page-header" data-toc-text="1.3">
 <a href="#gdatools-13" class="anchor"></a>GDAtools 1.3<small> 2014-09-06 </small>
 </h1>
-<div id="changes-in-existing-functions-3" class="section level2">
+<div id="changes-in-existing-functions-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-3" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-4" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code><a href="../reference/dimdesc.MCA.html">dimdesc.MCA()</a></code>: now uses weights</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code><a href="../reference/dimdesc.MCA.html">dimdesc.MCA()</a></code>: problem of compatibility next to a FactoMineR update</li>
@@ -283,9 +309,9 @@
 <code><a href="../reference/dimvtest.html">dimvtest()</a></code>: computes test-values for supplementary variables</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions-4" class="section level2">
+<div id="changes-in-existing-functions-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-4" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-5" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code><a href="../reference/dimeta2.html">dimeta2()</a></code>: now allows <code>stMCA</code> objects</li>
@@ -306,17 +332,17 @@
 <code>prop.wtable()</code>: works as <code><a href="https://rdrr.io/r/base/proportions.html">prop.table()</a></code> but allows weights and shows NAs as default</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions-5" class="section level2">
+<div id="changes-in-existing-functions-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-5" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-6" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code><a href="../reference/multiMCA.html">multiMCA()</a></code>: RV computation is now an option, with FALSE as default, which makes the function execute faster</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code><a href="../reference/textvarsup.html">textvarsup()</a></code>: there was an error with the supplementary variable labels when <code>resmca</code> was of class <code>csMCA</code>.</li>
