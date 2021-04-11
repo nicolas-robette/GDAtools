@@ -9,7 +9,7 @@ Adds concentration ellipses for a categorical variable to a MCA cloud of individ
 
 \usage{
 ggadd_ellipses(p, resmca, var, sel=1:nlevels(var), axes=c(1,2),
-label=TRUE, col=NULL, legend='right', level=0.86, alpha=0.5)
+label=TRUE, col=NULL, legend='right', level=0.86, size=0.5, alpha=0.5)
 }
 
 \arguments{
@@ -22,6 +22,7 @@ label=TRUE, col=NULL, legend='right', level=0.86, alpha=0.5)
   \item{col}{Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses \code{scale_color_grey()}), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of \code{ggplot2} is used.}
   \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.}
   \item{level}{The level at which to draw an ellipse (see \code{stat_ellipse}). Default is 0.86.}
+  \item{size}{Size of the points of individuals. Default is 0.5.}
   \item{alpha}{Transparency of the points of individuals. Default is 0.5.}
 }
 
