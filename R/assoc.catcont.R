@@ -1,4 +1,4 @@
-assoc.catcont <- function(x,y,weights=rep(1,length(x)),nperm=1000,distrib="asympt",digits=3) {
+assoc.catcont <- function(x,y,weights=rep(1,length(x)),nperm=NULL,distrib="asympt",digits=3) {
 
   eta.squared <- summary.lm(aov(y~x,weights=weights))$r.squared
   

@@ -6,7 +6,7 @@
 Cross-tabulation and measures of association between two categorical variables
 }
 \usage{
-assoc.twocat(x,y,weights=rep.int(1,length(x)),na_value=NULL,nperm=1000,distrib="asympt")
+assoc.twocat(x,y,weights=rep.int(1,length(x)),na_value=NULL,nperm=NULL,distrib="asympt")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -14,7 +14,7 @@ assoc.twocat(x,y,weights=rep.int(1,length(x)),na_value=NULL,nperm=1000,distrib="
   \item{y}{the second categorical variable (must be a factor)}
   \item{weights}{an optional numeric vector of weights (by default, a vector of 1 for uniform weights)}
   \item{na_value}{character. Name of the level for NA category. If NULL (default), NA values are ignored.}
-  \item{nperm}{numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed. Default is 1000.}
+  \item{nperm}{numeric. Number of permutations for the permutation test of independence. If NULL (default), no permutation test is performed. Default is 1000.}
   \item{distrib}{the null distribution of permutation test of independence can be approximated by its asymptotic distribution (\code{"asympt"}, default) or via Monte Carlo resampling (\code{"approx"}.}
  
 }

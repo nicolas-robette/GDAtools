@@ -9,7 +9,7 @@
 }
 \usage{
   darma(y, x, weights=rep(1,length(y)), target=1, twocont="kendall",
-          nperm=1000, distrib="asympt", dec.a=3, dec.p=3)
+          nperm=100, distrib="asympt", dec.a=3, dec.p=3)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

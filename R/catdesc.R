@@ -1,4 +1,4 @@
-catdesc <- function(y,x,min.phi=NULL) {
+catdesc <- function(y,x,min.phi=NULL,nperm=10,distrib="asympt") {
   
   # old.warn <- options()$warn
   # options(warn = -1)
@@ -65,7 +65,7 @@ catdesc <- function(y,x,min.phi=NULL) {
     resbycat[[i]] <- list(categories=categories,continuous.var=continuous.var)
   }
   names(resbycat) <- levels(y)
-  res <- list(variables=assoc.yx(y,x,xx=FALSE)$YX, bylevel=resbycat)
+  res <- list(variables=assoc.yx(y,x,xx=FALSE,nperm=nperm,distrib=distrib)$YX, bylevel=resbycat)
   
   # options(warn = old.warn)
   return(res)

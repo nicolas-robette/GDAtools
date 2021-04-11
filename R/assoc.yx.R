@@ -1,4 +1,4 @@
-assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nperm=1000,distrib="asympt",dec.a=3,dec.p=3) {
+assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nperm=100,distrib="asympt",dec.a=3,dec.p=3) {
   
   x <- as.data.frame(x)
   xnames <- names(x)

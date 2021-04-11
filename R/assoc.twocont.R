@@ -1,4 +1,4 @@
-assoc.twocont <- function(x,y,weights=rep(1,length(x)),nperm=1000,distrib="asympt") {
+assoc.twocont <- function(x,y,weights=rep(1,length(x)),nperm=NULL,distrib="asympt") {
   pearson <- wdm::wdm(x,y,method="pearson",weights=weights,remove_missing=TRUE)
   spearman <- wdm::wdm(x,y,method="spearman",weights=weights,remove_missing=TRUE)
   kendall <- wdm::wdm(x,y,method="kendall",weights=weights,remove_missing=TRUE)

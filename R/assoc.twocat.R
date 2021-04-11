@@ -1,4 +1,4 @@
-assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nperm=1000, distrib="asympt") {
+assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nperm=NULL, distrib="asympt") {
 
   # add na level
   if(!is.null(na_value)) {
