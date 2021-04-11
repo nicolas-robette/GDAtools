@@ -18,7 +18,7 @@ condesc(y,x,min.cor=NULL,nperm=10,distrib="asympt")
 
 \value{
 A list of the following items :
-\item{variables}{associations between y and the variables in x, computed with BivariateAssoc function from package moreparty}
+\item{variables}{associations between y and the variables in x}
 \item{categories}{a data frame with categorical variables from x and associations measured by correlation coefficients}
 }
 \references{

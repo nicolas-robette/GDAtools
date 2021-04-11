@@ -18,7 +18,7 @@ catdesc(y,x,min.phi=NULL,nperm=10,distrib="asympt")
 
 \value{
 A list of the following items :
-\item{variables}{associations between y and the variables in x, computed with BivariateAssoc function from package moreparty}
+\item{variables}{associations between y and the variables in x}
 \item{bylevel}{a list with one element for each level of y}
 Each element in bylevel has the following items :
 \item{categories}{a data frame with categorical variables from x and associations measured by phi}
