@@ -121,7 +121,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>assoc.twocont</span><span class='op'>(</span><span class='va'>x</span>,<span class='va'>y</span>,weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>,
-              nperm<span class='op'>=</span><span class='fl'>1000</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
+              nperm<span class='op'>=</span><span class='cn'>NULL</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -140,7 +140,7 @@
     </tr>
     <tr>
       <th>nperm</th>
-      <td><p>numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed.</p></td>
+      <td><p>numeric. Number of permutations for the permutation test of independence. If NULL (default), no permutation test is performed.</p></td>
     </tr>
     <tr>
       <th>distrib</th>
