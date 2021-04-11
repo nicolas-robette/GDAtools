@@ -1,3 +1,18 @@
+# resmca = ACM
+# axes=c(1,2)
+# points='all'
+# shapes=TRUE
+# prop=NULL
+# textsize=3
+# shapesize=3
+# col="black"
+# palette=NULL
+# alpha=1
+# segment.alpha=0.5
+# vlab=TRUE
+# sep='.'
+# legend='right'
+
 ggcloud_variables <- function(resmca, axes=c(1,2), points='all', shapes=TRUE, prop=NULL, textsize=3, shapesize=3, col=NULL, palette=NULL, alpha=1, segment.alpha=0.5, vlab=TRUE, sep='.', legend='right') {
 
   dim1 <- axes[1]
@@ -51,19 +66,19 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', shapes=TRUE, pr
   
   if(shapes==TRUE & is.null(prop) & is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, color = .data$variables), size = shapesize, alpha = alpha) + 
                                                            ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$variables), size = textsize, segment.alpha = segment.alpha, alpha = alpha) + 
-                                                           ggplot2::scale_shape_manual(name="", values = 0:20)
+                                                           ggplot2::scale_shape_manual(name="", values = rep(0:20,10))
 
   if(shapes==TRUE & is.null(prop) & !is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables), color = col, size = shapesize, alpha = alpha) + 
                                                             ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha) + 
-                                                            ggplot2::scale_shape_manual(name="", values = 0:20)  
+                                                            ggplot2::scale_shape_manual(name="", values = rep(0:20,10))  
   
   if(shapes==TRUE & !is.null(prop) & is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, size = .data$prop, color = .data$variables), alpha = alpha) + 
                                                             ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$variables), size = textsize, segment.alpha = segment.alpha, alpha = alpha) + 
-                                                            ggplot2::scale_shape_manual(name="", values = 0:20)
+                                                            ggplot2::scale_shape_manual(name="", values = rep(0:20,10))
 
   if(shapes==TRUE & !is.null(prop) & !is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, size = .data$prop), color = col, alpha = alpha) + 
                                                              ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha) + 
-                                                             ggplot2::scale_shape_manual(name="", values = 0:20)  
+                                                             ggplot2::scale_shape_manual(name="", values = rep(0:20,10))  
                                                                    
 #  if(shapes==FALSE & is.null(palette) & is.null(prop)) p <- p + ggrepel::geom_text_repel(data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), size = textsize, segment.alpha = segment.alpha, colour = col, alpha = alpha)
 #  if(shapes==FALSE & is.null(palette) & !is.null(prop)) p <- p + ggrepel::geom_text_repel(data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, size = .data$prop), segment.alpha = segment.alpha, colour = col, alpha = alpha)
@@ -85,16 +100,19 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', shapes=TRUE, pr
     }
   }
       
-  p + ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", linetype="longdash") + 
-      ggplot2::geom_vline(xintercept = 0, colour = "darkgrey", linetype="longdash") + 
+  p + ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", size=.1) + 
+      ggplot2::geom_vline(xintercept = 0, colour = "darkgrey", size=.1) + 
     
       ggplot2::xlab(paste0("Axe ", dim1, " (", round(resmca$eig$mrate[dim1],1), " %)")) +
       ggplot2::ylab(paste0("Axe ", dim2, " (", round(resmca$eig$mrate[dim2],1), " %)")) +
     
-      ggplot2::theme_minimal() + 
+      ggplot2::theme_bw() + 
       
-      ggplot2::theme(panel.border = ggplot2::element_rect(colour="darkgrey", fill=NA)) +
+      ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
+                     panel.grid.minor = ggplot2::element_blank()) +
       
       ggplot2::guides(shape = ggplot2::guide_legend(title=""), color = ggplot2::guide_legend(title=""), size = FALSE) + 
       ggplot2::theme(legend.position = legend)
+  
+  return(p)
 }
