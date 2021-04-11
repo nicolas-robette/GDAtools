@@ -9,7 +9,8 @@ Plots a Multiple Correspondence Analysis cloud of individuals, using ggplots fun
 
 \usage{
 ggcloud_indiv(resmca, type='i', points='all', axes=1:2, 
-col='dodgerblue4', palette='Set2', size = 0.5, alpha=0.6, repel=FALSE)
+col='dodgerblue4', palette='Set2', size = 0.5, alpha=0.6, repel=FALSE,
+density=NULL, col.contour="darkred", hex.bins=50, hex.pal="viridis")
 }
 
 \arguments{
@@ -25,9 +26,17 @@ col='dodgerblue4', palette='Set2', size = 0.5, alpha=0.6, repel=FALSE)
   \item{size}{Size of the points or labels of individuals. Default is 0.5.}
   \item{alpha}{Transparency of the points or labels of individuals. Default is 0.6.}
   \item{repel}{Logical. When type='inames', should labels of individuals be repeled ? Default is FALSE.}
+  \item{density}{If NULL (default), no density layer is added. If "contour", density is plotted with contours. If "hex", density is plotted with hexagon bins.}
+  \item{col.contour}{character string. The color of the contours. Only used if density="contour".}
+  \item{hex.bins}{integer. The number of bins in both vertical and horizontal directions. Only used if density="hex".}
+  \item{hex.pal}{character string. The name of a viridis palette for hexagon bins. Only used if density="hex".}
 }
 
 \value{a ggplot object}
+
+\details{
+Sometimes the dots are too many and overlap. It is then difficult to get an accurate idea of the distribution of the cloud of individuals. The "density" option allows you to add an additional layer to represent the density of points in the plane, in the form of contours or hexagonal areas.
+}
 
 \references{
 Le Roux B. and Rouanet H., \emph{Multiple Correspondence Analysis}, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).
@@ -42,14 +51,23 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 }
 
 \examples{
-## Performs a specific MCA on 'Music' example data set
+## Performs a specific MCA on 'Taste' example data set
 ## ignoring every 'NA' (i.e. 'not available') categories,
 ## and then draws the cloud of individuals.
-data(Music)
-getindexcat(Music[,1:5])
-mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
+data(Taste)
+getindexcat(Taste[,1:11])
+mca <- speMCA(Taste[,1:11],excl=c(3,6,9,12,15,18,21,24,27,30,33))
 ggcloud_indiv(mca)
-ggcloud_indiv(mca, col=Music$Gender, palette='Set2')
+
+# Points are colored according to gender
+ggcloud_indiv(mca, col=Taste$Gender, palette='Set2')
+
+# A density layer of contours is added
+ggcloud_indiv(mca, density="contour")
+
+# A density layer of hexagon bins is added
+ggcloud_indiv(mca, density="hex", hex.bin=10)
+
 }
 
 \keyword{ aplot }

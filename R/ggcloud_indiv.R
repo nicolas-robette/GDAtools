@@ -1,4 +1,5 @@
-ggcloud_indiv <- function(resmca, type='i', points='all', axes=1:2, col='dodgerblue4', palette='Set2', size=0.5, alpha=0.6, repel=FALSE) {
+ggcloud_indiv <- function(resmca, type='i', points='all', axes=1:2, col='dodgerblue4', palette='Set2', size=0.5, alpha=0.6, repel=FALSE,
+                           density=NULL, col.contour="darkred", hex.bins=50, hex.pal="viridis") {
 
   dim1 <- axes[1]
   dim2 <- axes[2]
@@ -41,11 +42,18 @@ ggcloud_indiv <- function(resmca, type='i', points='all', axes=1:2, col='dodgerb
       } else { p <- p + ggplot2::geom_text(ggplot2::aes(colour = col), label = rownames(icoord), size = size, alpha = alpha) }
     }
   
+  if(!is.null(density)) {
+    if(density=="contour") p <- p + ggplot2::stat_density_2d(colour=col.contour, size=0.2)
+    if(density=="hex") p <- p + ggplot2::geom_hex(bins=hex.bins) +
+                                ggplot2::scale_fill_continuous(type="viridis", option=hex.pal)
+  }
+
   p + ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", size=.1) +
       ggplot2::geom_vline(xintercept = 0, colour = "darkgrey", size=.1) +
       ggplot2::xlab(paste0("Axe ", dim1, " (", round(resmca$eig$mrate[dim1],1), " %)")) +
       ggplot2::ylab(paste0("Axe ", dim2, " (", round(resmca$eig$mrate[dim2],1), " %)")) +
       ggplot2::theme_bw() +
       ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
-                     panel.grid.minor = ggplot2::element_blank())
+                     panel.grid.minor = ggplot2::element_blank(),
+                     legend.position="none")
 }
