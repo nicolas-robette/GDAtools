@@ -22,8 +22,13 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
   # ydic <- as.matrix(dichotom(Y, out='numeric'))
   # t <- t(xdic)%*%diag(W)%*%ydic
   t <- tapply(W, list(X,Y), sum)
+  
+  # remplace les cases vides par des 0  
+  t[is.na(t)] <- 0
+
   tab <- as.table(t)
-  # rownames(tab) <- gsub('data.','',rownames(tab))
+
+    # rownames(tab) <- gsub('data.','',rownames(tab))
   # colnames(tab) <- gsub('data.','',colnames(tab))
 
   freq <- addmargins(tab)
