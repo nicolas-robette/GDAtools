@@ -135,7 +135,7 @@
 <li>
 <code><a href="../reference/ggassoc_scatter.html">ggassoc_scatter()</a></code> : scatter plot with a smoothing line, using ggplot</li>
 <li>
-<code><a href="../reference/dimdescr.html">dimdescr()</a></code> : replaces <code>dimdesc.MCA()</code>. It works with <code><a href="../reference/condesc.html">condesc()</a></code> instead of FactoMineR::condes().</li>
+<code><a href="../reference/dimdescr.html">dimdescr()</a></code> : replaces <code>dimdesc.MCA()</code>. It works with <code><a href="../reference/condesc.html">condesc()</a></code> instead of FactoMineR::condes() and silently takes row weights into account.</li>
 </ul>
 </div>
 <div id="changes-in-existing-functions" class="section level2">
@@ -144,6 +144,8 @@
 <ul>
 <li>
 <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : the density of points can be represented as an additional layer through contours or hexagon bins</li>
+<li>
+<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : now allow weights</li>
 <li>
 <code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : new nperm and distrib options</li>
 <li>
@@ -164,6 +166,8 @@
 <code><a href="../reference/csMCA.html">csMCA()</a></code>, <code><a href="../reference/speMCA.html">speMCA()</a></code> and <code><a href="../reference/translate.logit.html">translate.logit()</a></code> : now work with tibbles</li>
 <li>
 <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : now works when shapes=TRUE and there are many variables</li>
+<li>
+<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : bug fix for empty cells</li>
 </ul>
 </div>
 </div>
