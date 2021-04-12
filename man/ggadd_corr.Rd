@@ -47,7 +47,7 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 ## Performs a specific MCA on 'Taste' example data set
 ## ignoring every 'NA' (i.e. 'not available') categories,
 ## draws the cloud of categories
-## and adds concentration ellipses for Age.
+## and adds a correlation heatmap for Age=50+.
 data(Taste)
 getindexcat(Taste[,1:11])
 mca <- speMCA(Taste[,1:11],excl=c(3,6,9,12,15,18,21,24,27,30,33))

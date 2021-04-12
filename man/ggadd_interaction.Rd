@@ -42,15 +42,15 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 }
 
 \examples{
-## Performs a specific MCA on 'Music' example data set
+## Performs a specific MCA on 'Taste' example data set
 ## ignoring every 'NA' (i.e. 'not available') categories,
 ## draws the cloud of categories
 ## and adds the interaction between Gender and Age.
-data(Music)
-getindexcat(Music[,1:5])
-mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
+data(Taste)
+getindexcat(Taste[,1:11])
+mca <- speMCA(Taste[,1:11],excl=c(3,6,9,12,15,18,21,24,27,30,33))
 p <- ggcloud_variables(mca, col='lightgrey', shapes=FALSE)
-ggadd_interaction(p, mca, Music$Gender, Music$Age)
+ggadd_interaction(p, mca, Taste$Gender, Taste$Age)
 }
 
 \keyword{ aplot }

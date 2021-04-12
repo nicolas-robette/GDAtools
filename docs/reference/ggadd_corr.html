@@ -177,13 +177,13 @@ xbins<span class='op'>=</span><span class='fl'>20</span>, ybins<span class='op'>
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_ellipses.html'>ggadd_ellipses</a></code></p></div>
+    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_ellipses.html'>ggadd_ellipses</a></code>, <code><a href='ggadd_density.html'>ggadd_density</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Taste' example data set</span>
 <span class='co'>## ignoring every 'NA' (i.e. 'not available') categories,</span>
 <span class='co'>## draws the cloud of categories</span>
-<span class='co'>## and adds concentration ellipses for Age.</span>
+<span class='co'>## and adds a correlation heatmap for Age=50+.</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>)</span>
 <span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
