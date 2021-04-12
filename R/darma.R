@@ -1,20 +1,5 @@
 darma <- function(y,x,weights=rep(1,length(y)),target=1,twocont="kendall",nperm=100,distrib="asympt",dec.a=3,dec.p=3) {
   
-  weighted.quantile <- function(x, w, probs = .5, method = "raw") {
-    if(method=="raw") {
-      w <- w[order(x)]
-      x <- x[order(x)]
-      Fx = cumsum(w)/sum(w)
-      rang <- max(which(Fx<probs))
-      res <- x[rang] + (0.5 - Fx[rang])/(Fx[rang+1] - Fx[rang]) * (x[rang+1] - x[rang])
-    }
-    if(method=="density") {
-      res <- with(density(x, weights = w/sum(w), n = 4096), 
-                  x[which.max(cumsum(y*(x[2L] - x[1L])) >= probs)])
-    }
-    return(res)
-  }
-  
   ldf <- list()
   for(i in 1:ncol(x)) {
     if(is.factor(y) & is.factor(x[,i])) {
