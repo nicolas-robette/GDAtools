@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds concentration ellipses to a MCA cloud of individuals with ggplot2 — ggadd_ellipses • GDAtools</title>
+<title>Adds a density layer to the cloud of individuals for a category of a supplementary variable — ggadd_density • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Adds concentration ellipses to a MCA cloud of individuals with ggplot2 — ggadd_ellipses" />
-<meta property="og:description" content="Adds concentration ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework." />
+<meta property="og:title" content="Adds a density layer to the cloud of individuals for a category of a supplementary variable — ggadd_density" />
+<meta property="og:description" content="For a given category of a supplementary variable, adds a layer representing the density of points to the cloud of individuals, either with contours or areas." />
 
 
 
@@ -111,17 +111,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds concentration ellipses to a MCA cloud of individuals with ggplot2</h1>
+    <h1>Adds a density layer to the cloud of individuals for a category of a supplementary variable</h1>
     
-    <div class="hidden name"><code>ggadd_ellipses.Rd</code></div>
+    <div class="hidden name"><code>ggadd_density.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Adds concentration ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework.</p>
+    <p>For a given category of a supplementary variable, adds a layer representing the density of points to the cloud of individuals, either with contours or areas.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ggadd_ellipses</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>resmca</span>, <span class='va'>var</span>, sel<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nlevels.html'>nlevels</a></span><span class='op'>(</span><span class='va'>var</span><span class='op'>)</span>, axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>,
-label<span class='op'>=</span><span class='cn'>TRUE</span>, col<span class='op'>=</span><span class='cn'>NULL</span>, legend<span class='op'>=</span><span class='st'>'right'</span>, level<span class='op'>=</span><span class='fl'>0.86</span>, size<span class='op'>=</span><span class='fl'>0.5</span>, alpha<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ggadd_density</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>resmca</span>, <span class='va'>var</span>, cat<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>var</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>,
+density<span class='op'>=</span><span class='st'>"contour"</span>, col.contour<span class='op'>=</span><span class='st'>"darkred"</span>, pal.area<span class='op'>=</span><span class='st'>"viridis"</span>, alpha.area<span class='op'>=</span><span class='fl'>0.2</span>,
+ellipse<span class='op'>=</span><span class='cn'>FALSE</span>, col.ellipse<span class='op'>=</span><span class='st'>"black"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,39 +137,39 @@ label<span class='op'>=</span><span class='cn'>TRUE</span>, col<span class='op'>
     </tr>
     <tr>
       <th>var</th>
-      <td><p>Factor. The categorical variable used to plot ellipses.</p></td>
+      <td><p>factor or numerical vector. The supplementary variable used for the heatmap.</p></td>
     </tr>
     <tr>
-      <th>sel</th>
-      <td><p>numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories)</p></td>
+      <th>cat</th>
+      <td><p>character string. numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories)</p></td>
     </tr>
     <tr>
       <th>axes</th>
       <td><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></td>
     </tr>
     <tr>
-      <th>label</th>
-      <td><p>Logical. Should the labels of teh categories be plotted at the center of ellipses ? Default is TRUE.</p></td>
+      <th>density</th>
+      <td><p>If "contour", density is plotted with contours. If "area", density is plotted with areas.</p></td>
     </tr>
     <tr>
-      <th>col</th>
-      <td><p>Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses <code>scale_color_grey()</code>), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of <code>ggplot2</code> is used.</p></td>
+      <th>col.contour</th>
+      <td><p>character string. The color of the contours.</p></td>
     </tr>
     <tr>
-      <th>legend</th>
-      <td><p>the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.</p></td>
+      <th>pal.area</th>
+      <td><p>character string. The name of a viridis palette for areas.</p></td>
     </tr>
     <tr>
-      <th>level</th>
-      <td><p>The level at which to draw an ellipse (see <code>stat_ellipse</code>). Default is 0.86.</p></td>
+      <th>alpha.area</th>
+      <td><p>numeric. Transparency of the areas. Default is 0.2.</p></td>
     </tr>
     <tr>
-      <th>size</th>
-      <td><p>Size of the points of individuals. Default is 0.5.</p></td>
+      <th>ellipse</th>
+      <td><p>logical. If TRUE, a concentration ellipse is added.</p></td>
     </tr>
     <tr>
-      <th>alpha</th>
-      <td><p>Transparency of the points of individuals. Default is 0.5.</p></td>
+      <th>col.ellipse</th>
+      <td><p>character string. The color of the ellipse. Default is black.</p></td>
     </tr>
     </table>
 
@@ -184,22 +185,31 @@ label<span class='op'>=</span><span class='cn'>TRUE</span>, col<span class='op'>
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggadd_corr.html'>ggadd_corr</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_density.html'>ggadd_density</a></code></p></div>
+    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_ellipses.html'>ggadd_ellipses</a></code>, <code><a href='ggadd_corr.html'>ggadd_corr</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Music' example data set</span>
+    <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Taste' example data set</span>
 <span class='co'>## ignoring every 'NA' (i.e. 'not available') categories,</span>
 <span class='co'>## draws the cloud of categories</span>
 <span class='co'>## and adds concentration ellipses for Age.</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
-<span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>)</span>
+<span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
 #&gt;  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     
 #&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
-#&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA" </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
+#&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA"  "Comedy.No"    
+#&gt; [17] "Comedy.Yes"    "Comedy.NA"     "Crime.No"      "Crime.Yes"    
+#&gt; [21] "Crime.NA"      "Animation.No"  "Animation.Yes" "Animation.NA" 
+#&gt; [25] "SciFi.No"      "SciFi.Yes"     "SciFi.NA"      "Love.No"      
+#&gt; [29] "Love.Yes"      "Love.NA"       "Musical.No"    "Musical.Yes"  
+#&gt; [33] "Musical.NA"   </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span>,<span class='fl'>18</span>,<span class='fl'>21</span>,<span class='fl'>24</span>,<span class='fl'>27</span>,<span class='fl'>30</span>,<span class='fl'>33</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggcloud_indiv.html'>ggcloud_indiv</a></span><span class='op'>(</span><span class='va'>mca</span>, col<span class='op'>=</span><span class='st'>'lightgrey'</span><span class='op'>)</span>
-<span class='fu'>ggadd_ellipses</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, <span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
-</div><div class='img'><img src='ggadd_ellipses-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='co'># density layer with contours</span>
+<span class='fu'>ggadd_density</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, var<span class='op'>=</span><span class='va'>Taste</span><span class='op'>$</span><span class='va'>Age</span>, cat<span class='op'>=</span><span class='st'>"50+"</span><span class='op'>)</span>
+</div><div class='img'><img src='ggadd_density-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># density layer with areas</span>
+<span class='fu'>ggadd_density</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, var<span class='op'>=</span><span class='va'>Taste</span><span class='op'>$</span><span class='va'>Age</span>, cat<span class='op'>=</span><span class='st'>"50+"</span>, density<span class='op'>=</span><span class='st'>"area"</span><span class='op'>)</span>
+</div><div class='img'><img src='ggadd_density-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
