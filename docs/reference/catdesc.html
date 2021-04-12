@@ -114,7 +114,7 @@
     <p>Measures the association between a categorical variable and some continuous and/or categorical variables</p>
     </div>
 
-    <pre class="usage"><span class='fu'>catdesc</span><span class='op'>(</span><span class='va'>y</span>,<span class='va'>x</span>,min.phi<span class='op'>=</span><span class='cn'>NULL</span>,nperm<span class='op'>=</span><span class='fl'>10</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>catdesc</span><span class='op'>(</span><span class='va'>y</span>,<span class='va'>x</span>,weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>,min.phi<span class='op'>=</span><span class='cn'>NULL</span>,nperm<span class='op'>=</span><span class='fl'>10</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -126,6 +126,10 @@
     <tr>
       <th>x</th>
       <td><p>a data frame with continuous and/or categorical variables</p></td>
+    </tr>
+    <tr>
+      <th>weights</th>
+      <td><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></td>
     </tr>
     <tr>
       <th>min.phi</th>
@@ -165,47 +169,38 @@ Each element in bylevel has the following items :
 <span class='fu'>catdesc</span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>$</span><span class='va'>Comedy</span>, <span class='va'>Taste</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Gender'</span>,<span class='st'>'Age'</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $variables
 #&gt;   variable    measure association permutation.pvalue
-#&gt; 1   Gender Cramer's V       0.052              0.646
-#&gt; 2      Age Cramer's V          NA                 NA
+#&gt; 1      Age Cramer's V       0.100              0.005
+#&gt; 2   Gender Cramer's V       0.052              0.646
 #&gt; 
 #&gt; $bylevel
 #&gt; $bylevel$No
 #&gt; $bylevel$No$categories
-#&gt;     categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global    phi
-#&gt; 4    Age.25-49            0.558            0.477           0.452  0.054
-#&gt; 5      Age.50+            0.540            0.458           0.448  0.022
-#&gt; 2 Gender.Women            0.530            0.542           0.540  0.004
-#&gt; 1   Gender.Men            0.526            0.458           0.460 -0.004
-#&gt; 3    Age.15-24            0.340            0.064           0.100 -0.126
-#&gt; 
-#&gt; $bylevel$No$continuous.var
-#&gt; NULL
+#&gt;      categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global          phi
+#&gt; 3     Age.25-49        0.5575221       0.47727273           0.452  0.053707950
+#&gt; 5       Age.50+        0.5401786       0.45833333           0.448  0.021977478
+#&gt; 7  Gender.Women        0.5296296       0.54166667           0.540  0.003536869
+#&gt; 8    Gender.Men        0.5260870       0.45833333           0.460 -0.003536869
+#&gt; 15    Age.15-24        0.3400000       0.06439394           0.100 -0.125530319
 #&gt; 
 #&gt; 
 #&gt; $bylevel$Yes
 #&gt; $bylevel$Yes$categories
-#&gt;     categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global    phi
-#&gt; 3    Age.15-24            0.660            0.142           0.100  0.131
-#&gt; 2 Gender.Women            0.467            0.543           0.540  0.006
-#&gt; 1   Gender.Men            0.461            0.457           0.460 -0.006
-#&gt; 5      Age.50+            0.446            0.431           0.448 -0.032
-#&gt; 4    Age.25-49            0.438            0.427           0.452 -0.047
-#&gt; 
-#&gt; $bylevel$Yes$continuous.var
-#&gt; NULL
+#&gt;      categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global          phi
+#&gt; 1     Age.15-24        0.6600000        0.1422414           0.100  0.131006677
+#&gt; 6  Gender.Women        0.4666667        0.5431034           0.540  0.005793557
+#&gt; 9    Gender.Men        0.4608696        0.4568966           0.460 -0.005793557
+#&gt; 11      Age.50+        0.4464286        0.4310345           0.448 -0.031742063
+#&gt; 13    Age.25-49        0.4380531        0.4267241           0.452 -0.047252313
 #&gt; 
 #&gt; 
 #&gt; $bylevel$`NA`
 #&gt; $bylevel$`NA`$categories
-#&gt;     categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global    phi
-#&gt; 5      Age.50+            0.013             0.75           0.448  0.055
-#&gt; 1   Gender.Men            0.013             0.75           0.460  0.052
-#&gt; 3    Age.15-24            0.000             0.00           0.100 -0.030
-#&gt; 4    Age.25-49            0.004             0.25           0.452 -0.036
-#&gt; 2 Gender.Women            0.004             0.25           0.540 -0.052
-#&gt; 
-#&gt; $bylevel$`NA`$continuous.var
-#&gt; NULL
+#&gt;      categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global         phi
+#&gt; 2       Age.50+      0.013392857             0.75           0.448  0.05453654
+#&gt; 4    Gender.Men      0.013043478             0.75           0.460  0.05225302
+#&gt; 10    Age.15-24      0.000000000             0.00           0.100 -0.02993422
+#&gt; 12    Age.25-49      0.004424779             0.25           0.452 -0.03644861
+#&gt; 14 Gender.Women      0.003703704             0.25           0.540 -0.05225302
 #&gt; 
 #&gt; 
 #&gt; </div></pre>

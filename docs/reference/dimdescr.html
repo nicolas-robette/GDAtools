@@ -175,7 +175,51 @@ but allows to analyze variants of MCA, such as 'specific' MCA or 'class specific
 #&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
 #&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA" </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>dimdescr</span><span class='op'>(</span><span class='va'>mca</span>,min.cor<span class='op'>=</span><span class='fl'>0.1</span>,nperm<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $dim.1
+</div><div class='output co'>#&gt; [1] 1
+#&gt; [1] 2
+#&gt; [1] 3
+#&gt; [1] 4
+#&gt; [1] 5
+#&gt; [1] 6
+#&gt; [1] 7
+#&gt; [1] 8
+#&gt; [1] 9
+#&gt; [1] 10
+#&gt; [1] 11
+#&gt; [1] 12
+#&gt; [1] 13
+#&gt; [1] 14
+#&gt; [1] 15
+#&gt; [1] 1
+#&gt; [1] 2
+#&gt; [1] 3
+#&gt; [1] 4
+#&gt; [1] 5
+#&gt; [1] 6
+#&gt; [1] 7
+#&gt; [1] 8
+#&gt; [1] 9
+#&gt; [1] 10
+#&gt; [1] 11
+#&gt; [1] 12
+#&gt; [1] 13
+#&gt; [1] 14
+#&gt; [1] 15
+#&gt; [1] 1
+#&gt; [1] 2
+#&gt; [1] 3
+#&gt; [1] 4
+#&gt; [1] 5
+#&gt; [1] 6
+#&gt; [1] 7
+#&gt; [1] 8
+#&gt; [1] 9
+#&gt; [1] 10
+#&gt; [1] 11
+#&gt; [1] 12
+#&gt; [1] 13
+#&gt; [1] 14
+#&gt; [1] 15</div><div class='output co'>#&gt; $dim.1
 #&gt; $dim.1$variables
 #&gt;    variable measure association permutation.pvalue
 #&gt; 1      Jazz    Eta2       0.639                  0
@@ -185,28 +229,28 @@ but allows to analyze variants of MCA, such as 'specific' MCA or 'class specific
 #&gt; 5 FrenchPop    Eta2       0.044                  0
 #&gt; 
 #&gt; $dim.1$categories
-#&gt;       categories median.y.in.xcat median.y.global sd.y.in.xcat sd.y.global
-#&gt; 11      Jazz.Yes       0.97347637      -0.1761758    0.4078628   0.5366254
-#&gt; 14 Classical.Yes       0.18552828      -0.1761758    0.5294640   0.5366254
-#&gt; 8       Rock.Yes       0.12474860      -0.1761758    0.5824183   0.5366254
-#&gt; 5        Rap.Yes      -0.02372496      -0.1761758    0.6800909   0.5366254
-#&gt; 2  FrenchPop.Yes      -0.02372496      -0.1761758    0.5293837   0.5366254
-#&gt; 1   FrenchPop.No      -0.51190670      -0.1761758    0.5187827   0.5366254
-#&gt; 4         Rap.No      -0.35945581      -0.1761758    0.4947217   0.5366254
-#&gt; 7        Rock.No      -0.35945581      -0.1761758    0.4082937   0.5366254
-#&gt; 13  Classical.No      -0.35945581      -0.1761758    0.3716908   0.5366254
-#&gt; 10       Jazz.No      -0.35945581      -0.1761758    0.3046670   0.5366254
-#&gt;    corr.coef
-#&gt; 11     0.799
-#&gt; 14     0.630
-#&gt; 8      0.543
-#&gt; 5      0.262
-#&gt; 2      0.189
-#&gt; 1     -0.197
-#&gt; 4     -0.250
-#&gt; 7     -0.514
-#&gt; 13    -0.623
-#&gt; 10    -0.785
+#&gt;       categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global
+#&gt; 11      Jazz.Yes       0.95325220      -0.1757057     0.3144685     0.299283
+#&gt; 14 Classical.Yes       0.38076161      -0.1757057     0.3129657     0.299283
+#&gt; 8       Rock.Yes       0.33221044      -0.1757057     0.3354517     0.299283
+#&gt; 5        Rap.Yes       0.22747448      -0.1757057     0.3600842     0.299283
+#&gt; 2  FrenchPop.Yes      -0.02391302      -0.1757057     0.3275387     0.299283
+#&gt; 1   FrenchPop.No      -0.35207123      -0.1757057     0.2005251     0.299283
+#&gt; 4         Rap.No      -0.25035395      -0.1757057     0.2632684     0.299283
+#&gt; 7        Rock.No      -0.31777536      -0.1757057     0.1722030     0.299283
+#&gt; 13  Classical.No      -0.33752004      -0.1757057     0.1448940     0.299283
+#&gt; 10       Jazz.No      -0.30741385      -0.1757057     0.1960495     0.299283
+#&gt;      cor.coef
+#&gt; 11  0.7990212
+#&gt; 14  0.6302762
+#&gt; 8   0.5426220
+#&gt; 5   0.2615363
+#&gt; 2   0.1890679
+#&gt; 1  -0.1967560
+#&gt; 4  -0.2501754
+#&gt; 7  -0.5141834
+#&gt; 13 -0.6227395
+#&gt; 10 -0.7852388
 #&gt; 
 #&gt; 
 #&gt; $dim.2
@@ -219,24 +263,24 @@ but allows to analyze variants of MCA, such as 'specific' MCA or 'class specific
 #&gt; 5      Jazz    Eta2       0.000              0.896
 #&gt; 
 #&gt; $dim.2$categories
-#&gt;       categories median.y.in.xcat median.y.global sd.y.in.xcat sd.y.global
-#&gt; 5        Rap.Yes        1.1775670      -0.2247109    0.2464740   0.4855012
-#&gt; 1   FrenchPop.No        0.2128322      -0.2247109    0.4005846   0.4855012
-#&gt; 13  Classical.No        0.2128322      -0.2247109    0.4234002   0.4855012
-#&gt; 8       Rock.Yes        0.2137416      -0.2247109    0.4589234   0.4855012
-#&gt; 7        Rock.No       -0.2247109      -0.2247109    0.4309037   0.4855012
-#&gt; 14 Classical.Yes       -0.6961635      -0.2247109    0.4214146   0.4855012
-#&gt; 2  FrenchPop.Yes       -0.2247109      -0.2247109    0.4288405   0.4855012
-#&gt; 4         Rap.No       -0.2247109      -0.2247109    0.3613197   0.4855012
-#&gt;    corr.coef
-#&gt; 5      0.693
-#&gt; 1      0.506
-#&gt; 13     0.481
-#&gt; 8      0.444
-#&gt; 7     -0.423
-#&gt; 14    -0.496
-#&gt; 2     -0.500
-#&gt; 4     -0.642
+#&gt;       categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global
+#&gt; 5        Rap.Yes        1.1195488      -0.1360857     0.1261472    0.2991082
+#&gt; 1   FrenchPop.No        0.2421012      -0.1360857     0.1174346    0.2991082
+#&gt; 13  Classical.No        0.1229966      -0.1360857     0.3189994    0.2991082
+#&gt; 8       Rock.Yes        0.2998116      -0.1360857     0.3107064    0.2991082
+#&gt; 7        Rock.No       -0.1982059      -0.1360857     0.2588778    0.2991082
+#&gt; 14 Classical.Yes       -0.5770787      -0.1360857     0.1742586    0.2991082
+#&gt; 2  FrenchPop.Yes       -0.2260146      -0.1360857     0.1091604    0.2991082
+#&gt; 4         Rap.No       -0.1787894      -0.1360857     0.3249515    0.2991082
+#&gt;      cor.coef
+#&gt; 5   0.6930862
+#&gt; 1   0.5059003
+#&gt; 13  0.4807570
+#&gt; 8   0.4441386
+#&gt; 7  -0.4225395
+#&gt; 14 -0.4955634
+#&gt; 2  -0.5003524
+#&gt; 4  -0.6423266
 #&gt; 
 #&gt; 
 #&gt; $dim.3
@@ -249,28 +293,28 @@ but allows to analyze variants of MCA, such as 'specific' MCA or 'class specific
 #&gt; 5      Jazz    Eta2       0.054                  0
 #&gt; 
 #&gt; $dim.3$categories
-#&gt;       categories median.y.in.xcat median.y.global sd.y.in.xcat sd.y.global
-#&gt; 2  FrenchPop.Yes      0.302052226    -0.004075617    0.2471091   0.4344127
-#&gt; 13  Classical.No      0.302052226    -0.004075617    0.4223539   0.4344127
-#&gt; 8       Rock.Yes      0.276703051    -0.004075617    0.4495633   0.4344127
-#&gt; 5        Rap.Yes      0.362632814    -0.004075617    0.4786606   0.4344127
-#&gt; 10       Jazz.No      0.276703051    -0.004075617    0.4153461   0.4344127
-#&gt; 4         Rap.No     -0.004075617    -0.004075617    0.4138508   0.4344127
-#&gt; 11      Jazz.Yes     -0.210725474    -0.004075617    0.4677198   0.4344127
-#&gt; 7        Rock.No     -0.004610522    -0.004075617    0.4117689   0.4344127
-#&gt; 14 Classical.Yes     -0.004610522    -0.004075617    0.3983350   0.4344127
-#&gt; 1   FrenchPop.No     -0.503305094    -0.004075617    0.2287039   0.4344127
-#&gt;    corr.coef
-#&gt; 2      0.833
-#&gt; 13     0.298
-#&gt; 8      0.255
-#&gt; 5      0.234
-#&gt; 10     0.209
-#&gt; 4     -0.193
-#&gt; 11    -0.225
-#&gt; 7     -0.242
-#&gt; 14    -0.282
-#&gt; 1     -0.829
+#&gt;       categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global
+#&gt; 2  FrenchPop.Yes       0.28876376      0.07201885     0.0912397    0.2926809
+#&gt; 13  Classical.No       0.22112468      0.07201885     0.3068639    0.2926809
+#&gt; 8       Rock.Yes       0.28159291      0.07201885     0.3383765    0.2926809
+#&gt; 5        Rap.Yes       0.41270724      0.07201885     0.4544296    0.2926809
+#&gt; 10       Jazz.No       0.14875569      0.07201885     0.2456526    0.2926809
+#&gt; 4         Rap.No       0.05625130      0.07201885     0.2871521    0.2926809
+#&gt; 11      Jazz.Yes      -0.16416542      0.07201885     0.2734894    0.2926809
+#&gt; 7        Rock.No       0.02803382      0.07201885     0.2969357    0.2926809
+#&gt; 14 Classical.Yes      -0.04726666      0.07201885     0.1568487    0.2926809
+#&gt; 1   FrenchPop.No      -0.50015700      0.07201885     0.0595626    0.2926809
+#&gt;      cor.coef
+#&gt; 2   0.8328657
+#&gt; 13  0.2979073
+#&gt; 8   0.2550064
+#&gt; 5   0.2344694
+#&gt; 10  0.2088168
+#&gt; 4  -0.1928332
+#&gt; 11 -0.2252434
+#&gt; 7  -0.2424768
+#&gt; 14 -0.2822321
+#&gt; 1  -0.8285097
 #&gt; 
 #&gt; </div></pre>
   </div>

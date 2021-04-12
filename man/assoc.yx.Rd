@@ -29,7 +29,7 @@ The function computes an association measure : Pearson's, Spearman's or Kendall'
 
 \value{
   A list of the following items :
-    \item{YX}{: a table with the association measures between the response and predictor variables}
+  \item{YX}{: a table with the association measures between the response and predictor variables}
   \item{XX}{: a table with the association measures between every pairs of predictor variables}
   In each table :
   \item{measure}{: name of the association measure}

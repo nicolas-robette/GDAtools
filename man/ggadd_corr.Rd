@@ -1,7 +1,7 @@
 \name{ggadd_corr}
 \alias{ggadd_corr}
 
-\title{Adds a heatmap of under/over-representation of a supplementary variable to a MCA cloud of individuals with ggplot2}
+\title{Adds a heatmap of under/over-representation of a supplementary variable to the cloud of individuals}
 
 \description{
 Adds a heatmap representing the correlation coefficients to a MCA cloud of individuals, for a numerical supplementary variable or one category of a categorical supplementary variable, using the ggplot2 framework.
@@ -16,7 +16,7 @@ xbins=20, ybins=20, min.n=1, pal="RdYlBu", limits=NULL)
   \item{p}{ggplot object with the cloud of variables}
   \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'} or \code{'csMCA'}.}
   \item{var}{factor or numerical vector. The supplementary variable used for the heatmap.}
-  \item{cat}{character string. numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories)}
+  \item{cat}{character string. numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories). Only used if var is a factor.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
   \item{xbins}{integer. Number of bins in the x axis. Default is 20.}
   \item{ybins}{integer. Number of bins in the y axis. Default is 20.}
