@@ -38,7 +38,7 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{ggcloud_variables}}, \code{\link{ggadd_supvar}}, \code{\link{ggcloud_indiv}}, \code{\link{ggadd_corr}}, \code{\link{ggadd_ellipses}}
+\code{\link{ggcloud_variables}}, \code{\link{ggadd_supvar}}, \code{\link{ggcloud_indiv}}, \code{\link{ggadd_corr}}, \code{\link{ggadd_ellipses}}, \code{\link{ggadd_density}}
 }
 
 \examples{

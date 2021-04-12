@@ -2,6 +2,7 @@
 
 ## New functions
 
+* `ggadd_density()`: adds a density layer to the cloud of individuals for a category of a supplementary variable
 * `ggadd_corr()`: adds a heatmap of under/over-representation of a supplementary variable to a cloud of individuals
 * `ggassoc_crosstab()` : plots counts and associations of a crosstabulation, using ggplot
 * `ggassoc_phiplot()` : bar plot of phi measures of association of a crosstabulation, using ggplot

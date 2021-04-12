@@ -44,6 +44,7 @@ reference:
   - ggcloud_variables
   - ggadd_supvar
   - ggadd_ellipses
+  - ggadd_density
   - ggadd_corr
   - ggadd_interaction
   
