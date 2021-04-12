@@ -183,18 +183,23 @@ axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.
     <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_corr.html'>ggadd_corr</a></code>, <code><a href='ggadd_ellipses.html'>ggadd_ellipses</a></code>, <code><a href='ggadd_density.html'>ggadd_density</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Music' example data set</span>
+    <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Taste' example data set</span>
 <span class='co'>## ignoring every 'NA' (i.e. 'not available') categories,</span>
 <span class='co'>## draws the cloud of categories</span>
 <span class='co'>## and adds the interaction between Gender and Age.</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
-<span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>)</span>
+<span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
 #&gt;  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     
 #&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
-#&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA" </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
+#&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA"  "Comedy.No"    
+#&gt; [17] "Comedy.Yes"    "Comedy.NA"     "Crime.No"      "Crime.Yes"    
+#&gt; [21] "Crime.NA"      "Animation.No"  "Animation.Yes" "Animation.NA" 
+#&gt; [25] "SciFi.No"      "SciFi.Yes"     "SciFi.NA"      "Love.No"      
+#&gt; [29] "Love.Yes"      "Love.NA"       "Musical.No"    "Musical.Yes"  
+#&gt; [33] "Musical.NA"   </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span>,<span class='fl'>18</span>,<span class='fl'>21</span>,<span class='fl'>24</span>,<span class='fl'>27</span>,<span class='fl'>30</span>,<span class='fl'>33</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggcloud_variables.html'>ggcloud_variables</a></span><span class='op'>(</span><span class='va'>mca</span>, col<span class='op'>=</span><span class='st'>'lightgrey'</span>, shapes<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='fu'>ggadd_interaction</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, <span class='va'>Music</span><span class='op'>$</span><span class='va'>Gender</span>, <span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
+<span class='fu'>ggadd_interaction</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, <span class='va'>Taste</span><span class='op'>$</span><span class='va'>Gender</span>, <span class='va'>Taste</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
 </div><div class='img'><img src='ggadd_interaction-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
