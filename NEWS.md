@@ -8,11 +8,12 @@
 * `ggassoc_phiplot()` : bar plot of phi measures of association of a crosstabulation, using ggplot
 * `ggassoc_boxplot()` : displays of boxplot and combines it with a violin plot, using ggplot
 * `ggassoc_scatter()` : scatter plot with a smoothing line, using ggplot
-* `dimdescr()` : replaces `dimdesc.MCA()`. It works with `condesc()` instead of FactoMineR::condes().
+* `dimdescr()` : replaces `dimdesc.MCA()`. It works with `condesc()` instead of FactoMineR::condes() and silently takes row weights into account.
 
 ## Changes in existing functions
 
 * `ggcloud_indiv()` : the density of points can be represented as an additional layer through contours or hexagon bins
+* `catdesc()` and `condesc()` : now allow weights
 * `catdesc()` and `condesc()` : new nperm and distrib options
 * `assoc.twocont()`, `assoc.twocat()` and `assoc.catcont()` : nperm option is set to NULL by default
 * `darma()` : nperm is set to 100 by default
@@ -23,6 +24,7 @@
 
 * `csMCA()`, `speMCA()` and `translate.logit()` : now work with tibbles
 * `ggcloud_variables()` : now works when shapes=TRUE and there are many variables
+* `assoc.twocat()` : bug fix for empty cells
 
 
 

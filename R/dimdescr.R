@@ -4,8 +4,8 @@ dimdescr <- function(resmca,ncp=1:3,min.cor=NULL,nperm=100,distrib="asympt") {
    classe <- class(resmca)[1]
    if(classe=='stMCA') classe=resmca$call$input.mca
    for(i in ncp) {
-      if(classe %in% c('MCA','speMCA')) temp <- condesc(resmca$ind$coord[,i],X,min.cor=min.cor,nperm=nperm,distrib=distrib)
-      if(classe == 'csMCA') temp <- condesc(resmca$ind$coord[,i],X[resmca$call$subcloud,],min.cor=min.cor,nperm=nperm,distrib=distrib)
+      if(classe %in% c('MCA','speMCA')) temp <- condesc(resmca$ind$coord[,i],X,weights=resmca$call$row.w,min.cor=min.cor,nperm=nperm,distrib=distrib)
+      if(classe == 'csMCA') temp <- condesc(resmca$ind$coord[,i],X[resmca$call$subcloud,],weights=resmca$call$row.w,min.cor=min.cor,nperm=nperm,distrib=distrib)
       rownames(temp) <- NULL
       res[[i]] <- temp
       }

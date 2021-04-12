@@ -1,72 +1,64 @@
-catdesc <- function(y,x,min.phi=NULL,nperm=10,distrib="asympt") {
+catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=10,distrib="asympt") {
   
-  # old.warn <- options()$warn
-  # options(warn = -1)
-  
-  # xcat <- x[,sapply(x,is.factor)]
-  # xcat <- as.data.frame(xcat)
   icat <- which(sapply(x,is.factor))
   xcat <- as.data.frame(x[,icat])
   names(xcat) <- names(x)[icat]
-  if(ncol(xcat)>0) xcat.dic <- dichotom(xcat)
-  # xcon <- x[,sapply(x,is.numeric) | sapply(x,is.integer)]
-  # xcon <- as.data.frame(xcon)
   icon <- which(sapply(x, function(x) is.numeric(x) | is.integer(x)))
   xcon <- as.data.frame(x[,icon])
   names(xcon) <- names(x)[icon]
   
-  resbycat <- list()
-  for(i in 1:nlevels(y)) {
-    if(ncol(xcat)>0) {
-      pct.ycat.in.xcat <- numeric()
-      pct.xcat.in.ycat <- numeric()
-      pct.xcat.global <- numeric()
-      phi <- numeric()
-      for(j in 1:ncol(xcat.dic)) {
-        tab22 <- table(y==levels(y)[i], xcat.dic[,j])
-        # khi2 <- suppressWarnings({chisq.test(tab22)})
-        # khi2 <- khi2$statistic
-        expected <- rowSums(tab22) %*% t(colSums(tab22)) / sum(tab22)
-        khi2 <- sum((tab22-expected)*(tab22-expected)/expected)
-        signe <- sign(tab22[2,2]/rowSums(tab22)[2]-tab22[1,2]/rowSums(tab22)[1])
-        phi[j] <- round(signe*sqrt(khi2/sum(tab22)),3)
-        pct.ycat.in.xcat[j] <- prop.table(tab22,2)[2,2]
-        pct.xcat.in.ycat[j] <- prop.table(tab22,1)[2,2]
-        pct.xcat.global[j] <- colSums(prop.table(tab22))[2]
-      }
-      categories <- data.frame(categories=names(xcat.dic),
-                               pct.ycat.in.xcat=round(pct.ycat.in.xcat,3),
-                               pct.xcat.in.ycat=round(pct.xcat.in.ycat,3),
-                               pct.xcat.global=round(pct.xcat.global,3),
-                               phi=round(phi,3))
-      categories <- categories[order(-categories$phi),]
-      if(!is.null(min.phi)) categories <- categories[abs(categories$phi)>=min.phi,]
-    }
-    if(ncol(xcat)==0) categories <- NULL
-
-    if(ncol(xcon)>0) {
-      corr.coef <- numeric()
-      median.x.in.ycat <- numeric()
-      median.x.global <- numeric()
-      sd.x.in.ycat <- numeric()
-      sd.x.global <- numeric()
-      for(j in 1:ncol(xcon)) {
-        corr.coef[j] <- cor.test(as.numeric(y==levels(y)[i]), xcon[,j], method='pearson')$estimate
-        median.x.in.ycat[j] <- median(xcon[y==levels(y)[i],j],na.rm=TRUE)
-        median.x.global[j] <- median(xcon[,j],na.rm=TRUE)
-        sd.x.in.ycat[j] <- sd(xcon[y==levels(y)[i],j],na.rm=TRUE)
-        sd.x.global[j] <- sd(xcon[,j],na.rm=TRUE)
-      }
-      continuous.var <- data.frame(variables=names(xcon),median.x.in.ycat,median.x.global,sd.x.in.ycat,sd.x.global,corr.coef)
-      continuous.var <- continuous.var[order(-continuous.var$corr.coef),]
-    }
-    if(ncol(xcon)==0) continuous.var <- NULL
-    
-    resbycat[[i]] <- list(categories=categories,continuous.var=continuous.var)
+  if(ncol(xcat)==0) {
+    lcat <- lapply(levels(y), function(x) return(NULL))
+    names(lcat) <- levels(y)
   }
-  names(resbycat) <- levels(y)
-  res <- list(variables=assoc.yx(y,x,xx=FALSE,nperm=nperm,distrib=distrib)$YX, bylevel=resbycat)
   
-  # options(warn = old.warn)
+  if(ncol(xcat)>0) {
+    lcat <- list()
+    for(i in 1:ncol(xcat)) {
+      temp <- assoc.twocat(y, xcat[,i], weights=weights, nperm=NULL)$gather
+      temp$categories <- paste(names(xcat)[i],temp$Var2,sep='.')
+      lcat[[i]] <- merge(temp, aggregate(prop~Var2, data=temp, sum), by="Var2")
+    }
+    lcat <- do.call("rbind.data.frame",lcat)
+    lcat <- lcat[order(-lcat$phi),]
+    splitvar <- lcat$Var1
+    lcat <- lcat[,c("categories","cprop","rprop","prop.y","phi")]
+    names(lcat) <- c("categories","pct.ycat.in.xcat","pct.xcat.in.ycat","pct.xcat.global","phi")
+    rownames(lcat) <- NULL
+    lcat <- split(lcat, splitvar)
+  }
+
+  if(ncol(xcon)==0) {
+    lcon <- lapply(levels(y), function(x) return(NULL))
+    names(lcon) <- levels(y)
+  }
+    
+  if(ncol(xcon)>0) {
+    lcon <- list()
+    for(i in 1:ncol(xcon)) {
+      temp <- data.frame(cor.coef = assoc.catcont(y, xcon[,i], weights=weights, nperm=NULL, digits=9)$cor.coeff)
+      temp$variables <- rep(names(xcon)[i],nrow(temp))
+      temp$categories <- rownames(temp)
+      temp$median.x.in.ycat <- sapply(levels(y), function(x) weighted.quantile(xcon[y==x,i], weights[y==x], method="density"))
+      temp$median.x.global <- rep(weighted.quantile(xcon[,i], weights, method="density"),nrow(temp))
+      temp$mad.x.in.ycat <- sapply(levels(y), function(x) weighted.mad(xcon[y==x,i], weights[y==x], method="density"))
+      temp$mad.x.global <- rep(weighted.mad(xcon[,i], weights, method="density"),nrow(temp))
+      lcon[[i]] <- temp
+    }
+    lcon <- do.call("rbind.data.frame",lcon)
+    lcon <- lcon[order(-lcon$cor.coef),]
+    splitvar <- lcon$categories
+    lcon <- lcon[,c(2,4:7,1)]
+    rownames(lcon) <- NULL
+    lcon <- split(lcon,splitvar)
+  }
+  
+  bylevel <- list()
+  for(i in levels(y)) {
+    bylevel[[i]]$categories <- lcat[[i]]
+    bylevel[[i]]$continuous.var <- lcon[[i]]
+  }
+  
+  res <- list(variables=assoc.yx(y,x,weights=weights,xx=FALSE,nperm=nperm,distrib=distrib)$YX, bylevel=bylevel)
   return(res)
 }
