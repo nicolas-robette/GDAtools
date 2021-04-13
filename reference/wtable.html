@@ -174,21 +174,21 @@
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
 <span class='fu'>wtable</span><span class='op'>(</span><span class='va'>Music</span><span class='op'>$</span><span class='va'>Jazz</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  No Yes  NA Sum 
-#&gt; 395  95  10 500 </div><div class='input'><span class='fu'>wtable</span><span class='op'>(</span><span class='va'>Music</span><span class='op'>$</span><span class='va'>Jazz</span>,<span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
+#&gt; 407  86   7 500 </div><div class='input'><span class='fu'>wtable</span><span class='op'>(</span><span class='va'>Music</span><span class='op'>$</span><span class='va'>Jazz</span>,<span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     15-24 25-49 50+ Sum
-#&gt; No     67   159 169 395
-#&gt; Yes     8    43  44  95
-#&gt; NA      3     2   5  10
-#&gt; Sum    78   204 218 500</div><div class='input'>
+#&gt; No     63   172 172 407
+#&gt; Yes     8    28  50  86
+#&gt; NA      2     2   3   7
+#&gt; Sum    73   202 225 500</div><div class='input'>
 <span class='va'>weight</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>0.5</span>,<span class='fl'>1</span>,<span class='fl'>1.5</span>,<span class='fl'>2</span><span class='op'>)</span>, length.out<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>wtable</span><span class='op'>(</span><span class='va'>Music</span><span class='op'>$</span><span class='va'>Jazz</span>,w<span class='op'>=</span><span class='va'>weight</span>,digits<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;    No   Yes    NA   Sum 
-#&gt; 396.0  92.5  11.5 500.0 </div><div class='input'><span class='fu'>wtable</span><span class='op'>(</span><span class='va'>Music</span><span class='op'>$</span><span class='va'>Jazz</span>,<span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span>,<span class='va'>weight</span>,<span class='fl'>1</span><span class='op'>)</span>
+#&gt; 419.0  74.5   6.5 500.0 </div><div class='input'><span class='fu'>wtable</span><span class='op'>(</span><span class='va'>Music</span><span class='op'>$</span><span class='va'>Jazz</span>,<span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span>,<span class='va'>weight</span>,<span class='fl'>1</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     15-24 25-49   50+   Sum
-#&gt; No   71.0 153.0 172.0 396.0
-#&gt; Yes   7.0  41.0  44.5  92.5
-#&gt; NA    4.0   3.0   4.5  11.5
-#&gt; Sum  82.0 197.0 221.0 500.0</div></pre>
+#&gt; No   62.5 184.5 172.0 419.0
+#&gt; Yes   7.0  22.0  45.5  74.5
+#&gt; NA    0.5   2.0   4.0   6.5
+#&gt; Sum  70.0 208.5 221.5 500.0</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
