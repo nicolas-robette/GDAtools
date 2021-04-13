@@ -7,7 +7,7 @@
 \title{Taste (data)}
 
 \description{
-The data concerns tastes for music and movies of a set of 500 individuals. It contains 5 variables of likes for music genres 
+The data concerns tastes for music and movies of a set of 2000 individuals. It contains 5 variables of likes for music genres 
 (french pop, rap, rock, jazz and classical), 6 variables of likes for movie genres (comedy, crime, 
 animation, science fiction, love, musical) and 2 additional variables (gender and age).
 }
@@ -30,6 +30,7 @@ animation, science fiction, love, musical) and 2 additional variables (gender an
     \item{\code{Musical}}{is a factor with levels \code{No}, \code{Yes}, \code{NA}}
     \item{\code{Gender}}{is a factor with levels \code{Men}, \code{Women}}
     \item{\code{Age}}{is a factor with levels \code{15-24}, \code{25-49}, \code{50+}}
+    \item{\code{Educ}}{is a factor with levels \code{none}, \code{low}, \code{medium}, \code{high}}
   }
 }
 
