@@ -174,14 +174,14 @@ coordinates, so as to facilitate interpretation. Then they are sorted and organi
 #&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
 #&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA" </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>tabcontrib</span><span class='op'>(</span><span class='va'>mca</span>,<span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;         var moda   ctr1  ctr2 weight ctrtot cumctrtot
-#&gt; 3      Jazz  Yes -42.28           86  42.28     42.28
-#&gt; 1 Classical  Yes -23.76          153  34.38     76.66
-#&gt; 2             No        10.62    338                 </div><div class='input'><span class='fu'>tabcontrib</span><span class='op'>(</span><span class='va'>mca</span>,<span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;         var moda   ctr1  ctr2 weight ctrtot cumctrtot
-#&gt; 2       Rap  Yes        39.22     61  39.22     39.22
-#&gt; 3      Rock  Yes        21.86    131  21.86     61.08
-#&gt; 1 Classical  Yes -14.14          153  14.14     75.22</div></pre>
+</div><div class='output co'>#&gt;         var moda   ctr1 ctr2 weight ctrtot cumctrtot
+#&gt; 1 Classical  Yes -27.72         142  38.52     38.52
+#&gt; 2             No        10.8    351                 
+#&gt; 3      Jazz  Yes -35.34          95  35.34     73.86</div><div class='input'><span class='fu'>tabcontrib</span><span class='op'>(</span><span class='va'>mca</span>,<span class='fl'>2</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    var moda   ctr1  ctr2 weight ctrtot cumctrtot
+#&gt; 2 Rock  Yes -30.57          135  41.76     41.76
+#&gt; 3        No        11.19    360                 
+#&gt; 1  Rap  Yes -40.74           77  40.74      82.5</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
