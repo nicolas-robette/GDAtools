@@ -12,7 +12,7 @@ Computes eta2 for a list of supplementary variables. It allows to analyze varian
 
 \arguments{
   \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'}, \code{'csMCA'} or \code{'stMCA'}}
-  \item{l}{a list of supplementary variables}
+  \item{l}{a list (or data frame) of supplementary variables}
   \item{n}{a vector of names for the supplementary variables. The vector's length must be equal to \code{'l'}'s length}
   \item{dim}{the axes for which eta2 are computed. Default is 1:ncp}
 }
