@@ -1,4 +1,4 @@
-ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), label=TRUE, col=NULL, legend='right', level=0.86, size=0.5, alpha=0.5) {
+ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), level=0.05, label=TRUE, col=NULL, size=0.5, points=TRUE, legend='right') {
 
   ecoord <- as.data.frame(resmca$ind$coord[,axes])
   names(ecoord) <- c('axeX','axeY')
@@ -14,8 +14,9 @@ ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), labe
   ccoord$axeX <- ccoord$axeX*resmca$svd$vs[axes[1]]
   ccoord$axeY <- ccoord$axeY*resmca$svd$vs[axes[2]]
 
-  pfin <- p + ggplot2::stat_ellipse(data=ecoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, colour=.data$var), level = level, type='norm') +
-              ggplot2::geom_point(data=ecoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, colour=.data$var), size = size, alpha = alpha)
+  pfin <- p + ggplot2::stat_ellipse(data=ecoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, colour=.data$var), level = level, type='norm', size = size)
+              
+  if(points) pfin <- pfin + ggplot2::geom_point(data=ecoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, colour=.data$var), size = 0.5, alpha = 0.6)
   
   if(!is.null(col)) {
     if(length(col)>1) { pfin <- pfin + ggplot2::scale_colour_manual(values = col)
