@@ -25,7 +25,7 @@ reference:
   - dimcontrib
   - dimdescr
   - dimeta2
-  - dimvtest
+  - dimtypicality
   - homog.test
   - varsup
   - indsup
@@ -44,6 +44,7 @@ reference:
   - ggcloud_variables
   - ggadd_supvar
   - ggadd_ellipses
+  - ggadd_kellipses
   - ggadd_density
   - ggadd_corr
   - ggadd_interaction

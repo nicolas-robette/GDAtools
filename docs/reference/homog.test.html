@@ -133,7 +133,11 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a list of square matrices, one per MCA dimension. Each matrix gives the test statistic for any pair of categories.</p>
+    <p>Returns a list of ncp lists, with ncp the number of dimensions in the MCA results.
+  Each list has 2 elements :</p>
+<dt>test.stat</dt><dd><p>The square matrix of test statistics</p></dd>
+  <dt>p.values</dt><dd><p>The square matrix of p.values</p></dd>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Le Roux B. and Rouanet H., <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).</p>
@@ -160,34 +164,74 @@
 #&gt; [25] "Daily.No"      "Daily.Yes"    </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'>homog.test</span><span class='op'>(</span><span class='va'>mca</span>,<span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $dim.1
+#&gt; $dim.1$test.stat
 #&gt;          15-24    25-49      50+
 #&gt; 15-24 0.000000 7.058897 8.008692
 #&gt; 25-49 7.058897 0.000000 1.200371
 #&gt; 50+   8.008692 1.200371 0.000000
 #&gt; 
+#&gt; $dim.1$p.values
+#&gt;              15-24        25-49          50+
+#&gt; 15-24 1.000000e+00 1.678213e-12 1.110223e-15
+#&gt; 25-49 1.678213e-12 1.000000e+00 2.299954e-01
+#&gt; 50+   1.110223e-15 2.299954e-01 1.000000e+00
+#&gt; 
+#&gt; 
 #&gt; $dim.2
+#&gt; $dim.2$test.stat
 #&gt;           15-24     25-49      50+
 #&gt; 15-24  0.000000  8.772764 20.80055
 #&gt; 25-49  8.772764  0.000000 16.18387
 #&gt; 50+   20.800554 16.183873  0.00000
 #&gt; 
+#&gt; $dim.2$p.values
+#&gt;       15-24 25-49 50+
+#&gt; 15-24     1     0   0
+#&gt; 25-49     0     1   0
+#&gt; 50+       0     0   1
+#&gt; 
+#&gt; 
 #&gt; $dim.3
+#&gt; $dim.3$test.stat
 #&gt;          15-24    25-49      50+
 #&gt; 15-24 0.000000 6.974926 5.490793
 #&gt; 25-49 6.974926 0.000000 2.095197
 #&gt; 50+   5.490793 2.095197 0.000000
 #&gt; 
+#&gt; $dim.3$p.values
+#&gt;              15-24        25-49          50+
+#&gt; 15-24 1.000000e+00 3.060219e-12 4.001328e-08
+#&gt; 25-49 3.060219e-12 1.000000e+00 3.615346e-02
+#&gt; 50+   4.001328e-08 3.615346e-02 1.000000e+00
+#&gt; 
+#&gt; 
 #&gt; $dim.4
+#&gt; $dim.4$test.stat
 #&gt;          15-24    25-49      50+
 #&gt; 15-24 0.000000 1.905077 1.708058
 #&gt; 25-49 1.905077 0.000000 4.916974
 #&gt; 50+   1.708058 4.916974 0.000000
 #&gt; 
+#&gt; $dim.4$p.values
+#&gt;            15-24        25-49          50+
+#&gt; 15-24 1.00000000 5.677011e-02 8.762565e-02
+#&gt; 25-49 0.05677011 1.000000e+00 8.789226e-07
+#&gt; 50+   0.08762565 8.789226e-07 1.000000e+00
+#&gt; 
+#&gt; 
 #&gt; $dim.5
+#&gt; $dim.5$test.stat
 #&gt;          15-24    25-49      50+
 #&gt; 15-24 0.000000 2.115627 3.088210
 #&gt; 25-49 2.115627 0.000000 1.291504
 #&gt; 50+   3.088210 1.291504 0.000000
+#&gt; 
+#&gt; $dim.5$p.values
+#&gt;             15-24      25-49         50+
+#&gt; 15-24 1.000000000 0.03437653 0.002013663
+#&gt; 25-49 0.034376528 1.00000000 0.196529083
+#&gt; 50+   0.002013663 0.19652908 1.000000000
+#&gt; 
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds a heatmap of under/over-representation of a supplementary variable to the cloud of individuals with ggplot2 — ggadd_corr • GDAtools</title>
+<title>Adds k-inertia ellipses to a MCA cloud of individuals with ggplot2 — ggadd_kellipses • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Adds a heatmap of under/over-representation of a supplementary variable to the cloud of individuals with ggplot2 — ggadd_corr" />
-<meta property="og:description" content="Adds a heatmap representing the correlation coefficients to a MCA cloud of individuals, for a numerical supplementary variable or one category of a categorical supplementary variable, using the ggplot2 framework." />
+<meta property="og:title" content="Adds k-inertia ellipses to a MCA cloud of individuals with ggplot2 — ggadd_kellipses" />
+<meta property="og:description" content="Adds k-inertia ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework. By default, concentration ellipses are plotted." />
 
 
 
@@ -105,17 +105,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds a heatmap of under/over-representation of a supplementary variable to the cloud of individuals with ggplot2</h1>
+    <h1>Adds k-inertia ellipses to a MCA cloud of individuals with ggplot2</h1>
     
-    <div class="hidden name"><code>ggadd_corr.Rd</code></div>
+    <div class="hidden name"><code>ggadd_kellipses.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Adds a heatmap representing the correlation coefficients to a MCA cloud of individuals, for a numerical supplementary variable or one category of a categorical supplementary variable, using the ggplot2 framework.</p>
+    <p>Adds k-inertia ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework. By default, concentration ellipses are plotted.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ggadd_corr</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>resmca</span>, <span class='va'>var</span>, cat<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>var</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>,
-xbins<span class='op'>=</span><span class='fl'>20</span>, ybins<span class='op'>=</span><span class='fl'>20</span>, min.n<span class='op'>=</span><span class='fl'>1</span>, pal<span class='op'>=</span><span class='st'>"RdYlBu"</span>, limits<span class='op'>=</span><span class='cn'>NULL</span>, legend<span class='op'>=</span><span class='st'>"right"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ggadd_kellipses</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>resmca</span>, <span class='va'>var</span>, sel<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nlevels.html'>nlevels</a></span><span class='op'>(</span><span class='va'>var</span><span class='op'>)</span>, axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>,
+kappa<span class='op'>=</span><span class='fl'>2</span>, label<span class='op'>=</span><span class='cn'>TRUE</span>, col<span class='op'>=</span><span class='cn'>NULL</span>, size<span class='op'>=</span><span class='fl'>0.5</span>, points<span class='op'>=</span><span class='cn'>TRUE</span>, legend<span class='op'>=</span><span class='st'>'right'</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -130,35 +130,35 @@ xbins<span class='op'>=</span><span class='fl'>20</span>, ybins<span class='op'>
     </tr>
     <tr>
       <th>var</th>
-      <td><p>factor or numerical vector. The supplementary variable used for the heatmap.</p></td>
+      <td><p>Factor. The categorical variable used to plot ellipses.</p></td>
     </tr>
     <tr>
-      <th>cat</th>
-      <td><p>character string. numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories). Only used if var is a factor.</p></td>
+      <th>sel</th>
+      <td><p>numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories)</p></td>
     </tr>
     <tr>
       <th>axes</th>
       <td><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></td>
     </tr>
     <tr>
-      <th>xbins</th>
-      <td><p>integer. Number of bins in the x axis. Default is 20.</p></td>
+      <th>kappa</th>
+      <td><p>numeric. The kappa value (i.e. "index") of the inertia ellipses. By default, kappa = 2, which means that concentration ellipses are plotted.</p></td>
     </tr>
     <tr>
-      <th>ybins</th>
-      <td><p>integer. Number of bins in the y axis. Default is 20.</p></td>
+      <th>label</th>
+      <td><p>Logical. Should the labels of the categories be plotted at the center of ellipses ? Default is TRUE.</p></td>
     </tr>
     <tr>
-      <th>min.n</th>
-      <td><p>integer. Minimal number of points for a tile to be drawn. By default, every tiles are drawn.</p></td>
+      <th>col</th>
+      <td><p>Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses <code>scale_color_grey()</code>), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of <code>ggplot2</code> is used.</p></td>
     </tr>
     <tr>
-      <th>pal</th>
-      <td><p>character string. Name of a diverging ColorBrewer palette. Default is "RdYlBu".</p></td>
+      <th>size</th>
+      <td><p>Size of the lines of the ellipses. Default is 0.5.</p></td>
     </tr>
     <tr>
-      <th>limits</th>
-      <td><p>numerical vector of length 2. Lower and upper limits of the correlation coefficients for the color scale. Should be centered around 0 for a better view of under/over-representations (for example c(-0.2,0.2)). By default, the maximal absolute value of the correlation coefficients is used.</p></td>
+      <th>points</th>
+      <td><p>If TRUE (default), the points are coloured according to their subcloud.</p></td>
     </tr>
     <tr>
       <th>legend</th>
@@ -171,7 +171,8 @@ xbins<span class='op'>=</span><span class='fl'>20</span>, ybins<span class='op'>
     <p>a ggplot object</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>For each tile of the heatmap, a correlation coefficient is computed between the supplementary variable and the fact of belonging to the tile. This gives a view of the under/over-representation of the supplementary variable according to the position in the cloud of individuals.</p>
+    <p>If kappa=2, ellipses are called "concentration" ellipses and, for a normally shaped subcloud, contain 86.47 percents of the points of the subcloud. If kappa=1, ellipses are "indicator" ellipses and contain 39.35 percents of the points of the subcloud. If kappa=1.177, ellipses are "median" ellipses and contain 50 percents of the points of the subcloud.
+This function has to be used after the cloud of individuals has been drawn.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Le Roux B. and Rouanet H., <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).</p>
@@ -181,27 +182,22 @@ xbins<span class='op'>=</span><span class='fl'>20</span>, ybins<span class='op'>
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_ellipses.html'>ggadd_ellipses</a></code>, <code><a href='ggadd_density.html'>ggadd_density</a></code></p></div>
+    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggadd_corr.html'>ggadd_corr</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_density.html'>ggadd_density</a></code>, <code><a href='ggadd_ellipses.html'>ggadd_ellipses</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Taste' example data set</span>
+    <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Music' example data set</span>
 <span class='co'>## ignoring every 'NA' (i.e. 'not available') categories,</span>
 <span class='co'>## draws the cloud of categories</span>
-<span class='co'>## and adds a correlation heatmap for Age=50+.</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>)</span>
-<span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>]</span><span class='op'>)</span>
+<span class='co'>## and adds concentration ellipses for Age.</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
+<span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
 #&gt;  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     
 #&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
-#&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA"  "Comedy.No"    
-#&gt; [17] "Comedy.Yes"    "Comedy.NA"     "Crime.No"      "Crime.Yes"    
-#&gt; [21] "Crime.NA"      "Animation.No"  "Animation.Yes" "Animation.NA" 
-#&gt; [25] "SciFi.No"      "SciFi.Yes"     "SciFi.NA"      "Love.No"      
-#&gt; [29] "Love.Yes"      "Love.NA"       "Musical.No"    "Musical.Yes"  
-#&gt; [33] "Musical.NA"   </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span>,<span class='fl'>18</span>,<span class='fl'>21</span>,<span class='fl'>24</span>,<span class='fl'>27</span>,<span class='fl'>30</span>,<span class='fl'>33</span><span class='op'>)</span><span class='op'>)</span>
+#&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA" </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggcloud_indiv.html'>ggcloud_indiv</a></span><span class='op'>(</span><span class='va'>mca</span>, col<span class='op'>=</span><span class='st'>'lightgrey'</span><span class='op'>)</span>
-<span class='fu'>ggadd_corr</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, var<span class='op'>=</span><span class='va'>Taste</span><span class='op'>$</span><span class='va'>Age</span>, cat<span class='op'>=</span><span class='st'>"50+"</span>, xbins<span class='op'>=</span><span class='fl'>10</span>, ybins<span class='op'>=</span><span class='fl'>10</span><span class='op'>)</span>
-</div><div class='img'><img src='ggadd_corr-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>ggadd_kellipses</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, <span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
+</div><div class='img'><img src='ggadd_kellipses-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

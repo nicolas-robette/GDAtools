@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds concentration ellipses to a correspondence analysis graph. — conc.ellipse • GDAtools</title>
+<title>Adds concentration ellipses to a cloud of individuals. — conc.ellipse • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Adds concentration ellipses to a correspondence analysis graph. — conc.ellipse" />
-<meta property="og:description" content="Adds concentration ellipses to the individuals factor map of a correspondence analysis." />
+<meta property="og:title" content="Adds concentration ellipses to a cloud of individuals. — conc.ellipse" />
+<meta property="og:description" content="Adds inertia ellipses to the cloud of individuals of a MCA. By default, concentration ellipses are plotted." />
 
 
 
@@ -105,16 +105,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds concentration ellipses to a correspondence analysis graph.</h1>
+    <h1>Adds concentration ellipses to a cloud of individuals.</h1>
     
     <div class="hidden name"><code>conc.ellipse.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Adds concentration ellipses to the individuals factor map of a correspondence analysis.</p>
+    <p>Adds inertia ellipses to the cloud of individuals of a MCA. By default, concentration ellipses are plotted.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>conc.ellipse</span><span class='op'>(</span><span class='va'>resmca</span>, <span class='va'>var</span>, sel <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>varb</span><span class='op'>)</span><span class='op'>)</span>, axes <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>,
+    <pre class="usage"><span class='fu'>conc.ellipse</span><span class='op'>(</span><span class='va'>resmca</span>, <span class='va'>var</span>, sel <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nlevels.html'>nlevels</a></span><span class='op'>(</span><span class='va'>var</span><span class='op'>)</span>, axes <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>,
+ kappa<span class='op'>=</span><span class='fl'>2</span>,
  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>rainbow</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>sel</span><span class='op'>)</span><span class='op'>)</span>, pcol <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/palettes.html'>rainbow</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>sel</span><span class='op'>)</span><span class='op'>)</span>, pcex <span class='op'>=</span> <span class='fl'>0.2</span>,
  lty <span class='op'>=</span> <span class='fl'>1</span>, lwd <span class='op'>=</span> <span class='fl'>1</span>, tcex <span class='op'>=</span> <span class='fl'>1</span>, text.lab <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
@@ -136,6 +137,10 @@
     <tr>
       <th>axes</th>
       <td><p>length 2 vector specifying the components to plot (default is c(1,2))</p></td>
+    </tr>
+    <tr>
+      <th>kappa</th>
+      <td><p>numeric. The kappa value (i.e. "index") of the inertia ellipses. By default, kappa = 2, which means that concentration ellipses are plotted.</p></td>
     </tr>
     <tr>
       <th>col</th>
@@ -169,7 +174,8 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function has to be used after the cloud of individuals has been drawn.</p>
+    <p>If kappa=2, ellipses are called "concentration" ellipses and, for a normally shaped subcloud, contain 86.47 percents of the points of the subcloud. If kappa=1, ellipses are "indicator" ellipses and contain 39.35 percents of the points of the subcloud. If kappa=1.177, ellipses are "median" ellipses and contain 50 percents of the points of the subcloud.
+This function has to be used after the cloud of individuals has been drawn.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Le Roux B. and Rouanet H., <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).</p>

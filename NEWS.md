@@ -4,21 +4,33 @@
 
 * `ggadd_density()`: adds a density layer to the cloud of individuals for a category of a supplementary variable
 * `ggadd_corr()`: adds a heatmap of under/over-representation of a supplementary variable to a cloud of individuals
+* `ggadd_kellipses()` : adds concentration ellipses to a cloud of individuals, using ggplot
 * `ggassoc_crosstab()` : plots counts and associations of a crosstabulation, using ggplot
 * `ggassoc_phiplot()` : bar plot of phi measures of association of a crosstabulation, using ggplot
 * `ggassoc_boxplot()` : displays of boxplot and combines it with a violin plot, using ggplot
 * `ggassoc_scatter()` : scatter plot with a smoothing line, using ggplot
-* `dimdescr()` : replaces `dimdesc.MCA()`. It works with `condesc()` instead of FactoMineR::condes() and silently takes row weights into account.
+* `dimdescr()` : works with `condesc()` instead of `FactoMineR::condes()` and takes row weights into account.
+* `dimtypicality()` : computes typicality tests for supplementary variables
+
+## Removed functions :
+
+* `dimdesc.MCA()` : replaced by `dimdescr()`
+* `dimvtest()` : use `dimtypicality()` instead
 
 ## Changes in existing functions
 
 * `ggcloud_indiv()` : the density of points can be represented as an additional layer through contours or hexagon bins
-* `catdesc()` and `condesc()` : now allow weights
+* `catdesc()` and `condesc()` : allow weights
 * `catdesc()` and `condesc()` : new nperm and distrib options
 * `assoc.twocont()`, `assoc.twocat()` and `assoc.catcont()` : nperm option is set to NULL by default
 * `darma()` : nperm is set to 100 by default
 * `ggcloud_variables()` and `ggcloud_indiv()` : a few changes in the theme (grids are removed, etc.)
 * `ggcloud_indiv()` and `ggadd_ellipses()` : new size option
+* `homog.test()` : gives the p-values in addition to the test statistics
+* `dimeta2()` : l argument renamed to vars and n argument removed
+* `varsup()` : also computes typicality tests and correlation coefficients
+* `conc.ellipse()` : several kinds of inertia ellipses can be plotted thanks to the kappa option
+* `ggadd_ellipses()` : level is set to 0.05 by default, which corresponds to conventional confidence ellipses. Option 'points' to choose to color the points or not.
 
 ## Bug fixes
 
@@ -46,14 +58,14 @@
   
 ## Changes in existing functions
 
-* `wtable()` : can now compute percentages (`prop.wtable()` is removed)
+* `wtable()` : can compute percentages (`prop.wtable()` is removed)
 * `assoc.twocat()` : Cramer's V instead of V-squared, permutation p-values, Pearson residuals, percentage of maximum deviation from independence, summary data frame
 * `assoc.twocat()` : better handling of NAs
 * `assoc.twocat()` : faster computation
 * `assoc.catcont()` : permutation p-values
 * `ggcloud_variables()` : improved color management
 * `pem()` : one can choose to sort rows and columns or not
-* weights are now allowed in functions `phi.table()`, `pem()`, `assoc.twocat()`, `assoc.twocont()`, `assoc.catcont()` and `assoc.yx()`
+* weights are allowed in functions `phi.table()`, `pem()`, `assoc.twocat()`, `assoc.twocont()`, `assoc.catcont()` and `assoc.yx()`
 
 
 
@@ -64,12 +76,12 @@
 * `assoc.twocat()`: measures the association between two categorical variables
 * `assoc.catcont()`: measures the association between a categorical variable and a continuous variable
 * `catdesc()`: measures the association between a categorical variable and some continuous and/or categorical variables
-* `condesc()`: measures the association between a continuous variable and some continuous and/or categorical variables}
+* `condesc()`: measures the association between a continuous variable and some continuous and/or categorical variables
 * `ggcloud_indiv()`: cloud of individuals, using ggplot
 * `ggcloud_variables()`: cloud of variables, using ggplot
 * `ggadd_supvar()`: adds a supplementary variable to a cloud of variables, using ggplot
 * `ggadd_interaction()`: adds the interaction between two variables to a cloud of variables, using ggplot
-* `ggadd_ellipses()`: adds concentration ellipses to a cloud of individuals, using ggplot
+* `ggadd_ellipses()`: adds confidence ellipses to a cloud of individuals, using ggplot
 
 ## Changes in existing functions
 

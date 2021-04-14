@@ -1,7 +1,7 @@
 \name{ggadd_corr}
 \alias{ggadd_corr}
 
-\title{Adds a heatmap of under/over-representation of a supplementary variable to the cloud of individuals}
+\title{Adds a heatmap of under/over-representation of a supplementary variable to the cloud of individuals with ggplot2}
 
 \description{
 Adds a heatmap representing the correlation coefficients to a MCA cloud of individuals, for a numerical supplementary variable or one category of a categorical supplementary variable, using the ggplot2 framework.

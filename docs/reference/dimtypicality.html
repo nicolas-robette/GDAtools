@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds confidence ellipses to a MCA cloud of individuals with ggplot2 — ggadd_ellipses • GDAtools</title>
+<title>Typicality tests for supplementary variables of a MCA — dimtypicality • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Adds confidence ellipses to a MCA cloud of individuals with ggplot2 — ggadd_ellipses" />
-<meta property="og:description" content="Adds confidence ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework." />
+<meta property="og:title" content="Typicality tests for supplementary variables of a MCA — dimtypicality" />
+<meta property="og:description" content="Computes typicality tests for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA." />
 
 
 
@@ -105,73 +105,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds confidence ellipses to a MCA cloud of individuals with ggplot2</h1>
+    <h1>Typicality tests for supplementary variables of a MCA</h1>
     
-    <div class="hidden name"><code>ggadd_ellipses.Rd</code></div>
+    <div class="hidden name"><code>dimtypicality.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Adds confidence ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework.</p>
+    <p>Computes typicality tests for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ggadd_ellipses</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>resmca</span>, <span class='va'>var</span>, sel<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nlevels.html'>nlevels</a></span><span class='op'>(</span><span class='va'>var</span><span class='op'>)</span>, axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>,
-level<span class='op'>=</span><span class='fl'>0.05</span>, label<span class='op'>=</span><span class='cn'>TRUE</span>, col<span class='op'>=</span><span class='cn'>NULL</span>, size<span class='op'>=</span><span class='fl'>0.5</span>, points<span class='op'>=</span><span class='cn'>TRUE</span>, legend<span class='op'>=</span><span class='st'>'right'</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>dimtypicality</span><span class='op'>(</span><span class='va'>resmca</span>, <span class='va'>vars</span>, dim <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>resmca</span><span class='op'>$</span><span class='va'>call</span><span class='op'>$</span><span class='va'>ncp</span>, max.pval<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>p</th>
-      <td><p>ggplot object with the cloud of variables</p></td>
-    </tr>
-    <tr>
       <th>resmca</th>
-      <td><p>object of class <code>'MCA'</code>, <code>'speMCA'</code> or <code>'csMCA'</code>.</p></td>
+      <td><p>object of class <code>'MCA'</code>, <code>'speMCA'</code>, <code>'csMCA'</code> or <code>'stMCA'</code></p></td>
     </tr>
     <tr>
-      <th>var</th>
-      <td><p>Factor. The categorical variable used to plot ellipses.</p></td>
+      <th>vars</th>
+      <td><p>a data frame of supplementary variables</p></td>
     </tr>
     <tr>
-      <th>sel</th>
-      <td><p>numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories)</p></td>
+      <th>dim</th>
+      <td><p>the axes for which typicality tests are computed. Default is 1:ncp</p></td>
     </tr>
     <tr>
-      <th>axes</th>
-      <td><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></td>
-    </tr>
-    <tr>
-      <th>level</th>
-      <td><p>The level at which to draw an ellipse (see <code>stat_ellipse</code>). Default is 0.05, which means 95 percents confidence ellipses are plotted.</p></td>
-    </tr>
-    <tr>
-      <th>label</th>
-      <td><p>Logical. Should the labels of the categories be plotted at the center of ellipses ? Default is TRUE.</p></td>
-    </tr>
-    <tr>
-      <th>col</th>
-      <td><p>Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses <code>scale_color_grey()</code>), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of <code>ggplot2</code> is used.</p></td>
-    </tr>
-    <tr>
-      <th>size</th>
-      <td><p>Size of the lines of the ellipses. Default is 0.5.</p></td>
-    </tr>
-    <tr>
-      <th>points</th>
-      <td><p>If TRUE (default), the points are coloured according to their subcloud.</p></td>
-    </tr>
-    <tr>
-      <th>legend</th>
-      <td><p>the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.</p></td>
+      <th>max.pval</th>
+      <td><p>only categories with a p-value lower or equal to max.pval are displayed. By default, all categories are displayed</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a ggplot object</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>A confidence ellipse aims at measuring how the "true" mean point of a category differs from its observed mean point. This is achieved by constructing a confidence zone around the observed mean point. If we choose a conventional level alpha (e.g. 0.05), a (1 - alpha) (e.g. 95 percents) confidence zone is defined as the set of possible mean points that are not significantly different from the observed mean point.</p>
+    <p>Returns a list of data frames giving the test statistics and p-values of the supplementary categories for the different axes.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Le Roux B. and Rouanet H., <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).</p>
@@ -181,22 +149,59 @@ level<span class='op'>=</span><span class='fl'>0.05</span>, label<span class='op
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggadd_corr.html'>ggadd_corr</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_density.html'>ggadd_density</a></code>, <code><a href='ggadd_kellipses.html'>ggadd_kellipses</a></code></p></div>
+    <div class='dont-index'><p><code>dimdesc</code>, <code><a href='dimdescr.html'>dimdescr</a></code>, <code><a href='dimeta2.html'>dimeta2</a></code>, <code><a href='dimcontrib.html'>dimcontrib</a></code>, <code>condes</code>, <code><a href='speMCA.html'>speMCA</a></code>, <code><a href='csMCA.html'>csMCA</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Music' example data set</span>
 <span class='co'>## ignoring every 'NA' (i.e. 'not available') categories,</span>
-<span class='co'>## draws the cloud of categories</span>
-<span class='co'>## and adds confidence ellipses for Age.</span>
+<span class='co'>## and then computes the typicality tests for Gender and Age (axes 1 and 2).</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
 <span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
 #&gt;  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     
 #&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
 #&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA" </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggcloud_indiv.html'>ggcloud_indiv</a></span><span class='op'>(</span><span class='va'>mca</span>, col<span class='op'>=</span><span class='st'>'lightgrey'</span><span class='op'>)</span>
-<span class='fu'>ggadd_ellipses</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, <span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
-</div><div class='img'><img src='ggadd_ellipses-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>dimtypicality</span><span class='op'>(</span><span class='va'>mca</span>, <span class='va'>Music</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Gender"</span>,<span class='st'>"Age"</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $dim.1
+#&gt;              weight test.stat      p.value
+#&gt; Age.15-24        78  4.282548 1.847653e-05
+#&gt; Gender.Men      253  0.055648 9.556222e-01
+#&gt; Gender.Women    247 -0.055648 9.556222e-01
+#&gt; Age.25-49       204 -0.936718 3.489036e-01
+#&gt; Age.50+         218 -2.205306 2.743263e-02
+#&gt; 
+#&gt; $dim.2
+#&gt;              weight test.stat      p.value
+#&gt; Age.50+         218  9.834220 0.000000e+00
+#&gt; Gender.Women    247  2.153442 3.128396e-02
+#&gt; Gender.Men      253 -2.153442 3.128396e-02
+#&gt; Age.25-49       204 -4.378377 1.195664e-05
+#&gt; Age.15-24        78 -7.509471 5.928591e-14
+#&gt; 
+#&gt; $dim.3
+#&gt;              weight test.stat     p.value
+#&gt; Age.15-24        78  3.010171 0.002611006
+#&gt; Gender.Men      253  1.003786 0.315481774
+#&gt; Age.50+         218 -0.263555 0.792122838
+#&gt; Gender.Women    247 -1.003786 0.315481774
+#&gt; Age.25-49       204 -1.956531 0.050402634
+#&gt; 
+#&gt; $dim.4
+#&gt;              weight test.stat    p.value
+#&gt; Age.50+         218  1.877042 0.06051234
+#&gt; Gender.Men      253  0.255574 0.79827980
+#&gt; Age.15-24        78  0.020778 0.98342275
+#&gt; Gender.Women    247 -0.255574 0.79827980
+#&gt; Age.25-49       204 -1.909278 0.05622624
+#&gt; 
+#&gt; $dim.5
+#&gt;              weight test.stat   p.value
+#&gt; Age.15-24        78  1.009972 0.3125087
+#&gt; Gender.Men      253  0.337862 0.7354672
+#&gt; Age.25-49       204  0.072764 0.9419939
+#&gt; Gender.Women    247 -0.337862 0.7354672
+#&gt; Age.50+         218 -0.811141 0.4172847
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
