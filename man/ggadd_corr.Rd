@@ -9,7 +9,7 @@ Adds a heatmap representing the correlation coefficients to a MCA cloud of indiv
 
 \usage{
 ggadd_corr(p, resmca, var, cat=levels(var)[1], axes=c(1,2),
-xbins=20, ybins=20, min.n=1, pal="RdYlBu", limits=NULL)
+xbins=20, ybins=20, min.n=1, pal="RdYlBu", limits=NULL, legend="right")
 }
 
 \arguments{
@@ -23,6 +23,7 @@ xbins=20, ybins=20, min.n=1, pal="RdYlBu", limits=NULL)
   \item{min.n}{integer. Minimal number of points for a tile to be drawn. By default, every tiles are drawn.}
   \item{pal}{character string. Name of a diverging ColorBrewer palette. Default is "RdYlBu".}
   \item{limits}{numerical vector of length 2. Lower and upper limits of the correlation coefficients for the color scale. Should be centered around 0 for a better view of under/over-representations (for example c(-0.2,0.2)). By default, the maximal absolute value of the correlation coefficients is used.}
+  \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.}
 }
 
 \value{a ggplot object}

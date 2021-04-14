@@ -1,5 +1,5 @@
 ggadd_corr <- function(p, resmca, var, cat=levels(var)[1], axes=c(1,2),
-                       xbins=20, ybins=20, min.n=1, pal="RdYlBu", limits=NULL) {
+                       xbins=20, ybins=20, min.n=1, pal="RdYlBu", limits=NULL, legend="right") {
 
   df <- as.data.frame(resmca$ind$coord[,axes])
   names(df) <- c("dim.1","dim.2")
@@ -37,7 +37,8 @@ ggadd_corr <- function(p, resmca, var, cat=levels(var)[1], axes=c(1,2),
   if(is.null(limits)) limits <- c(-1,1)*max(abs(df$cor))
   
   p <- p + ggplot2::geom_tile(data=df, ggplot2::aes(x=.data$pt_dim1, y=.data$pt_dim2, fill=.data$cor)) +
-           ggplot2::scale_fill_distiller(type="div", palette=pal, limits=limits)
+           ggplot2::scale_fill_distiller(type="div", palette=pal, limits=limits) +
+           ggplot2::theme(legend.position=legend)
   
   return(p)
 }
