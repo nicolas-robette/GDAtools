@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adds concentration ellipses to a MCA cloud of individuals with ggplot2 — ggadd_ellipses • GDAtools</title>
+<title>Adds confidence ellipses to a MCA cloud of individuals with ggplot2 — ggadd_ellipses • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Adds concentration ellipses to a MCA cloud of individuals with ggplot2 — ggadd_ellipses" />
-<meta property="og:description" content="Adds concentration ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework." />
+<meta property="og:title" content="Adds confidence ellipses to a MCA cloud of individuals with ggplot2 — ggadd_ellipses" />
+<meta property="og:description" content="Adds confidence ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework." />
 
 
 
@@ -111,17 +111,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Adds concentration ellipses to a MCA cloud of individuals with ggplot2</h1>
+    <h1>Adds confidence ellipses to a MCA cloud of individuals with ggplot2</h1>
     
     <div class="hidden name"><code>ggadd_ellipses.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Adds concentration ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework.</p>
+    <p>Adds confidence ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ggadd_ellipses</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>resmca</span>, <span class='va'>var</span>, sel<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nlevels.html'>nlevels</a></span><span class='op'>(</span><span class='va'>var</span><span class='op'>)</span>, axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>,
-label<span class='op'>=</span><span class='cn'>TRUE</span>, col<span class='op'>=</span><span class='cn'>NULL</span>, legend<span class='op'>=</span><span class='st'>'right'</span>, level<span class='op'>=</span><span class='fl'>0.86</span>, size<span class='op'>=</span><span class='fl'>0.5</span>, alpha<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span></pre>
+level<span class='op'>=</span><span class='fl'>0.05</span>, label<span class='op'>=</span><span class='cn'>TRUE</span>, col<span class='op'>=</span><span class='cn'>NULL</span>, size<span class='op'>=</span><span class='fl'>0.5</span>, points<span class='op'>=</span><span class='cn'>TRUE</span>, legend<span class='op'>=</span><span class='st'>'right'</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -147,34 +147,37 @@ label<span class='op'>=</span><span class='cn'>TRUE</span>, col<span class='op'>
       <td><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></td>
     </tr>
     <tr>
+      <th>level</th>
+      <td><p>The level at which to draw an ellipse (see <code>stat_ellipse</code>). Default is 0.05, which means 95 percents confidence ellipses are plotted.</p></td>
+    </tr>
+    <tr>
       <th>label</th>
-      <td><p>Logical. Should the labels of teh categories be plotted at the center of ellipses ? Default is TRUE.</p></td>
+      <td><p>Logical. Should the labels of the categories be plotted at the center of ellipses ? Default is TRUE.</p></td>
     </tr>
     <tr>
       <th>col</th>
       <td><p>Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses <code>scale_color_grey()</code>), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of <code>ggplot2</code> is used.</p></td>
     </tr>
     <tr>
+      <th>size</th>
+      <td><p>Size of the lines of the ellipses. Default is 0.5.</p></td>
+    </tr>
+    <tr>
+      <th>points</th>
+      <td><p>If TRUE (default), the points are coloured according to their subcloud.</p></td>
+    </tr>
+    <tr>
       <th>legend</th>
       <td><p>the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.</p></td>
-    </tr>
-    <tr>
-      <th>level</th>
-      <td><p>The level at which to draw an ellipse (see <code>stat_ellipse</code>). Default is 0.86.</p></td>
-    </tr>
-    <tr>
-      <th>size</th>
-      <td><p>Size of the points of individuals. Default is 0.5.</p></td>
-    </tr>
-    <tr>
-      <th>alpha</th>
-      <td><p>Transparency of the points of individuals. Default is 0.5.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a ggplot object</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>A confidence ellipse aims at measuring how the "true" mean point of a category differs from its observed mean point. This is achieved by constructing a confidence zone around the observed mean point. If we choose a conventional level alpha (e.g. 0.05), a (1 - alpha) (e.g. 95 percents) confidence zone is defined as the set of possible mean points that are not significantly different from the observed mean point.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Le Roux B. and Rouanet H., <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).</p>
@@ -184,13 +187,13 @@ label<span class='op'>=</span><span class='cn'>TRUE</span>, col<span class='op'>
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggadd_corr.html'>ggadd_corr</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_density.html'>ggadd_density</a></code></p></div>
+    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggadd_corr.html'>ggadd_corr</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_density.html'>ggadd_density</a></code>, <code><a href='ggadd_kellipses.html'>ggadd_kellipses</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Music' example data set</span>
 <span class='co'>## ignoring every 'NA' (i.e. 'not available') categories,</span>
 <span class='co'>## draws the cloud of categories</span>
-<span class='co'>## and adds concentration ellipses for Age.</span>
+<span class='co'>## and adds confidence ellipses for Age.</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
 <span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       

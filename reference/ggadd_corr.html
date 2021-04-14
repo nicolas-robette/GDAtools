@@ -121,7 +121,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>ggadd_corr</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>resmca</span>, <span class='va'>var</span>, cat<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/levels.html'>levels</a></span><span class='op'>(</span><span class='va'>var</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>,
-xbins<span class='op'>=</span><span class='fl'>20</span>, ybins<span class='op'>=</span><span class='fl'>20</span>, min.n<span class='op'>=</span><span class='fl'>1</span>, pal<span class='op'>=</span><span class='st'>"RdYlBu"</span>, limits<span class='op'>=</span><span class='cn'>NULL</span><span class='op'>)</span></pre>
+xbins<span class='op'>=</span><span class='fl'>20</span>, ybins<span class='op'>=</span><span class='fl'>20</span>, min.n<span class='op'>=</span><span class='fl'>1</span>, pal<span class='op'>=</span><span class='st'>"RdYlBu"</span>, limits<span class='op'>=</span><span class='cn'>NULL</span>, legend<span class='op'>=</span><span class='st'>"right"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,6 +165,10 @@ xbins<span class='op'>=</span><span class='fl'>20</span>, ybins<span class='op'>
     <tr>
       <th>limits</th>
       <td><p>numerical vector of length 2. Lower and upper limits of the correlation coefficients for the color scale. Should be centered around 0 for a better view of under/over-representations (for example c(-0.2,0.2)). By default, the maximal absolute value of the correlation coefficients is used.</p></td>
+    </tr>
+    <tr>
+      <th>legend</th>
+      <td><p>the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.</p></td>
     </tr>
     </table>
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Describes the eta2 of a list of supplementary variables for the axes of MCA and variants of MCA — dimeta2 • GDAtools</title>
+<title>Typicality tests for supplementary variables of a MCA — dimtypicality • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Describes the eta2 of a list of supplementary variables for the axes of MCA and variants of MCA — dimeta2" />
-<meta property="og:description" content="Computes eta2 for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA." />
+<meta property="og:title" content="Typicality tests for supplementary variables of a MCA — dimtypicality" />
+<meta property="og:description" content="Computes typicality tests for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA." />
 
 
 
@@ -111,16 +111,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Describes the eta2 of a list of supplementary variables for the axes of MCA and variants of MCA</h1>
+    <h1>Typicality tests for supplementary variables of a MCA</h1>
     
-    <div class="hidden name"><code>dimeta2.Rd</code></div>
+    <div class="hidden name"><code>dimtypicality.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Computes eta2 for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.</p>
+    <p>Computes typicality tests for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dimeta2</span><span class='op'>(</span><span class='va'>resmca</span>, <span class='va'>vars</span>, dim <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>resmca</span><span class='op'>$</span><span class='va'>call</span><span class='op'>$</span><span class='va'>ncp</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>dimtypicality</span><span class='op'>(</span><span class='va'>resmca</span>, <span class='va'>vars</span>, dim <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>resmca</span><span class='op'>$</span><span class='va'>call</span><span class='op'>$</span><span class='va'>ncp</span>, max.pval<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,13 +135,17 @@
     </tr>
     <tr>
       <th>dim</th>
-      <td><p>the axes for which eta2 are computed. Default is 1:ncp</p></td>
+      <td><p>the axes for which typicality tests are computed. Default is 1:ncp</p></td>
+    </tr>
+    <tr>
+      <th>max.pval</th>
+      <td><p>only categories with a p-value lower or equal to max.pval are displayed. By default, all categories are displayed</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a data frame with supplementary variables as rows and axes as columns.</p>
+    <p>Returns a list of data frames giving the test statistics and p-values of the supplementary categories for the different axes.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Le Roux B. and Rouanet H., <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).</p>
@@ -151,22 +155,59 @@
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>dimdesc</code>, <code><a href='dimdescr.html'>dimdescr</a></code>, <code><a href='dimcontrib.html'>dimcontrib</a></code>, <code>condes</code>, <code><a href='speMCA.html'>speMCA</a></code>, <code><a href='csMCA.html'>csMCA</a></code>, <code><a href='dimtypicality.html'>dimtypicality</a></code></p></div>
+    <div class='dont-index'><p><code>dimdesc</code>, <code><a href='dimdescr.html'>dimdescr</a></code>, <code><a href='dimeta2.html'>dimeta2</a></code>, <code><a href='dimcontrib.html'>dimcontrib</a></code>, <code>condes</code>, <code><a href='speMCA.html'>speMCA</a></code>, <code><a href='csMCA.html'>csMCA</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Music' example data set</span>
 <span class='co'>## ignoring every 'NA' (i.e. 'not available') categories,</span>
-<span class='co'>## and then describes the eta2 for Gender and Age (axes 1 and 2).</span>
+<span class='co'>## and then computes the typicality tests for Gender and Age (axes 1 and 2).</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
 <span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
 #&gt;  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     
 #&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
 #&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA" </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>dimeta2</span><span class='op'>(</span><span class='va'>mca</span>, <span class='va'>Music</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Gender"</span>,<span class='st'>"Age"</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;        dim.1 dim.2 dim.3 dim.4 dim.5
-#&gt; Gender   0.0   0.9   0.2   0.0   0.0
-#&gt; Age      3.8  22.7   2.0   0.8   0.2</div></pre>
+<span class='fu'>dimtypicality</span><span class='op'>(</span><span class='va'>mca</span>, <span class='va'>Music</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Gender"</span>,<span class='st'>"Age"</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $dim.1
+#&gt;              weight test.stat      p.value
+#&gt; Age.15-24        78  4.282548 1.847653e-05
+#&gt; Gender.Men      253  0.055648 9.556222e-01
+#&gt; Gender.Women    247 -0.055648 9.556222e-01
+#&gt; Age.25-49       204 -0.936718 3.489036e-01
+#&gt; Age.50+         218 -2.205306 2.743263e-02
+#&gt; 
+#&gt; $dim.2
+#&gt;              weight test.stat      p.value
+#&gt; Age.50+         218  9.834220 0.000000e+00
+#&gt; Gender.Women    247  2.153442 3.128396e-02
+#&gt; Gender.Men      253 -2.153442 3.128396e-02
+#&gt; Age.25-49       204 -4.378377 1.195664e-05
+#&gt; Age.15-24        78 -7.509471 5.928591e-14
+#&gt; 
+#&gt; $dim.3
+#&gt;              weight test.stat     p.value
+#&gt; Age.15-24        78  3.010171 0.002611006
+#&gt; Gender.Men      253  1.003786 0.315481774
+#&gt; Age.50+         218 -0.263555 0.792122838
+#&gt; Gender.Women    247 -1.003786 0.315481774
+#&gt; Age.25-49       204 -1.956531 0.050402634
+#&gt; 
+#&gt; $dim.4
+#&gt;              weight test.stat    p.value
+#&gt; Age.50+         218  1.877042 0.06051234
+#&gt; Gender.Men      253  0.255574 0.79827980
+#&gt; Age.15-24        78  0.020778 0.98342275
+#&gt; Gender.Women    247 -0.255574 0.79827980
+#&gt; Age.25-49       204 -1.909278 0.05622624
+#&gt; 
+#&gt; $dim.5
+#&gt;              weight test.stat   p.value
+#&gt; Age.15-24        78  1.009972 0.3125087
+#&gt; Gender.Men      253  0.337862 0.7354672
+#&gt; Age.25-49       204  0.072764 0.9419939
+#&gt; Gender.Women    247 -0.337862 0.7354672
+#&gt; Age.50+         218 -0.811141 0.4172847
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

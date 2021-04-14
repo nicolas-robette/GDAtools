@@ -144,7 +144,9 @@
   <dt>coord</dt><dd><p>data frame of categories coordinates</p></dd>
   <dt>cos2</dt><dd><p>data frame of categories square cosine</p></dd>
   <dt>var</dt><dd><p>data frame of categories within variances, variance between and within categories and variable square correlation ratio (eta2)</p></dd>
-  <dt>v.test</dt><dd><p>data frame of categories test-values</p></dd>
+  <dt>typic</dt><dd><p>data frame of categories typicality test statistics</p></dd>
+  <dt>pval</dt><dd><p>data frame of categories p-values from typicality test statistics</p></dd>
+  <dt>cor</dt><dd><p>data frame of categories correlation coefficients</p></dd>  
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -197,11 +199,23 @@
 #&gt; total   0.278521 0.217997 0.203157 0.171452 0.128953
 #&gt; eta2    0.037558 0.227433 0.019946 0.008308 0.002475
 #&gt; 
-#&gt; $v.test
+#&gt; $typic
 #&gt;           dim.1     dim.2     dim.3     dim.4     dim.5
 #&gt; 15-24  4.282548 -7.509471  3.010171  0.020778  1.009972
 #&gt; 25-49 -0.936718 -4.378377 -1.956531 -1.909278  0.072764
 #&gt; 50+   -2.205306  9.834220 -0.263555  1.877042 -0.811141
+#&gt; 
+#&gt; $pval
+#&gt;          dim.1   dim.2    dim.3    dim.4    dim.5
+#&gt; 15-24 0.000018 0.0e+00 0.002611 0.983423 0.312509
+#&gt; 25-49 0.348903 1.2e-05 0.050403 0.056226 0.941994
+#&gt; 50+   0.027433 0.0e+00 0.792123 0.060512 0.417285
+#&gt; 
+#&gt; $cor
+#&gt;        dim.1  dim.2  dim.3  dim.4  dim.5
+#&gt; 15-24  0.192 -0.336  0.135  0.001  0.045
+#&gt; 25-49 -0.042 -0.196 -0.088 -0.085  0.003
+#&gt; 50+   -0.099  0.440 -0.012  0.084 -0.036
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

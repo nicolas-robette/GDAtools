@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Describes the eta2 of a list of supplementary variables for the axes of MCA and variants of MCA — dimeta2 • GDAtools</title>
+<title>Adds k-inertia ellipses to a MCA cloud of individuals with ggplot2 — ggadd_kellipses • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Describes the eta2 of a list of supplementary variables for the axes of MCA and variants of MCA — dimeta2" />
-<meta property="og:description" content="Computes eta2 for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA." />
+<meta property="og:title" content="Adds k-inertia ellipses to a MCA cloud of individuals with ggplot2 — ggadd_kellipses" />
+<meta property="og:description" content="Adds k-inertia ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework. By default, concentration ellipses are plotted." />
 
 
 
@@ -111,37 +111,74 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Describes the eta2 of a list of supplementary variables for the axes of MCA and variants of MCA</h1>
+    <h1>Adds k-inertia ellipses to a MCA cloud of individuals with ggplot2</h1>
     
-    <div class="hidden name"><code>dimeta2.Rd</code></div>
+    <div class="hidden name"><code>ggadd_kellipses.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Computes eta2 for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.</p>
+    <p>Adds k-inertia ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework. By default, concentration ellipses are plotted.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dimeta2</span><span class='op'>(</span><span class='va'>resmca</span>, <span class='va'>vars</span>, dim <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='va'>resmca</span><span class='op'>$</span><span class='va'>call</span><span class='op'>$</span><span class='va'>ncp</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ggadd_kellipses</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>resmca</span>, <span class='va'>var</span>, sel<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nlevels.html'>nlevels</a></span><span class='op'>(</span><span class='va'>var</span><span class='op'>)</span>, axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>,
+kappa<span class='op'>=</span><span class='fl'>2</span>, label<span class='op'>=</span><span class='cn'>TRUE</span>, col<span class='op'>=</span><span class='cn'>NULL</span>, size<span class='op'>=</span><span class='fl'>0.5</span>, points<span class='op'>=</span><span class='cn'>TRUE</span>, legend<span class='op'>=</span><span class='st'>'right'</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>p</th>
+      <td><p>ggplot object with the cloud of variables</p></td>
+    </tr>
+    <tr>
       <th>resmca</th>
-      <td><p>object of class <code>'MCA'</code>, <code>'speMCA'</code>, <code>'csMCA'</code> or <code>'stMCA'</code></p></td>
+      <td><p>object of class <code>'MCA'</code>, <code>'speMCA'</code> or <code>'csMCA'</code>.</p></td>
     </tr>
     <tr>
-      <th>vars</th>
-      <td><p>a data frame of supplementary variables</p></td>
+      <th>var</th>
+      <td><p>Factor. The categorical variable used to plot ellipses.</p></td>
     </tr>
     <tr>
-      <th>dim</th>
-      <td><p>the axes for which eta2 are computed. Default is 1:ncp</p></td>
+      <th>sel</th>
+      <td><p>numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories)</p></td>
+    </tr>
+    <tr>
+      <th>axes</th>
+      <td><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></td>
+    </tr>
+    <tr>
+      <th>kappa</th>
+      <td><p>numeric. The kappa value (i.e. "index") of the inertia ellipses. By default, kappa = 2, which means that concentration ellipses are plotted.</p></td>
+    </tr>
+    <tr>
+      <th>label</th>
+      <td><p>Logical. Should the labels of the categories be plotted at the center of ellipses ? Default is TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>col</th>
+      <td><p>Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses <code>scale_color_grey()</code>), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of <code>ggplot2</code> is used.</p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>Size of the lines of the ellipses. Default is 0.5.</p></td>
+    </tr>
+    <tr>
+      <th>points</th>
+      <td><p>If TRUE (default), the points are coloured according to their subcloud.</p></td>
+    </tr>
+    <tr>
+      <th>legend</th>
+      <td><p>the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a data frame with supplementary variables as rows and axes as columns.</p>
+    <p>a ggplot object</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>If kappa=2, ellipses are called "concentration" ellipses and, for a normally shaped subcloud, contain 86.47 percents of the points of the subcloud. If kappa=1, ellipses are "indicator" ellipses and contain 39.35 percents of the points of the subcloud. If kappa=1.177, ellipses are "median" ellipses and contain 50 percents of the points of the subcloud.
+This function has to be used after the cloud of individuals has been drawn.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Le Roux B. and Rouanet H., <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).</p>
@@ -151,22 +188,22 @@
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>dimdesc</code>, <code><a href='dimdescr.html'>dimdescr</a></code>, <code><a href='dimcontrib.html'>dimcontrib</a></code>, <code>condes</code>, <code><a href='speMCA.html'>speMCA</a></code>, <code><a href='csMCA.html'>csMCA</a></code>, <code><a href='dimtypicality.html'>dimtypicality</a></code></p></div>
+    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_supvar.html'>ggadd_supvar</a></code>, <code><a href='ggadd_corr.html'>ggadd_corr</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_density.html'>ggadd_density</a></code>, <code><a href='ggadd_ellipses.html'>ggadd_ellipses</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Music' example data set</span>
 <span class='co'>## ignoring every 'NA' (i.e. 'not available') categories,</span>
-<span class='co'>## and then describes the eta2 for Gender and Age (axes 1 and 2).</span>
+<span class='co'>## draws the cloud of categories</span>
+<span class='co'>## and adds concentration ellipses for Age.</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
 <span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
 #&gt;  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     
 #&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
 #&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA" </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>dimeta2</span><span class='op'>(</span><span class='va'>mca</span>, <span class='va'>Music</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Gender"</span>,<span class='st'>"Age"</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;        dim.1 dim.2 dim.3 dim.4 dim.5
-#&gt; Gender   0.0   0.9   0.2   0.0   0.0
-#&gt; Age      3.8  22.7   2.0   0.8   0.2</div></pre>
+<span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggcloud_indiv.html'>ggcloud_indiv</a></span><span class='op'>(</span><span class='va'>mca</span>, col<span class='op'>=</span><span class='st'>'lightgrey'</span><span class='op'>)</span>
+<span class='fu'>ggadd_kellipses</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, <span class='va'>Music</span><span class='op'>$</span><span class='va'>Age</span><span class='op'>)</span>
+</div><div class='img'><img src='ggadd_kellipses-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
