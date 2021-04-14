@@ -127,6 +127,8 @@
 <li>
 <code><a href="../reference/ggadd_corr.html">ggadd_corr()</a></code>: adds a heatmap of under/over-representation of a supplementary variable to a cloud of individuals</li>
 <li>
+<code><a href="../reference/ggadd_kellipses.html">ggadd_kellipses()</a></code> : adds concentration ellipses to a cloud of individuals, using ggplot</li>
+<li>
 <code><a href="../reference/ggassoc_crosstab.html">ggassoc_crosstab()</a></code> : plots counts and associations of a crosstabulation, using ggplot</li>
 <li>
 <code><a href="../reference/ggassoc_phiplot.html">ggassoc_phiplot()</a></code> : bar plot of phi measures of association of a crosstabulation, using ggplot</li>
@@ -135,7 +137,20 @@
 <li>
 <code><a href="../reference/ggassoc_scatter.html">ggassoc_scatter()</a></code> : scatter plot with a smoothing line, using ggplot</li>
 <li>
-<code><a href="../reference/dimdescr.html">dimdescr()</a></code> : replaces <code>dimdesc.MCA()</code>. It works with <code><a href="../reference/condesc.html">condesc()</a></code> instead of FactoMineR::condes() and silently takes row weights into account.</li>
+<code><a href="../reference/dimdescr.html">dimdescr()</a></code> : works with <code><a href="../reference/condesc.html">condesc()</a></code> instead of <code><a href="https://rdrr.io/pkg/FactoMineR/man/condes.html">FactoMineR::condes()</a></code> and takes row weights into account.</li>
+<li>
+<code><a href="../reference/dimtypicality.html">dimtypicality()</a></code> : computes typicality tests for supplementary variables</li>
+</ul>
+</div>
+<div id="removed-functions-" class="section level2">
+<h2 class="hasAnchor">
+<a href="#removed-functions-" class="anchor"></a>Removed functions :</h2>
+<ul>
+<li>
+<code>dimdesc.MCA()</code> : replaced by <code><a href="../reference/dimdescr.html">dimdescr()</a></code>
+</li>
+<li>
+<code>dimvtest()</code> : use <code><a href="../reference/dimtypicality.html">dimtypicality()</a></code> instead</li>
 </ul>
 </div>
 <div id="changes-in-existing-functions" class="section level2">
@@ -145,7 +160,7 @@
 <li>
 <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : the density of points can be represented as an additional layer through contours or hexagon bins</li>
 <li>
-<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : now allow weights</li>
+<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : allow weights</li>
 <li>
 <code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : new nperm and distrib options</li>
 <li>
@@ -156,6 +171,16 @@
 <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> and <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : a few changes in the theme (grids are removed, etc.)</li>
 <li>
 <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> and <code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code> : new size option</li>
+<li>
+<code><a href="../reference/homog.test.html">homog.test()</a></code> : gives the p-values in addition to the test statistics</li>
+<li>
+<code><a href="../reference/dimeta2.html">dimeta2()</a></code> : l argument renamed to vars and n argument removed</li>
+<li>
+<code><a href="../reference/varsup.html">varsup()</a></code> : also computes typicality tests and correlation coefficients</li>
+<li>
+<code><a href="../reference/conc.ellipse.html">conc.ellipse()</a></code> : several kinds of inertia ellipses can be plotted thanks to the kappa option</li>
+<li>
+<code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code> : level is set to 0.05 by default, which corresponds to conventional confidence ellipses. Option ‘points’ to choose to color the points or not.</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
@@ -208,7 +233,7 @@
 <a href="#changes-in-existing-functions-1" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
-<code><a href="../reference/wtable.html">wtable()</a></code> : can now compute percentages (<code>prop.wtable()</code> is removed)</li>
+<code><a href="../reference/wtable.html">wtable()</a></code> : can compute percentages (<code>prop.wtable()</code> is removed)</li>
 <li>
 <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : Cramer’s V instead of V-squared, permutation p-values, Pearson residuals, percentage of maximum deviation from independence, summary data frame</li>
 <li>
@@ -221,7 +246,7 @@
 <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : improved color management</li>
 <li>
 <code><a href="../reference/pem.html">pem()</a></code> : one can choose to sort rows and columns or not</li>
-<li>weights are now allowed in functions <code><a href="../reference/phi.table.html">phi.table()</a></code>, <code><a href="../reference/pem.html">pem()</a></code>, <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code>, <code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code>, <code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> and <code><a href="../reference/assoc.yx.html">assoc.yx()</a></code>
+<li>weights are allowed in functions <code><a href="../reference/phi.table.html">phi.table()</a></code>, <code><a href="../reference/pem.html">pem()</a></code>, <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code>, <code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code>, <code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> and <code><a href="../reference/assoc.yx.html">assoc.yx()</a></code>
 </li>
 </ul>
 </div>
@@ -241,7 +266,7 @@
 <li>
 <code><a href="../reference/catdesc.html">catdesc()</a></code>: measures the association between a categorical variable and some continuous and/or categorical variables</li>
 <li>
-<code><a href="../reference/condesc.html">condesc()</a></code>: measures the association between a continuous variable and some continuous and/or categorical variables}</li>
+<code><a href="../reference/condesc.html">condesc()</a></code>: measures the association between a continuous variable and some continuous and/or categorical variables</li>
 <li>
 <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code>: cloud of individuals, using ggplot</li>
 <li>
@@ -251,7 +276,7 @@
 <li>
 <code><a href="../reference/ggadd_interaction.html">ggadd_interaction()</a></code>: adds the interaction between two variables to a cloud of variables, using ggplot</li>
 <li>
-<code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code>: adds concentration ellipses to a cloud of individuals, using ggplot</li>
+<code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code>: adds confidence ellipses to a cloud of individuals, using ggplot</li>
 </ul>
 </div>
 <div id="changes-in-existing-functions-2" class="section level2">
