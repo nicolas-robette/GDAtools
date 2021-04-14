@@ -11,7 +11,6 @@ condesc <- function(y,x,weights=rep(1,length(y)),min.cor=NULL,nperm=10,distrib="
   mad.y.in.xcat <- numeric()
   mad.y.global <- numeric()
   for(i in 1:ncol(xcat.dic)) {
-    print(i)
     cor.coef[i] <- wdm::wdm(y, xcat.dic[,i], weights=weights)
     median.y.in.xcat[i] <- weighted.quantile(rep(y[xcat.dic[,i]==1],2), w=rep(weights[xcat.dic[,i]==1],2), method="density")
     median.y.global[i] <- weighted.quantile(y, w=weights, method="density")
