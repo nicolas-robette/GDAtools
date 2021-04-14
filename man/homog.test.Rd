@@ -17,7 +17,10 @@
 }
 
 \value{
-  Returns a list of square matrices, one per MCA dimension. Each matrix gives the test statistic for any pair of categories.
+  Returns a list of ncp lists, with ncp the number of dimensions in the MCA results.
+  Each list has 2 elements :
+  \item{test.stat}{The square matrix of test statistics}
+  \item{p.values}{The square matrix of p.values}
 }
 
 \references{
