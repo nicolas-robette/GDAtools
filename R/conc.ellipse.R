@@ -1,4 +1,4 @@
-conc.ellipse <- function(resmca,var,sel=1:length(levels(varb)),axes=c(1,2),col=rainbow(length(sel)),pcol=rainbow(length(sel)),pcex=0.2,lty=1,lwd=1,tcex=1,text.lab=TRUE) {
+conc.ellipse <- function(resmca,var,sel=1:nlevels(var),axes=c(1,2),kappa=2,col=rainbow(length(sel)),pcol=rainbow(length(sel)),pcex=0.2,lty=1,lwd=1,tcex=1,text.lab=TRUE) {
   m <- varsup(resmca,var)$coord[,axes]
   m[,1] <- m[,1]*resmca$svd$vs[axes[1]]
   m[,2] <- m[,2]*resmca$svd$vs[axes[2]]
@@ -28,8 +28,8 @@ conc.ellipse <- function(resmca,var,sel=1:length(levels(varb)),axes=c(1,2),col=r
   }
   g1 <- 0.5*(v[,1]+v[,2])+0.5*sqrt((v[,1]-v[,2])^2+4*c^2)
   g2 <- 0.5*(v[,1]+v[,2])-0.5*sqrt((v[,1]-v[,2])^2+4*c^2)
-  sa1 <- 2*sqrt(g1)
-  sa2 <- 2*sqrt(g2)
+  sa1 <- kappa*sqrt(g1)
+  sa2 <- kappa*sqrt(g2)
   alph <- atan((g1-v[,1])/c)
   npoints <- 100
   theta <- seq(0, 2 * pi, length=(npoints))
