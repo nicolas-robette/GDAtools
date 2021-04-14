@@ -22,7 +22,9 @@
   \item{coord}{data frame of categories coordinates}
   \item{cos2}{data frame of categories square cosine}
   \item{var}{data frame of categories within variances, variance between and within categories and variable square correlation ratio (eta2)}
-  \item{v.test}{data frame of categories test-values}
+  \item{typic}{data frame of categories typicality test statistics}
+  \item{pval}{data frame of categories p-values from typicality test statistics}
+  \item{cor}{data frame of categories correlation coefficients}  
 }
 
 \references{

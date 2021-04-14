@@ -1,10 +1,3 @@
-#resmca=afm
-#var=age
-#var=factor(age[condi])
-
-#resmca=afm
-#var=DATA[,'FrenchPop']
-
 varsup <- function(resmca,var) {
         n <- sum(resmca$call$row.w)
         #n <- length(resmca$call$row.w)
@@ -52,11 +45,13 @@ varsup <- function(resmca,var) {
         wi <- apply(vrc,2,weighted.mean,w=weight)
         be <- resmca$eig[[1]][1:resmca$call$ncp]-wi
         eta2 <- be/resmca$eig[[1]][1:resmca$call$ncp]
-	  vrc <- rbind(vrc,wi,be,resmca$eig[[1]][1:resmca$call$ncp],eta2)
+	vrc <- rbind(vrc,wi,be,resmca$eig[[1]][1:resmca$call$ncp],eta2)
         vrc <- round(vrc,6)
-	  rownames(vrc) <- c(levels(v),'within','between','total','eta2')
+	rownames(vrc) <- c(levels(v),'within','between','total','eta2')
         coord <- round(coord,6)
-        v.test <- sqrt(cos2)*sqrt(length(v)-1)
-        v.test <- (((abs(coord)+coord)/coord)-1)*v.test
-        list(weight=round(weight,1),coord=coord,cos2=round(cos2,6),var=round(vrc,6),v.test=round(v.test,6))
+        typic <- sqrt(cos2)*sqrt(length(v)-1)
+        typic <- (((abs(coord)+coord)/coord)-1)*typic
+        pval <- 2*(1 -pnorm(abs(as.matrix(typic))))
+        cor <- sapply(as.data.frame(ind), function(x) assoc.catcont(v,x,wt,nperm=NULL)$cor.coeff)
+        list(weight=round(weight,1),coord=coord,cos2=round(cos2,6),var=round(vrc,6),typic=round(typic,6),pval=round(pval,6), cor=cor)
         }
