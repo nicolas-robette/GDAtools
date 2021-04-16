@@ -1,0 +1,353 @@
+---
+title: "Geometric Data Analysis with GDAtools"
+author: "Nicolas Robette"
+date: "`r Sys.Date()`"
+output: 
+ rmdformats::html_clean:
+   thumbnails: FALSE
+   use_bookdown: FALSE
+vignette: >
+  %\VignetteIndexEntry{[en] Tutorial for Geometric Data Analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmdformats)
+
+oldpar <- par() 
+oldoptions <- options()
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=TRUE,
+	             cache=FALSE,
+               prompt=FALSE,
+               tidy=FALSE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+```
+
+This tutorial presents the use of the `GDAtools` package for geometric data analysis. For more detailed information on the statistical procedures themselves, it is recommended to refer to the books by Henry Rouanet and Brigitte Le Roux:
+
+Le Roux B. and Rouanet H., 2004, *Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis*, Kluwer Academic Publishers, Dordrecht.
+
+Le Roux B. and Rouanet H., 2010, *Multiple Correspondence Analysis*, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks.
+
+
+
+-------------------------------------------------------
+
+# Introduction
+
+For this example of Multiple Correspondence Analysis, we will use one of the data sets provided with the package. This is information on the tastes and cultural practices of 2000 individuals: listening to musical genres (French variety, rap, rock, jazz and classical) and taste for film genres (comedy, crime film, animation, science fiction, love film, musical). These 11 variables will be used as "active" variables in the MCA and are completed by 3 "supplementary" variables: gender, age and level of education.
+
+```{r load}
+library(GDAtools)
+data(Taste)
+str(Taste)
+```
+
+The active variables all have a "not available" ("NA") category, which concerns some individuals. The so-called "specific" MCA makes it possible to neutralise these categories in the construction of the factorial space, while retaining all the individuals.
+
+```{r nb_na}
+sapply(Taste[,1:11], function(x) sum(x=="NA"))
+```
+
+We start by identifying the rank of the categories we wish to neutralise.
+
+```{r see_junk}
+getindexcat(Taste[,1:11])
+```
+
+The vector of these ranks is then given as an argument to the function `speMCA`.
+
+```{r mca}
+mca <- speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
+```
+
+
+
+--------------------------------------------------------------
+
+# The clouds
+
+The Benzécri corrected inertia rates give an idea of how much information is represented by each axis.
+
+```{r inertia}
+modif.rate(mca)
+```
+
+It can be seen here that the first two axes capture most of the information. In the following we will therefore concentrate on the plane formed by axes 1 and 2.
+
+
+### The cloud of individuals
+
+The cloud of individuals does not have a particular shape (triangle, horseshoe...), the points seem to be distributed in the whole plane.
+
+```{r cloud_ind}
+ggcloud_indiv(mca)
+```
+
+However, in some cases, points may overlap and the structure of the cloud of individuals is only imperfectly rendered by a scatter plot. It is then possible to complete the first graph with a representation of the density of points in the plane. The function `ggcloud_indiv` allows this to be done using contours or hexagonal areas.
+
+```{r cloud_ind_contour}
+ggcloud_indiv(mca, col="lightgray", density="contour")
+```
+
+```{r cloud_ind_hex}
+ggcloud_indiv(mca, density="hex", hex.bin=10)
+```
+
+Whichever density representation is used, it can be seen that the points appear to be more concentrated in an area immediately to the right of the vertical axis.
+
+
+### The cloud of variables
+
+On the variable cloud, 
+
+* Listening to jazz and classical music and liking musicals seem to be opposed to listening to rap and liking comedies on axis 1; 
+
+* Taste for animation and science fiction to taste for love films and musicals on axis 2.
+
+```{r cloud_var}
+ggcloud_variables(mca, shapes=FALSE, legend="none")
+```
+
+However, to be robust, the interpretation of the factorial plane cannot stop at a visual examination of the cloud of variables. This must be complemented by the careful analysis of statistical indicators, in particular the *contributions* of the categories to the construction of the axes.
+
+
+
+------------------------------------
+
+# Aids to interpretation
+
+Most of the aids to interpretation and other useful information are present in the object created by `speMCA`. The package offers several functions to easily extract this information.
+
+* `contrib` presents the contributions of the variables and the categories of these variables to the construction of each of the axes and to that of the cloud.
+* `dimcontrib` extracts the contributions of individuals and variable categories to the construction of a particular axis.
+* `dimdescr` identifies the variables and variable categories most statistically associated with the different axes. The measures of association used are the *etas²* for the variables and the *correlation coefficients* for the categories.
+
+The `tabcontrib` function allows, for a given axis, to summarise the main contributions (only contributions above the average are presented).
+
+```{r tabcontrib1, eval=FALSE}
+tabcontrib(mca, dim=1)
+```
+
+```{r tabcontrib1bis, echo=FALSE}
+knitr::kable(tabcontrib(mca, dim=1), row.names=FALSE)
+```
+
+The classical music and jazz listening variables alone contribute over 60% to the construction of axis 1. Listening to classical music and jazz is therefore opposed to not listening to them, and secondarily to a taste for comedy.
+
+```{r tabcontrib2, eval=FALSE}
+tabcontrib(mca, dim=2)
+```
+
+```{r tabcontrib2bis, echo=FALSE}
+knitr::kable(tabcontrib(mca, dim=2), row.names=FALSE)
+```
+
+On axis 2, listening to rock and rap music and a taste for science fiction films are opposed to a taste for love films and musicals and listening to French pop music.
+
+
+
+------------------------------------------
+
+# Structuring factors
+
+### The supplementary variables
+
+We can go further by studying the relationship between the factorial plane and the supplementary variables, in this case gender, age and education. A first step is to project the supplementary variables onto the cloud of variables.
+
+```{r cloud_varsup, warning=FALSE}
+p <- ggcloud_variables(mca, shapes=FALSE, col="lightgray")
+p <- ggadd_supvar(p, mca, Taste$Age, col="dodgerblue3", shape=NULL, segment=FALSE)
+p <- ggadd_supvar(p, mca, Taste$Educ, col="tomato", shape=NULL, segment=FALSE)
+ggadd_supvar(p, mca, Taste$Gender, col="seagreen", shape=NULL, segment=FALSE)
+```
+
+Level of education appears to be primarily associated with axis 1, with the most educated on the side of jazz and classical listening. Gender seems to be linked only to axis 2, with women at the bottom of the plane and men at the top. Age is associated with both axes, with individuals moving from the north-east quadrant to the south-west quadrant as their age increases.
+
+These initial observations can be confirmed statistically by measuring the degree of association between the supplementary variables and the axes using the *eta²* indicator.
+
+```{r dimeta2}
+dimeta2(mca, Taste[,c("Gender","Age","Educ")])
+```
+
+Education is the supplementary variable most associated with axis 1: it 'explains 5.9% of the variance in individual coordinates' on this axis. Age is also associated with the first axis, but to a lesser extent, and gender not at all.
+
+On axis 2, age is the most structuring variable, ahead of gender and education level. We can also see that age is clearly more closely linked to axis 2 than to axis 1.
+
+At the level of the categories, the association of a supplementary variable category with an axis can be characterised from the *correlation coefficients*.
+
+```{r condesc1, eval=FALSE}
+condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")])$categories
+```
+
+```{r condesc1bis, echo=FALSE}
+knitr::kable(condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")])$categories, row.names=FALSE)
+```
+
+On axis 1, those with no or few qualifications and those aged 15-24 are opposed to those with more qualifications and those aged 50 and over. The other categories appear to have little connection with the axis (their correlation coefficients are close to 0).
+
+```{r condesc2, eval=FALSE}
+condesc(mca$ind$coord[,2], Taste[,c("Gender","Age","Educ")])$categories
+```
+
+```{r condesc2bis, echo=FALSE}
+knitr::kable(condesc(mca$ind$coord[,2], Taste[,c("Gender","Age","Educ")])$categories, row.names=FALSE)
+```
+
+On axis 2, men, the under 50s and the more educated are opposed to women, the over 50s and the uneducated.
+
+
+### Analysis of one supplementary variable
+
+Let us continue the analysis by focusing on one supplementary variable, the level of education. The `varsup` function provides the coordinates of the categories on the axes, their *cosinus²* (which gives the quality of representation of a category on an axis), their dispersions on the axes, the *eta²* and the *typicality tests* (to which we will return in the next section).
+
+```{r varsup}
+varsup(mca, Taste$Educ)
+```
+
+Graphically, we can represent the "subcloud" of each of the categories with the help of a *concentration ellipse*, which is centred on the mean point and encompasses 86% of the individuals having this category.
+
+```{r educ_ellipses}
+p <- ggcloud_indiv(mca, col='lightgrey')
+ggadd_kellipses(p, mca, Taste$Educ, label=FALSE)
+```
+
+Even though, as we have seen, the education level categories are ordered along axis 1, the subclouds overlap to a very large extent, as the association between the variable and the axis is moderate.
+
+Let us now look more specifically at the subcloud of the most highly educated individuals.
+
+```{r educ_ellipse}
+ggadd_kellipses(p, mca, Taste$Educ, sel=4, legend="none")
+```
+
+A concentration ellipse is useful because it represents both the mean point of the category and the dispersion of the subcloud along the axes. Here we see that although the mean point of the most highly educated individuals is located in the northwest quadrant, a significant proportion of the points in the subcloud are to the right and/or bottom of the plane.
+
+The concentration ellipses, on the other hand, give only an imperfect representation of the distribution of the points of the subcloud, because of the possible overlapping of the points (in a similar way to what we saw for the cloud of the individuals) and its centring on the mean point. It can therefore be interesting to complete a concentration ellipse with a representation of the density of the points of the subcloud, in the form of contours or areas.
+
+```{r educ_contour}
+ggadd_density(p, mca, var=Taste$Educ, cat="High", density="contour")
+```
+
+```{r educ_area}
+ggadd_density(p, mca, var=Taste$Educ, cat="High", density="area")
+```
+
+Here we see that there appears to be a concentration of highly educated individuals immediately to the right of the vertical axis, in an area that also corresponds to a concentration of points in the cloud of individuals (see above).
+
+A further step in the analysis consists in neutralising the influence of the distribution of points in the cloud of individuals on that of the subcloud, by asking in which parts of the plane the most highly educated are over/under represented. This is possible using a *heat map*, by measuring in each tile the correlation coefficient between having a high level of education and being located in the tile rather than in the rest of the plane.
+
+```{r educ_corr}
+ggadd_corr(p, mca, var=Taste$Educ, cat="High", xbins=20, ybins=20)
+```
+
+The most highly educated individuals are over-represented in the northwest quadrant as a whole, but also among the westernmost in the southwest quadrant.
+
+
+
+### Interaction between two supplementary variables
+
+Interactions between several supplementary variables can also be studied, for example here between gender and age.
+
+```{r interaction}
+p <- ggcloud_variables(mca, col='lightgrey', shapes=FALSE)
+ggadd_interaction(p, mca, Taste$Gender, Taste$Age, col=c("tomato3","dodgerblue3"), legend="none")
+```
+
+Gender and age seem to interact little in the 1-2 plane. However, it can be seen that on axis 1, the differences between the youngest and the oldest are greater for women than for men, and that on axis 2, the youngest differ more by gender than the oldest.
+
+
+
+---------------------------
+
+# Inductive data analysis
+
+If one wishes to assess the generalizability of the results, one can complement the above descriptive analyses with statistical inference procedures that borrow from inductive data analysis and combinatorial approaches (for this part even more than for the others, we refer to Le Roux and Rouanet, 2004 & 2010).
+
+The typicality problem consists in asking whether a group of individuals can be assimilated to the reference population or whether it is atypical. A *typicality test* calculates a *combinatorial p-value*, which defines the "degree of typicality" of the mean point of the group of individuals. A low p-value is considered statistically significant in the combinatorial sense and reflects a difference that is probably not due to chance.
+
+```{r typic}
+dimtypicality(mca, Taste[,c("Gender","Age","Educ")], dim=c(1,2), max.pval=0.05)
+```
+
+At a 5% level, the mean points of women, men and middle-aged people are not significantly different from that of the whole population on axis 1 (i.e. 0). On axis 2, it is the mean points of the low and medium levels of education that do not differ significantly from the origin.
+
+The results of the typicality tests for a particular supplementary variable can be studied using the `varsup` function.
+
+```{r varsup_educ}
+vseduc <- varsup(mca, Taste$Educ)
+vseduc$pval[,c(1,2)]
+```
+
+We can see that, on axis 1, all the education level categories are significantly different from 0 at a level of 5%, they are atypical of the whole cloud of individuals, but that this is not the case for the "low" and "medium" categories on axis 2.
+
+The confidence ellipses follow the same logic as the typicality tests. With a conventional significance threshold of 5%, the confidence ellipse is a 95% confidence zone representing all the possible mean points of a category that are not significantly different from the observed mean point.
+
+```{r educ_conc_ellipses}
+p <- ggcloud_indiv(mca, col='lightgrey')
+ggadd_ellipses(p, mca, Taste$Educ, level=0.05, label=FALSE)
+```
+
+A homogeneity test is a combinatorial procedure that aims to compare several groups of individuals. The question asked is whether, on a given axis, the positions of two groups are significantly different.
+
+```{r homog_test1}
+ht <- homog.test(mca, Taste$Educ)
+ht$dim.1$p.values
+```
+
+On axis 1, the mean points of the education level categories are all significantly different from each other (the p-values are all very close to 0).
+
+```{r homog_test2}
+ht$dim.2$p.values
+```
+
+This is not the case on axis 2, where the "low" and "medium" categories do not differ significantly (p-value=0.22).
+
+
+
+---------------------------------------------------
+
+# Class Specific Analysis
+
+*Class Specific Analysis* (CSA) is an extension of MCA which allows the study of a subcloud of individuals by taking into account the distribution of variables in the subcloud and in the whole cloud. It is thus a question of taking into account the fact that the structure of the subcloud does not exist *in abstracto* but in relation to the cloud in which it is included.
+
+CSA is illustrated here using the subcloud of the most highly educated individuals.
+
+```{r csa}
+csa <- csMCA(Taste[,1:11], Taste$Educ=="High", excl=c(3,6,9,12,15,18,21,24,27,30,33))
+```
+
+```{r csa_cloud_var}
+ggcloud_variables(csa, shapes=FALSE, legend="none")
+```
+
+```{r csa_tabcontrib1, eval=FALSE}
+tabcontrib(csa, dim=1)
+```
+
+```{r csa_tabcontrib1bis, echo=FALSE}
+knitr::kable(tabcontrib(csa, dim=1), row.names=FALSE)
+```
+
+We can see that, as in the MCA, listening to jazz and classical music structure axis 1, but this time much more strongly since these two variables alone contribute 75% to the construction of the axis.
+
+```{r csa_tabcontrib2, eval=FALSE}
+tabcontrib(csa, dim=2)
+```
+
+```{r csa_tabcontrib2bis, echo=FALSE}
+knitr::kable(tabcontrib(csa, dim=2), row.names=FALSE)
+```
+
+It is above all the taste for animation movies that contributes to the construction of axis 2, which may be explained in part by the small number of this category.
+
+Finally, the subcloud of the variables for the most highly educated people has points in common with that of the population as a whole, but also some very marked specificities.
+
+We will not go any further here, but it should be noted that all the techniques described above can be applied to the results of a CSA.
