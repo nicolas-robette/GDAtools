@@ -50,8 +50,8 @@ ggcloud_indiv <- function(resmca, type='i', points='all', axes=1:2, col='dodgerb
 
   p + ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", size=.1) +
       ggplot2::geom_vline(xintercept = 0, colour = "darkgrey", size=.1) +
-      ggplot2::xlab(paste0("Axe ", dim1, " (", round(resmca$eig$mrate[dim1],1), " %)")) +
-      ggplot2::ylab(paste0("Axe ", dim2, " (", round(resmca$eig$mrate[dim2],1), " %)")) +
+      ggplot2::xlab(paste0("dim ", dim1, " (", round(resmca$eig$mrate[dim1],1), " %)")) +
+      ggplot2::ylab(paste0("dim ", dim2, " (", round(resmca$eig$mrate[dim2],1), " %)")) +
       ggplot2::theme_bw() +
       ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
                      panel.grid.minor = ggplot2::element_blank(),

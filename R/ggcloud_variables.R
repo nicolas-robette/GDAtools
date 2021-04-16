@@ -89,8 +89,8 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', shapes=TRUE, pr
       ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", size=.1) + 
       ggplot2::geom_vline(xintercept = 0, colour = "darkgrey", size=.1) + 
     
-      ggplot2::xlab(paste0("Axe ", dim1, " (", round(resmca$eig$mrate[dim1],1), " %)")) +
-      ggplot2::ylab(paste0("Axe ", dim2, " (", round(resmca$eig$mrate[dim2],1), " %)")) +
+      ggplot2::xlab(paste0("dim ", dim1, " (", round(resmca$eig$mrate[dim1],1), " %)")) +
+      ggplot2::ylab(paste0("dim ", dim2, " (", round(resmca$eig$mrate[dim2],1), " %)")) +
     
       ggplot2::theme_bw() + 
       
