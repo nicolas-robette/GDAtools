@@ -1,8 +1,10 @@
 pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2021-04-14T21:56Z
+articles:
+  Tutorial_GDA: Tutorial_GDA.html
+  french/Tutoriel_AGD: Tutoriel_AGD.html
+last_built: 2021-04-16T19:52Z
 urls:
   reference: https://nicolas-robette.github.io/GDAtools//reference
   article: https://nicolas-robette.github.io/GDAtools//articles
