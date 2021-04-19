@@ -9,15 +9,17 @@ For a cross-tabulation, plots the number of observations by using rectangles wit
 }
 
 \usage{
-ggassoc_crosstab(data, mapping, maxphi=.8, axes.labs=TRUE, ticks.labs=TRUE)
+ggassoc_crosstab(data, mapping, max.phi=.8, axes.labs=TRUE, ticks.labs=TRUE,
+text.size=3)
 }
 
 \arguments{
   \item{data}{dataset to use for plot}
   \item{mapping}{aesthetic being used. It must specify x and y.}
-  \item{maxphi}{numeric value, specifying the lower and upper limit of the scale for the color gradient filling the rectangles, i.e. for the phi measures of association. It corresponds to the maximum absolute value of phi one wants to represent in the plot.}
+  \item{max.phi}{numeric value, specifying the lower and upper limit of the scale for the color gradient filling the rectangles, i.e. for the phi measures of association. It corresponds to the maximum absolute value of phi one wants to represent in the plot.}
   \item{axes.labs}{Whether to display the labels of the axes, i.e. the names of x and y. Default is TRUE.}
   \item{ticks.labs}{Whether to display the labels of the categories of x and y. Default is TRUE.}  
+  \item{text.size}{Size of the association measure. If NULL, the text is not added to the plot.}  
 }
 
 \details{

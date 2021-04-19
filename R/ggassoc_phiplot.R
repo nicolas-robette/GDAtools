@@ -1,4 +1,4 @@
-ggassoc_phiplot <- function(data, mapping, maxphi=NULL, axes.labs=TRUE, ticks.labs=TRUE) {
+ggassoc_phiplot <- function(data, mapping, max.phi=NULL, axes.labs=TRUE, ticks.labs=TRUE, text.size=3) {
   xVal <- GGally::eval_data_col(data, mapping$x)
   yVal <- GGally::eval_data_col(data, mapping$y)
   xName <- rlang::as_name(mapping$x)
@@ -17,7 +17,7 @@ ggassoc_phiplot <- function(data, mapping, maxphi=NULL, axes.labs=TRUE, ticks.la
   df$w <- stats::ave(df$TotV1, df$Var2, FUN=cumsum)
   df$wm = df$w-df$TotV1
   df$wt = df$wm+(df$w-df$wm)/2
-  if(is.null(maxphi)) maxphi <- max(ceiling(10*abs(df$phi)))/10
+  if(is.null(max.phi)) max.phi <- max(ceiling(10*abs(df$phi)))/10
   labs <- unique(df[,c("Var1","wt")])
   ann_text <- data.frame(wm=10, w=-Inf, phi=Inf, Var2=factor(levels(df$Var2)[1], levels=levels(df$Var2)))
   p <- ggplot2::ggplot(df, ggplot2::aes(xmin=.data$wm, xmax=.data$w, ymin=0, ymax=.data$phi, fill=.data$sign)) +
@@ -30,9 +30,10 @@ ggassoc_phiplot <- function(data, mapping, maxphi=NULL, axes.labs=TRUE, ticks.la
                           panel.grid.minor = ggplot2::element_blank(),
                           strip.text.y.right = ggplot2::element_text(angle=0)) +
           ggplot2::scale_x_continuous(position="top", breaks=labs$wt, labels=labs$Var1) +
-          ggplot2::ylim(c(-maxphi, maxphi)) +
-          ggplot2::geom_label(data=ann_text, ggplot2::aes(x=.data$wm, y=.data$phi, label=paste0("V = ",round(assoc$cramer.v,3))),
-                              size=3, hjust=0, vjust=1, label.size=NA, fill="white", alpha=.5)
+          ggplot2::ylim(c(-max.phi, max.phi))
+  
+  if(!is.null(text.size)) p <- p + ggplot2::geom_label(data=ann_text, ggplot2::aes(x=.data$wm, y=.data$phi, label=paste0("V = ",round(assoc$cramer.v,3))),
+                                                       size=text.size, hjust=0, vjust=1, label.size=NA, fill="white", alpha=.5)
   if(axes.labs) {
     p <- p + ggplot2::xlab(xName) + ggplot2::ylab(yName)
   } else {

@@ -1,4 +1,4 @@
-ggassoc_scatter <- function(data, mapping, axes.labs=TRUE, ticks.labs=TRUE) {
+ggassoc_scatter <- function(data, mapping, axes.labs=TRUE, ticks.labs=TRUE, text.size=3) {
   xVal <- GGally::eval_data_col(data, mapping$x)
   yVal <- GGally::eval_data_col(data, mapping$y)
   xName <- rlang::as_name(mapping$x)
@@ -14,9 +14,10 @@ ggassoc_scatter <- function(data, mapping, axes.labs=TRUE, ticks.labs=TRUE) {
                          panel.border = ggplot2::element_rect(
                            linetype = "solid",
                            color = "grey",
-                           fill = "transparent")) +
-          ggplot2::annotate(geom="label", label=paste0("tau = ",round(assoc,3)), x=-Inf, y=Inf, size=3,
-                            hjust=0, vjust=1, label.size=NA, fill="white", alpha=.5)
+                           fill = "transparent"))
+  
+  if(!is.null(text.size)) p <- p + ggplot2::annotate(geom="label", label=paste0("tau = ",round(assoc,3)), x=-Inf, y=Inf, size=text.size,
+                                                     hjust=0, vjust=1, label.size=NA, fill="white", alpha=.5)
   if(axes.labs) {
     p <- p + ggplot2::xlab(xName) + ggplot2::ylab(yName)
   } else {
