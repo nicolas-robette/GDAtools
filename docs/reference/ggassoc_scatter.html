@@ -92,7 +92,7 @@
       <a href="../articles/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="../articles/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
+      <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
   </ul>
 </li>
@@ -129,7 +129,8 @@
     <p>Displays of scatter plot and adds a smoothing line, using ggplot2.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ggassoc_scatter</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>mapping</span>, axes.labs<span class='op'>=</span><span class='cn'>TRUE</span>, ticks.labs<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ggassoc_scatter</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>mapping</span>, axes.labs<span class='op'>=</span><span class='cn'>TRUE</span>, ticks.labs<span class='op'>=</span><span class='cn'>TRUE</span>,
+text.size<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -149,6 +150,10 @@
     <tr>
       <th>ticks.labs</th>
       <td><p>Whether to display the labels of the categories of x and y. Default is TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>text.size</th>
+      <td><p>Size of the association measure. If NULL, the text is not added to the plot.</p></td>
     </tr>
     </table>
 

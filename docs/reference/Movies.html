@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Computes statistics for supplementary individuals — indsup • GDAtools</title>
+<title>Movies (data) — Movies • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Computes statistics for supplementary individuals — indsup" />
-<meta property="og:description" content="From MCA results, computes statistics (coordinates, squared cosines) for 
-   supplementary individuals." />
+<meta property="og:title" content="Movies (data) — Movies" />
+<meta property="og:description" content="The data concerns a sample of 1000 Movies which were on screens in France and come of their characteristics." />
 
 
 
@@ -121,73 +120,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Computes statistics for supplementary individuals</h1>
+    <h1>Movies (data)</h1>
     
-    <div class="hidden name"><code>indsup.Rd</code></div>
+    <div class="hidden name"><code>Movies.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>From MCA results, computes statistics (coordinates, squared cosines) for 
-   supplementary individuals.</p>
+    <p>The data concerns a sample of 1000 Movies which were on screens in France and come of their characteristics.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>indsup</span><span class='op'>(</span><span class='va'>resmca</span>, <span class='va'>supdata</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Movies</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>resmca</th>
-      <td><p>object of class <code>'MCA'</code>, <code>'speMCA'</code> or <code>'csMCA'</code></p></td>
-    </tr>
-    <tr>
-      <th>supdata</th>
-      <td><p>data frame with the supplementary individuals. It must have the same factors as the data frame used
-                 as input for the initial MCA.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>Returns a list:</p>
-<dt>coord</dt><dd><p>matrix of individuals' coordinates</p></dd>
-  <dt>cos2</dt><dd><p>matrix of individuals' square cosines</p></dd>
+    <p>A data frame with 1000 observations and the following 7 variables:</p><dl>
+    <dt><code>Budget</code></dt><dd><p>numeric vector of movie budgets</p></dd>
+    <dt><code>Genre</code></dt><dd><p>is a factor with 9 levels</p></dd>
+    <dt><code>Country</code></dt><dd><p>is a factor with 4 level. Country of origin of the movie.</p></dd>
+    <dt><code>ArtHouse</code></dt><dd><p>is a factor with levels <code>No</code>, <code>Yes</code>. Whether the movie had the "Art House" label.</p></dd>
+    <dt><code>Festival</code></dt><dd><p>is a factor with levels <code>No</code>, <code>Yes</code>. Whether the movie was selected in Cannes, Berlin or Venise film festivals.</p></dd>
+    <dt><code>Critics</code></dt><dd><p>numeric vector of average ratings from intellectual criticism.</p></dd>
+    <dt><code>BoxOffice</code></dt><dd><p>numeric vector of number of admissions.</p></dd>
 
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+</dl>
 
-    <p>Le Roux B. and Rouanet H., <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).</p>
-<p>Le Roux B. and Rouanet H., <em>Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis</em>, Kluwer Academic Publishers, Dordrecht (June 2004).</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Nicolas Robette</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='textindsup.html'>textindsup</a></code>, <code><a href='speMCA.html'>speMCA</a></code>, <code><a href='csMCA.html'>csMCA</a></code>, <code><a href='varsup.html'>varsup</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Music' example data set</span>
-<span class='co'>## ignoring every 'NA' (i.e. 'not available') categories,</span>
-<span class='co'>## and then computes statistics for supplementary individuals.</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
-<span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
-#&gt;  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     
-#&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
-#&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA"  "Gender.Men"   
-#&gt; [17] "Gender.Women"  "Age.15-24"     "Age.25-49"     "Age.50+"      
-#&gt; [21] "OnlyMus.Daily" "OnlyMus.Often" "OnlyMus.Rare"  "OnlyMus.Never"
-#&gt; [25] "Daily.No"      "Daily.Yes"    </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>indsup</span><span class='op'>(</span><span class='va'>mca</span>,<span class='va'>Music</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $coord
-#&gt;            dim.1      dim.2      dim.3      dim.4      dim.5
-#&gt; 2124 -0.03021772 -0.3899678  0.2212868  0.6879359 -0.1936124
-#&gt; 4485 -0.55418126 -0.6285349 -0.7238657 -0.5821206  0.1128835
-#&gt; 
-#&gt; $cos2
-#&gt;         dim.1    dim.2    dim.3    dim.4    dim.5
-#&gt; 2124 0.001281 0.213379 0.068708 0.664035 0.052597
-#&gt; 4485 0.194654 0.250390 0.332104 0.214775 0.008076
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Movies</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>Movies</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 'data.frame':	1000 obs. of  7 variables:
+#&gt;  $ Budget   : num  3.10e+07 4.88e+06 3.50e+06 1.63e+08 2.17e+07 ...
+#&gt;  $ Genre    : Factor w/ 9 levels "Action","Animation",..: 1 5 7 1 7 5 1 7 5 7 ...
+#&gt;  $ Country  : Factor w/ 4 levels "Europe","France",..: 4 2 2 1 2 2 4 4 2 4 ...
+#&gt;  $ ArtHouse : Factor w/ 2 levels "No","Yes": 1 1 2 1 2 1 1 1 1 1 ...
+#&gt;  $ Festival : Factor w/ 2 levels "No","Yes": 1 1 1 1 1 1 1 1 1 1 ...
+#&gt;  $ Critics  : num  3 1 3.75 3.75 3.6 2.75 1 1 1 3 ...
+#&gt;  $ BoxOffice: num  1013509 24241 39376 6996996 493416 ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
