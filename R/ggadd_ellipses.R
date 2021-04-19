@@ -1,4 +1,4 @@
-ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), level=0.05, label=TRUE, col=NULL, size=0.5, points=TRUE, legend='right') {
+ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), level=0.05, label=TRUE, label.size=3, col=NULL, size=0.5, points=TRUE, legend='right') {
 
   ecoord <- as.data.frame(resmca$ind$coord[,axes])
   names(ecoord) <- c('axeX','axeY')
@@ -27,7 +27,7 @@ ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), leve
     }
   }
   
-  if(label) { pfin <- pfin + ggplot2::geom_text(key_glyph='blank', data=ccoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, label=.data$categories, colour=.data$categories)) 
+  if(label) { pfin <- pfin + ggplot2::geom_text(key_glyph='blank', data=ccoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, label=.data$categories, colour=.data$categories), size=label.size) 
   } else { pfin <- pfin + ggplot2::geom_point(data=ccoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, colour=.data$categories), shape=8, size=3) }
 
   # if(legend) pfin <- pfin + guides(color=guide_legend(title="")) + 

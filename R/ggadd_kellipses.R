@@ -1,4 +1,4 @@
-ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kappa=2, label=TRUE, col=NULL, size=0.5, points=TRUE, legend="right") {
+ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kappa=2, label=TRUE, label.size=3, col=NULL, size=0.5, points=TRUE, legend="right") {
 
   icoord <- as.data.frame(resmca$ind$coord[,axes])
   names(icoord) <- c('x','y')
@@ -75,7 +75,7 @@ ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kap
 
   if(points) pfin <- pfin + geom_point(data=icoord, aes(x=x, y=y, colour=cat), size=0.5, alpha=0.6)
                 
-  if(label) { pfin <- pfin + ggplot2::geom_text(key_glyph='blank', data=cent, ggplot2::aes(x=.data$x, y=.data$y, label=.data$cat, colour=.data$cat), size=3) 
+  if(label) { pfin <- pfin + ggplot2::geom_text(key_glyph='blank', data=cent, ggplot2::aes(x=.data$x, y=.data$y, label=.data$cat, colour=.data$cat), size=label.size) 
   } else { pfin <- pfin + ggplot2::geom_point(data=cent, ggplot2::aes(x=.data$x, y=.data$y, colour=.data$cat), shape=8, size=3) }
 
   if(!is.null(col)) {

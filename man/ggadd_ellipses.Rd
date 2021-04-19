@@ -9,7 +9,7 @@ Adds confidence ellipses for a categorical variable to a MCA cloud of individual
 
 \usage{
 ggadd_ellipses(p, resmca, var, sel=1:nlevels(var), axes=c(1,2),
-level=0.05, label=TRUE, col=NULL, size=0.5, points=TRUE, legend='right')
+level=0.05, label=TRUE, label.size=3, col=NULL, size=0.5, points=TRUE, legend='right')
 }
 
 \arguments{
@@ -20,6 +20,7 @@ level=0.05, label=TRUE, col=NULL, size=0.5, points=TRUE, legend='right')
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
   \item{level}{The level at which to draw an ellipse (see \code{stat_ellipse}). Default is 0.05, which means 95 percents confidence ellipses are plotted.}
   \item{label}{Logical. Should the labels of the categories be plotted at the center of ellipses ? Default is TRUE.}
+  \item{label.size}{Size of the labels of the categories at the center of ellipses. Default is 3.}
   \item{col}{Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses \code{scale_color_grey()}), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of \code{ggplot2} is used.}
   \item{size}{Size of the lines of the ellipses. Default is 0.5.}
   \item{points}{If TRUE (default), the points are coloured according to their subcloud.}
