@@ -1,4 +1,4 @@
-catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=10,distrib="asympt") {
+catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib="asympt") {
   
   icat <- which(sapply(x,is.factor))
   xcat <- as.data.frame(x[,icat])
@@ -21,6 +21,7 @@ catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=10,distrib="
     }
     lcat <- do.call("rbind.data.frame",lcat)
     lcat <- lcat[order(-lcat$phi),]
+    lcat <- lcat[abs(lcat$phi)>=min.phi,]
     splitvar <- lcat$Var1
     lcat <- lcat[,c("categories","cprop","rprop","prop.y","phi")]
     names(lcat) <- c("categories","pct.ycat.in.xcat","pct.xcat.in.ycat","pct.xcat.global","phi")

@@ -1,4 +1,4 @@
-assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nperm=100,distrib="asympt",dec.a=3,dec.p=3) {
+assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nperm=NULL,distrib="asympt",dec.a=3,dec.p=3) {
   
   x <- as.data.frame(x)
   xnames <- names(x)
@@ -32,6 +32,7 @@ assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nper
       association = z$cramer.v
       permutation.pvalue = z$permutation.pvalue
     }
+    if(is.null(nperm)) permutation.pvalue <- NA
     res[[i]] <- data.frame(measure,association,permutation.pvalue, stringsAsFactors = F)
   }
   res <- do.call('rbind.data.frame',res)
@@ -75,6 +76,7 @@ assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nper
         association = z$cramer.v
         permutation.pvalue = z$permutation.pvalue
       }
+      if(is.null(nperm)) permutation.pvalue <- NA
       res[[i]] <- data.frame(measure,association,permutation.pvalue, stringsAsFactors = F)
     }
     res <- do.call('rbind.data.frame',res)

@@ -1,4 +1,4 @@
-condesc <- function(y,x,weights=rep(1,length(y)),min.cor=NULL,nperm=10,distrib="asympt"){
+condesc <- function(y,x,weights=rep(1,length(y)),min.cor=NULL,nperm=NULL,distrib="asympt"){
 
   icat <- which(sapply(x,is.factor))
   xcat <- as.data.frame(x[,icat])
