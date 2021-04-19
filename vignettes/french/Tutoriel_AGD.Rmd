@@ -81,7 +81,7 @@ Les taux d'inertie corrigés de Benzécri permettent de se faire une idée de la
 modif.rate(mca)
 ```
 
-On voit ici que les deux premiers axes capturent l'essentiel de l'information. On va donc dans la suite se concentrer sur le plan formé par les axes 1 et 2.
+On voit ici que les deux premiers axes capturent l'essentiel de l'information (près de 90%). On va donc dans la suite se concentrer sur le plan formé par les axes 1 et 2.
 
 
 ### Nuage des individus

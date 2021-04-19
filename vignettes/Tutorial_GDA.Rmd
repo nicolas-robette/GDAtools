@@ -81,7 +81,7 @@ The Benzécri corrected inertia rates give an idea of how much information is re
 modif.rate(mca)
 ```
 
-It can be seen here that the first two axes capture most of the information. In the following we will therefore concentrate on the plane formed by axes 1 and 2.
+It can be seen here that the first two axes capture most of the information (almost 90%). In the following we will therefore concentrate on the plane formed by axes 1 and 2.
 
 
 ### The cloud of individuals
