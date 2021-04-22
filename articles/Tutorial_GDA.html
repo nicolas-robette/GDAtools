@@ -88,7 +88,7 @@
       <h1 data-toc-skip>Geometric Data Analysis with GDAtools</h1>
                         <h4 class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-04-19</h4>
+            <h4 class="date">2021-04-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/Tutorial_GDA.Rmd"><code>vignettes/Tutorial_GDA.Rmd</code></a></small>
       <div class="hidden name"><code>Tutorial_GDA.Rmd</code></div>
@@ -97,6 +97,7 @@
 
     
     
+<p><br></p>
 <p>This tutorial presents the use of the <code>GDAtools</code> package for geometric data analysis. For more detailed information on the statistical procedures themselves, it is recommended to refer to the books by Henry Rouanet and Brigitte Le Roux:</p>
 <p>Le Roux B. and Rouanet H., 2004, <em>Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis</em>, Kluwer Academic Publishers, Dordrecht.</p>
 <p>Le Roux B. and Rouanet H., 2010, <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks.</p>
@@ -124,6 +125,7 @@
  $ Gender   : Factor w/ 2 levels "Men","Women": 1 1 2 1 2 2 2 2 1 1 ...
  $ Age      : Factor w/ 3 levels "15-24","25-49",..: 2 3 2 3 2 2 2 2 1 3 ...
  $ Educ     : Factor w/ 4 levels "None","Low","Medium",..: 3 4 3 4 2 1 3 2 2 2 ...</code></pre>
+<p><br></p>
 <p>The active variables all have a “not available” (“NA”) category, which concerns some individuals. The so-called “specific” MCA makes it possible to neutralise these categories in the construction of the factorial space, while retaining all the individuals.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">==</span><span class="st">"NA"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -131,6 +133,7 @@
        10         9        10        15         5         3        15         4 
     SciFi      Love   Musical 
        12         7        11 </code></pre>
+<p><br></p>
 <p>We start by identifying the rank of the categories we wish to neutralise.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span><span class="op">)</span></code></pre></div>
@@ -143,6 +146,7 @@
 [25] "SciFi.No"      "SciFi.Yes"     "SciFi.NA"      "Love.No"      
 [29] "Love.Yes"      "Love.NA"       "Musical.No"    "Musical.Yes"  
 [33] "Musical.NA"   </code></pre>
+<p><br></p>
 <p>The vector of these ranks is then given as an argument to the function <code>speMCA</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -161,7 +165,7 @@
 4  2.26     99.39
 5  0.59     99.98
 6  0.02    100.00</code></pre>
-<p>It can be seen here that the first two axes capture most of the information (almost 90%). In the following we will therefore concentrate on the plane formed by axes 1 and 2.</p>
+<p>It can be seen here that the first two axes capture most of the information (almost 90%). In the following we will therefore concentrate on the plane formed by axes 1 and 2.<br><br></p>
 <div id="the-cloud-of-individuals" class="section level3">
 <h3 class="hasAnchor">
 <a href="#the-cloud-of-individuals" class="anchor"></a>The cloud of individuals</h3>
@@ -176,7 +180,7 @@
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span>, density<span class="op">=</span><span class="st">"hex"</span>, hex.bin<span class="op">=</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_GDA_files/figure-html/cloud_ind_hex-1.png" width="700"></p>
-<p>Whichever density representation is used, it can be seen that the points appear to be more concentrated in an area immediately to the right of the vertical axis.</p>
+<p>Whichever density representation is used, it can be seen that the points appear to be more concentrated in an area immediately to the right of the vertical axis.<br><br></p>
 </div>
 <div id="the-cloud-of-variables" class="section level3">
 <h3 class="hasAnchor">
@@ -275,7 +279,7 @@
 </tr>
 </tbody>
 </table>
-<p>The classical music and jazz listening variables alone contribute over 60% to the construction of axis 1. Listening to classical music and jazz is therefore opposed to not listening to them, and secondarily to a taste for comedy.</p>
+<p>The classical music and jazz listening variables alone contribute over 60% to the construction of axis 1. Listening to classical music and jazz is therefore opposed to not listening to them, and secondarily to a taste for comedy.<br><br></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">mca</span>, dim<span class="op">=</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -375,11 +379,11 @@
 <p>We can go further by studying the relationship between the factorial plane and the supplementary variables, in this case gender, age and education. A first step is to project the supplementary variables onto the cloud of variables.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, col<span class="op">=</span><span class="st">"lightgray"</span><span class="op">)</span>
-<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, col<span class="op">=</span><span class="st">"dodgerblue3"</span>, shape<span class="op">=</span><span class="cn">NULL</span>, segment<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, col<span class="op">=</span><span class="st">"tomato"</span>, shape<span class="op">=</span><span class="cn">NULL</span>, segment<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, col<span class="op">=</span><span class="st">"seagreen"</span>, shape<span class="op">=</span><span class="cn">NULL</span>, segment<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, col<span class="op">=</span><span class="st">"dodgerblue3"</span>, shape<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, col<span class="op">=</span><span class="st">"tomato"</span>, shape<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span>
+<span class="fu"><a href="../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, col<span class="op">=</span><span class="st">"seagreen"</span>, shape<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_GDA_files/figure-html/cloud_varsup-1.png" width="700"></p>
-<p>Level of education appears to be primarily associated with axis 1, with the most educated on the side of jazz and classical listening. Gender seems to be linked only to axis 2, with women at the bottom of the plane and men at the top. Age is associated with both axes, with individuals moving from the north-east quadrant to the south-west quadrant as their age increases.</p>
+<p>Level of education appears to be primarily associated with axis 1, with the most educated on the side of jazz and classical listening. Gender seems to be linked only to axis 2, with women at the bottom of the plane and men at the top. Age is associated with both axes, with individuals moving from the north-east quadrant to the south-west quadrant as their age increases.<br><br></p>
 <p>These initial observations can be confirmed statistically by measuring the degree of association between the supplementary variables and the axes using the <em>eta²</em> indicator.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dimeta2.html">dimeta2</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></code></pre></div>
@@ -388,7 +392,7 @@ Gender   0.0   6.0   0.1   1.2   0.0
 Age      3.8  14.2   2.5   0.4   3.5
 Educ     5.9   3.3   1.5   0.5   0.6</code></pre>
 <p>Education is the supplementary variable most associated with axis 1: it ‘explains 5.9% of the variance in individual coordinates’ on this axis. Age is also associated with the first axis, but to a lesser extent, and gender not at all.</p>
-<p>On axis 2, age is the most structuring variable, ahead of gender and education level. We can also see that age is clearly more closely linked to axis 2 than to axis 1.</p>
+<p>On axis 2, age is the most structuring variable, ahead of gender and education level. We can also see that age is clearly more closely linked to axis 2 than to axis 1.<br><br></p>
 <p>At the level of the categories, the association of a supplementary variable category with an axis can be characterised from the <em>correlation coefficients</em>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
@@ -484,7 +488,7 @@ Educ     5.9   3.3   1.5   0.5   0.6</code></pre>
 </tr>
 </tbody>
 </table>
-<p>On axis 1, those with no or few qualifications and those aged 15-24 are opposed to those with more qualifications and those aged 50 and over. The other categories appear to have little connection with the axis (their correlation coefficients are close to 0).</p>
+<p>On axis 1, those with no or few qualifications and those aged 15-24 are opposed to those with more qualifications and those aged 50 and over. The other categories appear to have little connection with the axis (their correlation coefficients are close to 0).<br><br></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
 <table class="table">
@@ -636,12 +640,13 @@ None    0.145 -0.167 -0.109  0.054 -0.029
 Low     0.100  0.034  0.002 -0.046 -0.032
 Medium -0.051  0.009  0.025  0.033 -0.013
 High   -0.213  0.123  0.086 -0.033  0.076</code></pre>
+<p><br></p>
 <p>Graphically, we can represent the “subcloud” of each of the categories with the help of a <em>concentration ellipse</em>, which is centred on the mean point and encompasses 86% of the individuals having this category.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span><span class="op">)</span>
 <span class="fu"><a href="../reference/ggadd_kellipses.html">ggadd_kellipses</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, label<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_GDA_files/figure-html/educ_ellipses-1.png" width="700"></p>
-<p>Even though, as we have seen, the education level categories are ordered along axis 1, the subclouds overlap to a very large extent, as the association between the variable and the axis is moderate.</p>
+<p>Even though, as we have seen, the education level categories are ordered along axis 1, the subclouds overlap to a very large extent, as the association between the variable and the axis is moderate.<br><br></p>
 <p>Let us now look more specifically at the subcloud of the most highly educated individuals.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ggadd_kellipses.html">ggadd_kellipses</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, sel<span class="op">=</span><span class="fl">4</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
@@ -804,7 +809,7 @@ High      0 0.0000000 0.0000000    1</code></pre>
 </tr>
 </tbody>
 </table>
-<p>We can see that, as in the MCA, listening to jazz and classical music structure axis 1, but this time much more strongly since these two variables alone contribute 75% to the construction of the axis.</p>
+<p>We can see that, as in the MCA, listening to jazz and classical music structure axis 1, but this time much more strongly since these two variables alone contribute 75% to the construction of the axis.<br><br></p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">csa</span>, dim<span class="op">=</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -858,7 +863,7 @@ High      0 0.0000000 0.0000000    1</code></pre>
 </table>
 <p>It is above all the taste for animation movies that contributes to the construction of axis 2, which may be explained in part by the small number of this category.</p>
 <p>Finally, the subcloud of the variables for the most highly educated people has points in common with that of the population as a whole, but also some very marked specificities.</p>
-<p>We will not go any further here, but it should be noted that all the techniques described above can be applied to the results of a CSA.</p>
+<p>We will not go any further here, but it should be noted that all the techniques described above can be applied to the results of a CSA.<br><br><br></p>
 </div>
   </div>
 
