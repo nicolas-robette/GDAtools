@@ -30,7 +30,7 @@ opts_chunk$set(echo=TRUE,
                warning=FALSE)
 opts_knit$set(width=75)
 ```
-
+\
 Ce tutoriel présente l'utilisation du package `GDAtools` pour l'analyse géométrique des données. Pour des approfondissements sur les procédures statistiques elles-mêmes, il est recommandé de se référer aux ouvrages d'Henry Rouanet et Brigitte Le Roux :
 
 Le Roux B. and Rouanet H., 2004, *Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis*, Kluwer Academic Publishers, Dordrecht.
@@ -44,25 +44,25 @@ Le Roux B. and Rouanet H., 2010, *Multiple Correspondence Analysis*, SAGE, Serie
 # Introduction
 
 Pour cet exemple d'Analyse des Correspondances Multiples, nous allons utiliser l'un des jeux de données fournis avec le package. Il s'agit d'informations sur les goûts et les pratiques culturelles de 2000 individus : écoute de genres musicaux (variété française, rap, rock, jazz et classique) et goût pour des genres de films (comédie, film policier, animation, science-fiction, film d'amour, comédie musicale). Ces 11 variables serviront de variables "actives" dans l'ACM et sont complétées par 3 variables "supplémentaires" : le sexe, l'âge et le niveau d'éducation.
-
+\
 ```{r load}
 library(GDAtools)
 data(Taste)
 str(Taste)
 ```
-
-Les variables actives ont toutes une modalité "non-réponse" ("NA"), qui concerne quelques individus. L'ACM dite "spécifique" permet de neutraliser ces modalités dans la construction de l'espace factoriel, tout en conservant l'ensemble des individus.
+\
+Les variables actives ont toutes une modalité "non-réponse" ("NA"), qui concerne quelques individus.
 
 ```{r nb_na}
 sapply(Taste[,1:11], function(x) sum(x=="NA"))
 ```
-
-On commence par repérer le rang des modalités que l'on souhaite neutraliser.
+\
+L'ACM dite "spécifique" permet de neutraliser ces modalités dans la construction de l'espace factoriel, tout en conservant l'ensemble des individus. On commence par repérer le rang des modalités que l'on souhaite neutraliser.
 
 ```{r see_junk}
 getindexcat(Taste[,1:11])
 ```
-
+\
 Le vecteur de ces rangs est ensuite donné comme argument dans la fonction `speMCA`.
 
 ```{r mca}
@@ -74,15 +74,16 @@ mca <- speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
 -----------------
 
 # Les nuages
-
+  
 Les taux d'inertie corrigés de Benzécri permettent de se faire une idée de la part d'information représentée par chacun des axes.
 
 ```{r inertia}
 modif.rate(mca)
 ```
-
-On voit ici que les deux premiers axes capturent l'essentiel de l'information (près de 90%). On va donc dans la suite se concentrer sur le plan formé par les axes 1 et 2.
-
+  
+On voit ici que les deux premiers axes capturent l'essentiel de l'information (près de 90 %). On va donc dans la suite se concentrer sur le plan formé par les axes 1 et 2.
+\
+\
 
 ### Nuage des individus
 
@@ -103,15 +104,16 @@ ggcloud_indiv(mca, density="hex", hex.bin=10)
 ```
 
 Quelle que soit la représentation de la densité utilisée, on observe que les points semblent être plus concentrés dans une zone située immédiatement à droite de l'axe vertical.
-
+\
+\
 
 ### Nuage des variables
 
 Sur le nuage des variables, 
 
-* l'écoute de jazz et de musique classique et le goût des comédies musicales semblent s'opposer à l'écoute de rap et au goût pour les comédies sur l'axe 1; 
+* l'écoute de jazz et de musique classique et le goût des comédies musicales semblent s'opposer à l'écoute de rap et au goût pour les comédies sur l'axe 1 ; 
 
-* le goût pour l'animation et la science-fiction à celui pour les films d'amour et les comédies musicales sur l'axe 2.
+* le goût pour l'animation et la science-fiction à celui pour les films d'amour et les comédies musicales sur l'axe 2.
 
 ```{r cloud_var}
 ggcloud_variables(mca, shapes=FALSE, legend="none")
@@ -129,7 +131,8 @@ La plupart des aides à l'interprétation et autres informations utiles sont pr�
 
 * `contrib` présente les contributions des variables et des modalités de ces variables à la contruction de chacun des axes et à celle du nuage.
 * `dimcontrib` extrait les contribution des individus et des modalités de variables à la construction d'un axe en particulier.
-* `dimdescr` identifie les variables et les modalités de variables les plus statistiquement associées aux différents axes. Les mesures d'association utilisées sont l'*eta²* pour les variables et les *coefficients de corrélation* pour les modalités.
+* `dimdescr` identifie les variables et les modalités de variables les plus statistiquement associées aux différents axes. Les mesures d'association utilisées sont l'*eta²* pour les variables et les *coefficients de corrélation* pour les modalités.  
+\
 
 La fonction `tabcontrib` permet, pour un axe donné, de synthétiser les principales contributions (seules les contributions supérieures à la moyenne sont présentées).
 
@@ -141,7 +144,8 @@ tabcontrib(mca, dim=1)
 knitr::kable(tabcontrib(mca, dim=1), row.names=FALSE)
 ```
 
-Les variables d'écoute de musique classique et de jazz contribuent à elles seules pour plus de 60% à la construction de l'axe 1. L'écoute de classique et de jazz s'opposent donc à leur non-écoute, et secondairement au goût pour les comédies.
+Les variables d'écoute de musique classique et de jazz contribuent à elles seules pour plus de 60 % à la construction de l'axe 1. L'écoute de classique et de jazz s'opposent donc à leur non-écoute, et secondairement au goût pour les comédies.
+\
 
 ```{r tabcontrib2, eval=FALSE}
 tabcontrib(mca, dim=2)
@@ -165,12 +169,13 @@ On peut aller plus loin en étudiant la relation entre l'espace factoriel et les
 
 ```{r cloud_varsup, warning=FALSE}
 p <- ggcloud_variables(mca, shapes=FALSE, col="lightgray")
-p <- ggadd_supvar(p, mca, Taste$Age, col="dodgerblue3", shape=NULL, segment=FALSE)
-p <- ggadd_supvar(p, mca, Taste$Educ, col="tomato", shape=NULL, segment=FALSE)
-ggadd_supvar(p, mca, Taste$Gender, col="seagreen", shape=NULL, segment=FALSE)
+p <- ggadd_supvar(p, mca, Taste$Age, col="dodgerblue3", shape=NULL)
+p <- ggadd_supvar(p, mca, Taste$Educ, col="tomato", shape=NULL)
+ggadd_supvar(p, mca, Taste$Gender, col="seagreen", shape=NULL)
 ```
 
 Le niveau d'éducation semble avant tout associé à l'axe 1, les plus diplômés étant du côté de l'écoute de jazz et de classique. Le sexe ne semble lié qu'à l'axe 2, avec les femmes dans le bas du plan et les hommes en haut. Quant à l'âge, il est associé aux deux axes : les individus se déplacent du quadrant nord-est au quadrant sud-ouest à mesure que leur âge augmente.
+\
 
 On peut confirmer statistiquement ces premières observations en mesurant le degré d'association entre les variables supplémentaires et les axes à l'aide de l'indicateur *eta²*.
 
@@ -178,11 +183,12 @@ On peut confirmer statistiquement ces premières observations en mesurant le deg
 dimeta2(mca, Taste[,c("Gender","Age","Educ")])
 ```
 
-Le niveau d'éducation est la variable supplémentaire la plus associée à l'axe 1 : il "explique 5,9% de la variance des coordonnées individuelles" sur cet axe. L'âge est également associé au premier axe, mais de manière moins marquée, et le sexe pas du tout.
+Le niveau d'éducation est la variable supplémentaire la plus associée à l'axe 1 : il "explique" 5,9 % de la variance des coordonnées individuelles sur cet axe. L'âge est également associé au premier axe, mais de manière moins marquée, et le sexe pas du tout.
 
-Sur l'axe 2, l'âge est la variable la plus structurante, devant le sexe et le niveau d'éducation. On voit en outre que l'âge est nettement plus lié à l'axe 2 qu'à l'axe 1.
+Sur l'axe 2, l'âge est la variable la plus structurante, devant le sexe et le niveau d'éducation. On voit en outre que l'âge est nettement plus lié à l'axe 2 qu'à l'axe 1.  
+\
 
-Au niveau des modalités, on peut caractériser l'association d'une modalité de variable supplémentaire avec une axe à partir des *coefficients de corrélation*.
+Au niveau des modalités, on peut caractériser l'association d'une modalité de variable supplémentaire avec un axe à partir des *coefficients de corrélation*.
 
 ```{r condesc1, eval=FALSE}
 condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")])$categories
@@ -192,7 +198,8 @@ condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")])$categories
 knitr::kable(condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")])$categories, row.names=FALSE)
 ```
 
-Sur l'axe 1, les non et peu diplômés et les 15-24 ans s'opposent aux plus diplômés et aux 50 ans et plus. Les autres modalités apparaissent peu liées à l'axe (leurs coefficients de corrélation sont proches de 0).
+Sur l'axe 1, les non et peu diplômés et les 15-24 ans s'opposent aux plus diplômés et aux 50 ans et plus. Les autres modalités apparaissent peu liées à l'axe (leurs coefficients de corrélation sont proches de 0).  
+\
 
 ```{r condesc2, eval=FALSE}
 condesc(mca$ind$coord[,2], Taste[,c("Gender","Age","Educ")])$categories
@@ -202,8 +209,8 @@ condesc(mca$ind$coord[,2], Taste[,c("Gender","Age","Educ")])$categories
 knitr::kable(condesc(mca$ind$coord[,2], Taste[,c("Gender","Age","Educ")])$categories, row.names=FALSE)
 ```
 
-Sur l'axe 2, les hommes, les moins de 50 ans et les plus diplômés s'opposent aux femmes, aux plus de 50 ans et aux sans diplôme.
-
+Sur l'axe 2, les hommes, les moins de 50 ans et les plus diplômés s'opposent aux femmes, aux plus de 50 ans et aux sans diplôme.
+\
 
 ### Analyse d'une variable supplémentaire
 
@@ -212,8 +219,9 @@ Poursuivons l'analyse en nous concentrant sur une variable supplémentaire, le n
 ```{r varsup}
 varsup(mca, Taste$Educ)
 ```
+\
 
-Graphiquement, on peut représenter le "sous-nuage" de chacune des modalités à l'aide d'une *ellipse de concentration*, qui est centrée sur le point moyen et englobe 86% des individus ayant cette modalité.
+Graphiquement, on peut représenter le "sous-nuage" de chacune des modalités à l'aide d'une *ellipse de concentration*, qui est centrée sur le point moyen et englobe 86 % des individus ayant cette modalité.
 
 ```{r educ_ellipses}
 p <- ggcloud_indiv(mca, col='lightgrey')
@@ -221,6 +229,7 @@ ggadd_kellipses(p, mca, Taste$Educ, label=FALSE)
 ```
 
 Même si, on l'a vu, les modalités du niveau d'éducation s'ordonnent le long de l'axe 1, les sous-nuages se superposent très largement, car l'association entre la variable et l'axe est modérée.
+\
 
 Observons maintenant plus spécifiquement le sous-nuage des individus les plus diplômés.
 
@@ -230,7 +239,7 @@ ggadd_kellipses(p, mca, Taste$Educ, sel=4, legend="none")
 
 Une ellipse de concentration est utile car elle représente conjointement le point moyen de la modalité et la dispersion du sous-nuage sur les axes. Ici, on voit que bien que le point moyen des individus les plus diplômés soit situé dans le quadrant nord-ouest, une part non négligeable des points du sous-nuage se trouve à droite et/ou en bas du plan.
 
-Les ellipses de concentration ne donnent en revanche qu'une représentation imparfaite de la répartition des points du sous-nuage, du fait de l'éventuelle superposition des points (de manière analogue à ce qu'on a vu pour le nuage des indidividus) et son centrage sur le point moyen. Il peut dès lors être intéressant de compléter une ellipse de concentration par une représentation de la densité des points du sous-nuage, sous forme de contours ou de surfaces.
+Les ellipses de concentration ne donnent en revanche qu'une représentation imparfaite de la répartition des points du sous-nuage, du fait de l'éventuelle superposition des points (de manière analogue à ce qu'on a vu pour le nuage des individus) et son centrage sur le point moyen. Il peut dès lors être intéressant de compléter une ellipse de concentration par une représentation de la densité des points du sous-nuage, sous forme de contours ou de surfaces.
 
 ```{r educ_contour}
 ggadd_density(p, mca, var=Taste$Educ, cat="High", density="contour")
@@ -261,7 +270,7 @@ p <- ggcloud_variables(mca, col='lightgrey', shapes=FALSE)
 ggadd_interaction(p, mca, Taste$Gender, Taste$Age, col=c("tomato3","dodgerblue3"), legend="none")
 ```
 
-Le sexe et l'âge semblent peu interagir dans le plan 1-2. On remarque toutefois que, sur l'axe 1, les écarts entre les plus jeunes et les plus âgés sont plus importants chez les femmes que chez les hommes et que, sur l'axe 2, les jeunes se différencient plus selon le sexe que les plus âgés.
+Le sexe et l'âge semblent peu interagir dans le plan 1-2. On remarque toutefois que, sur l'axe 1, les écarts entre les plus jeunes et les plus âgés sont plus importants chez les femmes que chez les hommes et que, sur l'axe 2, les jeunes se différencient plus selon le sexe que les plus âgés.
 
 
 
@@ -271,13 +280,13 @@ Le sexe et l'âge semblent peu interagir dans le plan 1-2. On remarque toutefois
 
 Si on souhaite évaluer la généralisabilité des résultats, on peut compléter les analyses descriptives qui précèdent par des procédures d'inférences statistique qui empruntent à l'analyse inductive des données et aux approches combinatoires (pour cette partie plus encore que pour les autres, on renvoie à Le Roux et Rouanet, 2004 & 2010).
 
-Le problème de la typicalité consiste à se demander si un groupe d'individus peut être assimilé à la population de référence ou s'il est atypique. Un *test de typicalité* calcule une *p-value combinatoire*, qui définit le "degré de typicalité" du point moyen du groupe d'individus. Une p-value faible est considérée comme statistiquement significative au sens combinatoire et traduit une différence qui n'est probablement pas dûe au hasard.
+Le problème de la typicalité consiste à se demander si un groupe d'individus peut être assimilé à la population de référence ou s'il est atypique. Un *test de typicalité* calcule une *p-value combinatoire*, qui définit le "degré de typicalité" du point moyen du groupe d'individus. Une p-value faible est considérée comme statistiquement significative au sens combinatoire et traduit une différence qui n'est probablement pas due au hasard.
 
 ```{r typic}
 dimtypicality(mca, Taste[,c("Gender","Age","Educ")], dim=c(1,2), max.pval=0.05)
 ```
 
-A un seuil de 5%, les points moyens des femmes, hommes et âges intermédiaires ne sont pas significativement différents de celui de l'ensemble de la population sur l'axe 1 (autrement dit de 0). Sur l'axe 2, ce sont les points moyens des niveaux d'éducation faibles et moyens qui ne s'écartent pas significativement de l'origine.
+A un seuil de 5 %, les points moyens des femmes, hommes et âges intermédiaires ne sont pas significativement différents de celui de l'ensemble de la population sur l'axe 1 (autrement dit de 0). Sur l'axe 2, ce sont les points moyens des niveaux d'éducation faibles et moyens qui ne s'écartent pas significativement de l'origine.
 
 On peut étudier les résultats des tests de typicalité d'une variable supplémentaire en particulier à partir de la fonction `varsup`.
 
@@ -286,9 +295,9 @@ vseduc <- varsup(mca, Taste$Educ)
 vseduc$pval[,c(1,2)]
 ```
 
-On voit que, sur l'axe 1, toutes les modalités de niveau d'éducation sont significativement différentes de 0 à un seuil de 5%, elles sont atypiques de l'ensemble du nuage des individus, mais que ce n'est pas le cas des modalités "low" et "medium" sur l'axe 2.
+On voit que, sur l'axe 1, toutes les modalités de niveau d'éducation sont significativement différentes de 0 à un seuil de 5 %, elles sont atypiques de l'ensemble du nuage des individus, mais que ce n'est pas le cas des modalités "low" et "medium" sur l'axe 2.
 
-Les ellipses de confiance répondent à la même logique que les test de typicalité. Avec un seuil de significativité conventionnel de 5%, l'ellipse de confiance est une zone de confiance à 95% représentant l'ensemble des points moyens possibles d'une modalité qui ne sont pas significativement différents du point moyen observé.
+Les ellipses de confiance répondent à la même logique que les tests de typicalité. Avec un seuil de significativité conventionnel de 5 %, l'ellipse de confiance est une zone de confiance à 95 % représentant l'ensemble des points moyens possibles d'une modalité qui ne sont pas significativement différents du point moyen observé.
 
 ```{r educ_conc_ellipses}
 p <- ggcloud_indiv(mca, col='lightgrey')
@@ -302,13 +311,13 @@ ht <- homog.test(mca, Taste$Educ)
 ht$dim.1$p.values
 ```
 
-Sur l'axe 1, les points moyens des modalités de niveau d'éducation sont toutes significativement distinctes les unes des autres
+Sur l'axe 1, les points moyens des modalités de niveau d'éducation sont toutes significativement distinctes les unes des autres.
 
 ```{r homog_test2}
 ht$dim.2$p.values
 ```
 
-Ce n'est pas le cas sur l'axe 2, où les modalités "low" et "medium" ne se distinguent pas significativement (p-value=0,22).
+Ce n'est pas le cas sur l'axe 2, où les modalités "low" et "medium" ne se distinguent pas significativement (p-value=0,22).
 
 
 
@@ -336,7 +345,8 @@ tabcontrib(csa, dim=1)
 knitr::kable(tabcontrib(csa, dim=1), row.names=FALSE)
 ```
 
-On voit que, comme dans l'ACM, l'écoute de jazz et de musique classique structurent l'axe 1, mais cette fois beaucoup plus fortement puisque ces deu variables contribuent à elles seules pour 75% à la construction de l'axe.
+On voit que, comme dans l'ACM, l'écoute de jazz et de musique classique structurent l'axe 1, mais cette fois beaucoup plus fortement puisque ces deu variables contribuent à elles seules pour 75 % à la construction de l'axe.  
+\
 
 ```{r csa_tabcontrib2, eval=FALSE}
 tabcontrib(csa, dim=2)
@@ -350,4 +360,6 @@ C'est avant tout le goût pour les films d'animation qui contribue à la contruc
 
 Finalement, le sous-nuage des variables des plus diplômés présente des points communs avec celui de l'ensemble de la population, mais aussi des spécificités très marquées.
 
-On n'ira pas plus loin ici mais précisons que toutes les techniques décrites précédemment peuvent s'appliquer aux résultats d'une CSA.
+On n'ira pas plus loin ici mais précisons que toutes les techniques décrites précédemment peuvent s'appliquer aux résultats d'une CSA.  
+\
+\
