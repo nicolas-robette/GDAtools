@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6</span>
       </span>
     </div>
 
@@ -82,7 +82,7 @@
       <h1 data-toc-skip>L’analyse géométrique des données avec GDAtools</h1>
                         <h4 class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-04-19</h4>
+            <h4 class="date">2021-04-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/french/Tutoriel_AGD.Rmd"><code>vignettes/french/Tutoriel_AGD.Rmd</code></a></small>
       <div class="hidden name"><code>Tutoriel_AGD.Rmd</code></div>
@@ -91,14 +91,15 @@
 
     
     
-<p>Ce tutoriel présente l’utilisation du package <code>GDAtools</code> pour l’analyse géométrique des données. Pour des approfondissements sur les procédures statistiques elles-mêmes, il est recommandé de se référer aux ouvrages d’Henry Rouanet et Brigitte Le Roux :</p>
+<p><br>
+Ce tutoriel présente l’utilisation du package <code>GDAtools</code> pour l’analyse géométrique des données. Pour des approfondissements sur les procédures statistiques elles-mêmes, il est recommandé de se référer aux ouvrages d’Henry Rouanet et Brigitte Le Roux :</p>
 <p>Le Roux B. and Rouanet H., 2004, <em>Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis</em>, Kluwer Academic Publishers, Dordrecht.</p>
 <p>Le Roux B. and Rouanet H., 2010, <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks.</p>
 <hr>
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>Pour cet exemple d’Analyse des Correspondances Multiples, nous allons utiliser l’un des jeux de données fournis avec le package. Il s’agit d’informations sur les goûts et les pratiques culturelles de 2000 individus : écoute de genres musicaux (variété française, rap, rock, jazz et classique) et goût pour des genres de films (comédie, film policier, animation, science-fiction, film d’amour, comédie musicale). Ces 11 variables serviront de variables “actives” dans l’ACM et sont complétées par 3 variables “supplémentaires” : le sexe, l’âge et le niveau d’éducation.</p>
+<p>Pour cet exemple d’Analyse des Correspondances Multiples, nous allons utiliser l’un des jeux de données fournis avec le package. Il s’agit d’informations sur les goûts et les pratiques culturelles de 2000 individus : écoute de genres musicaux (variété française, rap, rock, jazz et classique) et goût pour des genres de films (comédie, film policier, animation, science-fiction, film d’amour, comédie musicale). Ces 11 variables serviront de variables “actives” dans l’ACM et sont complétées par 3 variables “supplémentaires” : le sexe, l’âge et le niveau d’éducation.<br></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nicolas-robette/GDAtools">GDAtools</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span>
@@ -118,14 +119,16 @@
  $ Gender   : Factor w/ 2 levels "Men","Women": 1 1 2 1 2 2 2 2 1 1 ...
  $ Age      : Factor w/ 3 levels "15-24","25-49",..: 2 3 2 3 2 2 2 2 1 3 ...
  $ Educ     : Factor w/ 4 levels "None","Low","Medium",..: 3 4 3 4 2 1 3 2 2 2 ...</code></pre>
-<p>Les variables actives ont toutes une modalité “non-réponse” (“NA”), qui concerne quelques individus. L’ACM dite “spécifique” permet de neutraliser ces modalités dans la construction de l’espace factoriel, tout en conservant l’ensemble des individus.</p>
+<p><br>
+Les variables actives ont toutes une modalité “non-réponse” (“NA”), qui concerne quelques individus.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">==</span><span class="st">"NA"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>FrenchPop       Rap      Rock      Jazz Classical    Comedy     Crime Animation 
        10         9        10        15         5         3        15         4 
     SciFi      Love   Musical 
        12         7        11 </code></pre>
-<p>On commence par repérer le rang des modalités que l’on souhaite neutraliser.</p>
+<p><br>
+L’ACM dite “spécifique” permet de neutraliser ces modalités dans la construction de l’espace factoriel, tout en conservant l’ensemble des individus. On commence par repérer le rang des modalités que l’on souhaite neutraliser.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code> [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
@@ -137,7 +140,8 @@
 [25] "SciFi.No"      "SciFi.Yes"     "SciFi.NA"      "Love.No"      
 [29] "Love.Yes"      "Love.NA"       "Musical.No"    "Musical.Yes"  
 [33] "Musical.NA"   </code></pre>
-<p>Le vecteur de ces rangs est ensuite donné comme argument dans la fonction <code>speMCA</code>.</p>
+<p><br>
+Le vecteur de ces rangs est ensuite donné comme argument dans la fonction <code>speMCA</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <hr>
@@ -155,7 +159,7 @@
 4  2.26     99.39
 5  0.59     99.98
 6  0.02    100.00</code></pre>
-<p>On voit ici que les deux premiers axes capturent l’essentiel de l’information (près de 90%). On va donc dans la suite se concentrer sur le plan formé par les axes 1 et 2.</p>
+<p>On voit ici que les deux premiers axes capturent l’essentiel de l’information (près de 90 %). On va donc dans la suite se concentrer sur le plan formé par les axes 1 et 2.<br><br></p>
 <div id="nuage-des-individus" class="section level3">
 <h3 class="hasAnchor">
 <a href="#nuage-des-individus" class="anchor"></a>Nuage des individus</h3>
@@ -170,15 +174,15 @@
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span>, density<span class="op">=</span><span class="st">"hex"</span>, hex.bin<span class="op">=</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/cloud_ind_hex-1.png" width="700"></p>
-<p>Quelle que soit la représentation de la densité utilisée, on observe que les points semblent être plus concentrés dans une zone située immédiatement à droite de l’axe vertical.</p>
+<p>Quelle que soit la représentation de la densité utilisée, on observe que les points semblent être plus concentrés dans une zone située immédiatement à droite de l’axe vertical.<br><br></p>
 </div>
 <div id="nuage-des-variables" class="section level3">
 <h3 class="hasAnchor">
 <a href="#nuage-des-variables" class="anchor"></a>Nuage des variables</h3>
 <p>Sur le nuage des variables,</p>
 <ul>
-<li><p>l’écoute de jazz et de musique classique et le goût des comédies musicales semblent s’opposer à l’écoute de rap et au goût pour les comédies sur l’axe 1;</p></li>
-<li><p>le goût pour l’animation et la science-fiction à celui pour les films d’amour et les comédies musicales sur l’axe 2.</p></li>
+<li><p>l’écoute de jazz et de musique classique et le goût des comédies musicales semblent s’opposer à l’écoute de rap et au goût pour les comédies sur l’axe 1 ;</p></li>
+<li><p>le goût pour l’animation et la science-fiction à celui pour les films d’amour et les comédies musicales sur l’axe 2.</p></li>
 </ul>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
@@ -197,7 +201,8 @@
 <li>
 <code>dimcontrib</code> extrait les contribution des individus et des modalités de variables à la construction d’un axe en particulier.</li>
 <li>
-<code>dimdescr</code> identifie les variables et les modalités de variables les plus statistiquement associées aux différents axes. Les mesures d’association utilisées sont l’<em>eta²</em> pour les variables et les <em>coefficients de corrélation</em> pour les modalités.</li>
+<code>dimdescr</code> identifie les variables et les modalités de variables les plus statistiquement associées aux différents axes. Les mesures d’association utilisées sont l’<em>eta²</em> pour les variables et les <em>coefficients de corrélation</em> pour les modalités.<br><br>
+</li>
 </ul>
 <p>La fonction <code>tabcontrib</code> permet, pour un axe donné, de synthétiser les principales contributions (seules les contributions supérieures à la moyenne sont présentées).</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
@@ -269,7 +274,7 @@
 </tr>
 </tbody>
 </table>
-<p>Les variables d’écoute de musique classique et de jazz contribuent à elles seules pour plus de 60% à la construction de l’axe 1. L’écoute de classique et de jazz s’opposent donc à leur non-écoute, et secondairement au goût pour les comédies.</p>
+<p>Les variables d’écoute de musique classique et de jazz contribuent à elles seules pour plus de 60 % à la construction de l’axe 1. L’écoute de classique et de jazz s’opposent donc à leur non-écoute, et secondairement au goût pour les comédies.<br></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">mca</span>, dim<span class="op">=</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -369,11 +374,11 @@
 <p>On peut aller plus loin en étudiant la relation entre l’espace factoriel et les variables supplémentaires, en l’occurrence le sexe, l’âge et le niveau d’éducation. Une première étape consiste à projeter les variables supplémentaires sur le nuage des variables.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, col<span class="op">=</span><span class="st">"lightgray"</span><span class="op">)</span>
-<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, col<span class="op">=</span><span class="st">"dodgerblue3"</span>, shape<span class="op">=</span><span class="cn">NULL</span>, segment<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, col<span class="op">=</span><span class="st">"tomato"</span>, shape<span class="op">=</span><span class="cn">NULL</span>, segment<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, col<span class="op">=</span><span class="st">"seagreen"</span>, shape<span class="op">=</span><span class="cn">NULL</span>, segment<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, col<span class="op">=</span><span class="st">"dodgerblue3"</span>, shape<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span>
+<span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, col<span class="op">=</span><span class="st">"tomato"</span>, shape<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, col<span class="op">=</span><span class="st">"seagreen"</span>, shape<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/cloud_varsup-1.png" width="700"></p>
-<p>Le niveau d’éducation semble avant tout associé à l’axe 1, les plus diplômés étant du côté de l’écoute de jazz et de classique. Le sexe ne semble lié qu’à l’axe 2, avec les femmes dans le bas du plan et les hommes en haut. Quant à l’âge, il est associé aux deux axes : les individus se déplacent du quadrant nord-est au quadrant sud-ouest à mesure que leur âge augmente.</p>
+<p>Le niveau d’éducation semble avant tout associé à l’axe 1, les plus diplômés étant du côté de l’écoute de jazz et de classique. Le sexe ne semble lié qu’à l’axe 2, avec les femmes dans le bas du plan et les hommes en haut. Quant à l’âge, il est associé aux deux axes : les individus se déplacent du quadrant nord-est au quadrant sud-ouest à mesure que leur âge augmente.<br></p>
 <p>On peut confirmer statistiquement ces premières observations en mesurant le degré d’association entre les variables supplémentaires et les axes à l’aide de l’indicateur <em>eta²</em>.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/dimeta2.html">dimeta2</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></code></pre></div>
@@ -381,9 +386,9 @@
 Gender   0.0   6.0   0.1   1.2   0.0
 Age      3.8  14.2   2.5   0.4   3.5
 Educ     5.9   3.3   1.5   0.5   0.6</code></pre>
-<p>Le niveau d’éducation est la variable supplémentaire la plus associée à l’axe 1 : il “explique 5,9% de la variance des coordonnées individuelles” sur cet axe. L’âge est également associé au premier axe, mais de manière moins marquée, et le sexe pas du tout.</p>
-<p>Sur l’axe 2, l’âge est la variable la plus structurante, devant le sexe et le niveau d’éducation. On voit en outre que l’âge est nettement plus lié à l’axe 2 qu’à l’axe 1.</p>
-<p>Au niveau des modalités, on peut caractériser l’association d’une modalité de variable supplémentaire avec une axe à partir des <em>coefficients de corrélation</em>.</p>
+<p>Le niveau d’éducation est la variable supplémentaire la plus associée à l’axe 1 : il “explique” 5,9 % de la variance des coordonnées individuelles sur cet axe. L’âge est également associé au premier axe, mais de manière moins marquée, et le sexe pas du tout.</p>
+<p>Sur l’axe 2, l’âge est la variable la plus structurante, devant le sexe et le niveau d’éducation. On voit en outre que l’âge est nettement plus lié à l’axe 2 qu’à l’axe 1.<br><br></p>
+<p>Au niveau des modalités, on peut caractériser l’association d’une modalité de variable supplémentaire avec un axe à partir des <em>coefficients de corrélation</em>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
 <table class="table">
@@ -478,7 +483,7 @@ Educ     5.9   3.3   1.5   0.5   0.6</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Sur l’axe 1, les non et peu diplômés et les 15-24 ans s’opposent aux plus diplômés et aux 50 ans et plus. Les autres modalités apparaissent peu liées à l’axe (leurs coefficients de corrélation sont proches de 0).</p>
+<p>Sur l’axe 1, les non et peu diplômés et les 15-24 ans s’opposent aux plus diplômés et aux 50 ans et plus. Les autres modalités apparaissent peu liées à l’axe (leurs coefficients de corrélation sont proches de 0).<br><br></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
 <table class="table">
@@ -573,7 +578,7 @@ Educ     5.9   3.3   1.5   0.5   0.6</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Sur l’axe 2, les hommes, les moins de 50 ans et les plus diplômés s’opposent aux femmes, aux plus de 50 ans et aux sans diplôme.</p>
+<p>Sur l’axe 2, les hommes, les moins de 50 ans et les plus diplômés s’opposent aux femmes, aux plus de 50 ans et aux sans diplôme.<br></p>
 </div>
 <div id="analyse-dune-variable-supplémentaire" class="section level3">
 <h3 class="hasAnchor">
@@ -630,18 +635,19 @@ None    0.145 -0.167 -0.109  0.054 -0.029
 Low     0.100  0.034  0.002 -0.046 -0.032
 Medium -0.051  0.009  0.025  0.033 -0.013
 High   -0.213  0.123  0.086 -0.033  0.076</code></pre>
-<p>Graphiquement, on peut représenter le “sous-nuage” de chacune des modalités à l’aide d’une <em>ellipse de concentration</em>, qui est centrée sur le point moyen et englobe 86% des individus ayant cette modalité.</p>
+<p><br></p>
+<p>Graphiquement, on peut représenter le “sous-nuage” de chacune des modalités à l’aide d’une <em>ellipse de concentration</em>, qui est centrée sur le point moyen et englobe 86 % des individus ayant cette modalité.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/ggadd_kellipses.html">ggadd_kellipses</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, label<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/educ_ellipses-1.png" width="700"></p>
-<p>Même si, on l’a vu, les modalités du niveau d’éducation s’ordonnent le long de l’axe 1, les sous-nuages se superposent très largement, car l’association entre la variable et l’axe est modérée.</p>
+<p>Même si, on l’a vu, les modalités du niveau d’éducation s’ordonnent le long de l’axe 1, les sous-nuages se superposent très largement, car l’association entre la variable et l’axe est modérée.<br></p>
 <p>Observons maintenant plus spécifiquement le sous-nuage des individus les plus diplômés.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggadd_kellipses.html">ggadd_kellipses</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, sel<span class="op">=</span><span class="fl">4</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/educ_ellipse-1.png" width="700"></p>
 <p>Une ellipse de concentration est utile car elle représente conjointement le point moyen de la modalité et la dispersion du sous-nuage sur les axes. Ici, on voit que bien que le point moyen des individus les plus diplômés soit situé dans le quadrant nord-ouest, une part non négligeable des points du sous-nuage se trouve à droite et/ou en bas du plan.</p>
-<p>Les ellipses de concentration ne donnent en revanche qu’une représentation imparfaite de la répartition des points du sous-nuage, du fait de l’éventuelle superposition des points (de manière analogue à ce qu’on a vu pour le nuage des indidividus) et son centrage sur le point moyen. Il peut dès lors être intéressant de compléter une ellipse de concentration par une représentation de la densité des points du sous-nuage, sous forme de contours ou de surfaces.</p>
+<p>Les ellipses de concentration ne donnent en revanche qu’une représentation imparfaite de la répartition des points du sous-nuage, du fait de l’éventuelle superposition des points (de manière analogue à ce qu’on a vu pour le nuage des individus) et son centrage sur le point moyen. Il peut dès lors être intéressant de compléter une ellipse de concentration par une représentation de la densité des points du sous-nuage, sous forme de contours ou de surfaces.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggadd_density.html">ggadd_density</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, var<span class="op">=</span><span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, cat<span class="op">=</span><span class="st">"High"</span>, density<span class="op">=</span><span class="st">"contour"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/educ_contour-1.png" width="700"></p>
@@ -663,7 +669,7 @@ High   -0.213  0.123  0.086 -0.033  0.076</code></pre>
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span>, shapes<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/ggadd_interaction.html">ggadd_interaction</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tomato3"</span>,<span class="st">"dodgerblue3"</span><span class="op">)</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/interaction-1.png" width="700"></p>
-<p>Le sexe et l’âge semblent peu interagir dans le plan 1-2. On remarque toutefois que, sur l’axe 1, les écarts entre les plus jeunes et les plus âgés sont plus importants chez les femmes que chez les hommes et que, sur l’axe 2, les jeunes se différencient plus selon le sexe que les plus âgés.</p>
+<p>Le sexe et l’âge semblent peu interagir dans le plan 1-2. On remarque toutefois que, sur l’axe 1, les écarts entre les plus jeunes et les plus âgés sont plus importants chez les femmes que chez les hommes et que, sur l’axe 2, les jeunes se différencient plus selon le sexe que les plus âgés.</p>
 <hr>
 </div>
 </div>
@@ -671,7 +677,7 @@ High   -0.213  0.123  0.086 -0.033  0.076</code></pre>
 <h1 class="hasAnchor">
 <a href="#analyse-inductive" class="anchor"></a>Analyse inductive</h1>
 <p>Si on souhaite évaluer la généralisabilité des résultats, on peut compléter les analyses descriptives qui précèdent par des procédures d’inférences statistique qui empruntent à l’analyse inductive des données et aux approches combinatoires (pour cette partie plus encore que pour les autres, on renvoie à Le Roux et Rouanet, 2004 &amp; 2010).</p>
-<p>Le problème de la typicalité consiste à se demander si un groupe d’individus peut être assimilé à la population de référence ou s’il est atypique. Un <em>test de typicalité</em> calcule une <em>p-value combinatoire</em>, qui définit le “degré de typicalité” du point moyen du groupe d’individus. Une p-value faible est considérée comme statistiquement significative au sens combinatoire et traduit une différence qui n’est probablement pas dûe au hasard.</p>
+<p>Le problème de la typicalité consiste à se demander si un groupe d’individus peut être assimilé à la population de référence ou s’il est atypique. Un <em>test de typicalité</em> calcule une <em>p-value combinatoire</em>, qui définit le “degré de typicalité” du point moyen du groupe d’individus. Une p-value faible est considérée comme statistiquement significative au sens combinatoire et traduit une différence qui n’est probablement pas due au hasard.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/dimtypicality.html">dimtypicality</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span>, dim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, max.pval<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></code></pre></div>
 <pre><code>$dim.1
@@ -692,7 +698,7 @@ Educ.High       475   5.507427 3.641163e-08
 Educ.None       490  -7.468929 8.082424e-14
 Gender.Women   1042 -10.972527 0.000000e+00
 Age.50+         854 -14.772247 0.000000e+00</code></pre>
-<p>A un seuil de 5%, les points moyens des femmes, hommes et âges intermédiaires ne sont pas significativement différents de celui de l’ensemble de la population sur l’axe 1 (autrement dit de 0). Sur l’axe 2, ce sont les points moyens des niveaux d’éducation faibles et moyens qui ne s’écartent pas significativement de l’origine.</p>
+<p>A un seuil de 5 %, les points moyens des femmes, hommes et âges intermédiaires ne sont pas significativement différents de celui de l’ensemble de la population sur l’axe 1 (autrement dit de 0). Sur l’axe 2, ce sont les points moyens des niveaux d’éducation faibles et moyens qui ne s’écartent pas significativement de l’origine.</p>
 <p>On peut étudier les résultats des tests de typicalité d’une variable supplémentaire en particulier à partir de la fonction <code>varsup</code>.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vseduc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/varsup.html">varsup</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span>
@@ -702,8 +708,8 @@ None   0.000000 0.000000
 Low    0.000007 0.132758
 Medium 0.023033 0.681856
 High   0.000000 0.000000</code></pre>
-<p>On voit que, sur l’axe 1, toutes les modalités de niveau d’éducation sont significativement différentes de 0 à un seuil de 5%, elles sont atypiques de l’ensemble du nuage des individus, mais que ce n’est pas le cas des modalités “low” et “medium” sur l’axe 2.</p>
-<p>Les ellipses de confiance répondent à la même logique que les test de typicalité. Avec un seuil de significativité conventionnel de 5%, l’ellipse de confiance est une zone de confiance à 95% représentant l’ensemble des points moyens possibles d’une modalité qui ne sont pas significativement différents du point moyen observé.</p>
+<p>On voit que, sur l’axe 1, toutes les modalités de niveau d’éducation sont significativement différentes de 0 à un seuil de 5 %, elles sont atypiques de l’ensemble du nuage des individus, mais que ce n’est pas le cas des modalités “low” et “medium” sur l’axe 2.</p>
+<p>Les ellipses de confiance répondent à la même logique que les tests de typicalité. Avec un seuil de significativité conventionnel de 5 %, l’ellipse de confiance est une zone de confiance à 95 % représentant l’ensemble des points moyens possibles d’une modalité qui ne sont pas significativement différents du point moyen observé.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/ggadd_ellipses.html">ggadd_ellipses</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, level<span class="op">=</span><span class="fl">0.05</span>, label<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
@@ -717,7 +723,7 @@ None   1.000000e+00 1.680934e-07      0    0
 Low    1.680934e-07 1.000000e+00      0    0
 Medium 0.000000e+00 0.000000e+00      1    0
 High   0.000000e+00 0.000000e+00      0    1</code></pre>
-<p>Sur l’axe 1, les points moyens des modalités de niveau d’éducation sont toutes significativement distinctes les unes des autres</p>
+<p>Sur l’axe 1, les points moyens des modalités de niveau d’éducation sont toutes significativement distinctes les unes des autres.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ht</span><span class="op">$</span><span class="va">dim.2</span><span class="op">$</span><span class="va">p.values</span></code></pre></div>
 <pre><code>       None       Low    Medium High
@@ -725,7 +731,7 @@ None      1 0.0000000 0.0000000    0
 Low       0 1.0000000 0.2232064    0
 Medium    0 0.2232064 1.0000000    0
 High      0 0.0000000 0.0000000    1</code></pre>
-<p>Ce n’est pas le cas sur l’axe 2, où les modalités “low” et “medium” ne se distinguent pas significativement (p-value=0,22).</p>
+<p>Ce n’est pas le cas sur l’axe 2, où les modalités “low” et “medium” ne se distinguent pas significativement (p-value=0,22).</p>
 <hr>
 </div>
 <div id="class-specific-analysis" class="section level1">
@@ -798,7 +804,7 @@ High      0 0.0000000 0.0000000    1</code></pre>
 </tr>
 </tbody>
 </table>
-<p>On voit que, comme dans l’ACM, l’écoute de jazz et de musique classique structurent l’axe 1, mais cette fois beaucoup plus fortement puisque ces deu variables contribuent à elles seules pour 75% à la construction de l’axe.</p>
+<p>On voit que, comme dans l’ACM, l’écoute de jazz et de musique classique structurent l’axe 1, mais cette fois beaucoup plus fortement puisque ces deu variables contribuent à elles seules pour 75 % à la construction de l’axe.<br><br></p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">csa</span>, dim<span class="op">=</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -852,7 +858,7 @@ High      0 0.0000000 0.0000000    1</code></pre>
 </table>
 <p>C’est avant tout le goût pour les films d’animation qui contribue à la contruction de l’axe 2, ce qui s’explique sans doute en partie par le faible effectif de cette modalité.</p>
 <p>Finalement, le sous-nuage des variables des plus diplômés présente des points communs avec celui de l’ensemble de la population, mais aussi des spécificités très marquées.</p>
-<p>On n’ira pas plus loin ici mais précisons que toutes les techniques décrites précédemment peuvent s’appliquer aux résultats d’une CSA.</p>
+<p>On n’ira pas plus loin ici mais précisons que toutes les techniques décrites précédemment peuvent s’appliquer aux résultats d’une CSA.<br><br><br></p>
 </div>
   </div>
 

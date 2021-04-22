@@ -49,7 +49,7 @@ data(Music)
 getindexcat(Music[,1:5])
 mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
 p <- ggcloud_variables(mca, palette='lightgrey', shapes=FALSE)
-ggadd_supvar(p, mca, Music$Age)
+ggadd_supvar(p, mca, Music$Age, segment=TRUE)
 }
 
 \keyword{ aplot }
