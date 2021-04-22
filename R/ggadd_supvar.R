@@ -1,4 +1,4 @@
-ggadd_supvar <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col='black', shape=1, prop=NULL, textsize=3, segment=TRUE, vname=NULL) {
+ggadd_supvar <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col='black', shape=1, prop=NULL, textsize=3, segment=FALSE, vname=NULL) {
 
   dim1 <- axes[1]
   dim2 <- axes[2]
