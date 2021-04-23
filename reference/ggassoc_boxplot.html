@@ -136,7 +136,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>ggassoc_boxplot</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>mapping</span>, axes.labs<span class='op'>=</span><span class='cn'>TRUE</span>, ticks.labs<span class='op'>=</span><span class='cn'>TRUE</span>,
-text.size<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></pre>
+text.size<span class='op'>=</span><span class='fl'>3</span>, box<span class='op'>=</span><span class='cn'>TRUE</span>, notch<span class='op'>=</span><span class='cn'>FALSE</span>, violin<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,6 +161,18 @@ text.size<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</s
       <th>text.size</th>
       <td><p>Size of the association measure. If NULL, the text is not added to the plot.</p></td>
     </tr>
+    <tr>
+      <th>box</th>
+      <td><p>Whether to draw boxplots. Default is TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>notch</th>
+      <td><p>If FALSE (default) make a standard box plot. If TRUE, make a notched box plot. Notches are used to compare groups; if the notches of two boxes do not overlap, this suggests that the medians are significantly different.</p></td>
+    </tr>
+    <tr>
+      <th>violin</th>
+      <td><p>Whether to draw a violin plot. Default is TRUE.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -183,7 +195,7 @@ text.size<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</s
 <span class='fu'>ggassoc_boxplot</span><span class='op'>(</span><span class='va'>decathlon</span>, mapping <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Javeline</span>, y <span class='op'>=</span> <span class='va'>Competition</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'GGally':</span>
 #&gt; <span class='message'>  method from   </span>
-#&gt; <span class='message'>  +.gg   ggplot2</span></div><div class='output co'>#&gt; <span class='message'>notch went outside hinges. Try setting notch=FALSE.</span></div><div class='img'><img src='ggassoc_boxplot-1.png' alt='' width='700' height='433' /></div></pre>
+#&gt; <span class='message'>  +.gg   ggplot2</span></div><div class='img'><img src='ggassoc_boxplot-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
