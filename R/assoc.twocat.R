@@ -28,13 +28,13 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
 
   tab <- as.table(t)
 
-    # rownames(tab) <- gsub('data.','',rownames(tab))
+  # rownames(tab) <- gsub('data.','',rownames(tab))
   # colnames(tab) <- gsub('data.','',colnames(tab))
 
   freq <- addmargins(tab)
-  prop <- round(400*prop.table(freq),1)
-  rprop <- round(100*apply(freq, 2, function(x) 2*x/rowSums(freq)),1)
-  cprop <- t(round(100*apply(freq, 1, function(x) 2*x/colSums(freq)),1))
+  prop <- 400*prop.table(freq)
+  rprop <- 100*apply(freq, 2, function(x) 2*x/rowSums(freq))
+  cprop <- t(100*apply(freq, 1, function(x) 2*x/colSums(freq)))
 
   phi <- phi.table(x,y,weights=weights,digits=NULL)
   
