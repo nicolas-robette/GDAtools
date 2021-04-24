@@ -98,6 +98,9 @@
       <a href="../articles/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
+      <a href="../articles/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
+    </li>
+    <li>
       <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
     <li>
@@ -138,7 +141,8 @@
     <p>Measures the association between a continuous variable and some continuous and/or categorical variables</p>
     </div>
 
-    <pre class="usage"><span class='fu'>condesc</span><span class='op'>(</span><span class='va'>y</span>,<span class='va'>x</span>,weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>,min.cor<span class='op'>=</span><span class='cn'>NULL</span>,nperm<span class='op'>=</span><span class='cn'>NULL</span>,distrib<span class='op'>=</span><span class='st'>"asympt"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>condesc</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>, min.cor<span class='op'>=</span><span class='cn'>NULL</span>, nperm<span class='op'>=</span><span class='cn'>NULL</span>, 
+distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>0</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,13 +171,17 @@
       <th>distrib</th>
       <td><p>the null distribution of permutation test of independence can be approximated by its asymptotic distribution (<code>"asympt"</code>, default) or via Monte Carlo resampling (<code>"approx"</code>).</p></td>
     </tr>
+    <tr>
+      <th>dec</th>
+      <td><p>vector of 4 integers for number of decimals. The first value if for association measures, the second for permutation p-values, the third for medians and mads, the fourth for point biserial correlations. Default is c(3,3,0,3).</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list of the following items :</p>
 <dt>variables</dt><dd><p>associations between y and the variables in x</p></dd>
-<dt>categories</dt><dd><p>a data frame with categorical variables from x and associations measured by correlation coefficients</p></dd>
+<dt>categories</dt><dd><p>a data frame with categorical variables from x and associations measured by point biserial correlation</p></dd>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -200,17 +208,17 @@
 #&gt; 
 #&gt; $categories
 #&gt;     categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global
-#&gt; 3    Age.15-24       0.32615242       0.1878537     0.2447532    0.2919554
-#&gt; 4    Age.25-49       0.19153500       0.1878537     0.2301321    0.2919554
-#&gt; 1   Gender.Men       0.18206465       0.1878537     0.3038327    0.2919554
-#&gt; 2 Gender.Women       0.18888222       0.1878537     0.2826744    0.2919554
-#&gt; 5      Age.50+       0.09607394       0.1878537     0.3919115    0.2919554
-#&gt;       cor.coef
-#&gt; 3  0.167389371
-#&gt; 4  0.022365033
-#&gt; 1  0.007008553
-#&gt; 2 -0.007008553
-#&gt; 5 -0.142683120
+#&gt; 3    Age.15-24                0               0             0            0
+#&gt; 4    Age.25-49                0               0             0            0
+#&gt; 1   Gender.Men                0               0             0            0
+#&gt; 2 Gender.Women                0               0             0            0
+#&gt; 5      Age.50+                0               0             0            0
+#&gt;      cor
+#&gt; 3  0.167
+#&gt; 4  0.022
+#&gt; 1  0.007
+#&gt; 2 -0.007
+#&gt; 5 -0.143
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

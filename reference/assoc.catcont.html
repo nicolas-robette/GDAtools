@@ -98,6 +98,9 @@
       <a href="../articles/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
+      <a href="../articles/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
+    </li>
+    <li>
       <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
     <li>
@@ -175,8 +178,8 @@
     <p>A list with the following elements :</p>
 <dt>eta.squared</dt><dd><p>eta-squared between the two variables</p></dd>
 <dt>permutation.pvalue</dt><dd><p>p-value from a permutation (so non-parametric) test of independence</p></dd>
-<dt>cor.coeff</dt><dd><p>correlation coefficient between the two variables, for each level of the categorical variable</p></dd>
-<dt>cor.perm.pval</dt><dd><p>permutation p-value of the correlation coefficient between the two variables, for each level of the categorical variable</p></dd>
+<dt>cor</dt><dd><p>point biserial correlation between the two variables, for each level of the categorical variable</p></dd>
+<dt>cor.perm.pval</dt><dd><p>permutation p-value of the correlation between the two variables, for each level of the categorical variable</p></dd>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -203,7 +206,7 @@
 #&gt; $permutation.pvalue
 #&gt; [1] 0.3973848
 #&gt; 
-#&gt; $cor.coeff
+#&gt; $cor
 #&gt;   Ctl   Trt 
 #&gt;  0.27 -0.27 
 #&gt; 

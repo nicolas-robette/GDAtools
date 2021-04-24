@@ -57,6 +57,9 @@
       <a href="../articles/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
+      <a href="../articles/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
+    </li>
+    <li>
       <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
     <li>
@@ -91,7 +94,7 @@
       <h1 data-toc-skip>Geometric Data Analysis with GDAtools</h1>
                         <h4 class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-04-23</h4>
+            <h4 class="date">2021-04-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/Tutorial_GDA.Rmd"><code>vignettes/Tutorial_GDA.Rmd</code></a></small>
       <div class="hidden name"><code>Tutorial_GDA.Rmd</code></div>
@@ -400,94 +403,86 @@ Educ     5.9   3.3   1.5   0.5   0.6</code></pre>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
 <table class="table">
-<colgroup>
-<col width="15%">
-<col width="20%">
-<col width="19%">
-<col width="16%">
-<col width="15%">
-<col width="13%">
-</colgroup>
 <thead><tr class="header">
 <th align="left">categories</th>
 <th align="right">median.y.in.xcat</th>
 <th align="right">median.y.global</th>
 <th align="right">mad.y.in.xcat</th>
 <th align="right">mad.y.global</th>
-<th align="right">cor.coef</th>
+<th align="right">cor</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Age.15-24</td>
-<td align="right">0.2036359</td>
-<td align="right">0.0623356</td>
-<td align="right">0.2148129</td>
-<td align="right">0.2481813</td>
-<td align="right">0.1764711</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.176</td>
 </tr>
 <tr class="even">
 <td align="left">Educ.None</td>
-<td align="right">0.1413673</td>
-<td align="right">0.0623356</td>
-<td align="right">0.1912083</td>
-<td align="right">0.2481813</td>
-<td align="right">0.1450992</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.145</td>
 </tr>
 <tr class="odd">
 <td align="left">Educ.Low</td>
-<td align="right">0.1036227</td>
-<td align="right">0.0623356</td>
-<td align="right">0.2243588</td>
-<td align="right">0.2481813</td>
-<td align="right">0.1003650</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.100</td>
 </tr>
 <tr class="even">
 <td align="left">Age.25-49</td>
-<td align="right">0.0688774</td>
-<td align="right">0.0623356</td>
-<td align="right">0.2235724</td>
-<td align="right">0.2481813</td>
-<td align="right">0.0149662</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.015</td>
 </tr>
 <tr class="odd">
 <td align="left">Gender.Women</td>
-<td align="right">0.0667365</td>
-<td align="right">0.0623356</td>
-<td align="right">0.2439540</td>
-<td align="right">0.2481813</td>
-<td align="right">0.0121508</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.012</td>
 </tr>
 <tr class="even">
 <td align="left">Gender.Men</td>
-<td align="right">0.0567883</td>
-<td align="right">0.0623356</td>
-<td align="right">0.2524582</td>
-<td align="right">0.2481813</td>
-<td align="right">-0.0121508</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">-0.012</td>
 </tr>
 <tr class="odd">
 <td align="left">Educ.Medium</td>
-<td align="right">0.0144192</td>
-<td align="right">0.0623356</td>
-<td align="right">0.2720877</td>
-<td align="right">0.2481813</td>
-<td align="right">-0.0508359</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">-0.051</td>
 </tr>
 <tr class="even">
 <td align="left">Age.50+</td>
-<td align="right">0.0010618</td>
-<td align="right">0.0623356</td>
-<td align="right">0.2702118</td>
-<td align="right">0.2481813</td>
-<td align="right">-0.1418187</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">-0.142</td>
 </tr>
 <tr class="odd">
 <td align="left">Educ.High</td>
-<td align="right">-0.0975336</td>
-<td align="right">0.0623356</td>
-<td align="right">0.2725911</td>
-<td align="right">0.2481813</td>
-<td align="right">-0.2125439</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">-0.213</td>
 </tr>
 </tbody>
 </table>
@@ -495,94 +490,86 @@ Educ     5.9   3.3   1.5   0.5   0.6</code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
 <table class="table">
-<colgroup>
-<col width="15%">
-<col width="20%">
-<col width="19%">
-<col width="16%">
-<col width="15%">
-<col width="13%">
-</colgroup>
 <thead><tr class="header">
 <th align="left">categories</th>
 <th align="right">median.y.in.xcat</th>
 <th align="right">median.y.global</th>
 <th align="right">mad.y.in.xcat</th>
 <th align="right">mad.y.global</th>
-<th align="right">cor.coef</th>
+<th align="right">cor</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Age.15-24</td>
-<td align="right">0.3073734</td>
-<td align="right">0.0130916</td>
-<td align="right">0.1956280</td>
-<td align="right">0.2041339</td>
-<td align="right">0.2879754</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.288</td>
 </tr>
 <tr class="even">
 <td align="left">Gender.Men</td>
-<td align="right">0.0679213</td>
-<td align="right">0.0130916</td>
-<td align="right">0.2326512</td>
-<td align="right">0.2041339</td>
-<td align="right">0.2454145</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.245</td>
 </tr>
 <tr class="odd">
 <td align="left">Age.25-49</td>
-<td align="right">0.0642518</td>
-<td align="right">0.0130916</td>
-<td align="right">0.2310878</td>
-<td align="right">0.2041339</td>
-<td align="right">0.1234703</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.123</td>
 </tr>
 <tr class="even">
 <td align="left">Educ.High</td>
-<td align="right">0.0682727</td>
-<td align="right">0.0130916</td>
-<td align="right">0.2322032</td>
-<td align="right">0.2041339</td>
-<td align="right">0.1231806</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.123</td>
 </tr>
 <tr class="odd">
 <td align="left">Educ.Low</td>
-<td align="right">0.0011039</td>
-<td align="right">0.0130916</td>
-<td align="right">0.1969564</td>
-<td align="right">0.2041339</td>
-<td align="right">0.0336235</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.034</td>
 </tr>
 <tr class="even">
 <td align="left">Educ.Medium</td>
-<td align="right">0.0258154</td>
-<td align="right">0.0130916</td>
-<td align="right">0.2187720</td>
-<td align="right">0.2041339</td>
-<td align="right">0.0091687</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0.009</td>
 </tr>
 <tr class="odd">
 <td align="left">Educ.None</td>
-<td align="right">-0.1107861</td>
-<td align="right">0.0130916</td>
-<td align="right">0.1867485</td>
-<td align="right">0.2041339</td>
-<td align="right">-0.1670521</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">-0.167</td>
 </tr>
 <tr class="even">
 <td align="left">Gender.Women</td>
-<td align="right">-0.0896003</td>
-<td align="right">0.0130916</td>
-<td align="right">0.1970249</td>
-<td align="right">0.2041339</td>
-<td align="right">-0.2454145</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">-0.245</td>
 </tr>
 <tr class="odd">
 <td align="left">Age.50+</td>
-<td align="right">-0.1394851</td>
-<td align="right">0.0130916</td>
-<td align="right">0.1611132</td>
-<td align="right">0.2041339</td>
-<td align="right">-0.3304001</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">-0.330</td>
 </tr>
 </tbody>
 </table>
@@ -638,11 +625,20 @@ Medium 0.023033 0.681856 0.256584 0.143552 0.560059
 High   0.000000 0.000000 0.000128 0.138003 0.000678
 
 $cor
-        dim.1  dim.2  dim.3  dim.4  dim.5
-None    0.145 -0.167 -0.109  0.054 -0.029
-Low     0.100  0.034  0.002 -0.046 -0.032
-Medium -0.051  0.009  0.025  0.033 -0.013
-High   -0.213  0.123  0.086 -0.033  0.076</code></pre>
+$cor$dim.1
+NULL
+
+$cor$dim.2
+NULL
+
+$cor$dim.3
+NULL
+
+$cor$dim.4
+NULL
+
+$cor$dim.5
+NULL</code></pre>
 <p><br></p>
 <p>Graphically, we can represent the “subcloud” of each of the categories with the help of a <em>concentration ellipse</em>, which is centred on the mean point and encompasses 86% of the individuals having this category.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">

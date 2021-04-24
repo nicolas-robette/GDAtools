@@ -57,6 +57,9 @@
       <a href="../../articles/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
+      <a href="../../articles/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
+    </li>
+    <li>
       <a href="../../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
     <li>
@@ -91,7 +94,7 @@
       <h1 data-toc-skip>L’analyse descriptive des associations statistiques avec GDAtools</h1>
                         <h4 class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-04-23</h4>
+            <h4 class="date">2021-04-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/french/Tutoriel_descr.Rmd"><code>vignettes/french/Tutoriel_descr.Rmd</code></a></small>
       <div class="hidden name"><code>Tutoriel_descr.Rmd</code></div>
@@ -225,10 +228,10 @@ USA     0.45688150 -0.45688150
 
 $phi.perm.pval
                  No          Yes
-Europe 3.362875e-01 3.362875e-01
-France 1.159137e-38 0.000000e+00
-Other  1.262882e-03 1.262882e-03
-USA    0.000000e+00 3.651450e-54
+Europe 2.600358e-01 2.600358e-01
+France 7.230960e-49 0.000000e+00
+Other  8.417841e-04 8.417841e-04
+USA    0.000000e+00 2.122790e-55
 
 $local.pem
           No   Yes
@@ -242,11 +245,11 @@ $global.pem
 
 $gather
     Var1 Var2 Freq  prop     rprop      cprop expected std.residuals         phi    perm.pval local.pem
-1 Europe   No   39 0.039 0.5416667 0.07587549   37.008     0.3274474  0.01541876 3.362875e-01       5.7
-2 France   No  212 0.212 0.3504132 0.41245136  310.970    -5.6123445 -0.40506773 1.159137e-38     -51.6
-3  Other   No    6 0.006 0.2307692 0.01167315   13.364    -2.0143992 -0.09258656 1.262882e-03     -55.1
+1 Europe   No   39 0.039 0.5416667 0.07587549   37.008     0.3274474  0.01541876 2.600358e-01       5.7
+2 France   No  212 0.212 0.3504132 0.41245136  310.970    -5.6123445 -0.40506773 7.230960e-49     -51.6
+3  Other   No    6 0.006 0.2307692 0.01167315   13.364    -2.0143992 -0.09258656 8.417841e-04     -55.1
 4    USA   No  257 0.257 0.8653199 0.50000000  152.658     8.4449945  0.45688150 0.000000e+00      72.3
-5 Europe  Yes   33 0.033 0.4583333 0.06790123   34.992    -0.3367479 -0.01541876 3.362875e-01      -5.7
+5 Europe  Yes   33 0.033 0.4583333 0.06790123   34.992    -0.3367479 -0.01541876 2.600358e-01      -5.7
 6 France  Yes  393 0.393 0.6495868 0.80864198  294.030     5.7717531  0.40506773 0.000000e+00      51.6
  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]</code></pre>
 <p><br>
@@ -273,15 +276,15 @@ La fonction <code>ggassoc_crosstab</code> présente le tableau de contingence so
 [1] 0.0169216
 
 $permutation.pvalue
-[1] 3.559649e-10
+[1] 5.705436e-13
 
-$cor.coeff
+$cor
 Europe France  Other    USA 
  0.011  0.102  0.036 -0.128 
 
 $cor.perm.pval
       Europe       France        Other          USA 
-3.840288e-01 8.924773e-04 1.103421e-01 4.435149e-05 </code></pre>
+4.203336e-01 1.961689e-04 7.252127e-02 3.733479e-06 </code></pre>
 <p><br>
 La fonction <code>ggassoc_boxplot</code> représente la relation entre les variables sous forme de boîtes à moustaches (<em>box-plots</em>) et/ou de distributions “en violons”. La valeur de l’eta² est affichée dans un angle du graphique.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -308,7 +311,7 @@ La fonction <code>ggassoc_scatter</code> représente la relation entre les deux 
 <h1 class="hasAnchor">
 <a href="#relations-entre-une-variable-y-et-un-ensemble-de-variables-x" class="anchor"></a>Relations entre une variable Y et un ensemble de variables X</h1>
 <p>Bien souvent, on n’étudie pas seulement deux variables, mais un ensemble plus important de variables. Lorsqu’une de ces variables a le statut de variable “à expliquer”, on utilise généralement des modèles de régression ou, éventuellement, des modèles d’apprentissage surpervisé (voir la vignette du package <code>moreparty</code> pour un exemple). Il est cependant indispensable de bien connaître l’ensemble des relations bivariées du jeu de données avant de passer à une approche “toute chose égale par ailleurs”.</p>
-<p>On notera d’aileurs que si on fait ce travail de manière minutieuse, en y ajoutant éventuellement l’analyse descriptive des relations entre trois ou quatre variables, on s’aperçoit souvent que le surplus de connaissance apporté par les modèles de régression est assez limité.<br><br></p>
+<p>On notera d’ailleurs que si on fait ce travail de manière minutieuse, en y ajoutant éventuellement l’analyse descriptive des relations entre trois ou quatre variables, on s’aperçoit souvent que le surplus de connaissance apporté par les modèles de régression est assez limité.<br><br></p>
 <p>La fonction <code>assoc.yx</code> calcule l’association globale entre Y et chacune des variables de X, ainsi que pour toutes les paires de variables de X.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/assoc.yx.html">assoc.yx</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">BoxOffice</span>, <span class="va">Movies</span><span class="op">[</span>,<span class="op">-</span><span class="fl">7</span><span class="op">]</span>, nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></code></pre></div>
@@ -318,8 +321,8 @@ La fonction <code>ggassoc_scatter</code> représente la relation entre les deux 
 2 ArtHouse          Eta2       0.075              0.000
 3  Country          Eta2       0.048              0.000
 4   Budget Kendall's tau       0.518              0.000
-5  Critics Kendall's tau       0.006              0.395
-6 Festival          Eta2       0.000              0.701
+5  Critics Kendall's tau       0.006              0.396
+6 Festival          Eta2       0.000              0.769
 
 $XX
    variable1 variable2       measure association permutation.pvalue
@@ -333,11 +336,11 @@ $XX
 8     Budget  ArtHouse          Eta2       0.181              0.000
 9      Genre   Critics          Eta2       0.090              0.000
 10  Festival   Critics          Eta2       0.041              0.000
-11    Budget   Critics Kendall's tau      -0.178              0.000
-12     Genre  Festival    Cramer's V       0.183              0.000
-13   Country   Critics          Eta2       0.017              0.000
-14    Budget  Festival          Eta2       0.003              0.018
-15   Country  Festival    Cramer's V       0.035              0.752</code></pre>
+11   Country   Critics          Eta2       0.017              0.000
+12    Budget   Critics Kendall's tau      -0.178              0.000
+13     Genre  Festival    Cramer's V       0.183              0.000
+14    Budget  Festival          Eta2       0.003              0.092
+15   Country  Festival    Cramer's V       0.035              0.728</code></pre>
 <p><br>
 Les fonctions <code>catdesc</code> et <code>condesc</code> permettent de rentrer plus dans le détail des relations, en passant au niveau des modalités.</p>
 <p><code>catdesc</code> traite les cas où Y est une variable catégorielle. Pour une variable catégorielle X1, elle calcule, pour une modalité de Y et une modalité de X1 données :</p>
@@ -360,28 +363,28 @@ Les fonctions <code>catdesc</code> et <code>condesc</code> permettent de rentrer
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/catdesc.html">catdesc</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">Festival</span>, <span class="va">Movies</span><span class="op">[</span>,<span class="op">-</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">bylevel</span><span class="op">$</span><span class="va">Yes</span></code></pre></div>
 <pre><code>$categories
-          categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global           phi
-2       ArtHouse.Yes       0.13991770       0.88311688           0.486  2.294897e-01
-3        Genre.Drama       0.14937759       0.46753247           0.241  1.529838e-01
-9        Genre.Other       0.11538462       0.03896104           0.026  2.352438e-02
-10    Country.Europe       0.09722222       0.09090909           0.072  2.112880e-02
-11    Country.France       0.08099174       0.63636364           0.605  1.853082e-02
-12     Genre.ComDram       0.08724832       0.16883117           0.149  1.608551e-02
-14      Genre.Action       0.07878788       0.16883117           0.165  2.981196e-03
-16     Country.Other       0.07692308       0.02597403           0.026 -4.714304e-05
-18       Genre.SciFi       0.06122449       0.03896104           0.049 -1.343213e-02
-23       Country.USA       0.06397306       0.24675325           0.297 -3.176118e-02
-24   Genre.Animation       0.02173913       0.01298701           0.046 -4.551727e-02
-25      Genre.Horror       0.00000000       0.00000000           0.025 -4.625005e-02
-26 Genre.Documentary       0.02597403       0.02597403           0.077 -5.528275e-02
-27      Genre.Comedy       0.02702703       0.07792208           0.222 -1.001326e-01
-29       ArtHouse.No       0.01750973       0.11688312           0.514 -2.294897e-01
+          categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global    phi
+2       ArtHouse.Yes            0.140            0.883           0.486  0.229
+3        Genre.Drama            0.149            0.468           0.241  0.153
+9        Genre.Other            0.115            0.039           0.026  0.024
+10    Country.Europe            0.097            0.091           0.072  0.021
+11    Country.France            0.081            0.636           0.605  0.019
+12     Genre.ComDram            0.087            0.169           0.149  0.016
+14      Genre.Action            0.079            0.169           0.165  0.003
+16     Country.Other            0.077            0.026           0.026  0.000
+18       Genre.SciFi            0.061            0.039           0.049 -0.013
+23       Country.USA            0.064            0.247           0.297 -0.032
+24   Genre.Animation            0.022            0.013           0.046 -0.046
+25      Genre.Horror            0.000            0.000           0.025 -0.046
+26 Genre.Documentary            0.026            0.026           0.077 -0.055
+27      Genre.Comedy            0.027            0.078           0.222 -0.100
+29       ArtHouse.No            0.018            0.117           0.514 -0.229
 
 $continuous.var
-  variables median.x.in.ycat median.x.global mad.x.in.ycat mad.x.global     cor.coef
-1   Critics     3.481333e+00    2.879834e+00  6.045149e-01 6.084229e-01  0.203661928
-3 BoxOffice     2.369107e+05    1.386088e+05  2.125982e+05 1.372531e+05  0.008271589
-5    Budget     7.689956e+06    7.040471e+06  4.865251e+06 5.920656e+06 -0.056579404</code></pre>
+  variables median.x.in.ycat median.x.global mad.x.in.ycat mad.x.global    cor
+1   Critics              3.5             2.9           0.6          0.6  0.204
+3 BoxOffice         236910.7        138608.8      212598.2     137253.1  0.008
+5    Budget        7689956.0       7040470.9     4865250.9    5920656.2 -0.057</code></pre>
 <p><br><code>condesc</code> traite les cas où Y est une variable continue. Pour une variable catégorielle X1, elle calcule :</p>
 <ul>
 <li>la médiane de Y dans la modalité de X1</li>
@@ -400,23 +403,23 @@ $continuous.var
 2 ArtHouse          Eta2       0.075              0.000
 3  Country          Eta2       0.048              0.000
 4   Budget Kendall's tau       0.518              0.000
-5  Critics Kendall's tau       0.006              0.465
-6 Festival          Eta2       0.000              0.798
+5  Critics Kendall's tau       0.006              0.268
+6 Festival          Eta2       0.000              0.788
 
 $categories
-        categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global     cor.coef
-9      Genre.SciFi        944784.26        138608.8     853625.78     137253.1  0.294032391
-14     ArtHouse.No        298718.03        138608.8     257714.58     137253.1  0.273897694
-2  Genre.Animation        954956.13        138608.8     853018.28     137253.1  0.210963942
-13     Country.USA        356692.07        138608.8     286507.97     137253.1  0.191899466
-1     Genre.Action        291944.73        138608.8     247537.72     137253.1  0.086955285
-10  Country.Europe        153755.43        138608.8     150014.98     137253.1  0.068158467
-17    Festival.Yes        228749.23        138608.8     207635.15     137253.1  0.008271589
-5     Genre.Comedy        230614.89        138608.8     210550.12     137253.1  0.004174373
-3      Genre.Other        249036.57        138608.8     231954.50     137253.1 -0.004939950
-16     Festival.No        129628.92        138608.8     127957.17     137253.1 -0.008271589
-12   Country.Other         64892.56        138608.8      46041.58     137253.1 -0.012908848
-8     Genre.Horror        293118.22        138608.8     176130.95     137253.1 -0.015121695
+        categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global    cor
+9      Genre.SciFi           944784          138609        853626       137253  0.294
+14     ArtHouse.No           298718          138609        257715       137253  0.274
+2  Genre.Animation           954956          138609        853018       137253  0.211
+13     Country.USA           356692          138609        286508       137253  0.192
+1     Genre.Action           291945          138609        247538       137253  0.087
+10  Country.Europe           153755          138609        150015       137253  0.068
+17    Festival.Yes           228749          138609        207635       137253  0.008
+5     Genre.Comedy           230615          138609        210550       137253  0.004
+3      Genre.Other           249037          138609        231954       137253 -0.005
+16     Festival.No           129629          138609        127957       137253 -0.008
+12   Country.Other            64893          138609         46042       137253 -0.013
+8     Genre.Horror           293118          138609        176131       137253 -0.015
  [ reached 'max' / getOption("max.print") -- omitted 5 rows ]</code></pre>
 <p><br>
 La fonction <code>darma</code> présente les résultats sous une forme proche de celle d’un tableau de résultats d’une régression.</p>
@@ -446,128 +449,128 @@ La fonction <code>darma</code> présente les résultats sous une forme proche de
 <tr class="even">
 <td align="left">Genre</td>
 <td align="left">Action</td>
-<td align="right">301483.73</td>
+<td align="right">301483.7</td>
 <td align="right">0.087</td>
-<td align="right">0.003</td>
+<td align="right">0.002</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Animation</td>
-<td align="right">990790.15</td>
+<td align="right">990790.2</td>
 <td align="right">0.211</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Other</td>
-<td align="right">254002.80</td>
+<td align="right">254002.8</td>
 <td align="right">-0.005</td>
-<td align="right">0.398</td>
+<td align="right">0.444</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">ComDram</td>
-<td align="right">96221.66</td>
+<td align="right">96221.7</td>
 <td align="right">-0.114</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Comedy</td>
-<td align="right">236703.78</td>
+<td align="right">236703.8</td>
 <td align="right">0.004</td>
-<td align="right">0.440</td>
+<td align="right">0.407</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Documentary</td>
-<td align="right">13823.22</td>
+<td align="right">13823.2</td>
 <td align="right">-0.108</td>
-<td align="right">0.001</td>
+<td align="right">0.000</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Drama</td>
-<td align="right">51111.13</td>
+<td align="right">51111.1</td>
 <td align="right">-0.162</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Horror</td>
-<td align="right">296015.18</td>
+<td align="right">296015.2</td>
 <td align="right">-0.015</td>
-<td align="right">0.318</td>
+<td align="right">0.340</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">SciFi</td>
-<td align="right">989158.46</td>
+<td align="right">989158.5</td>
 <td align="right">0.294</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="odd">
 <td align="left">Country</td>
 <td align="left">Europe</td>
-<td align="right">161441.49</td>
+<td align="right">161441.5</td>
 <td align="right">0.068</td>
-<td align="right">0.013</td>
+<td align="right">0.017</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">France</td>
-<td align="right">82312.76</td>
+<td align="right">82312.8</td>
 <td align="right">-0.211</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Other</td>
-<td align="right">64303.96</td>
+<td align="right">64304.0</td>
 <td align="right">-0.013</td>
-<td align="right">0.360</td>
+<td align="right">0.351</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">USA</td>
-<td align="right">366233.66</td>
+<td align="right">366233.7</td>
 <td align="right">0.192</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="odd">
 <td align="left">ArtHouse</td>
 <td align="left">No</td>
-<td align="right">307344.05</td>
+<td align="right">307344.0</td>
 <td align="right">0.274</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Yes</td>
-<td align="right">47084.82</td>
+<td align="right">47084.8</td>
 <td align="right">-0.274</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="odd">
 <td align="left">Festival</td>
 <td align="left">No</td>
-<td align="right">134006.61</td>
+<td align="right">134006.6</td>
 <td align="right">-0.008</td>
-<td align="right">0.389</td>
+<td align="right">0.384</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Yes</td>
-<td align="right">236910.71</td>
+<td align="right">236910.7</td>
 <td align="right">0.008</td>
-<td align="right">0.404</td>
+<td align="right">0.474</td>
 </tr>
 <tr class="odd">
 <td align="left">Critics</td>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">0.006</td>
-<td align="right">0.417</td>
+<td align="right">0.408</td>
 </tr>
 </tbody>
 </table>
@@ -593,110 +596,110 @@ Lorsque la variable Y est catégorielle, la fonction calcule :</p>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">-0.057</td>
-<td align="right">0.014</td>
+<td align="right">0.059</td>
 </tr>
 <tr class="even">
 <td align="left">Genre</td>
 <td align="left">Action</td>
-<td align="right">7.878788</td>
+<td align="right">7.9</td>
 <td align="right">0.003</td>
-<td align="right">0.469</td>
+<td align="right">0.507</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Animation</td>
-<td align="right">2.173913</td>
+<td align="right">2.2</td>
 <td align="right">-0.046</td>
-<td align="right">0.067</td>
+<td align="right">0.091</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Other</td>
-<td align="right">11.538462</td>
+<td align="right">11.5</td>
 <td align="right">0.024</td>
-<td align="right">0.263</td>
+<td align="right">0.279</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">ComDram</td>
-<td align="right">8.724832</td>
+<td align="right">8.7</td>
 <td align="right">0.016</td>
-<td align="right">0.291</td>
+<td align="right">0.311</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Comedy</td>
-<td align="right">2.702703</td>
+<td align="right">2.7</td>
 <td align="right">-0.100</td>
-<td align="right">0.001</td>
+<td align="right">0.000</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Documentary</td>
-<td align="right">2.597403</td>
+<td align="right">2.6</td>
 <td align="right">-0.055</td>
-<td align="right">0.038</td>
+<td align="right">0.042</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Drama</td>
-<td align="right">14.937759</td>
+<td align="right">14.9</td>
 <td align="right">0.153</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Horror</td>
-<td align="right">0.000000</td>
+<td align="right">0.0</td>
 <td align="right">-0.046</td>
-<td align="right">0.073</td>
+<td align="right">0.091</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">SciFi</td>
-<td align="right">6.122449</td>
+<td align="right">6.1</td>
 <td align="right">-0.013</td>
-<td align="right">0.337</td>
+<td align="right">0.329</td>
 </tr>
 <tr class="odd">
 <td align="left">Country</td>
 <td align="left">Europe</td>
-<td align="right">9.722222</td>
+<td align="right">9.7</td>
 <td align="right">0.021</td>
-<td align="right">0.327</td>
+<td align="right">0.238</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">France</td>
-<td align="right">8.099174</td>
+<td align="right">8.1</td>
 <td align="right">0.019</td>
-<td align="right">0.271</td>
+<td align="right">0.296</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Other</td>
-<td align="right">7.692308</td>
+<td align="right">7.7</td>
 <td align="right">0.000</td>
-<td align="right">0.562</td>
+<td align="right">0.529</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">USA</td>
-<td align="right">6.397306</td>
+<td align="right">6.4</td>
 <td align="right">-0.032</td>
-<td align="right">0.148</td>
+<td align="right">0.176</td>
 </tr>
 <tr class="odd">
 <td align="left">ArtHouse</td>
 <td align="left">No</td>
-<td align="right">1.750973</td>
+<td align="right">1.8</td>
 <td align="right">-0.229</td>
 <td align="right">0.000</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Yes</td>
-<td align="right">13.991770</td>
+<td align="right">14.0</td>
 <td align="right">0.229</td>
 <td align="right">0.000</td>
 </tr>
@@ -712,7 +715,7 @@ Lorsque la variable Y est catégorielle, la fonction calcule :</p>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">0.008</td>
-<td align="right">0.704</td>
+<td align="right">0.764</td>
 </tr>
 </tbody>
 </table>
