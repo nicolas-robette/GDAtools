@@ -58,7 +58,7 @@ Pour plus de détails sur ces mesures de taille d'effet, voir :
 Rakotomalala R., [« Comprendre la taille d'effet (effect size) »](http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf)  
 \ 
 
-Dans certaines fonctions de `GDAtools`, les mesures d'association peuvent être complétées par des tests de permutation, qui relèvent de l'*inférence combinatoire*  et constituent une alternative *non paramétrique* aux tests de signification de l'inférence fréquentiste. Un test de permutation se déroule en plusieurs étapes.
+Dans certaines fonctions de `GDAtools`, les mesures d'association peuvent être complétées par des **tests de permutation**, qui relèvent de l'*inférence combinatoire*  et constituent une alternative *non paramétrique* aux tests de signification de l'inférence fréquentiste. Un test de permutation se déroule en plusieurs étapes.
 
 1. On calcule une mesure d'association entre les deux variables étudiées.
 

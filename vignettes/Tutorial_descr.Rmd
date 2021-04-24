@@ -57,7 +57,7 @@ For more details on these effect size measurements, see:
 Rakotomalala R., [« Comprendre la taille d'effet (effect size) »](http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf)  
 \ 
 
-In some functions of `GDAtools`, association measures can be completed by permutation tests, which are part of *combinatorial inference* and constitute a *nonparametric* alternative to the significance tests of frequentist inference. A permutation test is performed in several steps.
+In some functions of `GDAtools`, association measures can be completed by **permutation tests**, which are part of *combinatorial inference* and constitute a *nonparametric* alternative to the significance tests of frequentist inference. A permutation test is performed in several steps.
 
 1. A measure of association between the two variables under study is computed.
 

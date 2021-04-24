@@ -3,9 +3,10 @@ pkgdown: 1.6.1.9000
 pkgdown_sha: 6094ac3dd80a1f3f1d4e2f47d0ed4716d51362b0
 articles:
   Tutorial_GDA: Tutorial_GDA.html
+  Tutorial_descr: Tutorial_descr.html
   french/Tutoriel_AGD: Tutoriel_AGD.html
   french/Tutoriel_descr: Tutoriel_descr.html
-last_built: 2021-04-23T21:37Z
+last_built: 2021-04-24T19:47Z
 urls:
   reference: https://nicolas-robette.github.io/GDAtools//reference
   article: https://nicolas-robette.github.io/GDAtools//articles
