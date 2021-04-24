@@ -22,7 +22,7 @@ oldoptions <- options()
 ## Global options
 options(max.print="75", width=1000)
 opts_chunk$set(echo=TRUE,
-	             cache=TRUE,
+	             cache=FALSE,
                prompt=FALSE,
                tidy=FALSE,
                comment=NA,
@@ -161,7 +161,7 @@ ggassoc_scatter(Movies, ggplot2::aes(x=Budget, y=BoxOffice))
 
 Bien souvent, on n'étudie pas seulement deux variables, mais un ensemble plus important de variables. Lorsqu'une de ces variables a le statut de variable "à expliquer", on utilise généralement des modèles de régression ou, éventuellement, des modèles d'apprentissage surpervisé (voir la vignette du package `moreparty` pour un exemple). Il est cependant indispensable de bien connaître l'ensemble des relations bivariées du jeu de données avant de passer à une approche "toute chose égale par ailleurs". 
 
-On notera d'aileurs que si on fait ce travail de manière minutieuse, en y ajoutant éventuellement l'analyse descriptive des relations entre trois ou quatre variables, on s'aperçoit souvent que le surplus de connaissance apporté par les modèles de régression est assez limité.  
+On notera d'ailleurs que si on fait ce travail de manière minutieuse, en y ajoutant éventuellement l'analyse descriptive des relations entre trois ou quatre variables, on s'aperçoit souvent que le surplus de connaissance apporté par les modèles de régression est assez limité.  
 \
 
 La fonction `assoc.yx` calcule l'association globale entre Y et chacune des variables de X, ainsi que pour toutes les paires de variables de X.
