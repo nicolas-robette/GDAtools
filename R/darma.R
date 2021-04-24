@@ -19,14 +19,14 @@ darma <- function(y,x,weights=rep(1,length(y)),target=1,twocont="kendall",nperm=
       pval <- biv$permutation.pvalue
       if(is.null(nperm)) pval <- NA
       ldf[[i]] <- data.frame(variable=names(x)[i],category="",percent=NA,
-                             association=biv$cor.coef[target],perm.pvalue=pval,
+                             association=biv$cor[target],perm.pvalue=pval,
                              stringsAsFactors = FALSE)
     }
     if(is.numeric(y) & is.factor(x[,i])) {
       biv <- GDAtools::assoc.catcont(x[,i],y,weights=weights,nperm=nperm,distrib=distrib)
       # med <- sapply(split(data.frame(y,weights),x[,i]), function(X) weighted.mean(X[,1],X[,2]))
       med <- round(sapply(split(data.frame(y,weights),x[,i]), function(X) weighted.quantile(X[,1],X[,2],probs=.5,method="density")),2)
-      assoc <- biv$cor.coeff
+      assoc <- biv$cor
       pval <- biv$cor.perm.pval
       if(is.null(nperm)) pval <- rep(NA,length(assoc))
       var <- c(names(x)[i], rep("",nlevels(x[,i])-1))
