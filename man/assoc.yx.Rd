@@ -9,7 +9,7 @@
 }
 \usage{
   assoc.yx(y, x, weights=rep(1,length(y)), xx = TRUE, twocont="kendall",
-           nperm=NULL, distrib="asympt", dec.a=3, dec.p=3)
+           nperm=NULL, distrib="asympt", dec=c(3,3))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,8 +20,7 @@
   \item{twocont}{character. The type of measure of correlation measure to use between two continuous variables : "pearson", "spearman" or "kendall" (default).}
   \item{nperm}{numeric. Number of permutations for the permutation test of independence. If NULL (default), no permutation test is performed.}
   \item{distrib}{the null distribution of permutation test of independence can be approximated by its asymptotic distribution (\code{"asympt"}, default) or via Monte Carlo resampling (\code{"approx"}).}
-  \item{dec.a}{integer. Number of decimals for association values. Default is 3.}
-  \item{dec.p}{integer. Number of decimals for permutation p-values. Default is 3.}
+  \item{dec}{vector of 2 integers for number of decimals. The first value if for association measures, the second for permutation p-values. Default is c(3,3).}
 }
 
 \details{

@@ -1,4 +1,4 @@
-catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib="asympt") {
+catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib="asympt",dec=c(3,3,3,3,1,3)) {
   
   icat <- which(sapply(x,is.factor))
   xcat <- as.data.frame(x[,icat])
@@ -22,6 +22,10 @@ catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib
     lcat <- do.call("rbind.data.frame",lcat)
     lcat <- lcat[order(-lcat$phi),]
     if(!is.null(min.phi)) lcat <- lcat[abs(lcat$phi)>=min.phi,]
+    lcat$cprop <- round(lcat$cprop,dec[3])
+    lcat$rprop <- round(lcat$rprop,dec[3])
+    lcat$prop.y <- round(lcat$prop.y,dec[3])
+    lcat$phi <- round(lcat$phi,dec[4])
     splitvar <- lcat$Var1
     lcat <- lcat[,c("categories","cprop","rprop","prop.y","phi")]
     names(lcat) <- c("categories","pct.ycat.in.xcat","pct.xcat.in.ycat","pct.xcat.global","phi")
@@ -37,7 +41,7 @@ catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib
   if(ncol(xcon)>0) {
     lcon <- list()
     for(i in 1:ncol(xcon)) {
-      temp <- data.frame(cor.coef = assoc.catcont(y, xcon[,i], weights=weights, nperm=NULL, digits=9)$cor.coeff)
+      temp <- data.frame(cor = assoc.catcont(y, xcon[,i], weights=weights, nperm=NULL, digits=9)$cor)
       temp$variables <- rep(names(xcon)[i],nrow(temp))
       temp$categories <- rownames(temp)
       temp$median.x.in.ycat <- sapply(levels(y), function(x) weighted.quantile(xcon[y==x,i], weights[y==x], method="density"))
@@ -47,7 +51,12 @@ catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib
       lcon[[i]] <- temp
     }
     lcon <- do.call("rbind.data.frame",lcon)
-    lcon <- lcon[order(-lcon$cor.coef),]
+    lcon <- lcon[order(-lcon$cor),]
+    lcon$median.x.in.ycat <- round(lcon$median.x.in.ycat, dec[5])
+    lcon$median.x.global <- round(lcon$median.x.global, dec[5])
+    lcon$mad.x.in.ycat <- round(lcon$mad.x.in.ycat, dec[5])
+    lcon$mad.x.global <- round(lcon$mad.x.global, dec[5])
+    lcon$cor <- round(lcon$cor,dec[6])
     splitvar <- lcon$categories
     lcon <- lcon[,c(2,4:7,1)]
     rownames(lcon) <- NULL
@@ -60,6 +69,6 @@ catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib
     bylevel[[i]]$continuous.var <- lcon[[i]]
   }
   
-  res <- list(variables=assoc.yx(y,x,weights=weights,xx=FALSE,nperm=nperm,distrib=distrib)$YX, bylevel=bylevel)
+  res <- list(variables=assoc.yx(y,x,weights=weights,xx=FALSE,nperm=nperm,distrib=distrib,dec=dec[1:2])$YX, bylevel=bylevel)
   return(res)
 }

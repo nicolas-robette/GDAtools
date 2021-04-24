@@ -5,7 +5,8 @@
 \description{
 Measures the association between a categorical variable and some continuous and/or categorical variables}
 \usage{
-catdesc(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib="asympt")
+catdesc(y, x, weights=rep(1,length(y)), min.phi=NULL, nperm=NULL, 
+distrib="asympt", dec=c(3,3,3,3,1,3))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -15,6 +16,7 @@ catdesc(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib="asympt")
   \item{min.phi}{for the relationship between y and a categorical variable, only associations higher or equal to min.phi will be displayed. If NULL (default), they are all displayed.}
   \item{nperm}{numeric. Number of permutations for the permutation test of independence. If NULL (default), no permutation test is performed.}
   \item{distrib}{the null distribution of permutation test of independence can be approximated by its asymptotic distribution (\code{"asympt"}, default) or via Monte Carlo resampling (\code{"approx"}).}
+  \item{dec}{vector of 6 integers for number of decimals. The first value if for association measures, the second for permutation p-values, the third for percents, the fourth for phi coefficients, the fifth for medians and mads, the sixth for point biserial correlations. Default is c(3,3,3,3,1,3).}
 }
 
 \value{

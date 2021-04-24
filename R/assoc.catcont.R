@@ -41,5 +41,5 @@ assoc.catcont <- function(x,y,weights=rep(1,length(x)),nperm=NULL,distrib="asymp
   if(is.null(nperm)) ppval <- NULL
 
   cor.coeff <- round(cor.coeff,digits)
-  return(list('eta.squared'=eta.squared, 'permutation.pvalue'=permutation.pvalue, 'cor.coeff'=cor.coeff, 'cor.perm.pval'=ppval))
+  return(list('eta.squared'=eta.squared, 'permutation.pvalue'=permutation.pvalue, 'cor'=cor.coeff, 'cor.perm.pval'=ppval))
 }

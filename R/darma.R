@@ -1,4 +1,4 @@
-darma <- function(y,x,weights=rep(1,length(y)),target=1,twocont="kendall",nperm=NULL,distrib="asympt",dec.a=3,dec.p=3) {
+darma <- function(y,x,weights=rep(1,length(y)),target=1,twocont="kendall",nperm=NULL,distrib="asympt",dec=c(1,3,3)) {
 
   x <- as.data.frame(x)
     
@@ -44,7 +44,8 @@ darma <- function(y,x,weights=rep(1,length(y)),target=1,twocont="kendall",nperm=
   }
   res <- do.call('rbind.data.frame', ldf)
   rownames(res) <- NULL
-  res$association <- round(res$association, dec.a)
-  res$perm.pvalue <- round(res$perm.pvalue, dec.p)
+  res[,3] <- round(res[,3], dec[1])
+  res$association <- round(res$association, dec[2])
+  res$perm.pvalue <- round(res$perm.pvalue, dec[3])
   return(res)
 }
