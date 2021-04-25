@@ -141,8 +141,8 @@
     <p>For a cross-tabulation, plots the number of observations by using rectangles with proportional areas, and the phi measures of association between the categories with a diverging gradient of colour, using ggplot2.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ggassoc_crosstab</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>mapping</span>, max.phi<span class='op'>=</span><span class='fl'>.8</span>, axes.labs<span class='op'>=</span><span class='cn'>TRUE</span>, ticks.labs<span class='op'>=</span><span class='cn'>TRUE</span>,
-text.size<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ggassoc_crosstab</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>mapping</span>, max.phi<span class='op'>=</span><span class='fl'>.8</span>, sort<span class='op'>=</span><span class='st'>"none"</span>, 
+axes.labs<span class='op'>=</span><span class='cn'>TRUE</span>, ticks.labs<span class='op'>=</span><span class='cn'>TRUE</span>, text.size<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,6 +158,10 @@ text.size<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</s
     <tr>
       <th>max.phi</th>
       <td><p>numeric value, specifying the lower and upper limit of the scale for the color gradient filling the rectangles, i.e. for the phi measures of association. It corresponds to the maximum absolute value of phi one wants to represent in the plot.</p></td>
+    </tr>
+    <tr>
+      <th>sort</th>
+      <td><p>character. If "both", rows and columns are sorted according to the first factor of a correspondence analysis of the contingency table. If "x", only rows are sorted. If "y", only columns are sorted. If "none" (default), no sorting is done.</p></td>
     </tr>
     <tr>
       <th>axes.labs</th>

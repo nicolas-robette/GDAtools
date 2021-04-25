@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bar plot of phi measures of association of a crosstabulation — ggassoc_phiplot • GDAtools</title>
+<title>Adds attractions between categories via segments to a MCA cloud of variables with ggplot2 — ggadd_attractions • GDAtools</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Bar plot of phi measures of association of a crosstabulation — ggassoc_phiplot" />
-<meta property="og:description" content="For a cross-tabulation, plots the phi measures of association with bars of varying height, using ggplot2." />
+<meta property="og:title" content="Adds attractions between categories via segments to a MCA cloud of variables with ggplot2 — ggadd_attractions" />
+<meta property="og:description" content="Adds attractions between categories, as measured by phi coefficients or percentages of maximum deviation (PEM), by plotting segments onto a MCA cloud of variables, using the ggplot2 framework." />
 
 
 
@@ -132,79 +132,87 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Bar plot of phi measures of association of a crosstabulation</h1>
+    <h1>Adds attractions between categories via segments to a MCA cloud of variables with ggplot2</h1>
     
-    <div class="hidden name"><code>ggassoc_phiplot.Rd</code></div>
+    <div class="hidden name"><code>ggadd_attractions.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>For a cross-tabulation, plots the phi measures of association with bars of varying height, using ggplot2.</p>
+    <p>Adds attractions between categories, as measured by phi coefficients or percentages of maximum deviation (PEM), by plotting segments onto a MCA cloud of variables, using the ggplot2 framework.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ggassoc_phiplot</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>mapping</span>, measure<span class='op'>=</span><span class='st'>"phi"</span>, max.asso<span class='op'>=</span><span class='cn'>NULL</span>,
-sort<span class='op'>=</span><span class='st'>"none"</span>, axes.labs<span class='op'>=</span><span class='cn'>TRUE</span>, ticks.labs<span class='op'>=</span><span class='cn'>TRUE</span>, text.size<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ggadd_attractions</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>resmca</span>, axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>, measure<span class='op'>=</span><span class='st'>"phi"</span>, min.asso<span class='op'>=</span><span class='fl'>0.3</span>,
+col.segment<span class='op'>=</span><span class='st'>"lightgray"</span>, col.text<span class='op'>=</span><span class='st'>"black"</span>, text.size<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>dataset to use for plot</p></td>
+      <th>p</th>
+      <td><p>ggplot object with the cloud of variables</p></td>
     </tr>
     <tr>
-      <th>mapping</th>
-      <td><p>aesthetic being used. It must specify x and y.</p></td>
+      <th>resmca</th>
+      <td><p>object of class <code>'MCA'</code>, <code>'speMCA'</code> or <code>'csMCA'</code>.</p></td>
+    </tr>
+    <tr>
+      <th>axes</th>
+      <td><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></td>
     </tr>
     <tr>
       <th>measure</th>
       <td><p>character. The measure for attractions: "phi" (default) for phi coefficients, "pem" for percentages of maximum deviation (PEM).</p></td>
     </tr>
     <tr>
-      <th>max.asso</th>
-      <td><p>numeric value, specifying the lower and upper limit of the scale for the color gradient filling the rectangles, i.e. for the measures of association. It corresponds to the maximum absolute value of association one wants to represent in the plot. If NULL (default), the limit is automatically adjusted to the data.</p></td>
+      <th>min.asso</th>
+      <td><p>numerical value between 0 and 1. The minimal attraction value for segments to be plotted. Default is 0.3.</p></td>
     </tr>
     <tr>
-      <th>sort</th>
-      <td><p>character. If "both", rows and columns are sorted according to the first factor of a correspondence analysis of the contingency table. If "x", only rows are sorted. If "y", only columns are sorted. If "none" (default), no sorting is done.</p></td>
+      <th>col.segment</th>
+      <td><p>Character. Color of the segments. Default is lightgray.</p></td>
     </tr>
     <tr>
-      <th>axes.labs</th>
-      <td><p>Whether to display the labels of the axes, i.e. the names of x and y. Default is TRUE.</p></td>
-    </tr>
-    <tr>
-      <th>ticks.labs</th>
-      <td><p>Whether to display the labels of the categories of x and y. Default is TRUE.</p></td>
+      <th>col.text</th>
+      <td><p>Character. Color of the labels of the categories. Default is black.</p></td>
     </tr>
     <tr>
       <th>text.size</th>
-      <td><p>Size of the association measure. If NULL, the text is not added to the plot.</p></td>
+      <td><p>Size of the labels of categories. Default is 3.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The phi measure of association measures how much each combination of categories of x and y is over/under-represented.
-The bars vary in width according to the number of observations in the categories of the x variables. They vary in height according to the phi measure of association. Bars are black if phi is positive and white if phi is negative.</p>
-<p>Cramer's V measure of global association between x and y is displayed in upper-left corner of the plot.</p>
-<p>This function can be used as a high-level plot with <code>ggduo</code> and <code>ggpairs</code> functions of the <code>GGally</code> package.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a ggplot object</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Cibois Philippe, 2004, <em>Les écarts à l'indépendance. Techniques simples pour analyser des données d'enquêtes</em>, Collection "Méthodes quantitatives pour les sciences sociales"</p>
+    <p>Cibois, Philippe. <em>Les méthodes d’analyse d’enquêtes</em>. Nouvelle édition [en ligne]. Lyon: ENS Éditions, 2014. Disponible sur Internet : &lt;http://books.openedition.org/enseditions/1443&gt;</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Nicolas Robette</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='assoc.twocat.html'>assoc.twocat</a></code>, <code><a href='phi.table.html'>phi.table</a></code>, <code><a href='catdesc.html'>catdesc</a></code>,
- <code><a href='assoc.yx.html'>assoc.yx</a></code>, <code><a href='darma.html'>darma</a></code>, <code><a href='ggassoc_crosstab.html'>ggassoc_crosstab</a></code>, <code><a href='https://ggobi.github.io/ggally/reference/ggpairs.html'>ggpairs</a></code></p></div>
+    <div class='dont-index'><p><code><a href='ggcloud_variables.html'>ggcloud_variables</a></code>, <code><a href='ggcloud_indiv.html'>ggcloud_indiv</a></code>, <code><a href='ggadd_ellipses.html'>ggadd_ellipses</a></code>, <code><a href='ggadd_corr.html'>ggadd_corr</a></code>, <code><a href='ggadd_interaction.html'>ggadd_interaction</a></code>, <code><a href='ggadd_density.html'>ggadd_density</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>)</span>
-<span class='fu'>ggassoc_phiplot</span><span class='op'>(</span>data<span class='op'>=</span><span class='va'>Taste</span>, mapping<span class='op'>=</span><span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>Age</span>, y<span class='op'>=</span><span class='va'>Classical</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='img'><img src='ggassoc_phiplot-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='co'>## Performs a specific MCA on 'Taste' example data set</span>
+<span class='co'>## ignoring every 'NA' (i.e. 'not available') categories,</span>
+<span class='co'>## draws the cloud of categories</span>
+<span class='co'>## and adds segments between categories with attractions.</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>)</span>
+<span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
+#&gt;  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     
+#&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
+#&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA"  "Comedy.No"    
+#&gt; [17] "Comedy.Yes"    "Comedy.NA"     "Crime.No"      "Crime.Yes"    
+#&gt; [21] "Crime.NA"      "Animation.No"  "Animation.Yes" "Animation.NA" 
+#&gt; [25] "SciFi.No"      "SciFi.Yes"     "SciFi.NA"      "Love.No"      
+#&gt; [29] "Love.Yes"      "Love.NA"       "Musical.No"    "Musical.Yes"  
+#&gt; [33] "Musical.NA"   </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span>,<span class='fl'>18</span>,<span class='fl'>21</span>,<span class='fl'>24</span>,<span class='fl'>27</span>,<span class='fl'>30</span>,<span class='fl'>33</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggcloud_variables.html'>ggcloud_variables</a></span><span class='op'>(</span><span class='va'>mca</span>, col<span class='op'>=</span><span class='st'>"white"</span><span class='op'>)</span>
+<span class='fu'>ggadd_attractions</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, measure<span class='op'>=</span><span class='st'>"phi"</span>, min.asso<span class='op'>=</span><span class='fl'>0.1</span><span class='op'>)</span>
+</div><div class='img'><img src='ggadd_attractions-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
