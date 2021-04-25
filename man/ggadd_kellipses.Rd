@@ -1,7 +1,7 @@
 \name{ggadd_kellipses}
 \alias{ggadd_kellipses}
 
-\title{Adds k-inertia ellipses to a MCA cloud of individuals with ggplot2}
+\title{Adds k-inertia ellipses to a cloud of individuals}
 
 \description{
 Adds k-inertia ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework. By default, concentration ellipses are plotted.

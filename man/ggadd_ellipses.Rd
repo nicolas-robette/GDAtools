@@ -1,7 +1,7 @@
 \name{ggadd_ellipses}
 \alias{ggadd_ellipses}
 
-\title{Adds confidence ellipses to a MCA cloud of individuals with ggplot2}
+\title{Adds confidence ellipses to a cloud of individuals}
 
 \description{
 Adds confidence ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework.

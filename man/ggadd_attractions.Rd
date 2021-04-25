@@ -1,7 +1,7 @@
 \name{ggadd_attractions}
 \alias{ggadd_attractions}
 
-\title{Adds attractions between categories via segments to a MCA cloud of variables with ggplot2}
+\title{Adds attractions between categories via segments to a cloud of variables}
 
 \description{
 Adds attractions between categories, as measured by phi coefficients or percentages of maximum deviation (PEM), by plotting segments onto a MCA cloud of variables, using the ggplot2 framework.
@@ -43,7 +43,7 @@ Cibois, Philippe. \emph{Les méthodes d’analyse d’enquêtes}. Nouvelle édit
 data(Taste)
 getindexcat(Taste[,1:11])
 mca <- speMCA(Taste[,1:11],excl=c(3,6,9,12,15,18,21,24,27,30,33))
-p <- ggcloud_variables(mca, col="white")
+p <- ggcloud_variables(mca, col="white", legend="none")
 ggadd_attractions(p, mca, measure="phi", min.asso=0.1)
 }
 

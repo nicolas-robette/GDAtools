@@ -2,7 +2,7 @@
 \alias{ggadd_interaction}
 
 \title{
-Adds the interaction between two categorical supplementary variables to a MCA cloud of variables with ggplot2
+Adds the interaction between two categorical supplementary variables to a cloud of variables
 }
 
 \description{

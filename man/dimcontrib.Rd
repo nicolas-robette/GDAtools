@@ -2,7 +2,7 @@
 
 \alias{dimcontrib}
 
-\title{Describes the contributions to axes for MCA and variants of MCA}
+\title{Describes the contributions to axes for a MCA}
 
 \description{
 Identifies the categories and individuals that contribute the most to each dimension obtained 

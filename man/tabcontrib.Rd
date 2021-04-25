@@ -2,7 +2,7 @@
 
 \alias{tabcontrib}
 
-\title{Displays the categories contributing most to axes for MCA and variants of MCA}
+\title{Displays the categories contributing most to axes for a MCA}
 
 \description{
 Identifies the categories that contribute the most to a given dimension of a Multiple Correspondence 

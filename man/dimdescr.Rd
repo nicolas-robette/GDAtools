@@ -1,7 +1,7 @@
 \name{dimdescr}
 \alias{dimdescr}
 
-\title{Describes the dimensions of MCA and variants of MCA}
+\title{Describes the dimensions of a MCA}
 
 \description{
 Identifies the variables and the categories that are the most characteristic according to each dimension obtained 

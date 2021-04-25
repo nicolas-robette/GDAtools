@@ -1,7 +1,7 @@
 \name{ggadd_density}
 \alias{ggadd_density}
 
-\title{Adds a density layer to the cloud of individuals for a category of a supplementary variable with ggplot2}
+\title{Adds a density layer to the cloud of individuals for a category of a supplementary variable}
 
 \description{
 For a given category of a supplementary variable, adds a layer representing the density of points to the cloud of individuals, either with contours or areas.

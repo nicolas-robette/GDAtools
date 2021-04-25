@@ -2,7 +2,7 @@
 
 \alias{contrib}
 
-\title{Computes contributions for a correspondence analysis}
+\title{Computes contributions for a MCA}
 
 \description{From MCA results, computes contributions of categories and variables to the axes and the overall cloud.}
 

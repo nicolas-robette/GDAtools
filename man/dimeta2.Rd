@@ -2,7 +2,7 @@
 
 \alias{dimeta2}
 
-\title{Describes the eta2 of a list of supplementary variables for the axes of MCA and variants of MCA}
+\title{Describes the eta2 of supplementary variables for the axes of a MCA}
 
 \description{
 Computes eta2 for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.

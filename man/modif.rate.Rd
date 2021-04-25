@@ -2,9 +2,9 @@
 
 \alias{modif.rate}
 
-\title{Computes the modified rates of variance of a correspondence analysis}
+\title{Computes Benzecri's modified rates of variance of a MCA}
 
-\description{Computes the modified rates of variance of a correspondence analysis.}
+\description{Computes the modified rates of variance of a multiple correspondence analysis.}
 
 \usage{modif.rate(resmca)}
 
