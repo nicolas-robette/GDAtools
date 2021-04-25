@@ -11,6 +11,7 @@
 * `ggassoc_scatter()` : scatter plot with a smoothing line, using ggplot
 * `dimdescr()` : works with `condesc()` instead of `FactoMineR::condes()` and takes row weights into account.
 * `dimtypicality()` : computes typicality tests for supplementary variables
+* `ggadd_attractions()`: adds attractions between categories (via segments) to a cloud of variables
 
 ## Removed functions :
 

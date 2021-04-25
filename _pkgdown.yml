@@ -48,6 +48,7 @@ reference:
   - ggadd_density
   - ggadd_corr
   - ggadd_interaction
+  - ggadd_attractions
   
 - title: Descriptive analysis
 - desc: Tools to describe statistical bivariate associations between variables
