@@ -1,11 +1,16 @@
-ggassoc_crosstab <- function(data, mapping, max.phi=.8, axes.labs=TRUE, ticks.labs=TRUE, text.size=3) {
+ggassoc_crosstab <- function(data, mapping, max.phi=.8, sort="none", axes.labs=TRUE, ticks.labs=TRUE, text.size=3) {
   xVal <- GGally::eval_data_col(data, mapping$x)
   yVal <- GGally::eval_data_col(data, mapping$y)
   xName <- rlang::as_name(mapping$x)
   yName <- rlang::as_name(mapping$y)
   assoc <- GDAtools::assoc.twocat(xVal, yVal, na_value=NULL, nperm=NULL)
   newdata <- assoc$gather
-  newdata$Var2 <- factor(newdata$Var2, levels=rev(levels(newdata$Var2)))
+  if(sort=="none") newdata$Var2 <- factor(newdata$Var2, levels=rev(levels(newdata$Var2)))
+  if(sort!="none") {
+    temp <- MASS::corresp(~xVal+yVal,nf=1)
+    if(sort %in% c("x","both")) newdata$Var1 <- factor(newdata$Var1, levels=names(sort(temp$rscore)))
+    if(sort %in% c("y","both")) newdata$Var2 <- factor(newdata$Var2, levels=names(sort(temp$cscore)))
+  }
   p <- GGally::ggally_count(newdata, ggplot2::aes(x=.data$Var1, y=.data$Var2, weight=.data$Freq, fill=.data$phi), col='black') +
           ggplot2::scale_fill_gradient2(low="darkred", high="black", midpoint=0, limits=c(-max.phi, max.phi)) +
           ggplot2::theme_minimal() +
