@@ -262,6 +262,15 @@ ggadd_corr(p, mca, var=Taste$Educ, cat="High", xbins=20, ybins=20)
 
 The most highly educated individuals are over-represented in the northwest quadrant as a whole, but also among the westernmost in the southwest quadrant.
 
+Note that we can also represent the subclouds corresponding to the categories of a supplementary variable using *convex hulls*. A convex hull is the smallest convex polygon among those containing a set of points. In the context of GDA, convex hulls are an interesting graphical representation especially if the represented subclouds are relatively little overlapped. This is the case, for example, if we perform a partition of individuals in a plane using automatic clustering. Here, we apply hierarchical ascending clustering to the coordinates of the individuals in the plane 1-2 and we identify 3 clusters.
+
+```{r chull}
+d <- dist(mca$ind$coord[,c(1,2)])
+hca <- hclust(d, "ward.D2")
+cluster <- factor(cutree(hca, 3))
+ggadd_chull(p, mca, cluster)
+```
+
 
 
 ### Interaction between two supplementary variables

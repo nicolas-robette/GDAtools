@@ -259,6 +259,15 @@ ggadd_corr(p, mca, var=Taste$Educ, cat="High", xbins=20, ybins=20)
 
 Les individus les plus diplômés sont sur-représentés dans l'ensemble du quadrant nord-ouest, mais également parmi les plus à l'ouest du quadrant sud-ouest.
 
+A noter que l'on peut aussi représenter les sous-nuages correspondant aux modalités d'une variable supplémentaire à l'aide d'*enveloppes convexes*. Une enveloppe convexe est le polygone convexe le plus petit parmi ceux qui contiennent un ensemble de points. Dans le contexte de l'AGD, les enveloppes convexes sont une représentation graphique intéressante surtout si les sous-nuages représentés sont relativement peu superposés. C'est par exemple le cas si on réalise une partition des individus dans un plan à l'aide d'une classification automatique. Ici, on applique une classification ascendante hiérarchique aux coordonnées des individus dans le plan 1-2 et on identifie 3 classes.
+
+```{r chull}
+d <- dist(mca$ind$coord[,c(1,2)])
+hca <- hclust(d, "ward.D2")
+cluster <- factor(cutree(hca, 3))
+ggadd_chull(p, mca, cluster)
+```
+
 
 
 ### Interaction entre deux variables supplémentaires
