@@ -94,7 +94,7 @@
       <h1 data-toc-skip>L’analyse géométrique des données avec GDAtools</h1>
                         <h4 class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-04-25</h4>
+            <h4 class="date">2021-04-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/french/Tutoriel_AGD.Rmd"><code>vignettes/french/Tutoriel_AGD.Rmd</code></a></small>
       <div class="hidden name"><code>Tutoriel_AGD.Rmd</code></div>
@@ -665,12 +665,19 @@ NULL</code></pre>
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggadd_corr.html">ggadd_corr</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, var<span class="op">=</span><span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, cat<span class="op">=</span><span class="st">"High"</span>, xbins<span class="op">=</span><span class="fl">20</span>, ybins<span class="op">=</span><span class="fl">20</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/educ_corr-1.png" width="700"></p>
 <p>Les individus les plus diplômés sont sur-représentés dans l’ensemble du quadrant nord-ouest, mais également parmi les plus à l’ouest du quadrant sud-ouest.</p>
+<p>A noter que l’on peut aussi représenter les sous-nuages correspondant aux modalités d’une variable supplémentaire à l’aide d’<em>enveloppes convexes</em>. Une enveloppe convexe est le polygone convexe le plus petit parmi ceux qui contiennent un ensemble de points. Dans le contexte de l’AGD, les enveloppes convexes sont une représentation graphique intéressante surtout si les sous-nuages représentés sont relativement peu superposés. C’est par exemple le cas si on réalise une partition des individus dans un plan à l’aide d’une classification automatique. Ici, on applique une classification ascendante hiérarchique aux coordonnées des individus dans le plan 1-2 et on identifie 3 classes.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html">dist</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
+<span class="va">hca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span><span class="op">(</span><span class="va">d</span>, <span class="st">"ward.D2"</span><span class="op">)</span>
+<span class="va">cluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cutree.html">cutree</a></span><span class="op">(</span><span class="va">hca</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/ggadd_chull.html">ggadd_chull</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">cluster</span><span class="op">)</span></code></pre></div>
+<p><img src="Tutoriel_AGD_files/figure-html/chull-1.png" width="700"></p>
 </div>
 <div id="interaction-entre-deux-variables-supplémentaires" class="section level3">
 <h3 class="hasAnchor">
 <a href="#interaction-entre-deux-variables-suppl%C3%A9mentaires" class="anchor"></a>Interaction entre deux variables supplémentaires</h3>
 <p>On peut également étudier les interactions entre plusieurs variables supplémentaires, par exemple ici entre le sexe et l’âge.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span>, shapes<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/ggadd_interaction.html">ggadd_interaction</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tomato3"</span>,<span class="st">"dodgerblue3"</span><span class="op">)</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/interaction-1.png" width="700"></p>
@@ -683,7 +690,7 @@ NULL</code></pre>
 <a href="#analyse-inductive" class="anchor"></a>Analyse inductive</h1>
 <p>Si on souhaite évaluer la généralisabilité des résultats, on peut compléter les analyses descriptives qui précèdent par des procédures d’inférences statistique qui empruntent à l’analyse inductive des données et aux approches combinatoires (pour cette partie plus encore que pour les autres, on renvoie à Le Roux et Rouanet, 2004 &amp; 2010).</p>
 <p>Le problème de la typicalité consiste à se demander si un groupe d’individus peut être assimilé à la population de référence ou s’il est atypique. Un <em>test de typicalité</em> calcule une <em>p-value combinatoire</em>, qui définit le “degré de typicalité” du point moyen du groupe d’individus. Une p-value faible est considérée comme statistiquement significative au sens combinatoire et traduit une différence qui n’est probablement pas due au hasard.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/dimtypicality.html">dimtypicality</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span>, dim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, max.pval<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></code></pre></div>
 <pre><code>$dim.1
             weight test.stat      p.value
@@ -705,7 +712,7 @@ Gender.Women   1042 -10.972527 0.000000e+00
 Age.50+         854 -14.772247 0.000000e+00</code></pre>
 <p>A un seuil de 5 %, les points moyens des femmes, hommes et âges intermédiaires ne sont pas significativement différents de celui de l’ensemble de la population sur l’axe 1 (autrement dit de 0). Sur l’axe 2, ce sont les points moyens des niveaux d’éducation faibles et moyens qui ne s’écartent pas significativement de l’origine.</p>
 <p>On peut étudier les résultats des tests de typicalité d’une variable supplémentaire en particulier à partir de la fonction <code>varsup</code>.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vseduc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/varsup.html">varsup</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span>
 <span class="va">vseduc</span><span class="op">$</span><span class="va">pval</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>          dim.1    dim.2
@@ -715,12 +722,12 @@ Medium 0.023033 0.681856
 High   0.000000 0.000000</code></pre>
 <p>On voit que, sur l’axe 1, toutes les modalités de niveau d’éducation sont significativement différentes de 0 à un seuil de 5 %, elles sont atypiques de l’ensemble du nuage des individus, mais que ce n’est pas le cas des modalités “low” et “medium” sur l’axe 2.</p>
 <p>Les ellipses de confiance répondent à la même logique que les tests de typicalité. Avec un seuil de significativité conventionnel de 5 %, l’ellipse de confiance est une zone de confiance à 95 % représentant l’ensemble des points moyens possibles d’une modalité qui ne sont pas significativement différents du point moyen observé.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/ggadd_ellipses.html">ggadd_ellipses</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, level<span class="op">=</span><span class="fl">0.05</span>, label<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/educ_conc_ellipses-1.png" width="700"></p>
 <p>Un test d’homogénéité est une procédure combinatoire qui vise à comparer plusieurs groupes d’individus. La question que l’on se pose est de savoir si, sur un axe donné, les positions de deux groupes sont significativement distinctes (les p-values sont toutes très proches de 0).</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ht</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/homog.test.html">homog.test</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span>
 <span class="va">ht</span><span class="op">$</span><span class="va">dim.1</span><span class="op">$</span><span class="va">p.values</span></code></pre></div>
 <pre><code>               None          Low Medium High
@@ -729,7 +736,7 @@ Low    1.680934e-07 1.000000e+00      0    0
 Medium 0.000000e+00 0.000000e+00      1    0
 High   0.000000e+00 0.000000e+00      0    1</code></pre>
 <p>Sur l’axe 1, les points moyens des modalités de niveau d’éducation sont toutes significativement distinctes les unes des autres.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ht</span><span class="op">$</span><span class="va">dim.2</span><span class="op">$</span><span class="va">p.values</span></code></pre></div>
 <pre><code>       None       Low    Medium High
 None      1 0.0000000 0.0000000    0
@@ -744,12 +751,12 @@ High      0 0.0000000 0.0000000    1</code></pre>
 <a href="#class-specific-analysis" class="anchor"></a>Class Specific Analysis</h1>
 <p>La <em>Class Specific Analysis</em> (CSA) est un prolongement de l’ACM qui permet d’étudier un sous-nuage d’individus en prenant conjointement en compte la distribution des variables dans le sous-nuage et dans l’ensemble du nuage. Il s’agit donc de tenir compte du fait que la structure du sous-nuage n’existe pas <em>in abstracto</em> mais en relation avec le nuage dans lequel il s’inscrit.</p>
 <p>On illustre ici la CSA à partir du sous-nuage des individus les plus diplômés.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">csa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/csMCA.html">csMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">==</span><span class="st">"High"</span>, excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">csa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/csMCA.html">csMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">==</span><span class="st">"High"</span>, excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">csa</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/csa_cloud_var-1.png" width="700"></p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">csa</span>, dim<span class="op">=</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -810,7 +817,7 @@ High      0 0.0000000 0.0000000    1</code></pre>
 </tbody>
 </table>
 <p>On voit que, comme dans l’ACM, l’écoute de jazz et de musique classique structurent l’axe 1, mais cette fois beaucoup plus fortement puisque ces deu variables contribuent à elles seules pour 75 % à la construction de l’axe.<br><br></p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">csa</span>, dim<span class="op">=</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">

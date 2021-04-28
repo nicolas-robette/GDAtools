@@ -94,7 +94,7 @@
       <h1 data-toc-skip>Geometric Data Analysis with GDAtools</h1>
                         <h4 class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-04-25</h4>
+            <h4 class="date">2021-04-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/Tutorial_GDA.Rmd"><code>vignettes/Tutorial_GDA.Rmd</code></a></small>
       <div class="hidden name"><code>Tutorial_GDA.Rmd</code></div>
@@ -664,12 +664,19 @@ NULL</code></pre>
 <code class="sourceCode R"><span class="fu"><a href="../reference/ggadd_corr.html">ggadd_corr</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, var<span class="op">=</span><span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, cat<span class="op">=</span><span class="st">"High"</span>, xbins<span class="op">=</span><span class="fl">20</span>, ybins<span class="op">=</span><span class="fl">20</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_GDA_files/figure-html/educ_corr-1.png" width="700"></p>
 <p>The most highly educated individuals are over-represented in the northwest quadrant as a whole, but also among the westernmost in the southwest quadrant.</p>
+<p>Note that we can also represent the subclouds corresponding to the categories of a supplementary variable using <em>convex hulls</em>. A convex hull is the smallest convex polygon among those containing a set of points. In the context of GDA, convex hulls are an interesting graphical representation especially if the represented subclouds are relatively little overlapped. This is the case, for example, if we perform a partition of individuals in a plane using automatic clustering. Here, we apply hierarchical ascending clustering to the coordinates of the individuals in the plane 1-2 and we identify 3 clusters.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html">dist</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
+<span class="va">hca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span><span class="op">(</span><span class="va">d</span>, <span class="st">"ward.D2"</span><span class="op">)</span>
+<span class="va">cluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cutree.html">cutree</a></span><span class="op">(</span><span class="va">hca</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/ggadd_chull.html">ggadd_chull</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">cluster</span><span class="op">)</span></code></pre></div>
+<p><img src="Tutorial_GDA_files/figure-html/chull-1.png" width="700"></p>
 </div>
 <div id="interaction-between-two-supplementary-variables" class="section level3">
 <h3 class="hasAnchor">
 <a href="#interaction-between-two-supplementary-variables" class="anchor"></a>Interaction between two supplementary variables</h3>
 <p>Interactions between several supplementary variables can also be studied, for example here between gender and age.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span>, shapes<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
 <span class="fu"><a href="../reference/ggadd_interaction.html">ggadd_interaction</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tomato3"</span>,<span class="st">"dodgerblue3"</span><span class="op">)</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_GDA_files/figure-html/interaction-1.png" width="700"></p>
@@ -682,7 +689,7 @@ NULL</code></pre>
 <a href="#inductive-data-analysis" class="anchor"></a>Inductive data analysis</h1>
 <p>If one wishes to assess the generalizability of the results, one can complement the above descriptive analyses with statistical inference procedures that borrow from inductive data analysis and combinatorial approaches (for this part even more than for the others, we refer to Le Roux and Rouanet, 2004 &amp; 2010).</p>
 <p>The typicality problem consists in asking whether a group of individuals can be assimilated to the reference population or whether it is atypical. A <em>typicality test</em> calculates a <em>combinatorial p-value</em>, which defines the “degree of typicality” of the mean point of the group of individuals. A low p-value is considered statistically significant in the combinatorial sense and reflects a difference that is probably not due to chance.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dimtypicality.html">dimtypicality</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span>, dim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, max.pval<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></code></pre></div>
 <pre><code>$dim.1
             weight test.stat      p.value
@@ -704,7 +711,7 @@ Gender.Women   1042 -10.972527 0.000000e+00
 Age.50+         854 -14.772247 0.000000e+00</code></pre>
 <p>At a 5% level, the mean points of women, men and middle-aged people are not significantly different from that of the whole population on axis 1 (i.e. 0). On axis 2, it is the mean points of the low and medium levels of education that do not differ significantly from the origin.</p>
 <p>The results of the typicality tests for a particular supplementary variable can be studied using the <code>varsup</code> function.</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vseduc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/varsup.html">varsup</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span>
 <span class="va">vseduc</span><span class="op">$</span><span class="va">pval</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>          dim.1    dim.2
@@ -714,12 +721,12 @@ Medium 0.023033 0.681856
 High   0.000000 0.000000</code></pre>
 <p>We can see that, on axis 1, all the education level categories are significantly different from 0 at a level of 5%, they are atypical of the whole cloud of individuals, but that this is not the case for the “low” and “medium” categories on axis 2.</p>
 <p>The confidence ellipses follow the same logic as the typicality tests. With a conventional significance threshold of 5%, the confidence ellipse is a 95% confidence zone representing all the possible mean points of a category that are not significantly different from the observed mean point.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span><span class="op">)</span>
 <span class="fu"><a href="../reference/ggadd_ellipses.html">ggadd_ellipses</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span>, level<span class="op">=</span><span class="fl">0.05</span>, label<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_GDA_files/figure-html/educ_conc_ellipses-1.png" width="700"></p>
 <p>A homogeneity test is a combinatorial procedure that aims to compare several groups of individuals. The question asked is whether, on a given axis, the positions of two groups are significantly different.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ht</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/homog.test.html">homog.test</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span>
 <span class="va">ht</span><span class="op">$</span><span class="va">dim.1</span><span class="op">$</span><span class="va">p.values</span></code></pre></div>
 <pre><code>               None          Low Medium High
@@ -728,7 +735,7 @@ Low    1.680934e-07 1.000000e+00      0    0
 Medium 0.000000e+00 0.000000e+00      1    0
 High   0.000000e+00 0.000000e+00      0    1</code></pre>
 <p>On axis 1, the mean points of the education level categories are all significantly different from each other (the p-values are all very close to 0).</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ht</span><span class="op">$</span><span class="va">dim.2</span><span class="op">$</span><span class="va">p.values</span></code></pre></div>
 <pre><code>       None       Low    Medium High
 None      1 0.0000000 0.0000000    0
@@ -743,12 +750,12 @@ High      0 0.0000000 0.0000000    1</code></pre>
 <a href="#class-specific-analysis" class="anchor"></a>Class Specific Analysis</h1>
 <p><em>Class Specific Analysis</em> (CSA) is an extension of MCA which allows the study of a subcloud of individuals by taking into account the distribution of variables in the subcloud and in the whole cloud. It is thus a question of taking into account the fact that the structure of the subcloud does not exist <em>in abstracto</em> but in relation to the cloud in which it is included.</p>
 <p>CSA is illustrated here using the subcloud of the most highly educated individuals.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">csa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/csMCA.html">csMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">==</span><span class="st">"High"</span>, excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">csa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/csMCA.html">csMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">==</span><span class="st">"High"</span>, excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">csa</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_GDA_files/figure-html/csa_cloud_var-1.png" width="700"></p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">csa</span>, dim<span class="op">=</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -809,7 +816,7 @@ High      0 0.0000000 0.0000000    1</code></pre>
 </tbody>
 </table>
 <p>We can see that, as in the MCA, listening to jazz and classical music structure axis 1, but this time much more strongly since these two variables alone contribute 75% to the construction of the axis.<br><br></p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">csa</span>, dim<span class="op">=</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
