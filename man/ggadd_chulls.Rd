@@ -1,5 +1,5 @@
-\name{ggadd_chull}
-\alias{ggadd_chull}
+\name{ggadd_chulls}
+\alias{ggadd_chulls}
 
 \title{Adds convex hulls to a cloud of individuals}
 
@@ -8,7 +8,7 @@ Adds convex hulls for a categorical variable to a MCA cloud of individuals, usin
 }
 
 \usage{
-ggadd_chull(p, resmca, var, sel=1:nlevels(var), axes=c(1,2),
+ggadd_chulls(p, resmca, var, sel=1:nlevels(var), axes=c(1,2),
 col=NULL, alpha=0.2, label=TRUE, label.size=5, legend="right")
 }
 
@@ -54,5 +54,5 @@ d <- dist(mca$ind$coord[,c(1,2)])
 hca <- hclust(d, "ward.D2")
 cluster <- factor(cutree(hca, 3))
 p <- ggcloud_indiv(mca, col='black')
-ggadd_chull(p, mca, cluster)
+ggadd_chulls(p, mca, cluster)
 }

@@ -265,7 +265,7 @@ A noter que l'on peut aussi représenter les sous-nuages correspondant aux modal
 d <- dist(mca$ind$coord[,c(1,2)])
 hca <- hclust(d, "ward.D2")
 cluster <- factor(cutree(hca, 3))
-ggadd_chull(p, mca, cluster)
+ggadd_chulls(p, mca, cluster)
 ```
 
 

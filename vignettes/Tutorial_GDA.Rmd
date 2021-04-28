@@ -268,7 +268,7 @@ Note that we can also represent the subclouds corresponding to the categories of
 d <- dist(mca$ind$coord[,c(1,2)])
 hca <- hclust(d, "ward.D2")
 cluster <- factor(cutree(hca, 3))
-ggadd_chull(p, mca, cluster)
+ggadd_chulls(p, mca, cluster)
 ```
 
 

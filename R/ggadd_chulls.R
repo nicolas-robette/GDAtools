@@ -1,4 +1,4 @@
-ggadd_chull <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col=NULL, alpha=0.2, label=TRUE, label.size=5, legend="right") {
+ggadd_chulls <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col=NULL, alpha=0.2, label=TRUE, label.size=5, legend="right") {
 
   ecoord <- as.data.frame(resmca$ind$coord[,axes])
   names(ecoord) <- c('axeX','axeY')

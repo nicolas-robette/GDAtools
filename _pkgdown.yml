@@ -45,6 +45,7 @@ reference:
   - ggadd_supvar
   - ggadd_ellipses
   - ggadd_kellipses
+  - ggadd_chull
   - ggadd_density
   - ggadd_corr
   - ggadd_interaction
