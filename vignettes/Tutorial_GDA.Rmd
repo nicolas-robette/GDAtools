@@ -249,7 +249,7 @@ ggadd_density(p, mca, var=Taste$Educ, cat="High", density="contour")
 ```
 
 ```{r educ_area}
-ggadd_density(p, mca, var=Taste$Educ, cat="High", density="area")
+ggadd_density(p, mca, var=Taste$Educ, cat="High", density="area", ellipse=TRUE)
 ```
 
 Here we see that there appears to be a concentration of highly educated individuals immediately to the right of the vertical axis, in an area that also corresponds to a concentration of points in the cloud of individuals (see above).

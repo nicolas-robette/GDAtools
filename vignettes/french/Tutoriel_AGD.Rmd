@@ -246,7 +246,7 @@ ggadd_density(p, mca, var=Taste$Educ, cat="High", density="contour")
 ```
 
 ```{r educ_area}
-ggadd_density(p, mca, var=Taste$Educ, cat="High", density="area")
+ggadd_density(p, mca, var=Taste$Educ, cat="High", density="area", ellipse=TRUE)
 ```
 
 On voit ici qu'il semble y avoir une concentration d'individus très diplômés immédiatement à droite de l'axe vertical, dans une zone qui correspond aussi à une concentration de points du nuage des individus (voir plus haut).
