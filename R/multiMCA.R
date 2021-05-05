@@ -43,7 +43,7 @@ multiMCA <- function(l_mca,ncp=5,compute.rv=FALSE) {
   colnames(correl) <- paste('Dim',1:ncp,sep='.')
   afm$group <- list(contrib=round(contrib,2),correl=round(correl,3))
   afm$call$ngroups <- ngroups
-  afm$eig <- as.list(afm$eig)
+  #afm$eig <- as.list(afm$eig)
   l <- lapply(l_mca,function(x) x$ind$coord)
   l[[length(l)+1]] <- afm$ind$coord
   if(compute.rv==TRUE) { #new
