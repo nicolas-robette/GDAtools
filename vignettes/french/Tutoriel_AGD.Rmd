@@ -6,6 +6,7 @@ output:
  rmdformats::html_clean:
    thumbnails: FALSE
    use_bookdown: FALSE
+   toc_depth: 3
 vignette: >
   %\VignetteIndexEntry{[fr] Tutoriel d'analyse géométrique des données}
   %\VignetteEngine{knitr::rmarkdown}
@@ -78,7 +79,7 @@ mca <- speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
 Les taux d'inertie corrigés de Benzécri permettent de se faire une idée de la part d'information représentée par chacun des axes.
 
 ```{r inertia}
-modif.rate(mca)
+modif.rate(mca)$modif
 ```
   
 On voit ici que les deux premiers axes capturent l'essentiel de l'information (près de 90 %). On va donc dans la suite se concentrer sur le plan formé par les axes 1 et 2.

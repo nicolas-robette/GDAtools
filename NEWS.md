@@ -28,17 +28,25 @@
 * `darma()` : nperm is set to 100 by default
 * `ggcloud_variables()` and `ggcloud_indiv()` : a few changes in the theme (grids are removed, etc.)
 * `ggcloud_indiv()` and `ggadd_ellipses()` : new size option
+* `ggcloud_variables()` : new min.ctr option to filter categories according to their contribution (for objects of class MCA, speMCA and csMCA)
+* `ggcloud_variables()` : new max.pval option to filter categories according to the p-value derived from their test-value (for objects of class stMCA and multiMCA)
+* `ggcloud_variables()` : prop argument can take values "vtest1" and "vtest2"
 * `homog.test()` : gives the p-values in addition to the test statistics
 * `dimeta2()` : l argument renamed to vars and n argument removed
 * `varsup()` : also computes typicality tests and correlation coefficients
 * `conc.ellipse()` : several kinds of inertia ellipses can be plotted thanks to the kappa option
 * `ggadd_ellipses()` : level is set to 0.05 by default, which corresponds to conventional confidence ellipses. Option 'points' to choose to color the points or not.
+* `modif.rate()` : computes raw and modified rates
+* `modif.rate()` : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
+* `ggcloud_variables()` :  : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
+* `ggcloud_indiv()` :  : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
 
 ## Bug fixes
 
 * `csMCA()`, `speMCA()` and `translate.logit()` : now work with tibbles
 * `ggcloud_variables()` : now works when shapes=TRUE and there are many variables
 * `assoc.twocat()` : bug fix for empty cells
+* `multiMCA()` : bug fix with eigen values
 
 
 

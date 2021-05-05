@@ -175,12 +175,32 @@ appreciate the relative importance of the principal axes.</p>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>)</span>
 <span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Music</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
 <span class='fu'>modif.rate</span><span class='op'>(</span><span class='va'>mca</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   mrate cum.mrate
-#&gt; 1 73.69     73.69
-#&gt; 2 16.70     90.39
-#&gt; 3  6.49     96.88
-#&gt; 4  3.10     99.98
-#&gt; 5  0.03    100.01</div></pre>
+</div><div class='output co'>#&gt; $raw
+#&gt;           eigen         rate  cum.rate
+#&gt; 1  2.815811e-01 1.407906e+01  14.07906
+#&gt; 2  2.388327e-01 1.194164e+01  26.02069
+#&gt; 3  2.242049e-01 1.121024e+01  37.23094
+#&gt; 4  2.167211e-01 1.083606e+01  48.06699
+#&gt; 5  2.016064e-01 1.008032e+01  58.14731
+#&gt; 6  1.942821e-01 9.714105e+00  67.86142
+#&gt; 7  1.816117e-01 9.080585e+00  76.94200
+#&gt; 8  1.691445e-01 8.457224e+00  85.39922
+#&gt; 9  1.658990e-01 8.294950e+00  93.69417
+#&gt; 10 1.261165e-01 6.305826e+00 100.00000
+#&gt; 11 3.567853e-30 1.783927e-28 100.00000
+#&gt; 12 9.779171e-31 4.889585e-29 100.00000
+#&gt; 13 6.207510e-31 3.103755e-29 100.00000
+#&gt; 14 2.637924e-31 1.318962e-29 100.00000
+#&gt; 15 1.649182e-31 8.245909e-30 100.00000
+#&gt; 
+#&gt; $modif
+#&gt;         mrate cum.mrate
+#&gt; 1 73.69174730  73.69175
+#&gt; 2 16.69687606  90.38862
+#&gt; 3  6.48702831  96.87565
+#&gt; 4  3.09577754  99.97143
+#&gt; 5  0.02857078 100.00000
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

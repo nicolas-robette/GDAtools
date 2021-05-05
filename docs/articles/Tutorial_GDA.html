@@ -88,7 +88,7 @@
       <h1 data-toc-skip>Geometric Data Analysis with GDAtools</h1>
                         <h4 class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-04-28</h4>
+            <h4 class="date">2021-05-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/Tutorial_GDA.Rmd"><code>vignettes/Tutorial_GDA.Rmd</code></a></small>
       <div class="hidden name"><code>Tutorial_GDA.Rmd</code></div>
@@ -157,14 +157,14 @@
 <a href="#the-clouds" class="anchor"></a>The clouds</h1>
 <p>The Benzécri corrected inertia rates give an idea of how much information is represented by each axis.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/modif.rate.html">modif.rate</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></code></pre></div>
-<pre><code>  mrate cum.mrate
-1 67.31     67.31
-2 22.65     89.96
-3  7.17     97.13
-4  2.26     99.39
-5  0.59     99.98
-6  0.02    100.00</code></pre>
+<code class="sourceCode R"><span class="fu"><a href="../reference/modif.rate.html">modif.rate</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span><span class="op">$</span><span class="va">modif</span></code></pre></div>
+<pre><code>        mrate cum.mrate
+1 67.30532896  67.30533
+2 22.64536000  89.95069
+3  7.17043134  97.12112
+4  2.26387669  99.38500
+5  0.59232858  99.97733
+6  0.02267443 100.00000</code></pre>
 <p>It can be seen here that the first two axes capture most of the information (almost 90%). In the following we will therefore concentrate on the plane formed by axes 1 and 2.<br><br></p>
 <div id="the-cloud-of-individuals" class="section level3">
 <h3 class="hasAnchor">
@@ -863,7 +863,31 @@ High      0 0.0000000 0.0000000    1</code></pre>
 </table>
 <p>It is above all the taste for animation movies that contributes to the construction of axis 2, which may be explained in part by the small number of this category.</p>
 <p>Finally, the subcloud of the variables for the most highly educated people has points in common with that of the population as a whole, but also some very marked specificities.</p>
-<p>We will not go any further here, but it should be noted that all the techniques described above can be applied to the results of a CSA.<br><br><br></p>
+<p>We will not go any further here, but it should be noted that all the techniques described above can be applied to the results of a CSA.</p>
+<hr>
+</div>
+<div id="standardized-mca" class="section level1">
+<h1 class="hasAnchor">
+<a href="#standardized-mca" class="anchor"></a>Standardized MCA</h1>
+<p><em>Standardized MCA</em> is an attempt to integrate geometric data analysis and regression. Its principle consists in constraining the axes of the MCA to be independent (i.e. orthogonal) to a supplementary variable, i.e. to construct a MCA “all other things (about this supplementary variable) being equal” (Bry et al, 2016). Comparing the space of the original MCA with that of the standardized MCA is a way to study structural effects.</p>
+<p>Here, when we “control” the MCA by education level, which is associated with axis 1, we find, for example, that tastes for romance movies and musicals, which are more popular with women, shift to the left of the plane.</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">stmca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stMCA.html">stMCA</a></span><span class="op">(</span><span class="va">mca</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">stmca</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
+<p><img src="Tutorial_GDA_files/figure-html/st_mca-1.png" width="700"></p>
+<hr>
+</div>
+<div id="multiple-factor-analysis" class="section level1">
+<h1 class="hasAnchor">
+<a href="#multiple-factor-analysis" class="anchor"></a>Multiple Factor Analysis</h1>
+<p><code>GDAtools</code> also allows to perform Multiple Factor Analysis (MFA) using specific MCAs or Class Specific Analysis.</p>
+<p>Here, one group of variables describes the listening to music genres and the other the taste for movie genres, and the MFA uses specific MCAs. We observe that it is the film variables that structure the plane 1-2.</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mca1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span>
+<span class="va">mca2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">6</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span><span class="op">)</span><span class="op">)</span>
+<span class="va">mfa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/multiMCA.html">multiMCA</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">mca1</span>,<span class="va">mca2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mfa</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
+<p><img src="Tutorial_GDA_files/figure-html/mfa-1.png" width="700"></p>
 </div>
   </div>
 
