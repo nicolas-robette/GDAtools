@@ -48,10 +48,20 @@ ggcloud_indiv <- function(resmca, type='i', points='all', axes=1:2, col='dodgerb
                                 ggplot2::scale_fill_continuous(type="viridis", option=hex.pal)
   }
 
+  type <- attr(resmca,'class')[1]
+  if(type %in% c("MCA","speMCA","csMCA")) {
+    rate1 <- modif.rate(resmca)$modif$mrate[dim1]
+    rate2 <- modif.rate(resmca)$modif$mrate[dim2]
+  }
+  if(type %in% c("stMCA","multiMCA","PCA")) {
+    rate1 <- modif.rate(resmca)$raw$rate[dim1]
+    rate2 <- modif.rate(resmca)$raw$rate[dim2]
+  }
+  
   p + ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", size=.1) +
       ggplot2::geom_vline(xintercept = 0, colour = "darkgrey", size=.1) +
-      ggplot2::xlab(paste0("dim ", dim1, " (", round(resmca$eig$mrate[dim1],1), " %)")) +
-      ggplot2::ylab(paste0("dim ", dim2, " (", round(resmca$eig$mrate[dim2],1), " %)")) +
+      ggplot2::xlab(paste0("dim ", dim1, " (", round(rate1,1), " %)")) +
+      ggplot2::ylab(paste0("dim ", dim2, " (", round(rate2,1), " %)")) +
       ggplot2::theme_bw() +
       ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
                      panel.grid.minor = ggplot2::element_blank(),
