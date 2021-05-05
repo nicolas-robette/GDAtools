@@ -94,7 +94,7 @@
       <h1 data-toc-skip>L’analyse géométrique des données avec GDAtools</h1>
                         <h4 class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-04-28</h4>
+            <h4 class="date">2021-05-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/french/Tutoriel_AGD.Rmd"><code>vignettes/french/Tutoriel_AGD.Rmd</code></a></small>
       <div class="hidden name"><code>Tutoriel_AGD.Rmd</code></div>
@@ -164,13 +164,39 @@ Le vecteur de ces rangs est ensuite donné comme argument dans la fonction <code
 <p>Les taux d’inertie corrigés de Benzécri permettent de se faire une idée de la part d’information représentée par chacun des axes.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/modif.rate.html">modif.rate</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></code></pre></div>
-<pre><code>  mrate cum.mrate
-1 67.31     67.31
-2 22.65     89.96
-3  7.17     97.13
-4  2.26     99.39
-5  0.59     99.98
-6  0.02    100.00</code></pre>
+<pre><code>$raw
+          eigen        rate  cum.rate
+1  0.1363449348 13.57218481  13.57218
+2  0.1172641193 11.67282306  25.24501
+3  0.1057392740 10.52560531  35.77061
+4  0.0992420693  9.87885401  45.64947
+5  0.0951715009  9.47365739  55.12312
+6  0.0917430448  9.13237856  64.25550
+7  0.0864771195  8.60819252  72.86370
+8  0.0821383322  8.17629659  81.03999
+9  0.0725573966  7.22258144  88.26257
+10 0.0592216488  5.89510101  94.15767
+11 0.0541211732  5.38738433  99.54506
+12 0.0007209824  0.07176876  99.61683
+13 0.0006385320  0.06356140  99.68039
+14 0.0005436043  0.05411200  99.73450
+15 0.0004971085  0.04948367  99.78398
+16 0.0004586134  0.04565176  99.82964
+17 0.0004507403  0.04486804  99.87450
+18 0.0004072330  0.04053720  99.91504
+19 0.0003168862  0.03154380  99.94659
+20 0.0002267273  0.02256912  99.96915
+21 0.0001803044  0.01794804  99.98710
+22 0.0001295640  0.01289719 100.00000
+
+$modif
+        mrate cum.mrate
+1 67.30532896  67.30533
+2 22.64536000  89.95069
+3  7.17043134  97.12112
+4  2.26387669  99.38500
+5  0.59232858  99.97733
+6  0.02267443 100.00000</code></pre>
 <p>On voit ici que les deux premiers axes capturent l’essentiel de l’information (près de 90 %). On va donc dans la suite se concentrer sur le plan formé par les axes 1 et 2.<br><br></p>
 <div id="nuage-des-individus" class="section level3">
 <h3 class="hasAnchor">
@@ -870,7 +896,31 @@ High      0 0.0000000 0.0000000    1</code></pre>
 </table>
 <p>C’est avant tout le goût pour les films d’animation qui contribue à la contruction de l’axe 2, ce qui s’explique sans doute en partie par le faible effectif de cette modalité.</p>
 <p>Finalement, le sous-nuage des variables des plus diplômés présente des points communs avec celui de l’ensemble de la population, mais aussi des spécificités très marquées.</p>
-<p>On n’ira pas plus loin ici mais précisons que toutes les techniques décrites précédemment peuvent s’appliquer aux résultats d’une CSA.<br><br><br></p>
+<p>On n’ira pas plus loin ici mais précisons que toutes les techniques décrites précédemment peuvent s’appliquer aux résultats d’une CSA.</p>
+<hr>
+</div>
+<div id="acm-standardisée" class="section level1">
+<h1 class="hasAnchor">
+<a href="#acm-standardis%C3%A9e" class="anchor"></a>ACM standardisée</h1>
+<p>L’<em>ACM standardisée</em> est une tentative d’intégration de l’analyse géométrique des données et de la régression. Son principe consiste à contraindre les axes de l’ACM à être indépendants (i.e. orthogonaux) d’une variable supplémentaire, c’est-à-dire à construire une ACM “toute chose (de cette variable supplémentaire) égale par ailleurs” (Bry et al, 2016). La comparaison de l’espace de l’ACM originelle et de celui de l’ACM standardisée est un moyen d’étudier les effets de structure.</p>
+<p>Ici, quand on “contrôle” l’ACM par le niveau d’éducation, qui est associé à l’axe 1, on constate par exemple que les goûts pour les films d’amour et les comédies musicales, plus appréciés des femmes, se déplacent vers la gauche du plan.</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">stmca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/stMCA.html">stMCA</a></span><span class="op">(</span><span class="va">mca</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">stmca</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
+<p><img src="Tutoriel_AGD_files/figure-html/st_mca-1.png" width="700"></p>
+<hr>
+</div>
+<div id="analyse-factorielle-multiple" class="section level1">
+<h1 class="hasAnchor">
+<a href="#analyse-factorielle-multiple" class="anchor"></a>Analyse Factorielle Multiple</h1>
+<p><code>GDAtools</code> permet également de réaliser des Analyses Factorielles Multiples (AFM) en utilisant des ACM spécifiques ou des Class Specific Analysis.</p>
+<p>Ici, un groupe de variables décrit l’écoute de genres musicaux et l’autre le goût pour des genres de films, et l’AFM utilise des ACM spécifiques. On observe que ce sont les variables cinématographiques qui structurent le plan 1-2.</p>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mca1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span>
+<span class="va">mca2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">6</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span><span class="op">)</span><span class="op">)</span>
+<span class="va">mfa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/multiMCA.html">multiMCA</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">mca1</span>,<span class="va">mca2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mfa</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
+<p><img src="Tutoriel_AGD_files/figure-html/mfa-1.png" width="700"></p>
 </div>
   </div>
 
