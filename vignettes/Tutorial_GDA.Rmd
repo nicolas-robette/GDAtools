@@ -373,5 +373,35 @@ It is above all the taste for animation movies that contributes to the construct
 Finally, the subcloud of the variables for the most highly educated people has points in common with that of the population as a whole, but also some very marked specificities.
 
 We will not go any further here, but it should be noted that all the techniques described above can be applied to the results of a CSA.  
-\
-\
+
+
+
+----------------------------
+
+# Standardized MCA
+
+*Standardized MCA* is an attempt to integrate geometric data analysis and regression. Its principle consists in constraining the axes of the MCA to be independent (i.e. orthogonal) to a supplementary variable, i.e. to construct a MCA "all other things (about this supplementary variable) being equal" (Bry et al, 2016). Comparing the space of the original MCA with that of the standardized MCA is a way to study structural effects.
+
+Here, when we "control" the MCA by education level, which is associated with axis 1, we find, for example, that tastes for romance movies and musicals, which are more popular with women, shift to the left of the plane.
+
+```{r st_mca}
+stmca <- stMCA(mca, control=list(Taste$Educ))
+ggcloud_variables(stmca, shapes=FALSE, legend="none")
+```
+
+
+
+----------------------------
+
+# Multiple Factor Analysis
+
+`GDAtools` also allows to perform Multiple Factor Analysis (MFA) using specific MCAs or Class Specific Analysis.
+
+Here, one group of variables describes the listening to music genres and the other the taste for movie genres, and the MFA uses specific MCAs. We observe that it is the film variables that structure the plane 1-2.
+
+```{r mfa}
+mca1 <- speMCA(Taste[,1:5],excl=c(3,6,9,12,15))
+mca2 <- speMCA(Taste[,6:11],excl=c(3,6,9,12,15,18))
+mfa <- multiMCA(list(mca1,mca2))
+ggcloud_variables(mfa, shapes=FALSE, legend="none")
+```

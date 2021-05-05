@@ -370,5 +370,39 @@ C'est avant tout le goût pour les films d'animation qui contribue à la contruc
 Finalement, le sous-nuage des variables des plus diplômés présente des points communs avec celui de l'ensemble de la population, mais aussi des spécificités très marquées.
 
 On n'ira pas plus loin ici mais précisons que toutes les techniques décrites précédemment peuvent s'appliquer aux résultats d'une CSA.  
-\
-\
+
+
+
+----------------------------
+
+# ACM standardisée
+
+L'*ACM standardisée* est une tentative d'intégration de l'analyse géométrique des données et de la régression. Son principe consiste à contraindre les axes de l'ACM à être indépendants
+(i.e. orthogonaux) d'une variable supplémentaire, c'est-à-dire à construire une ACM
+"toute chose (de cette variable supplémentaire) égale par ailleurs" (Bry et al, 2016). La comparaison de l'espace de l'ACM originelle et de celui de l'ACM standardisée est un moyen d'étudier les effets de structure.
+
+Ici, quand on "contrôle" l'ACM par le niveau d'éducation, qui est associé à l'axe 1, on constate par exemple que les goûts pour les films d'amour et les comédies musicales, plus appréciés des femmes, se déplacent vers la gauche du plan.
+
+```{r st_mca}
+stmca <- stMCA(mca, control=list(Taste$Educ))
+ggcloud_variables(stmca, shapes=FALSE, legend="none")
+```
+
+
+
+----------------------------
+
+# Analyse Factorielle Multiple
+
+`GDAtools` permet également de réaliser des Analyses Factorielles Multiples (AFM) en utilisant des ACM spécifiques ou des Class Specific Analysis.
+
+Ici, un groupe de variables décrit l'écoute de genres musicaux et l'autre le goût pour des genres de films, et l'AFM utilise des ACM spécifiques. On observe que ce sont les variables cinématographiques qui structurent le plan 1-2.
+
+```{r mfa}
+mca1 <- speMCA(Taste[,1:5],excl=c(3,6,9,12,15))
+mca2 <- speMCA(Taste[,6:11],excl=c(3,6,9,12,15,18))
+mfa <- multiMCA(list(mca1,mca2))
+ggcloud_variables(mfa, shapes=FALSE, legend="none")
+```
+
+
