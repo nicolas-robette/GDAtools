@@ -1,10 +1,27 @@
 modif.rate <- function(resmca) {
-      Q <- ncol(resmca$call$X)
-#      if(attr(resmca,'class')[1]=='multiMCA') Q <- length(resmca$eig[[1]])
-      seuil <- 1/Q
-      e <- resmca$eig[[1]][resmca$eig[[1]]>=seuil]
-      pseudo <- (Q/(Q-1)*(e-seuil))^2
-      mrate <- round(pseudo/sum(pseudo)*100,2)
-      cum.mrate <- cumsum(mrate)
-      return(data.frame(mrate,cum.mrate))
+      type <- attr(resmca,'class')[1]
+      if(type=="MCA") {
+         Q <- length(resmca$call$quali)
+         eigen <- resmca$eig[,"eigenvalue"]
       }
+      if(type %in% c("speMCA","csMCA")) {
+         Q <- ncol(resmca$call$X)
+         eigen <- resmca$eig$eigen
+      }
+      if(type %in% c("stMCA","multiMCA")) {
+         Q <- ncol(resmca$call$X)
+         eigen <- resmca$eig[,"eigenvalue"]
+      }
+      if(type=="PCA") {
+         Q <- length(resmca$call$col.w)
+         eigen <- resmca$eig[,"eigenvalue"]
+      }
+      rate <- eigen/sum(eigen)*100
+      cum.rate <- cumsum(rate)
+      seuil <- 1/Q
+      e <- eigen[eigen>=seuil]
+      pseudo <- (Q/(Q-1)*(e-seuil))^2
+      mrate <- pseudo/sum(pseudo)*100
+      cum.mrate <- cumsum(mrate)
+      return(list(raw=data.frame(eigen,rate,cum.rate), modif=data.frame(mrate,cum.mrate)))
+}
