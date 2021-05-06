@@ -8,12 +8,12 @@
 Computes eta2 for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.
 }
 
-\usage{dimeta2(resmca, vars, dim = 1:resmca$call$ncp)}
+\usage{dimeta2(resmca, vars, dim = c(1,2))}
 
 \arguments{
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'}, \code{'csMCA'} or \code{'stMCA'}}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
   \item{vars}{a data frame of supplementary variables}
-  \item{dim}{the axes for which eta2 are computed. Default is 1:ncp}
+  \item{dim}{the axes for which eta2 are computed. Default is c(1,2)}
 }
 
 \value{

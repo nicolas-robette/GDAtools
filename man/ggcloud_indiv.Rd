@@ -14,7 +14,7 @@ density=NULL, col.contour="darkred", hex.bins=50, hex.pal="viridis")
 }
 
 \arguments{
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'} or \code{'csMCA'}.}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
   \item{type}{If 'i', points are plotted; if 'inames', labels of individuals are plotted.}
   \item{points}{character string. If 'all' all points are plotted (default); if 'besth' only those 
                 who contribute most to horizontal axis are plotted; if 'bestv' only those who contribute 

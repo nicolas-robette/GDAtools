@@ -9,7 +9,7 @@
 \usage{modif.rate(resmca)}
 
 \arguments{
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'} or \code{'csMCA'}}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
 }
 
 \details{

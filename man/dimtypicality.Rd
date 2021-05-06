@@ -8,12 +8,12 @@
 Computes typicality tests for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.
 }
 
-\usage{dimtypicality(resmca, vars, dim = 1:resmca$call$ncp, max.pval=1)}
+\usage{dimtypicality(resmca, vars, dim = c(1,2), max.pval=1)}
 
 \arguments{
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'}, \code{'csMCA'} or \code{'stMCA'}}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
   \item{vars}{a data frame of supplementary variables}
-  \item{dim}{the axes for which typicality tests are computed. Default is 1:ncp}
+  \item{dim}{the axes for which typicality tests are computed. Default is c(1,2)}
   \item{max.pval}{only categories with a p-value lower or equal to max.pval are displayed. By default, all categories are displayed}
 }
 

@@ -16,7 +16,7 @@ axes=c(1,2), col=NULL, textsize=5, legend='right')
 
 \arguments{
   \item{p}{ggplot object with the cloud of variables}
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'} or \code{'csMCA'}.}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}.}
   \item{v1}{Factor. The first categorical supplementary variable.}
   \item{v2}{Factor. The second categorical supplementary variable.}
   \item{sel1}{Numeric vector of indexes of the categories of the first supplementary variable to be used in interaction. By default, every categories are used.}

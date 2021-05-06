@@ -1,4 +1,4 @@
-dimtypicality <- function(resmca,vars,dim=1:resmca$call$ncp,max.pval=1) {
+dimtypicality <- function(resmca,vars,dim=c(1,2),max.pval=1) {
   n=names(vars)
   res1 <- list()
   res2 <- list()
@@ -13,7 +13,7 @@ dimtypicality <- function(resmca,vars,dim=1:resmca$call$ncp,max.pval=1) {
   res <- list()
   for(i in 1:length(dim)) {
     z <- data.frame(weight=res2,test.stat=res1[,i])
-    z$p.value <- 2*(1 -pnorm(abs(z$test.stat)))
+    z$p.value <- round(2*(1 -pnorm(abs(z$test.stat))),5)
     rownames(z) <- rownames(res1)
     z <- z[order(-z$test.stat),]
     z <- z[z$p.value<=max.pval,]

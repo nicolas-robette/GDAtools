@@ -6,13 +6,13 @@
 
 \description{
 Identifies the categories that contribute the most to a given dimension of a Multiple Correspondence 
-Analysis and organizes them into a fancy table. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.
+Analysis and organizes these informations into a fancy table. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.
 }
 
 \usage{tabcontrib(resmca, dim = 1)}
 
 \arguments{
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'}, or \code{'csMCA'}}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA}, or \code{csMCA}}
   \item{dim}{dimension to describe (default is 1st dimension)}
 }
 

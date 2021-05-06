@@ -9,11 +9,11 @@ by a MCA. It is inspired by \code{\link{dimdesc}} function in \code{FactoMineR} 
 but allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.
 }
 
-\usage{dimdescr(resmca, ncp = 1:3, min.cor = NULL, nperm = 100, distrib = "asympt")}
+\usage{dimdescr(resmca, dim = c(1,2), min.cor = NULL, nperm = 100, distrib = "asympt")}
 
 \arguments{
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'}, \code{'csMCA'} or \code{'stMCA'}}
-  \item{ncp}{number of dimensions to describe (default is 3)}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
+  \item{dim}{the axes which are described. Default is c(1,2)}
   \item{min.cor}{for the relationship between y and a categorical variable, only associations higher or equal to min.cor will be displayed. If NULL (default), they are all displayed.}
   \item{nperm}{numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed.}
   \item{distrib}{the null distribution of permutation test of independence can be approximated by its asymptotic distribution (\code{"asympt"}, default) or via Monte Carlo resampling (\code{"approx"}).}
