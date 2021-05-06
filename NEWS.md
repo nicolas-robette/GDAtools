@@ -45,6 +45,7 @@
 * `dimeta2()` : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
 * `dimcontrib()` : compatibility with objects of class MCA, speMCA and csMCA
 * `tabcontrib()` : compatibility with objects of class MCA, speMCA and csMCA
+* `homog.test()` : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
 
 ## Bug fixes
 
