@@ -145,18 +145,18 @@ by a MCA. It is inspired by <code>dimdesc</code> function in <code>FactoMineR</c
 but allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dimdescr</span><span class='op'>(</span><span class='va'>resmca</span>, ncp <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, min.cor <span class='op'>=</span> <span class='cn'>NULL</span>, nperm <span class='op'>=</span> <span class='fl'>100</span>, distrib <span class='op'>=</span> <span class='st'>"asympt"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>dimdescr</span><span class='op'>(</span><span class='va'>resmca</span>, dim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>, min.cor <span class='op'>=</span> <span class='cn'>NULL</span>, nperm <span class='op'>=</span> <span class='fl'>100</span>, distrib <span class='op'>=</span> <span class='st'>"asympt"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>resmca</th>
-      <td><p>object of class <code>'MCA'</code>, <code>'speMCA'</code>, <code>'csMCA'</code> or <code>'stMCA'</code></p></td>
+      <td><p>object of class <code>MCA</code>, <code>speMCA</code>, <code>csMCA</code>, <code>stMCA</code> or <code>multiMCA</code></p></td>
     </tr>
     <tr>
-      <th>ncp</th>
-      <td><p>number of dimensions to describe (default is 3)</p></td>
+      <th>dim</th>
+      <td><p>the axes which are described. Default is c(1,2)</p></td>
     </tr>
     <tr>
       <th>min.cor</th>
@@ -213,16 +213,16 @@ but allows to analyze variants of MCA, such as 'specific' MCA or 'class specific
 #&gt; 
 #&gt; $dim.1$categories
 #&gt;       categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global
-#&gt; 10       Jazz.No                0               0             0            0
-#&gt; 13  Classical.No                0               0             0            0
-#&gt; 7        Rock.No                0               0             0            0
-#&gt; 5        Rap.Yes                1               0             0            0
-#&gt; 1   FrenchPop.No                0               0             0            0
-#&gt; 2  FrenchPop.Yes                0               0             0            0
-#&gt; 4         Rap.No                0               0             0            0
-#&gt; 8       Rock.Yes                0               0             0            0
-#&gt; 14 Classical.Yes                0               0             0            0
-#&gt; 11      Jazz.Yes               -1               0             0            0
+#&gt; 10       Jazz.No            0.308           0.167         0.172        0.295
+#&gt; 13  Classical.No            0.339           0.167         0.116        0.295
+#&gt; 7        Rock.No            0.310           0.167         0.197        0.295
+#&gt; 5        Rap.Yes            0.553           0.167         0.166        0.295
+#&gt; 1   FrenchPop.No            0.270           0.167         0.241        0.295
+#&gt; 2  FrenchPop.Yes            0.104           0.167         0.292        0.295
+#&gt; 4         Rap.No            0.098           0.167         0.309        0.295
+#&gt; 8       Rock.Yes           -0.175           0.167         0.338        0.295
+#&gt; 14 Classical.Yes           -0.480           0.167         0.286        0.295
+#&gt; 11      Jazz.Yes           -0.903           0.167         0.221        0.295
 #&gt;       cor
 #&gt; 10  0.751
 #&gt; 13  0.710
@@ -247,14 +247,14 @@ but allows to analyze variants of MCA, such as 'specific' MCA or 'class specific
 #&gt; 
 #&gt; $dim.2$categories
 #&gt;       categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global
-#&gt; 4         Rap.No                0               0             0            0
-#&gt; 7        Rock.No                0               0             0            0
-#&gt; 14 Classical.Yes                0               0             0            0
-#&gt; 10       Jazz.No                0               0             0            0
-#&gt; 11      Jazz.Yes                0               0             0            0
-#&gt; 13  Classical.No                0               0             0            0
-#&gt; 8       Rock.Yes                0               0             0            0
-#&gt; 5        Rap.Yes               -1               0             0            0
+#&gt; 4         Rap.No            0.254           0.178         0.116        0.254
+#&gt; 7        Rock.No            0.278           0.178         0.066        0.254
+#&gt; 14 Classical.Yes            0.370           0.178         0.186        0.254
+#&gt; 10       Jazz.No            0.214           0.178         0.220        0.254
+#&gt; 11      Jazz.Yes           -0.044           0.178         0.372        0.254
+#&gt; 13  Classical.No            0.135           0.178         0.205        0.254
+#&gt; 8       Rock.Yes           -0.390           0.178         0.104        0.254
+#&gt; 5        Rap.Yes           -0.662           0.178         0.138        0.254
 #&gt;       cor
 #&gt; 4   0.704
 #&gt; 7   0.660
@@ -264,40 +264,6 @@ but allows to analyze variants of MCA, such as 'specific' MCA or 'class specific
 #&gt; 13 -0.273
 #&gt; 8  -0.676
 #&gt; 5  -0.724
-#&gt; 
-#&gt; 
-#&gt; $dim.3
-#&gt; $dim.3$variables
-#&gt;    variable measure association permutation.pvalue
-#&gt; 1 FrenchPop    Eta2       0.902                  0
-#&gt; 2      Rock    Eta2       0.046                  0
-#&gt; 3      Jazz    Eta2       0.042                  0
-#&gt; 4 Classical    Eta2       0.014                  0
-#&gt; 5       Rap    Eta2       0.023                  0
-#&gt; 
-#&gt; $dim.3$categories
-#&gt;       categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global
-#&gt; 1   FrenchPop.No                1               0             0            0
-#&gt; 7        Rock.No                0               0             0            0
-#&gt; 11      Jazz.Yes                0               0             0            0
-#&gt; 5        Rap.Yes                0               0             0            0
-#&gt; 14 Classical.Yes                0               0             0            0
-#&gt; 13  Classical.No                0               0             0            0
-#&gt; 4         Rap.No                0               0             0            0
-#&gt; 10       Jazz.No                0               0             0            0
-#&gt; 8       Rock.Yes                0               0             0            0
-#&gt; 2  FrenchPop.Yes                0               0             0            0
-#&gt;       cor
-#&gt; 1   0.947
-#&gt; 7   0.214
-#&gt; 11  0.172
-#&gt; 5   0.152
-#&gt; 14  0.117
-#&gt; 13 -0.119
-#&gt; 4  -0.147
-#&gt; 10 -0.199
-#&gt; 8  -0.207
-#&gt; 2  -0.943
 #&gt; 
 #&gt; </div></pre>
   </div>
