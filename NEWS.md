@@ -38,8 +38,13 @@
 * `ggadd_ellipses()` : level is set to 0.05 by default, which corresponds to conventional confidence ellipses. Option 'points' to choose to color the points or not.
 * `modif.rate()` : computes raw and modified rates
 * `modif.rate()` : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
-* `ggcloud_variables()` :  : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
-* `ggcloud_indiv()` :  : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
+* `ggcloud_variables()` : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
+* `ggcloud_indiv()` : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
+* `ggadd_supvar()` : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
+* `ggadd_interaction()` : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
+* `dimeta2()` : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA
+* `dimcontrib()` : compatibility with objects of class MCA, speMCA and csMCA
+* `tabcontrib()` : compatibility with objects of class MCA, speMCA and csMCA
 
 ## Bug fixes
 

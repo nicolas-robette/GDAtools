@@ -88,7 +88,7 @@
       <h1 data-toc-skip>Geometric Data Analysis with GDAtools</h1>
                         <h4 class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-05-05</h4>
+            <h4 class="date">2021-05-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/Tutorial_GDA.Rmd"><code>vignettes/Tutorial_GDA.Rmd</code></a></small>
       <div class="hidden name"><code>Tutorial_GDA.Rmd</code></div>
@@ -387,10 +387,10 @@
 <p>These initial observations can be confirmed statistically by measuring the degree of association between the supplementary variables and the axes using the <em>eta²</em> indicator.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dimeta2.html">dimeta2</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></code></pre></div>
-<pre><code>       dim.1 dim.2 dim.3 dim.4 dim.5
-Gender   0.0   6.0   0.1   1.2   0.0
-Age      3.8  14.2   2.5   0.4   3.5
-Educ     5.9   3.3   1.5   0.5   0.6</code></pre>
+<pre><code>       dim.1 dim.2
+Gender   0.0   6.0
+Age      3.8  14.2
+Educ     5.9   3.3</code></pre>
 <p>Education is the supplementary variable most associated with axis 1: it ‘explains 5.9% of the variance in individual coordinates’ on this axis. Age is also associated with the first axis, but to a lesser extent, and gender not at all.</p>
 <p>On axis 2, age is the most structuring variable, ahead of gender and education level. We can also see that age is clearly more closely linked to axis 2 than to axis 1.<br><br></p>
 <p>At the level of the categories, the association of a supplementary variable category with an axis can be characterised from the <em>correlation coefficients</em>.</p>
@@ -686,23 +686,23 @@ NULL</code></pre>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dimtypicality.html">dimtypicality</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span>, dim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, max.pval<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></code></pre></div>
 <pre><code>$dim.1
-            weight test.stat      p.value
-Age.15-24      297  7.890052 3.108624e-15
-Educ.None      490  6.487410 8.732437e-11
-Educ.Low       678  4.487336 7.211929e-06
-Educ.Medium    357 -2.272883 2.303323e-02
-Age.50+        854 -6.340738 2.286671e-10
-Educ.High      475 -9.502876 0.000000e+00
+            weight test.stat p.value
+Age.15-24      297  7.890052 0.00000
+Educ.None      490  6.487410 0.00000
+Educ.Low       678  4.487336 0.00001
+Educ.Medium    357 -2.272883 0.02303
+Age.50+        854 -6.340738 0.00000
+Educ.High      475 -9.502876 0.00000
 
 $dim.2
-             weight  test.stat      p.value
-Age.15-24       297  12.875430 0.000000e+00
-Gender.Men      958  10.972527 0.000000e+00
-Age.25-49       849   5.520379 3.382693e-08
-Educ.High       475   5.507427 3.641163e-08
-Educ.None       490  -7.468929 8.082424e-14
-Gender.Women   1042 -10.972527 0.000000e+00
-Age.50+         854 -14.772247 0.000000e+00</code></pre>
+             weight  test.stat p.value
+Age.15-24       297  12.875430       0
+Gender.Men      958  10.972527       0
+Age.25-49       849   5.520379       0
+Educ.High       475   5.507427       0
+Educ.None       490  -7.468929       0
+Gender.Women   1042 -10.972527       0
+Age.50+         854 -14.772247       0</code></pre>
 <p>At a 5% level, the mean points of women, men and middle-aged people are not significantly different from that of the whole population on axis 1 (i.e. 0). On axis 2, it is the mean points of the low and medium levels of education that do not differ significantly from the origin.</p>
 <p>The results of the typicality tests for a particular supplementary variable can be studied using the <code>varsup</code> function.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
