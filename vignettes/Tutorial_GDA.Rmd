@@ -195,11 +195,11 @@ On axis 2, age is the most structuring variable, ahead of gender and education l
 At the level of the categories, the association of a supplementary variable category with an axis can be characterised from the *correlation coefficients*.
 
 ```{r condesc1, eval=FALSE}
-condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")])$categories
+condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")], dec=c(3,3,3,3))$categories
 ```
 
 ```{r condesc1bis, echo=FALSE}
-knitr::kable(condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")])$categories, row.names=FALSE)
+knitr::kable(condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")], dec=c(3,3,3,3))$categories, row.names=FALSE)
 ```
 
 On axis 1, those with no or few qualifications and those aged 15-24 are opposed to those with more qualifications and those aged 50 and over. The other categories appear to have little connection with the axis (their correlation coefficients are close to 0).  
