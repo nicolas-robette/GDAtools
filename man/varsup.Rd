@@ -12,7 +12,7 @@
 \usage{varsup(resmca, var)}
 
 \arguments{
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'}, \code{'csMCA'}, \code{'stMCA'} or \code{'multiMCA'}}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
   \item{var}{the categorical supplementary variable. It does not need to have been used at the MCA step.}
 }
 

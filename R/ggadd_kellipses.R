@@ -1,36 +1,38 @@
 ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kappa=2, label=TRUE, label.size=3, col=NULL, size=0.5, points=TRUE, legend="right") {
 
+  subvar <- var
+  wt <- resmca$call$row.w
+  
+  type <- attr(resmca,'class')[1]
+  
+  if(type=="stMCA") type <- resmca$call$input.mca
+  if(type=="csMCA") {
+    subvar <- var[resmca$call$subcloud]
+    wt <- resmca$call$row.w[resmca$call$subcloud]
+  }
+  if(type=="multiMCA") {
+    if(class(resmca$my.mca[[1]])[1]=="csMCA") subvar <- var[resmca$my.mca[[1]]$call$subcloud]
+  }
+  
   icoord <- as.data.frame(resmca$ind$coord[,axes])
   names(icoord) <- c('x','y')
-  icoord$cat <- var
-  icoord <- icoord[var %in% levels(var)[sel],]
+  icoord$cat <- subvar
+  icoord <- icoord[subvar %in% levels(subvar)[sel],]
   icoord$cat <- factor(icoord$cat)
   
-  m <- varsup(resmca,var)$coord[,axes]
+  vs <- varsup(resmca,var)
+  m <- vs$coord[,axes]
   m[,1] <- m[,1]*resmca$svd$vs[axes[1]]
   m[,2] <- m[,2]*resmca$svd$vs[axes[2]]
-  v <- varsup(resmca,var)$var[1:length(levels(var)),axes]
-  classe <- class(resmca)[1]
-  if(classe=='stMCA') classe=resmca$call$input.mca
-  if(classe == 'csMCA') {
-    if(length(var)==nrow(resmca$call$X)) varb <- var[resmca$call$subcloud]
-    if(length(var)==length(resmca$call$marge.row)) varb <- var
-    wt <-  resmca$call$row.w[resmca$call$subcloud]
-  }
-  if(classe %in% c('MCA','speMCA','multiMCA')) {
-    varb <- var
-    if(classe=='multiMCA') {
-      if(length(var)==nrow(resmca$my.mca[[1]]$call$X)) varb <- var[resmca$my.mca[[1]]$call$subcloud]
-    }
-    wt <-  resmca$call$row.w
-  }
+  v <- vs$var[1:length(levels(var)),axes]
+  
   c <- vector(length=nlevels(var))
   for(i in 1:length(c)) {
-    temp1 <- matrix(resmca$ind$coord[varb==levels(varb)[i],axes],ncol=2)
+    temp1 <- matrix(resmca$ind$coord[subvar==levels(subvar)[i],axes],ncol=2)
     temp1[,1] <- temp1[,1] - m[i,1]
     temp1[,2] <- temp1[,2] - m[i,2]
-    temp2 <- wt[varb==levels(varb)[i]]*temp1[,1]*temp1[,2]
-    c[i] <- sum(temp2)/sum(wt[varb==levels(varb)[i]])
+    temp2 <- wt[subvar==levels(subvar)[i]]*temp1[,1]*temp1[,2]
+    c[i] <- sum(temp2)/sum(wt[subvar==levels(subvar)[i]])
   }
   g1 <- 0.5*(v[,1]+v[,2])+0.5*sqrt((v[,1]-v[,2])^2+4*c^2)
   g2 <- 0.5*(v[,1]+v[,2])-0.5*sqrt((v[,1]-v[,2])^2+4*c^2)
@@ -44,21 +46,21 @@ ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kap
   ell <- list()
   rad1 <- list()
   rad2 <- list()
-  for(i in 1:nlevels(varb)) {
+  for(i in 1:nlevels(subvar)) {
     if(i %in% sel) {
       x0 <- m[i,1]
       y0 <- m[i,2]
-      cent[[i]] <- data.frame(cat=levels(varb)[i],x=x0,y=y0)
+      cent[[i]] <- data.frame(cat=levels(subvar)[i],x=x0,y=y0)
       alpha <- alph[i]
       a <- sa1[i]
       b <- sa2[i]
       x <- x0 + a * cos(theta) * cos(alpha) - b * sin(theta) * sin(alpha)
       y <- y0 + a * cos(theta) * sin(alpha) + b * sin(theta) * cos(alpha)
-      ell[[i]] <- data.frame(cat=rep(levels(varb)[i],length(x)),x=x,y=y)
+      ell[[i]] <- data.frame(cat=rep(levels(subvar)[i],length(x)),x=x,y=y)
       z1 <- x0 + c(a,b,a,b)*cos(alpha+c(0,pi/2,pi,3*pi/2))
       z2 <- y0 + c(a,b,a,b)*sin(alpha+c(0,pi/2,pi,3*pi/2))
-      rad1[[i]] <- data.frame(cat=rep(levels(varb)[i],length(z1)),x=z1,y=z2)[c(1,3),]
-      rad2[[i]] <- data.frame(cat=rep(levels(varb)[i],length(z1)),x=z1,y=z2)[c(2,4),]
+      rad1[[i]] <- data.frame(cat=rep(levels(subvar)[i],length(z1)),x=z1,y=z2)[c(1,3),]
+      rad2[[i]] <- data.frame(cat=rep(levels(subvar)[i],length(z1)),x=z1,y=z2)[c(2,4),]
   }}
   ell <- do.call('rbind.data.frame',ell)
   rad1 <- do.call('rbind.data.frame',rad1)

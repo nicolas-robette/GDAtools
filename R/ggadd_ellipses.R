@@ -1,9 +1,18 @@
 ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), level=0.05, label=TRUE, label.size=3, col=NULL, size=0.5, points=TRUE, legend='right') {
 
+  subvar <- var
+  
+  type <- attr(resmca,'class')[1]
+  if(type=="stMCA") type <- resmca$call$input.mca
+  if(type=="csMCA") subvar <- var[resmca$call$subcloud]
+  if(type=="multiMCA") {
+    if(class(resmca$my.mca[[1]])[1]=="csMCA") subvar <- var[resmca$my.mca[[1]]$call$subcloud]
+  }
+  
   ecoord <- as.data.frame(resmca$ind$coord[,axes])
   names(ecoord) <- c('axeX','axeY')
-  ecoord$var <- var
-  ecoord <- ecoord[var %in% levels(var)[sel],]
+  ecoord$var <- subvar
+  ecoord <- ecoord[subvar %in% levels(subvar)[sel],]
   ecoord$var <- factor(ecoord$var)
 
   vs <- varsup(resmca,var)

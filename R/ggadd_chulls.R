@@ -1,9 +1,18 @@
 ggadd_chulls <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col=NULL, alpha=0.2, label=TRUE, label.size=5, legend="right") {
 
+  subvar <- var
+  
+  type <- attr(resmca,'class')[1]
+  if(type=="stMCA") type <- resmca$call$input.mca
+  if(type=="csMCA") subvar <- var[resmca$call$subcloud]
+  if(type=="multiMCA") {
+    if(class(resmca$my.mca[[1]])[1]=="csMCA") subvar <- var[resmca$my.mca[[1]]$call$subcloud]
+  }
+    
   ecoord <- as.data.frame(resmca$ind$coord[,axes])
   names(ecoord) <- c('axeX','axeY')
-  ecoord$var <- var
-  ecoord <- ecoord[var %in% levels(var)[sel],]
+  ecoord$var <- subvar
+  ecoord <- ecoord[subvar %in% levels(subvar)[sel],]
   ecoord$var <- factor(ecoord$var)
   
   vs <- varsup(resmca,var)

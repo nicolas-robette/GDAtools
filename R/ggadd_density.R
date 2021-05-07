@@ -1,7 +1,15 @@
 ggadd_density <- function(p, resmca, var, cat=levels(var)[1], axes=c(1,2),
                           density="contour", col.contour="darkred", pal.area="viridis", alpha.area=0.2,
                           ellipse=FALSE, col.ellipse="black"){
+
+  type <- attr(resmca,'class')[1]
   
+  if(type=="stMCA") type <- resmca$call$input.mca
+  if(type=="csMCA") var <- var[resmca$call$subcloud]
+  if(type=="multiMCA") {
+    if(class(resmca$my.mca[[1]])[1]=="csMCA") var <- var[resmca$my.mca[[1]]$call$subcloud]
+  }
+    
   df <- as.data.frame(resmca$ind$coord[,axes])
   names(df) <- c("dim.1","dim.2")
   df <- df[var==cat,]

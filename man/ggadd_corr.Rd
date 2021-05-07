@@ -14,7 +14,7 @@ xbins=20, ybins=20, min.n=1, pal="RdYlBu", limits=NULL, legend="right")
 
 \arguments{
   \item{p}{ggplot object with the cloud of variables}
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'} or \code{'csMCA'}.}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
   \item{var}{factor or numerical vector. The supplementary variable used for the heatmap.}
   \item{cat}{character string. numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories). Only used if var is a factor.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
