@@ -402,7 +402,7 @@ Educ     5.9   3.3</code></pre>
 <p>Sur l’axe 2, l’âge est la variable la plus structurante, devant le sexe et le niveau d’éducation. On voit en outre que l’âge est nettement plus lié à l’axe 2 qu’à l’axe 1.<br><br></p>
 <p>Au niveau des modalités, on peut caractériser l’association d’une modalité de variable supplémentaire avec un axe à partir des <em>coefficients de corrélation</em>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span>, dec<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">categories</th>
@@ -415,74 +415,74 @@ Educ     5.9   3.3</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">Age.15-24</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.204</td>
+<td align="right">0.062</td>
+<td align="right">0.215</td>
+<td align="right">0.248</td>
 <td align="right">0.176</td>
 </tr>
 <tr class="even">
 <td align="left">Educ.None</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.141</td>
+<td align="right">0.062</td>
+<td align="right">0.191</td>
+<td align="right">0.248</td>
 <td align="right">0.145</td>
 </tr>
 <tr class="odd">
 <td align="left">Educ.Low</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.104</td>
+<td align="right">0.062</td>
+<td align="right">0.224</td>
+<td align="right">0.248</td>
 <td align="right">0.100</td>
 </tr>
 <tr class="even">
 <td align="left">Age.25-49</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.069</td>
+<td align="right">0.062</td>
+<td align="right">0.224</td>
+<td align="right">0.248</td>
 <td align="right">0.015</td>
 </tr>
 <tr class="odd">
 <td align="left">Gender.Women</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.067</td>
+<td align="right">0.062</td>
+<td align="right">0.244</td>
+<td align="right">0.248</td>
 <td align="right">0.012</td>
 </tr>
 <tr class="even">
 <td align="left">Gender.Men</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.057</td>
+<td align="right">0.062</td>
+<td align="right">0.252</td>
+<td align="right">0.248</td>
 <td align="right">-0.012</td>
 </tr>
 <tr class="odd">
 <td align="left">Educ.Medium</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.014</td>
+<td align="right">0.062</td>
+<td align="right">0.272</td>
+<td align="right">0.248</td>
 <td align="right">-0.051</td>
 </tr>
 <tr class="even">
 <td align="left">Age.50+</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.001</td>
+<td align="right">0.062</td>
+<td align="right">0.270</td>
+<td align="right">0.248</td>
 <td align="right">-0.142</td>
 </tr>
 <tr class="odd">
 <td align="left">Educ.High</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">-0.098</td>
+<td align="right">0.062</td>
+<td align="right">0.273</td>
+<td align="right">0.248</td>
 <td align="right">-0.213</td>
 </tr>
 </tbody>
