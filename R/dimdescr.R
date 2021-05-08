@@ -1,4 +1,4 @@
-dimdescr <- function(resmca,dim=c(1,2),min.cor=NULL,nperm=100,distrib="asympt") {
+dimdescr <- function(resmca,vars=NULL,dim=c(1,2),min.cor=NULL,nperm=100,distrib="asympt") {
    classe <- class(resmca)[1]
    if(classe=="MCA") resmca$call$X <- resmca$call$X[,resmca$call$quali]
    if(classe=="multiMCA") {
@@ -11,7 +11,8 @@ dimdescr <- function(resmca,dim=c(1,2),min.cor=NULL,nperm=100,distrib="asympt") 
       }
    }
    res <- list()
-   X <- resmca$call$X
+   if(is.null(vars)) X <- resmca$call$X
+   if(!is.null(vars)) X <- as.data.frame(vars)
    if(classe=='stMCA') classe=resmca$call$input.mca
    for(i in 1:length(dim)) {
       if(classe %in% c('MCA','speMCA')) temp <- condesc(resmca$ind$coord[,i],X,weights=resmca$call$row.w,min.cor=min.cor,nperm=nperm,distrib=distrib,dec=c(3,3,3,3))

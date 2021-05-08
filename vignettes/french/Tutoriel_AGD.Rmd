@@ -192,11 +192,11 @@ Sur l'axe 2, l'âge est la variable la plus structurante, devant le sexe et le 
 Au niveau des modalités, on peut caractériser l'association d'une modalité de variable supplémentaire avec un axe à partir des *coefficients de corrélation*.
 
 ```{r condesc1, eval=FALSE}
-condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")], dec=c(3,3,3,3))$categories
+dimdescr(mca, vars=Taste[,c("Gender","Age","Educ")])$dim.1$categories
 ```
 
 ```{r condesc1bis, echo=FALSE}
-knitr::kable(condesc(mca$ind$coord[,1], Taste[,c("Gender","Age","Educ")], dec=c(3,3,3,3))$categories, row.names=FALSE)
+knitr::kable(dimdescr(mca, vars=Taste[,c("Gender","Age","Educ")])$dim.1$categories, row.names=FALSE)
 ```
 
 Sur l'axe 1, les non et peu diplômés et les 15-24 ans s'opposent aux plus diplômés et aux 50 ans et plus. Les autres modalités apparaissent peu liées à l'axe (leurs coefficients de corrélation sont proches de 0).  

@@ -9,10 +9,12 @@ by a MCA. It is inspired by \code{\link{dimdesc}} function in \code{FactoMineR} 
 but allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.
 }
 
-\usage{dimdescr(resmca, dim = c(1,2), min.cor = NULL, nperm = 100, distrib = "asympt")}
+\usage{dimdescr(resmca, vars=NULL, dim = c(1,2), min.cor = NULL, 
+nperm = 100, distrib = "asympt")}
 
 \arguments{
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
+  \item{vars}{data frame of variables to describes the MCA dimensions with. If NULL (default), the active variables of the MCA will be used.}
   \item{dim}{the axes which are described. Default is c(1,2)}
   \item{min.cor}{for the relationship between y and a categorical variable, only associations higher or equal to min.cor will be displayed. If NULL (default), they are all displayed.}
   \item{nperm}{numeric. Number of permutations for the permutation test of independence. If NULL, no permutation test is performed.}
