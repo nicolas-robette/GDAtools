@@ -77,10 +77,10 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
     varcat <- varcat[-resmca$call$excl]
   }
   
-  vcoord$variables <- variables
+  vcoord$variables <- factor(variables, levels=names(resmca$call$X))
   vcoord$categories <- categories
   vcoord$varcat <- varcat
-  if(type=="multiMCA" & col.by.group==TRUE) vcoord$groups <- groups else vcoord$groups <- variables
+  if(type=="multiMCA" & col.by.group==TRUE) vcoord$groups <- groups else vcoord$groups <- vcoord$variables
   
   if(vlab) vcoord$labs <- varcat else vcoord$labs <- categories
 
