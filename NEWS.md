@@ -12,7 +12,8 @@
 * `ggassoc_scatter()` : scatter plot with a smoothing line, using ggplot
 * `dimdescr()` : works with `condesc()` instead of `FactoMineR::condes()` and takes row weights into account.
 * `dimtypicality()` : computes typicality tests for supplementary variables
-* `ggadd_attractions()`: adds attractions between categories (via segments) to a cloud of variables
+* `ggadd_attractions()` : adds attractions between categories (via segments) to a cloud of variables
+* `ggadd_supind()` : adds supplementary individuals to a cloud of individuals, using ggplot
 
 ## Removed functions :
 
@@ -31,6 +32,7 @@
 * `ggcloud_variables()` : new min.ctr option to filter categories according to their contribution (for objects of class MCA, speMCA and csMCA)
 * `ggcloud_variables()` : new max.pval option to filter categories according to the p-value derived from their test-value (for objects of class stMCA and multiMCA)
 * `ggcloud_variables()` : prop argument can take values "vtest1" and "vtest2"
+* `ggcloud_variables()` : for shapes and colors, variables are used in their order of appearance in the data instead of alphabetical order
 * `homog.test()` : gives the p-values in addition to the test statistics
 * `dimeta2()` : l argument renamed to vars and n argument removed
 * `varsup()` : also computes typicality tests and correlation coefficients

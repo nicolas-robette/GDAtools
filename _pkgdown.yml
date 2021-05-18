@@ -42,6 +42,7 @@ reference:
   - conc.ellipse
   - ggcloud_indiv
   - ggcloud_variables
+  - ggadd_supind
   - ggadd_supvar
   - ggadd_ellipses
   - ggadd_kellipses
