@@ -61,6 +61,9 @@
     <loc>https://nicolas-robette.github.io/GDAtools//reference/dimtypicality.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools//reference/flip.mca.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools//reference/getindexcat.html</loc>
   </url>
   <url>
@@ -169,7 +172,7 @@
     <loc>https://nicolas-robette.github.io/GDAtools//articles/Tutorial_GDA.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//articles/Tutorial_descr.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools//articles/english/Tutorial_descr.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools//articles/french/Tutoriel_AGD.html</loc>
