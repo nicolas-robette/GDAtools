@@ -14,6 +14,7 @@
 * `dimtypicality()` : computes typicality tests for supplementary variables
 * `ggadd_attractions()` : adds attractions between categories (via segments) to a cloud of variables
 * `ggadd_supind()` : adds supplementary individuals to a cloud of individuals, using ggplot
+* `flip.mca()` : flips the coordinates of the individuals and the categories on one or more dimensions of a MCA
 
 ## Removed functions :
 
