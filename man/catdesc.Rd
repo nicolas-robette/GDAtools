@@ -1,19 +1,20 @@
 \name{catdesc}
 \alias{catdesc}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{Measures the association between a categorical variable and some continuous and/or categorical variables}
 \description{
 Measures the association between a categorical variable and some continuous and/or categorical variables}
 \usage{
-catdesc(y, x, weights=rep(1,length(y)), min.phi=NULL, nperm=NULL, 
-distrib="asympt", dec=c(3,3,3,3,1,3))
+catdesc(y, x, weights=rep(1,length(y)), min.phi=NULL, 
+robust=TRUE, nperm=NULL, distrib="asympt", dec=c(3,3,3,3,1,3))
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{y}{the categorical variable to describe (must be a factor)}
   \item{x}{a data frame with continuous and/or categorical variables}
   \item{weights}{an optional numeric vector of weights (by default, a vector of 1 for uniform weights)}
   \item{min.phi}{for the relationship between y and a categorical variable, only associations higher or equal to min.phi will be displayed. If NULL (default), they are all displayed.}
+  \item{robust}{logical. If FALSE, mean and standard deviation are used instead of median and mad. Default is TRUE.}
   \item{nperm}{numeric. Number of permutations for the permutation test of independence. If NULL (default), no permutation test is performed.}
   \item{distrib}{the null distribution of permutation test of independence can be approximated by its asymptotic distribution (\code{"asympt"}, default) or via Monte Carlo resampling (\code{"approx"}).}
   \item{dec}{vector of 6 integers for number of decimals. The first value if for association measures, the second for permutation p-values, the third for percents, the fourth for phi coefficients, the fifth for medians and mads, the sixth for point biserial correlations. Default is c(3,3,3,3,1,3).}
@@ -36,8 +37,8 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', [http://eric.univ
 \code{\link[FactoMineR]{catdes}}, \code{\link{condesc}}, \code{\link{assoc.yx}}, \code{\link{darma}}
 }
 \examples{
-data(Taste)
-catdesc(Taste$Comedy, Taste[,c('Gender','Age')])
+data(Movies)
+catdesc(Movies$ArtHouse, Movies[,c("Budget","Genre","Country")])
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

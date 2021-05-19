@@ -1,4 +1,4 @@
-catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib="asympt",dec=c(3,3,3,3,1,3)) {
+catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,robust=TRUE,nperm=NULL,distrib="asympt",dec=c(3,3,3,3,1,3)) {
   
   icat <- which(sapply(x,is.factor))
   xcat <- as.data.frame(x[,icat])
@@ -44,10 +44,18 @@ catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib
       temp <- data.frame(cor = assoc.catcont(y, xcon[,i], weights=weights, nperm=NULL, digits=9)$cor)
       temp$variables <- rep(names(xcon)[i],nrow(temp))
       temp$categories <- rownames(temp)
-      temp$median.x.in.ycat <- sapply(levels(y), function(x) weighted.quantile(xcon[y==x,i], weights[y==x], method="density"))
-      temp$median.x.global <- rep(weighted.quantile(xcon[,i], weights, method="density"),nrow(temp))
-      temp$mad.x.in.ycat <- sapply(levels(y), function(x) weighted.mad(xcon[y==x,i], weights[y==x], method="density"))
-      temp$mad.x.global <- rep(weighted.mad(xcon[,i], weights, method="density"),nrow(temp))
+      if(robust==TRUE) {
+        temp$median.x.in.ycat <- sapply(levels(y), function(x) weighted.quantile(xcon[y==x,i], weights[y==x], method="density"))
+        temp$median.x.global <- rep(weighted.quantile(xcon[,i], weights, method="density"),nrow(temp))
+        temp$mad.x.in.ycat <- sapply(levels(y), function(x) weighted.mad(xcon[y==x,i], weights[y==x], method="density"))
+        temp$mad.x.global <- rep(weighted.mad(xcon[,i], weights, method="density"),nrow(temp))
+      }
+      if(robust==FALSE) {
+        temp$median.x.in.ycat <- sapply(levels(y), function(x) weighted.mean(xcon[y==x,i], weights[y==x]))
+        temp$median.x.global <- rep(weighted.mean(xcon[,i], weights),nrow(temp))
+        temp$mad.x.in.ycat <- sapply(levels(y), function(x) weighted.sd(xcon[y==x,i], weights[y==x]))
+        temp$mad.x.global <- rep(weighted.sd(xcon[,i], weights),nrow(temp))       
+      }
       lcon[[i]] <- temp
     }
     lcon <- do.call("rbind.data.frame",lcon)
@@ -59,6 +67,8 @@ catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,nperm=NULL,distrib
     lcon$cor <- round(lcon$cor,dec[6])
     splitvar <- lcon$categories
     lcon <- lcon[,c(2,4:7,1)]
+    if(robust==FALSE) names(lcon) <- c("variables","mean.x.in.ycat","mean.x.global",
+                                       "sd.x.in.ycat","sd.x.global","cor")
     rownames(lcon) <- NULL
     lcon <- split(lcon,splitvar)
   }

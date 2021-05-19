@@ -37,3 +37,10 @@ weighted.mad <- function(x, w, method="raw") {
   mad <- weighted.quantile(x=ad, w=w, method=method)
   return(mad)
 }
+
+weighted.sd <- function(x, w) {
+  xm <- weighted.mean(x, w)
+  var <- weighted.mean((x-xm)^2, w)
+  sd <- sqrt(var)
+  return(sd)
+}
