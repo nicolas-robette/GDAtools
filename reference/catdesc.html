@@ -141,8 +141,8 @@
     <p>Measures the association between a categorical variable and some continuous and/or categorical variables</p>
     </div>
 
-    <pre class="usage"><span class='fu'>catdesc</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>, min.phi<span class='op'>=</span><span class='cn'>NULL</span>, nperm<span class='op'>=</span><span class='cn'>NULL</span>, 
-distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>1</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>catdesc</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>, min.phi<span class='op'>=</span><span class='cn'>NULL</span>, 
+robust<span class='op'>=</span><span class='cn'>TRUE</span>, nperm<span class='op'>=</span><span class='cn'>NULL</span>, distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>1</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,6 +162,10 @@ distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec<span class
     <tr>
       <th>min.phi</th>
       <td><p>for the relationship between y and a categorical variable, only associations higher or equal to min.phi will be displayed. If NULL (default), they are all displayed.</p></td>
+    </tr>
+    <tr>
+      <th>robust</th>
+      <td><p>logical. If FALSE, mean and standard deviation are used instead of median and mad. Default is TRUE.</p></td>
     </tr>
     <tr>
       <th>nperm</th>
@@ -197,42 +201,57 @@ Each element in bylevel has the following items :
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/FactoMineR/man/catdes.html'>catdes</a></code>, <code><a href='condesc.html'>condesc</a></code>, <code><a href='assoc.yx.html'>assoc.yx</a></code>, <code><a href='darma.html'>darma</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>)</span>
-<span class='fu'>catdesc</span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>$</span><span class='va'>Comedy</span>, <span class='va'>Taste</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Gender'</span>,<span class='st'>'Age'</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Movies</span><span class='op'>)</span>
+<span class='fu'>catdesc</span><span class='op'>(</span><span class='va'>Movies</span><span class='op'>$</span><span class='va'>ArtHouse</span>, <span class='va'>Movies</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Budget"</span>,<span class='st'>"Genre"</span>,<span class='st'>"Country"</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $variables
 #&gt;   variable    measure association permutation.pvalue
-#&gt; 1      Age Cramer's V       0.076                 NA
-#&gt; 2   Gender Cramer's V       0.015                 NA
+#&gt; 1    Genre Cramer's V       0.554                 NA
+#&gt; 2  Country Cramer's V       0.469                 NA
+#&gt; 3   Budget       Eta2       0.181                 NA
 #&gt; 
 #&gt; $bylevel
 #&gt; $bylevel$No
 #&gt; $bylevel$No$categories
-#&gt;      categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global    phi
-#&gt; 2       Age.50+            0.614            0.459           0.427  0.075
-#&gt; 6  Gender.Women            0.575            0.525           0.521  0.009
-#&gt; 8     Age.25-49            0.568            0.422           0.424 -0.005
-#&gt; 11   Gender.Men            0.566            0.475           0.479 -0.009
-#&gt; 15    Age.15-24            0.455            0.118           0.148 -0.098
+#&gt;           categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global    phi
+#&gt; 1        Country.USA            0.865            0.500           0.297  0.457
+#&gt; 5       Genre.Comedy            0.725            0.313           0.222  0.226
+#&gt; 6       Genre.Action            0.745            0.239           0.165  0.206
+#&gt; 7        Genre.SciFi            0.898            0.086           0.049  0.174
+#&gt; 8       Genre.Horror            1.000            0.049           0.025  0.156
+#&gt; 10   Genre.Animation            0.826            0.074           0.046  0.137
+#&gt; 12       Genre.Other            0.577            0.029           0.026  0.021
+#&gt; 13    Country.Europe            0.542            0.076           0.072  0.015
+#&gt; 16     Country.Other            0.231            0.012           0.026 -0.093
+#&gt; 18     Genre.ComDram            0.336            0.097           0.149 -0.149
+#&gt; 23 Genre.Documentary            0.117            0.018           0.077 -0.229
+#&gt; 24       Genre.Drama            0.203            0.095           0.241 -0.350
+#&gt; 25    Country.France            0.350            0.412           0.605 -0.405
+#&gt; 
+#&gt; $bylevel$No$continuous.var
+#&gt;   variables median.x.in.ycat median.x.global mad.x.in.ycat mad.x.global   cor
+#&gt; 1    Budget         18252352         7040471      12713051      5920656 0.426
 #&gt; 
 #&gt; 
 #&gt; $bylevel$Yes
 #&gt; $bylevel$Yes$categories
-#&gt;      categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global    phi
-#&gt; 1     Age.15-24            0.542            0.188           0.148  0.096
-#&gt; 5    Gender.Men            0.433            0.485           0.479  0.010
-#&gt; 7     Age.25-49            0.431            0.428           0.424  0.005
-#&gt; 12 Gender.Women            0.423            0.515           0.521 -0.010
-#&gt; 14      Age.50+            0.385            0.384           0.427 -0.075
+#&gt;           categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global    phi
+#&gt; 2     Country.France            0.650            0.809           0.605  0.405
+#&gt; 3        Genre.Drama            0.797            0.395           0.241  0.350
+#&gt; 4  Genre.Documentary            0.883            0.140           0.077  0.229
+#&gt; 9      Genre.ComDram            0.664            0.204           0.149  0.149
+#&gt; 11     Country.Other            0.769            0.041           0.026  0.093
+#&gt; 14    Country.Europe            0.458            0.068           0.072 -0.015
+#&gt; 15       Genre.Other            0.423            0.023           0.026 -0.021
+#&gt; 17   Genre.Animation            0.174            0.016           0.046 -0.137
+#&gt; 19      Genre.Horror            0.000            0.000           0.025 -0.156
+#&gt; 20       Genre.SciFi            0.102            0.010           0.049 -0.174
+#&gt; 21      Genre.Action            0.255            0.086           0.165 -0.206
+#&gt; 22      Genre.Comedy            0.275            0.126           0.222 -0.226
+#&gt; 26       Country.USA            0.135            0.082           0.297 -0.457
 #&gt; 
-#&gt; 
-#&gt; $bylevel$`NA`
-#&gt; $bylevel$`NA`$categories
-#&gt;      categories pct.ycat.in.xcat pct.xcat.in.ycat pct.xcat.global    phi
-#&gt; 3     Age.15-24            0.003            0.333           0.148  0.020
-#&gt; 4  Gender.Women            0.002            0.667           0.521  0.011
-#&gt; 9     Age.25-49            0.001            0.333           0.424 -0.007
-#&gt; 10      Age.50+            0.001            0.333           0.427 -0.007
-#&gt; 13   Gender.Men            0.001            0.333           0.479 -0.011
+#&gt; $bylevel$Yes$continuous.var
+#&gt;   variables median.x.in.ycat median.x.global mad.x.in.ycat mad.x.global    cor
+#&gt; 2    Budget          2481788         7040471       1702911      5920656 -0.426
 #&gt; 
 #&gt; 
 #&gt; </div></pre>

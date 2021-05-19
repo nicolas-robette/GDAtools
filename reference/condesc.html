@@ -141,8 +141,8 @@
     <p>Measures the association between a continuous variable and some continuous and/or categorical variables</p>
     </div>
 
-    <pre class="usage"><span class='fu'>condesc</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>, min.cor<span class='op'>=</span><span class='cn'>NULL</span>, nperm<span class='op'>=</span><span class='cn'>NULL</span>, 
-distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>0</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>condesc</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, weights<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>, min.cor<span class='op'>=</span><span class='cn'>NULL</span>, 
+robust<span class='op'>=</span><span class='cn'>TRUE</span>, nperm<span class='op'>=</span><span class='cn'>NULL</span>, distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>0</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,6 +162,10 @@ distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec<span class
     <tr>
       <th>min.cor</th>
       <td><p>for the relationship between y and a categorical variable, only associations higher or equal to min.cor will be displayed. If NULL (default), they are all displayed.</p></td>
+    </tr>
+    <tr>
+      <th>robust</th>
+      <td><p>logical. If FALSE, mean and standard deviation are used instead of median and mad. Default is TRUE.</p></td>
     </tr>
     <tr>
       <th>nperm</th>
@@ -194,31 +198,43 @@ distrib<span class='op'>=</span><span class='st'>"asympt"</span>, dec<span class
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/FactoMineR/man/condes.html'>condes</a></code>, <code><a href='catdesc.html'>catdesc</a></code>, <code><a href='assoc.yx.html'>assoc.yx</a></code>, <code><a href='darma.html'>darma</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>)</span>
-<span class='fu'><a href='getindexcat.html'>getindexcat</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       
-#&gt;  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     
-#&gt;  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      
-#&gt; [13] "Classical.No"  "Classical.Yes" "Classical.NA" </div><div class='input'><span class='va'>mca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='speMCA.html'>speMCA</a></span><span class='op'>(</span><span class='va'>Taste</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>]</span>,excl<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>,<span class='fl'>6</span>,<span class='fl'>9</span>,<span class='fl'>12</span>,<span class='fl'>15</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>condesc</span><span class='op'>(</span><span class='va'>mca</span><span class='op'>$</span><span class='va'>ind</span><span class='op'>$</span><span class='va'>coord</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span>, <span class='va'>Taste</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Gender'</span>,<span class='st'>'Age'</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>Movies</span><span class='op'>)</span>
+<span class='fu'>condesc</span><span class='op'>(</span><span class='va'>Movies</span><span class='op'>$</span><span class='va'>BoxOffice</span>, <span class='va'>Movies</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Budget"</span>,<span class='st'>"Genre"</span>,<span class='st'>"Country"</span><span class='op'>)</span><span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $variables
-#&gt;   variable measure association permutation.pvalue
-#&gt; 1      Age    Eta2       0.036                 NA
-#&gt; 2   Gender    Eta2       0.000                 NA
+#&gt;   variable       measure association permutation.pvalue
+#&gt; 1    Genre          Eta2       0.173                 NA
+#&gt; 2  Country          Eta2       0.048                 NA
+#&gt; 3   Budget Kendall's tau       0.518                 NA
 #&gt; 
 #&gt; $categories
-#&gt;     categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global
-#&gt; 3    Age.15-24                0               0             0            0
-#&gt; 4    Age.25-49                0               0             0            0
-#&gt; 1   Gender.Men                0               0             0            0
-#&gt; 2 Gender.Women                0               0             0            0
-#&gt; 5      Age.50+                0               0             0            0
-#&gt;      cor
-#&gt; 3  0.167
-#&gt; 4  0.022
-#&gt; 1  0.007
-#&gt; 2 -0.007
-#&gt; 5 -0.143
+#&gt;           categories median.y.in.xcat median.y.global mad.y.in.xcat
+#&gt; 9        Genre.SciFi           944784          138609        853626
+#&gt; 2    Genre.Animation           954956          138609        853018
+#&gt; 13       Country.USA           356692          138609        286508
+#&gt; 1       Genre.Action           291945          138609        247538
+#&gt; 10    Country.Europe           153755          138609        150015
+#&gt; 5       Genre.Comedy           230615          138609        210550
+#&gt; 3        Genre.Other           249037          138609        231954
+#&gt; 12     Country.Other            64893          138609         46042
+#&gt; 8       Genre.Horror           293118          138609        176131
+#&gt; 6  Genre.Documentary            13470          138609         12078
+#&gt; 4      Genre.ComDram            91380          138609         88602
+#&gt; 7        Genre.Drama            49219          138609         44946
+#&gt; 11    Country.France            77352          138609         78519
+#&gt;    mad.y.global    cor
+#&gt; 9        137253  0.294
+#&gt; 2        137253  0.211
+#&gt; 13       137253  0.192
+#&gt; 1        137253  0.087
+#&gt; 10       137253  0.068
+#&gt; 5        137253  0.004
+#&gt; 3        137253 -0.005
+#&gt; 12       137253 -0.013
+#&gt; 8        137253 -0.015
+#&gt; 6        137253 -0.108
+#&gt; 4        137253 -0.114
+#&gt; 7        137253 -0.162
+#&gt; 11       137253 -0.211
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
