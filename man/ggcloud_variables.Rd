@@ -64,6 +64,7 @@ getindexcat(Music[,1:5])
 mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
 ggcloud_variables(mca)
 ggcloud_variables(mca, points='best', prop='n', palette='Set2')
+ggcloud_variables(mca, shapes=FALSE, legend="none", col="black", face="ui")
 }
 
 \keyword{ aplot }

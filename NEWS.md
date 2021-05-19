@@ -25,6 +25,7 @@
 * `ggcloud_indiv()` : the density of points can be represented as an additional layer through contours or hexagon bins
 * `catdesc()` and `condesc()` : allow weights
 * `catdesc()` and `condesc()` : new nperm and distrib options
+* `catdesc()` and `condesc()` : new robust option
 * `assoc.twocont()`, `assoc.twocat()` and `assoc.catcont()` : nperm option is set to NULL by default
 * `darma()` : nperm is set to 100 by default
 * `ggcloud_variables()` and `ggcloud_indiv()` : a few changes in the theme (grids are removed, etc.)
@@ -33,6 +34,7 @@
 * `ggcloud_variables()` : new max.pval option to filter categories according to the p-value derived from their test-value (for objects of class stMCA and multiMCA)
 * `ggcloud_variables()` : prop argument can take values "vtest1" and "vtest2"
 * `ggcloud_variables()` : for shapes and colors, variables are used in their order of appearance in the data instead of alphabetical order
+* `ggcloud_variables()` : new face argument to use font face to identify the most contributing categories
 * `homog.test()` : gives the p-values in addition to the test statistics
 * `dimeta2()` : l argument renamed to vars and n argument removed
 * `varsup()` : also computes typicality tests and correlation coefficients

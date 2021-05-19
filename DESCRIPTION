@@ -1,7 +1,7 @@
 Package: GDAtools
 Type: Package
 Title: A Toolbox for Geometric Data Analysis and More
-Version: 1.6
+Version: 1.7
 Author: Nicolas Robette
 Maintainer: Nicolas Robette <nicolas.robette@uvsq.fr>
 Imports: MASS, wdm, FactoMineR, nleqslv, nnet, ggplot2, ggrepel, RColorBrewer, rlang, GGally
