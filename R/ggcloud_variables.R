@@ -87,6 +87,7 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   face <- unlist(strsplit(face, split = ""))
   faceX <- face[1]
   faceY <- face[2]
+  vcoord$labs <- paste0("'",vcoord$labs,"'")
   if(type %in% c("MCA","speMCA","csMCA")) {
     vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="i") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="i")] <- 
       paste0("italic(",vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="i") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="i")],")")
@@ -158,19 +159,3 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   
   return(p)
 }
-
-
-# data(Taste)
-# mca <- speMCA(Taste[,1:11],excl=c(3,6,9,12,15,18,21,24,27,30,33))
-# 
-# ggcloud_variables(mca)
-# ggcloud_variables(mca, shapes=FALSE, col="black", face="ib")
-# ggcloud_variables(mca, shapes=FALSE, col="black", face="ui")
-# ggcloud_variables(mca, shapes=FALSE, col="black", face="up")
-# 
-# temp <- data.frame(x=0,y=0,lab="underline(underline(pouet))")
-# ggcloud_variables(mca, col="lightgray") +
-#   geom_text(data=temp, aes(x=x,y=y,label=lab), parse=TRUE)
-# 
-# tabcontrib(mca,dim=1)
-# tabcontrib(mca,dim=2)
