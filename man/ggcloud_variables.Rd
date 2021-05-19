@@ -9,7 +9,7 @@ Plots a Multiple Correspondence Analysis cloud of variables, using ggplots funct
 
 \usage{
 ggcloud_variables(resmca, axes=c(1,2), points='all', 
-min.ctr=NULL, max.pval=0.01,
+min.ctr=NULL, max.pval=0.01, face="pp",
 shapes=TRUE, prop=NULL, textsize=3, shapesize=3,
 col=NULL, palette=NULL, col.by.group=TRUE, alpha=1,
 segment.alpha=0.5, vlab=TRUE, sep='.', legend='right')
@@ -24,6 +24,9 @@ segment.alpha=0.5, vlab=TRUE, sep='.', legend='right')
                 or vertical axis are plotted.}
   \item{min.ctr}{Numerical value between 0 and 100. The minimum contribution (in percent) for a category to be displayed if the \code{points} argument is equal to "best", "besth" or "bestv" and \code{resmca} is of type \code{MCA}, \code{speMCA} or \code{csMCA}. If NULL (default), only the categories that contribute more than the average (i.e. 100 / number of modalities) are displayed.}
   \item{max.pval}{Numerical value between 0 and 100. The maximal p-value derived from test-values for a category to be displayed if the \code{points} argument is equal to "best", "besth" or "bestv" and \code{resmca} is of type \code{stMCA} or \code{multiMCA}.}
+  \item{face}{character string. Changes the face of the category labels when their contribution is greater than \code{min.ctr}. The first letter refers to the first represented axis, the second letter to the second. "p" is for plain text, "u" for underlined, "i" for italic and "b" for bold. For example, "ui" means that the labels of the most contributing categories on the first axis will be underlined and the labels of the most contributing categories on the second axis will be italicized. By default ("pp"), no font face change is made.
+
+Translated with www.DeepL.com/Translator (free version)}
   \item{shapes}{Logical. Should shapes be plotted for categories (in addition to labels) ? Default is TRUE.}
   \item{prop}{If NULL, the size of the labels (if shapes=FALSE) or the shapes (if shapes=TRUE) is constant. If 'n', the size is proportional the the weights of categories; if 'ctr1', the size is proportional to the contributions of the categories on the first dimension of the plot; if 'ctr2', the size is proportional to the contributions of the categories on the second dimension of the plot; if 'ctr.cloud', the size is proportional to the total contributions of the categories on the whole cloud; if 'cos1', the size is proportional to the cosines of the categories on the first dimension of the plot; if 'cos2', the size is proportional to the cosines of the categories on the second dimension of the plot; if 'cos12', the size is proportional to the total cosines of the categories on the two dimensions of the plot; if 'vtest1', the size is proportional to the test-values of the categories on the first dimension of the plot; if 'vtest2', the size is proportional to the test-values of the categories on the second dimension of the plot.}
   \item{textsize}{Size of the labels of categories if shapes=TRUE, or if shapes=FALSE and prop=NULL.               Default is 3.}

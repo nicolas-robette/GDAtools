@@ -1,4 +1,4 @@
-ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, max.pval=0.01, shapes=TRUE, prop=NULL, textsize=3, shapesize=3, col=NULL, palette=NULL, col.by.group=TRUE, alpha=1, segment.alpha=0.5, vlab=TRUE, sep='.', legend='right') {
+ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, max.pval=0.01, face="pp", shapes=TRUE, prop=NULL, textsize=3, shapesize=3, col=NULL, palette=NULL, col.by.group=TRUE, alpha=1, segment.alpha=0.5, vlab=TRUE, sep='.', legend='right') {
 
   type <- attr(resmca,'class')[1]
   dim1 <- axes[1]
@@ -84,6 +84,18 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   
   if(vlab) vcoord$labs <- varcat else vcoord$labs <- categories
 
+  face <- unlist(strsplit(face, split = ""))
+  faceX <- face[1]
+  faceY <- face[2]
+  if(type %in% c("MCA","speMCA","csMCA")) {
+    vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="i") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="i")] <- 
+      paste0("italic(",vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="i") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="i")],")")
+    vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="b") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="b")] <- 
+      paste0("bold(",vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="b") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="b")],")")
+    vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="u") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="u")] <- 
+      paste0("underline(",vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="u") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="u")],")")
+  }
+  
   p <- ggplot2::ggplot(vcoord, ggplot2::aes(x = .data$axeX, y = .data$axeY))
   
   # if(shapes==TRUE & is.null(palette) & is.null(prop)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables), size = shapesize, colour = col, alpha = alpha) + 
@@ -94,31 +106,31 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   #                                                               ggplot2::scale_shape_manual(name="", values = 0:20)
   
   if(shapes==TRUE & is.null(prop) & is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, color = .data$groups), size = shapesize, alpha = alpha) + 
-                                                           ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$groups), size = textsize, segment.alpha = segment.alpha, alpha = alpha) + 
+                                                           ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$groups), size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf) + 
                                                            ggplot2::scale_shape_manual(name="", values = rep(0:20,10))
 
   if(shapes==TRUE & is.null(prop) & !is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables), color = col, size = shapesize, alpha = alpha) + 
-                                                            ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha) + 
+                                                            ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf) + 
                                                             ggplot2::scale_shape_manual(name="", values = rep(0:20,10))  
   
   if(shapes==TRUE & !is.null(prop) & is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, size = .data$prop, color = .data$groups), alpha = alpha) + 
-                                                            ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$groups), size = textsize, segment.alpha = segment.alpha, alpha = alpha) + 
+                                                            ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$groups), size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf) + 
                                                             ggplot2::scale_shape_manual(name="", values = rep(0:20,10))
 
   if(shapes==TRUE & !is.null(prop) & !is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, size = .data$prop), color = col, alpha = alpha) + 
-                                                             ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha) + 
+                                                             ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf) + 
                                                              ggplot2::scale_shape_manual(name="", values = rep(0:20,10))  
                                                                    
 #  if(shapes==FALSE & is.null(palette) & is.null(prop)) p <- p + ggrepel::geom_text_repel(data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), size = textsize, segment.alpha = segment.alpha, colour = col, alpha = alpha)
 #  if(shapes==FALSE & is.null(palette) & !is.null(prop)) p <- p + ggrepel::geom_text_repel(data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, size = .data$prop), segment.alpha = segment.alpha, colour = col, alpha = alpha)
   
-  if(shapes==FALSE & is.null(prop) & is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$groups), size = textsize, segment.alpha = segment.alpha, alpha = alpha)
+  if(shapes==FALSE & is.null(prop) & is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$groups), size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf)
 
-  if(shapes==FALSE & is.null(prop) & !is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha)
+  if(shapes==FALSE & is.null(prop) & !is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf)
   
-  if(shapes==FALSE & !is.null(prop) & is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, size = .data$prop, color = .data$groups), segment.alpha = segment.alpha, alpha = alpha)
+  if(shapes==FALSE & !is.null(prop) & is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, size = .data$prop, color = .data$groups), segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf)
   
-  if(shapes==FALSE & !is.null(prop) & !is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, size = .data$prop), color = col, segment.alpha = segment.alpha, alpha = alpha)
+  if(shapes==FALSE & !is.null(prop) & !is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, size = .data$prop), color = col, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf)
 
   if(is.null(col) & !is.null(palette)) {
     if(length(palette)>1) { p <- p + ggplot2::scale_colour_manual(values = palette)
@@ -146,3 +158,19 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   
   return(p)
 }
+
+
+# data(Taste)
+# mca <- speMCA(Taste[,1:11],excl=c(3,6,9,12,15,18,21,24,27,30,33))
+# 
+# ggcloud_variables(mca)
+# ggcloud_variables(mca, shapes=FALSE, col="black", face="ib")
+# ggcloud_variables(mca, shapes=FALSE, col="black", face="ui")
+# ggcloud_variables(mca, shapes=FALSE, col="black", face="up")
+# 
+# temp <- data.frame(x=0,y=0,lab="underline(underline(pouet))")
+# ggcloud_variables(mca, col="lightgray") +
+#   geom_text(data=temp, aes(x=x,y=y,label=lab), parse=TRUE)
+# 
+# tabcontrib(mca,dim=1)
+# tabcontrib(mca,dim=2)
