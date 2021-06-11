@@ -5,7 +5,10 @@ dichotom <- function(data,out='numeric') {
     if(is.factor(data[,i])==FALSE) data[,i] <- factor(data[,i])
     nlevels <- length(levels(data[,i]))
     temp <- matrix(nrow=nrow(data),ncol=nlevels)
-    for(j in 1:nlevels) temp[,j] <- ifelse(data[,i]==levels(data[,i])[j],1,0)
+    for(j in 1:nlevels) {
+      temp[,j] <- 0
+      temp[data[,i]==levels(data[,i])[j] ,j] <- 1
+    }
     colnames(temp) <- paste(names(data)[i],levels(data[,i]),sep=".")
     if(i==1) res <- temp else res <- cbind(res,temp)
     }
