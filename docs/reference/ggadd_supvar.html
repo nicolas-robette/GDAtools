@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.1</span>
       </span>
     </div>
 
@@ -89,7 +89,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
       <a href="../articles/english/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
@@ -136,7 +136,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>ggadd_supvar</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>resmca</span>, <span class='va'>var</span>, sel<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/nlevels.html'>nlevels</a></span><span class='op'>(</span><span class='va'>var</span><span class='op'>)</span>, axes<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>,<span class='fl'>2</span><span class='op'>)</span>, col<span class='op'>=</span><span class='st'>'black'</span>,
-shape<span class='op'>=</span><span class='fl'>1</span>, prop<span class='op'>=</span><span class='cn'>NULL</span>, textsize<span class='op'>=</span><span class='fl'>3</span>, segment<span class='op'>=</span><span class='cn'>FALSE</span>, vname<span class='op'>=</span><span class='cn'>NULL</span><span class='op'>)</span></pre>
+shape<span class='op'>=</span><span class='fl'>1</span>, prop<span class='op'>=</span><span class='cn'>NULL</span>, textsize<span class='op'>=</span><span class='fl'>3</span>, shapesize<span class='op'>=</span><span class='fl'>6</span>, segment<span class='op'>=</span><span class='cn'>FALSE</span>, vname<span class='op'>=</span><span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,7 +175,11 @@ shape<span class='op'>=</span><span class='fl'>1</span>, prop<span class='op'>=<
     </tr>
     <tr>
       <th>textsize</th>
-      <td><p>Size of the labels of categories if shape is not NULL, or if shape=NULL and prop=NULL.               Default is 3.</p></td>
+      <td><p>Size of the labels of categories if shape is not NULL, or if shape=NULL and prop=NULL. Default is 3.</p></td>
+    </tr>
+    <tr>
+      <th>shapesize</th>
+      <td><p>Size of the shapes if prop=NULL, maximum size of the shapes in other cases. Default is 6.</p></td>
     </tr>
     <tr>
       <th>segment</th>

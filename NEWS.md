@@ -1,3 +1,17 @@
+# GDAtools 1.7.1
+
+## Bug fixes
+
+* bug fix with vignettes
+* bug fix with NA values in `dichotom()` (thanks to @juba)
+
+## Changes in existing functions
+
+* `assoc.twocat()` : PEM are no longer computed.
+* `ggadd_supvar()` : for shapes, a value of 0 is mapped to a size of 0 and new shapesize option (as suggested by @osturnus)
+
+
+
 # GDAtools 1.7
 
 ## New functions
