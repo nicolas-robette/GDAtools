@@ -17,7 +17,7 @@
 \value{Returns a data frame with dichotomized variables. 
        The number of columns is equal to the total number of categories in the input data.}
 
-\author{Nicolas Robette}
+\author{Nicolas Robette, Julien Barnier}
 
 \examples{
 ## Dichotomizes 'Music' example data frame
