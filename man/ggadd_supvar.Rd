@@ -9,7 +9,7 @@ Adds a categorical supplementary variable to a MCA cloud of variables, using the
 
 \usage{
 ggadd_supvar(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col='black',
-shape=1, prop=NULL, textsize=3, segment=FALSE, vname=NULL)
+shape=1, prop=NULL, textsize=3, shapesize=6, segment=FALSE, vname=NULL)
 }
 
 \arguments{
@@ -21,7 +21,8 @@ shape=1, prop=NULL, textsize=3, segment=FALSE, vname=NULL)
   \item{col}{Character. Color of the shapes and labels of the categories. Default is black.}
   \item{shape}{Symbol to be used in addition the the labels of categories (default is 1). If NULL, only labels are plotted.}
   \item{prop}{If NULL, the size of the labels (if shape=NULL) or the shapes (otherwise) is constant. If 'n', the size is proportional the the weights of categories; if 'vtest1', the size is proportional to the test values of the categories on the first dimension of the plot; if 'vtest2', the size is proportional to the test values of the categories on the second dimension of the plot; if 'cos1', the size is proportional to the cosines of the categories on the first dimension of the plot; if 'cos2', the size is proportional to the cosines of the categories on the second dimension of the plot; if 'cos12', the size is proportional to the total cosines of the categories on the two dimensions of the plot.}
-  \item{textsize}{Size of the labels of categories if shape is not NULL, or if shape=NULL and prop=NULL.               Default is 3.}
+  \item{textsize}{Size of the labels of categories if shape is not NULL, or if shape=NULL and prop=NULL. Default is 3.}
+  \item{shapesize}{Size of the shapes if prop=NULL, maximum size of the shapes in other cases. Default is 6.}
   \item{segment}{Logical. Should one add lines between categories ? Default is FALSE.}
   \item{vname}{A character string to be used as a prefix for the labels of the categories. If NULL (default), no prefix is added.}
 }

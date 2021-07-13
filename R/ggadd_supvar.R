@@ -1,4 +1,4 @@
-ggadd_supvar <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col='black', shape=1, prop=NULL, textsize=3, segment=FALSE, vname=NULL) {
+ggadd_supvar <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col='black', shape=1, prop=NULL, textsize=3, shapesize=6, segment=FALSE, vname=NULL) {
 
   dim1 <- axes[1]
   dim2 <- axes[2]
@@ -12,8 +12,8 @@ ggadd_supvar <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col='b
   
   if(is.null(prop)) { coord$prop <- rep(1,nrow(coord))
   } else if(prop=='n') { coord$prop <- vs$weight
-  } else if(prop=='vtest1') { coord$prop <- abs(vs$v.test[,dim1])
-  } else if(prop=='vtest2') { coord$prop <- abs(vs$v.test[,dim2])
+  } else if(prop=='vtest1') { coord$prop <- abs(vs$typic[,dim1])
+  } else if(prop=='vtest2') { coord$prop <- abs(vs$typic[,dim2])
   } else if(prop=='cos1') { coord$prop <- vs$cos2[,dim1] 
   } else if(prop=='cos2') { coord$prop <- vs$cos2[,dim2] 
   } else if(prop=='cos12') coord$prop <- rowSums(vs$contrib[,axes])
@@ -23,9 +23,11 @@ ggadd_supvar <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col='b
   
   if(is.null(shape)) { pfin <- p + ggrepel::geom_text_repel(data=coord, ggplot2::aes(x=.data$axeX, y=.data$axeY, label=.data$labs, size=.data$prop), col=col)
   } else { pfin <- p + ggplot2::geom_point(data=coord, ggplot2::aes(x=.data$axeX, y=.data$axeY, size=.data$prop), shape=shape, col=col) +
-                       ggrepel::geom_text_repel(data=coord, ggplot2::aes(x=.data$axeX, y=.data$axeY, label=.data$labs), size=textsize, col=col) }
+                       ggplot2::scale_size_area(max_size=shapesize) +
+                       ggrepel::geom_text_repel(data=coord, ggplot2::aes(x=.data$axeX, y=.data$axeY, label=.data$labs), size=textsize, col=col)
+                       }
   
-  if(segment) pfin <- pfin + ggplot2::geom_line(data=coord, ggplot2::aes(x=.data$axeX, y=.data$axeY), col=col, alpha=0.5)
+  if(segment) pfin <- pfin + ggplot2::geom_path(data=coord, ggplot2::aes(x=.data$axeX, y=.data$axeY), col=col, alpha=0.5)
     
   pfin
 
