@@ -32,8 +32,6 @@ A list with the following elements :
 \item{pearson.residuals}{the table of Pearson residuals, i.e. (observed - expected) / sqrt(expected).}
 \item{phi}{the table of the phi coefficients for each pair of levels}
 \item{phi.perm.pval}{the table of permutation p-values for each pair of levels}
-\item{local.pem}{the table of local Percentages of Maximum Deviation from Independences}
-\item{global.pem}{value of the global Percentage of Maximum Deviation from Independence}
 \item{gather}{a data frame gathering informations, with one row per cell of the cross-tabulation}
 }
 \references{

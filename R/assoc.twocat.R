@@ -18,18 +18,12 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
   Y <- y[idnona]
   W <- weights[idnona]
     
-  # xdic <- as.matrix(dichotom(X, out='numeric'))
-  # ydic <- as.matrix(dichotom(Y, out='numeric'))
-  # t <- t(xdic)%*%diag(W)%*%ydic
   t <- tapply(W, list(X,Y), sum)
   
   # remplace les cases vides par des 0  
   t[is.na(t)] <- 0
 
   tab <- as.table(t)
-
-  # rownames(tab) <- gsub('data.','',rownames(tab))
-  # colnames(tab) <- gsub('data.','',colnames(tab))
 
   freq <- addmargins(tab)
   prop <- 400*prop.table(freq)
@@ -38,10 +32,6 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
 
   phi <- phi.table(x,y,weights=weights,digits=NULL)
   
-  pem <- pem(x,y,weights=weights)
-
-  # t <- t(xdic)%*%diag(W)%*%ydic
-  # expected <- rowSums(t) %*% t(colSums(t)) / sum(t)
   expected <- sapply(colSums(t), function(x) x*rowSums(t)/sum(t))
   chi.squared <- sum((t-expected)*(t-expected)/expected)
   cramer.v <- sqrt(chi.squared / (length(x)*(min(nrow(t),ncol(t))-1)))
@@ -99,7 +89,6 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
                              std.residuals=data.frame(stdres)$Freq,
                              phi=data.frame(phi)$Freq)
   if(!is.null(ppval)) gather <- cbind.data.frame(gather, perm.pval=data.frame(ppval)$Freq)
-  gather <- cbind.data.frame(gather, local.pem=data.frame(pem$peml)$Freq)
-  
-  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'pearson.residuals'=stdres, 'phi'=phi, 'phi.perm.pval'=ppval, 'local.pem'=pem$peml, 'global.pem'=pem$pemg, 'gather'=gather))
+
+  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'pearson.residuals'=stdres, 'phi'=phi, 'phi.perm.pval'=ppval, 'gather'=gather))
 }
