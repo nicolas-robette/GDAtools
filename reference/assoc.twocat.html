@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.1</span>
       </span>
     </div>
 
@@ -95,7 +95,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
       <a href="../articles/english/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
@@ -186,8 +186,6 @@
 <dt>pearson.residuals</dt><dd><p>the table of Pearson residuals, i.e. (observed - expected) / sqrt(expected).</p></dd>
 <dt>phi</dt><dd><p>the table of the phi coefficients for each pair of levels</p></dd>
 <dt>phi.perm.pval</dt><dd><p>the table of permutation p-values for each pair of levels</p></dd>
-<dt>local.pem</dt><dd><p>the table of local Percentages of Maximum Deviation from Independences</p></dd>
-<dt>global.pem</dt><dd><p>value of the global Percentage of Maximum Deviation from Independence</p></dd>
 <dt>gather</dt><dd><p>a data frame gathering informations, with one row per cell of the cross-tabulation</p></dd>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -265,15 +263,6 @@
 #&gt; Yes 0.01480271 0.16719800 0.26415346
 #&gt; NA  0.08283646 0.07358127 0.29396837
 #&gt; 
-#&gt; $local.pem
-#&gt;     15-24 25-49   50+
-#&gt; No   32.8  -3.5  -5.4
-#&gt; Yes -46.0   7.5   4.8
-#&gt; NA   17.1 -51.0  11.3
-#&gt; 
-#&gt; $global.pem
-#&gt; [1] 12.2
-#&gt; 
 #&gt; $gather
 #&gt;   Var1  Var2 Freq  prop      rprop       cprop expected std.residuals
 #&gt; 1   No 15-24   67 0.134 0.16962025 0.858974359    61.62     0.6853642
@@ -285,16 +274,16 @@
 #&gt; 7   No   50+  169 0.338 0.42784810 0.775229358   172.22    -0.2453658
 #&gt; 8  Yes   50+   44 0.088 0.46315789 0.201834862    41.42     0.4008802
 #&gt; 9   NA   50+    5 0.010 0.50000000 0.022935780     4.36     0.3065044
-#&gt;           phi  perm.pval local.pem
-#&gt; 1  0.07280405 0.06015095      32.8
-#&gt; 2 -0.09582119 0.01480271     -46.0
-#&gt; 3  0.05669319 0.08283646      17.1
-#&gt; 4 -0.02158090 0.33364299      -3.5
-#&gt; 5  0.04398308 0.16719800       7.5
-#&gt; 6 -0.06046087 0.07358127     -51.0
-#&gt; 7 -0.03188452 0.20831222      -5.4
-#&gt; 8  0.02652452 0.26415346       4.8
-#&gt; 9  0.01843738 0.29396837      11.3
+#&gt;           phi  perm.pval
+#&gt; 1  0.07280405 0.06015095
+#&gt; 2 -0.09582119 0.01480271
+#&gt; 3  0.05669319 0.08283646
+#&gt; 4 -0.02158090 0.33364299
+#&gt; 5  0.04398308 0.16719800
+#&gt; 6 -0.06046087 0.07358127
+#&gt; 7 -0.03188452 0.20831222
+#&gt; 8  0.02652452 0.26415346
+#&gt; 9  0.01843738 0.29396837
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

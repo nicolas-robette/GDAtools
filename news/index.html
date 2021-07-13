@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.1</span>
       </span>
     </div>
 
@@ -94,7 +94,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
       <a href="../articles/english/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
@@ -135,6 +135,29 @@
       <small>Source: <a href='https://github.com/nicolas-robette/GDAtools/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="gdatools-171" class="section level1">
+<h1 class="page-header" data-toc-text="1.7.1">
+<a href="#gdatools-171" class="anchor"></a>GDAtools 1.7.1<small> Unreleased </small>
+</h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>bug fix with vignettes</li>
+<li>bug fix with NA values in <code><a href="../reference/dichotom.html">dichotom()</a></code> (thanks to <a href='https://github.com/juba'>@juba</a>)</li>
+</ul>
+</div>
+<div id="changes-in-existing-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#changes-in-existing-functions" class="anchor"></a>Changes in existing functions</h2>
+<ul>
+<li>
+<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : PEM are no longer computed.</li>
+<li>
+<code><a href="../reference/ggadd_supvar.html">ggadd_supvar()</a></code> : for shapes, a value of 0 is mapped to a size of 0 and new shapesize option (as suggested by <a href='https://github.com/osturnus'>@osturnus</a>)</li>
+</ul>
+</div>
+</div>
     <div id="gdatools-17" class="section level1">
 <h1 class="page-header" data-toc-text="1.7">
 <a href="#gdatools-17" class="anchor"></a>GDAtools 1.7<small> 2021-05-31 </small>
@@ -182,9 +205,9 @@
 <code>dimvtest()</code> : use <code><a href="../reference/dimtypicality.html">dimtypicality()</a></code> instead</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions" class="section level2">
+<div id="changes-in-existing-functions-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-1" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : the density of points can be represented as an additional layer through contours or hexagon bins</li>
@@ -258,9 +281,9 @@
 <code><a href="../reference/ggadd_kellipses.html">ggadd_kellipses()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code><a href="../reference/csMCA.html">csMCA()</a></code>, <code><a href="../reference/speMCA.html">speMCA()</a></code> and <code><a href="../reference/translate.logit.html">translate.logit()</a></code> : now work with tibbles</li>
@@ -291,9 +314,9 @@
 <code><a href="../reference/darma.html">darma()</a></code> : computes bivariate association measures between a response and predictor variables, displaying results in a form looking like the summary of a regression model analysis.</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : bug fix with warning</li>
@@ -305,9 +328,9 @@
 <code><a href="../reference/translate.logit.html">translate.logit()</a></code> : results for multinomial models were instable</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions-1" class="section level2">
+<div id="changes-in-existing-functions-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-1" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-2" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code><a href="../reference/wtable.html">wtable()</a></code> : can compute percentages (<code>prop.wtable()</code> is removed)</li>
@@ -356,9 +379,9 @@
 <code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code>: adds confidence ellipses to a cloud of individuals, using ggplot</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions-2" class="section level2">
+<div id="changes-in-existing-functions-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-2" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-3" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code>conc.ellipses()</code>: additional options</li>
@@ -379,9 +402,9 @@
 <code><a href="../reference/tabcontrib.html">tabcontrib()</a></code>: displays the categories contributing most to MCA dimensions</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions-3" class="section level2">
+<div id="changes-in-existing-functions-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-3" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-4" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code><a href="../reference/varsup.html">varsup()</a></code>: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud</li>
@@ -400,17 +423,17 @@
 <h1 class="page-header" data-toc-text="1.3">
 <a href="#gdatools-13" class="anchor"></a>GDAtools 1.3<small> 2014-09-06 </small>
 </h1>
-<div id="changes-in-existing-functions-4" class="section level2">
+<div id="changes-in-existing-functions-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-4" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-5" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code>dimdesc.MCA()</code>: now uses weights</li>
 </ul>
 </div>
-<div id="bug-fixes-2" class="section level2">
+<div id="bug-fixes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code>dimdesc.MCA()</code>: problem of compatibility next to a FactoMineR update</li>
@@ -429,9 +452,9 @@
 <code>dimvtest()</code>: computes test-values for supplementary variables</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions-5" class="section level2">
+<div id="changes-in-existing-functions-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-5" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-6" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code><a href="../reference/dimeta2.html">dimeta2()</a></code>: now allows <code>stMCA</code> objects</li>
@@ -452,17 +475,17 @@
 <code>prop.wtable()</code>: works as <code><a href="https://rdrr.io/r/base/proportions.html">prop.table()</a></code> but allows weights and shows NAs as default</li>
 </ul>
 </div>
-<div id="changes-in-existing-functions-6" class="section level2">
+<div id="changes-in-existing-functions-7" class="section level2">
 <h2 class="hasAnchor">
-<a href="#changes-in-existing-functions-6" class="anchor"></a>Changes in existing functions</h2>
+<a href="#changes-in-existing-functions-7" class="anchor"></a>Changes in existing functions</h2>
 <ul>
 <li>
 <code><a href="../reference/multiMCA.html">multiMCA()</a></code>: RV computation is now an option, with FALSE as default, which makes the function execute faster</li>
 </ul>
 </div>
-<div id="bug-fixes-3" class="section level2">
+<div id="bug-fixes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-3" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-4" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code><a href="../reference/textvarsup.html">textvarsup()</a></code>: there was an error with the supplementary variable labels when <code>resmca</code> was of class <code>csMCA</code>.</li>

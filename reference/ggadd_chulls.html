@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.1</span>
       </span>
     </div>
 
@@ -95,7 +95,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
       <a href="../articles/english/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
@@ -228,7 +228,7 @@ col<span class='op'>=</span><span class='cn'>NULL</span>, alpha<span class='op'>
 <span class='va'>hca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/hclust.html'>hclust</a></span><span class='op'>(</span><span class='va'>d</span>, <span class='st'>"ward.D2"</span><span class='op'>)</span>
 <span class='va'>cluster</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/cutree.html'>cutree</a></span><span class='op'>(</span><span class='va'>hca</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'><a href='ggcloud_indiv.html'>ggcloud_indiv</a></span><span class='op'>(</span><span class='va'>mca</span>, col<span class='op'>=</span><span class='st'>'black'</span><span class='op'>)</span>
-<span class='fu'>ggadd_chulls</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, <span class='va'>cluster</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: `guides(&lt;scale&gt; = FALSE)` is deprecated. Please use `guides(&lt;scale&gt; = "none")` instead.</span></div><div class='input'><span class='fu'>ggadd_chulls</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>mca</span>, <span class='va'>cluster</span><span class='op'>)</span>
 </div><div class='img'><img src='ggadd_chulls-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
