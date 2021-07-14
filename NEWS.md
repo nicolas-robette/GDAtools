@@ -1,9 +1,14 @@
 # GDAtools 1.7.1
 
+## New functions
+
+* `angles.csa()`: Computes the cosines similarities and angles between the dimensions of a CSA and those of a MCA.
+
 ## Bug fixes
 
 * bug fix with vignettes
 * bug fix with NA values in `dichotom()` (thanks to @juba)
+* bug fix with dim option in `dimdescr()`
 
 ## Changes in existing functions
 

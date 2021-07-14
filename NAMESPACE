@@ -16,5 +16,5 @@ S3method(plot, csMCA)
 S3method(plot, multiMCA)
 S3method(plot, stMCA)
 
-export(assoc.twocat,assoc.catcont,assoc.twocont,assoc.yx,burt,catdesc,conc.ellipse,condesc,contrib,csMCA,darma,dichotom,dimcontrib,dimdescr,dimeta2,dimtypicality,flip.mca,getindexcat,
+export(angles.csa,assoc.twocat,assoc.catcont,assoc.twocont,assoc.yx,burt,catdesc,conc.ellipse,condesc,contrib,csMCA,darma,dichotom,dimcontrib,dimdescr,dimeta2,dimtypicality,flip.mca,getindexcat,
        ggadd_attractions,ggadd_chulls,ggadd_corr,ggadd_density,ggadd_ellipses,ggadd_interaction,ggadd_kellipses,ggadd_supind,ggadd_supvar,ggassoc_crosstab,ggassoc_phiplot,ggassoc_boxplot,ggassoc_scatter,ggcloud_indiv,ggcloud_variables,homog.test,indsup,medoids,modif.rate,multiMCA,pem,phi.table,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,wtable)
