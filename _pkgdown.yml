@@ -76,6 +76,7 @@ reference:
   - burt
   - dichotom
   - flip.mca
+  - angles.csa
   - getindexcat
   - medoids
   - translate.logit
