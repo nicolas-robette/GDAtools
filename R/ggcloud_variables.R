@@ -154,7 +154,7 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
       ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
                      panel.grid.minor = ggplot2::element_blank()) +
       
-      ggplot2::guides(shape = ggplot2::guide_legend(title=""), color = ggplot2::guide_legend(title=""), size = FALSE) + 
+      ggplot2::guides(shape = ggplot2::guide_legend(title=""), color = ggplot2::guide_legend(title=""), size = "none") + 
       ggplot2::theme(legend.position = legend)
   
   return(p)
