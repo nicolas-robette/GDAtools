@@ -1,5 +1,5 @@
 medoids <- function(D,cl) {
-    if(class(D)=='dist') D <- as.matrix(D)
+    if(sum(class(D)=='dist')>0) D <- as.matrix(D)
     k <- length(table(cl))
     res <- numeric()
     for(i in 1:k) {

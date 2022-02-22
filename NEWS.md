@@ -1,3 +1,11 @@
+# GDAtools 1.7.2
+
+## Bug fixes
+
+* bug fix with in `medoids()`
+
+
+
 # GDAtools 1.7.1
 
 ## New functions
