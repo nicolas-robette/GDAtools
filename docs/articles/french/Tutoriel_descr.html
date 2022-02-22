@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.2</span>
       </span>
     </div>
 
@@ -67,7 +69,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/nicolas-robette/GDAtools/">
+  <a href="https://github.com/nicolas-robette/GDAtools/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -82,15 +84,15 @@
 
       
 
-      </header><script src="Tutoriel_descr_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>L’analyse descriptive des associations statistiques avec GDAtools</h1>
-                        <h4 class="author">Nicolas Robette</h4>
+                        <h4 data-toc-skip class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-07-14</h4>
+            <h4 data-toc-skip class="date">2022-02-22</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/french/Tutoriel_descr.Rmd"><code>vignettes/french/Tutoriel_descr.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/french/Tutoriel_descr.Rmd" class="external-link"><code>vignettes/french/Tutoriel_descr.Rmd</code></a></small>
       <div class="hidden name"><code>Tutoriel_descr.Rmd</code></div>
 
     </div>
@@ -112,7 +114,7 @@
 <li><p>Pour la relation entre une variable catégorielle et une variable continue: la <strong>corrélation bisériale ponctuelle</strong> mesure l’amplitude de l’écart entre les moyennes de la variable continue selon que l’on appartient ou non à la modalité étudiée. Elle varie entre -1 et 1. Une valeur absolue de 0 indique une absence d’association, une valeur absolue de 1 un association parfaite. Le signe indique le sens de la relation. Mise au carré, la corrélation bisériale ponstuelle peut s’interpréter comme la proportion de variance de la variable continue “expliquée” par l’appartenance à la modalité de la variable catégorielle.</p></li>
 </ul>
 <p>A noter que si l’on code les modalités des variables catégorielles sous la forme de variables binaires de valeurs 0 ou 1, le coefficient phi et la corrélation bisériale ponctuelle sont équivalentes au coefficient de corrélation de Pearson.</p>
-<p>Pour plus de détails sur ces mesures de taille d’effet, voir : Rakotomalala R., <a href="http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf">« Comprendre la taille d’effet (effect size) »</a><br>
+<p>Pour plus de détails sur ces mesures de taille d’effet, voir : Rakotomalala R., <a href="http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf" class="external-link">« Comprendre la taille d’effet (effect size) »</a><br>
  </p>
 <p>Dans certaines fonctions de <code>GDAtools</code>, les mesures d’association peuvent être complétées par des <strong>tests de permutation</strong>, qui relèvent de l’<em>inférence combinatoire</em> et constituent une alternative <em>non paramétrique</em> aux tests de signification de l’inférence fréquentiste. Un test de permutation se déroule en plusieurs étapes.</p>
 <ol style="list-style-type: decimal">
@@ -125,9 +127,9 @@
  </p>
 <p>Pour illustrer les fonctions d’analyse des associations statistiques de <code>GDAtools</code>, nous utiliserons des données sur le cinéma. Il s’agit d’un échantillon de 1000 films sortis en France dans les années 2000, pour lesquels on connaît le budget, le genre, le pays d’origine, la labellisation “art et essai”, la sélection en festival (Cannes, Berlin ou Venise), la note moyenne des critiques intellectuels (d’après Allociné) et le nombre d’entrées en salles. Certaines de ces variables sont continues, d’autres catégorielles.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nicolas-robette/GDAtools">GDAtools</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nicolas-robette/GDAtools" class="external-link">GDAtools</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">)</span></code></pre></div>
 <pre><code>'data.frame':   1000 obs. of  7 variables:
  $ Budget   : num  3.10e+07 4.88e+06 3.50e+06 1.63e+08 2.17e+07 ...
  $ Genre    : Factor w/ 9 levels "Action","Animation",..: 1 5 7 1 7 5 1 7 5 7 ...
@@ -137,13 +139,13 @@
  $ Critics  : num  3 1 3.75 3.75 3.6 2.75 1 1 1 3 ...
  $ BoxOffice: num  1013509 24241 39376 6996996 493416 ...</code></pre>
 <hr>
-<div id="relations-entre-deux-variables" class="section level1">
-<h1 class="hasAnchor">
-<a href="#relations-entre-deux-variables" class="anchor"></a>Relations entre deux variables</h1>
+<div class="section level2">
+<h2 id="relations-entre-deux-variables">Relations entre deux variables<a class="anchor" aria-label="anchor" href="#relations-entre-deux-variables"></a>
+</h2>
 <p>Le package propose plusieurs fonctions pour étudier la relation statistique entre deux variables, selon la nature (catégorielle ou continue) des ces variables.</p>
-<div id="deux-variables-catégorielles" class="section level3">
-<h3 class="hasAnchor">
-<a href="#deux-variables-cat%C3%A9gorielles" class="anchor"></a>Deux variables catégorielles</h3>
+<div class="section level4">
+<h4 id="deux-variables-catégorielles">Deux variables catégorielles<a class="anchor" aria-label="anchor" href="#deux-variables-cat%C3%A9gorielles"></a>
+</h4>
 <p>La fonction <code>assoc_twocat</code> calcule :</p>
 <ul>
 <li>le tableau de contingence (effectifs)</li>
@@ -222,34 +224,34 @@ USA     0.45688150 -0.45688150
 
 $phi.perm.pval
                  No          Yes
-Europe 3.833409e-01 3.833409e-01
-France 1.267248e-38 0.000000e+00
-Other  6.877203e-04 6.877203e-04
-USA    0.000000e+00 4.687266e-48
+Europe 3.263715e-01 3.263715e-01
+France 6.905924e-36 0.000000e+00
+Other  1.323804e-03 1.323804e-03
+USA    0.000000e+00 9.981807e-49
 
 $gather
     Var1 Var2 Freq  prop     rprop      cprop expected std.residuals         phi    perm.pval
-1 Europe   No   39 0.039 0.5416667 0.07587549   37.008     0.3274474  0.01541876 3.833409e-01
-2 France   No  212 0.212 0.3504132 0.41245136  310.970    -5.6123445 -0.40506773 1.267248e-38
-3  Other   No    6 0.006 0.2307692 0.01167315   13.364    -2.0143992 -0.09258656 6.877203e-04
+1 Europe   No   39 0.039 0.5416667 0.07587549   37.008     0.3274474  0.01541876 3.263715e-01
+2 France   No  212 0.212 0.3504132 0.41245136  310.970    -5.6123445 -0.40506773 6.905924e-36
+3  Other   No    6 0.006 0.2307692 0.01167315   13.364    -2.0143992 -0.09258656 1.323804e-03
 4    USA   No  257 0.257 0.8653199 0.50000000  152.658     8.4449945  0.45688150 0.000000e+00
-5 Europe  Yes   33 0.033 0.4583333 0.06790123   34.992    -0.3367479 -0.01541876 3.833409e-01
+5 Europe  Yes   33 0.033 0.4583333 0.06790123   34.992    -0.3367479 -0.01541876 3.263715e-01
 6 France  Yes  393 0.393 0.6495868 0.80864198  294.030     5.7717531  0.40506773 0.000000e+00
-7  Other  Yes   20 0.020 0.7692308 0.04115226   12.636     2.0716146  0.09258656 6.877203e-04
+7  Other  Yes   20 0.020 0.7692308 0.04115226   12.636     2.0716146  0.09258656 1.323804e-03
  [ reached 'max' / getOption("max.print") -- omitted 1 rows ]</code></pre>
 <p><br>
 La fonction <code>ggassoc_crosstab</code> présente le tableau de contingence sous forme graphique, avec des rectangles dont la surface correspond aux effectifs et le gradient de couleurs aux attractions/répulsions (coefficients phi). Le V de Cramér peut être affiché dans un angle du graphique. Ici, le label “art et essai” est nettement sur-représenté parmi les films français et sous-représenté parmi les films étatsuniens.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_crosstab.html">ggassoc_crosstab</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Country</span>, y<span class="op">=</span><span class="va">ArtHouse</span><span class="op">)</span>, max.phi<span class="op">=</span><span class="fl">0.8</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_crosstab.html">ggassoc_crosstab</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Country</span>, y<span class="op">=</span><span class="va">ArtHouse</span><span class="op">)</span>, max.phi<span class="op">=</span><span class="fl">0.8</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_descr_files/figure-html/ggassoc_crosstab-1.png" width="700"></p>
 <p>La fonction <code>ggassoc_phiplot</code> propose une autre manière de représenter les attractions/répulsions. La largeur des rectangles correspond aux effectifs de la variable x, leur hauteur aux coefficients phi. Les rectangles sont colorés en noir lorsqu’il y a attraction, en blanc lorsqu’il y a répulsion.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_phiplot.html">ggassoc_phiplot</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Country</span>, y<span class="op">=</span><span class="va">ArtHouse</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_phiplot.html">ggassoc_phiplot</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Country</span>, y<span class="op">=</span><span class="va">ArtHouse</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_descr_files/figure-html/ggassoc_phiplot-1.png" width="700"></p>
 </div>
-<div id="une-variable-catégorielle-et-une-variable-continue" class="section level3">
-<h3 class="hasAnchor">
-<a href="#une-variable-cat%C3%A9gorielle-et-une-variable-continue" class="anchor"></a>Une variable catégorielle et une variable continue</h3>
+<div class="section level4">
+<h4 id="une-variable-catégorielle-et-une-variable-continue">Une variable catégorielle et une variable continue<a class="anchor" aria-label="anchor" href="#une-variable-cat%C3%A9gorielle-et-une-variable-continue"></a>
+</h4>
 <p>La fonction <code>assoc_catcont</code> calcule :</p>
 <ul>
 <li>le rapport de corrélation au carré (eta²) et la p-value du test de permutation correspondant</li>
@@ -261,7 +263,7 @@ La fonction <code>ggassoc_crosstab</code> présente le tableau de contingence so
 [1] 0.0169216
 
 $permutation.pvalue
-[1] 1.410427e-12
+[1] 1.416323e-11
 
 $cor
 Europe France  Other    USA 
@@ -269,16 +271,16 @@ Europe France  Other    USA
 
 $cor.perm.pval
       Europe       France        Other          USA 
-3.934868e-01 5.003361e-04 1.259535e-01 2.511511e-05 </code></pre>
+3.636640e-01 3.152392e-05 1.669521e-01 1.275782e-04 </code></pre>
 <p><br>
 La fonction <code>ggassoc_boxplot</code> représente la relation entre les variables sous forme de boîtes à moustaches (<em>box-plots</em>) et/ou de distributions “en violons”. La valeur de l’eta² est affichée dans un angle du graphique.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_boxplot.html">ggassoc_boxplot</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Country</span>, y<span class="op">=</span><span class="va">Critics</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_boxplot.html">ggassoc_boxplot</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Country</span>, y<span class="op">=</span><span class="va">Critics</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_descr_files/figure-html/ggassoc_boxplot-1.png" width="700"></p>
 </div>
-<div id="deux-variables-continues" class="section level3">
-<h3 class="hasAnchor">
-<a href="#deux-variables-continues" class="anchor"></a>Deux variables continues</h3>
+<div class="section level4">
+<h4 id="deux-variables-continues">Deux variables continues<a class="anchor" aria-label="anchor" href="#deux-variables-continues"></a>
+</h4>
 <p>La fonction <code>assoc_twocont</code> calcule les corrélations de rang de Kendall et de Spearman et la corrélation linéaire de Pearson, ainsi que les p-values des tests de permutation correspondants.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/assoc.twocont.html">assoc.twocont</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">Budget</span>, <span class="va">Movies</span><span class="op">$</span><span class="va">BoxOffice</span>, nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></code></pre></div>
@@ -288,13 +290,13 @@ permutation.pvalue 0.0000000 0.0000000 0.0000000</code></pre>
 <p><br>
 La fonction <code>ggassoc_scatter</code> représente la relation entre les deux variables sous forme d’un nuage de points, avec une approximation par lissage (avec la méthode de “Generalized Additive Model”). Le tau de Kendall est affiché dans un angle du graphique.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_scatter.html">ggassoc_scatter</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Budget</span>, y<span class="op">=</span><span class="va">BoxOffice</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_scatter.html">ggassoc_scatter</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Budget</span>, y<span class="op">=</span><span class="va">BoxOffice</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_descr_files/figure-html/ggassoc_scatter-1.png" width="700"></p>
 </div>
 </div>
-<div id="relations-entre-une-variable-y-et-un-ensemble-de-variables-x" class="section level1">
-<h1 class="hasAnchor">
-<a href="#relations-entre-une-variable-y-et-un-ensemble-de-variables-x" class="anchor"></a>Relations entre une variable Y et un ensemble de variables X</h1>
+<div class="section level2">
+<h2 id="relations-entre-une-variable-y-et-un-ensemble-de-variables-x">Relations entre une variable Y et un ensemble de variables X<a class="anchor" aria-label="anchor" href="#relations-entre-une-variable-y-et-un-ensemble-de-variables-x"></a>
+</h2>
 <p>Bien souvent, on n’étudie pas seulement deux variables, mais un ensemble plus important de variables. Lorsqu’une de ces variables a le statut de variable “à expliquer”, on utilise généralement des modèles de régression ou, éventuellement, des modèles d’apprentissage surpervisé (voir la vignette du package <code>moreparty</code> pour un exemple). Il est cependant indispensable de bien connaître l’ensemble des relations bivariées du jeu de données avant de passer à une approche “toute chose égale par ailleurs”.</p>
 <p>On notera d’ailleurs que si on fait ce travail de manière minutieuse, en y ajoutant éventuellement l’analyse descriptive des relations entre trois ou quatre variables, on s’aperçoit souvent que le surplus de connaissance apporté par les modèles de régression est assez limité.<br><br></p>
 <p>La fonction <code>assoc.yx</code> calcule l’association globale entre Y et chacune des variables de X, ainsi que pour toutes les paires de variables de X.</p>
@@ -306,8 +308,8 @@ La fonction <code>ggassoc_scatter</code> représente la relation entre les deux 
 2 ArtHouse          Eta2       0.075              0.000
 3  Country          Eta2       0.048              0.000
 4   Budget Kendall's tau       0.518              0.000
-5  Critics Kendall's tau       0.006              0.373
-6 Festival          Eta2       0.000              0.758
+5  Critics Kendall's tau       0.006              0.385
+6 Festival          Eta2       0.000              0.729
 
 $XX
    variable1 variable2       measure association permutation.pvalue
@@ -324,8 +326,8 @@ $XX
 11    Budget   Critics Kendall's tau      -0.178              0.000
 12   Country   Critics          Eta2       0.017              0.000
 13     Genre  Festival    Cramer's V       0.183              0.000
-14    Budget  Festival          Eta2       0.003              0.007
-15   Country  Festival    Cramer's V       0.035              0.750</code></pre>
+14    Budget  Festival          Eta2       0.003              0.089
+15   Country  Festival    Cramer's V       0.035              0.742</code></pre>
 <p><br>
 Les fonctions <code>catdesc</code> et <code>condesc</code> permettent de rentrer plus dans le détail des relations, en passant au niveau des modalités.</p>
 <p><code>catdesc</code> traite les cas où Y est une variable catégorielle. Pour une variable catégorielle X1, elle calcule, pour une modalité de Y et une modalité de X1 données :</p>
@@ -388,8 +390,8 @@ $continuous.var
 2 ArtHouse          Eta2       0.075              0.000
 3  Country          Eta2       0.048              0.000
 4   Budget Kendall's tau       0.518              0.000
-5  Critics Kendall's tau       0.006              0.399
-6 Festival          Eta2       0.000              0.759
+5  Critics Kendall's tau       0.006              0.377
+6 Festival          Eta2       0.000              0.733
 
 $categories
         categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global    cor
@@ -436,7 +438,7 @@ La fonction <code>darma</code> présente les résultats sous une forme proche de
 <td align="left">Action</td>
 <td align="right">301483.7</td>
 <td align="right">0.087</td>
-<td align="right">0.003</td>
+<td align="right">0.005</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -450,7 +452,7 @@ La fonction <code>darma</code> présente les résultats sous une forme proche de
 <td align="left">Other</td>
 <td align="right">254002.8</td>
 <td align="right">-0.005</td>
-<td align="right">0.436</td>
+<td align="right">0.438</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -464,7 +466,7 @@ La fonction <code>darma</code> présente les résultats sous une forme proche de
 <td align="left">Comedy</td>
 <td align="right">236703.8</td>
 <td align="right">0.004</td>
-<td align="right">0.456</td>
+<td align="right">0.461</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -485,7 +487,7 @@ La fonction <code>darma</code> présente les résultats sous une forme proche de
 <td align="left">Horror</td>
 <td align="right">296015.2</td>
 <td align="right">-0.015</td>
-<td align="right">0.317</td>
+<td align="right">0.319</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -499,7 +501,7 @@ La fonction <code>darma</code> présente les résultats sous une forme proche de
 <td align="left">Europe</td>
 <td align="right">161441.5</td>
 <td align="right">0.068</td>
-<td align="right">0.008</td>
+<td align="right">0.023</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -513,7 +515,7 @@ La fonction <code>darma</code> présente les résultats sous une forme proche de
 <td align="left">Other</td>
 <td align="right">64304.0</td>
 <td align="right">-0.013</td>
-<td align="right">0.312</td>
+<td align="right">0.428</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -541,21 +543,21 @@ La fonction <code>darma</code> présente les résultats sous une forme proche de
 <td align="left">No</td>
 <td align="right">134006.6</td>
 <td align="right">-0.008</td>
-<td align="right">0.376</td>
+<td align="right">0.387</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Yes</td>
 <td align="right">236910.7</td>
 <td align="right">0.008</td>
-<td align="right">0.437</td>
+<td align="right">0.395</td>
 </tr>
 <tr class="odd">
 <td align="left">Critics</td>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">0.006</td>
-<td align="right">0.378</td>
+<td align="right">0.436</td>
 </tr>
 </tbody>
 </table>
@@ -581,49 +583,49 @@ Lorsque la variable Y est catégorielle, la fonction calcule :</p>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">-0.057</td>
-<td align="right">0.111</td>
+<td align="right">0.054</td>
 </tr>
 <tr class="even">
 <td align="left">Genre</td>
 <td align="left">Action</td>
 <td align="right">7.9</td>
 <td align="right">0.003</td>
-<td align="right">0.489</td>
+<td align="right">0.459</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Animation</td>
 <td align="right">2.2</td>
 <td align="right">-0.046</td>
-<td align="right">0.055</td>
+<td align="right">0.062</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Other</td>
 <td align="right">11.5</td>
 <td align="right">0.024</td>
-<td align="right">0.153</td>
+<td align="right">0.225</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">ComDram</td>
 <td align="right">8.7</td>
 <td align="right">0.016</td>
-<td align="right">0.337</td>
+<td align="right">0.407</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Comedy</td>
 <td align="right">2.7</td>
 <td align="right">-0.100</td>
-<td align="right">0.000</td>
+<td align="right">0.001</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Documentary</td>
 <td align="right">2.6</td>
 <td align="right">-0.055</td>
-<td align="right">0.052</td>
+<td align="right">0.029</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -637,42 +639,42 @@ Lorsque la variable Y est catégorielle, la fonction calcule :</p>
 <td align="left">Horror</td>
 <td align="right">0.0</td>
 <td align="right">-0.046</td>
-<td align="right">0.069</td>
+<td align="right">0.084</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">SciFi</td>
 <td align="right">6.1</td>
 <td align="right">-0.013</td>
-<td align="right">0.276</td>
+<td align="right">0.316</td>
 </tr>
 <tr class="odd">
 <td align="left">Country</td>
 <td align="left">Europe</td>
 <td align="right">9.7</td>
 <td align="right">0.021</td>
-<td align="right">0.264</td>
+<td align="right">0.314</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">France</td>
 <td align="right">8.1</td>
 <td align="right">0.019</td>
-<td align="right">0.255</td>
+<td align="right">0.262</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Other</td>
 <td align="right">7.7</td>
 <td align="right">0.000</td>
-<td align="right">0.514</td>
+<td align="right">0.491</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">USA</td>
 <td align="right">6.4</td>
 <td align="right">-0.032</td>
-<td align="right">0.131</td>
+<td align="right">0.166</td>
 </tr>
 <tr class="odd">
 <td align="left">ArtHouse</td>
@@ -700,26 +702,26 @@ Lorsque la variable Y est catégorielle, la fonction calcule :</p>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">0.008</td>
-<td align="right">0.775</td>
+<td align="right">0.767</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="relations-entre-toutes-les-variables-dun-ensemble" class="section level1">
-<h1 class="hasAnchor">
-<a href="#relations-entre-toutes-les-variables-dun-ensemble" class="anchor"></a>Relations entre toutes les variables d’un ensemble</h1>
-<p>Pour finir, les fonctions <code>ggassoc_*</code> sont prévues pour pouvoir s’intégrer dans les matrices de graphiques du package <a href="https://ggobi.github.io/ggally/"><code>GGally</code></a>. Il est donc possible de les utiliser pour représenter dans un seul graphique l’ensemble des relations bivariées d’un groupe de variables.</p>
+<div class="section level2">
+<h2 id="relations-entre-toutes-les-variables-dun-ensemble">Relations entre toutes les variables d’un ensemble<a class="anchor" aria-label="anchor" href="#relations-entre-toutes-les-variables-dun-ensemble"></a>
+</h2>
+<p>Pour finir, les fonctions <code>ggassoc_*</code> sont prévues pour pouvoir s’intégrer dans les matrices de graphiques du package <a href="https://ggobi.github.io/ggally/" class="external-link"><code>GGally</code></a>. Il est donc possible de les utiliser pour représenter dans un seul graphique l’ensemble des relations bivariées d’un groupe de variables.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggobi.github.io/ggally/">GGally</a></span><span class="op">)</span>
-<span class="fu"><a href="https://ggobi.github.io/ggally/reference/ggpairs.html">ggpairs</a></span><span class="op">(</span><span class="va">Movies</span>,
-        lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>continuous <span class="op">=</span> <span class="va">ggassoc_scatter</span>,
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggobi.github.io/ggally/" class="external-link">GGally</a></span><span class="op">)</span>
+<span class="fu"><a href="https://ggobi.github.io/ggally/reference/ggpairs.html" class="external-link">ggpairs</a></span><span class="op">(</span><span class="va">Movies</span>,
+        lower <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>continuous <span class="op">=</span> <span class="va">ggassoc_scatter</span>,
                      combo <span class="op">=</span> <span class="va">ggassoc_boxplot</span>,
                      discrete <span class="op">=</span> <span class="va">ggassoc_crosstab</span><span class="op">)</span>,
-        upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>continuous <span class="op">=</span> <span class="va">ggassoc_scatter</span>,
+        upper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>continuous <span class="op">=</span> <span class="va">ggassoc_scatter</span>,
                      combo <span class="op">=</span> <span class="va">ggassoc_boxplot</span>,
                      discrete <span class="op">=</span> <span class="va">ggassoc_crosstab</span><span class="op">)</span>,
-        diag <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>continuous <span class="op">=</span> <span class="fu"><a href="https://ggobi.github.io/ggally/reference/wrap.html">wrap</a></span><span class="op">(</span><span class="st">"diagAxis"</span>, gridLabelSize <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
-                           discrete <span class="op">=</span> <span class="fu"><a href="https://ggobi.github.io/ggally/reference/wrap.html">wrap</a></span><span class="op">(</span><span class="st">"diagAxis"</span>, gridLabelSize <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+        diag <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>continuous <span class="op">=</span> <span class="fu"><a href="https://ggobi.github.io/ggally/reference/wrap.html" class="external-link">wrap</a></span><span class="op">(</span><span class="st">"diagAxis"</span>, gridLabelSize <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,
+                           discrete <span class="op">=</span> <span class="fu"><a href="https://ggobi.github.io/ggally/reference/wrap.html" class="external-link">wrap</a></span><span class="op">(</span><span class="st">"diagAxis"</span>, gridLabelSize <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_descr_files/figure-html/ggally-1.png" width="700"></p>
 </div>
   </div>
@@ -735,11 +737,13 @@ Lorsque la variable Y est catégorielle, la fonction calcule :</p>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/nicolas-robette">Nicolas Robette</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/nicolas-robette" class="external-link">Nicolas Robette</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -747,6 +751,8 @@ Lorsque la variable Y est catégorielle, la fonction calcule :</p>
 
   
 
+
+  
 
   </body>
 </html>

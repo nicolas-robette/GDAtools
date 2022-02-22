@@ -25,6 +25,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -37,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.2</span>
       </span>
     </div>
 
@@ -73,7 +75,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/nicolas-robette/GDAtools/">
+  <a href="https://github.com/nicolas-robette/GDAtools/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -90,13 +92,13 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="gdatools-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#gdatools-" class="anchor"></a><strong>GDAtools</strong> <img src="reference/figures/GDAtools.png" height="140px" width="120px" alt="" align="right">
+<div class="section level1">
+<div class="page-header"><h1 id="gdatools-">
+<strong>GDAtools</strong> <img src="reference/figures/GDAtools.png" height="140px" width="120px" alt="" align="right"><a class="anchor" aria-label="anchor" href="#gdatools-"></a>
 </h1></div>
-<div id="geometric-data-analysis-and-other-descriptive-techniques" class="section level2">
-<h2 class="hasAnchor">
-<a href="#geometric-data-analysis-and-other-descriptive-techniques" class="anchor"></a>Geometric Data Analysis and other descriptive techniques</h2>
+<div class="section level2">
+<h2 id="geometric-data-analysis-and-other-descriptive-techniques">Geometric Data Analysis and other descriptive techniques<a class="anchor" aria-label="anchor" href="#geometric-data-analysis-and-other-descriptive-techniques"></a>
+</h2>
 <!-- badges: start -->
 
 <p><a href="https://nicolas-robette.github.io/GDAtools/"><code>GDAtools</code></a> provides functions for Geometric Data Analysis :</p>
@@ -108,7 +110,7 @@
 <li>guides for interpretation (test-values, contributions, etc.)</li>
 <li>inductive tests</li>
 <li>analysis of structuring factors (concentration ellipses, interactions, etc.)</li>
-<li>graphical representations (with and without <a href="https://ggplot2.tidyverse.org/"><code>ggplot2</code></a>)</li>
+<li>graphical representations (with and without <a href="https://ggplot2.tidyverse.org/" class="external-link"><code>ggplot2</code></a>)</li>
 </ul>
 <p>Besides, it also provides :</p>
 <ul>
@@ -119,78 +121,89 @@
 <li>an underrated association measure for contingency tables (“Percentages of Maximum Deviation from Independence”, aka PEM).</li>
 </ul>
 </div>
-<div id="documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#documentation" class="anchor"></a>Documentation</h2>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
 <p>Please visit <a href="https://nicolas-robette.github.io/GDAtools/">https://nicolas-robette.github.io/GDAtools/</a> for documentation</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>Execute the following code within <code>R</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'devtools'</span><span class="op">)</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'devtools'</span><span class="op">)</span>
+    <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span>
 <span class="op">}</span>
-<span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"nicolas-robette/GDAtools"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"nicolas-robette/GDAtools"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="references" class="section level2">
-<h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
-<p>Bry X., Robette N., Roueff O., 2016, « A dialogue of the deaf in the statistical theater? Adressing structural effects within a geometric data analysis framework », <em>Quality &amp; Quantity</em>, 50(3), pp 1009–1020 [<a href="https://link.springer.com/article/10.1007/s11135-015-0187-z" class="uri">https://link.springer.com/article/10.1007/s11135-015-0187-z</a>]</p>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<p>Bry X., Robette N., Roueff O., 2016, « A dialogue of the deaf in the statistical theater? Adressing structural effects within a geometric data analysis framework », <em>Quality &amp; Quantity</em>, 50(3), pp 1009–1020 [<a href="https://link.springer.com/article/10.1007/s11135-015-0187-z" class="external-link uri">https://link.springer.com/article/10.1007/s11135-015-0187-z</a>]</p>
 <p>Le Roux B. and Rouanet H., 2010, <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks.</p>
 <p>Le Roux B. and Rouanet H., 2004, <em>Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis</em>, Kluwer Academic Publishers, Dordrecht.</p>
 <p>Deauvieau J., 2019, « Comparer les resultats d’un modele logit dichotomique ou polytomique entre plusieurs groupes a partir des probabilites estimees », <em>Bulletin de Methodologie Sociologique</em>, 142(1), 7-31.</p>
-<p>Cibois P., 1993, « Le PEM, pourcentage de l’ecart maximum : un indice de liaison entre modalites d’un tableau de contingence », <em>Bulletin de Methodologie Sociologique</em>, 40, pp 43-63, [<a href="http://cibois.pagesperso-orange.fr/bms93.pdf" class="uri">http://cibois.pagesperso-orange.fr/bms93.pdf</a>]</p>
-<p>Rakotomalala R., « Comprendre la taille d’effet (effect size) », [<a href="http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf" class="uri">http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf</a>]</p>
+<p>Cibois P., 1993, « Le PEM, pourcentage de l’ecart maximum : un indice de liaison entre modalites d’un tableau de contingence », <em>Bulletin de Methodologie Sociologique</em>, 40, pp 43-63, [<a href="http://cibois.pagesperso-orange.fr/bms93.pdf" class="external-link uri">http://cibois.pagesperso-orange.fr/bms93.pdf</a>]</p>
+<p>Rakotomalala R., « Comprendre la taille d’effet (effect size) », [<a href="http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf" class="external-link uri">http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf</a>]</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=GDAtools">https://​cloud.r-project.org/​package=GDAtools</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/nicolas-robette/GDAtools/">https://​github.com/​nicolas-robette/​GDAtools/​</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=GDAtools" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/nicolas-robette/GDAtools/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>GPL (&gt;= 2)</li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://github.com/nicolas-robette">Nicolas Robette</a> <br><small class="roles"> Maintainer </small>  </li>
+<li><a href="authors.html#citation">Citing GDAtools</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/nicolas-robette/GDAtools/actions"><img src="https://github.com/nicolas-robette/GDAtools/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://cran.r-project.org/package=GDAtools"><img src="https://www.r-pkg.org/badges/version/GDAtools?color=blue"></a></li>
-<li><a href="https://cran.r-project.org/package=GDAtools"><img src="http://cranlogs.r-pkg.org/badges/last-month/GDAtools?color=orange"></a></li>
-<li><a href="https://www.codefactor.io/repository/github/nicolas-robette/gdatools"><img src="https://www.codefactor.io/repository/github/nicolas-robette/gdatools/badge" alt="CodeFactor"></a></li>
+<li>
+<a href="https://github.com/nicolas-robette" class="external-link">Nicolas Robette</a> <br><small class="roles"> Maintainer </small>  </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/nicolas-robette/GDAtools/actions" class="external-link"><img src="https://github.com/nicolas-robette/GDAtools/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://cran.r-project.org/package=GDAtools" class="external-link"><img src="https://www.r-pkg.org/badges/version/GDAtools?color=blue"></a></li>
+<li><a href="https://cran.r-project.org/package=GDAtools" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/last-month/GDAtools?color=orange"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/nicolas-robette/gdatools" class="external-link"><img src="https://www.codefactor.io/repository/github/nicolas-robette/gdatools/badge" alt="CodeFactor"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/nicolas-robette">Nicolas Robette</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/nicolas-robette" class="external-link">Nicolas Robette</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -198,6 +211,8 @@
 
   
 
+
+  
 
   </body>
 </html>

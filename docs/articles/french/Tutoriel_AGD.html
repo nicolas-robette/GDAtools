@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.2</span>
       </span>
     </div>
 
@@ -67,7 +69,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/nicolas-robette/GDAtools/">
+  <a href="https://github.com/nicolas-robette/GDAtools/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -82,15 +84,15 @@
 
       
 
-      </header><script src="Tutoriel_AGD_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>L’analyse géométrique des données avec GDAtools</h1>
-                        <h4 class="author">Nicolas Robette</h4>
+                        <h4 data-toc-skip class="author">Nicolas Robette</h4>
             
-            <h4 class="date">2021-07-14</h4>
+            <h4 data-toc-skip class="date">2022-02-22</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/master/vignettes/french/Tutoriel_AGD.Rmd"><code>vignettes/french/Tutoriel_AGD.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/french/Tutoriel_AGD.Rmd" class="external-link"><code>vignettes/french/Tutoriel_AGD.Rmd</code></a></small>
       <div class="hidden name"><code>Tutoriel_AGD.Rmd</code></div>
 
     </div>
@@ -102,14 +104,14 @@ Ce tutoriel présente l’utilisation du package <code>GDAtools</code> pour l’
 <p>Le Roux B. and Rouanet H., 2004, <em>Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis</em>, Kluwer Academic Publishers, Dordrecht.</p>
 <p>Le Roux B. and Rouanet H., 2010, <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks.</p>
 <hr>
-<div id="introduction" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p>Pour cet exemple d’Analyse des Correspondances Multiples, nous allons utiliser l’un des jeux de données fournis avec le package. Il s’agit d’informations sur les goûts et les pratiques culturelles de 2000 individus : écoute de genres musicaux (variété française, rap, rock, jazz et classique) et goût pour des genres de films (comédie, film policier, animation, science-fiction, film d’amour, comédie musicale). Ces 11 variables serviront de variables “actives” dans l’ACM et sont complétées par 3 variables “supplémentaires” : le sexe, l’âge et le niveau d’éducation.<br></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nicolas-robette/GDAtools">GDAtools</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nicolas-robette/GDAtools" class="external-link">GDAtools</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span></code></pre></div>
 <pre><code>'data.frame':   2000 obs. of  14 variables:
  $ FrenchPop: Factor w/ 3 levels "No","Yes","NA": 2 1 2 1 2 1 1 1 1 2 ...
  $ Rap      : Factor w/ 3 levels "No","Yes","NA": 1 1 1 1 1 1 1 1 1 1 ...
@@ -128,7 +130,7 @@ Ce tutoriel présente l’utilisation du package <code>GDAtools</code> pour l’
 <p><br>
 Les variables actives ont toutes une modalité “non-réponse” (“NA”), qui concerne quelques individus.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">==</span><span class="st">"NA"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">==</span><span class="st">"NA"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>FrenchPop       Rap      Rock      Jazz Classical    Comedy     Crime Animation 
        10         9        10        15         5         3        15         4 
     SciFi      Love   Musical 
@@ -149,12 +151,12 @@ L’ACM dite “spécifique” permet de neutraliser ces modalités dans la cons
 <p><br>
 Le vecteur de ces rangs est ensuite donné comme argument dans la fonction <code>speMCA</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <hr>
 </div>
-<div id="les-nuages" class="section level1">
-<h1 class="hasAnchor">
-<a href="#les-nuages" class="anchor"></a>Les nuages</h1>
+<div class="section level2">
+<h2 id="les-nuages">Les nuages<a class="anchor" aria-label="anchor" href="#les-nuages"></a>
+</h2>
 <p>Les taux d’inertie corrigés de Benzécri permettent de se faire une idée de la part d’information représentée par chacun des axes.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/modif.rate.html">modif.rate</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span><span class="op">$</span><span class="va">modif</span></code></pre></div>
@@ -166,9 +168,9 @@ Le vecteur de ces rangs est ensuite donné comme argument dans la fonction <code
 5  0.59232858  99.97733
 6  0.02267443 100.00000</code></pre>
 <p>On voit ici que les deux premiers axes capturent l’essentiel de l’information (près de 90 %). On va donc dans la suite se concentrer sur le plan formé par les axes 1 et 2.<br><br></p>
-<div id="nuage-des-individus" class="section level3">
-<h3 class="hasAnchor">
-<a href="#nuage-des-individus" class="anchor"></a>Nuage des individus</h3>
+<div class="section level4">
+<h4 id="nuage-des-individus">Nuage des individus<a class="anchor" aria-label="anchor" href="#nuage-des-individus"></a>
+</h4>
 <p>Le nuage des individus ne présente pas de forme particulière (triangle, fer à cheval…), les points semblent répartis dans l’ensemble du plan.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></code></pre></div>
@@ -182,9 +184,9 @@ Le vecteur de ces rangs est ensuite donné comme argument dans la fonction <code
 <p><img src="Tutoriel_AGD_files/figure-html/cloud_ind_hex-1.png" width="700"></p>
 <p>Quelle que soit la représentation de la densité utilisée, on observe que les points semblent être plus concentrés dans une zone située immédiatement à droite de l’axe vertical.<br><br></p>
 </div>
-<div id="nuage-des-variables" class="section level3">
-<h3 class="hasAnchor">
-<a href="#nuage-des-variables" class="anchor"></a>Nuage des variables</h3>
+<div class="section level4">
+<h4 id="nuage-des-variables">Nuage des variables<a class="anchor" aria-label="anchor" href="#nuage-des-variables"></a>
+</h4>
 <p>Sur le nuage des variables,</p>
 <ul>
 <li><p>l’écoute de jazz et de musique classique et le goût des comédies musicales semblent s’opposer à l’écoute de rap et au goût pour les comédies sur l’axe 1 ;</p></li>
@@ -197,9 +199,9 @@ Le vecteur de ces rangs est ensuite donné comme argument dans la fonction <code
 <hr>
 </div>
 </div>
-<div id="aides-à-linterprétation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#aides-%C3%A0-linterpr%C3%A9tation" class="anchor"></a>Aides à l’interprétation</h1>
+<div class="section level2">
+<h2 id="aides-à-linterprétation">Aides à l’interprétation<a class="anchor" aria-label="anchor" href="#aides-%C3%A0-linterpr%C3%A9tation"></a>
+</h2>
 <p>La plupart des aides à l’interprétation et autres informations utiles sont présentes dans l’objet créé par <code>speMCA</code>. Le package propose plusieurs fonctions pour extraire simplement ces informations.</p>
 <ul>
 <li>
@@ -371,12 +373,12 @@ Le vecteur de ces rangs est ensuite donné comme argument dans la fonction <code
 <p>Sur l’axe 2, l’écoute de rock et de rap et le goût pour les films de science-fiction s’opposent au goût pour le films d’amour et les comédies musicale et l’écoute de variété française.</p>
 <hr>
 </div>
-<div id="les-facteurs-structurants" class="section level1">
-<h1 class="hasAnchor">
-<a href="#les-facteurs-structurants" class="anchor"></a>Les facteurs structurants</h1>
-<div id="les-variables-supplémentaires" class="section level3">
-<h3 class="hasAnchor">
-<a href="#les-variables-suppl%C3%A9mentaires" class="anchor"></a>Les variables supplémentaires</h3>
+<div class="section level2">
+<h2 id="les-facteurs-structurants">Les facteurs structurants<a class="anchor" aria-label="anchor" href="#les-facteurs-structurants"></a>
+</h2>
+<div class="section level4">
+<h4 id="les-variables-supplémentaires">Les variables supplémentaires<a class="anchor" aria-label="anchor" href="#les-variables-suppl%C3%A9mentaires"></a>
+</h4>
 <p>On peut aller plus loin en étudiant la relation entre l’espace factoriel et les variables supplémentaires, en l’occurrence le sexe, l’âge et le niveau d’éducation. Une première étape consiste à projeter les variables supplémentaires sur le nuage des variables.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, col<span class="op">=</span><span class="st">"lightgray"</span><span class="op">)</span>
@@ -387,7 +389,7 @@ Le vecteur de ces rangs est ensuite donné comme argument dans la fonction <code
 <p>Le niveau d’éducation semble avant tout associé à l’axe 1, les plus diplômés étant du côté de l’écoute de jazz et de classique. Le sexe ne semble lié qu’à l’axe 2, avec les femmes dans le bas du plan et les hommes en haut. Quant à l’âge, il est associé aux deux axes : les individus se déplacent du quadrant nord-est au quadrant sud-ouest à mesure que leur âge augmente.<br></p>
 <p>On peut confirmer statistiquement ces premières observations en mesurant le degré d’association entre les variables supplémentaires et les axes à l’aide de l’indicateur <em>eta²</em>.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/dimeta2.html">dimeta2</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../../reference/dimeta2.html">dimeta2</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>       dim.1 dim.2
 Gender   0.0   6.0
 Age      3.8  14.2
@@ -396,7 +398,7 @@ Educ     5.9   3.3</code></pre>
 <p>Sur l’axe 2, l’âge est la variable la plus structurante, devant le sexe et le niveau d’éducation. On voit en outre que l’âge est nettement plus lié à l’axe 2 qu’à l’axe 1.<br><br></p>
 <p>Au niveau des modalités, on peut caractériser l’association d’une modalité de variable supplémentaire avec un axe à partir des <em>coefficients de corrélation</em>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/dimdescr.html">dimdescr</a></span><span class="op">(</span><span class="va">mca</span>, vars<span class="op">=</span><span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">dim.1</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../../reference/dimdescr.html">dimdescr</a></span><span class="op">(</span><span class="va">mca</span>, vars<span class="op">=</span><span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">dim.1</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">categories</th>
@@ -483,7 +485,7 @@ Educ     5.9   3.3</code></pre>
 </table>
 <p>Sur l’axe 1, les non et peu diplômés et les 15-24 ans s’opposent aux plus diplômés et aux 50 ans et plus. Les autres modalités apparaissent peu liées à l’axe (leurs coefficients de corrélation sont proches de 0).<br><br></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">categories</th>
@@ -570,9 +572,9 @@ Educ     5.9   3.3</code></pre>
 </table>
 <p>Sur l’axe 2, les hommes, les moins de 50 ans et les plus diplômés s’opposent aux femmes, aux plus de 50 ans et aux sans diplôme.<br></p>
 </div>
-<div id="analyse-dune-variable-supplémentaire" class="section level3">
-<h3 class="hasAnchor">
-<a href="#analyse-dune-variable-suppl%C3%A9mentaire" class="anchor"></a>Analyse d’une variable supplémentaire</h3>
+<div class="section level4">
+<h4 id="analyse-dune-variable-supplémentaire">Analyse d’une variable supplémentaire<a class="anchor" aria-label="anchor" href="#analyse-dune-variable-suppl%C3%A9mentaire"></a>
+</h4>
 <p>Poursuivons l’analyse en nous concentrant sur une variable supplémentaire, le niveau d’éducation. La fonction <code>varsup</code> fournit les coordonnées des modalités sur les axes, leurs <em>cosinus²</em> (qui donnent la qualité de représentation d’une modalité sur un axe), leurs dispersions sur les axes, les <em>eta²</em> et les <em>tests de typicalité</em> (sur lesquels nous reviendrons dans la partie suivante).</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/varsup.html">varsup</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span></code></pre></div>
@@ -652,31 +654,31 @@ High   -0.213  0.123  0.086 -0.033  0.076</code></pre>
 <p>Les individus les plus diplômés sont sur-représentés dans l’ensemble du quadrant nord-ouest, mais également parmi les plus à l’ouest du quadrant sud-ouest.</p>
 <p>A noter que l’on peut aussi représenter les sous-nuages correspondant aux modalités d’une variable supplémentaire à l’aide d’<em>enveloppes convexes</em>. Une enveloppe convexe est le polygone convexe le plus petit parmi ceux qui contiennent un ensemble de points. Dans le contexte de l’AGD, les enveloppes convexes sont une représentation graphique intéressante surtout si les sous-nuages représentés sont relativement peu superposés. C’est par exemple le cas si on réalise une partition des individus dans un plan à l’aide d’une classification automatique. Ici, on applique une classification ascendante hiérarchique aux coordonnées des individus dans le plan 1-2 et on identifie 3 classes.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html">dist</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="va">hca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span><span class="op">(</span><span class="va">d</span>, <span class="st">"ward.D2"</span><span class="op">)</span>
-<span class="va">cluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cutree.html">cutree</a></span><span class="op">(</span><span class="va">hca</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
+<span class="va">hca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d</span>, <span class="st">"ward.D2"</span><span class="op">)</span>
+<span class="va">cluster</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="va">hca</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/ggadd_chulls.html">ggadd_chulls</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">cluster</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/chull-1.png" width="700"></p>
 </div>
-<div id="interaction-entre-deux-variables-supplémentaires" class="section level3">
-<h3 class="hasAnchor">
-<a href="#interaction-entre-deux-variables-suppl%C3%A9mentaires" class="anchor"></a>Interaction entre deux variables supplémentaires</h3>
+<div class="section level4">
+<h4 id="interaction-entre-deux-variables-supplémentaires">Interaction entre deux variables supplémentaires<a class="anchor" aria-label="anchor" href="#interaction-entre-deux-variables-suppl%C3%A9mentaires"></a>
+</h4>
 <p>On peut également étudier les interactions entre plusieurs variables supplémentaires, par exemple ici entre le sexe et l’âge.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span>, shapes<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="../../reference/ggadd_interaction.html">ggadd_interaction</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tomato3"</span>,<span class="st">"dodgerblue3"</span><span class="op">)</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="../../reference/ggadd_interaction.html">ggadd_interaction</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tomato3"</span>,<span class="st">"dodgerblue3"</span><span class="op">)</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/interaction-1.png" width="700"></p>
 <p>Le sexe et l’âge semblent peu interagir dans le plan 1-2. On remarque toutefois que, sur l’axe 1, les écarts entre les plus jeunes et les plus âgés sont plus importants chez les femmes que chez les hommes et que, sur l’axe 2, les jeunes se différencient plus selon le sexe que les plus âgés.</p>
 <hr>
 </div>
 </div>
-<div id="analyse-inductive" class="section level1">
-<h1 class="hasAnchor">
-<a href="#analyse-inductive" class="anchor"></a>Analyse inductive</h1>
+<div class="section level2">
+<h2 id="analyse-inductive">Analyse inductive<a class="anchor" aria-label="anchor" href="#analyse-inductive"></a>
+</h2>
 <p>Si on souhaite évaluer la généralisabilité des résultats, on peut compléter les analyses descriptives qui précèdent par des procédures d’inférences statistique qui empruntent à l’analyse inductive des données et aux approches combinatoires (pour cette partie plus encore que pour les autres, on renvoie à Le Roux et Rouanet, 2004 &amp; 2010).</p>
 <p>Le problème de la typicalité consiste à se demander si un groupe d’individus peut être assimilé à la population de référence ou s’il est atypique. Un <em>test de typicalité</em> calcule une <em>p-value combinatoire</em>, qui définit le “degré de typicalité” du point moyen du groupe d’individus. Une p-value faible est considérée comme statistiquement significative au sens combinatoire et traduit une différence qui n’est probablement pas due au hasard.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../../reference/dimtypicality.html">dimtypicality</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span>, dim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, max.pval<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../../reference/dimtypicality.html">dimtypicality</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span>, dim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, max.pval<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></code></pre></div>
 <pre><code>$dim.1
             weight test.stat p.value
 Age.15-24      297  7.890052 0.00000
@@ -699,7 +701,7 @@ Age.50+         854 -14.772247       0</code></pre>
 <p>On peut étudier les résultats des tests de typicalité d’une variable supplémentaire en particulier à partir de la fonction <code>varsup</code>.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">vseduc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/varsup.html">varsup</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span>
-<span class="va">vseduc</span><span class="op">$</span><span class="va">pval</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<span class="va">vseduc</span><span class="op">$</span><span class="va">pval</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <pre><code>          dim.1    dim.2
 None   0.000000 0.000000
 Low    0.000007 0.132758
@@ -731,13 +733,13 @@ High      0 0.0000000 0.0000000    1</code></pre>
 <p>Ce n’est pas le cas sur l’axe 2, où les modalités “low” et “medium” ne se distinguent pas significativement (p-value=0,22).</p>
 <hr>
 </div>
-<div id="class-specific-analysis" class="section level1">
-<h1 class="hasAnchor">
-<a href="#class-specific-analysis" class="anchor"></a>Class Specific Analysis</h1>
+<div class="section level2">
+<h2 id="class-specific-analysis">Class Specific Analysis<a class="anchor" aria-label="anchor" href="#class-specific-analysis"></a>
+</h2>
 <p>La <em>Class Specific Analysis</em> (CSA) est un prolongement de l’ACM qui permet d’étudier un sous-nuage d’individus en prenant conjointement en compte la distribution des variables dans le sous-nuage et dans l’ensemble du nuage. Il s’agit donc de tenir compte du fait que la structure du sous-nuage n’existe pas <em>in abstracto</em> mais en relation avec le nuage dans lequel il s’inscrit.</p>
 <p>On illustre ici la CSA à partir du sous-nuage des individus les plus diplômés.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">csa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/csMCA.html">csMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">==</span><span class="st">"High"</span>, excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">csa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/csMCA.html">csMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">==</span><span class="st">"High"</span>, excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">csa</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/csa_cloud_var-1.png" width="700"></p>
@@ -858,26 +860,26 @@ High      0 0.0000000 0.0000000    1</code></pre>
 <p>On n’ira pas plus loin ici mais précisons que toutes les techniques décrites précédemment peuvent s’appliquer aux résultats d’une CSA.</p>
 <hr>
 </div>
-<div id="acm-standardisée" class="section level1">
-<h1 class="hasAnchor">
-<a href="#acm-standardis%C3%A9e" class="anchor"></a>ACM standardisée</h1>
+<div class="section level2">
+<h2 id="acm-standardisée">ACM standardisée<a class="anchor" aria-label="anchor" href="#acm-standardis%C3%A9e"></a>
+</h2>
 <p>L’<em>ACM standardisée</em> est une tentative d’intégration de l’analyse géométrique des données et de la régression. Son principe consiste à contraindre les axes de l’ACM à être indépendants (i.e. orthogonaux) d’une variable supplémentaire, c’est-à-dire à construire une ACM “toute chose (de cette variable supplémentaire) égale par ailleurs” (Bry et al, 2016). La comparaison de l’espace de l’ACM originelle et de celui de l’ACM standardisée est un moyen d’étudier les effets de structure.</p>
 <p>Ici, quand on “contrôle” l’ACM par le niveau d’éducation, qui est associé à l’axe 1, on constate par exemple que les goûts pour les films d’amour et les comédies musicales, plus appréciés des femmes, se déplacent vers la gauche du plan.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stmca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/stMCA.html">stMCA</a></span><span class="op">(</span><span class="va">mca</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">stmca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/stMCA.html">stMCA</a></span><span class="op">(</span><span class="va">mca</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">stmca</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/st_mca-1.png" width="700"></p>
 <hr>
 </div>
-<div id="analyse-factorielle-multiple" class="section level1">
-<h1 class="hasAnchor">
-<a href="#analyse-factorielle-multiple" class="anchor"></a>Analyse Factorielle Multiple</h1>
+<div class="section level2">
+<h2 id="analyse-factorielle-multiple">Analyse Factorielle Multiple<a class="anchor" aria-label="anchor" href="#analyse-factorielle-multiple"></a>
+</h2>
 <p><code>GDAtools</code> permet également de réaliser des Analyses Factorielles Multiples (AFM) en utilisant des ACM spécifiques ou des Class Specific Analysis.</p>
 <p>Ici, un groupe de variables décrit l’écoute de genres musicaux et l’autre le goût pour des genres de films, et l’AFM utilise des ACM spécifiques. On observe que ce sont les variables cinématographiques qui structurent le plan 1-2.</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mca1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span>
-<span class="va">mca2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">6</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span><span class="op">)</span><span class="op">)</span>
-<span class="va">mfa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/multiMCA.html">multiMCA</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">mca1</span>,<span class="va">mca2</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">mca1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span>
+<span class="va">mca2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">6</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span><span class="op">)</span><span class="op">)</span>
+<span class="va">mfa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/multiMCA.html">multiMCA</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">mca1</span>,<span class="va">mca2</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mfa</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/mfa-1.png" width="700"></p>
 </div>
@@ -894,11 +896,13 @@ High      0 0.0000000 0.0000000    1</code></pre>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/nicolas-robette">Nicolas Robette</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/nicolas-robette" class="external-link">Nicolas Robette</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -906,6 +910,8 @@ High      0 0.0000000 0.0000000    1</code></pre>
 
   
 
+
+  
 
   </body>
 </html>
