@@ -1,5 +1,6 @@
 speMCA <- function(data,excl=NULL,ncp=5,row.w=rep(1,times=nrow(data))) {
     data <- as.data.frame(data)
+    for(i in 1:ncol(data)) data[,i] <- factor(data[,i])
     row.w=row.w/sum(row.w)*nrow(data)
     if(is.null(excl)) excl <- 99999
     n <- nrow(as.data.frame(data))
