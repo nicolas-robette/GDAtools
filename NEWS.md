@@ -1,3 +1,20 @@
+# GDAtools 1.7.3
+
+## New functions
+
+* `quadrant()`: Computes the quadrant of active individuals in a given space of a MCA.
+
+## Bug fixes
+
+* bug fix in `speMCA()`, `csMCA()` and `getindexcat()` when empty levels or non-factor vectors in the data
+* bug fix in `indsup()` : supdata can now be a tibble
+
+## Changes in existing functions
+
+* `tabcontrib()` : new best option
+
+
+
 # GDAtools 1.7.2
 
 ## Bug fixes

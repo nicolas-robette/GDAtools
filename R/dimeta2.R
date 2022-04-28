@@ -1,4 +1,5 @@
 dimeta2 <- function(resmca,vars,dim=c(1,2)) {
+  vars <- as.data.frame(vars)
   n=names(vars)
   eta2 <- matrix(nrow=ncol(vars),ncol=length(dim))
   sub <- rep(TRUE,times=nrow(resmca$ind$coord))
