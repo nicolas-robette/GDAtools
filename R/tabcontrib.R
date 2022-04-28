@@ -1,5 +1,5 @@
-tabcontrib <- function(resmca,dim=1) {
-	z <- dimcontrib(resmca,dim)$var[[1]]
+tabcontrib <- function(resmca, dim=1, best=TRUE) {
+	z <- dimcontrib(resmca,dim,best=best)$var[[1]]
 	z$var <- unlist(lapply(strsplit(rownames(z),'.',fixed=TRUE),function(x) x[1]))
 	z$moda <- unlist(lapply(strsplit(rownames(z),'.',fixed=TRUE),function(x) paste(x[-1],collapse='.')))
 	w <- aggregate(abs(z$ctr),by=list(z$var),sum)

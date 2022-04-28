@@ -9,11 +9,12 @@ Identifies the categories that contribute the most to a given dimension of a Mul
 Analysis and organizes these informations into a fancy table. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.
 }
 
-\usage{tabcontrib(resmca, dim = 1)}
+\usage{tabcontrib(resmca, dim = 1, best = TRUE)}
 
 \arguments{
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, or \code{csMCA}}
   \item{dim}{dimension to describe (default is 1st dimension)}
+  \item{best}{if FALSE, displays all the categories; if TRUE (default), displays only categories and individuals with contributions higher than average}
 }
 
 \details{
