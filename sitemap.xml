@@ -1,186 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//index.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/404.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/Movies.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/articles/english/Tutorial_GDA.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/Music.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/articles/english/Tutorial_descr.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/Taste.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/articles/french/Tutoriel_AGD.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/angles.csa.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/articles/french/Tutoriel_descr.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/assoc.catcont.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/assoc.twocat.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/authors.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/assoc.twocont.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/index.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/assoc.yx.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/news/index.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/burt.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/Movies.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/catdesc.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/Music.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/conc.ellipse.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/Taste.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/condesc.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/angles.csa.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/contrib.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/assoc.catcont.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/csMCA.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/assoc.twocat.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/darma.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/assoc.twocont.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/dichotom.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/assoc.yx.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/dimcontrib.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/burt.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/dimdescr.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/catdesc.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/dimeta2.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/conc.ellipse.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/dimtypicality.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/condesc.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/flip.mca.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/contrib.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/getindexcat.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/csMCA.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggadd_attractions.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/darma.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggadd_chulls.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/dichotom.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggadd_corr.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/dimcontrib.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggadd_density.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/dimdescr.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggadd_ellipses.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/dimeta2.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggadd_interaction.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/dimtypicality.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggadd_kellipses.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/flip.mca.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggadd_supind.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/getindexcat.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggadd_supvar.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_attractions.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggassoc_boxplot.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_chulls.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggassoc_crosstab.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_corr.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggassoc_phiplot.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_density.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggassoc_scatter.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_ellipses.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggcloud_indiv.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_interaction.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/ggcloud_variables.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_kellipses.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/homog.test.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supind.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/indsup.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supvar.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/medoids.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_boxplot.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/modif.rate.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_crosstab.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/multiMCA.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_phiplot.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/pem.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_scatter.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/phi.table.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggcloud_indiv.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/plot.csMCA.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggcloud_variables.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/plot.multiMCA.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/homog.test.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/plot.speMCA.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/plot.stMCA.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/indsup.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/speMCA.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/medoids.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/stMCA.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/modif.rate.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/tabcontrib.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/multiMCA.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/textindsup.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/pem.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/textvarsup.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/phi.table.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/translate.logit.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/plot.csMCA.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/varsup.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/plot.multiMCA.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//reference/wtable.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/plot.speMCA.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//articles/english/Tutorial_GDA.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/plot.stMCA.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//articles/english/Tutorial_descr.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/quadrant.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//articles/french/Tutoriel_AGD.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/speMCA.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools//articles/french/Tutoriel_descr.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/stMCA.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/tabcontrib.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/textindsup.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/textvarsup.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/translate.logit.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/varsup.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/wtable.html</loc>
   </url>
 </urlset>
