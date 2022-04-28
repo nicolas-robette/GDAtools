@@ -79,6 +79,7 @@ reference:
   - angles.csa
   - getindexcat
   - medoids
+  - quadrant
   - translate.logit
   
 - title: Datasets

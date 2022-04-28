@@ -74,7 +74,7 @@ Analysis and organizes these informations into a fancy table. It allows to analy
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">resmca</span>, dim <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">resmca</span>, dim <span class="op">=</span> <span class="fl">1</span>, best <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -83,6 +83,8 @@ Analysis and organizes these informations into a fancy table. It allows to analy
 <dd><p>object of class <code>MCA</code>, <code>speMCA</code>, or <code>csMCA</code></p></dd>
 <dt>dim</dt>
 <dd><p>dimension to describe (default is 1st dimension)</p></dd>
+<dt>best</dt>
+<dd><p>if FALSE, displays all the categories; if TRUE (default), displays only categories and individuals with contributions higher than average</p></dd>
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -153,11 +155,13 @@ coordinates, so as to facilitate interpretation. Then they are sorted and organi
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://github.com/nicolas-robette" class="external-link">Nicolas Robette</a>.</p>
+  <p></p><p>Developed by <a href="https://github.com/nicolas-robette" class="external-link">Nicolas
+Robette</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.2.</p>
 </div>
 
       </footer></div>

@@ -87,10 +87,12 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Descriptive analysis of statistical associations with GDAtools</h1>
-                        <h4 data-toc-skip class="author">Nicolas Robette</h4>
+      <h1 data-toc-skip>Descriptive analysis of statistical associations
+with GDAtools</h1>
+                        <h4 data-toc-skip class="author">Nicolas
+Robette</h4>
             
-            <h4 data-toc-skip class="date">2022-02-22</h4>
+            <h4 data-toc-skip class="date">2022-04-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/english/Tutorial_descr.Rmd" class="external-link"><code>vignettes/english/Tutorial_descr.Rmd</code></a></small>
       <div class="hidden name"><code>Tutorial_descr.Rmd</code></div>
@@ -100,32 +102,105 @@
     
     
 <p> </p>
-<p><code>GDAtools</code> package provides some functions dedicated to the description of statistical associations between variables. They are based on effect size measures (also called association measures).</p>
-<p>All these measures are built from simple concepts (correlations, proportion of variance explained), they are bounded (between -1 and 1 or between 0 and 1) and are not sensitive to the number of observations.</p>
+<p><code>GDAtools</code> package provides some functions dedicated to
+the description of statistical associations between variables. They are
+based on effect size measures (also called association measures).</p>
+<p>All these measures are built from simple concepts (correlations,
+proportion of variance explained), they are bounded (between -1 and 1 or
+between 0 and 1) and are not sensitive to the number of
+observations.</p>
 <p>The measures of <em>global</em> association are the following.</p>
 <ul>
-<li><p>For the relationship between two categorical variables: the <strong>Cramér’s V</strong> which, unlike the chi-square, for example, is not sensitive to the number of observations or the number of categories of the variables. It varies between 0 (no association) and 1 (perfect association). Squared, it can be interpreted as the share of variation shared between two variables.</p></li>
-<li><p>For the relationship between two numerical variables: Kendall’s (<em>tau</em>) or Spearman’s (<em>rho</em>) <strong>rank correlations</strong>, which detect <em>monotonic</em> relationships between variables, and not only linear ones as is the case with Pearson’s linear correlation. They vary between -1 and 1. An absolute value of 0 indicates no association, an absolute value of 1 a perfect association. The sign indicates the direction of the relationship.</p></li>
-<li><p>For the relationship between a categorical variable and a numerical variable: the square of the <strong>correlation ratio</strong> (<em>eta²</em>). It expresses the proportion of the variance of the numerical variable “explained” by the categorical variable and varies between 0 and 1.</p></li>
+<li><p>For the relationship between two categorical variables: the
+<strong>Cramér’s V</strong> which, unlike the chi-square, for example,
+is not sensitive to the number of observations or the number of
+categories of the variables. It varies between 0 (no association) and 1
+(perfect association). Squared, it can be interpreted as the share of
+variation shared between two variables.</p></li>
+<li><p>For the relationship between two numerical variables: Kendall’s
+(<em>tau</em>) or Spearman’s (<em>rho</em>) <strong>rank
+correlations</strong>, which detect <em>monotonic</em> relationships
+between variables, and not only linear ones as is the case with
+Pearson’s linear correlation. They vary between -1 and 1. An absolute
+value of 0 indicates no association, an absolute value of 1 a perfect
+association. The sign indicates the direction of the
+relationship.</p></li>
+<li><p>For the relationship between a categorical variable and a
+numerical variable: the square of the <strong>correlation ratio</strong>
+(<em>eta²</em>). It expresses the proportion of the variance of the
+numerical variable “explained” by the categorical variable and varies
+between 0 and 1.</p></li>
 </ul>
-<p>In addition to measures of global association, we also use measures of <em>local</em> association, i.e. at the level of the categories of the variables.</p>
+<p>In addition to measures of global association, we also use measures
+of <em>local</em> association, i.e. at the level of the categories of
+the variables.</p>
 <ul>
-<li><p>For the relationship between two categorical variables: the <strong>phi coefficient</strong> measures the attraction or repulsion in a cell of a contingency table. It varies between -1 and 1. An absolute value of 0 indicates an absence of association, an absolute value of 1 a perfect association. There is attraction if the sign is positive, repulsion if the sign is negative. Squared, phi is interpreted as the proportion of variance shared by the two binary variables associated with the categories studied. Unlike the <em>test value</em>, phi is not sensitive to the sample size.</p></li>
-<li><p>For the relationship between a categorical variable and a numerical variable: the <strong>point biserial correlation</strong> measures the magnitude of the difference between the means of the numerical variable according to whether or not one belongs to the category studied. It varies between -1 and 1. An absolute value of 0 indicates no association, an absolute value of 1 a perfect association. The sign indicates the direction of the relationship. When squared, point biserial correlation can be interpreted as the proportion of variance of the numerical variable “explained” by the category of the categorical variable.</p></li>
+<li><p>For the relationship between two categorical variables: the
+<strong>phi coefficient</strong> measures the attraction or repulsion in
+a cell of a contingency table. It varies between -1 and 1. An absolute
+value of 0 indicates an absence of association, an absolute value of 1 a
+perfect association. There is attraction if the sign is positive,
+repulsion if the sign is negative. Squared, phi is interpreted as the
+proportion of variance shared by the two binary variables associated
+with the categories studied. Unlike the <em>test value</em>, phi is not
+sensitive to the sample size.</p></li>
+<li><p>For the relationship between a categorical variable and a
+numerical variable: the <strong>point biserial correlation</strong>
+measures the magnitude of the difference between the means of the
+numerical variable according to whether or not one belongs to the
+category studied. It varies between -1 and 1. An absolute value of 0
+indicates no association, an absolute value of 1 a perfect association.
+The sign indicates the direction of the relationship. When squared,
+point biserial correlation can be interpreted as the proportion of
+variance of the numerical variable “explained” by the category of the
+categorical variable.</p></li>
 </ul>
-<p>Note that if we code the categories of the categorical variables as binary variables with values of 0 or 1, the phi coefficient and the point biserial correlation are equivalent to Pearson’s correlation coefficient.</p>
-<p>For more details on these effect size measurements, see: Rakotomalala R., <a href="http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf" class="external-link">« Comprendre la taille d’effet (effect size) »</a><br>
+<p>Note that if we code the categories of the categorical variables as
+binary variables with values of 0 or 1, the phi coefficient and the
+point biserial correlation are equivalent to Pearson’s correlation
+coefficient.</p>
+<p>For more details on these effect size measurements, see: Rakotomalala
+R., <a href="http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf" class="external-link">« Comprendre
+la taille d’effet (effect size) »</a><br>
  </p>
-<p>In some functions of <code>GDAtools</code>, association measures can be completed by <strong>permutation tests</strong>, which are part of <em>combinatorial inference</em> and constitute a <em>nonparametric</em> alternative to the significance tests of frequentist inference. A permutation test is performed in several steps.</p>
+<p>In some functions of <code>GDAtools</code>, association measures can
+be completed by <strong>permutation tests</strong>, which are part of
+<em>combinatorial inference</em> and constitute a <em>nonparametric</em>
+alternative to the significance tests of frequentist inference. A
+permutation test is performed in several steps.</p>
 <ol style="list-style-type: decimal">
-<li><p>A measure of association between the two variables under study is computed.</p></li>
-<li><p>The same measure of association is calculated from a “permuted” version of the data, i.e. by randomly “mixing” the values of one of the variables, in order to “break” the relationship between the variables.</p></li>
-<li><p>Repeat step 2 a large number of times. This gives an <em>empirical</em> distribution (as opposed to the use of a <em>theoretical</em> distribution by frequentist inference) of the measure of association under the H0 hypothesis of no relationship between the two variables.</p></li>
-<li><p>The result of step 1 is compared with the distribution obtained in 3. The <em>p-value</em> of the permutation test is the proportion of values of the H0 distribution that are more extreme than the measure of association observed in 1.</p></li>
+<li><p>A measure of association between the two variables under study is
+computed.</p></li>
+<li><p>The same measure of association is calculated from a “permuted”
+version of the data, i.e. by randomly “mixing” the values of one of the
+variables, in order to “break” the relationship between the
+variables.</p></li>
+<li><p>Repeat step 2 a large number of times. This gives an
+<em>empirical</em> distribution (as opposed to the use of a
+<em>theoretical</em> distribution by frequentist inference) of the
+measure of association under the H0 hypothesis of no relationship
+between the two variables.</p></li>
+<li><p>The result of step 1 is compared with the distribution obtained
+in 3. The <em>p-value</em> of the permutation test is the proportion of
+values of the H0 distribution that are more extreme than the measure of
+association observed in 1.</p></li>
 </ol>
-<p>If all possible permutations are performed, the permutation test is called “exact”. In practice, the computation time required is often too important and only a part of the possible permutations is performed, resulting in an “approximate” test. In the following examples, the number of permutations is set to 100 to reduce the computation time, but it is advisable to increase this number to obtain more accurate and reliable results (for example <code>nperm</code>=1000).<br>
+<p>If all possible permutations are performed, the permutation test is
+called “exact”. In practice, the computation time required is often too
+important and only a part of the possible permutations is performed,
+resulting in an “approximate” test. In the following examples, the
+number of permutations is set to 100 to reduce the computation time, but
+it is advisable to increase this number to obtain more accurate and
+reliable results (for example <code>nperm</code>=1000).<br>
  </p>
-<p>To illustrate the statistical association analysis functions of <code>GDAtools</code>, we will use data on cinema. This is a sample of 1000 films released in France in the 2000s, for which we know the budget, the genre, the country of origin, the “art et essai” label, the selection in a festival (Cannes, Berlin or Venice), the average rating of intellectual critics (according to Allociné) and the number of admissions. Some of these variables are numerical, others are categorical.</p>
+<p>To illustrate the statistical association analysis functions of
+<code>GDAtools</code>, we will use data on cinema. This is a sample of
+1000 films released in France in the 2000s, for which we know the
+budget, the genre, the country of origin, the “art et essai” label, the
+selection in a festival (Cannes, Berlin or Venice), the average rating
+of intellectual critics (according to Allociné) and the number of
+admissions. Some of these variables are numerical, others are
+categorical.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/nicolas-robette/GDAtools" class="external-link">GDAtools</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">)</span>
@@ -142,7 +217,9 @@
 <div class="section level2">
 <h2 id="relationship-between-two-variables">Relationship between two variables<a class="anchor" aria-label="anchor" href="#relationship-between-two-variables"></a>
 </h2>
-<p>The package offers several functions to study the statistical relationship between two variables, depending on the nature (categorical or numerical) of these variables.</p>
+<p>The package offers several functions to study the statistical
+relationship between two variables, depending on the nature (categorical
+or numerical) of these variables.</p>
 <div class="section level4">
 <h4 id="two-categorical-variables">Two categorical variables<a class="anchor" aria-label="anchor" href="#two-categorical-variables"></a>
 </h4>
@@ -152,10 +229,13 @@
 <li>the percentages, the row-percentages and the column-percentages</li>
 <li>the theoretical numbers, i.e. in a situation of independence</li>
 <li>the chi-square</li>
-<li>the Cramér’s V and the p-value of the corresponding permutation test</li>
+<li>the Cramér’s V and the p-value of the corresponding permutation
+test</li>
 <li>the Pearson residuals</li>
-<li>the phi coefficients and the p-values of the corresponding permutation tests</li>
-<li>the global and local PEMs (Percentage of Maximum Deviation from Independence, see Cibois 1993)</li>
+<li>the phi coefficients and the p-values of the corresponding
+permutation tests</li>
+<li>the global and local PEMs (Percentage of Maximum Deviation from
+Independence, see Cibois 1993)</li>
 <li>a summary table of these results</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -224,27 +304,37 @@ USA     0.45688150 -0.45688150
 
 $phi.perm.pval
                  No          Yes
-Europe 3.797143e-01 3.797143e-01
-France 1.658085e-49 0.000000e+00
-Other  2.985631e-03 2.985631e-03
-USA    0.000000e+00 9.262388e-49
+Europe 3.308084e-01 3.308084e-01
+France 7.488902e-30 0.000000e+00
+Other  1.437851e-03 1.437851e-03
+USA    0.000000e+00 4.287130e-48
 
 $gather
     Var1 Var2 Freq  prop     rprop      cprop expected std.residuals         phi    perm.pval
-1 Europe   No   39 0.039 0.5416667 0.07587549   37.008     0.3274474  0.01541876 3.797143e-01
-2 France   No  212 0.212 0.3504132 0.41245136  310.970    -5.6123445 -0.40506773 1.658085e-49
-3  Other   No    6 0.006 0.2307692 0.01167315   13.364    -2.0143992 -0.09258656 2.985631e-03
+1 Europe   No   39 0.039 0.5416667 0.07587549   37.008     0.3274474  0.01541876 3.308084e-01
+2 France   No  212 0.212 0.3504132 0.41245136  310.970    -5.6123445 -0.40506773 7.488902e-30
+3  Other   No    6 0.006 0.2307692 0.01167315   13.364    -2.0143992 -0.09258656 1.437851e-03
 4    USA   No  257 0.257 0.8653199 0.50000000  152.658     8.4449945  0.45688150 0.000000e+00
-5 Europe  Yes   33 0.033 0.4583333 0.06790123   34.992    -0.3367479 -0.01541876 3.797143e-01
+5 Europe  Yes   33 0.033 0.4583333 0.06790123   34.992    -0.3367479 -0.01541876 3.308084e-01
 6 France  Yes  393 0.393 0.6495868 0.80864198  294.030     5.7717531  0.40506773 0.000000e+00
-7  Other  Yes   20 0.020 0.7692308 0.04115226   12.636     2.0716146  0.09258656 2.985631e-03
+7  Other  Yes   20 0.020 0.7692308 0.04115226   12.636     2.0716146  0.09258656 1.437851e-03
  [ reached 'max' / getOption("max.print") -- omitted 1 rows ]</code></pre>
 <p><br>
-The function <code>ggassoc_crosstab</code> presents the contingency table in graphical form, with rectangles whose area corresponds to the numbers and whose color gradient corresponds to the attractions/repulsions (phi coefficients). The Cramér’s V can be displayed in a corner of the graph. Here, the “art et essai” label is clearly over-represented among French films and under-represented among American films.</p>
+The function <code>ggassoc_crosstab</code> presents the contingency
+table in graphical form, with rectangles whose area corresponds to the
+numbers and whose color gradient corresponds to the
+attractions/repulsions (phi coefficients). The Cramér’s V can be
+displayed in a corner of the graph. Here, the “art et essai” label is
+clearly over-represented among French films and under-represented among
+American films.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_crosstab.html">ggassoc_crosstab</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Country</span>, y<span class="op">=</span><span class="va">ArtHouse</span><span class="op">)</span>, max.phi<span class="op">=</span><span class="fl">0.8</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_descr_files/figure-html/ggassoc_crosstab-1.png" width="700"></p>
-<p>The function <code>ggassoc_phiplot</code> proposes another way to represent the attractions/repulsions. The width of the rectangles corresponds to the numbers of the variable x, their height to the phi coefficients. The rectangles are colored in black when there is attraction, in white when there is repulsion.</p>
+<p>The function <code>ggassoc_phiplot</code> proposes another way to
+represent the attractions/repulsions. The width of the rectangles
+corresponds to the numbers of the variable x, their height to the phi
+coefficients. The rectangles are colored in black when there is
+attraction, in white when there is repulsion.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_phiplot.html">ggassoc_phiplot</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Country</span>, y<span class="op">=</span><span class="va">ArtHouse</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_descr_files/figure-html/ggassoc_phiplot-1.png" width="700"></p>
@@ -254,8 +344,10 @@ The function <code>ggassoc_crosstab</code> presents the contingency table in gra
 </h4>
 <p>The <code>assoc_catcont</code> function computes:</p>
 <ul>
-<li>the squared correlation ratio (eta²) and the p-value of the corresponding permutation test</li>
-<li>the point biserial correlations and the p-values of the corresponding permutation tests</li>
+<li>the squared correlation ratio (eta²) and the p-value of the
+corresponding permutation test</li>
+<li>the point biserial correlations and the p-values of the
+corresponding permutation tests</li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/assoc.catcont.html">assoc.catcont</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">Country</span>, <span class="va">Movies</span><span class="op">$</span><span class="va">Critics</span>, nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></code></pre></div>
@@ -263,7 +355,7 @@ The function <code>ggassoc_crosstab</code> presents the contingency table in gra
 [1] 0.0169216
 
 $permutation.pvalue
-[1] 7.02749e-12
+[1] 9.561362e-08
 
 $cor
 Europe France  Other    USA 
@@ -271,9 +363,11 @@ Europe France  Other    USA
 
 $cor.perm.pval
       Europe       France        Other          USA 
-4.226380e-01 8.654212e-04 1.584078e-01 7.176699e-05 </code></pre>
+3.753059e-01 3.232286e-04 1.427421e-01 1.707731e-06 </code></pre>
 <p><br>
-The function <code>ggassoc_boxplot</code> represents the relationship between the variables in the form of box-plots and/or “violin” distributions. The eta² value is displayed in a corner of the graph.</p>
+The function <code>ggassoc_boxplot</code> represents the relationship
+between the variables in the form of box-plots and/or “violin”
+distributions. The eta² value is displayed in a corner of the graph.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_boxplot.html">ggassoc_boxplot</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Country</span>, y<span class="op">=</span><span class="va">Critics</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_descr_files/figure-html/ggassoc_boxplot-1.png" width="700"></p>
@@ -281,14 +375,19 @@ The function <code>ggassoc_boxplot</code> represents the relationship between th
 <div class="section level4">
 <h4 id="two-numerical-variables">Two numerical variables<a class="anchor" aria-label="anchor" href="#two-numerical-variables"></a>
 </h4>
-<p>The function <code>assoc_twocont</code> computes the Kendall and Spearman rank correlations and the Pearson linear correlation, as well as the p-values of the corresponding permutation tests.</p>
+<p>The function <code>assoc_twocont</code> computes the Kendall and
+Spearman rank correlations and the Pearson linear correlation, as well
+as the p-values of the corresponding permutation tests.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/assoc.twocont.html">assoc.twocont</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">Budget</span>, <span class="va">Movies</span><span class="op">$</span><span class="va">BoxOffice</span>, nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></code></pre></div>
 <pre><code>                     pearson  spearman   kendall
 value              0.6053018 0.7084613 0.5184719
 permutation.pvalue 0.0000000 0.0000000 0.0000000</code></pre>
 <p><br>
-The function <code>ggassoc_scatter</code> represents the relationship between the two variables in the form of a scatterplot, with an approximation by smoothing (with the “Generalized Additive Model” method). Kendall’s tau is displayed in a corner of the graph.</p>
+The function <code>ggassoc_scatter</code> represents the relationship
+between the two variables in the form of a scatterplot, with an
+approximation by smoothing (with the “Generalized Additive Model”
+method). Kendall’s tau is displayed in a corner of the graph.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/ggassoc_scatter.html">ggassoc_scatter</a></span><span class="op">(</span><span class="va">Movies</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">Budget</span>, y<span class="op">=</span><span class="va">BoxOffice</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="Tutorial_descr_files/figure-html/ggassoc_scatter-1.png" width="700"></p>
@@ -297,9 +396,20 @@ The function <code>ggassoc_scatter</code> represents the relationship between th
 <div class="section level2">
 <h2 id="relationships-between-one-variable-y-and-a-set-of-variables-x">Relationships between one variable Y and a set of variables X<a class="anchor" aria-label="anchor" href="#relationships-between-one-variable-y-and-a-set-of-variables-x"></a>
 </h2>
-<p>Often, not just two variables are studied, but a larger set of variables. When one of these variables has the status of an “explained” variable, one generally uses regression models or, possibly, supervised learning models (see the vignette of the <code>moreparty</code> package for an example). However, it is essential to know all the bivariate relations of the dataset before moving to an “all else being equal” approach.</p>
-<p>It should be noted that if we do this work in a meticulous way, adding eventually the descriptive analysis of the relationships between three or four variables, we often realize that the surplus of knowledge brought by the regression models is quite limited.<br><br></p>
-<p>The function <code>assoc.yx</code> computes the global association between Y and each of the variables of X, and for all pairs of variables of X.</p>
+<p>Often, not just two variables are studied, but a larger set of
+variables. When one of these variables has the status of an “explained”
+variable, one generally uses regression models or, possibly, supervised
+learning models (see the vignette of the <code>moreparty</code> package
+for an example). However, it is essential to know all the bivariate
+relations of the dataset before moving to an “all else being equal”
+approach.</p>
+<p>It should be noted that if we do this work in a meticulous way,
+adding eventually the descriptive analysis of the relationships between
+three or four variables, we often realize that the surplus of knowledge
+brought by the regression models is quite limited.<br><br></p>
+<p>The function <code>assoc.yx</code> computes the global association
+between Y and each of the variables of X, and for all pairs of variables
+of X.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/assoc.yx.html">assoc.yx</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">BoxOffice</span>, <span class="va">Movies</span><span class="op">[</span>,<span class="op">-</span><span class="fl">7</span><span class="op">]</span>, nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></code></pre></div>
 <pre><code>$YX
@@ -308,8 +418,8 @@ The function <code>ggassoc_scatter</code> represents the relationship between th
 2 ArtHouse          Eta2       0.075              0.000
 3  Country          Eta2       0.048              0.000
 4   Budget Kendall's tau       0.518              0.000
-5  Critics Kendall's tau       0.006              0.440
-6 Festival          Eta2       0.000              0.782
+5  Critics Kendall's tau       0.006              0.427
+6 Festival          Eta2       0.000              0.780
 
 $XX
    variable1 variable2       measure association permutation.pvalue
@@ -324,21 +434,28 @@ $XX
 9      Genre   Critics          Eta2       0.090              0.000
 10  Festival   Critics          Eta2       0.041              0.000
 11    Budget   Critics Kendall's tau      -0.178              0.000
-12   Country   Critics          Eta2       0.017              0.000
-13     Genre  Festival    Cramer's V       0.183              0.000
-14    Budget  Festival          Eta2       0.003              0.088
-15   Country  Festival    Cramer's V       0.035              0.762</code></pre>
+12     Genre  Festival    Cramer's V       0.183              0.000
+13   Country   Critics          Eta2       0.017              0.000
+14    Budget  Festival          Eta2       0.003              0.124
+15   Country  Festival    Cramer's V       0.035              0.745</code></pre>
 <p><br>
-The functions <code>catdesc</code> and <code>condesc</code> allow to go into more detail about the relationships, by going to the category level.</p>
-<p><code>catdesc</code> deals with the cases where Y is a categorical variable. For a categorical variable X1, it computes, for a given category of Y and a category of X1 :</p>
+The functions <code>catdesc</code> and <code>condesc</code> allow to go
+into more detail about the relationships, by going to the category
+level.</p>
+<p><code>catdesc</code> deals with the cases where Y is a categorical
+variable. For a categorical variable X1, it computes, for a given
+category of Y and a category of X1 :</p>
 <ul>
 <li>the percentage of the category of Y in the category of X1</li>
 <li>the percentage of the X1 category in the Y category</li>
 <li>the percentage of the X1 category in the whole sample</li>
 <li>the phi coefficient</li>
 </ul>
-<p>The results are sorted by decreasing phi coefficient and can be filtered to keep only the associations above a given threshold (in absolute value).</p>
-<p>For a numerical variable X2, for a given category of Y, it computes :</p>
+<p>The results are sorted by decreasing phi coefficient and can be
+filtered to keep only the associations above a given threshold (in
+absolute value).</p>
+<p>For a numerical variable X2, for a given category of Y, it computes
+:</p>
 <ul>
 <li>the median of X2 in the category of Y</li>
 <li>the median of X2 in the whole sample</li>
@@ -346,7 +463,10 @@ The functions <code>catdesc</code> and <code>condesc</code> allow to go into mor
 <li>the dispersion of X2 in the whole sample</li>
 <li>the point biserial correlation</li>
 </ul>
-<p>Dispersion is measured by the “median absolute deviation” (MAD), which is the median of the absolute deviations from the median. The median and MAD are so-called “robust” indicators, i.e. not sensitive to outliers.</p>
+<p>Dispersion is measured by the “median absolute deviation” (MAD),
+which is the median of the absolute deviations from the median. The
+median and MAD are so-called “robust” indicators, i.e. not sensitive to
+outliers.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/catdesc.html">catdesc</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">Festival</span>, <span class="va">Movies</span><span class="op">[</span>,<span class="op">-</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">bylevel</span><span class="op">$</span><span class="va">Yes</span></code></pre></div>
 <pre><code>$categories
@@ -372,7 +492,8 @@ $continuous.var
 1   Critics              3.5             2.9           0.6          0.6  0.204
 3 BoxOffice         236910.7        138608.8      212598.2     137253.1  0.008
 5    Budget        7689956.0       7040470.9     4865250.9    5920656.2 -0.057</code></pre>
-<p><br><code>condesc</code> deals with the cases where Y is a numerical variable. For a categorical variable X1, it computes :</p>
+<p><br><code>condesc</code> deals with the cases where Y is a numerical
+variable. For a categorical variable X1, it computes :</p>
 <ul>
 <li>the median of Y in the category of X1</li>
 <li>the median of Y in the whole sample</li>
@@ -380,8 +501,11 @@ $continuous.var
 <li>the dispersion of Y in the whole sample</li>
 <li>the point biserial correlation</li>
 </ul>
-<p>The results are sorted by decreasing point biserial correlation and can be filtered to keep only associations above a given threshold (in absolute value).</p>
-<p>For the numerical variables of X, it calculates the Kendall’s tau.</p>
+<p>The results are sorted by decreasing point biserial correlation and
+can be filtered to keep only associations above a given threshold (in
+absolute value).</p>
+<p>For the numerical variables of X, it calculates the Kendall’s
+tau.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">BoxOffice</span>, <span class="va">Movies</span><span class="op">[</span>,<span class="op">-</span><span class="fl">7</span><span class="op">]</span>, nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></code></pre></div>
 <pre><code>$variables
@@ -390,8 +514,8 @@ $continuous.var
 2 ArtHouse          Eta2       0.075              0.000
 3  Country          Eta2       0.048              0.000
 4   Budget Kendall's tau       0.518              0.000
-5  Critics Kendall's tau       0.006              0.331
-6 Festival          Eta2       0.000              0.736
+5  Critics Kendall's tau       0.006              0.436
+6 Festival          Eta2       0.000              0.740
 
 $categories
         categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global    cor
@@ -409,11 +533,15 @@ $categories
 8     Genre.Horror           293118          138609        176131       137253 -0.015
  [ reached 'max' / getOption("max.print") -- omitted 5 rows ]</code></pre>
 <p><br>
-The <code>darma</code> function presents the results in a form close to that of a table of results of a regression.</p>
+The <code>darma</code> function presents the results in a form close to
+that of a table of results of a regression.</p>
 <p>When the variable Y is numerical, the function computes :</p>
 <ul>
-<li>for numerical X variables, Kendall’s tau and the p-value of the corresponding permutation test</li>
-<li>for the categories of the categorical X variables, the median of Y in the category, the point biserial correlation and the p-value of the corresponding permutation test</li>
+<li>for numerical X variables, Kendall’s tau and the p-value of the
+corresponding permutation test</li>
+<li>for the categories of the categorical X variables, the median of Y
+in the category, the point biserial correlation and the p-value of the
+corresponding permutation test</li>
 </ul>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/darma.html">darma</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">BoxOffice</span>, <span class="va">Movies</span><span class="op">[</span>,<span class="op">-</span><span class="fl">7</span><span class="op">]</span>, nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></code></pre></div>
@@ -438,7 +566,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Action</td>
 <td align="right">301483.7</td>
 <td align="right">0.087</td>
-<td align="right">0.001</td>
+<td align="right">0.002</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -452,7 +580,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Other</td>
 <td align="right">254002.8</td>
 <td align="right">-0.005</td>
-<td align="right">0.503</td>
+<td align="right">0.458</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -466,7 +594,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Comedy</td>
 <td align="right">236703.8</td>
 <td align="right">0.004</td>
-<td align="right">0.506</td>
+<td align="right">0.452</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -487,7 +615,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Horror</td>
 <td align="right">296015.2</td>
 <td align="right">-0.015</td>
-<td align="right">0.287</td>
+<td align="right">0.328</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -501,7 +629,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Europe</td>
 <td align="right">161441.5</td>
 <td align="right">0.068</td>
-<td align="right">0.009</td>
+<td align="right">0.011</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -515,7 +643,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Other</td>
 <td align="right">64304.0</td>
 <td align="right">-0.013</td>
-<td align="right">0.308</td>
+<td align="right">0.401</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -543,29 +671,32 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">No</td>
 <td align="right">134006.6</td>
 <td align="right">-0.008</td>
-<td align="right">0.464</td>
+<td align="right">0.481</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Yes</td>
 <td align="right">236910.7</td>
 <td align="right">0.008</td>
-<td align="right">0.399</td>
+<td align="right">0.377</td>
 </tr>
 <tr class="odd">
 <td align="left">Critics</td>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">0.006</td>
-<td align="right">0.370</td>
+<td align="right">0.358</td>
 </tr>
 </tbody>
 </table>
 <p><br>
 When the variable Y is categorical, the function computes :</p>
 <ul>
-<li>for numerical X variables, the point biserial correlation and the p-value of the corresponding permutation test</li>
-<li>for the categories of the categorical X variables, the percentage of Y in the category, the phi coefficient and the p-value of the corresponding permutation test.</li>
+<li>for numerical X variables, the point biserial correlation and the
+p-value of the corresponding permutation test</li>
+<li>for the categories of the categorical X variables, the percentage of
+Y in the category, the phi coefficient and the p-value of the
+corresponding permutation test.</li>
 </ul>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../../reference/darma.html">darma</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">Festival</span>, <span class="va">Movies</span><span class="op">[</span>,<span class="op">-</span><span class="fl">5</span><span class="op">]</span>, target<span class="op">=</span><span class="fl">2</span>, nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></code></pre></div>
@@ -583,49 +714,49 @@ When the variable Y is categorical, the function computes :</p>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">-0.057</td>
-<td align="right">0.078</td>
+<td align="right">0.028</td>
 </tr>
 <tr class="even">
 <td align="left">Genre</td>
 <td align="left">Action</td>
 <td align="right">7.9</td>
 <td align="right">0.003</td>
-<td align="right">0.495</td>
+<td align="right">0.481</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Animation</td>
 <td align="right">2.2</td>
 <td align="right">-0.046</td>
-<td align="right">0.125</td>
+<td align="right">0.061</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Other</td>
 <td align="right">11.5</td>
 <td align="right">0.024</td>
-<td align="right">0.230</td>
+<td align="right">0.217</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">ComDram</td>
 <td align="right">8.7</td>
 <td align="right">0.016</td>
-<td align="right">0.257</td>
+<td align="right">0.194</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Comedy</td>
 <td align="right">2.7</td>
 <td align="right">-0.100</td>
-<td align="right">0.000</td>
+<td align="right">0.001</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Documentary</td>
 <td align="right">2.6</td>
 <td align="right">-0.055</td>
-<td align="right">0.038</td>
+<td align="right">0.039</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -639,42 +770,42 @@ When the variable Y is categorical, the function computes :</p>
 <td align="left">Horror</td>
 <td align="right">0.0</td>
 <td align="right">-0.046</td>
-<td align="right">0.060</td>
+<td align="right">0.058</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">SciFi</td>
 <td align="right">6.1</td>
 <td align="right">-0.013</td>
-<td align="right">0.279</td>
+<td align="right">0.320</td>
 </tr>
 <tr class="odd">
 <td align="left">Country</td>
 <td align="left">Europe</td>
 <td align="right">9.7</td>
 <td align="right">0.021</td>
-<td align="right">0.287</td>
+<td align="right">0.262</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">France</td>
 <td align="right">8.1</td>
 <td align="right">0.019</td>
-<td align="right">0.261</td>
+<td align="right">0.354</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Other</td>
 <td align="right">7.7</td>
 <td align="right">0.000</td>
-<td align="right">0.529</td>
+<td align="right">0.559</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">USA</td>
 <td align="right">6.4</td>
 <td align="right">-0.032</td>
-<td align="right">0.176</td>
+<td align="right">0.197</td>
 </tr>
 <tr class="odd">
 <td align="left">ArtHouse</td>
@@ -702,7 +833,7 @@ When the variable Y is categorical, the function computes :</p>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">0.008</td>
-<td align="right">0.791</td>
+<td align="right">0.745</td>
 </tr>
 </tbody>
 </table>
@@ -710,7 +841,10 @@ When the variable Y is categorical, the function computes :</p>
 <div class="section level2">
 <h2 id="relationships-between-all-variables-in-a-set">Relationships between all variables in a set<a class="anchor" aria-label="anchor" href="#relationships-between-all-variables-in-a-set"></a>
 </h2>
-<p>Finally, the <code>ggassoc_*</code> functions are designed to be integrated in the plot matrices of the <a href="https://ggobi.github.io/ggally/" class="external-link"><code>GGally</code></a> package. It is thus possible to use them to represent in a single plot all the bivariate relations of a group of variables.</p>
+<p>Finally, the <code>ggassoc_*</code> functions are designed to be
+integrated in the plot matrices of the <a href="https://ggobi.github.io/ggally/" class="external-link"><code>GGally</code></a> package.
+It is thus possible to use them to represent in a single plot all the
+bivariate relations of a group of variables.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggobi.github.io/ggally/" class="external-link">GGally</a></span><span class="op">)</span>
 <span class="fu"><a href="https://ggobi.github.io/ggally/reference/ggpairs.html" class="external-link">ggpairs</a></span><span class="op">(</span><span class="va">Movies</span>,
@@ -738,12 +872,14 @@ When the variable Y is categorical, the function computes :</p>
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by <a href="https://github.com/nicolas-robette" class="external-link">Nicolas Robette</a>.</p>
+<p>Developed by <a href="https://github.com/nicolas-robette" class="external-link">Nicolas
+Robette</a>.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
+2.0.2.</p>
 </div>
 
       </footer>
