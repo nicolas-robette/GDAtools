@@ -1,4 +1,5 @@
 indsup <- function(resmca,supdata) {
+    supdata <- data.frame(supdata)
     type <- attr(resmca,'class')[1]
     if(type %in% c("MCA","stMCA","multiMCA","PCA")) eigen <- resmca$eig[,"eigenvalue"]
     if(type %in% c("speMCA","csMCA")) eigen <- resmca$eig$eigen
