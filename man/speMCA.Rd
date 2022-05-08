@@ -10,7 +10,7 @@
 
 \arguments{
   \item{data}{data frame with n rows (individuals) and p columns (categorical variables)}
-  \item{excl}{numeric vector indicating the indexes of the "junk" categories (default is NULL). See "getindexcat" to identify these indexes.}
+  \item{excl}{numeric vector indicating the indexes of the "junk" categories (default is NULL). See \code{\link{getindexcat}} to identify these indexes. It may also be a character vector of junk categories, specified in the form "namevariable.namecategory" (for instance "gender.male").}
   \item{ncp}{number of dimensions kept in the results (default is 5)}
   \item{row.w}{an optional numeric vector of row weights (by default, a vector of 1 for uniform row weights)}
 }
@@ -49,6 +49,8 @@ data(Music)
 getindexcat(Music[,1:5])
 mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
 str(mca)
+# This is equivalent to :
+mca <- speMCA(Music[,1:5],excl=c("FrenchPop.NA","Rap.NA","Jazz.NA","Classical.NA","Rock.NA"))
 }
 
 \keyword{ multivariate }

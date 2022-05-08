@@ -3,6 +3,7 @@ csMCA <- function(data,subcloud=rep(TRUE,times=nrow(data)),excl=NULL,ncp=5,row.w
     for(i in 1:ncol(data)) data[,i] <- factor(data[,i])
     row.w <- row.w/sum(row.w)*nrow(data)
     row.wc <- row.w[subcloud]
+    if(is.character(excl)) excl <- which(getindexcat(data) %in% excl)
     if(is.null(excl)) excl <- 99999
     N <- nrow(data)
     n <- nrow(data[subcloud,])
@@ -71,7 +72,7 @@ csMCA <- function(data,subcloud=rep(TRUE,times=nrow(data)),excl=NULL,ncp=5,row.w
     marge.row <- rep(1/(n.w*Q),times=n)
     names(marge.row) <- 1:n
     quali <- 1:Q
-    call <- list(X=data,marge.col=marge.col,marge.row=marge.row,ncp=ncp,quali=quali,subcloud=subcloud,excl=excl,row.w=row.w)
+    call <- list(X=data,marge.col=marge.col,marge.row=marge.row,ncp=ncp,quali=quali,subcloud=subcloud,excl=excl,excl.char=getindexcat(data)[excl],row.w=row.w)
     RES <- list(eig=eig,call=call,ind=ind,var=var,svd=list(vs=svd$d,U=svd$u,V=svd$v))
     attr(RES,'class') <- c('csMCA','list')
     RES

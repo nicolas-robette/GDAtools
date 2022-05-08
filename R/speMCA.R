@@ -2,6 +2,7 @@ speMCA <- function(data,excl=NULL,ncp=5,row.w=rep(1,times=nrow(data))) {
     data <- as.data.frame(data)
     for(i in 1:ncol(data)) data[,i] <- factor(data[,i])
     row.w=row.w/sum(row.w)*nrow(data)
+    if(is.character(excl)) excl <- which(getindexcat(data) %in% excl)
     if(is.null(excl)) excl <- 99999
     n <- nrow(as.data.frame(data))
     Q <- ncol(as.data.frame(data))
@@ -68,7 +69,7 @@ speMCA <- function(data,excl=NULL,ncp=5,row.w=rep(1,times=nrow(data))) {
     marge.row <- rep(1/(n*Q),times=n)
     names(marge.row) <- 1:n
     quali <- 1:Q
-    call <- list(X=X,marge.col=marge.col,marge.row=marge.row,ncp=ncp,quali=quali,excl=excl,row.w=row.w)
+    call <- list(X=X,marge.col=marge.col,marge.row=marge.row,ncp=ncp,quali=quali,excl=excl,excl.char=getindexcat(data)[excl],row.w=row.w)
     RES <- list(eig=eig,call=call,ind=ind,var=var,svd=list(vs=svd$d,U=svd$u,V=svd$v))
     attr(RES,'class') <- c('speMCA','list')
     return(RES)

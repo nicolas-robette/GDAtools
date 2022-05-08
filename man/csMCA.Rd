@@ -15,7 +15,7 @@ row.w = rep(1, times = nrow(data)))
   \item{data}{data frame with n rows (individuals) and p columns (categorical variables)}
   \item{subcloud}{a vector of logical values and length n. The subcloud of individuals analyzed with 'class specific' MCA
                   is made of the individuals with value \code{TRUE}.}
-  \item{excl}{numeric vector indicating the indexes of the 'junk' categories (default is NULL). See \code{\link{getindexcat}} to identify these indexes.}
+  \item{excl}{numeric vector indicating the indexes of the "junk" categories (default is NULL). See \code{\link{getindexcat}} to identify these indexes. It may also be a character vector of junk categories, specified in the form "namevariable.namecategory" (for instance "gender.male").}
   \item{ncp}{number of dimensions kept in the results (default is 5)}
   \item{row.w}{an optional numeric vector of row weights (by default, a vector of 1 for uniform row weights)}
 }
@@ -53,7 +53,9 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 ## and focusing on the subset of women.
 data(Music)
 female <- Music$Gender=='Women'
-mca <- csMCA(Music[,1:5],subcloud=female,excl=c(3,6,9,12,15))
+mca <- csMCA(Music[,1:5],
+             subcloud = female,
+             excl = c("FrenchPop.NA","Rap.NA","Jazz.NA","Classical.NA","Rock.NA"))
 plot(mca)
 }
 
