@@ -1,10 +1,10 @@
 Package: GDAtools
 Type: Package
 Title: A Toolbox for Geometric Data Analysis and More
-Version: 1.7.2
+Version: 1.8
 Author: Nicolas Robette
 Maintainer: Nicolas Robette <nicolas.robette@uvsq.fr>
-Imports: MASS, wdm, FactoMineR, nleqslv, nnet, ggplot2, ggrepel, RColorBrewer, rlang, GGally
+Imports: MASS, wdm, FactoMineR, nleqslv, nnet, ggplot2, ggrepel, RColorBrewer, rlang, GGally, shiny, miniUI, esquisse, rclipboard
 Suggests: rmarkdown, knitr, rmdformats, cluster, WeightedCluster, vcd, R.rsp
 Description: Contains functions for 'specific' Multiple Correspondence Analysis, 
 	Class Specific Analysis, Multiple Factor Analysis, 'standardized' MCA, computing and plotting structuring factors and concentration ellipses, 

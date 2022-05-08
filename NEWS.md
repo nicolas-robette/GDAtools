@@ -1,7 +1,8 @@
-# GDAtools 1.7.3
+# GDAtools 1.8
 
 ## New functions
 
+* `ijunk()`: Shiny app to select interactively the junk categories before a specific MCA.
 * `quadrant()`: Computes the quadrant of active individuals in a given space of a MCA.
 
 ## Bug fixes
@@ -11,6 +12,7 @@
 
 ## Changes in existing functions
 
+* `speMCA()` and `csMCA()` : junk categories can now be specified as a character vector
 * `tabcontrib()` : new best option
 
 
