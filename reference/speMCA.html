@@ -80,7 +80,7 @@
     <dl><dt>data</dt>
 <dd><p>data frame with n rows (individuals) and p columns (categorical variables)</p></dd>
 <dt>excl</dt>
-<dd><p>numeric vector indicating the indexes of the "junk" categories (default is NULL). See "getindexcat" to identify these indexes.</p></dd>
+<dd><p>numeric vector indicating the indexes of the "junk" categories (default is NULL). See <code><a href="getindexcat.html">getindexcat</a></code> to identify these indexes. It may also be a character vector of junk categories, specified in the form "namevariable.namecategory" (for instance "gender.male").</p></dd>
 <dt>ncp</dt>
 <dd><p>number of dimensions kept in the results (default is 5)</p></dd>
 <dt>row.w</dt>
@@ -138,7 +138,7 @@ categories for the determination of distances between individuals (see Le Roux a
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ cum.rate : num [1:10] 27.5 49 69.1 86 98.7 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ mrate    : num [1:3] 94.86 4.98 0.15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ cum.mrate: num [1:3] 94.9 99.8 100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ call:List of 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ call:List of 8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ X        :'data.frame':	500 obs. of  5 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ FrenchPop: Factor w/ 3 levels "No","Yes","NA": 3 1 1 1 2 2 1 2 1 1 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   .. ..$ Rap      : Factor w/ 3 levels "No","Yes","NA": 1 2 1 1 1 1 1 1 1 2 ...</span>
@@ -152,6 +152,7 @@ categories for the determination of distances between individuals (see Le Roux a
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ ncp      : num 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ quali    : int [1:5] 1 2 3 4 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ excl     : num [1:5] 3 6 9 12 15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ excl.char: chr [1:5] "FrenchPop.NA" "Rap.NA" "Rock.NA" "Jazz.NA" ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ row.w    : num [1:500] 1 1 1 1 1 1 1 1 1 1 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ ind :List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ coord  : num [1:500, 1:5] 0.0308 0.5645 0.0824 0.0824 -0.2774 ...</span>
@@ -200,6 +201,8 @@ categories for the determination of distances between individuals (see Le Roux a
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ U : num [1:500, 1:10] 0.00261 0.04783 0.00699 0.00699 -0.02351 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ V : num [1:10, 1:10] 0.0719 -0.0551 -0.0912 0.2135 0.1782 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "class")= chr [1:2] "speMCA" "list"</span>
+<span class="r-in"><span class="co"># This is equivalent to :</span></span>
+<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu">speMCA</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FrenchPop.NA"</span>,<span class="st">"Rap.NA"</span>,<span class="st">"Jazz.NA"</span>,<span class="st">"Classical.NA"</span>,<span class="st">"Rock.NA"</span><span class="op">)</span><span class="op">)</span></span>
 </code></pre></div>
     </div>
   </div>

@@ -84,7 +84,7 @@ row.w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base
 <dd><p>a vector of logical values and length n. The subcloud of individuals analyzed with 'class specific' MCA
                   is made of the individuals with value <code>TRUE</code>.</p></dd>
 <dt>excl</dt>
-<dd><p>numeric vector indicating the indexes of the 'junk' categories (default is NULL). See <code><a href="getindexcat.html">getindexcat</a></code> to identify these indexes.</p></dd>
+<dd><p>numeric vector indicating the indexes of the "junk" categories (default is NULL). See <code><a href="getindexcat.html">getindexcat</a></code> to identify these indexes. It may also be a character vector of junk categories, specified in the form "namevariable.namecategory" (for instance "gender.male").</p></dd>
 <dt>ncp</dt>
 <dd><p>number of dimensions kept in the results (default is 5)</p></dd>
 <dt>row.w</dt>
@@ -130,7 +130,9 @@ with the subset of individuals (see Le Roux and Rouanet, 2004 and 2010).</p>
 <span class="r-in"><span class="co">## and focusing on the subset of women.</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">female</span> <span class="op">&lt;-</span> <span class="va">Music</span><span class="op">$</span><span class="va">Gender</span><span class="op">==</span><span class="st">'Women'</span></span>
-<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu">csMCA</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,subcloud<span class="op">=</span><span class="va">female</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu">csMCA</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,</span>
+<span class="r-in">             subcloud <span class="op">=</span> <span class="va">female</span>,</span>
+<span class="r-in">             excl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FrenchPop.NA"</span>,<span class="st">"Rap.NA"</span>,<span class="st">"Jazz.NA"</span>,<span class="st">"Classical.NA"</span>,<span class="st">"Rock.NA"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="csMCA-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
