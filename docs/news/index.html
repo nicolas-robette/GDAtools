@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8</span>
       </span>
     </div>
 
@@ -67,24 +67,26 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7.3" id="gdatools-173">GDAtools 1.7.3<a class="anchor" aria-label="anchor" href="#gdatools-173"></a></h2>
+<h2 class="page-header" data-toc-text="1.8" id="gdatools-18">GDAtools 1.8<a class="anchor" aria-label="anchor" href="#gdatools-18"></a></h2>
 <div class="section level3">
-<h3 id="new-functions-1-7-3">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-7-3"></a></h3>
+<h3 id="new-functions-1-8">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-8"></a></h3>
 <ul><li>
-<code><a href="../reference/quadrant.html">quadrant()</a></code>: Computes the quadrant of active individuals
-in a given space of a MCA.</li>
+<code><a href="../reference/ijunk.html">ijunk()</a></code>: Shiny app to select interactively the junk categories before a specific MCA.</li>
+<li>
+<code><a href="../reference/quadrant.html">quadrant()</a></code>: Computes the quadrant of active individuals in a given space of a MCA.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="bug-fixes-1-7-3">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-7-3"></a></h3>
-<ul><li>bug fix in <code><a href="../reference/speMCA.html">speMCA()</a></code>, <code><a href="../reference/csMCA.html">csMCA()</a></code> and
-<code><a href="../reference/getindexcat.html">getindexcat()</a></code> when empty levels or non-factor vectors in
-the data</li>
+<h3 id="bug-fixes-1-8">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8"></a></h3>
+<ul><li>bug fix in <code><a href="../reference/speMCA.html">speMCA()</a></code>, <code><a href="../reference/csMCA.html">csMCA()</a></code> and <code><a href="../reference/getindexcat.html">getindexcat()</a></code> when empty levels or non-factor vectors in the data</li>
 <li>bug fix in <code><a href="../reference/indsup.html">indsup()</a></code> : supdata can now be a tibble</li>
+<li>bug fix in <code><a href="../reference/assoc.yx.html">assoc.yx()</a></code> : integers are now allowed for y; empty levels are dropped in x</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-existing-functions-1-7-3">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-7-3"></a></h3>
+<h3 id="changes-in-existing-functions-1-8">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-8"></a></h3>
 <ul><li>
-<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : new best option</li>
+<code><a href="../reference/speMCA.html">speMCA()</a></code> and <code><a href="../reference/csMCA.html">csMCA()</a></code> : junk categories can now be specified as a character vector</li>
+<li>
+<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : new “best” option</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -100,14 +102,12 @@ the data</li>
 <div class="section level3">
 <h3 id="new-functions-1-7-1">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-7-1"></a></h3>
 <ul><li>
-<code><a href="../reference/angles.csa.html">angles.csa()</a></code>: Computes the cosines similarities and
-angles between the dimensions of a CSA and those of a MCA.</li>
+<code><a href="../reference/angles.csa.html">angles.csa()</a></code>: Computes the cosines similarities and angles between the dimensions of a CSA and those of a MCA.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-7-1">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-7-1"></a></h3>
 <ul><li>bug fix with vignettes</li>
-<li>bug fix with NA values in <code><a href="../reference/dichotom.html">dichotom()</a></code> (thanks to
-<a href="https://github.com/juba" class="external-link">@juba</a>)</li>
+<li>bug fix with NA values in <code><a href="../reference/dichotom.html">dichotom()</a></code> (thanks to <a href="https://github.com/juba" class="external-link">@juba</a>)</li>
 <li>bug fix with dim option in <code><a href="../reference/dimdescr.html">dimdescr()</a></code>
 </li>
 </ul></div>
@@ -116,8 +116,7 @@ angles between the dimensions of a CSA and those of a MCA.</li>
 <ul><li>
 <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : PEM are no longer computed.</li>
 <li>
-<code><a href="../reference/ggadd_supvar.html">ggadd_supvar()</a></code> : for shapes, a value of 0 is mapped to
-a size of 0 and new shapesize option (as suggested by <a href="https://github.com/osturnus" class="external-link">@osturnus</a>)</li>
+<code><a href="../reference/ggadd_supvar.html">ggadd_supvar()</a></code> : for shapes, a value of 0 is mapped to a size of 0 and new shapesize option (as suggested by <a href="https://github.com/osturnus" class="external-link">@osturnus</a>)</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -125,175 +124,119 @@ a size of 0 and new shapesize option (as suggested by <a href="https://github.co
 <div class="section level3">
 <h3 id="new-functions-1-7">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-7"></a></h3>
 <ul><li>
-<code><a href="../reference/ggadd_density.html">ggadd_density()</a></code>: adds a density layer to the cloud of
-individuals for a category of a supplementary variable</li>
+<code><a href="../reference/ggadd_density.html">ggadd_density()</a></code>: adds a density layer to the cloud of individuals for a category of a supplementary variable</li>
 <li>
-<code><a href="../reference/ggadd_corr.html">ggadd_corr()</a></code>: adds a heatmap of
-under/over-representation of a supplementary variable to a cloud of
-individuals</li>
+<code><a href="../reference/ggadd_corr.html">ggadd_corr()</a></code>: adds a heatmap of under/over-representation of a supplementary variable to a cloud of individuals</li>
 <li>
-<code><a href="../reference/ggadd_kellipses.html">ggadd_kellipses()</a></code> : adds concentration ellipses to a
-cloud of individuals, using ggplot</li>
+<code><a href="../reference/ggadd_kellipses.html">ggadd_kellipses()</a></code> : adds concentration ellipses to a cloud of individuals, using ggplot</li>
 <li>
-<code><a href="../reference/ggadd_chulls.html">ggadd_chulls()</a></code> : adds convex hulls to a cloud of
-individuals, using ggplot</li>
+<code><a href="../reference/ggadd_chulls.html">ggadd_chulls()</a></code> : adds convex hulls to a cloud of individuals, using ggplot</li>
 <li>
-<code><a href="../reference/ggassoc_crosstab.html">ggassoc_crosstab()</a></code> : plots counts and associations of a
-crosstabulation, using ggplot</li>
+<code><a href="../reference/ggassoc_crosstab.html">ggassoc_crosstab()</a></code> : plots counts and associations of a crosstabulation, using ggplot</li>
 <li>
-<code><a href="../reference/ggassoc_phiplot.html">ggassoc_phiplot()</a></code> : bar plot of phi measures of
-association of a crosstabulation, using ggplot</li>
+<code><a href="../reference/ggassoc_phiplot.html">ggassoc_phiplot()</a></code> : bar plot of phi measures of association of a crosstabulation, using ggplot</li>
 <li>
-<code><a href="../reference/ggassoc_boxplot.html">ggassoc_boxplot()</a></code> : displays of boxplot and combines it
-with a violin plot, using ggplot</li>
+<code><a href="../reference/ggassoc_boxplot.html">ggassoc_boxplot()</a></code> : displays of boxplot and combines it with a violin plot, using ggplot</li>
 <li>
-<code><a href="../reference/ggassoc_scatter.html">ggassoc_scatter()</a></code> : scatter plot with a smoothing line,
-using ggplot</li>
+<code><a href="../reference/ggassoc_scatter.html">ggassoc_scatter()</a></code> : scatter plot with a smoothing line, using ggplot</li>
 <li>
-<code><a href="../reference/dimdescr.html">dimdescr()</a></code> : works with <code><a href="../reference/condesc.html">condesc()</a></code> instead
-of <code><a href="https://rdrr.io/pkg/FactoMineR/man/condes.html" class="external-link">FactoMineR::condes()</a></code> and takes row weights into
-account.</li>
+<code><a href="../reference/dimdescr.html">dimdescr()</a></code> : works with <code><a href="../reference/condesc.html">condesc()</a></code> instead of <code><a href="https://rdrr.io/pkg/FactoMineR/man/condes.html" class="external-link">FactoMineR::condes()</a></code> and takes row weights into account.</li>
 <li>
-<code><a href="../reference/dimtypicality.html">dimtypicality()</a></code> : computes typicality tests for
-supplementary variables</li>
+<code><a href="../reference/dimtypicality.html">dimtypicality()</a></code> : computes typicality tests for supplementary variables</li>
 <li>
-<code><a href="../reference/ggadd_attractions.html">ggadd_attractions()</a></code> : adds attractions between
-categories (via segments) to a cloud of variables</li>
+<code><a href="../reference/ggadd_attractions.html">ggadd_attractions()</a></code> : adds attractions between categories (via segments) to a cloud of variables</li>
 <li>
-<code><a href="../reference/ggadd_supind.html">ggadd_supind()</a></code> : adds supplementary individuals to a
-cloud of individuals, using ggplot</li>
+<code><a href="../reference/ggadd_supind.html">ggadd_supind()</a></code> : adds supplementary individuals to a cloud of individuals, using ggplot</li>
 <li>
-<code><a href="../reference/flip.mca.html">flip.mca()</a></code> : flips the coordinates of the individuals
-and the categories on one or more dimensions of a MCA</li>
+<code><a href="../reference/flip.mca.html">flip.mca()</a></code> : flips the coordinates of the individuals and the categories on one or more dimensions of a MCA</li>
 </ul></div>
 <div class="section level3">
 <h3 id="removed-functions--1-7">Removed functions :<a class="anchor" aria-label="anchor" href="#removed-functions--1-7"></a></h3>
 <ul><li>
-<code>dimdesc.MCA()</code> : replaced by
-<code><a href="../reference/dimdescr.html">dimdescr()</a></code>
+<code>dimdesc.MCA()</code> : replaced by <code><a href="../reference/dimdescr.html">dimdescr()</a></code>
 </li>
 <li>
-<code>dimvtest()</code> : use <code><a href="../reference/dimtypicality.html">dimtypicality()</a></code>
-instead</li>
+<code>dimvtest()</code> : use <code><a href="../reference/dimtypicality.html">dimtypicality()</a></code> instead</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-7">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-7"></a></h3>
 <ul><li>
-<code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : the density of points can be
-represented as an additional layer through contours or hexagon bins</li>
+<code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : the density of points can be represented as an additional layer through contours or hexagon bins</li>
 <li>
-<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : allow
-weights</li>
+<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : allow weights</li>
 <li>
-<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : new nperm and
-distrib options</li>
+<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : new nperm and distrib options</li>
 <li>
-<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : new robust
-option</li>
+<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : new robust option</li>
 <li>
-<code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code>, <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> and
-<code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> : nperm option is set to NULL by
-default</li>
+<code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code>, <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> and <code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> : nperm option is set to NULL by default</li>
 <li>
 <code><a href="../reference/darma.html">darma()</a></code> : nperm is set to 100 by default</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> and <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> :
-a few changes in the theme (grids are removed, etc.)</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> and <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : a few changes in the theme (grids are removed, etc.)</li>
 <li>
-<code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> and <code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code> : new
-size option</li>
+<code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> and <code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code> : new size option</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : new min.ctr option to filter
-categories according to their contribution (for objects of class MCA,
-speMCA and csMCA)</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : new min.ctr option to filter categories according to their contribution (for objects of class MCA, speMCA and csMCA)</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : new max.pval option to filter
-categories according to the p-value derived from their test-value (for
-objects of class stMCA and multiMCA)</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : new max.pval option to filter categories according to the p-value derived from their test-value (for objects of class stMCA and multiMCA)</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : prop argument can take values
-“vtest1” and “vtest2”</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : prop argument can take values “vtest1” and “vtest2”</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : for shapes and colors, variables
-are used in their order of appearance in the data instead of
-alphabetical order</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : for shapes and colors, variables are used in their order of appearance in the data instead of alphabetical order</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : new face argument to use font
-face to identify the most contributing categories</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : new face argument to use font face to identify the most contributing categories</li>
 <li>
-<code><a href="../reference/homog.test.html">homog.test()</a></code> : gives the p-values in addition to the
-test statistics</li>
+<code><a href="../reference/homog.test.html">homog.test()</a></code> : gives the p-values in addition to the test statistics</li>
 <li>
-<code><a href="../reference/dimeta2.html">dimeta2()</a></code> : l argument renamed to vars and n argument
-removed</li>
+<code><a href="../reference/dimeta2.html">dimeta2()</a></code> : l argument renamed to vars and n argument removed</li>
 <li>
-<code><a href="../reference/varsup.html">varsup()</a></code> : also computes typicality tests and
-correlation coefficients</li>
+<code><a href="../reference/varsup.html">varsup()</a></code> : also computes typicality tests and correlation coefficients</li>
 <li>
-<code><a href="../reference/conc.ellipse.html">conc.ellipse()</a></code> : several kinds of inertia ellipses can
-be plotted thanks to the kappa option</li>
+<code><a href="../reference/conc.ellipse.html">conc.ellipse()</a></code> : several kinds of inertia ellipses can be plotted thanks to the kappa option</li>
 <li>
-<code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code> : level is set to 0.05 by default,
-which corresponds to conventional confidence ellipses. Option ‘points’
-to choose to color the points or not.</li>
+<code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code> : level is set to 0.05 by default, which corresponds to conventional confidence ellipses. Option ‘points’ to choose to color the points or not.</li>
 <li>
 <code><a href="../reference/modif.rate.html">modif.rate()</a></code> : computes raw and modified rates</li>
 <li>
 <code><a href="../reference/homog.test.html">homog.test()</a></code> : new dim argument</li>
 <li>
-<code><a href="../reference/modif.rate.html">modif.rate()</a></code> : compatibility with objects of class MCA,
-speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/modif.rate.html">modif.rate()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : compatibility with objects of
-class MCA, speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : compatibility with objects of class
-MCA, speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/ggadd_supvar.html">ggadd_supvar()</a></code> : compatibility with objects of class
-MCA, speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/ggadd_supvar.html">ggadd_supvar()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/ggadd_interaction.html">ggadd_interaction()</a></code> : compatibility with objects of
-class MCA, speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/ggadd_interaction.html">ggadd_interaction()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/dimeta2.html">dimeta2()</a></code> : compatibility with objects of class MCA,
-speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/dimeta2.html">dimeta2()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/dimcontrib.html">dimcontrib()</a></code> : compatibility with objects of class MCA,
-speMCA and csMCA</li>
+<code><a href="../reference/dimcontrib.html">dimcontrib()</a></code> : compatibility with objects of class MCA, speMCA and csMCA</li>
 <li>
-<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : compatibility with objects of class MCA,
-speMCA and csMCA</li>
+<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : compatibility with objects of class MCA, speMCA and csMCA</li>
 <li>
-<code><a href="../reference/homog.test.html">homog.test()</a></code> : compatibility with objects of class MCA,
-speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/homog.test.html">homog.test()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/varsup.html">varsup()</a></code> : compatibility with objects of class MCA,
-speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/varsup.html">varsup()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/ggadd_chulls.html">ggadd_chulls()</a></code> : compatibility with objects of class
-MCA, speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/ggadd_chulls.html">ggadd_chulls()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/ggadd_corr.html">ggadd_corr()</a></code> : compatibility with objects of class MCA,
-speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/ggadd_corr.html">ggadd_corr()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/ggadd_density.html">ggadd_density()</a></code> : compatibility with objects of class
-MCA, speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/ggadd_density.html">ggadd_density()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code> : compatibility with objects of class
-MCA, speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/ggadd_kellipses.html">ggadd_kellipses()</a></code> : compatibility with objects of class
-MCA, speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/ggadd_kellipses.html">ggadd_kellipses()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-7">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-7"></a></h3>
 <ul><li>
-<code><a href="../reference/csMCA.html">csMCA()</a></code>, <code><a href="../reference/speMCA.html">speMCA()</a></code> and
-<code><a href="../reference/translate.logit.html">translate.logit()</a></code> : now work with tibbles</li>
+<code><a href="../reference/csMCA.html">csMCA()</a></code>, <code><a href="../reference/speMCA.html">speMCA()</a></code> and <code><a href="../reference/translate.logit.html">translate.logit()</a></code> : now work with tibbles</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : now works when shapes=TRUE and
-there are many variables</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : now works when shapes=TRUE and there are many variables</li>
 <li>
 <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : bug fix for empty cells</li>
 <li>
@@ -305,42 +248,31 @@ there are many variables</li>
 <div class="section level3">
 <h3 id="new-functions-1-6">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-6"></a></h3>
 <ul><li>
-<code><a href="../reference/phi.table.html">phi.table()</a></code> : computes phi coefficient for every cells
-of a contingency table</li>
+<code><a href="../reference/phi.table.html">phi.table()</a></code> : computes phi coefficient for every cells of a contingency table</li>
 <li>
-<code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code> : measures the association between two
-continuous variables with Pearson, Spearman and Kendall correlations and
-a permutation test.</li>
+<code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code> : measures the association between two continuous variables with Pearson, Spearman and Kendall correlations and a permutation test.</li>
 <li>
-<code><a href="../reference/assoc.yx.html">assoc.yx()</a></code> : computes bivariate association measures
-between a response and predictor variables</li>
+<code><a href="../reference/assoc.yx.html">assoc.yx()</a></code> : computes bivariate association measures between a response and predictor variables</li>
 <li>
-<code><a href="../reference/darma.html">darma()</a></code> : computes bivariate association measures
-between a response and predictor variables, displaying results in a form
-looking like the summary of a regression model analysis.</li>
+<code><a href="../reference/darma.html">darma()</a></code> : computes bivariate association measures between a response and predictor variables, displaying results in a form looking like the summary of a regression model analysis.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-6">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-6"></a></h3>
 <ul><li>
 <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : bug fix with warning</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : bug fix when <code>prop</code>
-not NULL.</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : bug fix when <code>prop</code> not NULL.</li>
 <li>
 <code><a href="../reference/pem.html">pem()</a></code> : bug fix with NA values</li>
 <li>
-<code><a href="../reference/translate.logit.html">translate.logit()</a></code> : results for multinomial models were
-instable</li>
+<code><a href="../reference/translate.logit.html">translate.logit()</a></code> : results for multinomial models were instable</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-6">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-6"></a></h3>
 <ul><li>
-<code><a href="../reference/wtable.html">wtable()</a></code> : can compute percentages
-(<code>prop.wtable()</code> is removed)</li>
+<code><a href="../reference/wtable.html">wtable()</a></code> : can compute percentages (<code>prop.wtable()</code> is removed)</li>
 <li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : Cramer’s V instead of V-squared,
-permutation p-values, Pearson residuals, percentage of maximum deviation
-from independence, summary data frame</li>
+<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : Cramer’s V instead of V-squared, permutation p-values, Pearson residuals, percentage of maximum deviation from independence, summary data frame</li>
 <li>
 <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : better handling of NAs</li>
 <li>
@@ -350,12 +282,8 @@ from independence, summary data frame</li>
 <li>
 <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : improved color management</li>
 <li>
-<code><a href="../reference/pem.html">pem()</a></code> : one can choose to sort rows and columns or
-not</li>
-<li>weights are allowed in functions <code><a href="../reference/phi.table.html">phi.table()</a></code>,
-<code><a href="../reference/pem.html">pem()</a></code>, <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code>,
-<code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code>, <code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> and
-<code><a href="../reference/assoc.yx.html">assoc.yx()</a></code>
+<code><a href="../reference/pem.html">pem()</a></code> : one can choose to sort rows and columns or not</li>
+<li>weights are allowed in functions <code><a href="../reference/phi.table.html">phi.table()</a></code>, <code><a href="../reference/pem.html">pem()</a></code>, <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code>, <code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code>, <code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> and <code><a href="../reference/assoc.yx.html">assoc.yx()</a></code>
 </li>
 </ul></div>
 </div>
@@ -364,34 +292,23 @@ not</li>
 <div class="section level3">
 <h3 id="new-functions-1-5">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-5"></a></h3>
 <ul><li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code>: measures the association between two
-categorical variables</li>
+<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code>: measures the association between two categorical variables</li>
 <li>
-<code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code>: measures the association between a
-categorical variable and a continuous variable</li>
+<code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code>: measures the association between a categorical variable and a continuous variable</li>
 <li>
-<code><a href="../reference/catdesc.html">catdesc()</a></code>: measures the association between a
-categorical variable and some continuous and/or categorical
-variables</li>
+<code><a href="../reference/catdesc.html">catdesc()</a></code>: measures the association between a categorical variable and some continuous and/or categorical variables</li>
 <li>
-<code><a href="../reference/condesc.html">condesc()</a></code>: measures the association between a
-continuous variable and some continuous and/or categorical
-variables</li>
+<code><a href="../reference/condesc.html">condesc()</a></code>: measures the association between a continuous variable and some continuous and/or categorical variables</li>
 <li>
-<code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code>: cloud of individuals, using
-ggplot</li>
+<code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code>: cloud of individuals, using ggplot</li>
 <li>
-<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code>: cloud of variables, using
-ggplot</li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code>: cloud of variables, using ggplot</li>
 <li>
-<code><a href="../reference/ggadd_supvar.html">ggadd_supvar()</a></code>: adds a supplementary variable to a
-cloud of variables, using ggplot</li>
+<code><a href="../reference/ggadd_supvar.html">ggadd_supvar()</a></code>: adds a supplementary variable to a cloud of variables, using ggplot</li>
 <li>
-<code><a href="../reference/ggadd_interaction.html">ggadd_interaction()</a></code>: adds the interaction between two
-variables to a cloud of variables, using ggplot</li>
+<code><a href="../reference/ggadd_interaction.html">ggadd_interaction()</a></code>: adds the interaction between two variables to a cloud of variables, using ggplot</li>
 <li>
-<code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code>: adds confidence ellipses to a cloud
-of individuals, using ggplot</li>
+<code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code>: adds confidence ellipses to a cloud of individuals, using ggplot</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-5">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-5"></a></h3>
@@ -404,29 +321,22 @@ of individuals, using ggplot</li>
 <div class="section level3">
 <h3 id="new-functions-1-4">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-4"></a></h3>
 <ul><li>
-<code><a href="../reference/translate.logit.html">translate.logit()</a></code>: translates logit models coefficients
-into percentages</li>
+<code><a href="../reference/translate.logit.html">translate.logit()</a></code>: translates logit models coefficients into percentages</li>
 <li>
-<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code>: displays the categories contributing most
-to MCA dimensions</li>
+<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code>: displays the categories contributing most to MCA dimensions</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-4">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-4"></a></h3>
 <ul><li>
-<code><a href="../reference/varsup.html">varsup()</a></code>: with csMCA, the length of variable argument
-can be equal to the size of the cloud or the subcloud</li>
+<code><a href="../reference/varsup.html">varsup()</a></code>: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud</li>
 <li>
-<code><a href="../reference/textvarsup.html">textvarsup()</a></code>: with csMCA, the length of variable
-argument can be equal to the size of the cloud or the subcloud</li>
+<code><a href="../reference/textvarsup.html">textvarsup()</a></code>: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud</li>
 <li>
-<code><a href="../reference/conc.ellipse.html">conc.ellipse()</a></code>: with csMCA, the length of variable
-argument can be equal to the size of the cloud or the subcloud</li>
+<code><a href="../reference/conc.ellipse.html">conc.ellipse()</a></code>: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud</li>
 <li>
-<code><a href="../reference/plot.multiMCA.html">plot.multiMCA()</a></code>: <code>threshold</code> argument, aimed
-at selecting the categories most associated to axes</li>
+<code><a href="../reference/plot.multiMCA.html">plot.multiMCA()</a></code>: <code>threshold</code> argument, aimed at selecting the categories most associated to axes</li>
 <li>
-<code><a href="../reference/plot.stMCA.html">plot.stMCA()</a></code>: <code>threshold</code> argument, aimed at
-selecting the categories most associated to axes</li>
+<code><a href="../reference/plot.stMCA.html">plot.stMCA()</a></code>: <code>threshold</code> argument, aimed at selecting the categories most associated to axes</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -439,8 +349,7 @@ selecting the categories most associated to axes</li>
 <div class="section level3">
 <h3 id="bug-fixes-1-3">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-3"></a></h3>
 <ul><li>
-<code>dimdesc.MCA()</code>: problem of compatibility next to a
-FactoMineR update</li>
+<code>dimdesc.MCA()</code>: problem of compatibility next to a FactoMineR update</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -448,8 +357,7 @@ FactoMineR update</li>
 <div class="section level3">
 <h3 id="new-functions-1-2">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-2"></a></h3>
 <ul><li>
-<code>dimvtest()</code>: computes test-values for supplementary
-variables</li>
+<code>dimvtest()</code>: computes test-values for supplementary variables</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-2">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-2"></a></h3>
@@ -462,31 +370,24 @@ variables</li>
 <div class="section level3">
 <h3 id="new-functions-1-1">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-1"></a></h3>
 <ul><li>
-<code><a href="../reference/wtable.html">wtable()</a></code>: works as <code><a href="https://rdrr.io/r/base/table.html" class="external-link">table()</a></code> but allows
-weights and shows NAs as default</li>
+<code><a href="../reference/wtable.html">wtable()</a></code>: works as <code><a href="https://rdrr.io/r/base/table.html" class="external-link">table()</a></code> but allows weights and shows NAs as default</li>
 <li>
-<code>prop.wtable()</code>: works as <code><a href="https://rdrr.io/r/base/proportions.html" class="external-link">prop.table()</a></code> but
-allows weights and shows NAs as default</li>
+<code>prop.wtable()</code>: works as <code><a href="https://rdrr.io/r/base/proportions.html" class="external-link">prop.table()</a></code> but allows weights and shows NAs as default</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-1">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-1"></a></h3>
 <ul><li>
-<code><a href="../reference/multiMCA.html">multiMCA()</a></code>: RV computation is now an option, with FALSE
-as default, which makes the function execute faster</li>
+<code><a href="../reference/multiMCA.html">multiMCA()</a></code>: RV computation is now an option, with FALSE as default, which makes the function execute faster</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-1">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-1"></a></h3>
 <ul><li>
-<code><a href="../reference/textvarsup.html">textvarsup()</a></code>: there was an error with the supplementary
-variable labels when <code>resmca</code> was of class
-<code>csMCA</code>.</li>
+<code><a href="../reference/textvarsup.html">textvarsup()</a></code>: there was an error with the supplementary variable labels when <code>resmca</code> was of class <code>csMCA</code>.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="error-fixes-1-1">Error fixes<a class="anchor" aria-label="anchor" href="#error-fixes-1-1"></a></h3>
 <ul><li>
-<code><a href="../reference/textvarsup.html">textvarsup()</a></code>: plots supplementary variables on the
-cloud of categories (and not the cloud of individuals as it was
-mentioned in help).</li>
+<code><a href="../reference/textvarsup.html">textvarsup()</a></code>: plots supplementary variables on the cloud of categories (and not the cloud of individuals as it was mentioned in help).</li>
 </ul></div>
 </div>
   </div>
@@ -499,13 +400,11 @@ mentioned in help).</li>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://github.com/nicolas-robette" class="external-link">Nicolas
-Robette</a>.</p>
+  <p></p><p>Developed by <a href="https://github.com/nicolas-robette" class="external-link">Nicolas Robette</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

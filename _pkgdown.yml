@@ -15,6 +15,7 @@ reference:
   - csMCA
   - multiMCA
   - stMCA
+  - ijunk
   
 - title: Interpreting MCA
 - desc: Tools to help for the interpretation of a MCA
@@ -29,6 +30,8 @@ reference:
   - homog.test
   - varsup
   - indsup
+  - quadrant
+  - angles.csa
   
 - title: Plotting MCA
 - desc: Plotting tools for MCA
@@ -76,10 +79,8 @@ reference:
   - burt
   - dichotom
   - flip.mca
-  - angles.csa
   - getindexcat
   - medoids
-  - quadrant
   - translate.logit
   
 - title: Datasets
