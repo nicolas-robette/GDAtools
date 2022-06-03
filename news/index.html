@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8</span>
       </span>
     </div>
 
@@ -67,20 +67,27 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7.3" id="gdatools-173">GDAtools 1.7.3<a class="anchor" aria-label="anchor" href="#gdatools-173"></a></h2>
+<h2 class="page-header" data-toc-text="1.8" id="gdatools-18">GDAtools 1.8<a class="anchor" aria-label="anchor" href="#gdatools-18"></a></h2>
 <div class="section level3">
-<h3 id="new-functions-1-7-3">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-7-3"></a></h3>
+<h3 id="new-functions-1-8">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-8"></a></h3>
 <ul><li>
-<code><a href="../reference/quadrant.html">quadrant()</a></code>: Computes the quadrant of active individuals in a given space of a MCA.</li></ul></div>
-<div class="section level3">
-<h3 id="bug-fixes-1-7-3">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-7-3"></a></h3>
-<ul><li>bug fix in <code><a href="../reference/speMCA.html">speMCA()</a></code>, <code><a href="../reference/csMCA.html">csMCA()</a></code> and <code><a href="../reference/getindexcat.html">getindexcat()</a></code> when empty levels or non-factor vectors in the data</li>
-<li>bug fix in <code><a href="../reference/indsup.html">indsup()</a></code> : supdata can now be a tibble</li>
+<code><a href="../reference/ijunk.html">ijunk()</a></code>: Shiny app to select interactively the junk categories before a specific MCA.</li>
+<li>
+<code><a href="../reference/quadrant.html">quadrant()</a></code>: Computes the quadrant of active individuals in a given space of a MCA.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="changes-in-existing-functions-1-7-3">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-7-3"></a></h3>
+<h3 id="bug-fixes-1-8">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8"></a></h3>
+<ul><li>bug fix in <code><a href="../reference/speMCA.html">speMCA()</a></code>, <code><a href="../reference/csMCA.html">csMCA()</a></code> and <code><a href="../reference/getindexcat.html">getindexcat()</a></code> when empty levels or non-factor vectors in the data</li>
+<li>bug fix in <code><a href="../reference/indsup.html">indsup()</a></code> : supdata can now be a tibble</li>
+<li>bug fix in <code><a href="../reference/assoc.yx.html">assoc.yx()</a></code> : integers are now allowed for y; empty levels are dropped in x</li>
+</ul></div>
+<div class="section level3">
+<h3 id="changes-in-existing-functions-1-8">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-8"></a></h3>
 <ul><li>
-<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : new best option</li></ul></div>
+<code><a href="../reference/speMCA.html">speMCA()</a></code> and <code><a href="../reference/csMCA.html">csMCA()</a></code> : junk categories can now be specified as a character vector</li>
+<li>
+<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : new “best” option</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.7.2" id="gdatools-172">GDAtools 1.7.2<small>2022-02-22</small><a class="anchor" aria-label="anchor" href="#gdatools-172"></a></h2>
