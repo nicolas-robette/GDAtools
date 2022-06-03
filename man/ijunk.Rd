@@ -24,7 +24,7 @@
 }
 
 \examples{
-# NOT RUN {
+\dontrun{
 data(Music)
 ijunk(Music[,1:5])
 # or
@@ -33,7 +33,7 @@ junk <- ijunk(Music[,1:5])
 junk <- ijunk(Music[,1:5], init_junk = c("Rock.NA", "Rap.NA"))
 # and then
 mca <- speMCA(Music[,1:5], excl = junk)
-# }
+}
 }
 
 \keyword{ multivariate }
