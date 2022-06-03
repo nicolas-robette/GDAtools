@@ -5,16 +5,18 @@ assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nper
   xformats <- sapply(x,class)
   yformat <- class(y)
   
+  x <- droplevels(x)
+  
   res <- list()
   for(i in 1:ncol(x)) {
     # print(i)
-    if(yformat=='numeric' & xformats[i] %in% c('numeric','integer')) {
+    if(yformat %in% c('numeric','integer') & xformats[i] %in% c('numeric','integer')) {
       z <- GDAtools::assoc.twocont(y, x[,i], weights=weights, nperm=nperm, distrib=distrib)
       measure = twocont
       association = z[,twocont][1]
       permutation.pvalue = z[,twocont][2]
     }
-    if(yformat=='numeric' & xformats[i]=='factor') {
+    if(yformat %in% c('numeric','integer') & xformats[i]=='factor') {
       z <- GDAtools::assoc.catcont(x[,i], y, weights=weights, nperm=nperm, distrib=distrib)
       measure='Eta2'
       association = z$eta.squared

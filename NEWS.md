@@ -9,11 +9,12 @@
 
 * bug fix in `speMCA()`, `csMCA()` and `getindexcat()` when empty levels or non-factor vectors in the data
 * bug fix in `indsup()` : supdata can now be a tibble
+* bug fix in `assoc.yx()` : integers are now allowed for y; empty levels are dropped in x
 
 ## Changes in existing functions
 
 * `speMCA()` and `csMCA()` : junk categories can now be specified as a character vector
-* `tabcontrib()` : new best option
+* `tabcontrib()` : new "best" option
 
 
 
