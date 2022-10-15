@@ -4,6 +4,7 @@
 
 * `ijunk()`: Shiny app to select interactively the junk categories before a specific MCA.
 * `quadrant()`: Computes the quadrant of active individuals in a given space of a MCA.
+* `oddsratio.table()`: Computes the odds ratio for every cell in a contingency table. 
 
 ## Bug fixes
 
@@ -15,6 +16,12 @@
 
 * `speMCA()` and `csMCA()` : junk categories can now be specified as a character vector
 * `tabcontrib()` : new "best" option
+* `assoc.twocat()` : odds ratios are computed. "gather" object has columns for margins frequencies and percentages. Pearson residuals are standardized.
+* `ggassoc_crosstab()` : new palette and direction options
+
+## Other
+
+* Removed dependency to ??? package
 
 
 

@@ -1,4 +1,4 @@
-import(wdm,MASS,FactoMineR,nleqslv,nnet,ggplot2,ggrepel,RColorBrewer,shiny,rclipboard)
+import(wdm,MASS,nleqslv,nnet,ggplot2,ggrepel,RColorBrewer,shiny,rclipboard)
 
   importFrom("grDevices", "col2rgb", "rainbow", "rgb")
   importFrom("graphics", "abline", "lines", "plot", "points", "text")
@@ -9,7 +9,8 @@ import(wdm,MASS,FactoMineR,nleqslv,nnet,ggplot2,ggrepel,RColorBrewer,shiny,rclip
              "pnorm",
              "density")
   importFrom("utils", "installed.packages", "combn")
-  importFrom("rlang", ".data", "as_name")
+  importFrom("FactoMineR", "PCA", "coeffRV")
+  importFrom("rlang", ".data", "as_name", "eval_tidy")
   importFrom("miniUI", "miniContentPanel", "miniPage", "gadgetTitleBar")
   importFrom("esquisse", "dragulaInput", "updateDragulaInput")
 
@@ -20,4 +21,4 @@ S3method(plot, stMCA)
 
 export(angles.csa,assoc.twocat,assoc.catcont,assoc.twocont,assoc.yx,burt,catdesc,conc.ellipse,condesc,contrib,csMCA,darma,dichotom,dimcontrib,dimdescr,dimeta2,dimtypicality,flip.mca,getindexcat,
        ggadd_attractions,ggadd_chulls,ggadd_corr,ggadd_density,ggadd_ellipses,ggadd_interaction,ggadd_kellipses,ggadd_supind,ggadd_supvar,ggassoc_crosstab,ggassoc_phiplot,ggassoc_boxplot,ggassoc_scatter,ggcloud_indiv,ggcloud_variables,
-       homog.test,ijunk,indsup,medoids,modif.rate,multiMCA,pem,phi.table,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,quadrant,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,wtable)
+       homog.test,ijunk,indsup,medoids,modif.rate,multiMCA,oddsratio.table,pem,phi.table,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,quadrant,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,wtable)

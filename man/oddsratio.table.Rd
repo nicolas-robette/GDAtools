@@ -1,12 +1,12 @@
-\name{phi.table}
-\alias{phi.table}
+\name{oddsratio.table}
+\alias{oddsratio.table}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Computes the phi coefficient for every cells of a contingency table}
+\title{Computes the odds ratios for every cells of a contingency table}
 \description{
-Computes the phi coefficient for every cells of the cross-tabulation between two categorical variables
+Computes the odds ratio for every cells of the cross-tabulation between two categorical variables
 }
 \usage{
-phi.table(x,y,weights=rep(1,length(x)),digits=3)
+oddsratio.table(x,y,weights=rep(1,length(x)),digits=3)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -17,11 +17,9 @@ phi.table(x,y,weights=rep(1,length(x)),digits=3)
 }
 
 \value{
-A table with the phi coefficients
+A table with the odds ratios
 }
-\references{
-Rakotomalala R., 'Comprendre la taille d'effet (effect size)', http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf
-}
+
 \author{Nicolas Robette}
 
 \seealso{
@@ -29,7 +27,7 @@ Rakotomalala R., 'Comprendre la taille d'effet (effect size)', http://eric.univ-
 }
 \examples{
 data(Music)
-phi.table(Music$Jazz,Music$Age)
+oddsratio.table(Music$Jazz,Music$Age)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

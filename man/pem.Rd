@@ -14,7 +14,7 @@ pem(x,y,weights=rep(1,length(x)),digits=1,sort=TRUE)
   \item{x}{the first categorical variable}
   \item{y}{the second categorical variable}
   \item{weights}{an optional numeric vector of weights (by default, a vector of 1 for uniform weights)}
-  \item{digits}{integer. The number of digits (default is 3).}
+  \item{digits}{integer. The number of digits (default is 1). If NULL, the results are not rounded.}
   \item{sort}{logical. Whether rows and columns are sorted according to a correspondence analysis or not (default is TRUE).}
 }
 
