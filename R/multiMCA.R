@@ -1,16 +1,8 @@
-#library(GDAtools)
-#library(FactoMineR)
-#data(Taste)
-#mca1 <- speMCA(Taste[,1:5],excl=c(3,6,9,12,15))
-#mca2 <- speMCA(Taste[,6:11],excl=c(3,6,9,12,15,18))
-#l_mca = list(mca1,mca2)
-#ncp=5
-
 multiMCA <- function(l_mca,ncp=5,compute.rv=FALSE) {
   co <- data.frame(lapply(l_mca,function(x) x$ind$coord/x$eig[[1]][1]))
   if(attr(l_mca[[1]],'class')[1] %in% c('MCA','speMCA')) wt <- l_mca[[1]]$call$row.w
   if(attr(l_mca[[1]],'class')[1] == 'csMCA') wt <- l_mca[[1]]$call$row.w[l_mca[[1]]$call$subcloud]
-  afm <- PCA(co,scale.unit=FALSE,row.w=wt,ncp=ncp,graph=FALSE)
+  afm <- FactoMineR::PCA(co,scale.unit=FALSE,row.w=wt,ncp=ncp,graph=FALSE)
   afm$call$row.w <- wt
   attr(afm,'class') <- c('multiMCA','list')
   ngroups <- length(l_mca)
@@ -43,19 +35,18 @@ multiMCA <- function(l_mca,ncp=5,compute.rv=FALSE) {
   colnames(correl) <- paste('Dim',1:ncp,sep='.')
   afm$group <- list(contrib=round(contrib,2),correl=round(correl,3))
   afm$call$ngroups <- ngroups
-  #afm$eig <- as.list(afm$eig)
   l <- lapply(l_mca,function(x) x$ind$coord)
   l[[length(l)+1]] <- afm$ind$coord
-  if(compute.rv==TRUE) { #new
+  if(compute.rv==TRUE) {
       rv <- matrix(0,nrow=length(l),ncol=length(l))
       for(i in 2:length(l)) {
-	for(j in 1:(i-1)) rv[i,j] <- coeffRV(l[[i]],l[[j]])$rv
+	for(j in 1:(i-1)) rv[i,j] <- FactoMineR::coeffRV(l[[i]],l[[j]])$rv
 	}
       rv <- rv+t(rv)
       diag(rv) <- 1
       rownames(rv) <- c(paste('mca',1:length(l_mca),sep=''),'mfa')
       colnames(rv) <- rownames(rv)
       afm$RV <- rv
-      } # new
+      }
   return(afm)
   }
