@@ -14,7 +14,7 @@ ggcloud_indiv <- function(resmca, type='i', points='all', axes=1:2, col='dodgerb
   
   if(type=='i' & is.character(col)) p <- ggplot2::ggplot(icoord, ggplot2::aes(x = .data$axeX, y = .data$axeY)) +  
                                          ggplot2::geom_point(size = size, alpha = alpha, colour = col) + 
-                                         ggplot2::guides(colour = FALSE)
+                                         ggplot2::guides(colour = "none")
   
   if(type=='i' & is.factor(col)) {
     p <- ggplot2::ggplot(icoord, ggplot2::aes(x = .data$axeX, y = .data$axeY)) +
@@ -27,7 +27,7 @@ ggcloud_indiv <- function(resmca, type='i', points='all', axes=1:2, col='dodgerb
   
   if(type=='inames' & is.character(col)) {
     p <- ggplot2::ggplot(icoord, ggplot2::aes(x = .data$axeX, y = .data$axeY)) +
-         ggplot2::guides(colour = FALSE)
+         ggplot2::guides(colour = "none")
     if(repel==TRUE) { p <- p + ggrepel::geom_text_repel(label = rownames(icoord), size = size, alpha = alpha, colour = col)
       } else { p <- p + ggplot2::geom_text(label = rownames(icoord), size = size, alpha = alpha, colour = col) }
     }

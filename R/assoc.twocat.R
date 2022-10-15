@@ -1,4 +1,4 @@
-assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nperm=NULL, distrib="asympt") {
+assoc.twocat2 <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nperm=NULL, distrib="asympt") {
 
   # add na level
   if(!is.null(na_value)) {
@@ -30,15 +30,23 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
   rprop <- 100*apply(freq, 2, function(x) 2*x/rowSums(freq))
   cprop <- t(100*apply(freq, 1, function(x) 2*x/colSums(freq)))
 
-  phi <- phi.table(x,y,weights=weights,digits=NULL)
+  phi <- GDAtools::phi.table(X,Y,weights=W,digits=NULL)
+  or <- oddsratio.table(X,Y,weights=W,digits=NULL)
+  pem <- pem(X,Y,weights=W,digits=NULL)
+  peml <- pem$peml
+  pemg <- pem$pemg
   
   expected <- sapply(colSums(t), function(x) x*rowSums(t)/sum(t))
   chi.squared <- sum((t-expected)*(t-expected)/expected)
   cramer.v <- sqrt(chi.squared / (length(x)*(min(nrow(t),ncol(t))-1)))
   expected <- as.table(expected)
   
-  stdres <- (t-expected)/sqrt(expected)
-  stdres <- as.table(stdres)
+  # stdres <- (t-expected)/sqrt(expected)
+  # stdres <- as.table(stdres)
+  old.warn <- options()$warn
+  options(warn = -1)
+  stdres <- as.table(stats::chisq.test(t)$stdres)
+  options(warn = old.warn)
   
   if(!is.null(nperm)) {
     h0distrib <- numeric()
@@ -87,8 +95,30 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
                              cprop=data.frame(prop.table(tab,2))$Freq,
                              expected=data.frame(expected)$Freq,
                              std.residuals=data.frame(stdres)$Freq,
+                             or=data.frame(or)$Freq,
+                             pem=data.frame(peml)$Freq,
                              phi=data.frame(phi)$Freq)
+  
   if(!is.null(ppval)) gather <- cbind.data.frame(gather, perm.pval=data.frame(ppval)$Freq)
+  
+  names(gather)[1:3] <- c("var.x","var.y","freq")
+  
+  t1 <- data.frame(GDAtools::wtable(X, weights = W, mar= FALSE))
+  names(t1) <- c("var.x","freq.x")
+  t2 <- data.frame(GDAtools::wtable(Y, weights = W, mar= FALSE))
+  names(t2) <- c("var.y","freq.y")
+  t3 <- data.frame(prop.table(GDAtools::wtable(X, weights = W, mar= FALSE)))
+  names(t3) <- c("var.x","prop.x")
+  t4 <- data.frame(prop.table(GDAtools::wtable(Y, weights = W, mar= FALSE)))
+  names(t4) <- c("var.y","prop.y")
+  
+  gather <- merge(gather, t1, by = "var.x")
+  gather <- merge(gather, t2, by = "var.y")
+  gather <- merge(gather, t3, by = "var.x")
+  gather <- merge(gather, t4, by = "var.y")
 
-  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected, 'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'pearson.residuals'=stdres, 'phi'=phi, 'phi.perm.pval'=ppval, 'gather'=gather))
+  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected,
+              'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'global.pem'=pemg, 
+              'std.pearson.residuals'=stdres, 'odds.ratios'=or, 'local.pem'=peml, 'phi'=phi, 'phi.perm.pval'=ppval,
+              'gather'=gather))
 }

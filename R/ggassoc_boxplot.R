@@ -1,6 +1,6 @@
 ggassoc_boxplot <- function(data, mapping, axes.labs=TRUE, ticks.labs=TRUE, text.size=3, box=TRUE, notch=FALSE, violin=TRUE) {
-  xVal <- GGally::eval_data_col(data, mapping$x)
-  yVal <- GGally::eval_data_col(data, mapping$y)
+  xVal <- rlang::eval_tidy(mapping$x, data)
+  yVal <- rlang::eval_tidy(mapping$y, data)
   xName <- rlang::as_name(mapping$x)
   yName <- rlang::as_name(mapping$y)
   if(is.numeric(yVal)) {

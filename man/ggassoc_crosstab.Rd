@@ -9,7 +9,8 @@ For a cross-tabulation, plots the number of observations by using rectangles wit
 }
 
 \usage{
-ggassoc_crosstab(data, mapping, max.phi=.8, sort="none", 
+ggassoc_crosstab(data, mapping, max.phi=.8, sort="none",
+palette="PRGn", direction = 1,
 axes.labs=TRUE, ticks.labs=TRUE, text.size=3)
 }
 
@@ -18,6 +19,8 @@ axes.labs=TRUE, ticks.labs=TRUE, text.size=3)
   \item{mapping}{aesthetic being used. It must specify x and y.}
   \item{max.phi}{numeric value, specifying the lower and upper limit of the scale for the color gradient filling the rectangles, i.e. for the phi measures of association. It corresponds to the maximum absolute value of phi one wants to represent in the plot.}
   \item{sort}{character. If "both", rows and columns are sorted according to the first factor of a correspondence analysis of the contingency table. If "x", only rows are sorted. If "y", only columns are sorted. If "none" (default), no sorting is done.}
+  \item{palette}{character. Name of a ColorBrewer diverging palette. Default is PRGn.}
+  \item{direction}{Sets the order of colours in the scale. If 1, the default, colours are as output by RColorBrewer::brewer.pal(). If -1, the order of colours is reversed.}
   \item{axes.labs}{Whether to display the labels of the axes, i.e. the names of x and y. Default is TRUE.}
   \item{ticks.labs}{Whether to display the labels of the categories of x and y. Default is TRUE.}  
   \item{text.size}{Size of the association measure. If NULL, the text is not added to the plot.}  

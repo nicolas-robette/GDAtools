@@ -1,6 +1,6 @@
 ggassoc_phiplot <- function(data, mapping, measure="phi", max.asso=NULL, sort="none", axes.labs=TRUE, ticks.labs=TRUE, text.size=3) {
-  xVal <- GGally::eval_data_col(data, mapping$x)
-  yVal <- GGally::eval_data_col(data, mapping$y)
+  xVal <- rlang::eval_tidy(mapping$x, data)
+  yVal <- rlang::eval_tidy(mapping$y, data)
   xName <- rlang::as_name(mapping$x)
   yName <- rlang::as_name(mapping$y)
   if(sort!="none") {

@@ -21,7 +21,7 @@ assoc.twocat(x,y,weights=rep.int(1,length(x)),na_value=NULL,nperm=NULL,distrib="
 
 \value{
 A list with the following elements :
-\item{freq}{cross-tabulation}
+\item{freq}{cross-tabulation frequencies}
 \item{prop}{percentages}
 \item{rprop}{row percentages}
 \item{cprop}{column percentages}
@@ -29,7 +29,10 @@ A list with the following elements :
 \item{chi.squared}{chi-squared value}
 \item{cramer.v}{Cramer's V between the two variables}
 \item{permutation.pvalue}{p-value from a permutation (so non-parametric) test of independence}
-\item{pearson.residuals}{the table of Pearson residuals, i.e. (observed - expected) / sqrt(expected).}
+\item{global.pem}{global PEM}
+\item{std.pearson.residuals}{the table of standardized Pearson residuals.}
+\item{odds.ratios}{the table of odds ratios.}
+\item{local.pem}{the table of local PEM}
 \item{phi}{the table of the phi coefficients for each pair of levels}
 \item{phi.perm.pval}{the table of permutation p-values for each pair of levels}
 \item{gather}{a data frame gathering informations, with one row per cell of the cross-tabulation}

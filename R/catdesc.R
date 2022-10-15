@@ -16,8 +16,8 @@ catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,robust=TRUE,nperm=
     lcat <- list()
     for(i in 1:ncol(xcat)) {
       temp <- assoc.twocat(y, xcat[,i], weights=weights, nperm=NULL)$gather
-      temp$categories <- paste(names(xcat)[i],temp$Var2,sep='.')
-      lcat[[i]] <- merge(temp, aggregate(prop~Var2, data=temp, sum), by="Var2")
+      temp$categories <- paste(names(xcat)[i],temp$var.y,sep='.')
+      lcat[[i]] <- merge(temp, aggregate(prop~var.y, data=temp, sum), by="var.y")
     }
     lcat <- do.call("rbind.data.frame",lcat)
     lcat <- lcat[order(-lcat$phi),]
@@ -26,7 +26,7 @@ catdesc <- function(y,x,weights=rep(1,length(y)),min.phi=NULL,robust=TRUE,nperm=
     lcat$rprop <- round(lcat$rprop,dec[3])
     lcat$prop.y <- round(lcat$prop.y,dec[3])
     lcat$phi <- round(lcat$phi,dec[4])
-    splitvar <- lcat$Var1
+    splitvar <- lcat$var.x
     lcat <- lcat[,c("categories","cprop","rprop","prop.y","phi")]
     names(lcat) <- c("categories","pct.ycat.in.xcat","pct.xcat.in.ycat","pct.xcat.global","phi")
     rownames(lcat) <- NULL
