@@ -23,8 +23,6 @@ pem <- function(x,y,weights=rep(1,length(x)),digits=1,sort=TRUE) {
     pem[i,j] <- ifelse(ecart[i,j]>=0,ecart[i,j]/emax[i,j]*100,0-ecart[i,j]/emax[i,j]*100)
     }}
   dimnames(pem) <- dimnames(cont)
-  # cor <- FactoMineR::CA(cont,ncp=1,graph=FALSE)
-  # z <- cont[order(cor$row$coord),order(cor$col$coord)]
   if(sort) {
     cor <- MASS::corresp(cont,nf=1)
     z <- cont[order(cor$rscore),order(cor$cscore)]
@@ -45,11 +43,15 @@ pem <- function(x,y,weights=rep(1,length(x)),digits=1,sort=TRUE) {
     if(totb[i]==0) i <- i+1
   }
   pemg <- (sum(ecart)+sum(abs(ecart)))/(sum(maxc-theo[order(cor$rscore),order(cor$cscore)])+sum(abs(maxc-theo[order(cor$rscore),order(cor$cscore)])))
-
+  pemg <- 100*pemg
+  
   pem <- as.table(pem)
   rownames(pem) <- gsub('data.','',rownames(pem))
   colnames(pem) <- gsub('data.','',colnames(pem))
   
-  PEM <- list(peml=round(as.table(pem),digits),pemg=round(100*pemg,digits))
+  if(!is.null(digits)) pem <- round(pem,digits)
+  if(!is.null(digits)) pemg <- round(pemg,digits)
+  
+  PEM <- list(peml=pem, pemg=pemg)
   return(PEM)
 }
