@@ -72,26 +72,33 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">assoc.twocont</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,weights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,
-              nperm<span class="op">=</span><span class="cn">NULL</span>,distrib<span class="op">=</span><span class="st">"asympt"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">assoc.twocont</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,weights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>              nperm<span class="op">=</span><span class="cn">NULL</span>,distrib<span class="op">=</span><span class="st">"asympt"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a continuous variable (must be a numeric vector)</p></dd>
-<dt>y</dt>
+
+  <dt>y</dt>
 <dd><p>a continuous variable (must be a numeric vector)</p></dd>
-<dt>weights</dt>
+
+  <dt>weights</dt>
 <dd><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></dd>
-<dt>nperm</dt>
+
+  <dt>nperm</dt>
 <dd><p>numeric. Number of permutations for the permutation test of independence. If NULL (default), no permutation test is performed.</p></dd>
-<dt>distrib</dt>
+
+  <dt>distrib</dt>
 <dd><p>the null distribution of permutation test of independence can be approximated by its asymptotic distribution (<code>"asympt"</code>, default) or via Monte Carlo resampling (<code>"approx"</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A data frame with Pearson, Spearman and Kendall correlations. The correlation value is in the first row and a p-value from a permutation (so non parametric) test of independence is in the second row.</p>
+    
+
+<p>A data frame with Pearson, Spearman and Kendall correlations. The correlation value is in the first row and a p-value from a permutation (so non parametric) test of independence is in the second row.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -105,17 +112,17 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Hollander &amp; Wolfe (1973), p. 187f.</span></span>
-<span class="r-in"><span class="co">## Assessment of tuna quality.  We compare the Hunter L measure of</span></span>
-<span class="r-in"><span class="co">##  lightness to the averages of consumer panel scores (recoded as</span></span>
-<span class="r-in"><span class="co">##  integer values from 1 to 6 and averaged over 80 such values) in</span></span>
-<span class="r-in"><span class="co">##  9 lots of canned tuna.</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">44.4</span>, <span class="fl">45.9</span>, <span class="fl">41.9</span>, <span class="fl">53.3</span>, <span class="fl">44.7</span>, <span class="fl">44.1</span>, <span class="fl">50.7</span>, <span class="fl">45.2</span>, <span class="fl">60.1</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="fl">2.6</span>,  <span class="fl">3.1</span>,  <span class="fl">2.5</span>,  <span class="fl">5.0</span>,  <span class="fl">3.6</span>,  <span class="fl">4.0</span>,  <span class="fl">5.2</span>,  <span class="fl">2.8</span>,  <span class="fl">3.8</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">assoc.twocont</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      pearson   spearman    kendall</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> value              0.5711816 0.60000000 0.44444444</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> permutation.pvalue 0.0697348 0.05728962 0.05909296</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Hollander &amp; Wolfe (1973), p. 187f.</span></span></span>
+<span class="r-in"><span><span class="co">## Assessment of tuna quality.  We compare the Hunter L measure of</span></span></span>
+<span class="r-in"><span><span class="co">##  lightness to the averages of consumer panel scores (recoded as</span></span></span>
+<span class="r-in"><span><span class="co">##  integer values from 1 to 6 and averaged over 80 such values) in</span></span></span>
+<span class="r-in"><span><span class="co">##  9 lots of canned tuna.</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">44.4</span>, <span class="fl">45.9</span>, <span class="fl">41.9</span>, <span class="fl">53.3</span>, <span class="fl">44.7</span>, <span class="fl">44.1</span>, <span class="fl">50.7</span>, <span class="fl">45.2</span>, <span class="fl">60.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="fl">2.6</span>,  <span class="fl">3.1</span>,  <span class="fl">2.5</span>,  <span class="fl">5.0</span>,  <span class="fl">3.6</span>,  <span class="fl">4.0</span>,  <span class="fl">5.2</span>,  <span class="fl">2.8</span>,  <span class="fl">3.8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">assoc.twocont</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       pearson   spearman    kendall</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> value              0.57118156 0.60000000 0.44444444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> permutation.pvalue 0.07030447 0.06199187 0.06382323</span>
 </code></pre></div>
     </div>
   </div>
@@ -130,7 +137,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

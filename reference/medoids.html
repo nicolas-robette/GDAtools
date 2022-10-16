@@ -72,15 +72,17 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">medoids</span><span class="op">(</span><span class="va">D</span>, <span class="va">cl</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">medoids</span><span class="op">(</span><span class="va">D</span>, <span class="va">cl</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>D</dt>
 <dd><p>square distance matrix (n rows * n columns, i.e. n individuals) or <code>dist</code> object</p></dd>
-<dt>cl</dt>
+
+  <dt>cl</dt>
 <dd><p>vector with the clustering solution (its length should be n)</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -107,14 +109,14 @@ Medoids are always members of the data set (contrary to means or centroids).</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Performs of classification of the 'Music' example data set, </span></span>
-<span class="r-in"><span class="co">## a clustering in 3 groups</span></span>
-<span class="r-in"><span class="co">## and then computes the medoids.</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="dichotom.html">dichotom</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">temp</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">clus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>,<span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">medoids</span><span class="op">(</span><span class="va">d</span>,<span class="va">clus</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Performs of classification of the 'Music' example data set, </span></span></span>
+<span class="r-in"><span><span class="co">## a clustering in 3 groups</span></span></span>
+<span class="r-in"><span><span class="co">## and then computes the medoids.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="dichotom.html">dichotom</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">temp</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">clus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cutree.html" class="external-link">cutree</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>,<span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">medoids</span><span class="op">(</span><span class="va">d</span>,<span class="va">clus</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 18 51 25</span>
 </code></pre></div>
     </div>
@@ -130,7 +132,7 @@ Medoids are always members of the data set (contrary to means or centroids).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

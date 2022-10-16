@@ -72,15 +72,17 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ijunk</span><span class="op">(</span><span class="va">data</span>, init_junk <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ijunk</span><span class="op">(</span><span class="va">data</span>, init_junk <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>data frame of categorical variables to be used in a specific MCA</p></dd>
-<dt>init_junk</dt>
+
+  <dt>init_junk</dt>
 <dd><p>optional vector of junk categories. Can be a numeric vector indicating the indexes of the junk categories or a character vector of junk categories, specified in the form "namevariable.namecategory" (for instance "gender.male"). Default is NULL.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -101,16 +103,16 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">ijunk</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># or</span></span>
-<span class="r-in"><span class="va">junk</span> <span class="op">&lt;-</span> <span class="fu">ijunk</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># To update an existing vector of junk categories</span></span>
-<span class="r-in"><span class="va">junk</span> <span class="op">&lt;-</span> <span class="fu">ijunk</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, init_junk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Rock.NA"</span>, <span class="st">"Rap.NA"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># and then</span></span>
-<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, excl <span class="op">=</span> <span class="va">junk</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ijunk</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># or</span></span></span>
+<span class="r-in"><span><span class="va">junk</span> <span class="op">&lt;-</span> <span class="fu">ijunk</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># To update an existing vector of junk categories</span></span></span>
+<span class="r-in"><span><span class="va">junk</span> <span class="op">&lt;-</span> <span class="fu">ijunk</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, init_junk <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Rock.NA"</span>, <span class="st">"Rap.NA"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># and then</span></span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, excl <span class="op">=</span> <span class="va">junk</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -125,7 +127,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

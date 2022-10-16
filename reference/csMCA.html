@@ -72,23 +72,28 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">csMCA</span><span class="op">(</span><span class="va">data</span>, subcloud <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">TRUE</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span>, excl <span class="op">=</span> <span class="cn">NULL</span>, ncp <span class="op">=</span> <span class="fl">5</span>, 
-row.w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">csMCA</span><span class="op">(</span><span class="va">data</span>, subcloud <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">TRUE</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span>, excl <span class="op">=</span> <span class="cn">NULL</span>, ncp <span class="op">=</span> <span class="fl">5</span>, </span>
+<span>row.w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>data frame with n rows (individuals) and p columns (categorical variables)</p></dd>
-<dt>subcloud</dt>
+
+  <dt>subcloud</dt>
 <dd><p>a vector of logical values and length n. The subcloud of individuals analyzed with 'class specific' MCA
                   is made of the individuals with value <code>TRUE</code>.</p></dd>
-<dt>excl</dt>
+
+  <dt>excl</dt>
 <dd><p>numeric vector indicating the indexes of the "junk" categories (default is NULL). See <code><a href="getindexcat.html">getindexcat</a></code> to identify these indexes. It may also be a character vector of junk categories, specified in the form "namevariable.namecategory" (for instance "gender.male").</p></dd>
-<dt>ncp</dt>
+
+  <dt>ncp</dt>
 <dd><p>number of dimensions kept in the results (default is 5)</p></dd>
-<dt>row.w</dt>
+
+  <dt>row.w</dt>
 <dd><p>an optional numeric vector of row weights (by default, a vector of 1 for uniform row weights)</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -98,15 +103,21 @@ with the subset of individuals (see Le Roux and Rouanet, 2004 and 2010).</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns an object of class <code>'csMCA'</code>, i.e. a list including:</p>
+    
+
+<p>Returns an object of class <code>'csMCA'</code>, i.e. a list including:</p>
 <dl><dt>eig</dt>
 <dd><p>a list of vectors containing all the eigenvalues, the percentage of variance, the cumulative percentage of variance, the modified rates and the cumulative modified rates</p></dd>
-<dt>call</dt>
+
+  <dt>call</dt>
 <dd><p>a list with informations about input data</p></dd>
-<dt>ind</dt>
+
+  <dt>ind</dt>
 <dd><p>a list of matrices containing the results for the individuals (coordinates, contributions)</p></dd>
-<dt>var</dt>
+
+  <dt>var</dt>
 <dd><p>a list of matrices containing all the results for the categories and variables (weights, coordinates, square cosine, categories contributions to axes and cloud, test values (v.test), square correlation ratio (eta2), variable contributions to axes and cloud</p></dd>
+
 </dl></div>
     <div id="references">
     <h2>References</h2>
@@ -125,15 +136,15 @@ with the subset of individuals (see Le Roux and Rouanet, 2004 and 2010).</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Performs a 'class specific' MCA on 'Music' example data set</span></span>
-<span class="r-in"><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span>
-<span class="r-in"><span class="co">## and focusing on the subset of women.</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">female</span> <span class="op">&lt;-</span> <span class="va">Music</span><span class="op">$</span><span class="va">Gender</span><span class="op">==</span><span class="st">'Women'</span></span>
-<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu">csMCA</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,</span>
-<span class="r-in">             subcloud <span class="op">=</span> <span class="va">female</span>,</span>
-<span class="r-in">             excl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FrenchPop.NA"</span>,<span class="st">"Rap.NA"</span>,<span class="st">"Jazz.NA"</span>,<span class="st">"Classical.NA"</span>,<span class="st">"Rock.NA"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Performs a 'class specific' MCA on 'Music' example data set</span></span></span>
+<span class="r-in"><span><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span></span>
+<span class="r-in"><span><span class="co">## and focusing on the subset of women.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">female</span> <span class="op">&lt;-</span> <span class="va">Music</span><span class="op">$</span><span class="va">Gender</span><span class="op">==</span><span class="st">'Women'</span></span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu">csMCA</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>             subcloud <span class="op">=</span> <span class="va">female</span>,</span></span>
+<span class="r-in"><span>             excl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FrenchPop.NA"</span>,<span class="st">"Rap.NA"</span>,<span class="st">"Jazz.NA"</span>,<span class="st">"Classical.NA"</span>,<span class="st">"Rock.NA"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="csMCA-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -149,7 +160,7 @@ with the subset of individuals (see Le Roux and Rouanet, 2004 and 2010).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

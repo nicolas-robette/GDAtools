@@ -72,51 +72,84 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">assoc.twocat</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,weights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep.int</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,na_value<span class="op">=</span><span class="cn">NULL</span>,nperm<span class="op">=</span><span class="cn">NULL</span>,distrib<span class="op">=</span><span class="st">"asympt"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">assoc.twocat</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,weights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep.int</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,na_value<span class="op">=</span><span class="cn">NULL</span>,nperm<span class="op">=</span><span class="cn">NULL</span>,distrib<span class="op">=</span><span class="st">"asympt"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>the first categorical variable (must be a factor)</p></dd>
-<dt>y</dt>
+
+  <dt>y</dt>
 <dd><p>the second categorical variable (must be a factor)</p></dd>
-<dt>weights</dt>
+
+  <dt>weights</dt>
 <dd><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></dd>
-<dt>na_value</dt>
+
+  <dt>na_value</dt>
 <dd><p>character. Name of the level for NA category. If NULL (default), NA values are ignored.</p></dd>
-<dt>nperm</dt>
+
+  <dt>nperm</dt>
 <dd><p>numeric. Number of permutations for the permutation test of independence. If NULL (default), no permutation test is performed. Default is 1000.</p></dd>
-<dt>distrib</dt>
+
+  <dt>distrib</dt>
 <dd><p>the null distribution of permutation test of independence can be approximated by its asymptotic distribution (<code>"asympt"</code>, default) or via Monte Carlo resampling (<code>"approx"</code>.</p></dd>
+
+ 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list with the following elements :</p>
+    
+
+<p>A list with the following elements :</p>
 <dl><dt>freq</dt>
-<dd><p>cross-tabulation</p></dd>
+<dd><p>cross-tabulation frequencies</p></dd>
+
 <dt>prop</dt>
 <dd><p>percentages</p></dd>
+
 <dt>rprop</dt>
 <dd><p>row percentages</p></dd>
+
 <dt>cprop</dt>
 <dd><p>column percentages</p></dd>
+
 <dt>expected</dt>
 <dd><p>expected values</p></dd>
+
 <dt>chi.squared</dt>
 <dd><p>chi-squared value</p></dd>
+
 <dt>cramer.v</dt>
 <dd><p>Cramer's V between the two variables</p></dd>
+
 <dt>permutation.pvalue</dt>
 <dd><p>p-value from a permutation (so non-parametric) test of independence</p></dd>
+
+<dt>global.pem</dt>
+<dd><p>global PEM</p></dd>
+
 <dt>pearson.residuals</dt>
-<dd><p>the table of Pearson residuals, i.e. (observed - expected) / sqrt(expected).</p></dd>
+<dd><p>the table of Pearson residuals.</p></dd>
+
+<dt>std.pearson.residuals</dt>
+<dd><p>the table of standardized Pearson residuals.</p></dd>
+
+<dt>odds.ratios</dt>
+<dd><p>the table of odds ratios.</p></dd>
+
+<dt>local.pem</dt>
+<dd><p>the table of local PEM</p></dd>
+
 <dt>phi</dt>
 <dd><p>the table of the phi coefficients for each pair of levels</p></dd>
+
 <dt>phi.perm.pval</dt>
 <dd><p>the table of permutation p-values for each pair of levels</p></dd>
+
 <dt>gather</dt>
 <dd><p>a data frame gathering informations, with one row per cell of the cross-tabulation</p></dd>
+
 </dl></div>
     <div id="references">
     <h2>References</h2>
@@ -134,8 +167,8 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">assoc.twocat</span><span class="op">(</span><span class="va">Music</span><span class="op">$</span><span class="va">Jazz</span>,<span class="va">Music</span><span class="op">$</span><span class="va">Age</span>,nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">assoc.twocat</span><span class="op">(</span><span class="va">Music</span><span class="op">$</span><span class="va">Jazz</span>,<span class="va">Music</span><span class="op">$</span><span class="va">Age</span>,nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $freq</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     15-24 25-49 50+ Sum</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No     67   159 169 395</span>
@@ -177,13 +210,34 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.0824952</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $permutation.pvalue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1736894</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1117081</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $global.pem</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12.22184</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $pearson.residuals</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          15-24      25-49        50+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No   0.6853642 -0.1701473 -0.2453658</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Yes -1.7715780  0.6810421  0.4008802</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NA   1.1529227 -1.0297534  0.3065044</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $std.pearson.residuals</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15-24      25-49        50+</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No   1.6279481 -0.4825637 -0.7129595</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Yes -2.1426268  0.9834915  0.5931064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NA   1.2676984 -1.3519461  0.4122723</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $odds.ratios</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         15-24     25-49       50+</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No  1.7455654 0.8983051 0.8546144</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Yes 0.4400657 1.2532250 1.1453685</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NA  2.3714286 0.3564356 1.3004695</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $local.pem</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15-24      25-49        50+</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No   32.844933  -3.474903  -5.437352</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Yes -46.018893   7.539118   4.815230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NA   17.061611 -50.980392  11.347518</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $phi</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           15-24       25-49         50+</span>
@@ -192,32 +246,42 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> NA   0.05669319 -0.06046087  0.01843738</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $phi.perm.pval</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           15-24       25-49         50+</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> No  0.030438406 0.293862253 0.185896960</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Yes 0.004261526 0.142548574 0.244821832</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NA  0.092385554 0.074713490 0.325429333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          15-24      25-49        50+</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No  0.08286044 0.36143199 0.21368805</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Yes 0.02136041 0.19989519 0.26475881</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NA  0.08429349 0.07156241 0.30095896</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $gather</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Var1  Var2 Freq  prop      rprop       cprop expected std.residuals</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   No 15-24   67 0.134 0.16962025 0.858974359    61.62     0.6853642</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  Yes 15-24    8 0.016 0.08421053 0.102564103    14.82    -1.7715780</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   NA 15-24    3 0.006 0.30000000 0.038461538     1.56     1.1529227</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   No 25-49  159 0.318 0.40253165 0.779411765   161.16    -0.1701473</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  Yes 25-49   43 0.086 0.45263158 0.210784314    38.76     0.6810421</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   NA 25-49    2 0.004 0.20000000 0.009803922     4.08    -1.0297534</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   No   50+  169 0.338 0.42784810 0.775229358   172.22    -0.2453658</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  Yes   50+   44 0.088 0.46315789 0.201834862    41.42     0.4008802</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   NA   50+    5 0.010 0.50000000 0.022935780     4.36     0.3065044</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           phi   perm.pval</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  0.07280405 0.030438406</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 -0.09582119 0.004261526</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0.05669319 0.092385554</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 -0.02158090 0.293862253</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.04398308 0.142548574</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 -0.06046087 0.074713490</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7 -0.03188452 0.185896960</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.02652452 0.244821832</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  0.01843738 0.325429333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   var.y var.x freq  prop      rprop       cprop expected  residuals</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 15-24   Yes    8 0.016 0.08421053 0.102564103    14.82 -1.7715780</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 15-24    NA    3 0.006 0.30000000 0.038461538     1.56  1.1529227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 15-24    No   67 0.134 0.16962025 0.858974359    61.62  0.6853642</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 25-49    NA    2 0.004 0.20000000 0.009803922     4.08 -1.0297534</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 25-49    No  159 0.318 0.40253165 0.779411765   161.16 -0.1701473</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 25-49   Yes   43 0.086 0.45263158 0.210784314    38.76  0.6810421</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   50+    No  169 0.338 0.42784810 0.775229358   172.22 -0.2453658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   50+    NA    5 0.010 0.50000000 0.022935780     4.36  0.3065044</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   50+   Yes   44 0.088 0.46315789 0.201834862    41.42  0.4008802</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   std.residuals        or        pem         phi  perm.pval freq.x freq.y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    -2.1426268 0.4400657 -46.018893 -0.09582119 0.02136041     95     78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     1.2676984 2.3714286  17.061611  0.05669319 0.08429349     10     78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     1.6279481 1.7455654  32.844933  0.07280405 0.08286044    395     78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4    -1.3519461 0.3564356 -50.980392 -0.06046087 0.07156241     10    204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    -0.4825637 0.8983051  -3.474903 -0.02158090 0.36143199    395    204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     0.9834915 1.2532250   7.539118  0.04398308 0.19989519     95    204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    -0.7129595 0.8546144  -5.437352 -0.03188452 0.21368805    395    218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     0.4122723 1.3004695  11.347518  0.01843738 0.30095896     10    218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9     0.5931064 1.1453685   4.815230  0.02652452 0.26475881     95    218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   prop.x prop.y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0.19  0.156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   0.02  0.156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   0.79  0.156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   0.02  0.408</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   0.79  0.408</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   0.19  0.408</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   0.79  0.436</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   0.02  0.436</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   0.19  0.436</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
@@ -233,7 +297,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

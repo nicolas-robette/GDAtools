@@ -72,13 +72,14 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">modif.rate</span><span class="op">(</span><span class="va">resmca</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">modif.rate</span><span class="op">(</span><span class="va">resmca</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>resmca</dt>
 <dd><p>object of class <code>MCA</code>, <code>speMCA</code>, <code>csMCA</code>, <code>stMCA</code> or <code>multiMCA</code></p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -88,11 +89,15 @@ appreciate the relative importance of the principal axes.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a data frame with 2 variables:</p>
+    
+
+<p>Returns a data frame with 2 variables:</p>
 <dl><dt>mrate </dt>
 <dd><p>Numeric vector of modified rates</p></dd>
-<dt>cum.mrate </dt>
+
+  <dt>cum.mrate </dt>
 <dd><p>Numeric vector of cumulative modified rates</p></dd>
+
 </dl></div>
     <div id="references">
     <h2>References</h2>
@@ -111,11 +116,11 @@ appreciate the relative importance of the principal axes.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Computes the modified rates of variance</span></span>
-<span class="r-in"><span class="co">## of the MCA of 'Music' example data set</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">modif.rate</span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Computes the modified rates of variance</span></span></span>
+<span class="r-in"><span><span class="co">## of the MCA of 'Music' example data set</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">modif.rate</span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $raw</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           eigen         rate  cum.rate</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  2.815811e-01 1.407906e+01  14.07906</span>
@@ -156,7 +161,7 @@ appreciate the relative importance of the principal axes.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

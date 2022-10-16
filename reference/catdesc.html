@@ -72,41 +72,55 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">catdesc</span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, weights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>, min.phi<span class="op">=</span><span class="cn">NULL</span>, 
-robust<span class="op">=</span><span class="cn">TRUE</span>, nperm<span class="op">=</span><span class="cn">NULL</span>, distrib<span class="op">=</span><span class="st">"asympt"</span>, dec<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">catdesc</span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, weights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>, min.phi<span class="op">=</span><span class="cn">NULL</span>, </span>
+<span>robust<span class="op">=</span><span class="cn">TRUE</span>, nperm<span class="op">=</span><span class="cn">NULL</span>, distrib<span class="op">=</span><span class="st">"asympt"</span>, dec<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">1</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>y</dt>
 <dd><p>the categorical variable to describe (must be a factor)</p></dd>
-<dt>x</dt>
+
+  <dt>x</dt>
 <dd><p>a data frame with continuous and/or categorical variables</p></dd>
-<dt>weights</dt>
+
+  <dt>weights</dt>
 <dd><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></dd>
-<dt>min.phi</dt>
+
+  <dt>min.phi</dt>
 <dd><p>for the relationship between y and a categorical variable, only associations higher or equal to min.phi will be displayed. If NULL (default), they are all displayed.</p></dd>
-<dt>robust</dt>
+
+  <dt>robust</dt>
 <dd><p>logical. If FALSE, mean and standard deviation are used instead of median and mad. Default is TRUE.</p></dd>
-<dt>nperm</dt>
+
+  <dt>nperm</dt>
 <dd><p>numeric. Number of permutations for the permutation test of independence. If NULL (default), no permutation test is performed.</p></dd>
-<dt>distrib</dt>
+
+  <dt>distrib</dt>
 <dd><p>the null distribution of permutation test of independence can be approximated by its asymptotic distribution (<code>"asympt"</code>, default) or via Monte Carlo resampling (<code>"approx"</code>).</p></dd>
-<dt>dec</dt>
+
+  <dt>dec</dt>
 <dd><p>vector of 6 integers for number of decimals. The first value if for association measures, the second for permutation p-values, the third for percents, the fourth for phi coefficients, the fifth for medians and mads, the sixth for point biserial correlations. Default is c(3,3,3,3,1,3).</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list of the following items :</p>
+    
+
+<p>A list of the following items :</p>
 <dl><dt>variables</dt>
 <dd><p>associations between y and the variables in x</p></dd>
+
 <dt>bylevel</dt>
 <dd><p>a list with one element for each level of y</p></dd>
+
 </dl><p>Each element in bylevel has the following items :</p>
 <dl><dt>categories</dt>
 <dd><p>a data frame with categorical variables from x and associations measured by phi</p></dd>
+
 <dt>continuous.var</dt>
 <dd><p>a data frame with continuous variables from x and associations measured by correlation coefficients</p></dd>
+
 </dl></div>
     <div id="references">
     <h2>References</h2>
@@ -123,8 +137,10 @@ robust<span class="op">=</span><span class="cn">TRUE</span>, nperm<span class="o
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">catdesc</span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">ArtHouse</span>, <span class="va">Movies</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Budget"</span>,<span class="st">"Genre"</span>,<span class="st">"Country"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Movies</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">catdesc</span><span class="op">(</span><span class="va">Movies</span><span class="op">$</span><span class="va">ArtHouse</span>, <span class="va">Movies</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Budget"</span>,<span class="st">"Genre"</span>,<span class="st">"Country"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>column names ‘prop.x’, ‘prop.y’ are duplicated in the result</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>column names ‘prop.x’, ‘prop.y’ are duplicated in the result</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $variables</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   variable    measure association permutation.pvalue</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    Genre Cramer's V       0.554                 NA</span>
@@ -191,7 +207,7 @@ robust<span class="op">=</span><span class="cn">TRUE</span>, nperm<span class="o
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

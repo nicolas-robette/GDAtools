@@ -74,12 +74,19 @@
 <code><a href="../reference/ijunk.html">ijunk()</a></code>: Shiny app to select interactively the junk categories before a specific MCA.</li>
 <li>
 <code><a href="../reference/quadrant.html">quadrant()</a></code>: Computes the quadrant of active individuals in a given space of a MCA.</li>
+<li>
+<code><a href="../reference/oddsratio.table.html">oddsratio.table()</a></code>: Computes the odds ratio for every cell in a contingency table.</li>
+<li>
+<code><a href="../reference/ggassoc_chiasmogram.html">ggassoc_chiasmogram()</a></code>: Plots the chiasmogram of a crosstabulation, using ggplot2.</li>
+<li>
+<code>ggassoc_assocplot()</code>: Association plot of a crosstabulation, using ggplot2.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-8">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8"></a></h3>
 <ul><li>bug fix in <code><a href="../reference/speMCA.html">speMCA()</a></code>, <code><a href="../reference/csMCA.html">csMCA()</a></code> and <code><a href="../reference/getindexcat.html">getindexcat()</a></code> when empty levels or non-factor vectors in the data</li>
 <li>bug fix in <code><a href="../reference/indsup.html">indsup()</a></code> : supdata can now be a tibble</li>
 <li>bug fix in <code><a href="../reference/assoc.yx.html">assoc.yx()</a></code> : integers are now allowed for y; empty levels are dropped in x</li>
+<li>bug fix in <code><a href="../reference/wtable.html">wtable()</a></code> : empty cells are replaced by 0.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-8">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-8"></a></h3>
@@ -87,7 +94,19 @@
 <code><a href="../reference/speMCA.html">speMCA()</a></code> and <code><a href="../reference/csMCA.html">csMCA()</a></code> : junk categories can now be specified as a character vector</li>
 <li>
 <code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : new “best” option</li>
+<li>
+<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : unstandardized and standardized Pearson residuals, odds ratios and PEM are computed. “gather” object has columns for margins frequencies and percentages.</li>
+<li>
+<code><a href="../reference/ggassoc_crosstab.html">ggassoc_crosstab()</a></code> : rewriting with several new options (size, measure, max.asso, palette and direction) and no more dependency to GGally package</li>
+<li>
+<code><a href="../reference/ggassoc_phiplot.html">ggassoc_phiplot()</a></code> : the measure of local association can be any one computed by <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code>
+</li>
+<li>
+<code><a href="../reference/ggadd_interaction.html">ggadd_interaction()</a></code> : geom_line replaced by geom_path (thanks to <a href="https://github.com/419kfj" class="external-link">@419kfj</a>)</li>
 </ul></div>
+<div class="section level3">
+<h3 id="other-1-8">Other<a class="anchor" aria-label="anchor" href="#other-1-8"></a></h3>
+<ul><li>Removed dependency to GGally package</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.7.2" id="gdatools-172">GDAtools 1.7.2<small>2022-02-22</small><a class="anchor" aria-label="anchor" href="#gdatools-172"></a></h2>
@@ -394,7 +413,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

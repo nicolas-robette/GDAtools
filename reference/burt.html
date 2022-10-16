@@ -72,13 +72,14 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">burt</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">burt</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>data frame with n rows (individuals) and p columns (categorical variables)</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -105,10 +106,10 @@ It shows the frequencies for all combinations of categories of pairs of variable
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Burt table of variables in columns 1 to 5</span></span>
-<span class="r-in"><span class="co">## in the 'Music' example data set</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">burt</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Burt table of variables in columns 1 to 5</span></span></span>
+<span class="r-in"><span><span class="co">## in the 'Music' example data set</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">burt</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               FrenchPop.No FrenchPop.Yes FrenchPop.NA Rap.No Rap.Yes Rap.NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FrenchPop.No           194             0            0    159      33      2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FrenchPop.Yes            0           301            0    255      43      3</span>
@@ -171,7 +172,7 @@ It shows the frequencies for all combinations of categories of pairs of variable
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

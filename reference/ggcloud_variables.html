@@ -72,54 +72,72 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ggcloud_variables</span><span class="op">(</span><span class="va">resmca</span>, axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, points<span class="op">=</span><span class="st">'all'</span>, 
-min.ctr<span class="op">=</span><span class="cn">NULL</span>, max.pval<span class="op">=</span><span class="fl">0.01</span>, face<span class="op">=</span><span class="st">"pp"</span>,
-shapes<span class="op">=</span><span class="cn">TRUE</span>, prop<span class="op">=</span><span class="cn">NULL</span>, textsize<span class="op">=</span><span class="fl">3</span>, shapesize<span class="op">=</span><span class="fl">3</span>,
-col<span class="op">=</span><span class="cn">NULL</span>, palette<span class="op">=</span><span class="cn">NULL</span>, col.by.group<span class="op">=</span><span class="cn">TRUE</span>, alpha<span class="op">=</span><span class="fl">1</span>,
-segment.alpha<span class="op">=</span><span class="fl">0.5</span>, vlab<span class="op">=</span><span class="cn">TRUE</span>, sep<span class="op">=</span><span class="st">'.'</span>, legend<span class="op">=</span><span class="st">'right'</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggcloud_variables</span><span class="op">(</span><span class="va">resmca</span>, axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, points<span class="op">=</span><span class="st">'all'</span>, </span>
+<span>min.ctr<span class="op">=</span><span class="cn">NULL</span>, max.pval<span class="op">=</span><span class="fl">0.01</span>, face<span class="op">=</span><span class="st">"pp"</span>,</span>
+<span>shapes<span class="op">=</span><span class="cn">TRUE</span>, prop<span class="op">=</span><span class="cn">NULL</span>, textsize<span class="op">=</span><span class="fl">3</span>, shapesize<span class="op">=</span><span class="fl">3</span>,</span>
+<span>col<span class="op">=</span><span class="cn">NULL</span>, palette<span class="op">=</span><span class="cn">NULL</span>, col.by.group<span class="op">=</span><span class="cn">TRUE</span>, alpha<span class="op">=</span><span class="fl">1</span>,</span>
+<span>segment.alpha<span class="op">=</span><span class="fl">0.5</span>, vlab<span class="op">=</span><span class="cn">TRUE</span>, sep<span class="op">=</span><span class="st">'.'</span>, legend<span class="op">=</span><span class="st">'right'</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>resmca</dt>
 <dd><p>object of class <code>MCA</code>, <code>speMCA</code>, <code>csMCA</code>, <code>stMCA</code> or <code>multiMCA</code>.</p></dd>
-<dt>axes</dt>
+
+  <dt>axes</dt>
 <dd><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></dd>
-<dt>points</dt>
+
+  <dt>points</dt>
 <dd><p>character string. If 'all' all categories are plotted (default); if 'besth' only those 
                 who contribute most to horizontal axis are plotted; if 'bestv' only those who contribute 
                 most to vertical axis are plotted; if 'best' only those who contribute most to horizontal 
                 or vertical axis are plotted.</p></dd>
-<dt>min.ctr</dt>
+
+  <dt>min.ctr</dt>
 <dd><p>Numerical value between 0 and 100. The minimum contribution (in percent) for a category to be displayed if the <code>points</code> argument is equal to "best", "besth" or "bestv" and <code>resmca</code> is of type <code>MCA</code>, <code>speMCA</code> or <code>csMCA</code>. If NULL (default), only the categories that contribute more than the average (i.e. 100 / number of modalities) are displayed.</p></dd>
-<dt>max.pval</dt>
+
+  <dt>max.pval</dt>
 <dd><p>Numerical value between 0 and 100. The maximal p-value derived from test-values for a category to be displayed if the <code>points</code> argument is equal to "best", "besth" or "bestv" and <code>resmca</code> is of type <code>stMCA</code> or <code>multiMCA</code>.</p></dd>
-<dt>face</dt>
+
+  <dt>face</dt>
 <dd><p>character string. Changes the face of the category labels when their contribution is greater than <code>min.ctr</code>. The first letter refers to the first represented axis, the second letter to the second. "p" is for plain text, "u" for underlined, "i" for italic and "b" for bold. For example, "ui" means that the labels of the most contributing categories on the first axis will be underlined and the labels of the most contributing categories on the second axis will be italicized. By default ("pp"), no font face change is made.</p></dd>
-<dt>shapes</dt>
+
+  <dt>shapes</dt>
 <dd><p>Logical. Should shapes be plotted for categories (in addition to labels) ? Default is TRUE.</p></dd>
-<dt>prop</dt>
+
+  <dt>prop</dt>
 <dd><p>If NULL, the size of the labels (if shapes=FALSE) or the shapes (if shapes=TRUE) is constant. If 'n', the size is proportional the the weights of categories; if 'ctr1', the size is proportional to the contributions of the categories on the first dimension of the plot; if 'ctr2', the size is proportional to the contributions of the categories on the second dimension of the plot; if 'ctr.cloud', the size is proportional to the total contributions of the categories on the whole cloud; if 'cos1', the size is proportional to the cosines of the categories on the first dimension of the plot; if 'cos2', the size is proportional to the cosines of the categories on the second dimension of the plot; if 'cos12', the size is proportional to the total cosines of the categories on the two dimensions of the plot; if 'vtest1', the size is proportional to the test-values of the categories on the first dimension of the plot; if 'vtest2', the size is proportional to the test-values of the categories on the second dimension of the plot.</p></dd>
-<dt>textsize</dt>
+
+  <dt>textsize</dt>
 <dd><p>Size of the labels of categories if shapes=TRUE, or if shapes=FALSE and prop=NULL.               Default is 3.</p></dd>
-<dt>shapesize</dt>
+
+  <dt>shapesize</dt>
 <dd><p>Size if the shapes of categories if shapes=TRUE and prop=FALSE. Default is 3.</p></dd>
-<dt>col</dt>
+
+  <dt>col</dt>
 <dd><p>Character. A unique color for the shapes and labels of the categories. Default is NULL, which means a palette will be used instead of a unique color (see <code>palette</code> argument).</p></dd>
-<dt>palette</dt>
+
+  <dt>palette</dt>
 <dd><p>Character string or character vector. Only used if <code>col</code> is NULL. Colors for the shapes and labels of the categories, differentiated by variable. Can be the name of a palette from the <code>RcolorBrewer</code> package, "bw" for a black and white palette (uses <code>scale_color_grey()</code>) or a character vector of colors for a custom palette. If NULL (default), the default palette of <code>ggplot2</code> is used.</p></dd>
-<dt>col.by.group</dt>
+
+  <dt>col.by.group</dt>
 <dd><p>Logical. If <code>resmca</code> is of type <code>multimCA</code>, categories are colored by group from the MFA if TRUE (default) and by variable if FALSE.</p></dd>
-<dt>alpha</dt>
+
+  <dt>alpha</dt>
 <dd><p>Transparency of the shapes and labels of categories. Default is 1.</p></dd>
-<dt>segment.alpha</dt>
+
+  <dt>segment.alpha</dt>
 <dd><p>Transparency of the line segment beside labels of categories. Default is 0.5.</p></dd>
-<dt>vlab</dt>
+
+  <dt>vlab</dt>
 <dd><p>Logical. Should the variable names be used as a prefix for the labels of the categories.                    Default is TRUE.</p></dd>
-<dt>sep</dt>
+
+  <dt>sep</dt>
 <dd><p>Character string used as a separator if vlab=TRUE.</p></dd>
-<dt>legend</dt>
+
+  <dt>legend</dt>
 <dd><p>the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -141,21 +159,21 @@ segment.alpha<span class="op">=</span><span class="fl">0.5</span>, vlab<span cla
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Performs a specific MCA on 'Music' example data set</span></span>
-<span class="r-in"><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span>
-<span class="r-in"><span class="co">## and then draws the cloud of categories.</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Performs a specific MCA on 'Music' example data set</span></span></span>
+<span class="r-in"><span><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span></span>
+<span class="r-in"><span><span class="co">## and then draws the cloud of categories.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [13] "Classical.No"  "Classical.Yes" "Classical.NA" </span>
-<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">ggcloud_variables</span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ggcloud_variables</span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ggcloud_variables-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu">ggcloud_variables</span><span class="op">(</span><span class="va">mca</span>, points<span class="op">=</span><span class="st">'best'</span>, prop<span class="op">=</span><span class="st">'n'</span>, palette<span class="op">=</span><span class="st">'Set2'</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">ggcloud_variables</span><span class="op">(</span><span class="va">mca</span>, points<span class="op">=</span><span class="st">'best'</span>, prop<span class="op">=</span><span class="st">'n'</span>, palette<span class="op">=</span><span class="st">'Set2'</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ggcloud_variables-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu">ggcloud_variables</span><span class="op">(</span><span class="va">mca</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span>, col<span class="op">=</span><span class="st">"black"</span>, face<span class="op">=</span><span class="st">"ui"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">ggcloud_variables</span><span class="op">(</span><span class="va">mca</span>, shapes<span class="op">=</span><span class="cn">FALSE</span>, legend<span class="op">=</span><span class="st">"none"</span>, col<span class="op">=</span><span class="st">"black"</span>, face<span class="op">=</span><span class="st">"ui"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ggcloud_variables-3.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -171,7 +189,7 @@ segment.alpha<span class="op">=</span><span class="fl">0.5</span>, vlab<span cla
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

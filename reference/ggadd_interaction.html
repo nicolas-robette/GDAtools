@@ -72,32 +72,42 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ggadd_interaction</span><span class="op">(</span><span class="va">p</span>, <span class="va">resmca</span>, <span class="va">v1</span>, <span class="va">v2</span>, sel1<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">v1</span><span class="op">)</span>, sel2<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">v2</span><span class="op">)</span>,
-axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, col<span class="op">=</span><span class="cn">NULL</span>, textsize<span class="op">=</span><span class="fl">5</span>, legend<span class="op">=</span><span class="st">'right'</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggadd_interaction</span><span class="op">(</span><span class="va">p</span>, <span class="va">resmca</span>, <span class="va">v1</span>, <span class="va">v2</span>, sel1<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">v1</span><span class="op">)</span>, sel2<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">v2</span><span class="op">)</span>,</span>
+<span>axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, col<span class="op">=</span><span class="cn">NULL</span>, textsize<span class="op">=</span><span class="fl">5</span>, legend<span class="op">=</span><span class="st">'right'</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>p</dt>
 <dd><p>ggplot object with the cloud of variables</p></dd>
-<dt>resmca</dt>
+
+  <dt>resmca</dt>
 <dd><p>object of class <code>MCA</code>, <code>speMCA</code>, <code>csMCA</code>, <code>stMCA</code> or <code>multiMCA</code>.</p></dd>
-<dt>v1</dt>
+
+  <dt>v1</dt>
 <dd><p>Factor. The first categorical supplementary variable.</p></dd>
-<dt>v2</dt>
+
+  <dt>v2</dt>
 <dd><p>Factor. The second categorical supplementary variable.</p></dd>
-<dt>sel1</dt>
+
+  <dt>sel1</dt>
 <dd><p>Numeric vector of indexes of the categories of the first supplementary variable to be used in interaction. By default, every categories are used.</p></dd>
-<dt>sel2</dt>
+
+  <dt>sel2</dt>
 <dd><p>Numeric vector of indexes of the categories of the second supplementary variable to be used in interaction. By default, every categories are used.</p></dd>
-<dt>axes</dt>
+
+  <dt>axes</dt>
 <dd><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></dd>
-<dt>col</dt>
+
+  <dt>col</dt>
 <dd><p>Colors for the labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses <code>scale_color_grey()</code>), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of <code>ggplot2</code> is used.</p></dd>
-<dt>textsize</dt>
+
+  <dt>textsize</dt>
 <dd><p>Size of the labels of categories. Default is 5.</p></dd>
-<dt>legend</dt>
+
+  <dt>legend</dt>
 <dd><p>the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -119,12 +129,12 @@ axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Performs a specific MCA on 'Taste' example data set</span></span>
-<span class="r-in"><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span>
-<span class="r-in"><span class="co">## draws the cloud of categories</span></span>
-<span class="r-in"><span class="co">## and adds the interaction between Gender and Age.</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Performs a specific MCA on 'Taste' example data set</span></span></span>
+<span class="r-in"><span><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span></span>
+<span class="r-in"><span><span class="co">## draws the cloud of categories</span></span></span>
+<span class="r-in"><span><span class="co">## and adds the interaction between Gender and Age.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      </span>
@@ -134,9 +144,9 @@ axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.
 <span class="r-out co"><span class="r-pr">#&gt;</span> [25] "SciFi.No"      "SciFi.Yes"     "SciFi.NA"      "Love.No"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [29] "Love.Yes"      "Love.NA"       "Musical.No"    "Musical.Yes"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [33] "Musical.NA"   </span>
-<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span>, shapes<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">ggadd_interaction</span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span>, shapes<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ggadd_interaction</span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ggadd_interaction-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -152,7 +162,7 @@ axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

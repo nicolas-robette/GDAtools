@@ -72,16 +72,18 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dichotom</span><span class="op">(</span><span class="va">data</span>, out <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dichotom</span><span class="op">(</span><span class="va">data</span>, out <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>data frame of categorical variables</p></dd>
-<dt>out</dt>
+
+  <dt>out</dt>
 <dd><p>character string defining the format for dichotomized variables in the output data frame. 
              Format may be 'numeric' or 'factor' (default is 'numeric').</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -95,10 +97,10 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Dichotomizes 'Music' example data frame</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">dic</span> <span class="op">&lt;-</span> <span class="fu">dichotom</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">dic</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Dichotomizes 'Music' example data frame</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">dic</span> <span class="op">&lt;-</span> <span class="fu">dichotom</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">dic</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 'data.frame':	500 obs. of  15 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ FrenchPop.No : num  0 1 1 1 0 0 1 0 1 1 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ FrenchPop.Yes: num  0 0 0 0 1 1 0 1 0 0 ...</span>
@@ -115,10 +117,10 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ Classical.No : num  1 1 1 1 0 1 1 1 1 0 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ Classical.Yes: num  0 0 0 0 1 0 0 0 0 0 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ Classical.NA : num  0 0 0 0 0 0 0 0 0 1 ...</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## with output variables in factor format</span></span>
-<span class="r-in"><span class="va">dic</span> <span class="op">&lt;-</span> <span class="fu">dichotom</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, out<span class="op">=</span><span class="st">'factor'</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">dic</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## with output variables in factor format</span></span></span>
+<span class="r-in"><span><span class="va">dic</span> <span class="op">&lt;-</span> <span class="fu">dichotom</span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, out<span class="op">=</span><span class="st">'factor'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">dic</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 'data.frame':	500 obs. of  15 variables:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ FrenchPop.No : Factor w/ 2 levels "0","1": 1 2 2 2 1 1 2 1 2 2 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ FrenchPop.Yes: Factor w/ 2 levels "0","1": 1 1 1 1 2 2 1 2 1 1 ...</span>
@@ -149,7 +151,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
