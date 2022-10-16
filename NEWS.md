@@ -22,6 +22,7 @@
 * `assoc.twocat()` : unstandardized and standardized Pearson residuals, odds ratios and PEM are computed. "gather" object has columns for margins frequencies and percentages.
 * `ggassoc_crosstab()` : rewriting with several new options (size, measure, max.asso, palette and direction) and no more dependency to GGally package
 * `ggassoc_phiplot()` : the measure of local association can be any one computed by `assoc.twocat()`
+* `ggadd_interaction()` : geom_line replaced by geom_path (thanks to @419kfj)
 
 ## Other
 
