@@ -45,7 +45,9 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
   # stdres <- as.table(stdres)
   old.warn <- options()$warn
   options(warn = -1)
-  stdres <- as.table(stats::chisq.test(t)$stdres)
+  temp <- stats::chisq.test(t)
+  stdres <- as.table(temp$stdres)
+  res <- as.table(temp$res)
   options(warn = old.warn)
   
   if(!is.null(nperm)) {
@@ -94,6 +96,7 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
                              rprop=data.frame(prop.table(tab,1))$Freq,
                              cprop=data.frame(prop.table(tab,2))$Freq,
                              expected=data.frame(expected)$Freq,
+                             residuals=data.frame(res)$Freq,
                              std.residuals=data.frame(stdres)$Freq,
                              or=data.frame(or)$Freq,
                              pem=data.frame(peml)$Freq,
@@ -119,6 +122,6 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
 
   return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected,
               'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'global.pem'=pemg, 
-              'std.pearson.residuals'=stdres, 'odds.ratios'=or, 'local.pem'=peml, 'phi'=phi, 'phi.perm.pval'=ppval,
+              'pearson.residuals'=res, 'std.pearson.residuals'=stdres, 'odds.ratios'=or, 'local.pem'=peml, 'phi'=phi, 'phi.perm.pval'=ppval,
               'gather'=gather))
 }

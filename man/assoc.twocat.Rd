@@ -30,6 +30,7 @@ A list with the following elements :
 \item{cramer.v}{Cramer's V between the two variables}
 \item{permutation.pvalue}{p-value from a permutation (so non-parametric) test of independence}
 \item{global.pem}{global PEM}
+\item{pearson.residuals}{the table of Pearson residuals.}
 \item{std.pearson.residuals}{the table of standardized Pearson residuals.}
 \item{odds.ratios}{the table of odds ratios.}
 \item{local.pem}{the table of local PEM}
