@@ -107,7 +107,7 @@ assoc.twocat(Movies$Country, Movies$ArtHouse, nperm=100)
 The function `ggassoc_crosstab` presents the contingency table in graphical form, with rectangles whose area corresponds to the numbers and whose color gradient corresponds to the attractions/repulsions (phi coefficients). The Cramér's V can be displayed in a corner of the graph. Here, the "art et essai" label is clearly over-represented among French films and under-represented among American films.
 
 ```{r ggassoc_crosstab}
-ggassoc_crosstab(Movies, ggplot2::aes(x=Country, y=ArtHouse), max.phi=0.8)
+ggassoc_crosstab(Movies, ggplot2::aes(x=Country, y=ArtHouse), max.asso=0.8)
 ```
 
 The function `ggassoc_phiplot` proposes another way to represent the attractions/repulsions. The width of the rectangles corresponds to the numbers of the variable x, their height to the phi coefficients. The rectangles are colored in black when there is attraction, in white when there is repulsion.

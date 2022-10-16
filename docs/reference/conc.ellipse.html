@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -72,38 +72,50 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">conc.ellipse</span><span class="op">(</span><span class="va">resmca</span>, <span class="va">var</span>, sel <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">var</span><span class="op">)</span>, axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,
- kappa<span class="op">=</span><span class="fl">2</span>,
- col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sel</span><span class="op">)</span><span class="op">)</span>, pcol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sel</span><span class="op">)</span><span class="op">)</span>, pcex <span class="op">=</span> <span class="fl">0.2</span>,
- lty <span class="op">=</span> <span class="fl">1</span>, lwd <span class="op">=</span> <span class="fl">1</span>, tcex <span class="op">=</span> <span class="fl">1</span>, text.lab <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">conc.ellipse</span><span class="op">(</span><span class="va">resmca</span>, <span class="va">var</span>, sel <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">var</span><span class="op">)</span>, axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span> kappa<span class="op">=</span><span class="fl">2</span>,</span>
+<span> col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sel</span><span class="op">)</span><span class="op">)</span>, pcol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">sel</span><span class="op">)</span><span class="op">)</span>, pcex <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span> lty <span class="op">=</span> <span class="fl">1</span>, lwd <span class="op">=</span> <span class="fl">1</span>, tcex <span class="op">=</span> <span class="fl">1</span>, text.lab <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>resmca</dt>
 <dd><p>object of class <code>'MCA'</code>, <code>'speMCA'</code>, <code>'csMCA'</code>, <code>'multiMCA'</code> or <code>'stMCA'</code></p></dd>
-<dt>var</dt>
+
+  <dt>var</dt>
 <dd><p>supplementary variable to plot</p></dd>
-<dt>sel</dt>
+
+  <dt>sel</dt>
 <dd><p>numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories)</p></dd>
-<dt>axes</dt>
+
+  <dt>axes</dt>
 <dd><p>length 2 vector specifying the components to plot (default is c(1,2))</p></dd>
-<dt>kappa</dt>
+
+  <dt>kappa</dt>
 <dd><p>numeric. The kappa value (i.e. "index") of the inertia ellipses. By default, kappa = 2, which means that concentration ellipses are plotted.</p></dd>
-<dt>col</dt>
+
+  <dt>col</dt>
 <dd><p>vector of colors for the ellipses of plotted categories (by default, rainbow palette is used)</p></dd>
-<dt>pcol</dt>
+
+  <dt>pcol</dt>
 <dd><p>vector of colors for the points at the center of ellipses of plotted categories (by default, rainbow palette is used)</p></dd>
-<dt>pcex</dt>
+
+  <dt>pcex</dt>
 <dd><p>numerical value giving the amount by which points at the center of ellipses should be magnified (default is 0.2)</p></dd>
-<dt>lty</dt>
+
+  <dt>lty</dt>
 <dd><p>line type for ellipses (default is 1)</p></dd>
-<dt>lwd</dt>
+
+  <dt>lwd</dt>
 <dd><p>line width for the ellipses (default is 1)</p></dd>
-<dt>tcex</dt>
+
+  <dt>tcex</dt>
 <dd><p>numerical value giving the amount by which labels at the center of ellipses should be magnified (default is 0.2)</p></dd>
-<dt>text.lab</dt>
+
+  <dt>text.lab</dt>
 <dd><p>whether the labels at the center of ellipses should be displayed (default is TRUE)</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -126,18 +138,18 @@ This function has to be used after the cloud of individuals has been drawn.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Performs specific MCA (excluding 'NA' categories) of 'Taste' example data set,</span></span>
-<span class="r-in"><span class="co">## plots the cloud of categories</span></span>
-<span class="r-in"><span class="co">## and adds concentration ellipses for gender variable</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mca</span>,type<span class="op">=</span><span class="st">'i'</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">conc.ellipse</span><span class="op">(</span><span class="va">mca</span>,<span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Performs specific MCA (excluding 'NA' categories) of 'Taste' example data set,</span></span></span>
+<span class="r-in"><span><span class="co">## plots the cloud of categories</span></span></span>
+<span class="r-in"><span><span class="co">## and adds concentration ellipses for gender variable</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mca</span>,type<span class="op">=</span><span class="st">'i'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">conc.ellipse</span><span class="op">(</span><span class="va">mca</span>,<span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="conc.ellipse-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Draws a blue concentration ellipse for men only</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mca</span>,type<span class="op">=</span><span class="st">'i'</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">conc.ellipse</span><span class="op">(</span><span class="va">mca</span>,<span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>,sel<span class="op">=</span><span class="fl">1</span>,col<span class="op">=</span><span class="st">'blue'</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Draws a blue concentration ellipse for men only</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mca</span>,type<span class="op">=</span><span class="st">'i'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">conc.ellipse</span><span class="op">(</span><span class="va">mca</span>,<span class="va">Taste</span><span class="op">$</span><span class="va">Gender</span>,sel<span class="op">=</span><span class="fl">1</span>,col<span class="op">=</span><span class="st">'blue'</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="conc.ellipse-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -153,7 +165,7 @@ This function has to be used after the cloud of individuals has been drawn.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

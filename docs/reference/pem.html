@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -72,21 +72,26 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pem</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,weights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,digits<span class="op">=</span><span class="fl">1</span>,sort<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pem</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,weights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>,digits<span class="op">=</span><span class="fl">1</span>,sort<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>the first categorical variable</p></dd>
-<dt>y</dt>
+
+  <dt>y</dt>
 <dd><p>the second categorical variable</p></dd>
-<dt>weights</dt>
+
+  <dt>weights</dt>
 <dd><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></dd>
-<dt>digits</dt>
-<dd><p>integer. The number of digits (default is 3).</p></dd>
-<dt>sort</dt>
+
+  <dt>digits</dt>
+<dd><p>integer. The number of digits (default is 1). If NULL, the results are not rounded.</p></dd>
+
+  <dt>sort</dt>
 <dd><p>logical. Whether rows and columns are sorted according to a correspondence analysis or not (default is TRUE).</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -95,11 +100,15 @@ It is an alternative to khi2, Cramer's V coefficient, etc.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a list:</p>
+    
+
+<p>Returns a list:</p>
 <dl><dt>peml </dt>
 <dd><p>Table with local percentages of maximum deviation from independence</p></dd>
-<dt>pemg </dt>
+
+  <dt>pemg </dt>
 <dd><p>Numeric value, i.e. the global percentage of maximum deviation from independence</p></dd>
+
 </dl></div>
     <div id="references">
     <h2>References</h2>
@@ -117,11 +126,11 @@ It is an alternative to khi2, Cramer's V coefficient, etc.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Computes the PEM for the contingency table</span></span>
-<span class="r-in"><span class="co">## of jazz and age variables</span></span>
-<span class="r-in"><span class="co">## from the 'Music' example data set</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">pem</span><span class="op">(</span><span class="va">Music</span><span class="op">$</span><span class="va">Jazz</span>,<span class="va">Music</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Computes the PEM for the contingency table</span></span></span>
+<span class="r-in"><span><span class="co">## of jazz and age variables</span></span></span>
+<span class="r-in"><span><span class="co">## from the 'Music' example data set</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">pem</span><span class="op">(</span><span class="va">Music</span><span class="op">$</span><span class="va">Jazz</span>,<span class="va">Music</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $peml</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     15-24 25-49   50+</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No   32.8  -3.5  -5.4</span>
@@ -145,7 +154,7 @@ It is an alternative to khi2, Cramer's V coefficient, etc.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

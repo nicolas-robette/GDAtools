@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -72,28 +72,36 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">darma</span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, weights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>, target<span class="op">=</span><span class="fl">1</span>, twocont<span class="op">=</span><span class="st">"kendall"</span>,
-          nperm<span class="op">=</span><span class="cn">NULL</span>, distrib<span class="op">=</span><span class="st">"asympt"</span>, dec<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">darma</span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span>, weights<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>, target<span class="op">=</span><span class="fl">1</span>, twocont<span class="op">=</span><span class="st">"kendall"</span>,</span>
+<span>          nperm<span class="op">=</span><span class="cn">NULL</span>, distrib<span class="op">=</span><span class="st">"asympt"</span>, dec<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>y</dt>
 <dd><p>the response variable</p></dd>
-<dt>x</dt>
+
+  <dt>x</dt>
 <dd><p>the predictor variables</p></dd>
-<dt>weights</dt>
+
+  <dt>weights</dt>
 <dd><p>an optional numeric vector of weights (by default, a vector of 1 for uniform weights)</p></dd>
-<dt>target</dt>
+
+  <dt>target</dt>
 <dd><p>rank or name of the category of interest when y is categorical</p></dd>
-<dt>twocont</dt>
+
+  <dt>twocont</dt>
 <dd><p>character. The type of measure of correlation measure to use between two continuous variables : "pearson", "spearman" or "kendall" (default).</p></dd>
-<dt>nperm</dt>
+
+  <dt>nperm</dt>
 <dd><p>numeric. Number of permutations for the permutation test of independence. If NULL (default), no permutation test is performed.</p></dd>
-<dt>distrib</dt>
+
+  <dt>distrib</dt>
 <dd><p>the null distribution of permutation test of independence can be approximated by its asymptotic distribution (<code>"asympt"</code>, default) or via Monte Carlo resampling (<code>"approx"</code>).</p></dd>
-<dt>dec</dt>
+
+  <dt>dec</dt>
 <dd><p>vector of 3 integers for number of decimals. The first value if for percents or medians, the second for association measures, the third for permutation p-values. Default is c(1,3,3).</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -101,7 +109,9 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>A data frame</p>
+    
+
+<p>A data frame</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -114,15 +124,15 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">iris2</span> <span class="op">=</span> <span class="va">iris</span></span>
-<span class="r-in">  <span class="va">iris2</span><span class="op">$</span><span class="va">Species</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"versicolor"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">darma</span><span class="op">(</span><span class="va">iris2</span><span class="op">$</span><span class="va">Species</span>, <span class="va">iris2</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, target<span class="op">=</span><span class="fl">2</span>, nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">iris2</span> <span class="op">=</span> <span class="va">iris</span></span></span>
+<span class="r-in"><span>  <span class="va">iris2</span><span class="op">$</span><span class="va">Species</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">iris</span><span class="op">$</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"versicolor"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">darma</span><span class="op">(</span><span class="va">iris2</span><span class="op">$</span><span class="va">Species</span>, <span class="va">iris2</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, target<span class="op">=</span><span class="fl">2</span>, nperm<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       variable category percent association perm.pvalue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Sepal.Length               NA       0.079       0.532</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Sepal.Length               NA       0.079       0.514</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  Sepal.Width               NA      -0.468       0.000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 Petal.Length               NA       0.202       0.000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  Petal.Width               NA       0.118       0.225</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  Petal.Width               NA       0.118       0.238</span>
 </code></pre></div>
     </div>
   </div>
@@ -137,7 +147,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

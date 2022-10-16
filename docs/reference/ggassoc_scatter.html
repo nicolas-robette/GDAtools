@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -72,22 +72,27 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ggassoc_scatter</span><span class="op">(</span><span class="va">data</span>, <span class="va">mapping</span>, axes.labs<span class="op">=</span><span class="cn">TRUE</span>, ticks.labs<span class="op">=</span><span class="cn">TRUE</span>,
-text.size<span class="op">=</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggassoc_scatter</span><span class="op">(</span><span class="va">data</span>, <span class="va">mapping</span>, axes.labs<span class="op">=</span><span class="cn">TRUE</span>, ticks.labs<span class="op">=</span><span class="cn">TRUE</span>,</span>
+<span>text.size<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>dataset to use for plot</p></dd>
-<dt>mapping</dt>
+
+  <dt>mapping</dt>
 <dd><p>aesthetic being used. It must specify x and y.</p></dd>
-<dt>axes.labs</dt>
+
+  <dt>axes.labs</dt>
 <dd><p>Whether to display the labels of the axes, i.e. the names of x and y. Default is TRUE.</p></dd>
-<dt>ticks.labs</dt>
+
+  <dt>ticks.labs</dt>
 <dd><p>Whether to display the labels of the categories of x and y. Default is TRUE.</p></dd>
-<dt>text.size</dt>
+
+  <dt>text.size</dt>
 <dd><p>Size of the association measure. If NULL, the text is not added to the plot.</p></dd>
+  
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -97,7 +102,9 @@ text.size<span class="op">=</span><span class="fl">3</span><span class="op">)</s
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>a ggplot object</p>
+    
+
+<p>a ggplot object</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -111,8 +118,8 @@ text.size<span class="op">=</span><span class="fl">3</span><span class="op">)</s
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">decathlon</span>, package<span class="op">=</span><span class="st">"FactoMineR"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">ggassoc_scatter</span><span class="op">(</span><span class="va">decathlon</span>, mapping <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Javeline</span>, y <span class="op">=</span> <span class="va">Points</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">decathlon</span>, package<span class="op">=</span><span class="st">"FactoMineR"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ggassoc_scatter</span><span class="op">(</span><span class="va">decathlon</span>, mapping <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Javeline</span>, y <span class="op">=</span> <span class="va">Points</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using formula 'y ~ s(x, bs = "cs")'</span>
 <span class="r-plt img"><img src="ggassoc_scatter-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
@@ -129,7 +136,7 @@ text.size<span class="op">=</span><span class="fl">3</span><span class="op">)</s
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

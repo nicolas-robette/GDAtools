@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -72,35 +72,46 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">ggadd_density</span><span class="op">(</span><span class="va">p</span>, <span class="va">resmca</span>, <span class="va">var</span>, cat<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">var</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>,
-density<span class="op">=</span><span class="st">"contour"</span>, col.contour<span class="op">=</span><span class="st">"darkred"</span>, pal.area<span class="op">=</span><span class="st">"viridis"</span>, alpha.area<span class="op">=</span><span class="fl">0.2</span>,
-ellipse<span class="op">=</span><span class="cn">FALSE</span>, col.ellipse<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggadd_density</span><span class="op">(</span><span class="va">p</span>, <span class="va">resmca</span>, <span class="va">var</span>, cat<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">var</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>,</span>
+<span>density<span class="op">=</span><span class="st">"contour"</span>, col.contour<span class="op">=</span><span class="st">"darkred"</span>, pal.area<span class="op">=</span><span class="st">"viridis"</span>, alpha.area<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span>ellipse<span class="op">=</span><span class="cn">FALSE</span>, col.ellipse<span class="op">=</span><span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>p</dt>
 <dd><p>ggplot object with the cloud of variables</p></dd>
-<dt>resmca</dt>
+
+  <dt>resmca</dt>
 <dd><p>object of class <code>MCA</code>, <code>speMCA</code>, <code>csMCA</code>, <code>stMCA</code> or <code>multiMCA</code></p></dd>
-<dt>var</dt>
+
+  <dt>var</dt>
 <dd><p>factor or numerical vector. The supplementary variable used for the heatmap.</p></dd>
-<dt>cat</dt>
+
+  <dt>cat</dt>
 <dd><p>character string. numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories)</p></dd>
-<dt>axes</dt>
+
+  <dt>axes</dt>
 <dd><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></dd>
-<dt>density</dt>
+
+  <dt>density</dt>
 <dd><p>If "contour", density is plotted with contours. If "area", density is plotted with areas.</p></dd>
-<dt>col.contour</dt>
+
+  <dt>col.contour</dt>
 <dd><p>character string. The color of the contours.</p></dd>
-<dt>pal.area</dt>
+
+  <dt>pal.area</dt>
 <dd><p>character string. The name of a viridis palette for areas.</p></dd>
-<dt>alpha.area</dt>
+
+  <dt>alpha.area</dt>
 <dd><p>numeric. Transparency of the areas. Default is 0.2.</p></dd>
-<dt>ellipse</dt>
+
+  <dt>ellipse</dt>
 <dd><p>logical. If TRUE, a concentration ellipse is added.</p></dd>
-<dt>col.ellipse</dt>
+
+  <dt>col.ellipse</dt>
 <dd><p>character string. The color of the ellipse. Default is black.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -122,12 +133,12 @@ ellipse<span class="op">=</span><span class="cn">FALSE</span>, col.ellipse<span 
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Performs a specific MCA on 'Taste' example data set</span></span>
-<span class="r-in"><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span>
-<span class="r-in"><span class="co">## draws the cloud of categories</span></span>
-<span class="r-in"><span class="co">## and adds a density layer for Age=50+.</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Performs a specific MCA on 'Taste' example data set</span></span></span>
+<span class="r-in"><span><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span></span>
+<span class="r-in"><span><span class="co">## draws the cloud of categories</span></span></span>
+<span class="r-in"><span><span class="co">## and adds a density layer for Age=50+.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      </span>
@@ -137,16 +148,15 @@ ellipse<span class="op">=</span><span class="cn">FALSE</span>, col.ellipse<span 
 <span class="r-out co"><span class="r-pr">#&gt;</span> [25] "SciFi.No"      "SciFi.Yes"     "SciFi.NA"      "Love.No"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [29] "Love.Yes"      "Love.NA"       "Musical.No"    "Musical.Yes"  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [33] "Musical.NA"   </span>
-<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span><span class="op">)</span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`guides(&lt;scale&gt; = FALSE)` is deprecated. Please use `guides(&lt;scale&gt; = "none")` instead.</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># density layer with contours</span></span>
-<span class="r-in"><span class="fu">ggadd_density</span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, var<span class="op">=</span><span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, cat<span class="op">=</span><span class="st">"50+"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Taste</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">11</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span>,<span class="fl">18</span>,<span class="fl">21</span>,<span class="fl">24</span>,<span class="fl">27</span>,<span class="fl">30</span>,<span class="fl">33</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span>, col<span class="op">=</span><span class="st">'lightgrey'</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># density layer with contours</span></span></span>
+<span class="r-in"><span><span class="fu">ggadd_density</span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, var<span class="op">=</span><span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, cat<span class="op">=</span><span class="st">"50+"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ggadd_density-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># density layer with areas</span></span>
-<span class="r-in"><span class="fu">ggadd_density</span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, var<span class="op">=</span><span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, cat<span class="op">=</span><span class="st">"50+"</span>, density<span class="op">=</span><span class="st">"area"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># density layer with areas</span></span></span>
+<span class="r-in"><span><span class="fu">ggadd_density</span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, var<span class="op">=</span><span class="va">Taste</span><span class="op">$</span><span class="va">Age</span>, cat<span class="op">=</span><span class="st">"50+"</span>, density<span class="op">=</span><span class="st">"area"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ggadd_density-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
@@ -162,7 +172,7 @@ ellipse<span class="op">=</span><span class="cn">FALSE</span>, col.ellipse<span 
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

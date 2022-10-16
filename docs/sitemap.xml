@@ -121,7 +121,13 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supvar.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_assoplot.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_boxplot.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_chiasmogram.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_crosstab.html</loc>
@@ -158,6 +164,9 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/multiMCA.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/oddsratio.table.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/pem.html</loc>

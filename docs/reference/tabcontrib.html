@@ -27,7 +27,7 @@ Analysis and organizes these informations into a fancy table. It allows to analy
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -74,17 +74,20 @@ Analysis and organizes these informations into a fancy table. It allows to analy
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">resmca</span>, dim <span class="op">=</span> <span class="fl">1</span>, best <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">resmca</span>, dim <span class="op">=</span> <span class="fl">1</span>, best <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>resmca</dt>
 <dd><p>object of class <code>MCA</code>, <code>speMCA</code>, or <code>csMCA</code></p></dd>
-<dt>dim</dt>
+
+  <dt>dim</dt>
 <dd><p>dimension to describe (default is 1st dimension)</p></dd>
-<dt>best</dt>
+
+  <dt>best</dt>
 <dd><p>if FALSE, displays all the categories; if TRUE (default), displays only categories and individuals with contributions higher than average</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -93,21 +96,30 @@ coordinates, so as to facilitate interpretation. Then they are sorted and organi
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a data frame with the following columns:</p>
+    
+
+<p>Returns a data frame with the following columns:</p>
 <dl><dt>var</dt>
 <dd><p>the names of the most contributing variables</p></dd>
-<dt>moda</dt>
+
+  <dt>moda</dt>
 <dd><p>the names of the most contributing cateories</p></dd>
-<dt>ctr1</dt>
+
+  <dt>ctr1</dt>
 <dd><p>'negative' contributions, i.e. corresponding to categories with coordinates lower than zero</p></dd>
-<dt>ctr2</dt>
+
+  <dt>ctr2</dt>
 <dd><p>'positive' contributions, i.e. corresponding to categories with coordinates higher than zero</p></dd>
-<dt>weight</dt>
+
+  <dt>weight</dt>
 <dd><p>weight of the categories</p></dd>
-<dt>ctrtot</dt>
+
+  <dt>ctrtot</dt>
 <dd><p>sum of the best contributions for a given variable</p></dd>
-<dt>cumctrtot</dt>
+
+  <dt>cumctrtot</dt>
 <dd><p>cumulated contributions</p></dd>
+
 </dl></div>
     <div id="references">
     <h2>References</h2>
@@ -125,22 +137,22 @@ coordinates, so as to facilitate interpretation. Then they are sorted and organi
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Performs a specific MCA on 'Music' example data set</span></span>
-<span class="r-in"><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span>
-<span class="r-in"><span class="co">## and then describes the contributions to axes.</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Performs a specific MCA on 'Music' example data set</span></span></span>
+<span class="r-in"><span><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span></span>
+<span class="r-in"><span><span class="co">## and then describes the contributions to axes.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [13] "Classical.No"  "Classical.Yes" "Classical.NA" </span>
-<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">mca</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">mca</span>,<span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         var moda   ctr1 ctr2 weight ctrtot cumctrtot</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 Classical  Yes -27.72         142  38.52     38.52</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2             No        10.8    351                 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3      Jazz  Yes -35.34          95  35.34     73.86</span>
-<span class="r-in"><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">mca</span>,<span class="fl">2</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">mca</span>,<span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    var moda   ctr1  ctr2 weight ctrtot cumctrtot</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 Rock  Yes -30.57          135  41.76     41.76</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3        No        11.19    360                 </span>
@@ -159,7 +171,7 @@ coordinates, so as to facilitate interpretation. Then they are sorted and organi
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

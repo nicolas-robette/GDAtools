@@ -27,7 +27,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -74,33 +74,44 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">varsup</span><span class="op">(</span><span class="va">resmca</span>, <span class="va">var</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">varsup</span><span class="op">(</span><span class="va">resmca</span>, <span class="va">var</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>resmca</dt>
 <dd><p>object of class <code>MCA</code>, <code>speMCA</code>, <code>csMCA</code>, <code>stMCA</code> or <code>multiMCA</code></p></dd>
-<dt>var</dt>
+
+  <dt>var</dt>
 <dd><p>the categorical supplementary variable. It does not need to have been used at the MCA step.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Returns a list:</p>
+    
+
+<p>Returns a list:</p>
 <dl><dt>weight</dt>
 <dd><p>numeric vector of categories weights</p></dd>
-<dt>coord</dt>
+
+  <dt>coord</dt>
 <dd><p>data frame of categories coordinates</p></dd>
-<dt>cos2</dt>
+
+  <dt>cos2</dt>
 <dd><p>data frame of categories square cosine</p></dd>
-<dt>var</dt>
+
+  <dt>var</dt>
 <dd><p>data frame of categories within variances, variance between and within categories and variable square correlation ratio (eta2)</p></dd>
-<dt>typic</dt>
+
+  <dt>typic</dt>
 <dd><p>data frame of categories typicality test statistics</p></dd>
-<dt>pval</dt>
+
+  <dt>pval</dt>
 <dd><p>data frame of categories p-values from typicality test statistics</p></dd>
-<dt>cor</dt>
+
+  <dt>cor</dt>
 <dd><p>data frame of categories correlation coefficients</p></dd>
+  
 </dl></div>
     <div id="references">
     <h2>References</h2>
@@ -118,11 +129,11 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## Performs a specific MCA on 'Music' example data set</span></span>
-<span class="r-in"><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span>
-<span class="r-in"><span class="co">## and then computes statistics for age supplementary variable.</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Performs a specific MCA on 'Music' example data set</span></span></span>
+<span class="r-in"><span><span class="co">## ignoring every 'NA' (i.e. 'not available') categories,</span></span></span>
+<span class="r-in"><span><span class="co">## and then computes statistics for age supplementary variable.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="getindexcat.html">getindexcat</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "FrenchPop.No"  "FrenchPop.Yes" "FrenchPop.NA"  "Rap.No"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Rap.Yes"       "Rap.NA"        "Rock.No"       "Rock.Yes"     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "Rock.NA"       "Jazz.No"       "Jazz.Yes"      "Jazz.NA"      </span>
@@ -130,8 +141,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [17] "Gender.Women"  "Age.15-24"     "Age.25-49"     "Age.50+"      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [21] "OnlyMus.Daily" "OnlyMus.Often" "OnlyMus.Rare"  "OnlyMus.Never"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [25] "Daily.No"      "Daily.Yes"    </span>
-<span class="r-in"><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">varsup</span><span class="op">(</span><span class="va">mca</span>,<span class="va">Music</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span>,<span class="fl">9</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">varsup</span><span class="op">(</span><span class="va">mca</span>,<span class="va">Music</span><span class="op">$</span><span class="va">Age</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $weight</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 15-24 25-49   50+ </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    78   204   218 </span>
@@ -190,7 +201,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
