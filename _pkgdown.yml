@@ -60,6 +60,7 @@ reference:
 - contents:
   - wtable
   - phi.table
+  - oddsratio.table
   - pem
   - assoc.twocat
   - assoc.catcont
@@ -70,6 +71,8 @@ reference:
   - darma
   - ggassoc_crosstab
   - ggassoc_phiplot
+  - ggassoc_chiasmogram
+  - ggassoc_assoplot
   - ggassoc_boxplot
   - ggassoc_scatter
 
