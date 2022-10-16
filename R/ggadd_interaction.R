@@ -15,8 +15,8 @@ ggadd_interaction <- function(p, resmca, v1, v2, sel1=1:nlevels(v1), sel2=1:nlev
   
   p <- p + ggplot2::geom_point(data=coord, ggplot2::aes(color=.data$cat1)) +
            ggrepel::geom_text_repel(key_glyph='blank', data=coord, ggplot2::aes(color=.data$cat1, label=.data$cat12), size = textsize) +
-           ggplot2::geom_line(data=coord, ggplot2::aes(color=.data$cat1)) +
-           ggplot2::geom_line(data=coord, ggplot2::aes(group=.data$cat2), color='darkgray', linetype='dashed')
+           ggplot2::geom_path(data=coord, ggplot2::aes(color=.data$cat1)) +
+           ggplot2::geom_path(data=coord, ggplot2::aes(group=.data$cat2), color='darkgray', linetype='dashed')
 
   if(!is.null(col)) {
     if(length(col)>1) { p <- p + ggplot2::scale_colour_manual(values = col)
