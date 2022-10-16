@@ -9,7 +9,7 @@ For a cross-tabulation, plots measures of local association with bars of varying
 }
 
 \usage{
-ggassoc_assoplot(data, mapping, measure="phi", max.asso=NULL,
+ggassoc_assoplot(data, mapping, measure="residuals", max.asso=NULL,
 sort="none", palette = "PRGn", direction = 1)
 }
 
