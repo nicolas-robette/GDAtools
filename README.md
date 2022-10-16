@@ -1,6 +1,6 @@
 # **GDAtools** <img src="man/figures/GDAtools.png" height=140px width=120px alt="" align="right" />
 
-## Geometric Data Analysis and other descriptive techniques
+## Great Descriptive Analysis and Geometric Data Analysis
 
 <!-- badges: start -->
   [![R build status](https://github.com/nicolas-robette/GDAtools/workflows/R-CMD-check/badge.svg)](https://github.com/nicolas-robette/GDAtools/actions)
@@ -51,8 +51,7 @@ Le Roux B. and Rouanet H., 2010, *Multiple Correspondence Analysis*, SAGE, Serie
 
 Le Roux B. and Rouanet H., 2004, *Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis*, Kluwer Academic Publishers, Dordrecht.
 
-Deauvieau J., 2019, « Comparer les resultats d’un modele logit dichotomique ou polytomique entre plusieurs groupes a partir
-des probabilites estimees »,  *Bulletin de Methodologie Sociologique*, 142(1), 7-31.
+Deauvieau J., 2019, « Comparer les resultats d’un modele logit dichotomique ou polytomique entre plusieurs groupes a partir des probabilites estimees »,  *Bulletin de Methodologie Sociologique*, 142(1), 7-31.
 
 Cibois P., 1993, « Le PEM, pourcentage de l'ecart maximum : un indice de liaison entre modalites d'un tableau de contingence », *Bulletin de Methodologie Sociologique*, 40, pp 43-63, [http://cibois.pagesperso-orange.fr/bms93.pdf]
 
