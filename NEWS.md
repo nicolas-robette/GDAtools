@@ -4,13 +4,15 @@
 
 * `ijunk()`: Shiny app to select interactively the junk categories before a specific MCA.
 * `quadrant()`: Computes the quadrant of active individuals in a given space of a MCA.
-* `oddsratio.table()`: Computes the odds ratio for every cell in a contingency table. 
+* `oddsratio.table()`: Computes the odds ratio for every cell in a contingency table.
+* `ggassoc_chiasmogram()`: Plots the chiasmogram of a crosstabulation, using ggplot. 
 
 ## Bug fixes
 
 * bug fix in `speMCA()`, `csMCA()` and `getindexcat()` when empty levels or non-factor vectors in the data
 * bug fix in `indsup()` : supdata can now be a tibble
 * bug fix in `assoc.yx()` : integers are now allowed for y; empty levels are dropped in x
+* bug fix in `wtable()` : empty cells are replaced by 0.
 
 ## Changes in existing functions
 
