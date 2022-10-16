@@ -2,10 +2,10 @@
 
 \alias{ggassoc_phiplot}
 
-\title{Bar plot of phi measures of association of a crosstabulation}
+\title{Bar plot of measures of local association of a crosstabulation}
 
 \description{
-For a cross-tabulation, plots the phi measures of association with bars of varying height, using ggplot2.
+For a cross-tabulation, plots the measures of local association with bars of varying height, using ggplot2.
 }
 
 \usage{
@@ -16,7 +16,7 @@ sort="none")
 \arguments{
   \item{data}{dataset to use for plot}
   \item{mapping}{aesthetic being used. It must specify x and y.}
-  \item{measure}{character. The measure of association used for filling the rectangles. Can be "phi" for phi coefficient (default), "or" for odds ratios, "std.residuals" for standardized Pearson residuals or "pem" for local percentages of maximum deviation from independence.}
+  \item{measure}{character. The measure of association used for filling the rectangles. Can be "phi" for phi coefficient (default), "or" for odds ratios, "residuals" for Pearson residuals, "std.residuals" for standardized Pearson residuals or "pem" for local percentages of maximum deviation from independence.}
   \item{max.asso}{numeric value, specifying the lower and upper limit of the scale for the color gradient filling the rectangles, i.e. for the measures of association. It corresponds to the maximum absolute value of association one wants to represent in the plot. If NULL (default), the limit is automatically adjusted to the data.}
   \item{sort}{character. If "both", rows and columns are sorted according to the first factor of a correspondence analysis of the contingency table. If "x", only rows are sorted. If "y", only columns are sorted. If "none" (default), no sorting is done.}
 }
