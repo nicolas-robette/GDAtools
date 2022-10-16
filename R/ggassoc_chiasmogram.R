@@ -1,4 +1,4 @@
-ggassoc_chiasmogram <- function(data, mapping, measure = "phi", max.asso = .8,
+ggassoc_chiasmogram <- function(data, mapping, measure = "phi", max.asso = NULL,
                                 sort = "none", palette = "PRGn", direction = 1) {
 
   xVal <- rlang::eval_tidy(mapping$x, data)
@@ -38,6 +38,8 @@ ggassoc_chiasmogram <- function(data, mapping, measure = "phi", max.asso = .8,
   df <- merge(df, breaks2, by = "var.y")
 
   df$asso <- df[,measure]
+  
+  if(is.null(max.asso)) max.asso <- max(abs(df$asso))*0.1
   
   ggplot2::ggplot(df, ggplot2::aes(x = .data$pos1, y = .data$pos2)) +
     ggplot2::geom_tile(aes(width = .data$freq1,
