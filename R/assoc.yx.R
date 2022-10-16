@@ -9,7 +9,6 @@ assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nper
   
   res <- list()
   for(i in 1:ncol(x)) {
-    # print(i)
     if(yformat %in% c('numeric','integer') & xformats[i] %in% c('numeric','integer')) {
       z <- GDAtools::assoc.twocont(y, x[,i], weights=weights, nperm=nperm, distrib=distrib)
       measure = twocont
@@ -22,7 +21,7 @@ assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nper
       association = z$eta.squared
       permutation.pvalue = z$permutation.pvalue
     }
-    if(yformat=='factor' & xformats[i]%in% c('numeric','integer')) {
+    if(yformat=='factor' & xformats[i] %in% c('numeric','integer')) {
       z <- GDAtools::assoc.catcont(y, x[,i], weights=weights, nperm=nperm, distrib=distrib)
       measure='Eta2'
       association = z$eta.squared
@@ -54,25 +53,25 @@ assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nper
       x1 <- x[,combi[[i]][1]]
       x2 <- x[,combi[[i]][2]]
       
-      if(class(x1) %in% c('numeric','integer') & class(x2) %in% c('numeric','integer')) {
+      if(inherits(x1,c('numeric','integer')) & inherits(x2,c('numeric','integer'))) {
         z <- GDAtools::assoc.twocont(x1, x2, weights=weights, nperm=nperm, distrib=distrib)
         measure = twocont
         association = z[,twocont][1]
         permutation.pvalue = z[,twocont][2]
       }
-      if(class(x1) %in% c('numeric','integer') & class(x2)=='factor') {
+      if(inherits(x1,c('numeric','integer')) & inherits(x2,'factor')) {
         z <- GDAtools::assoc.catcont(x2, x1, weights=weights, nperm=nperm, distrib=distrib)
         measure='Eta2'
         association = z$eta.squared
         permutation.pvalue = z$permutation.pvalue
       }
-      if(class(x1)=='factor' & class(x2) %in% c('numeric','integer')) {
+      if(inherits(x1,'factor') & inherits(x2,c('numeric','integer'))) {
         z <- GDAtools::assoc.catcont(x1, x2, weights=weights, nperm=nperm, distrib=distrib)
         measure='Eta2'
         association = z$eta.squared
         permutation.pvalue = z$permutation.pvalue
       }
-      if(class(x1)=='factor' & class(x2)=='factor') {
+      if(inherits(x1,'factor') & inherits(x2,'factor')) {
         z <- GDAtools::assoc.twocat(x1, x2, weights=weights, nperm=nperm, distrib=distrib)
         measure="Cramer's V"
         association = z$cramer.v
