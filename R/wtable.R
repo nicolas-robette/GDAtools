@@ -49,6 +49,8 @@ wtable <- function(x, y=NULL, weights=rep.int(1,length(x)), stat="freq", digits=
     }
   }
 
+  tab[is.na(tab)] <- 0
+  
   if(!is.null(digits)) tab <- round(tab, digits)
   
   return(tab)
