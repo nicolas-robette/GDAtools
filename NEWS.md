@@ -23,6 +23,7 @@
 * `ggassoc_crosstab()` : rewriting with several new options (size, measure, max.asso, palette and direction) and no more dependency to GGally package
 * `ggassoc_phiplot()` : the measure of local association can be any one computed by `assoc.twocat()`
 * `ggadd_interaction()` : geom_line replaced by geom_path (thanks to @419kfj)
+* `ggadd_chulls()` : new "prop" option to allow peeling of the hull
 
 ## Other
 
