@@ -1,5 +1,5 @@
 ggassoc_chiasmogram <- function(data, mapping, measure = "phi", max.asso = NULL,
-                                sort = "none", palette = "PRGn", direction = 1) {
+                                 sort = "none", palette = "PRGn", direction = 1) {
 
   xVal <- rlang::eval_tidy(mapping$x, data)
   yVal <- rlang::eval_tidy(mapping$y, data)
@@ -15,7 +15,7 @@ ggassoc_chiasmogram <- function(data, mapping, measure = "phi", max.asso = NULL,
   
   breaks1 <- as.data.frame(table(xVal))
   breaks1$cumw <- cumsum(breaks1$Freq)
-  breaks1$pos1 <- .5 * (breaks1$cumw + lag(breaks1$cumw, default = 0))
+  breaks1$pos1 <- .5 * (breaks1$cumw + lag1(breaks1$cumw, default = 0))
   breaks1$prop1 = round(100*breaks1$Freq/sum(breaks1$Freq),1)
   breaks1$var.xb = paste(breaks1$prop1, breaks1$xVal, sep = " - ")
   # breaks1 <- breaks1[,c("xVal","pos1","Freq","prop1","var.xb")]
@@ -25,7 +25,7 @@ ggassoc_chiasmogram <- function(data, mapping, measure = "phi", max.asso = NULL,
   
   breaks2 <- as.data.frame(table(yVal))
   breaks2$cumw <- cumsum(breaks2$Freq)
-  breaks2$pos2 <- .5 * (breaks2$cumw + lag(breaks2$cumw, default = 0))
+  breaks2$pos2 <- .5 * (breaks2$cumw + lag1(breaks2$cumw, default = 0))
   breaks2$prop2 = round(100*breaks2$Freq/sum(breaks2$Freq),1)
   breaks2$var.yb = paste(breaks2$prop2, breaks2$yVal, sep = " - ")
   # breaks2 <- breaks2[,c("yVal","pos2","Freq","prop2","var.yb")]
