@@ -1,4 +1,4 @@
-ggadd_chulls <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col=NULL, alpha=0.2, label=TRUE, label.size=5, legend="right") {
+ggadd_chulls <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), prop = 1, col=NULL, alpha=0.2, label=TRUE, label.size=5, legend="right") {
 
   subvar <- var
   
@@ -23,7 +23,7 @@ ggadd_chulls <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col=NU
   ccoord$axeX <- ccoord$axeX*resmca$svd$vs[axes[1]]
   ccoord$axeY <- ccoord$axeY*resmca$svd$vs[axes[2]]
   
-  pfin <- p + stat_chull(data=ecoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, colour=.data$var, fill=.data$var), alpha=alpha)
+  pfin <- p + stat_bag(data=ecoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, colour=.data$var, fill=.data$var), prop = prop, alpha=alpha)
   
   if(label) pfin <- pfin + ggplot2::geom_text(key_glyph='blank', data=ccoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, label=.data$categories, colour=.data$categories), size=label.size)
 

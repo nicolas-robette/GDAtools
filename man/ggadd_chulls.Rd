@@ -8,7 +8,7 @@ Adds convex hulls for a categorical variable to a MCA cloud of individuals, usin
 }
 
 \usage{
-ggadd_chulls(p, resmca, var, sel=1:nlevels(var), axes=c(1,2),
+ggadd_chulls(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), prop = 1, 
 col=NULL, alpha=0.2, label=TRUE, label.size=5, legend="right")
 }
 
@@ -18,6 +18,7 @@ col=NULL, alpha=0.2, label=TRUE, label.size=5, legend="right")
   \item{var}{Factor. The categorical variable used to plot ellipses.}
   \item{sel}{numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories)}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
+  \item{prop}{proportion of all the points to be included in the hull (default is 1).}
   \item{col}{Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses \code{scale_color_grey()}), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of \code{ggplot2} is used.}
   \item{alpha}{Numerical value from 0 to 1. Transparency of the polygon's fill. Default is O.2}
   \item{label}{Logical. Should the labels of the categories be plotted at the center of ellipses ? Default is TRUE.}
