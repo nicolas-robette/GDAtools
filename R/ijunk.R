@@ -12,7 +12,8 @@
 # getindexcat(Music_active)
 
 ijunk <- function(data, init_junk = NULL) {
-  
+
+  data <- as.data.frame(data)
   all_categories <- GDAtools::getindexcat(data)
   data_name <- deparse(substitute(data))
   
