@@ -1,4 +1,4 @@
-ggassoc_assoplot <- function(data, mapping, measure="residuals", max.asso=NULL, sort="none", palette = "PRGn", direction = 1) {
+ggassoc_assocplot <- function(data, mapping, measure="residuals", max.asso=NULL, sort="none", palette = "PRGn", direction = 1) {
 
   xVal <- rlang::eval_tidy(mapping$x, data)
   yVal <- rlang::eval_tidy(mapping$y, data)

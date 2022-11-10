@@ -1,6 +1,6 @@
-\name{ggassoc_assoplot}
+\name{ggassoc_assocplot}
 
-\alias{ggassoc_assoplot}
+\alias{ggassoc_assocplot}
 
 \title{Association plot}
 
@@ -9,7 +9,7 @@ For a cross-tabulation, plots measures of local association with bars of varying
 }
 
 \usage{
-ggassoc_assoplot(data, mapping, measure="residuals", max.asso=NULL,
+ggassoc_assocplot(data, mapping, measure="residuals", max.asso=NULL,
 sort="none", palette = "PRGn", direction = 1)
 }
 
@@ -50,7 +50,7 @@ Friendly, M. (1992), Graphical methods for categorical data. \emph{SAS User Grou
 
 \examples{
 data(Taste)
-ggassoc_assoplot(data=Taste, mapping=ggplot2::aes(x=Age, y=Classical))
+ggassoc_assocplot(data=Taste, mapping=ggplot2::aes(x=Age, y=Classical))
 }
 
 \keyword{ multivariate }
