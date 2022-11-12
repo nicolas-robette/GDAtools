@@ -37,6 +37,9 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/Taste.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ahc_plots.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/angles.csa.html</loc>
   </url>
   <url>
@@ -121,7 +124,13 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supvar.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_assocplot.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_assoplot.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_bertin.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_boxplot.html</loc>
@@ -137,6 +146,9 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_scatter.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggaxis_variables.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggcloud_indiv.html</loc>

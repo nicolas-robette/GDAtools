@@ -45,6 +45,7 @@ reference:
   - conc.ellipse
   - ggcloud_indiv
   - ggcloud_variables
+  - ggaxis_variables
   - ggadd_supind
   - ggadd_supvar
   - ggadd_ellipses
@@ -72,7 +73,8 @@ reference:
   - ggassoc_crosstab
   - ggassoc_phiplot
   - ggassoc_chiasmogram
-  - ggassoc_assoplot
+  - ggassoc_assocplot
+  - ggassoc_bertin
   - ggassoc_boxplot
   - ggassoc_scatter
 
@@ -84,6 +86,7 @@ reference:
   - flip.mca
   - getindexcat
   - medoids
+  - ahc_plots
   - translate.logit
   
 - title: Datasets

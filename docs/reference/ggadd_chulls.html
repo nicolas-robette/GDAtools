@@ -72,7 +72,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggadd_chulls</span><span class="op">(</span><span class="va">p</span>, <span class="va">resmca</span>, <span class="va">var</span>, sel<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">var</span><span class="op">)</span>, axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>,</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggadd_chulls</span><span class="op">(</span><span class="va">p</span>, <span class="va">resmca</span>, <span class="va">var</span>, sel<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">var</span><span class="op">)</span>, axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, prop <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>col<span class="op">=</span><span class="cn">NULL</span>, alpha<span class="op">=</span><span class="fl">0.2</span>, label<span class="op">=</span><span class="cn">TRUE</span>, label.size<span class="op">=</span><span class="fl">5</span>, legend<span class="op">=</span><span class="st">"right"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -92,6 +92,9 @@
 
   <dt>axes</dt>
 <dd><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></dd>
+
+  <dt>prop</dt>
+<dd><p>proportion of all the points to be included in the hull (default is 1).</p></dd>
 
   <dt>col</dt>
 <dd><p>Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses <code>scale_color_grey()</code>), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of <code>ggplot2</code> is used.</p></dd>
