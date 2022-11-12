@@ -4,7 +4,7 @@
 \title{Plots MCA cloud of variables with ggplot2}
 
 \description{
-Plots a Multiple Correspondence Analysis cloud of variables, using ggplots functions.
+Plots a Multiple Correspondence Analysis cloud of variables, using ggplot2.
 }
 
 \usage{
