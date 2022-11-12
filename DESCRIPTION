@@ -4,7 +4,7 @@ Title: A Toolbox for Great Descriptive Analyses and Geometric Data Analysis
 Version: 1.8
 Author: Nicolas Robette
 Maintainer: Nicolas Robette <nicolas.robette@uvsq.fr>
-Imports: MASS, wdm, FactoMineR, nleqslv, nnet, ggplot2, ggrepel, RColorBrewer, rlang, shiny, miniUI, esquisse, rclipboard
+Imports: MASS, wdm, FactoMineR, TraMineR, nleqslv, nnet, ggplot2, ggrepel, RColorBrewer, rlang, shiny, miniUI, esquisse, rclipboard
 Suggests: rmarkdown, knitr, rmdformats, cluster, GGally, WeightedCluster, vcd, R.rsp
 Description: Contains functions for great descriptive analysis of bivariate associations between variables (measures and plots), 
   as well as 'specific' Multiple Correspondence Analysis, Class Specific Analysis, Multiple Factor Analysis, 'standardized' MCA, 

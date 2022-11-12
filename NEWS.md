@@ -6,7 +6,8 @@
 * `quadrant()`: Computes the quadrant of active individuals in a given space of a MCA.
 * `oddsratio.table()`: Computes the odds ratio for every cell in a contingency table.
 * `ggassoc_chiasmogram()`: Plots the chiasmogram of a crosstabulation, using ggplot2.
-* `ggassoc_assocplot()`: Association plot of a crosstabulation, using ggplot2. 
+* `ggassoc_assocplot()`: Association plot of a crosstabulation, using ggplot2.
+* `ahc_plots()`: Various plots of Ascending Hierarchical Clustering. 
 
 ## Bug fixes
 
