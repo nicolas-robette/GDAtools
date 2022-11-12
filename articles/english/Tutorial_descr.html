@@ -90,7 +90,7 @@
       <h1 data-toc-skip>Descriptive analysis of statistical associations with GDAtools</h1>
                         <h4 data-toc-skip class="author">Nicolas Robette</h4>
             
-            <h4 data-toc-skip class="date">2022-10-16</h4>
+            <h4 data-toc-skip class="date">2022-11-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/english/Tutorial_descr.Rmd" class="external-link"><code>vignettes/english/Tutorial_descr.Rmd</code></a></small>
       <div class="hidden name"><code>Tutorial_descr.Rmd</code></div>
@@ -248,16 +248,16 @@ USA     0.45688150 -0.45688150
 
 $phi.perm.pval
                  No          Yes
-Europe 3.079769e-01 3.079769e-01
-France 3.553208e-40 0.000000e+00
-Other  2.560892e-03 2.560892e-03
-USA    0.000000e+00 2.677048e-54
+Europe 3.140150e-01 3.140150e-01
+France 3.720607e-42 0.000000e+00
+Other  3.276224e-03 3.276224e-03
+USA    0.000000e+00 2.467981e-44
 
 $gather
   var.y  var.x freq  prop     rprop      cprop expected  residuals std.residuals         or       pem         phi    perm.pval freq.x freq.y prop.x prop.y
-1    No Europe   39 0.039 0.5416667 0.07587549   37.008  0.3274474      0.487584  1.1270813   5.69273  0.01541876 3.079769e-01     72    514  0.072  0.514
-2    No France  212 0.212 0.3504132 0.41245136  310.970 -5.6123445    -12.809366  0.1661190 -51.55493 -0.40506773 3.553208e-40    605    514  0.605  0.514
-3    No  Other    6 0.006 0.2307692 0.01167315   13.364 -2.0143992     -2.927844  0.2751969 -55.10326 -0.09258656 2.560892e-03     26    514  0.026  0.514
+1    No Europe   39 0.039 0.5416667 0.07587549   37.008  0.3274474      0.487584  1.1270813   5.69273  0.01541876 3.140150e-01     72    514  0.072  0.514
+2    No France  212 0.212 0.3504132 0.41245136  310.970 -5.6123445    -12.809366  0.1661190 -51.55493 -0.40506773 3.720607e-42    605    514  0.605  0.514
+3    No  Other    6 0.006 0.2307692 0.01167315   13.364 -2.0143992     -2.927844  0.2751969 -55.10326 -0.09258656 3.276224e-03     26    514  0.026  0.514
 4    No    USA  257 0.257 0.8653199 0.50000000  152.658  8.4449945     14.447862 11.1500000  72.28804  0.45688150 0.000000e+00    297    514  0.297  0.514
  [ reached 'max' / getOption("max.print") -- omitted 4 rows ]</code></pre>
 <p><br>
@@ -284,7 +284,7 @@ The function <code>ggassoc_crosstab</code> presents the contingency table in gra
 [1] 0.0169216
 
 $permutation.pvalue
-[1] 4.9051e-08
+[1] 2.264423e-06
 
 $cor
 Europe France  Other    USA 
@@ -292,7 +292,7 @@ Europe France  Other    USA
 
 $cor.perm.pval
       Europe       France        Other          USA 
-3.646309e-01 1.478309e-03 1.430812e-01 4.017831e-05 </code></pre>
+3.331080e-01 1.228279e-03 1.812492e-01 4.223743e-05 </code></pre>
 <p><br>
 The function <code>ggassoc_boxplot</code> represents the relationship between the variables in the form of box-plots and/or “violin” distributions. The eta² value is displayed in a corner of the graph.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -329,8 +329,8 @@ The function <code>ggassoc_scatter</code> represents the relationship between th
 2 ArtHouse          Eta2       0.075              0.000
 3  Country          Eta2       0.048              0.000
 4   Budget Kendall's tau       0.518              0.000
-5  Critics Kendall's tau       0.006              0.352
-6 Festival          Eta2       0.000              0.758
+5  Critics Kendall's tau       0.006              0.394
+6 Festival          Eta2       0.000              0.731
 
 $XX
    variable1 variable2       measure association permutation.pvalue
@@ -344,11 +344,11 @@ $XX
 8     Budget  ArtHouse          Eta2       0.181              0.000
 9      Genre   Critics          Eta2       0.090              0.000
 10  Festival   Critics          Eta2       0.041              0.000
-11     Genre  Festival    Cramer's V       0.183              0.000
-12    Budget   Critics Kendall's tau      -0.178              0.000
+11    Budget   Critics Kendall's tau      -0.178              0.000
+12     Genre  Festival    Cramer's V       0.183              0.000
 13   Country   Critics          Eta2       0.017              0.000
-14    Budget  Festival          Eta2       0.003              0.009
-15   Country  Festival    Cramer's V       0.035              0.767</code></pre>
+14    Budget  Festival          Eta2       0.003              0.062
+15   Country  Festival    Cramer's V       0.035              0.746</code></pre>
 <p><br>
 The functions <code>catdesc</code> and <code>condesc</code> allow to go into more detail about the relationships, by going to the category level.</p>
 <p><code>catdesc</code> deals with the cases where Y is a categorical variable. For a categorical variable X1, it computes, for a given category of Y and a category of X1 :</p>
@@ -411,8 +411,8 @@ $continuous.var
 2 ArtHouse          Eta2       0.075              0.000
 3  Country          Eta2       0.048              0.000
 4   Budget Kendall's tau       0.518              0.000
-5  Critics Kendall's tau       0.006              0.437
-6 Festival          Eta2       0.000              0.752
+5  Critics Kendall's tau       0.006              0.398
+6 Festival          Eta2       0.000              0.765
 
 $categories
         categories median.y.in.xcat median.y.global mad.y.in.xcat mad.y.global    cor
@@ -459,7 +459,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Action</td>
 <td align="right">301483.7</td>
 <td align="right">0.087</td>
-<td align="right">0.004</td>
+<td align="right">0.003</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -473,7 +473,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Other</td>
 <td align="right">254002.8</td>
 <td align="right">-0.005</td>
-<td align="right">0.443</td>
+<td align="right">0.407</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -487,7 +487,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Comedy</td>
 <td align="right">236703.8</td>
 <td align="right">0.004</td>
-<td align="right">0.479</td>
+<td align="right">0.432</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
@@ -508,7 +508,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Horror</td>
 <td align="right">296015.2</td>
 <td align="right">-0.015</td>
-<td align="right">0.307</td>
+<td align="right">0.317</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -522,7 +522,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Europe</td>
 <td align="right">161441.5</td>
 <td align="right">0.068</td>
-<td align="right">0.006</td>
+<td align="right">0.020</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -536,7 +536,7 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">Other</td>
 <td align="right">64304.0</td>
 <td align="right">-0.013</td>
-<td align="right">0.374</td>
+<td align="right">0.313</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -564,21 +564,21 @@ The <code>darma</code> function presents the results in a form close to that of 
 <td align="left">No</td>
 <td align="right">134006.6</td>
 <td align="right">-0.008</td>
-<td align="right">0.433</td>
+<td align="right">0.389</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Yes</td>
 <td align="right">236910.7</td>
 <td align="right">0.008</td>
-<td align="right">0.371</td>
+<td align="right">0.323</td>
 </tr>
 <tr class="odd">
 <td align="left">Critics</td>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">0.006</td>
-<td align="right">0.403</td>
+<td align="right">0.406</td>
 </tr>
 </tbody>
 </table>
@@ -604,49 +604,49 @@ When the variable Y is categorical, the function computes :</p>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">-0.057</td>
-<td align="right">0.025</td>
+<td align="right">0.034</td>
 </tr>
 <tr class="even">
 <td align="left">Genre</td>
 <td align="left">Action</td>
 <td align="right">7.9</td>
 <td align="right">0.003</td>
-<td align="right">0.476</td>
+<td align="right">0.400</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Animation</td>
 <td align="right">2.2</td>
 <td align="right">-0.046</td>
-<td align="right">0.064</td>
+<td align="right">0.058</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Other</td>
 <td align="right">11.5</td>
 <td align="right">0.024</td>
-<td align="right">0.226</td>
+<td align="right">0.291</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">ComDram</td>
 <td align="right">8.7</td>
 <td align="right">0.016</td>
-<td align="right">0.235</td>
+<td align="right">0.376</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Comedy</td>
 <td align="right">2.7</td>
 <td align="right">-0.100</td>
-<td align="right">0.001</td>
+<td align="right">0.000</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Documentary</td>
 <td align="right">2.6</td>
 <td align="right">-0.055</td>
-<td align="right">0.025</td>
+<td align="right">0.021</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -660,7 +660,7 @@ When the variable Y is categorical, the function computes :</p>
 <td align="left">Horror</td>
 <td align="right">0.0</td>
 <td align="right">-0.046</td>
-<td align="right">0.075</td>
+<td align="right">0.052</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
@@ -674,28 +674,28 @@ When the variable Y is categorical, the function computes :</p>
 <td align="left">Europe</td>
 <td align="right">9.7</td>
 <td align="right">0.021</td>
-<td align="right">0.247</td>
+<td align="right">0.227</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">France</td>
 <td align="right">8.1</td>
 <td align="right">0.019</td>
-<td align="right">0.246</td>
+<td align="right">0.252</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">Other</td>
 <td align="right">7.7</td>
 <td align="right">0.000</td>
-<td align="right">0.412</td>
+<td align="right">0.482</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">USA</td>
 <td align="right">6.4</td>
 <td align="right">-0.032</td>
-<td align="right">0.177</td>
+<td align="right">0.141</td>
 </tr>
 <tr class="odd">
 <td align="left">ArtHouse</td>
@@ -723,7 +723,7 @@ When the variable Y is categorical, the function computes :</p>
 <td align="left"></td>
 <td align="right">NA</td>
 <td align="right">0.008</td>
-<td align="right">0.756</td>
+<td align="right">0.703</td>
 </tr>
 </tbody>
 </table>
