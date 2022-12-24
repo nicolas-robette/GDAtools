@@ -16,7 +16,7 @@ ggadd_supvar <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col='b
   } else if(prop=='vtest2') { coord$prop <- abs(vs$typic[,dim2])
   } else if(prop=='cos1') { coord$prop <- vs$cos2[,dim1] 
   } else if(prop=='cos2') { coord$prop <- vs$cos2[,dim2] 
-  } else if(prop=='cos12') coord$prop <- rowSums(vs$contrib[,axes])
+  } else if(prop=='cos12') coord$prop <- rowSums(vs$cos2[,axes])
   
   levs <- names(vs$weight) %in% levels(var)[sel]
   coord <- coord[levs,]
