@@ -16,13 +16,14 @@ import(wdm,MASS,nleqslv,nnet,ggplot2,ggrepel,RColorBrewer,shiny,rclipboard)
   importFrom("rlang", ".data", "as_name", "eval_tidy")
   importFrom("miniUI", "miniContentPanel", "miniPage", "gadgetTitleBar")
   importFrom("esquisse", "dragulaInput", "updateDragulaInput")
+  importFrom("ggnewscale", "new_scale_color")
 
 S3method(plot, speMCA)
 S3method(plot, csMCA)
 S3method(plot, multiMCA)
 S3method(plot, stMCA)
 
-export(ahc_plots,angles.csa,assoc.twocat,assoc.catcont,assoc.twocont,assoc.yx,burt,catdesc,conc.ellipse,condesc,contrib,csMCA,darma,dichotom,dimcontrib,dimdescr,dimeta2,dimtypicality,flip.mca,getindexcat,
-       ggadd_attractions,ggadd_chulls,ggadd_corr,ggadd_density,ggadd_ellipses,ggadd_interaction,ggadd_kellipses,ggadd_supind,ggadd_supvar,
+export(ahc.plots,angles.csa,assoc.twocat,assoc.catcont,assoc.twocont,assoc.yx,burt,catdesc,conc.ellipse,condesc,contrib,csMCA,darma,dichotom,dimcontrib,dimdescr,dimeta2,dimtypicality,dist.chi2,flip.mca,getindexcat,
+       ggadd_attractions,ggadd_chulls,ggadd_corr,ggadd_density,ggadd_ellipses,ggadd_interaction,ggadd_kellipses,ggadd_supind,ggadd_supvar,ggadd_supvars,
        ggassoc_assocplot,ggassoc_bertin,ggassoc_chiasmogram,ggassoc_crosstab,ggassoc_phiplot,ggassoc_boxplot,ggassoc_scatter,ggaxis_variables,ggcloud_indiv,ggcloud_variables,
-       homog.test,ijunk,indsup,medoids,modif.rate,multiMCA,oddsratio.table,pem,phi.table,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,quadrant,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,wtable)
+       homog.test,ijunk,indsup,medoids,modif.rate,multiMCA,oddsratio.table,pem,phi.table,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,quadrant,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,varsups,wtable)
