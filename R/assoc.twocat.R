@@ -30,7 +30,7 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
   rprop <- 100*apply(freq, 2, function(x) 2*x/rowSums(freq))
   cprop <- t(100*apply(freq, 1, function(x) 2*x/colSums(freq)))
 
-  phi <- GDAtools::phi.table(X,Y,weights=W,digits=NULL)
+  phi <- phi.table(X,Y,weights=W,digits=NULL)
   or <- oddsratio.table(X,Y,weights=W,digits=NULL)
   pem <- pem(X,Y,weights=W,digits=NULL)
   peml <- pem$peml
@@ -91,13 +91,25 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
   dimnames(expected) <- dimnames(phi)
   dimnames(stdres) <- dimnames(phi)
   
+  pij <- t/sum(t)
+  pi <- rowSums(pij)
+  pj <- colSums(pij)
+  vx <- 1 - sum(pi^2)
+  vy <- 1 - sum(pj^2)
+  xyTerm <- apply(pij^2, MARGIN = 1, sum)
+  vyBarx <- 1 - sum(xyTerm/pi)
+  yxTerm <- apply(pij^2, MARGIN = 2, sum)
+  vxBary <- 1 - sum(yxTerm/pj)
+  tauxy <- (vy - vyBarx)/vy
+  tauyx <- (vx - vxBary)/vx
+  
   gather <- cbind.data.frame(data.frame(tab), 
                              prop=data.frame(prop.table(tab))$Freq,
                              rprop=data.frame(prop.table(tab,1))$Freq,
                              cprop=data.frame(prop.table(tab,2))$Freq,
                              expected=data.frame(expected)$Freq,
-                             residuals=data.frame(res)$Freq,
-                             std.residuals=data.frame(stdres)$Freq,
+                             std.residuals=data.frame(res)$Freq,
+                             adj.residuals=data.frame(stdres)$Freq,
                              or=data.frame(or)$Freq,
                              pem=data.frame(peml)$Freq,
                              phi=data.frame(phi)$Freq)
@@ -120,8 +132,31 @@ assoc.twocat <- function(x, y, weights=rep.int(1,length(x)), na_value=NULL, nper
   gather <- merge(gather, t3, by = "var.x")
   gather <- merge(gather, t4, by = "var.y")
 
-  return(list('freq'=freq, 'prop'=prop, 'rprop'=rprop, 'cprop'=cprop, 'expected'=expected,
-              'chi.squared'=chi.squared, 'cramer.v'=cramer.v, 'permutation.pvalue'=permutation.pvalue, 'global.pem'=pemg, 
-              'pearson.residuals'=res, 'std.pearson.residuals'=stdres, 'odds.ratios'=or, 'local.pem'=peml, 'phi'=phi, 'phi.perm.pval'=ppval,
+  return(list('tables' = list('freq'=freq,
+                              'prop'=prop, 
+                              'rprop'=rprop, 
+                              'cprop'=cprop, 
+                              'expected'=expected),
+              'global' = list('chi.squared'=chi.squared,
+                              'cramer.v'=cramer.v,
+                              'permutation.pvalue'=permutation.pvalue,
+                              'global.pem'=pemg,
+                              'GK.tau.xy'=tauxy,
+                              'GK.tau.yx'=tauyx),
+              'local' = list('std.residuals'=res,
+                             'adj.residuals'=stdres,
+                             'odds.ratios'=or,
+                             'local.pem'=peml,
+                             'phi'=phi,
+                             'phi.perm.pval'=ppval),
               'gather'=gather))
 }
+
+# data(Music)
+# assoc.twocat(Music$Jazz,Music$Age,nperm=100)
+# x = Music$Jazz
+# y = Music$Age
+# weights=rep.int(1,length(x))
+# 
+# library(GoodmanKruskal)
+# GKtau(x, y, dgts = 5)
