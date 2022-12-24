@@ -72,7 +72,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggassoc_assocplot</span><span class="op">(</span><span class="va">data</span>, <span class="va">mapping</span>, measure<span class="op">=</span><span class="st">"residuals"</span>, max.asso<span class="op">=</span><span class="cn">NULL</span>,</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggassoc_assocplot</span><span class="op">(</span><span class="va">data</span>, <span class="va">mapping</span>, measure<span class="op">=</span><span class="st">"std.residuals"</span>, max.asso<span class="op">=</span><span class="cn">NULL</span>,</span>
 <span>sort<span class="op">=</span><span class="st">"none"</span>, palette <span class="op">=</span> <span class="st">"PRGn"</span>, direction <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -85,7 +85,7 @@
 <dd><p>aesthetic being used. It must specify x and y.</p></dd>
 
   <dt>measure</dt>
-<dd><p>character. The measure of association used for filling the rectangles. Can be "phi" for phi coefficient, "or" for odds ratios, "residuals" (default) for Pearson residuals, "std.residuals" for standardized Pearson residuals or "pem" for local percentages of maximum deviation from independence.</p></dd>
+<dd><p>character. The measure of association used for filling the rectangles. Can be "phi" for phi coefficient, "or" for odds ratios, "std.residuals" (default) for standardized (i.e. Pearson) residuals, "adj.residuals" for adjusted standardized residuals or "pem" for local percentages of maximum deviation from independence.</p></dd>
 
   <dt>max.asso</dt>
 <dd><p>numeric value, specifying the lower and upper limit of the scale for the color gradient filling the rectangles, i.e. for the measures of association. It corresponds to the maximum absolute value of association one wants to represent in the plot. If NULL (default), the limit is automatically adjusted to the data.</p></dd>
@@ -146,7 +146,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
