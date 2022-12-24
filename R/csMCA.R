@@ -74,6 +74,6 @@ csMCA <- function(data,subcloud=rep(TRUE,times=nrow(data)),excl=NULL,ncp=5,row.w
     quali <- 1:Q
     call <- list(X=data,marge.col=marge.col,marge.row=marge.row,ncp=ncp,quali=quali,subcloud=subcloud,excl=excl,excl.char=getindexcat(data)[excl],row.w=row.w)
     RES <- list(eig=eig,call=call,ind=ind,var=var,svd=list(vs=svd$d,U=svd$u,V=svd$v))
-    attr(RES,'class') <- c('csMCA','list')
+    attr(RES,'class') <- c('csMCA','speMCA','list')
     RES
 }

@@ -21,9 +21,7 @@ row.w = rep(1, times = nrow(data)))
 }
 
 \details{
-This variant of MCA is used to study a subset of individuals with reference to the whole set of individuals, i.e. to determine 
-the specific features of the subset. It consists in proceeding to the search of the principal axes of the subcloud associated 
-with the subset of individuals (see Le Roux and Rouanet, 2004 and 2010).
+This variant of MCA is used to study a subset of individuals with reference to the whole set of individuals, i.e. to determine the specific features of the subset. It consists in proceeding to the search of the principal axes of the subcloud associated with the subset of individuals (see Le Roux and Rouanet, 2004 and 2010).
 }
 
 \value{
