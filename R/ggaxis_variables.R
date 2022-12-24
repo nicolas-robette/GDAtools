@@ -3,6 +3,10 @@
 # var = "Classical"
 # var = NULL
 # axis = 3
+# prop = NULL
+# underline = FALSE
+# color = "black"
+# palette = "khroma::bright"
 # 
 # ggaxis_variables(resmca, var = NULL, axis = 1, prop = NULL, palette = "khroma::bright")
 # ggaxis_variables(resmca, var = NULL, axis = 1, prop = NULL, palette = NULL, color = "orange")
@@ -14,7 +18,8 @@
 # 
 # ggaxis_variables(resmca, var = Taste$Educ, axis = 1, prop = "pval")
 
-ggaxis_variables <- function(resmca, var = NULL, axis = 1, prop = NULL, underline = FALSE, 
+ggaxis_variables <- function(resmca, var = NULL, axis = 1, # multi = FALSE,
+                             prop = NULL, underline = FALSE, 
                              color = "black", palette = "khroma::bright") {
 
   type <- attr(resmca,'class')[1]
@@ -57,6 +62,11 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1, prop = NULL, underlin
                      freq = vs$weight,
                      cos2 = vs$cos2[,paste0("dim.",axis)],
                      ctr = vs$contrib[,paste0("dim.",axis)])
+    # if(multi) { 
+    #   df$y <- as.numeric(df$vnames)-1
+    # } else {
+    #   df$y <- rep(0, nrow(df))
+    # }
     if(underline) {
       seuil <- 100/nrow(resmca$var$contrib)
       df$names[df$ctr>seuil] <- paste0("underline(",df$names[df$ctr>seuil],")")
@@ -81,9 +91,9 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1, prop = NULL, underlin
     ggplot2::ggplot(data = df) +
       ggplot2::geom_segment(x = min(df$coord)*1.1, y = 0, xend = max(df$coord)*1.1, yend = 0,
                    linewidth = .1, col = "darkgrey",
-                   arrow = arrow(ends = "both", type = "closed", length = unit(0.1, "inches"))) +
+                   arrow = ggplot2::arrow(ends = "both", type = "closed", length = ggplot2::unit(0.1, "inches"))) +
       # geom_hline(yintercept = 0, colour = "darkgrey", linewidth = .1) +
-      ggplot2::geom_point(x = 0, y = 0, colour = "darkgrey", size = rel(1))
+      ggplot2::geom_point(x = 0, y = 0, colour = "darkgrey", size = ggplot2::rel(1))
   
   if(is.null(var) & !is.null(palette)) {
     p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size, color = .data$vnames),
@@ -104,10 +114,17 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1, prop = NULL, underlin
                    panel.grid.minor = ggplot2::element_blank(),
                    axis.text.y = ggplot2::element_blank(),
                    axis.title.y = ggplot2::element_blank(),
-                   axis.title.x = ggplot2::element_text(margin = unit(c(5,0,0,0), units = "mm")),
+                   axis.title.x = ggplot2::element_text(margin = ggplot2::unit(c(5,0,0,0), units = "mm")),
                    aspect.ratio = 0.1,
                    legend.position = "none")
   
   return(p)
   
 }
+
+# data(Taste)
+# resmca <- speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
+# ggaxis_variables(resmca)
+# ggaxis_variables(resmca, prop = "freq", underline = TRUE, color = "black")
+# ggaxis_variables(resmca, var = "Classical", axis = 1, prop = "ctr", underline = TRUE)
+# ggaxis_variables(resmca, var = Taste$Educ, axis = 1, prop = "pval")
