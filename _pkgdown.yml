@@ -29,6 +29,7 @@ reference:
   - dimtypicality
   - homog.test
   - varsup
+  - varsups
   - indsup
   - quadrant
   - angles.csa
@@ -48,6 +49,7 @@ reference:
   - ggaxis_variables
   - ggadd_supind
   - ggadd_supvar
+  - ggadd_supvars
   - ggadd_ellipses
   - ggadd_kellipses
   - ggadd_chulls
@@ -86,7 +88,8 @@ reference:
   - flip.mca
   - getindexcat
   - medoids
-  - ahc_plots
+  - ahc.plots
+  - dist.chi2
   - translate.logit
   
 - title: Datasets

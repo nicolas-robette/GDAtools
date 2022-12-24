@@ -37,6 +37,9 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/Taste.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ahc.plots.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ahc_plots.html</loc>
   </url>
   <url>
@@ -91,6 +94,9 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/dimtypicality.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/dist.chi2.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/flip.mca.html</loc>
   </url>
   <url>
@@ -122,6 +128,9 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supvar.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supvars.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggassoc_assocplot.html</loc>
@@ -221,6 +230,9 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/varsup.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/varsups.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/wtable.html</loc>

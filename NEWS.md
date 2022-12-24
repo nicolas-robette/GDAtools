@@ -7,8 +7,12 @@
 * `oddsratio.table()`: Computes the odds ratio for every cell in a contingency table.
 * `ggassoc_chiasmogram()`: Plots the chiasmogram of a crosstabulation, using ggplot2.
 * `ggassoc_assocplot()`: Association plot of a crosstabulation, using ggplot2.
-* `ahc_plots()`: Various plots of Ascending Hierarchical Clustering.
-* `ggaxis_variables()`: Plots variables on a single axis of a MCA. 
+* `ggassoc_bertin()`: Bertin plot of a crosstabulation, using ggplot2.
+* `ahc.plots()`: Various plots of Ascending Hierarchical Clustering.
+* `dist.chi2()`: Computes chi-squared distance.
+* `ggaxis_variables()`: Plots variables on a single axis of a MCA.
+* `varsups()`: Computes statistics for categorical supplementary variables. 
+* `ggadd_supvars()`: Adds categorical supplementary variables to a cloud of variables. 
 
 ## Bug fixes
 
@@ -20,8 +24,9 @@
 ## Changes in existing functions
 
 * `speMCA()` and `csMCA()` : junk categories can now be specified as a character vector
+* `csMCA()` : results can now be used with `explor` package
 * `tabcontrib()` : new "best" option (thanks to @419kfj)
-* `assoc.twocat()` : unstandardized and standardized Pearson residuals, odds ratios and PEM are computed. "gather" object has columns for margins frequencies and percentages.
+* `assoc.twocat()` : standardized (i.e. Pearson) residuals, adjusted standardized residuals, odds ratios, PEM and Goodman-Kruskal tau are computed. The object is reorganized into several sublists. "gather" data frame has columns for margins frequencies and percentages. 
 * `ggassoc_crosstab()` : rewriting with several new options (size, measure, max.asso, palette and direction) and no more dependency to GGally package
 * `ggassoc_phiplot()` : the measure of local association can be any one computed by `assoc.twocat()`
 * `ggadd_interaction()` : geom_line replaced by geom_path (thanks to @419kfj)

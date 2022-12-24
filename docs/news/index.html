@@ -81,9 +81,17 @@
 <li>
 <code><a href="../reference/ggassoc_assocplot.html">ggassoc_assocplot()</a></code>: Association plot of a crosstabulation, using ggplot2.</li>
 <li>
-<code><a href="../reference/ahc_plots.html">ahc_plots()</a></code>: Various plots of Ascending Hierarchical Clustering.</li>
+<code><a href="../reference/ggassoc_bertin.html">ggassoc_bertin()</a></code>: Bertin plot of a crosstabulation, using ggplot2.</li>
+<li>
+<code><a href="../reference/ahc.plots.html">ahc.plots()</a></code>: Various plots of Ascending Hierarchical Clustering.</li>
+<li>
+<code><a href="../reference/dist.chi2.html">dist.chi2()</a></code>: Computes chi-squared distance.</li>
 <li>
 <code><a href="../reference/ggaxis_variables.html">ggaxis_variables()</a></code>: Plots variables on a single axis of a MCA.</li>
+<li>
+<code><a href="../reference/varsups.html">varsups()</a></code>: Computes statistics for categorical supplementary variables.</li>
+<li>
+<code><a href="../reference/ggadd_supvars.html">ggadd_supvars()</a></code>: Adds categorical supplementary variables to a cloud of variables.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-8">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8"></a></h3>
@@ -97,9 +105,11 @@
 <ul><li>
 <code><a href="../reference/speMCA.html">speMCA()</a></code> and <code><a href="../reference/csMCA.html">csMCA()</a></code> : junk categories can now be specified as a character vector</li>
 <li>
+<code><a href="../reference/csMCA.html">csMCA()</a></code> : results can now be used with <code>explor</code> package</li>
+<li>
 <code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : new “best” option (thanks to <a href="https://github.com/419kfj" class="external-link">@419kfj</a>)</li>
 <li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : unstandardized and standardized Pearson residuals, odds ratios and PEM are computed. “gather” object has columns for margins frequencies and percentages.</li>
+<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : standardized (i.e. Pearson) residuals, adjusted standardized residuals, odds ratios, PEM and Goodman-Kruskal tau are computed. The object is reorganized into several sublists. “gather” data frame has columns for margins frequencies and percentages.</li>
 <li>
 <code><a href="../reference/ggassoc_crosstab.html">ggassoc_crosstab()</a></code> : rewriting with several new options (size, measure, max.asso, palette and direction) and no more dependency to GGally package</li>
 <li>
