@@ -6,9 +6,9 @@ darma <- function(y,x,weights=rep(1,length(y)),target=1,twocont="kendall",nperm=
   for(i in 1:ncol(x)) {
     if(is.factor(y) & is.factor(x[,i])) {
       biv <- GDAtools::assoc.twocat(y,x[,i],weights=weights,nperm=nperm,distrib=distrib)
-      pct <- biv$cprop[target,1:nlevels(x[,i])]
-      assoc <- biv$phi[target,]
-      pval <- biv$phi.perm.pval[target,]
+      pct <- biv$tables$cprop[target,1:nlevels(x[,i])]
+      assoc <- biv$local$phi[target,]
+      pval <- biv$local$phi.perm.pval[target,]
       if(is.null(nperm)) pval <- rep(NA,length(assoc))
       var <- c(names(x)[i], rep("",nlevels(x[,i])-1))
       mod <- names(assoc)

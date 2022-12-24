@@ -30,8 +30,8 @@ assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nper
     if(yformat=='factor' & xformats[i]=='factor') {
       z <- GDAtools::assoc.twocat(x[,i], y, weights=weights, nperm=nperm, distrib=distrib)
       measure="Cramer's V"
-      association = z$cramer.v
-      permutation.pvalue = z$permutation.pvalue
+      association = z$global$cramer.v
+      permutation.pvalue = z$global$permutation.pvalue
     }
     if(is.null(nperm)) permutation.pvalue <- NA
     res[[i]] <- data.frame(measure,association,permutation.pvalue, stringsAsFactors = F)
@@ -74,8 +74,8 @@ assoc.yx <- function(y,x,weights=rep(1,length(y)),xx=TRUE,twocont="kendall",nper
       if(inherits(x1,'factor') & inherits(x2,'factor')) {
         z <- GDAtools::assoc.twocat(x1, x2, weights=weights, nperm=nperm, distrib=distrib)
         measure="Cramer's V"
-        association = z$cramer.v
-        permutation.pvalue = z$permutation.pvalue
+        association = z$global$cramer.v
+        permutation.pvalue = z$global$permutation.pvalue
       }
       if(is.null(nperm)) permutation.pvalue <- NA
       res[[i]] <- data.frame(measure,association,permutation.pvalue, stringsAsFactors = F)
