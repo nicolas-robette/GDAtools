@@ -1,4 +1,4 @@
-ahc_plots <- function(ahc, distance = NULL, max.cl = 20, type = "dist") {
+ahc.plots <- function(ahc, distance = NULL, max.cl = 20, type = "dist") {
   
   if(type=="dist") {
     heights <- rev(sort(ahc$height, decreasing = TRUE)[1:max.cl])
