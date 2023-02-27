@@ -1,3 +1,27 @@
+# GDAtools 2.0
+
+Please note that the 1.8 version of GDAtools was not published on CRAN. So, compared to the last version on CRAN, 2.0 version inherits the changes of 1.8 version.
+
+## Major change
+
+* The package now focuses exclusively on GDA, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new `descriptio` package : `wtable()`, `pem()`, `phi.table()`, `oddsratio.table()`, `catdesc()`, `condesc()`, `assoc.twocat()`, `assoc.twocont()`, `assoc.catcont()`, `assoc.yx()`, `darma()`, `ggassoc_chiasmogram()`, `ggassoc_assocplot()`, `ggassoc_bertin()`, `ggassoc_phiplot()`, `ggassoc_boxplot()`, `ggassoc_crosstab()`, `ggassoc_scatter()`. Lastly, `translate.logit()` has moved to the (also new) `deauvieau` package.
+
+## New functions
+
+* `bcMCA()` : Between-class Multiple Correspondence Analysis
+* `bcPCA()` : Between-class Principal Component Analysis
+* `wcMCA()` : Within-class Multiple Correspondence Analysis
+* `wcPCA()` : Within-class Principal Component Analysis
+* `PCAiv()` : Principal Component Analysis with Instrumental Variables
+* `MCAiv()` : Multiple Correspondence Analysis with Instrumental Variables
+* `PCAoiv()` : Principal Component Analysis with Orthogonal Instrumental Variables
+* `MCAoiv()` : Multiple Correspondence Analysis with Orthogonal Instrumental Variables
+* `planecontrib()` : For a given plane of a MCA, computes contributions et squared cosines of the active variables and categories
+* `ggeta2_variables()` : Plots the eta-squared of the active variables of a MCA
+* `quasindep()` : Transforms a symmetrical contingency table so that it can be used for quasi-correspondence analysis, also called correspondence analysis of incomplete contingency table.
+
+
+
 # GDAtools 1.8
 
 ## New functions
@@ -27,8 +51,8 @@
 * `csMCA()` : results can now be used with `explor` package
 * `tabcontrib()` : new "best" option (thanks to @419kfj)
 * `assoc.twocat()` : standardized (i.e. Pearson) residuals, adjusted standardized residuals, odds ratios, PEM and Goodman-Kruskal tau are computed. The object is reorganized into several sublists. "gather" data frame has columns for margins frequencies and percentages. 
-* `ggassoc_crosstab()` : rewriting with several new options (size, measure, max.asso, palette and direction) and no more dependency to GGally package
-* `ggassoc_phiplot()` : the measure of local association can be any one computed by `assoc.twocat()`
+* `ggassoc_crosstab()` : rewriting with several new options (size, measure, limit, palette and direction) and no more dependency to GGally package
+* `ggassoc_phiplot()`, `ggassoc_assocplot()` and `ggassoc_crosstab()` : now allow faceting. The measure of local association can be any one computed by `assoc.twocat()`
 * `ggadd_interaction()` : geom_line replaced by geom_path (thanks to @419kfj)
 * `ggadd_chulls()` : new "prop" option to allow peeling of the hull
 

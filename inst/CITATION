@@ -1,0 +1,18 @@
+citHeader("To cite GDAtools in publications, use :")
+
+citEntry(
+  entry    = "manual",
+  title    = "{GDAtools}: Geometric Data Analysis in {R}",
+  author   = "Nicolas Robette",
+  year     = "2023",
+  note     = "R package version 2.0",
+  url      = "https://nicolas-robette.github.io/GDAtools/",
+  
+  textVersion = paste("Robette N. (2023).",
+        "GDAtools: Geometric Data Analysis in R.",
+        "version 2.0.",
+        "https://nicolas-robette.github.io/GDAtools/")
+)
+
+citFooter("See",sQuote("citation()"),"for citing R itself.")
+

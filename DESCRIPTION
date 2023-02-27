@@ -1,18 +1,17 @@
 Package: GDAtools
 Type: Package
-Title: A Toolbox for Great Descriptive Analyses and Geometric Data Analysis
-Version: 1.8
-Author: Nicolas Robette
-Maintainer: Nicolas Robette <nicolas.robette@uvsq.fr>
-Imports: MASS, wdm, FactoMineR, TraMineR, nleqslv, nnet, ggplot2, ggrepel, ggnewscale, paletteer, RColorBrewer, rlang, shiny, miniUI, esquisse, rclipboard
-Suggests: rmarkdown, knitr, rmdformats, cluster, GGally, WeightedCluster, vcd, R.rsp
-Description: Contains functions for great descriptive analysis of bivariate associations between variables (measures and plots), 
-  as well as 'specific' Multiple Correspondence Analysis, Class Specific Analysis, Multiple Factor Analysis, 'standardized' MCA, 
+Title: Geometric Data Analysis
+Version: 2.0
+Authors@R: c(person("Nicolas", "Robette", role = c("aut", "cre"), email = "nicolas.robette@uvsq.fr"))
+Imports: descriptio, FactoMineR, TraMineR, ggplot2, ggrepel, ggnewscale, paletteer, RColorBrewer, rlang, shiny, miniUI, esquisse, rclipboard
+Suggests: rmarkdown, knitr, rmdformats, explor, cluster, GGally, WeightedCluster, vcd, R.rsp
+Description: 'specific' Multiple Correspondence Analysis, Class Specific Analysis, Multiple Factor Analysis, 'standardized' MCA, 
   computing and plotting structuring factors and concentration ellipses, inductive tests and others tools for 
-  Geometric Data Analysis (Le Roux & Rouanet (2005) <doi:10.1007/1-4020-2236-0>). It also provides functions
-	for the translation of logit models coefficients into percentages (Deauvieau (2010) <doi:10.1177/0759106309352586>).
+  Geometric Data Analysis (Le Roux & Rouanet (2005) <doi:10.1007/1-4020-2236-0>).
+  It also allows multiple table analysis (between-class analysis, PCA and MCA with instrumental variables, etc.).
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
 Encoding: UTF-8
 URL: https://github.com/nicolas-robette/GDAtools, https://nicolas-robette.github.io/GDAtools/
+BugReports: https://github.com/nicolas-robette/GDAtools/issues
 LazyData: true

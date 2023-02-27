@@ -1,19 +1,15 @@
-import(wdm,MASS,nleqslv,nnet,ggplot2,ggrepel,RColorBrewer,shiny,rclipboard)
+import(descriptio,ggplot2,ggrepel,RColorBrewer,shiny,rclipboard)
 
   importFrom("grDevices", "col2rgb", "rainbow", "rgb")
   importFrom("graphics", "abline", "lines", "plot", "points", "text", "barplot")
-  importFrom("stats", "aggregate", "as.formula", "cor", "glm", "lm",
-             "quantile", "residuals", "weighted.mean", "aov", "chisq.test",
-             "cor.test", "median", "sd", "summary.lm",
-             "addmargins",
-             "pnorm",
-             "density",
-             "cutree")
-  importFrom("utils", "installed.packages", "combn")
-  importFrom("FactoMineR", "PCA", "coeffRV")
+  importFrom("stats", "aggregate", "as.formula", "cor", "lm",
+             "residuals", "weighted.mean",
+             "summary.lm", "pnorm", "cutree")
+  importFrom("utils", "combn")
+  importFrom("FactoMineR", "PCA", "coeffRV", "CA", "reconst")
   importFrom("TraMineR", "dissassoc")
   importFrom("paletteer", "scale_color_paletteer_d")
-  importFrom("rlang", ".data", "as_name", "eval_tidy")
+  importFrom("rlang", ".data")
   importFrom("miniUI", "miniContentPanel", "miniPage", "gadgetTitleBar")
   importFrom("esquisse", "dragulaInput", "updateDragulaInput")
   importFrom("ggnewscale", "new_scale_color")
@@ -25,5 +21,6 @@ S3method(plot, stMCA)
 
 export(ahc.plots,angles.csa,assoc.twocat,assoc.catcont,assoc.twocont,assoc.yx,burt,catdesc,conc.ellipse,condesc,contrib,csMCA,darma,dichotom,dimcontrib,dimdescr,dimeta2,dimtypicality,dist.chi2,flip.mca,getindexcat,
        ggadd_attractions,ggadd_chulls,ggadd_corr,ggadd_density,ggadd_ellipses,ggadd_interaction,ggadd_kellipses,ggadd_supind,ggadd_supvar,ggadd_supvars,
-       ggassoc_assocplot,ggassoc_bertin,ggassoc_chiasmogram,ggassoc_crosstab,ggassoc_phiplot,ggassoc_boxplot,ggassoc_scatter,ggaxis_variables,ggcloud_indiv,ggcloud_variables,
-       homog.test,ijunk,indsup,medoids,modif.rate,multiMCA,oddsratio.table,pem,phi.table,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,quadrant,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,varsups,wtable)
+       ggassoc_crosstab,ggassoc_phiplot,ggassoc_boxplot,ggassoc_scatter,ggaxis_variables,ggcloud_indiv,ggcloud_variables,
+       homog.test,ijunk,indsup,medoids,modif.rate,multiMCA,pem,phi.table,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,quadrant,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,varsups,wtable,
+       planecontrib, quasindep, ggeta2_variables, bcMCA, bcPCA, wcMCA, wcPCA, PCAiv, PCAoiv, MCAiv, MCAoiv)

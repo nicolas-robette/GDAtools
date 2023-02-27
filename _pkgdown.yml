@@ -9,14 +9,27 @@ authors:
 
 reference:
 - title: MCA
-- desc: Performing MCA and other kinds of GDA techniques
+- desc: Performing MCA and variants
 - contents:
   - speMCA
   - csMCA
-  - multiMCA
-  - stMCA
   - ijunk
   
+reference:
+- title: Two-table and K-table analysis
+- desc: Performing MCA or PCA on several tables
+- contents:
+  - bcMCA
+  - bcPCA
+  - wcMCA
+  - wcPCA
+  - stMCA
+  - MCAiv
+  - PCAiv
+  - MCAoiv
+  - PCAoiv
+  - multiMCA
+
 - title: Interpreting MCA
 - desc: Tools to help for the interpretation of a MCA
 - contents:
@@ -32,6 +45,7 @@ reference:
   - varsups
   - indsup
   - quadrant
+  - flip.mca
   - angles.csa
   
 - title: Plotting MCA
@@ -46,7 +60,6 @@ reference:
   - conc.ellipse
   - ggcloud_indiv
   - ggcloud_variables
-  - ggaxis_variables
   - ggadd_supind
   - ggadd_supvar
   - ggadd_supvars
@@ -57,44 +70,21 @@ reference:
   - ggadd_corr
   - ggadd_interaction
   - ggadd_attractions
+  - ggaxis_variables
+  - ggeta2_variables
   
-- title: Descriptive analysis
-- desc: Tools to describe statistical bivariate associations between variables
-- contents:
-  - wtable
-  - phi.table
-  - oddsratio.table
-  - pem
-  - assoc.twocat
-  - assoc.catcont
-  - assoc.twocont
-  - catdesc
-  - condesc
-  - assoc.yx
-  - darma
-  - ggassoc_crosstab
-  - ggassoc_phiplot
-  - ggassoc_chiasmogram
-  - ggassoc_assocplot
-  - ggassoc_bertin
-  - ggassoc_boxplot
-  - ggassoc_scatter
-
 - title: Miscellaneous
 - desc: A few additional tools
 - contents:
   - burt
   - dichotom
-  - flip.mca
   - getindexcat
   - medoids
   - ahc.plots
   - dist.chi2
-  - translate.logit
-  
+
 - title: Datasets
 - desc: Datasets used in the examples
 - contents:
   - Music
   - Taste
-  - Movies
