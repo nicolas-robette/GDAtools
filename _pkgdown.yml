@@ -15,7 +15,6 @@ reference:
   - csMCA
   - ijunk
   
-reference:
 - title: Two-table and K-table analysis
 - desc: Performing MCA or PCA on several tables
 - contents:
@@ -37,6 +36,7 @@ reference:
   - contrib
   - tabcontrib
   - dimcontrib
+  - planecontrib
   - dimdescr
   - dimeta2
   - dimtypicality
@@ -82,9 +82,17 @@ reference:
   - medoids
   - ahc.plots
   - dist.chi2
+  - quasindep
 
 - title: Datasets
 - desc: Datasets used in the examples
 - contents:
   - Music
   - Taste
+
+- title: Deprecated
+- desc: Functions moved to other packages
+- contents:
+  - wtable
+  - translate.logit
+

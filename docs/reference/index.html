@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
       </span>
     </div>
 
@@ -78,17 +78,53 @@
         </td>
         <td><p>Performs a 'class specific' MCA</p></td>
       </tr><tr><td>
-          <p><code><a href="multiMCA.html">multiMCA()</a></code> </p>
+          <p><code><a href="ijunk.html">ijunk()</a></code> </p>
         </td>
-        <td><p>Performs Multiple Factor Analysis</p></td>
+        <td><p>Defining junk categories for specific MCA</p></td>
+      </tr></tbody><tbody><tr><th colspan="2">
+          <h2 id="two-table-and-k-table-analysis">Two-table and K-table analysis <a href="#two-table-and-k-table-analysis" class="anchor" aria-hidden="true"></a></h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr></tbody><tbody><tr><td>
+          <p><code><a href="bcMCA.html">bcMCA()</a></code> </p>
+        </td>
+        <td><p>Between-class MCA</p></td>
+      </tr><tr><td>
+          <p><code><a href="bcPCA.html">bcPCA()</a></code> </p>
+        </td>
+        <td><p>Between-class Principal Component Analysis</p></td>
+      </tr><tr><td>
+          <p><code><a href="wcMCA.html">wcMCA()</a></code> </p>
+        </td>
+        <td><p>Within-class MCA</p></td>
+      </tr><tr><td>
+          <p><code><a href="wcPCA.html">wcPCA()</a></code> </p>
+        </td>
+        <td><p>Within-class Principal Component Analysis</p></td>
       </tr><tr><td>
           <p><code><a href="stMCA.html">stMCA()</a></code> </p>
         </td>
         <td><p>Performs a 'standardized' MCA</p></td>
       </tr><tr><td>
-          <p><code><a href="ijunk.html">ijunk()</a></code> </p>
+          <p><code><a href="MCAiv.html">MCAiv()</a></code> </p>
         </td>
-        <td><p>Defining junk categories for specific MCA</p></td>
+        <td><p>Multiple Correspondence Analysis with Instrumental Variables</p></td>
+      </tr><tr><td>
+          <p><code><a href="PCAiv.html">PCAiv()</a></code> </p>
+        </td>
+        <td><p>Principal Component Analysis with Instrumental Variables</p></td>
+      </tr><tr><td>
+          <p><code><a href="MCAoiv.html">MCAoiv()</a></code> </p>
+        </td>
+        <td><p>Multiple Correspondence Analysis with Orthogonal Instrumental Variables</p></td>
+      </tr><tr><td>
+          <p><code><a href="PCAoiv.html">PCAoiv()</a></code> </p>
+        </td>
+        <td><p>Principal Component Analysis with Orthogonal Instrumental Variables</p></td>
+      </tr><tr><td>
+          <p><code><a href="multiMCA.html">multiMCA()</a></code> </p>
+        </td>
+        <td><p>Performs Multiple Factor Analysis</p></td>
       </tr></tbody><tbody><tr><th colspan="2">
           <h2 id="interpreting-mca">Interpreting MCA <a href="#interpreting-mca" class="anchor" aria-hidden="true"></a></h2>
           <p class="section-desc"></p>
@@ -109,6 +145,10 @@
           <p><code><a href="dimcontrib.html">dimcontrib()</a></code> </p>
         </td>
         <td><p>Describes the contributions to axes for a MCA</p></td>
+      </tr><tr><td>
+          <p><code><a href="planecontrib.html">planecontrib()</a></code> </p>
+        </td>
+        <td><p>Contributions to a plane</p></td>
       </tr><tr><td>
           <p><code><a href="dimdescr.html">dimdescr()</a></code> </p>
         </td>
@@ -141,6 +181,10 @@
           <p><code><a href="quadrant.html">quadrant()</a></code> </p>
         </td>
         <td><p>Computes the quadrant of active individuals</p></td>
+      </tr><tr><td>
+          <p><code><a href="flip.mca.html">flip.mca()</a></code> </p>
+        </td>
+        <td><p>Flips the coordinates of a MCA</p></td>
       </tr><tr><td>
           <p><code><a href="angles.csa.html">angles.csa()</a></code> </p>
         </td>
@@ -186,10 +230,6 @@
         </td>
         <td><p>Plots MCA cloud of variables with ggplot2</p></td>
       </tr><tr><td>
-          <p><code><a href="ggaxis_variables.html">ggaxis_variables()</a></code> </p>
-        </td>
-        <td><p>Plots MCA variables on a single axis</p></td>
-      </tr><tr><td>
           <p><code><a href="ggadd_supind.html">ggadd_supind()</a></code> </p>
         </td>
         <td><p>Adds supplementary individuals to a cloud of individuals</p></td>
@@ -229,82 +269,14 @@
           <p><code><a href="ggadd_attractions.html">ggadd_attractions()</a></code> </p>
         </td>
         <td><p>Adds attractions between categories via segments to a cloud of variables</p></td>
-      </tr></tbody><tbody><tr><th colspan="2">
-          <h2 id="descriptive-analysis">Descriptive analysis <a href="#descriptive-analysis" class="anchor" aria-hidden="true"></a></h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr></tbody><tbody><tr><td>
-          <p><code><a href="wtable.html">wtable()</a></code> </p>
-        </td>
-        <td><p>Computes a (possibly weighted) contingency table</p></td>
       </tr><tr><td>
-          <p><code><a href="phi.table.html">phi.table()</a></code> </p>
+          <p><code><a href="ggaxis_variables.html">ggaxis_variables()</a></code> </p>
         </td>
-        <td><p>Computes the phi coefficient for every cells of a contingency table</p></td>
+        <td><p>Plots MCA variables on a single axis</p></td>
       </tr><tr><td>
-          <p><code><a href="oddsratio.table.html">oddsratio.table()</a></code> </p>
+          <p><code><a href="ggeta2_variables.html">ggeta2_variables()</a></code> </p>
         </td>
-        <td><p>Computes the odds ratios for every cells of a contingency table</p></td>
-      </tr><tr><td>
-          <p><code><a href="pem.html">pem()</a></code> </p>
-        </td>
-        <td><p>Computes the local and global Percentages of Maximum Deviation from Independence (PEM)</p></td>
-      </tr><tr><td>
-          <p><code><a href="assoc.twocat.html">assoc.twocat()</a></code> </p>
-        </td>
-        <td><p>Cross-tabulation and measures of association between two categorical variables</p></td>
-      </tr><tr><td>
-          <p><code><a href="assoc.catcont.html">assoc.catcont()</a></code> </p>
-        </td>
-        <td><p>Measures the association between a categorical variable and a continuous variable</p></td>
-      </tr><tr><td>
-          <p><code><a href="assoc.twocont.html">assoc.twocont()</a></code> </p>
-        </td>
-        <td><p>Measures the association between two continuous variables</p></td>
-      </tr><tr><td>
-          <p><code><a href="catdesc.html">catdesc()</a></code> </p>
-        </td>
-        <td><p>Measures the association between a categorical variable and some continuous and/or categorical variables</p></td>
-      </tr><tr><td>
-          <p><code><a href="condesc.html">condesc()</a></code> </p>
-        </td>
-        <td><p>Measures the association between a continuous variable and some continuous and/or categorical variables</p></td>
-      </tr><tr><td>
-          <p><code><a href="assoc.yx.html">assoc.yx()</a></code> </p>
-        </td>
-        <td><p>Bivariate association measures between a response and predictor variables.</p></td>
-      </tr><tr><td>
-          <p><code><a href="darma.html">darma()</a></code> </p>
-        </td>
-        <td><p>Describes Associations as in a Regression Model Analysis.</p></td>
-      </tr><tr><td>
-          <p><code><a href="ggassoc_crosstab.html">ggassoc_crosstab()</a></code> </p>
-        </td>
-        <td><p>Proportional area plot</p></td>
-      </tr><tr><td>
-          <p><code><a href="ggassoc_phiplot.html">ggassoc_phiplot()</a></code> </p>
-        </td>
-        <td><p>Bar plot of measures of local association of a crosstabulation</p></td>
-      </tr><tr><td>
-          <p><code><a href="ggassoc_chiasmogram.html">ggassoc_chiasmogram()</a></code> </p>
-        </td>
-        <td><p>Plots counts and associations of a crosstabulation</p></td>
-      </tr><tr><td>
-          <p><code><a href="ggassoc_assocplot.html">ggassoc_assocplot()</a></code> </p>
-        </td>
-        <td><p>Association plot</p></td>
-      </tr><tr><td>
-          <p><code><a href="ggassoc_bertin.html">ggassoc_bertin()</a></code> </p>
-        </td>
-        <td><p>Bar plot of a crosstabulation inspired by Bertin</p></td>
-      </tr><tr><td>
-          <p><code><a href="ggassoc_boxplot.html">ggassoc_boxplot()</a></code> </p>
-        </td>
-        <td><p>Boxplots with violins</p></td>
-      </tr><tr><td>
-          <p><code><a href="ggassoc_scatter.html">ggassoc_scatter()</a></code> </p>
-        </td>
-        <td><p>Scatter plot with a smoothing line</p></td>
+        <td><p>eta-squared plot</p></td>
       </tr></tbody><tbody><tr><th colspan="2">
           <h2 id="miscellaneous">Miscellaneous <a href="#miscellaneous" class="anchor" aria-hidden="true"></a></h2>
           <p class="section-desc"></p>
@@ -317,10 +289,6 @@
           <p><code><a href="dichotom.html">dichotom()</a></code> </p>
         </td>
         <td><p>Dichotomizes the variables in a data frame</p></td>
-      </tr><tr><td>
-          <p><code><a href="flip.mca.html">flip.mca()</a></code> </p>
-        </td>
-        <td><p>Flips the coordinates of a MCA</p></td>
       </tr><tr><td>
           <p><code><a href="getindexcat.html">getindexcat()</a></code> </p>
         </td>
@@ -338,9 +306,9 @@
         </td>
         <td><p>Computes the chi-squared distance</p></td>
       </tr><tr><td>
-          <p><code><a href="translate.logit.html">translate.logit()</a></code> </p>
+          <p><code><a href="quasindep.html">quasindep()</a></code> </p>
         </td>
-        <td><p>Translates logit regression coefficients into percentages</p></td>
+        <td><p>Quasi-correspondence analysis</p></td>
       </tr></tbody><tbody><tr><th colspan="2">
           <h2 id="datasets">Datasets <a href="#datasets" class="anchor" aria-hidden="true"></a></h2>
           <p class="section-desc"></p>
@@ -353,10 +321,18 @@
           <p><code><a href="Taste.html">Taste</a></code> </p>
         </td>
         <td><p>Taste (data)</p></td>
-      </tr><tr><td>
-          <p><code><a href="Movies.html">Movies</a></code> </p>
+      </tr></tbody><tbody><tr><th colspan="2">
+          <h2 id="deprecated">Deprecated <a href="#deprecated" class="anchor" aria-hidden="true"></a></h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr></tbody><tbody><tr><td>
+          <p><code><a href="deprecated.html">wtable()</a></code> <code><a href="deprecated.html">pem()</a></code> <code><a href="deprecated.html">phi.table()</a></code> <code><a href="deprecated.html">assoc.twocont()</a></code> <code><a href="deprecated.html">assoc.twocat()</a></code> <code><a href="deprecated.html">assoc.catcont()</a></code> <code><a href="deprecated.html">assoc.yx()</a></code> <code><a href="deprecated.html">darma()</a></code> <code><a href="deprecated.html">catdesc()</a></code> <code><a href="deprecated.html">condesc()</a></code> <code><a href="deprecated.html">ggassoc_phiplot()</a></code> <code><a href="deprecated.html">ggassoc_boxplot()</a></code> <code><a href="deprecated.html">ggassoc_scatter()</a></code> <code><a href="deprecated.html">ggassoc_crosstab()</a></code> </p>
         </td>
-        <td><p>Movies (data)</p></td>
+        <td><p>Deprecated functions</p></td>
+      </tr><tr><td>
+          <p><code><a href="translate.logit.html">translate.logit()</a></code> </p>
+        </td>
+        <td><p>Deprecated function</p></td>
       </tr></tbody></table></div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -370,7 +346,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
