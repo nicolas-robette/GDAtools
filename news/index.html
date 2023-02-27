@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
       </span>
     </div>
 
@@ -35,13 +35,7 @@
       <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="../articles/english/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
-    </li>
-    <li>
       <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
-    </li>
-    <li>
-      <a href="../articles/french/Tutoriel_descr.html">L'analyse descriptive des associations statistiques avec GDAtools</a>
     </li>
   </ul></li>
 <li>
@@ -67,6 +61,38 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="2.0" id="gdatools-20">GDAtools 2.0<a class="anchor" aria-label="anchor" href="#gdatools-20"></a></h2>
+<p>Please note that the 1.8 version of GDAtools was not published on CRAN. So, compared to the last version on CRAN, 2.0 version inherits the changes of 1.8 version.</p>
+<div class="section level3">
+<h3 id="major-change-2-0">Major change<a class="anchor" aria-label="anchor" href="#major-change-2-0"></a></h3>
+<ul><li>The package now focuses exclusively on GDA, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new <code>descriptio</code> package : <code><a href="../reference/deprecated.html">wtable()</a></code>, <code><a href="../reference/deprecated.html">pem()</a></code>, <code><a href="../reference/deprecated.html">phi.table()</a></code>, <code>oddsratio.table()</code>, <code><a href="../reference/deprecated.html">catdesc()</a></code>, <code><a href="../reference/deprecated.html">condesc()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocat()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocont()</a></code>, <code><a href="../reference/deprecated.html">assoc.catcont()</a></code>, <code><a href="../reference/deprecated.html">assoc.yx()</a></code>, <code><a href="../reference/deprecated.html">darma()</a></code>, <code>ggassoc_chiasmogram()</code>, <code>ggassoc_assocplot()</code>, <code>ggassoc_bertin()</code>, <code><a href="../reference/deprecated.html">ggassoc_phiplot()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_boxplot()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_crosstab()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_scatter()</a></code>. Lastly, <code><a href="../reference/translate.logit.html">translate.logit()</a></code> has moved to the (also new) <code>deauvieau</code> package.</li></ul></div>
+<div class="section level3">
+<h3 id="new-functions-2-0">New functions<a class="anchor" aria-label="anchor" href="#new-functions-2-0"></a></h3>
+<ul><li>
+<code><a href="../reference/bcMCA.html">bcMCA()</a></code> : Between-class Multiple Correspondence Analysis</li>
+<li>
+<code><a href="../reference/bcPCA.html">bcPCA()</a></code> : Between-class Principal Component Analysis</li>
+<li>
+<code><a href="../reference/wcMCA.html">wcMCA()</a></code> : Within-class Multiple Correspondence Analysis</li>
+<li>
+<code><a href="../reference/wcPCA.html">wcPCA()</a></code> : Within-class Principal Component Analysis</li>
+<li>
+<code><a href="../reference/PCAiv.html">PCAiv()</a></code> : Principal Component Analysis with Instrumental Variables</li>
+<li>
+<code><a href="../reference/MCAiv.html">MCAiv()</a></code> : Multiple Correspondence Analysis with Instrumental Variables</li>
+<li>
+<code><a href="../reference/PCAoiv.html">PCAoiv()</a></code> : Principal Component Analysis with Orthogonal Instrumental Variables</li>
+<li>
+<code><a href="../reference/MCAoiv.html">MCAoiv()</a></code> : Multiple Correspondence Analysis with Orthogonal Instrumental Variables</li>
+<li>
+<code><a href="../reference/planecontrib.html">planecontrib()</a></code> : For a given plane of a MCA, computes contributions et squared cosines of the active variables and categories</li>
+<li>
+<code><a href="../reference/ggeta2_variables.html">ggeta2_variables()</a></code> : Plots the eta-squared of the active variables of a MCA</li>
+<li>
+<code><a href="../reference/quasindep.html">quasindep()</a></code> : Transforms a symmetrical contingency table so that it can be used for quasi-correspondence analysis, also called correspondence analysis of incomplete contingency table.</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="1.8" id="gdatools-18">GDAtools 1.8<a class="anchor" aria-label="anchor" href="#gdatools-18"></a></h2>
 <div class="section level3">
 <h3 id="new-functions-1-8">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-8"></a></h3>
@@ -75,13 +101,13 @@
 <li>
 <code><a href="../reference/quadrant.html">quadrant()</a></code>: Computes the quadrant of active individuals in a given space of a MCA.</li>
 <li>
-<code><a href="../reference/oddsratio.table.html">oddsratio.table()</a></code>: Computes the odds ratio for every cell in a contingency table.</li>
+<code>oddsratio.table()</code>: Computes the odds ratio for every cell in a contingency table.</li>
 <li>
-<code><a href="../reference/ggassoc_chiasmogram.html">ggassoc_chiasmogram()</a></code>: Plots the chiasmogram of a crosstabulation, using ggplot2.</li>
+<code>ggassoc_chiasmogram()</code>: Plots the chiasmogram of a crosstabulation, using ggplot2.</li>
 <li>
-<code><a href="../reference/ggassoc_assocplot.html">ggassoc_assocplot()</a></code>: Association plot of a crosstabulation, using ggplot2.</li>
+<code>ggassoc_assocplot()</code>: Association plot of a crosstabulation, using ggplot2.</li>
 <li>
-<code><a href="../reference/ggassoc_bertin.html">ggassoc_bertin()</a></code>: Bertin plot of a crosstabulation, using ggplot2.</li>
+<code>ggassoc_bertin()</code>: Bertin plot of a crosstabulation, using ggplot2.</li>
 <li>
 <code><a href="../reference/ahc.plots.html">ahc.plots()</a></code>: Various plots of Ascending Hierarchical Clustering.</li>
 <li>
@@ -97,8 +123,8 @@
 <h3 id="bug-fixes-1-8">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8"></a></h3>
 <ul><li>bug fix in <code><a href="../reference/speMCA.html">speMCA()</a></code>, <code><a href="../reference/csMCA.html">csMCA()</a></code> and <code><a href="../reference/getindexcat.html">getindexcat()</a></code> when empty levels or non-factor vectors in the data</li>
 <li>bug fix in <code><a href="../reference/indsup.html">indsup()</a></code> : supdata can now be a tibble</li>
-<li>bug fix in <code><a href="../reference/assoc.yx.html">assoc.yx()</a></code> : integers are now allowed for y; empty levels are dropped in x</li>
-<li>bug fix in <code><a href="../reference/wtable.html">wtable()</a></code> : empty cells are replaced by 0.</li>
+<li>bug fix in <code><a href="../reference/deprecated.html">assoc.yx()</a></code> : integers are now allowed for y; empty levels are dropped in x</li>
+<li>bug fix in <code><a href="../reference/deprecated.html">wtable()</a></code> : empty cells are replaced by 0.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-8">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-8"></a></h3>
@@ -109,11 +135,11 @@
 <li>
 <code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : new “best” option (thanks to <a href="https://github.com/419kfj" class="external-link">@419kfj</a>)</li>
 <li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : standardized (i.e. Pearson) residuals, adjusted standardized residuals, odds ratios, PEM and Goodman-Kruskal tau are computed. The object is reorganized into several sublists. “gather” data frame has columns for margins frequencies and percentages.</li>
+<code><a href="../reference/deprecated.html">assoc.twocat()</a></code> : standardized (i.e. Pearson) residuals, adjusted standardized residuals, odds ratios, PEM and Goodman-Kruskal tau are computed. The object is reorganized into several sublists. “gather” data frame has columns for margins frequencies and percentages.</li>
 <li>
-<code><a href="../reference/ggassoc_crosstab.html">ggassoc_crosstab()</a></code> : rewriting with several new options (size, measure, max.asso, palette and direction) and no more dependency to GGally package</li>
+<code><a href="../reference/deprecated.html">ggassoc_crosstab()</a></code> : rewriting with several new options (size, measure, limit, palette and direction) and no more dependency to GGally package</li>
 <li>
-<code><a href="../reference/ggassoc_phiplot.html">ggassoc_phiplot()</a></code> : the measure of local association can be any one computed by <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code>
+<code><a href="../reference/deprecated.html">ggassoc_phiplot()</a></code>, <code>ggassoc_assocplot()</code> and <code><a href="../reference/deprecated.html">ggassoc_crosstab()</a></code> : now allow faceting. The measure of local association can be any one computed by <code><a href="../reference/deprecated.html">assoc.twocat()</a></code>
 </li>
 <li>
 <code><a href="../reference/ggadd_interaction.html">ggadd_interaction()</a></code> : geom_line replaced by geom_path (thanks to <a href="https://github.com/419kfj" class="external-link">@419kfj</a>)</li>
@@ -147,7 +173,7 @@
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-7-1">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-7-1"></a></h3>
 <ul><li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : PEM are no longer computed.</li>
+<code><a href="../reference/deprecated.html">assoc.twocat()</a></code> : PEM are no longer computed.</li>
 <li>
 <code><a href="../reference/ggadd_supvar.html">ggadd_supvar()</a></code> : for shapes, a value of 0 is mapped to a size of 0 and new shapesize option (as suggested by <a href="https://github.com/osturnus" class="external-link">@osturnus</a>)</li>
 </ul></div>
@@ -165,15 +191,15 @@
 <li>
 <code><a href="../reference/ggadd_chulls.html">ggadd_chulls()</a></code> : adds convex hulls to a cloud of individuals, using ggplot</li>
 <li>
-<code><a href="../reference/ggassoc_crosstab.html">ggassoc_crosstab()</a></code> : plots counts and associations of a crosstabulation, using ggplot</li>
+<code><a href="../reference/deprecated.html">ggassoc_crosstab()</a></code> : plots counts and associations of a crosstabulation, using ggplot</li>
 <li>
-<code><a href="../reference/ggassoc_phiplot.html">ggassoc_phiplot()</a></code> : bar plot of phi measures of association of a crosstabulation, using ggplot</li>
+<code><a href="../reference/deprecated.html">ggassoc_phiplot()</a></code> : bar plot of phi measures of association of a crosstabulation, using ggplot</li>
 <li>
-<code><a href="../reference/ggassoc_boxplot.html">ggassoc_boxplot()</a></code> : displays of boxplot and combines it with a violin plot, using ggplot</li>
+<code><a href="../reference/deprecated.html">ggassoc_boxplot()</a></code> : displays of boxplot and combines it with a violin plot, using ggplot</li>
 <li>
-<code><a href="../reference/ggassoc_scatter.html">ggassoc_scatter()</a></code> : scatter plot with a smoothing line, using ggplot</li>
+<code><a href="../reference/deprecated.html">ggassoc_scatter()</a></code> : scatter plot with a smoothing line, using ggplot</li>
 <li>
-<code><a href="../reference/dimdescr.html">dimdescr()</a></code> : works with <code><a href="../reference/condesc.html">condesc()</a></code> instead of <code><a href="https://rdrr.io/pkg/FactoMineR/man/condes.html" class="external-link">FactoMineR::condes()</a></code> and takes row weights into account.</li>
+<code><a href="../reference/dimdescr.html">dimdescr()</a></code> : works with <code><a href="../reference/deprecated.html">condesc()</a></code> instead of <code><a href="https://rdrr.io/pkg/FactoMineR/man/condes.html" class="external-link">FactoMineR::condes()</a></code> and takes row weights into account.</li>
 <li>
 <code><a href="../reference/dimtypicality.html">dimtypicality()</a></code> : computes typicality tests for supplementary variables</li>
 <li>
@@ -196,15 +222,15 @@
 <ul><li>
 <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : the density of points can be represented as an additional layer through contours or hexagon bins</li>
 <li>
-<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : allow weights</li>
+<code><a href="../reference/deprecated.html">catdesc()</a></code> and <code><a href="../reference/deprecated.html">condesc()</a></code> : allow weights</li>
 <li>
-<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : new nperm and distrib options</li>
+<code><a href="../reference/deprecated.html">catdesc()</a></code> and <code><a href="../reference/deprecated.html">condesc()</a></code> : new nperm and distrib options</li>
 <li>
-<code><a href="../reference/catdesc.html">catdesc()</a></code> and <code><a href="../reference/condesc.html">condesc()</a></code> : new robust option</li>
+<code><a href="../reference/deprecated.html">catdesc()</a></code> and <code><a href="../reference/deprecated.html">condesc()</a></code> : new robust option</li>
 <li>
-<code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code>, <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> and <code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> : nperm option is set to NULL by default</li>
+<code><a href="../reference/deprecated.html">assoc.twocont()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocat()</a></code> and <code><a href="../reference/deprecated.html">assoc.catcont()</a></code> : nperm option is set to NULL by default</li>
 <li>
-<code><a href="../reference/darma.html">darma()</a></code> : nperm is set to 100 by default</li>
+<code><a href="../reference/deprecated.html">darma()</a></code> : nperm is set to 100 by default</li>
 <li>
 <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> and <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> : a few changes in the theme (grids are removed, etc.)</li>
 <li>
@@ -271,7 +297,7 @@
 <li>
 <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : now works when shapes=TRUE and there are many variables</li>
 <li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : bug fix for empty cells</li>
+<code><a href="../reference/deprecated.html">assoc.twocat()</a></code> : bug fix for empty cells</li>
 <li>
 <code><a href="../reference/multiMCA.html">multiMCA()</a></code> : bug fix with eigen values</li>
 </ul></div>
@@ -281,42 +307,42 @@
 <div class="section level3">
 <h3 id="new-functions-1-6">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-6"></a></h3>
 <ul><li>
-<code><a href="../reference/phi.table.html">phi.table()</a></code> : computes phi coefficient for every cells of a contingency table</li>
+<code><a href="../reference/deprecated.html">phi.table()</a></code> : computes phi coefficient for every cells of a contingency table</li>
 <li>
-<code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code> : measures the association between two continuous variables with Pearson, Spearman and Kendall correlations and a permutation test.</li>
+<code><a href="../reference/deprecated.html">assoc.twocont()</a></code> : measures the association between two continuous variables with Pearson, Spearman and Kendall correlations and a permutation test.</li>
 <li>
-<code><a href="../reference/assoc.yx.html">assoc.yx()</a></code> : computes bivariate association measures between a response and predictor variables</li>
+<code><a href="../reference/deprecated.html">assoc.yx()</a></code> : computes bivariate association measures between a response and predictor variables</li>
 <li>
-<code><a href="../reference/darma.html">darma()</a></code> : computes bivariate association measures between a response and predictor variables, displaying results in a form looking like the summary of a regression model analysis.</li>
+<code><a href="../reference/deprecated.html">darma()</a></code> : computes bivariate association measures between a response and predictor variables, displaying results in a form looking like the summary of a regression model analysis.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-6">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-6"></a></h3>
 <ul><li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : bug fix with warning</li>
+<code><a href="../reference/deprecated.html">assoc.twocat()</a></code> : bug fix with warning</li>
 <li>
 <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : bug fix when <code>prop</code> not NULL.</li>
 <li>
-<code><a href="../reference/pem.html">pem()</a></code> : bug fix with NA values</li>
+<code><a href="../reference/deprecated.html">pem()</a></code> : bug fix with NA values</li>
 <li>
 <code><a href="../reference/translate.logit.html">translate.logit()</a></code> : results for multinomial models were instable</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-6">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-6"></a></h3>
 <ul><li>
-<code><a href="../reference/wtable.html">wtable()</a></code> : can compute percentages (<code>prop.wtable()</code> is removed)</li>
+<code><a href="../reference/deprecated.html">wtable()</a></code> : can compute percentages (<code>prop.wtable()</code> is removed)</li>
 <li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : Cramer’s V instead of V-squared, permutation p-values, Pearson residuals, percentage of maximum deviation from independence, summary data frame</li>
+<code><a href="../reference/deprecated.html">assoc.twocat()</a></code> : Cramer’s V instead of V-squared, permutation p-values, Pearson residuals, percentage of maximum deviation from independence, summary data frame</li>
 <li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : better handling of NAs</li>
+<code><a href="../reference/deprecated.html">assoc.twocat()</a></code> : better handling of NAs</li>
 <li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code> : faster computation</li>
+<code><a href="../reference/deprecated.html">assoc.twocat()</a></code> : faster computation</li>
 <li>
-<code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> : permutation p-values</li>
+<code><a href="../reference/deprecated.html">assoc.catcont()</a></code> : permutation p-values</li>
 <li>
 <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> : improved color management</li>
 <li>
-<code><a href="../reference/pem.html">pem()</a></code> : one can choose to sort rows and columns or not</li>
-<li>weights are allowed in functions <code><a href="../reference/phi.table.html">phi.table()</a></code>, <code><a href="../reference/pem.html">pem()</a></code>, <code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code>, <code><a href="../reference/assoc.twocont.html">assoc.twocont()</a></code>, <code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code> and <code><a href="../reference/assoc.yx.html">assoc.yx()</a></code>
+<code><a href="../reference/deprecated.html">pem()</a></code> : one can choose to sort rows and columns or not</li>
+<li>weights are allowed in functions <code><a href="../reference/deprecated.html">phi.table()</a></code>, <code><a href="../reference/deprecated.html">pem()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocat()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocont()</a></code>, <code><a href="../reference/deprecated.html">assoc.catcont()</a></code> and <code><a href="../reference/deprecated.html">assoc.yx()</a></code>
 </li>
 </ul></div>
 </div>
@@ -325,13 +351,13 @@
 <div class="section level3">
 <h3 id="new-functions-1-5">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-5"></a></h3>
 <ul><li>
-<code><a href="../reference/assoc.twocat.html">assoc.twocat()</a></code>: measures the association between two categorical variables</li>
+<code><a href="../reference/deprecated.html">assoc.twocat()</a></code>: measures the association between two categorical variables</li>
 <li>
-<code><a href="../reference/assoc.catcont.html">assoc.catcont()</a></code>: measures the association between a categorical variable and a continuous variable</li>
+<code><a href="../reference/deprecated.html">assoc.catcont()</a></code>: measures the association between a categorical variable and a continuous variable</li>
 <li>
-<code><a href="../reference/catdesc.html">catdesc()</a></code>: measures the association between a categorical variable and some continuous and/or categorical variables</li>
+<code><a href="../reference/deprecated.html">catdesc()</a></code>: measures the association between a categorical variable and some continuous and/or categorical variables</li>
 <li>
-<code><a href="../reference/condesc.html">condesc()</a></code>: measures the association between a continuous variable and some continuous and/or categorical variables</li>
+<code><a href="../reference/deprecated.html">condesc()</a></code>: measures the association between a continuous variable and some continuous and/or categorical variables</li>
 <li>
 <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code>: cloud of individuals, using ggplot</li>
 <li>
@@ -398,7 +424,7 @@
 <div class="section level3">
 <h3 id="new-functions-1-1">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-1"></a></h3>
 <ul><li>
-<code><a href="../reference/wtable.html">wtable()</a></code>: works as <code><a href="https://rdrr.io/r/base/table.html" class="external-link">table()</a></code> but allows weights and shows NAs as default</li>
+<code><a href="../reference/deprecated.html">wtable()</a></code>: works as <code><a href="https://rdrr.io/r/base/table.html" class="external-link">table()</a></code> but allows weights and shows NAs as default</li>
 <li>
 <code>prop.wtable()</code>: works as <code><a href="https://rdrr.io/r/base/proportions.html" class="external-link">prop.table()</a></code> but allows weights and shows NAs as default</li>
 </ul></div>

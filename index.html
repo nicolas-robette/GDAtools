@@ -5,18 +5,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Toolbox for Great Descriptive Analyses and Geometric Data Analysis • GDAtools</title>
+<title>Geometric Data Analysis • GDAtools</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="A Toolbox for Great Descriptive Analyses and Geometric Data Analysis">
-<meta property="og:description" content="Contains functions for great descriptive analysis of bivariate associations between variables (measures and plots), 
-  as well as specific Multiple Correspondence Analysis, Class Specific Analysis, Multiple Factor Analysis, standardized MCA, 
+<script src="pkgdown.js"></script><meta property="og:title" content="Geometric Data Analysis">
+<meta property="og:description" content="specific Multiple Correspondence Analysis, Class Specific Analysis, Multiple Factor Analysis, standardized MCA, 
   computing and plotting structuring factors and concentration ellipses, inductive tests and others tools for 
-  Geometric Data Analysis (Le Roux &amp; Rouanet (2005) &lt;doi:10.1007/1-4020-2236-0&gt;). It also provides functions
-	for the translation of logit models coefficients into percentages (Deauvieau (2010) &lt;doi:10.1177/0759106309352586&gt;).">
+  Geometric Data Analysis (Le Roux &amp; Rouanet (2005) &lt;doi:10.1007/1-4020-2236-0&gt;).
+  It also allows multiple table analysis (between-class analysis, PCA and MCA with instrumental variables, etc.).">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -37,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
       </span>
     </div>
 
@@ -57,13 +56,7 @@
       <a href="articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="articles/english/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
-    </li>
-    <li>
       <a href="articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
-    </li>
-    <li>
-      <a href="articles/french/Tutoriel_descr.html">L'analyse descriptive des associations statistiques avec GDAtools</a>
     </li>
   </ul>
 </li>
@@ -95,27 +88,18 @@
 <strong>GDAtools</strong> <img src="reference/figures/GDAtools.png" height="140px" width="120px" alt="" align="right"><a class="anchor" aria-label="anchor" href="#gdatools-"></a>
 </h1></div>
 <div class="section level2">
-<h2 id="great-descriptive-analysis-and-geometric-data-analysis">Great Descriptive Analysis and Geometric Data Analysis<a class="anchor" aria-label="anchor" href="#great-descriptive-analysis-and-geometric-data-analysis"></a>
+<h2 id="geometric-data-analysis">Geometric Data Analysis<a class="anchor" aria-label="anchor" href="#geometric-data-analysis"></a>
 </h2>
 <!-- badges: start -->
 <p><a href="https://nicolas-robette.github.io/GDAtools/"><code>GDAtools</code></a> provides functions for Geometric Data Analysis :</p>
 <ul>
 <li>specific Multiple Correspondence Analysis (speMCA)</li>
 <li>Class Specific Analysis (csMCA)</li>
-<li>Multiple Factor Analysis (multiMCA)</li>
-<li>“standardized” Multiple Correspondence Analysis (stMCA)</li>
+<li>Two-table and multiple-table analyses : Multiple Factor Analysis (multiMCA), between- and within-class analysis, MCA and PCA with instrumental variables or orthogonal instrumental variables</li>
 <li>guides for interpretation (test-values, contributions, etc.)</li>
 <li>inductive tests</li>
 <li>analysis of structuring factors (concentration ellipses, interactions, etc.)</li>
 <li>graphical representations (with and without <a href="https://ggplot2.tidyverse.org/" class="external-link"><code>ggplot2</code></a>)</li>
-</ul>
-<p>Besides, it also provides :</p>
-<ul>
-<li>several functions for bivariate associations between variables (phi coefficients, Cramer’s V, correlation coefficients, eta-squared, etc.),</li>
-<li>plotting functions for bivariate associations between variables,</li>
-<li>the translation of logit models coefficients into percentages,</li>
-<li>weighted contingency tables,</li>
-<li>an underrated association measure for contingency tables (“Percentages of Maximum Deviation from Independence”, aka PEM).</li>
 </ul>
 </div>
 <div class="section level2">
@@ -135,14 +119,19 @@
 <span><span class="fu">install_github</span><span class="op">(</span><span class="st">"nicolas-robette/GDAtools"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>To cite <code>GDAtools</code> in publications, use :</p>
+<p>Robette N. (2023), <em><code>GDAtools</code> : Geometric Data Analysis in <code>R</code></em>, version 2.0, <a href="https://nicolas-robette.github.io/GDAtools/" class="uri">https://nicolas-robette.github.io/GDAtools/</a></p>
+</div>
+<div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<p>Bry X., Robette N., Roueff O., 2016, « A dialogue of the deaf in the statistical theater? Adressing structural effects within a geometric data analysis framework », <em>Quality &amp; Quantity</em>, 50(3), pp 1009–1020 [<a href="https://link.springer.com/article/10.1007/s11135-015-0187-z" class="external-link uri">https://link.springer.com/article/10.1007/s11135-015-0187-z</a>]</p>
 <p>Le Roux B. and Rouanet H., 2010, <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks.</p>
 <p>Le Roux B. and Rouanet H., 2004, <em>Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis</em>, Kluwer Academic Publishers, Dordrecht.</p>
-<p>Deauvieau J., 2019, « Comparer les resultats d’un modele logit dichotomique ou polytomique entre plusieurs groupes a partir des probabilites estimees », <em>Bulletin de Methodologie Sociologique</em>, 142(1), 7-31.</p>
-<p>Cibois P., 1993, « Le PEM, pourcentage de l’ecart maximum : un indice de liaison entre modalites d’un tableau de contingence », <em>Bulletin de Methodologie Sociologique</em>, 40, pp 43-63, [<a href="http://cibois.pagesperso-orange.fr/bms93.pdf" class="external-link uri">http://cibois.pagesperso-orange.fr/bms93.pdf</a>]</p>
-<p>Rakotomalala R., « Comprendre la taille d’effet (effect size) », [<a href="http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf" class="external-link uri">http://eric.univ-lyon2.fr/~ricco/cours/slides/effect_size.pdf</a>]</p>
+<p>Bry X., 1996, <em>Analyses factorielles multiples</em>, Economica.</p>
+<p>Lebart L., Morineau A. et Warwick K., 1984, <em>Multivariate Descriptive Statistical Analysis</em>, John Wiley and sons, New-York.</p>
+<p>Bry X., Robette N., Roueff O., 2016, « A dialogue of the deaf in the statistical theater? Adressing structural effects within a geometric data analysis framework », <em>Quality &amp; Quantity</em>, 50(3), pp 1009–1020 [<a href="https://link.springer.com/article/10.1007/s11135-015-0187-z" class="external-link uri">https://link.springer.com/article/10.1007/s11135-015-0187-z</a>]</p>
 </div>
 </div>
   </div>
@@ -153,6 +142,7 @@
 <ul class="list-unstyled">
 <li><a href="https://cloud.r-project.org/package=GDAtools" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/nicolas-robette/GDAtools/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/nicolas-robette/GDAtools/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -175,7 +165,7 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://github.com/nicolas-robette" class="external-link">Nicolas Robette</a> <br><small class="roles"> Maintainer </small>  </li>
+<a href="https://github.com/nicolas-robette" class="external-link">Nicolas Robette</a> <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 

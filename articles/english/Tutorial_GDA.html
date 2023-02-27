@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
       </span>
     </div>
 
@@ -53,13 +53,7 @@
       <a href="../../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="../../articles/english/Tutorial_descr.html">Descriptive analysis of statistical associations with GDAtools</a>
-    </li>
-    <li>
       <a href="../../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
-    </li>
-    <li>
-      <a href="../../articles/french/Tutoriel_descr.html">L'analyse descriptive des associations statistiques avec GDAtools</a>
     </li>
   </ul>
 </li>
@@ -90,7 +84,7 @@
       <h1 data-toc-skip>Geometric Data Analysis with GDAtools</h1>
                         <h4 data-toc-skip class="author">Nicolas Robette</h4>
             
-            <h4 data-toc-skip class="date">2023-02-14</h4>
+            <h4 data-toc-skip class="date">2023-02-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/english/Tutorial_GDA.Rmd" class="external-link"><code>vignettes/english/Tutorial_GDA.Rmd</code></a></small>
       <div class="hidden name"><code>Tutorial_GDA.Rmd</code></div>
@@ -484,87 +478,87 @@ Educ     5.9   3.3</code></pre>
 </table>
 <p>On axis 1, those with no or few qualifications and those aged 15-24 are opposed to those with more qualifications and those aged 50 and over. The other categories appear to have little connection with the axis (their correlation coefficients are close to 0).<br><br></p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../../reference/condesc.html">condesc</a></span><span class="op">(</span><span class="va">mca</span><span class="op">$</span><span class="va">ind</span><span class="op">$</span><span class="va">coord</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span>, <span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">categories</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../../reference/dimdescr.html">dimdescr</a></span><span class="op">(</span><span class="va">mca</span>, vars<span class="op">=</span><span class="va">Taste</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span>,<span class="st">"Educ"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">dim.2</span><span class="op">$</span><span class="va">categories</span></span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">categories</th>
-<th align="right">median.y.in.xcat</th>
-<th align="right">median.y.global</th>
-<th align="right">mad.y.in.xcat</th>
-<th align="right">mad.y.global</th>
+<th align="right">mean.y.in.xcat</th>
+<th align="right">mean.y.global</th>
+<th align="right">sd.y.in.xcat</th>
+<th align="right">sd.y.global</th>
 <th align="right">cor</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Age.15-24</td>
+<td align="right">0.236</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.320</td>
+<td align="right">0.342</td>
 <td align="right">0.288</td>
 </tr>
 <tr class="even">
 <td align="left">Gender.Men</td>
+<td align="right">0.088</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.302</td>
+<td align="right">0.342</td>
 <td align="right">0.245</td>
 </tr>
 <tr class="odd">
 <td align="left">Age.25-49</td>
+<td align="right">0.049</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.333</td>
+<td align="right">0.342</td>
 <td align="right">0.123</td>
 </tr>
 <tr class="even">
 <td align="left">Educ.High</td>
+<td align="right">0.076</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.327</td>
+<td align="right">0.342</td>
 <td align="right">0.123</td>
 </tr>
 <tr class="odd">
 <td align="left">Educ.Low</td>
+<td align="right">0.016</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.341</td>
+<td align="right">0.342</td>
 <td align="right">0.034</td>
 </tr>
 <tr class="even">
 <td align="left">Educ.Medium</td>
+<td align="right">0.007</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.335</td>
+<td align="right">0.342</td>
 <td align="right">0.009</td>
 </tr>
 <tr class="odd">
 <td align="left">Educ.None</td>
+<td align="right">-0.100</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.341</td>
+<td align="right">0.342</td>
 <td align="right">-0.167</td>
 </tr>
 <tr class="even">
 <td align="left">Gender.Women</td>
+<td align="right">-0.081</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.357</td>
+<td align="right">0.342</td>
 <td align="right">-0.245</td>
 </tr>
 <tr class="odd">
 <td align="left">Age.50+</td>
+<td align="right">-0.131</td>
 <td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
+<td align="right">0.299</td>
+<td align="right">0.342</td>
 <td align="right">-0.330</td>
 </tr>
 </tbody>
