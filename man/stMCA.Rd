@@ -4,8 +4,7 @@
 
 \title{Performs a 'standardized' MCA}
 
-\description{Performs a 'standardized' Multiple Correspondence Analysis, i.e it takes MCA results and forces all the dimensions to 
-be orthogonal to a supplementary 'control' variable.}
+\description{Performs a 'standardized' Multiple Correspondence Analysis, i.e it takes MCA results and forces all the dimensions to be orthogonal to a supplementary 'control' variable.}
 
 \usage{stMCA(resmca, control)}
 
@@ -17,14 +16,14 @@ be orthogonal to a supplementary 'control' variable.}
 \details{
 Standardized MCA unfolds in several steps. First, for each dimension of an input MCA, individual coordinates are used as 
 dependent variable in a linear regression model and the 'control' variable is included as covariate in the same model. The 
-residuals from every models are retained and bound together. The resulting data frame is composed of continuous variables and 
-its number of columns is equal to the number of dimensions in the input MCA. Lastly, this data frame is used as input in 
+residuals from every models are retained and bound together. The resulting data frame is composed of continuous variables and its number of columns is equal to the number of dimensions in the input MCA. Lastly, this data frame is used as input in 
 a Principal Component Analysis.
+
+It is exactly equivalent to MCA with one orthogonal instrumental variable (see \code{\link{MCAoiv}})
 }
 
 \value{
-Returns an object of class "stMCA". This object will be similar to \code{resmca} argument, still it does not comprehend modified rates, 
-categories contributions and variables contributions.
+Returns an object of class "stMCA". This object will be similar to \code{resmca} argument, still it does not comprehend modified rates, categories contributions and variables contributions.
 }
 
 \references{
@@ -35,7 +34,7 @@ donnees et effets de structure", [http://nicolas.robette.free.fr/publis.html], \
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{plot.stMCA}}, \code{\link{MCA}}, \code{\link{speMCA}}, \code{\link{csMCA}}, \code{\link{multiMCA}}, \code{\link{PCA}}
+\code{\link{plot.stMCA}}, \code{\link{MCA}}, \code{\link{speMCA}}, \code{\link{csMCA}}, \code{\link{multiMCA}}, \code{\link{PCA}}, \code{\link{MCAoiv}}
 }
 
 \examples{
