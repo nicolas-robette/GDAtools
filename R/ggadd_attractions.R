@@ -29,17 +29,17 @@ ggadd_attractions <- function(p, resmca, axes=c(1,2), measure="phi", min.asso=0.
   # if(type %in% c("MCA","speMCA")) w <- resmca$call$row.w
   # if(type=="csMCA") w <- resmca$call$row.w[resmca$call$subcloud]
   
-  paires <- as.data.frame(t(combn(names(resmca$call$X),2)),stringsAsFactors=FALSE)
+  paires <- as.data.frame(t(utils::combn(names(resmca$call$X),2)),stringsAsFactors=FALSE)
   names(paires) <- c("v1","v2")
   l <- list()
   for(i in 1:nrow(paires)) {
     if(measure=="phi") {
-      if(type %in% c("MCA","speMCA")) l[[i]] <- as.data.frame(phi.table(resmca$call$X[,paires[i,1]],resmca$call$X[,paires[i,2]],weights=resmca$call$row.w))
-      if(type=="csMCA") l[[i]] <- as.data.frame(phi.table(resmca$call$X[resmca$call$subcloud,paires[i,1]],resmca$call$X[resmca$call$subcloud,paires[i,2]],weights=resmca$call$row.w[resmca$call$subcloud]))
+      if(type %in% c("MCA","speMCA")) l[[i]] <- as.data.frame(descriptio::phi.table(resmca$call$X[,paires[i,1]],resmca$call$X[,paires[i,2]],weights=resmca$call$row.w,na.rm=TRUE))
+      if(type=="csMCA") l[[i]] <- as.data.frame(descriptio::phi.table(resmca$call$X[resmca$call$subcloud,paires[i,1]],resmca$call$X[resmca$call$subcloud,paires[i,2]],weights=resmca$call$row.w[resmca$call$subcloud],na.rm=TRUE))
     }
     if(measure=="pem") {
-      if(type %in% c("MCA","speMCA")) l[[i]] <- as.data.frame(pem(resmca$call$X[,paires[i,1]],resmca$call$X[,paires[i,2]],weights=resmca$call$row.w)$peml/100)
-      if(type=="csMCA") l[[i]] <- as.data.frame(pem(resmca$call$X[resmca$call$subcloud,paires[i,1]],resmca$call$X[resmca$call$subcloud,paires[i,2]],weights=resmca$call$row.w[resmca$call$subcloud])$peml/100)
+      if(type %in% c("MCA","speMCA")) l[[i]] <- as.data.frame(descriptio::pem.table(resmca$call$X[,paires[i,1]],resmca$call$X[,paires[i,2]],weights=resmca$call$row.w)$peml/100,na.rm=TRUE)
+      if(type=="csMCA") l[[i]] <- as.data.frame(descriptio::pem.table(resmca$call$X[resmca$call$subcloud,paires[i,1]],resmca$call$X[resmca$call$subcloud,paires[i,2]],weights=resmca$call$row.w[resmca$call$subcloud])$peml/100,na.rm=TRUE)
     }
     l[[i]]$v1 <- paires$v1[i]
     l[[i]]$v2 <- paires$v2[i]
