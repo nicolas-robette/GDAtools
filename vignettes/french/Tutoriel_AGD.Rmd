@@ -203,11 +203,11 @@ Sur l'axe 1, les non et peu diplômés et les 15-24 ans s'opposent aux plus di
 \
 
 ```{r condesc2, eval=FALSE}
-condesc(mca$ind$coord[,2], Taste[,c("Gender","Age","Educ")])$categories
+dimdescr(mca, vars=Taste[,c("Gender","Age","Educ")])$dim.2$categories
 ```
 
 ```{r condesc2bis, echo=FALSE}
-knitr::kable(condesc(mca$ind$coord[,2], Taste[,c("Gender","Age","Educ")])$categories, row.names=FALSE)
+knitr::kable(dimdescr(mca, vars=Taste[,c("Gender","Age","Educ")])$dim.2$categories, row.names=FALSE)
 ```
 
 Sur l'axe 2, les hommes, les moins de 50 ans et les plus diplômés s'opposent aux femmes, aux plus de 50 ans et aux sans diplôme.

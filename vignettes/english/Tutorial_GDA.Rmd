@@ -206,11 +206,11 @@ On axis 1, those with no or few qualifications and those aged 15-24 are opposed 
 \
 
 ```{r condesc2, eval=FALSE}
-condesc(mca$ind$coord[,2], Taste[,c("Gender","Age","Educ")])$categories
+dimdescr(mca, vars=Taste[,c("Gender","Age","Educ")])$dim.2$categories
 ```
 
 ```{r condesc2bis, echo=FALSE}
-knitr::kable(condesc(mca$ind$coord[,2], Taste[,c("Gender","Age","Educ")])$categories, row.names=FALSE)
+knitr::kable(dimdescr(mca, vars=Taste[,c("Gender","Age","Educ")])$dim.2$categories, row.names=FALSE)
 ```
 
 On axis 2, men, the under 50s and the more educated are opposed to women, the over 50s and the uneducated.
