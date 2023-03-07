@@ -30,7 +30,9 @@ PCAoiv <- function(X, Z, row.w = NULL, ncp = 5) {
   if(length(qualsup)==0) qualsup <- NULL
   quantsup <- which(sapply(Z, function(Z) is.numeric(Z) | is.integer(Z)))
   if(length(quantsup)==0) quantsup <- NULL
-  res <- PCA(df, scale.unit = FALSE, ncp = ncp, row.w = row.w, quali.sup = (ncol(X)+qualsup), quanti.sup = (ncol(X)+quantsup), graph = FALSE)
+  res <- FactoMineR::PCA(df, scale.unit = FALSE, ncp = ncp, row.w = row.w, quali.sup = (ncol(X)+qualsup), quanti.sup = (ncol(X)+quantsup), graph = FALSE)
+  pca <- FactoMineR::PCA(Xs, scale.unit = FALSE, ncp = ncp, row.w = row.w, graph = FALSE)
+  res$ratio <- sum(res$eig[,"eigenvalue"]) / sum(pca$eig[,"eigenvalue"])
   class(res) <- c("PCA", "PCAoiv", "list")
   return(res)
 }

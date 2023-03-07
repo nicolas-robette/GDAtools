@@ -21,7 +21,8 @@ Multiple Correspondence Analysis with Instrumental Variables consists in three s
 3. Principal Component Analysis of the set of predicted values from the regressions in 2.
 }
 \value{
-An object of class \code{PCA} from \code{FactoMineR} package, with \code{Y} and \code{X} as supplementary variables.
+An object of class \code{PCA} from \code{FactoMineR} package, with \code{Y} and \code{X} as supplementary variables, and an additional item :
+\item{ratio}{the share of inertia explained by the instrumental variables}.
 }
 
 \references{

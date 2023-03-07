@@ -21,7 +21,8 @@ Multiple Correspondence Analysis with Orthogonal Instrumental Variables consists
 3. Principal Component Analysis of the set of residuals from the regressions in 2.
 }
 \value{
-An object of class \code{PCA} from \code{FactoMineR} package, with \code{X} as supplementary variables.
+An object of class \code{PCA} from \code{FactoMineR} package, with \code{X} as supplementary variables, and an additional item :
+\item{ratio}{the share of inertia not explained by the instrumental variables}.
 }
 
 \references{

@@ -19,7 +19,8 @@ Principal Component Analysis with Orthogonal Instrumental Variables consists in 
 2. Principal Component Analysis of the set of residuals from the regressions in 1.
 }
 \value{
-An object of class \code{PCA} from \code{FactoMineR} package.
+An object of class \code{PCA} from \code{FactoMineR} package, and an additional item :
+\item{ratio}{the share of inertia not explained by the instrumental variables}.
 }
 
 \references{

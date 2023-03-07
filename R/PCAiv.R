@@ -38,6 +38,8 @@ PCAiv <- function(Y, X, row.w = NULL, ncp = 5) {
   quantsup <- which(sapply(X, function(x) is.numeric(x) | is.integer(x)))
   if(length(quantsup)==0) quantsup <- NULL
   res <- FactoMineR::PCA(df, scale.unit = FALSE, ncp = ncp, row.w = row.w, quali.sup = (ncol(Y)+qualsup), quanti.sup = (ncol(Y)+quantsup), graph = FALSE)
+  pca <- FactoMineR::PCA(Ys, scale.unit = FALSE, ncp = ncp, row.w = row.w, graph = FALSE)
+  res$ratio <- sum(res$eig[,"eigenvalue"]) / sum(pca$eig[,"eigenvalue"])
   class(res) <- c("PCA", "PCAiv", "list")
   return(res)
 }

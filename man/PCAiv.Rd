@@ -19,7 +19,8 @@ Principal Component Analysis with Instrumental Variables consists in two steps :
 2. Principal Component Analysis of the set of predicted values from the regressions in 1 ("Y hat").
 }
 \value{
-An object of class \code{PCA} from \code{FactoMineR} package, with \code{X} as supplementary variables.
+An object of class \code{PCA} from \code{FactoMineR} package, with \code{X} as supplementary variables, and an additional item :
+\item{ratio}{the share of inertia explained by the instrumental variables}.
 }
 
 \references{
