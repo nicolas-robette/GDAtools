@@ -84,7 +84,7 @@
       <h1 data-toc-skip>Geometric Data Analysis with GDAtools</h1>
                         <h4 data-toc-skip class="author">Nicolas Robette</h4>
             
-            <h4 data-toc-skip class="date">2023-02-27</h4>
+            <h4 data-toc-skip class="date">2023-03-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/english/Tutorial_GDA.Rmd" class="external-link"><code>vignettes/english/Tutorial_GDA.Rmd</code></a></small>
       <div class="hidden name"><code>Tutorial_GDA.Rmd</code></div>
@@ -209,67 +209,92 @@
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">mca</span>, dim<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
+<colgroup>
+<col width="6%">
+<col width="5%">
+<col width="4%">
+<col width="12%">
+<col width="13%">
+<col width="12%">
+<col width="14%">
+<col width="16%">
+<col width="14%">
+</colgroup>
 <thead><tr class="header">
-<th align="left">var</th>
-<th align="left">moda</th>
-<th align="left">ctr1</th>
-<th align="left">ctr2</th>
-<th align="right">weight</th>
-<th align="left">ctrtot</th>
-<th align="left">cumctrtot</th>
+<th align="left">Variable</th>
+<th align="left">Category</th>
+<th align="right">Weight</th>
+<th align="left">Contribution (left)</th>
+<th align="left">Contribution (right)</th>
+<th align="left">Total contribution</th>
+<th align="left">Cumulated contribution</th>
+<th align="left">Contribution of deviation</th>
+<th align="left">Proportion to variable</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Classical</td>
 <td align="left">Yes</td>
-<td align="left">-23.08</td>
-<td align="left"></td>
 <td align="right">552</td>
+<td align="left">23.08</td>
+<td align="left"></td>
 <td align="left">31.88</td>
 <td align="left">31.88</td>
+<td align="left">31.88</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">No</td>
+<td align="right">1443</td>
 <td align="left"></td>
 <td align="left">8.8</td>
-<td align="right">1443</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">Jazz</td>
 <td align="left">Yes</td>
-<td align="left">-25.49</td>
-<td align="left"></td>
 <td align="right">364</td>
+<td align="left">25.49</td>
+<td align="left"></td>
 <td align="left">31.15</td>
-<td align="left">63.03</td>
+<td align="left">63.04</td>
+<td align="left">31.15</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">No</td>
+<td align="right">1621</td>
 <td align="left"></td>
 <td align="left">5.66</td>
-<td align="right">1621</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">Comedy</td>
-<td align="left">No</td>
-<td align="left">-7.22</td>
+<td align="left">Yes</td>
+<td align="right">856</td>
 <td align="left"></td>
-<td align="right">1141</td>
+<td align="left">9.66</td>
 <td align="left">16.88</td>
-<td align="left">79.91</td>
+<td align="left">79.92</td>
+<td align="left">16.88</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="right">1141</td>
+<td align="left">7.22</td>
 <td align="left"></td>
-<td align="left">9.66</td>
-<td align="right">856</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
@@ -279,87 +304,116 @@
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">mca</span>, dim<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
+<colgroup>
+<col width="6%">
+<col width="5%">
+<col width="4%">
+<col width="12%">
+<col width="13%">
+<col width="12%">
+<col width="14%">
+<col width="16%">
+<col width="14%">
+</colgroup>
 <thead><tr class="header">
-<th align="left">var</th>
-<th align="left">moda</th>
-<th align="left">ctr1</th>
-<th align="left">ctr2</th>
-<th align="right">weight</th>
-<th align="left">ctrtot</th>
-<th align="left">cumctrtot</th>
+<th align="left">Variable</th>
+<th align="left">Category</th>
+<th align="right">Weight</th>
+<th align="left">Contribution (left)</th>
+<th align="left">Contribution (right)</th>
+<th align="left">Total contribution</th>
+<th align="left">Cumulated contribution</th>
+<th align="left">Contribution of deviation</th>
+<th align="left">Proportion to variable</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Rock</td>
-<td align="left">No</td>
-<td align="left">-4.78</td>
+<td align="left">Yes</td>
+<td align="right">535</td>
 <td align="left"></td>
-<td align="right">1455</td>
+<td align="left">12.99</td>
 <td align="left">17.77</td>
 <td align="left">17.77</td>
+<td align="left">17.77</td>
+<td align="left">100</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
-<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="right">1455</td>
+<td align="left">4.78</td>
 <td align="left"></td>
-<td align="left">12.99</td>
-<td align="right">535</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">Love</td>
 <td align="left">Yes</td>
-<td align="left">-17.24</td>
-<td align="left"></td>
 <td align="right">225</td>
 <td align="left">17.24</td>
-<td align="left">35.01</td>
+<td align="left"></td>
+<td align="left">17.24</td>
+<td align="left">35</td>
+<td align="left">17.24</td>
+<td align="left">88.79</td>
 </tr>
 <tr class="even">
 <td align="left">FrenchPop</td>
-<td align="left">Yes</td>
-<td align="left">-5.69</td>
+<td align="left">No</td>
+<td align="right">741</td>
 <td align="left"></td>
-<td align="right">1249</td>
-<td align="left">15.38</td>
+<td align="left">9.69</td>
+<td align="left">15.39</td>
 <td align="left">50.39</td>
+<td align="left">15.39</td>
+<td align="left">100</td>
 </tr>
 <tr class="odd">
 <td align="left"></td>
-<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="right">1249</td>
+<td align="left">5.69</td>
 <td align="left"></td>
-<td align="left">9.69</td>
-<td align="right">741</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">Musical</td>
 <td align="left">Yes</td>
-<td align="left">-14.33</td>
-<td align="left"></td>
 <td align="right">66</td>
 <td align="left">14.33</td>
+<td align="left"></td>
+<td align="left">14.33</td>
 <td align="left">64.72</td>
+<td align="left">14.33</td>
+<td align="left">96.61</td>
 </tr>
 <tr class="odd">
 <td align="left">SciFi</td>
 <td align="left">Yes</td>
+<td align="right">143</td>
 <td align="left"></td>
 <td align="left">11.49</td>
-<td align="right">143</td>
 <td align="left">11.49</td>
 <td align="left">76.21</td>
+<td align="left">11.49</td>
+<td align="left">92.72</td>
 </tr>
 <tr class="even">
 <td align="left">Rap</td>
 <td align="left">Yes</td>
+<td align="right">261</td>
 <td align="left"></td>
 <td align="left">11.05</td>
-<td align="right">261</td>
 <td align="left">11.05</td>
-<td align="left">87.26</td>
+<td align="left">87.27</td>
+<td align="left">11.05</td>
+<td align="left">86.56</td>
 </tr>
 </tbody>
 </table>
@@ -739,60 +793,83 @@ High      0 0.0000000 0.0000000    1</code></pre>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">csa</span>, dim<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
+<colgroup>
+<col width="6%">
+<col width="5%">
+<col width="4%">
+<col width="12%">
+<col width="13%">
+<col width="12%">
+<col width="14%">
+<col width="16%">
+<col width="14%">
+</colgroup>
 <thead><tr class="header">
-<th align="left">var</th>
-<th align="left">moda</th>
-<th align="left">ctr1</th>
-<th align="left">ctr2</th>
-<th align="right">weight</th>
-<th align="left">ctrtot</th>
-<th align="left">cumctrtot</th>
+<th align="left">Variable</th>
+<th align="left">Category</th>
+<th align="right">Weight</th>
+<th align="left">Contribution (left)</th>
+<th align="left">Contribution (right)</th>
+<th align="left">Total contribution</th>
+<th align="left">Cumulated contribution</th>
+<th align="left">Contribution of deviation</th>
+<th align="left">Proportion to variable</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Jazz</td>
 <td align="left">Yes</td>
-<td align="left">-41.85</td>
-<td align="left"></td>
 <td align="right">145</td>
+<td align="left">41.85</td>
+<td align="left"></td>
 <td align="left">51.08</td>
 <td align="left">51.08</td>
+<td align="left">17.25</td>
+<td align="left">33.76</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">No</td>
+<td align="right">326</td>
 <td align="left"></td>
 <td align="left">9.23</td>
-<td align="right">326</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">Classical</td>
 <td align="left">Yes</td>
-<td align="left">-17.79</td>
-<td align="left"></td>
 <td align="right">183</td>
+<td align="left">17.79</td>
+<td align="left"></td>
 <td align="left">24.55</td>
 <td align="left">75.63</td>
+<td align="left">6.9</td>
+<td align="left">28.1</td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">No</td>
+<td align="right">290</td>
 <td align="left"></td>
 <td align="left">6.76</td>
-<td align="right">290</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">Animation</td>
 <td align="left">Yes</td>
+<td align="right">34</td>
 <td align="left"></td>
 <td align="left">12.43</td>
-<td align="right">34</td>
 <td align="left">12.43</td>
 <td align="left">88.06</td>
+<td align="left">4.64</td>
+<td align="left">35.66</td>
 </tr>
 </tbody>
 </table>
@@ -800,51 +877,72 @@ High      0 0.0000000 0.0000000    1</code></pre>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../../reference/tabcontrib.html">tabcontrib</a></span><span class="op">(</span><span class="va">csa</span>, dim<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <table class="table">
+<colgroup>
+<col width="6%">
+<col width="5%">
+<col width="4%">
+<col width="12%">
+<col width="13%">
+<col width="12%">
+<col width="14%">
+<col width="16%">
+<col width="14%">
+</colgroup>
 <thead><tr class="header">
-<th align="left">var</th>
-<th align="left">moda</th>
-<th align="left">ctr1</th>
-<th align="left">ctr2</th>
-<th align="right">weight</th>
-<th align="left">ctrtot</th>
-<th align="left">cumctrtot</th>
+<th align="left">Variable</th>
+<th align="left">Category</th>
+<th align="right">Weight</th>
+<th align="left">Contribution (left)</th>
+<th align="left">Contribution (right)</th>
+<th align="left">Total contribution</th>
+<th align="left">Cumulated contribution</th>
+<th align="left">Contribution of deviation</th>
+<th align="left">Proportion to variable</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Animation</td>
 <td align="left">Yes</td>
-<td align="left">-59.05</td>
-<td align="left"></td>
 <td align="right">34</td>
 <td align="left">59.05</td>
+<td align="left"></td>
 <td align="left">59.05</td>
+<td align="left">59.05</td>
+<td align="left">22.06</td>
+<td align="left">35.66</td>
 </tr>
 <tr class="even">
 <td align="left">SciFi</td>
 <td align="left">Yes</td>
-<td align="left">-9.51</td>
-<td align="left"></td>
 <td align="right">38</td>
 <td align="left">9.51</td>
-<td align="left">68.56</td>
+<td align="left"></td>
+<td align="left">9.51</td>
+<td align="left">68.55</td>
+<td align="left">2.53</td>
+<td align="left">24.72</td>
 </tr>
 <tr class="odd">
 <td align="left">Rock</td>
 <td align="left">Yes</td>
-<td align="left">-6.71</td>
-<td align="left"></td>
 <td align="right">203</td>
 <td align="left">6.71</td>
-<td align="left">75.27</td>
+<td align="left"></td>
+<td align="left">6.71</td>
+<td align="left">75.26</td>
+<td align="left">2.55</td>
+<td align="left">27.32</td>
 </tr>
 <tr class="even">
 <td align="left">Jazz</td>
 <td align="left">Yes</td>
-<td align="left">-5.43</td>
-<td align="left"></td>
 <td align="right">145</td>
 <td align="left">5.43</td>
-<td align="left">80.7</td>
+<td align="left"></td>
+<td align="left">5.43</td>
+<td align="left">80.69</td>
+<td align="left">2.16</td>
+<td align="left">32.22</td>
 </tr>
 </tbody>
 </table>
