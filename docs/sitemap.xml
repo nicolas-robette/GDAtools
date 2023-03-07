@@ -28,10 +28,22 @@
     <loc>https://nicolas-robette.github.io/GDAtools/news/index.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/MCAiv.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/MCAoiv.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/Movies.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/Music.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/PCAiv.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/PCAoiv.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/Taste.html</loc>
@@ -58,10 +70,22 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/assoc.yx.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/bcMCA.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/bcPCA.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/burt.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/catdesc.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/coiMCA.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/coiPCA.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/conc.ellipse.html</loc>
@@ -77,6 +101,9 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/darma.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/deprecated.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/dichotom.html</loc>
@@ -166,6 +193,9 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggcloud_variables.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggeta2_variables.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/homog.test.html</loc>
   </url>
   <url>
@@ -196,6 +226,9 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/phi.table.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/planecontrib.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/plot.csMCA.html</loc>
   </url>
   <url>
@@ -209,6 +242,12 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/quadrant.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/quasindep.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/rvcoef.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/speMCA.html</loc>
@@ -233,6 +272,12 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/varsups.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/wcMCA.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/wcPCA.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/wtable.html</loc>
