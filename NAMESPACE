@@ -23,4 +23,4 @@ export(ahc.plots,angles.csa,assoc.twocat,assoc.catcont,assoc.twocont,assoc.yx,bu
        ggadd_attractions,ggadd_chulls,ggadd_corr,ggadd_density,ggadd_ellipses,ggadd_interaction,ggadd_kellipses,ggadd_supind,ggadd_supvar,ggadd_supvars,
        ggassoc_crosstab,ggassoc_phiplot,ggassoc_boxplot,ggassoc_scatter,ggaxis_variables,ggcloud_indiv,ggcloud_variables,
        homog.test,ijunk,indsup,medoids,modif.rate,multiMCA,pem,phi.table,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,quadrant,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,varsups,wtable,
-       planecontrib, quasindep, ggeta2_variables, bcMCA, bcPCA, wcMCA, wcPCA, PCAiv, PCAoiv, MCAiv, MCAoiv)
+       planecontrib, quasindep, ggeta2_variables, bcMCA, bcPCA, wcMCA, wcPCA, PCAiv, PCAoiv, MCAiv, MCAoiv, coiPCA, coiMCA, rvcoef, gPCA)

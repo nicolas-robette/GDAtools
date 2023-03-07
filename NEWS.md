@@ -8,6 +8,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 
 ## New functions
 
+* `gPCA()` : Generalized Principal Component Analysis
 * `bcMCA()` : Between-class Multiple Correspondence Analysis
 * `bcPCA()` : Between-class Principal Component Analysis
 * `wcMCA()` : Within-class Multiple Correspondence Analysis
@@ -16,9 +17,16 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 * `MCAiv()` : Multiple Correspondence Analysis with Instrumental Variables
 * `PCAoiv()` : Principal Component Analysis with Orthogonal Instrumental Variables
 * `MCAoiv()` : Multiple Correspondence Analysis with Orthogonal Instrumental Variables
+* `coiPCA()` : Coinertia analysis between two groups of numerical variables
+* `coiMCA()` : Coinertia analysis between two groups of categorical variables
+* `rvcoef()` : RV coefficient between two groups of variables
 * `planecontrib()` : For a given plane of a MCA, computes contributions et squared cosines of the active variables and categories
 * `ggeta2_variables()` : Plots the eta-squared of the active variables of a MCA
 * `quasindep()` : Transforms a symmetrical contingency table so that it can be used for quasi-correspondence analysis, also called correspondence analysis of incomplete contingency table.
+
+## Changes in existing functions
+
+* `tabcontrib()` : the function has been rewritten to include contributions of deviations (thanks to @419kfj)
 
 
 
