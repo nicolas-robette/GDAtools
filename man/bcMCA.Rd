@@ -40,7 +40,7 @@ Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Stati
 library(FactoMineR)
 data(tea)
 res <- bcMCA(tea[,1:18], tea$SPC)
-plot(res)
+plot(res, invisible = "row.sup")
 }
 
 \keyword{ multivariate }

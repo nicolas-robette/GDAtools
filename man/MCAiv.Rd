@@ -41,7 +41,7 @@ Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Stati
 library(FactoMineR)
 data(tea)
 mcaiv <- MCAiv(tea[,1:18], tea[,19:22])
-plot(mcaiv)
+plot(mcaiv, choix = "ind", invisible = "ind")
 }
 
 \keyword{ multivariate }

@@ -39,7 +39,8 @@ Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Stati
 library(FactoMineR)
 data(decathlon)
 pcaiv <- PCAiv(decathlon[,1:10], decathlon[,12:13])
-plot(pcaiv)
+plot(pcaiv, choix = "var")
+plot(pcaiv, choix = "ind", invisible = "ind")
 }
 
 \keyword{ multivariate }

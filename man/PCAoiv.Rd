@@ -39,7 +39,7 @@ Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Stati
 library(FactoMineR)
 data(decathlon)
 pcaoiv <- PCAoiv(decathlon[,1:10], decathlon[,12:13])
-plot(pcaoiv)
+plot(pcaoiv, choix = "var", invisible = "quanti.sup")
 }
 
 \keyword{ multivariate }

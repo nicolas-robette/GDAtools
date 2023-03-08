@@ -43,7 +43,7 @@ Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Stati
 \author{Nicolas Robette}
 
 \seealso{
-code{\link{bcMCA}}
+\code{\link{bcMCA}}
 }
 
 \examples{

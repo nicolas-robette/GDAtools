@@ -47,7 +47,7 @@ Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Stati
 \author{Nicolas Robette}
 
 \seealso{
-code{\link{wcMCA}}
+\code{\link{wcMCA}}
 }
 
 \examples{
@@ -55,7 +55,6 @@ library(FactoMineR)
 data(decathlon)
 points <- cut(decathlon$Points, c(7300, 7800, 8000, 8120, 8900), c("Q1","Q2","Q3","Q4"))
 res <- wcPCA(decathlon[,1:10], points)
-plot(res, choix = "ind", invisible = "ind.sup")
 plot(res, choix = "var")
 }
 

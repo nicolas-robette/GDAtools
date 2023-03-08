@@ -40,7 +40,7 @@ Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Stati
 library(FactoMineR)
 data(tea)
 res <- wcMCA(tea[,1:18], tea$SPC)
-plot(res)
+ggcloud_variables(res)
 }
 
 \keyword{ multivariate }
