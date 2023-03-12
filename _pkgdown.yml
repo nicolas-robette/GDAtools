@@ -50,6 +50,8 @@ reference:
   - quadrant
   - flip.mca
   - angles.csa
+  - bootvalid_variables
+  - bootvalid_supvars
   
 - title: Plotting MCA
 - desc: Plotting tools for MCA
@@ -69,12 +71,15 @@ reference:
   - ggadd_ellipses
   - ggadd_kellipses
   - ggadd_chulls
+  - ggsmoothed_supvar
   - ggadd_density
   - ggadd_corr
   - ggadd_interaction
   - ggadd_attractions
   - ggaxis_variables
   - ggeta2_variables
+  - ggbootvalid_variables
+  - ggbootvalid_supvars
   
 - title: Miscellaneous
 - desc: A few additional tools

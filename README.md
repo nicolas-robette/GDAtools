@@ -13,10 +13,10 @@
 * specific Multiple Correspondence Analysis
 * Class Specific Analysis
 * Two-table and multiple-table analyses : Multiple Factor Analysis, between- and within-class analysis, MCA and PCA with instrumental variables or orthogonal instrumental variables
-* guides for interpretation (contributions, test-values, etc.)
+* guides for interpretation (contributions, test-values, bootstrap validation, etc.)
 * inductive tests
 * analysis of structuring factors (concentration ellipses, interactions, etc.)
-* graphical representations (with and without [`ggplot2`](https://ggplot2.tidyverse.org/))
+* many graphical representations (with and without [`ggplot2`](https://ggplot2.tidyverse.org/))
 
 
 ## Documentation

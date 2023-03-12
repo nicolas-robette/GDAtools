@@ -16,16 +16,6 @@
 
 tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2) {
   
-  getvarnames <- function(resmca) {
-    X <- resmca$call$X
-    var <- unlist(lapply(names(X), function(x) rep(x, nlevels(X[[x]]))))
-    cat <- unlist(lapply(X, levels))
-    varcat <- paste(var, cat, sep = ".")
-    res <- data.frame(var, cat, varcat)
-    rownames(res) <- NULL
-    return(res)
-  }
-  
   # initial data frame of contributions
   df1 <- data.frame(varcat = names(resmca$var$weight), weight = resmca$var$weight)
   df2 <- data.frame(varcat = rownames(resmca$var$coord), coord = resmca$var$coord[,dim])

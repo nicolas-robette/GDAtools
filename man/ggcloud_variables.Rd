@@ -39,7 +39,7 @@ segment.alpha=0.5, vlab=TRUE, sep='.', legend='right')
   \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.}
 }
 
-\value{a ggplot object}
+\value{a \code{ggplot2} object}
 
 \references{
 Le Roux B. and Rouanet H., \emph{Multiple Correspondence Analysis}, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).

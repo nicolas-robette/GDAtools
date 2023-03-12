@@ -22,7 +22,12 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 * `rvcoef()` : RV coefficient between two groups of variables
 * `planecontrib()` : For a given plane of a MCA, computes contributions et squared cosines of the active variables and categories
 * `ggeta2_variables()` : Plots the eta-squared of the active variables of a MCA
-* `quasindep()` : Transforms a symmetrical contingency table so that it can be used for quasi-correspondence analysis, also called correspondence analysis of incomplete contingency table.
+* `quasindep()` : Transforms a symmetrical contingency table so that it can be used for quasi-correspondence analysis, also called correspondence analysis of incomplete contingency table
+* `ggsmoothed_supvar()` : Plots the density a supplementary variable in a MCA space
+* `bootvalid_variables()` : Bootstrap validation for active variables of a MCA
+* `bootvalid_supvars()` : Bootstrap validation for supplementary variables of a MCA
+* `ggbootvalid_variables()` : Ellipses for bootstrap validation of active variables of a MCA
+* `ggbootvalid_supvars()` : Ellipses for bootstrap validation of supplementary variables of a MCA
 
 ## Changes in existing functions
 
