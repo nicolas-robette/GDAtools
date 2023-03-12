@@ -76,6 +76,12 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/bcPCA.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/bootvalid_supvars.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/bootvalid_variables.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/burt.html</loc>
   </url>
   <url>
@@ -125,6 +131,9 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/flip.mca.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/gPCA.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/getindexcat.html</loc>
@@ -187,6 +196,12 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggaxis_variables.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggbootvalid_supvars.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggbootvalid_variables.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggcloud_indiv.html</loc>
   </url>
   <url>
@@ -194,6 +209,9 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/ggeta2_variables.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggsmoothed_supvar.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/homog.test.html</loc>
