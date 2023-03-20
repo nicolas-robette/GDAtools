@@ -1,5 +1,6 @@
-\name{indsup}
+\name{supind}
 
+\alias{supind}
 \alias{indsup}
 
 \title{Computes statistics for supplementary individuals}
@@ -9,18 +10,25 @@
    supplementary individuals.
 }
 
-\usage{indsup(resmca, supdata)}
+\usage{
+supind(resmca, supdata)
+
+indsup(resmca, supdata)
+}
 
 \arguments{
   \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'} or \code{'csMCA'}}
-  \item{supdata}{data frame with the supplementary individuals. It must have the same factors as the data frame used
-                 as input for the initial MCA.}
+  \item{supdata}{data frame with the supplementary individuals. It must have the same factors as the data frame used as input for the initial MCA.}
 }
 
 \value{
   Returns a list:
   \item{coord}{matrix of individuals' coordinates}
   \item{cos2}{matrix of individuals' square cosines}
+}
+
+\note{
+\code{indsup} is softly deprecated. Please use \code{supind} instead.
 }
 
 \references{
@@ -38,11 +46,12 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \examples{
 ## Performs a specific MCA on 'Music' example data set
 ## ignoring every 'NA' (i.e. 'not available') categories,
-## and then computes statistics for supplementary individuals.
+## and excluding the first two observations.
 data(Music)
 getindexcat(Music)
 mca <- speMCA(Music[3:nrow(Music),1:5],excl=c(3,6,9,12,15))
-indsup(mca,Music[1:2,1:5])
+## Computes coordinates of the first two (supplementary) observations
+supind(mca,Music[1:2,1:5])
 }
 
 \keyword{ multivariate }

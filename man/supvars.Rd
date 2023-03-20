@@ -1,19 +1,24 @@
-\name{varsup}
+\name{supvars}
 
-\alias{varsup}
+\alias{supvars}
+\alias{varsups}
 
-\title{Computes statistics for a categorical supplementary variable}
+\title{Computes statistics for categorical supplementary variables}
 
 \description{
    From MCA results, computes statistics (weights, coordinates, contributions, test-values, variances) for 
-   a categorical supplementary variable.
+   categorical supplementary variables.
 }
 
-\usage{varsup(resmca, var)}
+\usage{
+supvars(resmca, vars)
+
+varsups(resmca, vars)
+}
 
 \arguments{
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
-  \item{var}{the categorical supplementary variable. It does not need to have been used at the MCA step.}
+  \item{vars}{A data frame of categorical supplementary variables. All these variables should be factors.}
 }
 
 \value{
@@ -21,10 +26,14 @@
   \item{weight}{numeric vector of categories weights}
   \item{coord}{data frame of categories coordinates}
   \item{cos2}{data frame of categories square cosine}
-  \item{var}{data frame of categories within variances, variance between and within categories and variable square correlation ratio (eta2)}
+  \item{var}{a list of data frames of categories within variances, variance between and within categories and variable square correlation ratio (eta2)}
   \item{typic}{data frame of categories typicality test statistics}
   \item{pval}{data frame of categories p-values from typicality test statistics}
   \item{cor}{data frame of categories correlation coefficients}  
+}
+
+\note{
+\code{varsups} is softly deprecated. Please use \code{supvars} instead.
 }
 
 \references{
@@ -36,17 +45,17 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{speMCA}}, \code{\link{csMCA}}, \code{\link{multiMCA}}, \code{\link{textvarsup}}
+\code{\link{varsup}}, \code{\link{speMCA}}, \code{\link{csMCA}}, \code{\link{multiMCA}}, \code{\link{textvarsup}}
 }
 
 \examples{
 ## Performs a specific MCA on 'Music' example data set
 ## ignoring every 'NA' (i.e. 'not available') categories,
-## and then computes statistics for age supplementary variable.
+## and then computes statistics for supplementary variables.
 data(Music)
 getindexcat(Music)
 mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-varsup(mca,Music$Age)
+supvars(mca,Music[,6:9])
 }
 
 \keyword{ multivariate }

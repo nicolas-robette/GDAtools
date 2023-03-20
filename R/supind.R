@@ -1,4 +1,4 @@
-indsup <- function(resmca,supdata) {
+supind <- function(resmca,supdata) {
     supdata <- data.frame(supdata)
     type <- attr(resmca,'class')[1]
     if(type %in% c("MCA","stMCA","multiMCA","PCA")) eigen <- resmca$eig[,"eigenvalue"]
@@ -16,4 +16,14 @@ indsup <- function(resmca,supdata) {
     rownames(coord) <- rownames(supdata)
     rownames(cos2) <- rownames(supdata)
     return(list(coord=coord,cos2=cos2))
-    }
+}
+
+
+
+indsup <- function(resmca,supdata) {
+  
+  warning("indsup function is softly deprecated. Please use supind function instead")
+
+  return(supind(resmca,supdata))
+  
+}
