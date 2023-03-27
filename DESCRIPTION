@@ -3,9 +3,9 @@ Type: Package
 Title: Geometric Data Analysis
 Version: 2.0
 Authors@R: c(person("Nicolas", "Robette", role = c("aut", "cre"), email = "nicolas.robette@uvsq.fr"))
-Imports: descriptio, FactoMineR, TraMineR, ggplot2, ggrepel, ggnewscale, paletteer, RColorBrewer, rlang, shiny, miniUI, esquisse, rclipboard
-Suggests: rmarkdown, knitr, rmdformats, sf, explor, cluster, GGally, WeightedCluster, vcd, R.rsp
-Description: Many tools for Geometric Data Analysis (Le Roux & Rouanet (2005) <doi:10.1007/1-4020-2236-0>), such as MCA variants (Specific Multiple Correspondence Analysis, Class Specific Analysis), many graphical and statistical aids to interpretation (  structuring factors, concentration ellipses, inductive tests, bootstrap validation, etc.) and multiple table analysis (Multiple Factor Analysis, between-class analysis, PCA and MCA with instrumental variables, etc.).
+Imports: descriptio, FactoMineR, ggplot2, ggrepel, rlang
+Suggests: R.rsp, rmarkdown, knitr, rmdformats, TraMineR, sf, shiny, miniUI, esquisse, rclipboard
+Description: Many tools for Geometric Data Analysis (Le Roux & Rouanet (2005) <doi:10.1007/1-4020-2236-0>), such as MCA variants (Specific Multiple Correspondence Analysis, Class Specific Analysis), many graphical and statistical aids to interpretation (structuring factors, concentration ellipses, inductive tests, bootstrap validation, etc.) and multiple-table analysis (Multiple Factor Analysis, between- and inter-class analysis, PCA and MCA with instrumental variables, etc.).
 VignetteBuilder: R.rsp
 License: GPL (>= 2)
 Encoding: UTF-8
