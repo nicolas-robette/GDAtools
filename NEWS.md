@@ -4,7 +4,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 
 ## Major change
 
-* The package now focuses exclusively on GDA, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new `descriptio` package : `wtable()`, `pem()`, `phi.table()`, `oddsratio.table()`, `catdesc()`, `condesc()`, `assoc.twocat()`, `assoc.twocont()`, `assoc.catcont()`, `assoc.yx()`, `darma()`, `ggassoc_chiasmogram()`, `ggassoc_assocplot()`, `ggassoc_bertin()`, `ggassoc_phiplot()`, `ggassoc_boxplot()`, `ggassoc_crosstab()`, `ggassoc_scatter()`. Lastly, `translate.logit()` has moved to the (also new) `deauvieau` package.
+* The package now focuses exclusively on Geometric Data Analysis, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new `descriptio` package (available on CRAN or github) : `wtable()`, `pem()`, `phi.table()`, `oddsratio.table()`, `catdesc()`, `condesc()`, `assoc.twocat()`, `assoc.twocont()`, `assoc.catcont()`, `assoc.yx()`, `darma()`, `ggassoc_chiasmogram()`, `ggassoc_assocplot()`, `ggassoc_bertin()`, `ggassoc_phiplot()`, `ggassoc_boxplot()`, `ggassoc_crosstab()`, `ggassoc_scatter()`. Lastly, `translate.logit()` has moved to the (also new) `deauvieau` package (available on CRAN).
 
 ## New functions
 
@@ -19,8 +19,10 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 * `MCAoiv()` : Multiple Correspondence Analysis with Orthogonal Instrumental Variables
 * `coiPCA()` : Coinertia analysis between two groups of numerical variables
 * `coiMCA()` : Coinertia analysis between two groups of categorical variables
+* `DA()` : Descriptive Discriminant Analysis
+* `DAQ()` : Descriptive Discriminant Analysis with Qualitative Variables (aka disqual)
 * `rvcoef()` : RV coefficient between two groups of variables
-* `planecontrib()` : For a given plane of a MCA, computes contributions et squared cosines of the active variables and categories
+* `planecontrib()` : For a given plane of a MCA, computes contributions et squared cosines of the active variables and categoriesand of the individuals
 * `ggeta2_variables()` : Plots the eta-squared of the active variables of a MCA
 * `quasindep()` : Transforms a symmetrical contingency table so that it can be used for quasi-correspondence analysis, also called correspondence analysis of incomplete contingency table
 * `ggsmoothed_supvar()` : Plots the density a supplementary variable in a MCA space
@@ -28,10 +30,20 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 * `bootvalid_supvars()` : Bootstrap validation for supplementary variables of a MCA
 * `ggbootvalid_variables()` : Ellipses for bootstrap validation of active variables of a MCA
 * `ggbootvalid_supvars()` : Ellipses for bootstrap validation of supplementary variables of a MCA
+* `supind()` : replaces `indsup()`, which is softly deprecated
+* `supvar()` : replaces `varsup()`, which is softly deprecated
+* `supvars()` : replaces `varsups()`, which is softly deprecated
 
 ## Changes in existing functions
 
-* `tabcontrib()` : the function has been rewritten to include contributions of deviations (thanks to @419kfj)
+* `tabcontrib()` : the function has been rewritten to include contributions of deviations (thanks to @419kfj) and quality of representation.
+* The handling of colors is simplified in `ggcloud_indiv()`, `ggcloud_variables()`, `ggadd_chulls()`, `ggadd_ellipses()`, `ggadd_kellipses()` and `ggadd_interaction()`.
+* `ggcloud_variables()`, `ggcloud_indiv()` and `plot.speMCA()` can use contributions to the plane to select categories of individuals.
+* `speMCA()` : new items are computed (squared cosines and total distances for individuals, total distances for categories)
+
+## Other changes
+
+* The package has much fewer dependencies : some packages are no longer needed, other have been moved to Suggests.
 
 
 
@@ -75,7 +87,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 
 
 
-# GDAtools 1.7.2
+# GDAtools 1.7.2 [CRAN]
 
 ## Bug fixes
 
@@ -102,7 +114,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 
 
 
-# GDAtools 1.7
+# GDAtools 1.7 [CRAN]
 
 ## New functions
 
@@ -172,7 +184,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 
 
 
-# GDAtools 1.6
+# GDAtools 1.6 [CRAN]
 
 ## New functions
 
@@ -201,7 +213,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 
 
 
-# GDAtools 1.5
+# GDAtools 1.5 [CRAN]
 
 ## New functions
 
@@ -221,7 +233,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
  
 
 
-# GDAtools 1.4
+# GDAtools 1.4 [CRAN]
 
 ## New functions
 
@@ -238,7 +250,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 
 
 
-# GDAtools 1.3
+# GDAtools 1.3 [CRAN]
 
 ## Changes in existing functions
   
@@ -262,7 +274,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 
 
 
-# GDAtools 1.1
+# GDAtools 1.1 [CRAN]
 
 ## New functions
 
@@ -280,3 +292,6 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 ## Error fixes
 
 * `textvarsup()`: plots supplementary variables on the cloud of categories (and not the cloud of individuals as it was mentioned in help).
+
+
+# GDAtools 1.0 [CRAN]
