@@ -1,4 +1,4 @@
-import(descriptio,ggplot2,ggrepel,RColorBrewer,shiny,rclipboard)
+import(descriptio, ggplot2, ggrepel)
 
   importFrom("grDevices", "col2rgb", "rainbow", "rgb")
   importFrom("graphics", "abline", "lines", "plot", "points", "text", "barplot")
@@ -7,13 +7,8 @@ import(descriptio,ggplot2,ggrepel,RColorBrewer,shiny,rclipboard)
              "summary.lm", "pnorm", "cutree",
              "sd", "dist")
   importFrom("utils", "combn")
-  importFrom("FactoMineR", "PCA", "coeffRV", "CA", "reconst")
-  importFrom("TraMineR", "dissassoc")
-  importFrom("paletteer", "scale_color_paletteer_d")
+  importFrom("FactoMineR", "PCA", "CA", "reconst", "svd.triplet", "tab.disjonctif")
   importFrom("rlang", ".data")
-  importFrom("miniUI", "miniContentPanel", "miniPage", "gadgetTitleBar")
-  importFrom("esquisse", "dragulaInput", "updateDragulaInput")
-  importFrom("ggnewscale", "new_scale_color")
 
 S3method(plot, speMCA)
 S3method(plot, csMCA)
@@ -25,4 +20,5 @@ export(ahc.plots,angles.csa,assoc.twocat,assoc.catcont,assoc.twocont,assoc.yx,bu
        ggassoc_crosstab,ggassoc_phiplot,ggassoc_boxplot,ggassoc_scatter,ggaxis_variables,ggcloud_indiv,ggcloud_variables,
        homog.test,ijunk,indsup,medoids,modif.rate,multiMCA,pem,phi.table,plot.csMCA,plot.multiMCA,plot.speMCA,plot.stMCA,quadrant,speMCA,stMCA,tabcontrib,textindsup,textvarsup,translate.logit,varsup,varsups,wtable,
        planecontrib, quasindep, ggeta2_variables, ggsmoothed_supvar, bootvalid_variables, bootvalid_supvars, ggbootvalid_variables, ggbootvalid_supvars, 
-       bcMCA, bcPCA, wcMCA, wcPCA, PCAiv, PCAoiv, MCAiv, MCAoiv, coiPCA, coiMCA, rvcoef, gPCA)
+       bcMCA, bcPCA, wcMCA, wcPCA, PCAiv, PCAoiv, MCAiv, MCAoiv, coiPCA, coiMCA, rvcoef, gPCA, DA, DAQ,
+       supind, supvar, supvars)
