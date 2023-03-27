@@ -1,4 +1,4 @@
-ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kappa=2, label=TRUE, label.size=3, col=NULL, size=0.5, points=TRUE, legend="right") {
+ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kappa=2, label=TRUE, label.size=3, size=0.5, points=TRUE, legend="right") {
 
   subvar <- var
   wt <- resmca$call$row.w
@@ -20,7 +20,7 @@ ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kap
   icoord <- icoord[subvar %in% levels(subvar)[sel],]
   icoord$cat <- factor(icoord$cat)
   
-  vs <- varsup(resmca,var)
+  vs <- supvar(resmca,var)
   m <- vs$coord[,axes]
   m[,1] <- m[,1]*resmca$svd$vs[axes[1]]
   m[,2] <- m[,2]*resmca$svd$vs[axes[2]]
@@ -71,25 +71,16 @@ ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kap
   rad2$cat <- factor(rad2$cat)
   cent$cat <- factor(cent$cat)
   
-  pfin <- p + geom_path(data=ell, aes(x=x,y=y,color=cat), size=size) +
-              geom_line(data=rad1, aes(x=x,y=y,color=cat), lty=2, size=0.3, alpha=0.5) +
-              geom_line(data=rad2, aes(x=x,y=y,color=cat), lty=2, size=0.3, alpha=0.5)
+  pfin <- p + ggplot2::geom_path(data=ell, ggplot2::aes(x = .data$x, y = .data$y, color = .data$cat), size=size) +
+              ggplot2::geom_line(data=rad1, ggplot2::aes(x = .data$x, y = .data$y, color = .data$cat), lty=2, size=0.3, alpha=0.5) +
+              ggplot2::geom_line(data=rad2, ggplot2::aes(x = .data$x, y = .data$y, color = .data$cat), lty=2, size=0.3, alpha=0.5)
 
-  if(points) pfin <- pfin + geom_point(data=icoord, aes(x=x, y=y, colour=cat), size=0.5, alpha=0.6)
+  if(points) pfin <- pfin + ggplot2::geom_point(data=icoord, aes(x = .data$x, y = .data$y, colour = .data$cat), size=0.5, alpha=0.6)
                 
-  if(label) { pfin <- pfin + ggplot2::geom_text(key_glyph='blank', data=cent, ggplot2::aes(x=.data$x, y=.data$y, label=.data$cat, colour=.data$cat), size=label.size) 
-  } else { pfin <- pfin + ggplot2::geom_point(data=cent, ggplot2::aes(x=.data$x, y=.data$y, colour=.data$cat), shape=8, size=3) }
+  if(label) { pfin <- pfin + ggplot2::geom_text(key_glyph='blank', data=cent, ggplot2::aes(x = .data$x, y = .data$y, label = .data$cat, colour = .data$cat), size=label.size) 
+  } else { pfin <- pfin + ggplot2::geom_point(data=cent, ggplot2::aes(x = .data$x, y = .data$y, colour = .data$cat), shape=8, size=3) }
 
-  if(!is.null(col)) {
-    if(length(col)>1) { pfin <- pfin + ggplot2::scale_colour_manual(values = col)
-    } else if(length(col)==1) {
-      if(col %in% rownames(RColorBrewer::brewer.pal.info)) { pfin <- pfin + ggplot2::scale_color_brewer(palette = col)
-      } else if(col=='bw') { pfin <- pfin + ggplot2::scale_color_grey() 
-      } else if(is.character(col)) { pfin <- pfin + ggplot2::scale_colour_manual(values = rep(col,nrow(cent))) }
-    }
-  }
-  
-  pfin <- pfin + ggplot2::guides(color = ggplot2::guide_legend(title="")) +
+  pfin <- pfin + ggplot2::guides(color = ggplot2::guide_legend(title = "")) +
                  ggplot2::theme(legend.position = legend)
   pfin
 }

@@ -6,11 +6,7 @@ angles.csa <- function(rescsa, resmca) {
   cosines <- cor(csa.coord,mca.coord)
   rownames(cosines) <- paste("csa", gsub(".","",rownames(cosines),fixed=TRUE), sep=".")
   colnames(cosines) <- paste("mca", gsub(".","",colnames(cosines),fixed=TRUE), sep=".")
-  
-  # cosine.sim <- function(x, y) x %*% y / sqrt(x %*% x * y %*% y)
-  # cosines <- matrix(nrow=ncol(csa.coord), ncol=ncol(mca.coord))
-  # for(i in 1:ncol(mca.coord)) cosines[,i] <- apply(csa.coord,2,cosine.sim,mca.coord[,i])
-  
+
   for(i in 1:(ncol(mca.coord)-1)) {
     for(j in (i+1):ncol(mca.coord)) {
       cosines <- cbind(cosines, sqrt(cosines[,i]^2 + cosines[,j]^2))

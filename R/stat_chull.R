@@ -1,7 +1,7 @@
 StatChull <- ggproto("StatChull",
                      Stat,
                      compute_group = function(data, scales) {
-                       data[chull(data$x, data$y), , drop = FALSE]
+                       data[grDevices::chull(data$x, data$y), , drop = FALSE]
                      },
                      
                      required_aes = c("x", "y")
@@ -14,7 +14,7 @@ stat_chull <- function(mapping = NULL,
                        na.rm = FALSE,
                        show.legend = NA, 
                        inherit.aes = TRUE, ...) {
-  layer(
+  ggplot2::layer(
     stat = StatChull,
     data = data,
     mapping = mapping,

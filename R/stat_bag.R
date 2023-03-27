@@ -23,13 +23,13 @@ StatBag <- ggproto("Statbag", Stat,
                          if(missing(lty.hull)) lty.hull <- 1
                          if(missing(lwd.hull)) lwd.hull <- 1
                          x.old <- x; y.old <- y
-                         idx <- chull(x,y); x.hull <- x[idx]; y.hull <- y[idx]
+                         idx <- grDevices::chull(x,y); x.hull <- x[idx]; y.hull <- y[idx]
                          for( i in 1:(length(x)/3)){
                            x <- x[-idx]; y <- y[-idx]
                            if( (length(x)/n) < fraction ){
                              return(cbind(x.hull,y.hull))
                            }
-                           idx <- chull(x,y); x.hull <- x[idx]; y.hull <- y[idx];
+                           idx <- grDevices::chull(x,y); x.hull <- x[idx]; y.hull <- y[idx];
                          }
                        }
                        if(missing(col.hull)) col.hull <- 1:n.hull
@@ -40,7 +40,7 @@ StatBag <- ggproto("Statbag", Stat,
                        if(length(lwd.hull)) lwd.hull <- rep(lwd.hull,n.hull)
                        result <- NULL
                        for( i in 1:n.hull){
-                         idx <- chull(x,y); x.hull <- x[idx]; y.hull <- y[idx]
+                         idx <- grDevices::chull(x,y); x.hull <- x[idx]; y.hull <- y[idx]
                          result <- c(result, list( cbind(x.hull,y.hull) ))
                          x <- x[-idx]; y <- y[-idx]
                          if(0 == length(x)) return(result)
@@ -54,7 +54,7 @@ StatBag <- ggproto("Statbag", Stat,
                      the_matrix <- matrix(data = c(data$x, data$y), ncol = 2)
                      
                      # get data out of function as df with names
-                     setNames(data.frame(plothulls_(the_matrix, fraction = prop)), nm = c("x", "y"))
+                     stats::setNames(data.frame(plothulls_(the_matrix, fraction = prop)), nm = c("x", "y"))
                      # how can we get the hull and loop vertices passed on also?
                    },
                    
@@ -66,7 +66,7 @@ StatBag <- ggproto("Statbag", Stat,
 stat_bag <- function(mapping = NULL, data = NULL, geom = "polygon",
                      position = "identity", na.rm = FALSE, show.legend = NA, 
                      inherit.aes = TRUE, prop = 0.5, alpha = 0.3, ...) {
-  layer(
+  ggplot2::layer(
     stat = StatBag, data = data, mapping = mapping, geom = geom, 
     position = position, show.legend = show.legend, inherit.aes = inherit.aes,
     params = list(na.rm = na.rm, prop = prop, alpha = alpha, ...)
@@ -82,7 +82,7 @@ geom_bag <- function(mapping = NULL, data = NULL,
                      na.rm = FALSE,
                      show.legend = NA,
                      inherit.aes = TRUE) {
-  layer(
+  ggplot2::layer(
     data = data,
     mapping = mapping,
     stat = StatBag,
@@ -106,9 +106,9 @@ geom_bag <- function(mapping = NULL, data = NULL,
 GeomBag <- ggproto("GeomBag", Geom,
                    draw_group = function(data, panel_scales, coord) {
                      n <- nrow(data)
-                     if (n == 1) return(zeroGrob())
+                     if (n == 1) return(ggplot2::zeroGrob())
                      
-                     munched <- coord_munch(coord, data, panel_scales)
+                     munched <- ggplot2::coord_munch(coord, data, panel_scales)
                      # Sort by group to make sure that colors, fill, etc. come in same order
                      munched <- munched[order(munched$group), ]
                      
@@ -133,7 +133,7 @@ GeomBag <- ggproto("GeomBag", Geom,
                      
                    },
                    
-                   default_aes = aes(colour = "NA", fill = "grey20", size = 0.5, linetype = 1,
+                   default_aes = ggplot2::aes(colour = "NA", fill = "grey20", size = 0.5, linetype = 1,
                                      alpha = NA, prop = 0.5),
                    
                    handle_na = function(data, params) {

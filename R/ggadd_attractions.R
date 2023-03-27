@@ -26,9 +26,6 @@ ggadd_attractions <- function(p, resmca, axes=c(1,2), measure="phi", min.asso=0.
     }
   }
   
-  # if(type %in% c("MCA","speMCA")) w <- resmca$call$row.w
-  # if(type=="csMCA") w <- resmca$call$row.w[resmca$call$subcloud]
-  
   paires <- as.data.frame(t(utils::combn(names(resmca$call$X),2)),stringsAsFactors=FALSE)
   names(paires) <- c("v1","v2")
   l <- list()

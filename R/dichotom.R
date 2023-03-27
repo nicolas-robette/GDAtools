@@ -1,5 +1,4 @@
-dichotom <- function(data,out='numeric') {
-  # if(!is.data.frame(data)) data <- data.frame(data)
+dichotom <- function(data, out = "numeric") {
   data <- as.data.frame(data)
   res <- matrix(nrow=nrow(data),ncol=length(levels(data[,1])))
   for(i in 1:ncol(data)) {

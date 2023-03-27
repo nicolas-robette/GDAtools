@@ -13,12 +13,12 @@ multiMCA <- function(l_mca,ncp=5,compute.rv=FALSE) {
     if(attr(l_mca[[i]],'class')[1] == 'csMCA') DATA <- l_mca[[i]]$call$X[l_mca[[i]]$call$subcloud,]
     cond1 <- colSums(apply(dichotom(DATA),2,as.numeric),na.rm=TRUE)>0
     cond2 <- !((1:ncol(dichotom(DATA))) %in% l_mca[[i]]$call$excl)
-    coord <- do.call('rbind',lapply(as.list(colnames(DATA)), function(x) varsup(afm,DATA[,x])$coord))[cond2[cond1],]
+    coord <- do.call('rbind',lapply(as.list(colnames(DATA)), function(x) supvar(afm,DATA[,x])$coord))[cond2[cond1],]
     rownames(coord) <- colnames(dichotom(DATA))[cond1 & cond2]
-    cos2 <- do.call('rbind',lapply(as.list(colnames(DATA)), function(x) varsup(afm,DATA[,x])$cos2))[cond2[cond1],]
+    cos2 <- do.call('rbind',lapply(as.list(colnames(DATA)), function(x) supvar(afm,DATA[,x])$cos2))[cond2[cond1],]
     rownames(cos2) <- rownames(coord)
     vrc <- list()
-    for(j in 1:ncol(DATA)) vrc[[colnames(DATA)[j]]] <- varsup(afm,DATA[,j])$var
+    for(j in 1:ncol(DATA)) vrc[[colnames(DATA)[j]]] <- supvar(afm,DATA[,j])$var
     long <- do.call('c',lapply(as.list(colnames(DATA)),function(x) rep(length(DATA[,x]),times=nlevels(DATA[,x]))))[-l_mca[[i]]$call$excl]
     v.test <- sqrt(cos2)*sqrt(long-1)
     v.test <- (((abs(coord)+coord)/coord)-1)*v.test
@@ -40,8 +40,8 @@ multiMCA <- function(l_mca,ncp=5,compute.rv=FALSE) {
   if(compute.rv==TRUE) {
       rv <- matrix(0,nrow=length(l),ncol=length(l))
       for(i in 2:length(l)) {
-	for(j in 1:(i-1)) rv[i,j] <- FactoMineR::coeffRV(l[[i]],l[[j]])$rv
-	}
+	       for(j in 1:(i-1)) rv[i,j] <- rvcoef(l[[i]],l[[j]],wt)
+	        }
       rv <- rv+t(rv)
       diag(rv) <- 1
       rownames(rv) <- c(paste('mca',1:length(l_mca),sep=''),'mfa')

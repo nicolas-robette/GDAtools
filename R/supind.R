@@ -1,10 +1,10 @@
 supind <- function(resmca,supdata) {
     supdata <- data.frame(supdata)
-    type <- attr(resmca,'class')[1]
-    if(type %in% c("MCA","stMCA","multiMCA","PCA")) eigen <- resmca$eig[,"eigenvalue"]
-    if(type %in% c("speMCA","csMCA")) eigen <- resmca$eig$eigen
-    z <- as.matrix(dichotom(supdata,out='numeric'))
-    if(type %in% c('speMCA','csMCA')) z <- z[,-resmca$call$excl]
+    type <- attr(resmca, "class")[1]
+    if(type %in% c("MCA", "stMCA", "multiMCA", "PCA")) eigen <- resmca$eig[,"eigenvalue"]
+    if(type %in% c("speMCA", "csMCA")) eigen <- resmca$eig$eigen
+    z <- as.matrix(dichotom(supdata, out = "numeric"))
+    if(type %in% c("speMCA", "csMCA")) z <- z[,-resmca$call$excl]
     Q <- ncol(supdata)
     delta <- 1/sqrt(eigen[1:resmca$call$ncp])
     vcoord <- resmca$var$coord
@@ -15,7 +15,7 @@ supind <- function(resmca,supdata) {
     cos2 <- round(cos2,6)
     rownames(coord) <- rownames(supdata)
     rownames(cos2) <- rownames(supdata)
-    return(list(coord=coord,cos2=cos2))
+    return(list(coord = coord, cos2 = cos2))
 }
 
 

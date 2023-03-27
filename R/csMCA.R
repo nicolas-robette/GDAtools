@@ -43,11 +43,10 @@ csMCA <- function(data,subcloud=rep(TRUE,times=nrow(data)),excl=NULL,ncp=5,row.w
     weight <- n*fK
     coord <- YIpc[,1:ncp]
     contrib <- 100*row.wc/n.w*coord*coord/matrix(rep(eig[[1]][1:ncp],times=n),ncol=ncp,nrow=n,byrow=T)
-    dimnames(coord) <- list(rownames(data)[subcloud],dims) # new
-    dimnames(contrib) <- list(rownames(data)[subcloud],dims) # new
+    dimnames(coord) <- list(rownames(data)[subcloud],dims) 
+    dimnames(contrib) <- list(rownames(data)[subcloud],dims) 
     ind <- list(coord=coord,contrib=round(contrib,6))
     coord <- YKc[,1:ncp]
-    #Vspe <- sum(fK*(1-fK)/FK)/Q
     contrib <- 100*(FK/Q)*coord*coord/matrix(rep(eig[[1]][1:ncp],times=Kp),ncol=ncp,nrow=Kp,byrow=T)
     s <- vector()
     for(i in 1:Q) s <- c(s,rep(i,times=length(levels(data[,i]))))

@@ -2,10 +2,10 @@ bcPCA <- function(data, class, row.w = NULL, scale.unit = TRUE, ncp = 5) {
   if(is.null(row.w)) row.w <- rep(1, nrow(data))
   if(any(sapply(data, FUN = function(x) !is.numeric(x) & !is.integer(x)))) stop("variables in data should all be numeric or integer")
   if(!is.factor(class)) stop("class should be a factor")
-  moy <- apply(data, 2, weighted.mean, w = row.w)
+  moy <- apply(data, 2, stats::weighted.mean, w = row.w)
   data <- sweep(data, 2, moy, FUN = "-")
   if(isTRUE(scale.unit)) {
-    etype <- apply(data, 2, weighted.sd, w = row.w)
+    etype <- apply(data, 2, descriptio::weighted.sd, w = row.w)
     data <- sweep(data, 2, etype, FUN = "/")
   }
   n <- sum(row.w)

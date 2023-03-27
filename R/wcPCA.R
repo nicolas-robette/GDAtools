@@ -1,24 +1,3 @@
-# data(decathlon)
-# points <- cut(decathlon$Points, c(7300, 7800, 8000, 8120, 8900), c("Q1","Q2","Q3","Q4"))
-# res <- wcPCA(data.frame(decathlon[,1:11], points), points, quali.sup = 12, quanti.sup = 11)
-# explor(res)
-# 
-# res <- PCA(decathlon[,1:10], scale.unit = TRUE, graph = FALSE)
-#   
-# aggregate(res$ind$coord, list(points), mean)
-# 
-# X = data.frame(decathlon[,1:11], points)
-# class = points
-# scale.unit = TRUE
-# ncp = 5
-# ind.sup = NULL
-# quanti.sup = 11
-# quali.sup = 12
-# row.w = NULL
-# col.w = NULL
-# graph = FALSE 
-# axes = c(1, 2)
-
 wcPCA <- function (X, class, scale.unit = TRUE, ncp = 5, ind.sup = NULL, quanti.sup = NULL, 
           quali.sup = NULL, row.w = NULL, col.w = NULL, graph = FALSE, 
           axes = c(1, 2)) {

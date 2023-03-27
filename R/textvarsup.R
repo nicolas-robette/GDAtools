@@ -1,5 +1,5 @@
 textvarsup <- function(resmca,var,sel=1:nlevels(var),axes=c(1,2),col='black',app=0,vname=NULL) {
-   vs <- varsup(resmca,var)
+   vs <- supvar(resmca,var)
    levs <- names(vs$weight) %in% levels(var)[sel]
    xy <- vs$coord[levs,axes]
    texte <- names(vs$weight)[levs]

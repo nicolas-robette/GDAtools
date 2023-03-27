@@ -1,10 +1,3 @@
-# resmca = speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
-# axes = c(1,2)
-# type = "partial"
-# K = 5
-# supvars = Taste[,c("Gender", "Age", "Educ")]
-
-
 bootvalid_supvars <- function(resmca, vars = NULL, axes = c(1,2), K = 30) {
   
   if(is.null(vars)) stop("You should provide supplementary variables.")
@@ -35,6 +28,3 @@ bootvalid_supvars <- function(resmca, vars = NULL, axes = c(1,2), K = 30) {
   
   return(bootco)
 }
-
-
-# bootvalid_supvars(resmca, vars = supvars, K = 5)

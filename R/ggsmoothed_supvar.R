@@ -1,16 +1,3 @@
-# resmca = speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
-# var = Taste$Educ
-# var = as.numeric(Taste$Educ)
-# cat = "High"
-# axes = c(1,2)
-# nc = c(30, 30)
-# center = TRUE
-# scale = TRUE
-# power = 2
-# pal = "RdBu"
-# limits = NULL
-
-
 ggsmoothed_supvar <- function(resmca, var, cat, axes = c(1,2), 
                               center = FALSE, scale = FALSE,
                               nc = c(20, 20), power = 2,
@@ -90,12 +77,3 @@ ggsmoothed_supvar <- function(resmca, var, cat, axes = c(1,2),
                    panel.grid.minor = ggplot2::element_blank())
  
 }
-
-# ggsmoothed_supvar(resmca, var = Taste$Educ, cat = "High", center = TRUE, scale = TRUE)
-# ggsmoothed_supvar(resmca, var = Taste$Educ, cat = "High", nc = c(20, 20), center = TRUE, scale = TRUE)
-# ggsmoothed_supvar(resmca, var = Taste$Educ, cat = "High", power = 2, center = TRUE, scale = TRUE)
-# ggsmoothed_supvar(resmca, var = Taste$Educ, cat = "High", limits = c(-2, 3), center = TRUE, scale = TRUE)
-# ggsmoothed_supvar(resmca, var = as.numeric(Taste$Educ), center = FALSE, scale = FALSE)
-# ggsmoothed_supvar(resmca, as.numeric(Taste$Age), center = TRUE, scale = TRUE)
-# ggsmoothed_supvar(resmca, Taste$Educ, "None", center = TRUE)
-

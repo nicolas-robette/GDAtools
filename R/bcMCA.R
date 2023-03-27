@@ -1,10 +1,3 @@
-# data(tea)
-# # res <- bcMCA(tea[,1:18], tea$SPC)
-# data = tea[,1:18]
-# class = tea$SPC
-# row.w = NULL
-# ncp = 5
-
 bcMCA <- function(data, class, row.w = NULL, ncp = 5) {
   if(is.null(row.w)) row.w <- rep(1, nrow(data))
   if(any(sapply(data, FUN = function(x) !is.factor(x)))) stop("variables in data should all be factors")

@@ -1,7 +1,7 @@
-ggadd_interaction <- function(p, resmca, v1, v2, sel1=1:nlevels(v1), sel2=1:nlevels(v2), axes=c(1,2), col=NULL, textsize=5, legend='right') {
+ggadd_interaction <- function(p, resmca, v1, v2, sel1=1:nlevels(v1), sel2=1:nlevels(v2), axes=c(1,2), textsize=5, legend='right') {
 
   v12 <- interaction(v1,v2)
-  vs <- varsup(resmca, v12)
+  vs <- supvar(resmca, v12)
   coord <- as.data.frame(vs$coord[,axes])
   names(coord) <- c('axeX','axeY')
   coord$cat1 <- rep(levels(v1),nlevels(v2))
@@ -18,18 +18,17 @@ ggadd_interaction <- function(p, resmca, v1, v2, sel1=1:nlevels(v1), sel2=1:nlev
            ggplot2::geom_path(data=coord, ggplot2::aes(color=.data$cat1)) +
            ggplot2::geom_path(data=coord, ggplot2::aes(group=.data$cat2), color='darkgray', linetype='dashed')
 
-  if(!is.null(col)) {
-    if(length(col)>1) { p <- p + ggplot2::scale_colour_manual(values = col)
-    } else if(length(col)==1) {
-      if(col %in% rownames(brewer.pal.info)) { p <- p + ggplot2::scale_color_brewer(palette = col)
-      } else if(col=='bw') { p <- p + ggplot2::scale_color_grey() 
-      } else if(is.character(col)) { p <- p + ggplot2::scale_colour_manual(values = rep(col,nrow(coord))) }
-    }
-  }
+  # if(!is.null(col)) {
+  #   if(length(col)>1) { p <- p + ggplot2::scale_colour_manual(values = col)
+  #   } else if(length(col)==1) {
+  #     if(col %in% rownames(brewer.pal.info)) { p <- p + ggplot2::scale_color_brewer(palette = col)
+  #     } else if(col=='bw') { p <- p + ggplot2::scale_color_grey() 
+  #     } else if(is.character(col)) { p <- p + ggplot2::scale_colour_manual(values = rep(col,nrow(coord))) }
+  #   }
+  # }
   
   p <- p + ggplot2::guides(color = ggplot2::guide_legend(title="")) + 
            ggplot2::theme(legend.position = legend)
   
   p
-  
 }

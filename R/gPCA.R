@@ -1,21 +1,3 @@
-# X <- tabco
-# X <- decathlon[,1:10]
-# row.w = NULL
-# col.w = NULL
-# center = TRUE
-# scale = FALSE
-# tol = 1e-07
-# 
-# pca <- PCA(X, scale.unit = TRUE, graph = FALSE)
-# res <- gPCA(X, center = TRUE, scale = TRUE)
-# 
-# str(pca$call)
-# str(res$call)
-# pca$eig
-# res$eig
-
-
-
 gPCA <- function(X, row.w = NULL, col.w = NULL, center = FALSE, scale = FALSE, tol = 1e-07) {
 
   X <- data.frame(X)
@@ -26,8 +8,8 @@ gPCA <- function(X, row.w = NULL, col.w = NULL, center = FALSE, scale = FALSE, t
   if(is.null(col.w)) col.w <- rep(1, ncol(X))
 
   Xs <- X
-  if(center) Xs <- data.frame(lapply(Xs, function(x) x-weighted.mean(x,row.w)))
-  if(scale) Xs <- data.frame(lapply(Xs, function(x) x/descriptio::weighted.sd(x,row.w)))
+  if(center) Xs <- data.frame(lapply(Xs, function(x) x - stats::weighted.mean(x,row.w)))
+  if(scale) Xs <- data.frame(lapply(Xs, function(x) x / descriptio::weighted.sd(x,row.w)))
   
   Xe <- as.matrix(Xs)
   Xe <- Xe * sqrt(row.w)
@@ -36,7 +18,8 @@ gPCA <- function(X, row.w = NULL, col.w = NULL, center = FALSE, scale = FALSE, t
   
   eig <- evd$values
   rank <- sum((eig/eig[1]) > tol)
-  c1 <- evd$vectors / sqrt(col.w)
+  eig <- eig[1:rank]
+  c1 <- evd$vectors[, 1:rank] / sqrt(col.w)
   li <- sweep(as.matrix(Xs), 2, col.w, "*") %*% c1
   co <- sweep(c1, 2, sqrt(eig), "*")
   l1 <- sweep(li, 2, sqrt(eig), "/")
@@ -77,7 +60,7 @@ gPCA <- function(X, row.w = NULL, col.w = NULL, center = FALSE, scale = FALSE, t
   call$col.w <- col.w
   call$center <- center
   call$scale.unit <- scale
-  call$ncp <- 5
+  call$ncp <- rank
   call$rank <- rank
   if (isTRUE(center)) {
     call$centre <- sapply(X, function(x) weighted.mean(x,row.w))
@@ -102,3 +85,4 @@ gPCA <- function(X, row.w = NULL, col.w = NULL, center = FALSE, scale = FALSE, t
   
   return(res)
 }
+

@@ -1,26 +1,11 @@
-# data(Taste)
-# resmca <- speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
-# 
-# data(Music)
-# resmca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-# 
-# df <- readxl::read_xls("/home/nicolas/Nextcloud/R/My_packages/GDAtools/devel/Taste_Example.xls")[,-1]
-# df <- as.data.frame(lapply(df, factor))
-# resmca <- speMCA(df[df$Isup=="Active", 2:5])
-# 
-# dim = 1
-# best = TRUE
-# dec = 2
-# 
-# tabcontrib(resmca, dim = 3, best = TRUE)
-
 tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2) {
   
   # initial data frame of contributions
   df1 <- data.frame(varcat = names(resmca$var$weight), weight = resmca$var$weight)
   df2 <- data.frame(varcat = rownames(resmca$var$coord), coord = resmca$var$coord[,dim])
   df3 <- data.frame(varcat = rownames(resmca$var$contrib), ctr = resmca$var$contrib[,dim])
-  df <- merge(merge(merge(getvarnames(resmca), df1, by = "varcat"), df2, by = "varcat"), df3, by = "varcat")
+  df4 <- data.frame(varcat = rownames(resmca$var$cos2), cos2 = resmca$var$cos2[,dim])
+  df <- merge(merge(merge(merge(getvarnames(resmca), df1, by = "varcat"), df2, by = "varcat"), df3, by = "varcat"), df4, by = "varcat")
   df$sign <- sign(df$coord)
   
   if(best) df <- df[df$ctr >= 100/nrow(df),]
@@ -64,6 +49,7 @@ tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2) {
   res <- merge(res, prop, by = "var", all.x = TRUE, all.y = FALSE)
   res <- res[order(res$rank, -res$ctr),]
   res$count <- unlist(lapply(rle(as.vector(res$var))$lengths, function(x) {1:x}))
+  res$cos2 <- round(res$cos2, 3)
   res$ctr2 <- res$ctr1 <- res$ctr
   res$ctr1 <- round(res$ctr1, dec)
   res$ctr2 <- round(res$ctr2, dec)
@@ -78,8 +64,8 @@ tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2) {
   res$cumctr[res$count>1] <- ""
   res$ctrdev[res$count>1] <- ""
   res$ctrvar[res$count>1] <- ""
-  res <- res[, c("var", "cat", "weight", "ctr1", "ctr2", "ctrtot", "cumctr", "ctrdev", "ctrvar")]
-  names(res) <- c("Variable", "Category", "Weight", "Contribution (left)", "Contribution (right)",
+  res <- res[, c("var", "cat", "weight", "cos2", "ctr1", "ctr2", "ctrtot", "cumctr", "ctrdev", "ctrvar")]
+  names(res) <- c("Variable", "Category", "Weight", "Quality of representation","Contribution (left)", "Contribution (right)",
                   "Total contribution", "Cumulated contribution", "Contribution of deviation", "Proportion to variable")
   return(res)
 }

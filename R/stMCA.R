@@ -1,5 +1,3 @@
-#resmca=afm
-#str(control)
 stMCA <- function(resmca,control) {
   if(attr(resmca,'class')[1] %in% c('MCA','speMCA','csMCA')) temp <- resmca
   if(attr(resmca,'class')[1]=='multiMCA') temp <- resmca$my.mca[[1]]
@@ -18,11 +16,11 @@ stMCA <- function(resmca,control) {
      for(i in 2:length(covariate)) f <- paste(f,paste('covariate[[',i,']]',sep=""),sep="+")
      }
   .env <- environment() ## identify the environment of stMCA
-  f <- as.formula(f,env=.env)
-  fit <- lm(f,weights=wt)
-  res <- residuals(fit)
+  f <- stats::as.formula(f,env=.env)
+  fit <- stats::lm(f,weights=wt)
+  res <- stats::residuals(fit)
   z <- data.frame(res,X)
-  acp <- PCA(z,quali.sup=(ncol(res)+1):ncol(z),scale.unit=FALSE,graph=FALSE,row.w=wt)
+  acp <- FactoMineR::PCA(z,quali.sup=(ncol(res)+1):ncol(z),scale.unit=FALSE,graph=FALSE,row.w=wt)
   acp$call$fit <- fit
   acp$call$row.w <- temp$call$row.w
   if(attr(resmca,'class')[1] %in% c('MCA','speMCA','csMCA')) {
@@ -42,34 +40,27 @@ stMCA <- function(resmca,control) {
     acp$quali.sup$weight <- resmca$var$weight
     acp$var <- acp$quali.sup
     acp$quali.sup <- acp$call$quali.sup <- NULL
-    #acp$call$X <- acp$call$X[,-(1:ncp)]
     acp$call$X <- acp$call$X[,-(1:ncol(res))]
-    class(acp) <- c('stMCA','list') # new
-    acp$call$input.mca <- attr(resmca,'class')[1] # new
+    class(acp) <- c('stMCA','list') 
+    acp$call$input.mca <- attr(resmca,'class')[1] 
     }
   if(attr(resmca,'class')[1]=='multiMCA') {
-    class(acp) <- c('stMCA','list') # new
-    acp$call$input.mca <- 'multiMCA' # new
+    class(acp) <- c('stMCA','list') 
+    acp$call$input.mca <- 'multiMCA' 
     VAR <- list()
     for(i in 1:resmca$call$ngroups) {
       if(attr(resmca$my.mca[[i]],'class')[1] %in% c('MCA','speMCA')) DATA <- resmca$my.mca[[i]]$call$X
       if(attr(resmca$my.mca[[i]],'class')[1] == 'csMCA') DATA <- resmca$my.mca[[i]]$call$X[resmca$my.mca[[i]]$call$subcloud,]
       cond1 <- colSums(apply(dichotom(DATA),2,as.numeric),na.rm=TRUE)>0
       cond2 <- !((1:ncol(dichotom(DATA))) %in% resmca$my.mca[[i]]$call$excl)
-      acp$call$row.w <- acp$call$row.w.init # NEW 2016-04-28 !!
-      coord <- do.call('rbind',lapply(as.list(colnames(DATA)), function(x) varsup(acp,DATA[,x])$coord))[cond2[cond1],]
-      #str(acp$call)
-      #x<-colnames(DATA)[1]
-      #varsup(acp,DATA[,x])$coord
+      acp$call$row.w <- acp$call$row.w.init
+      coord <- do.call('rbind',lapply(as.list(colnames(DATA)), function(x) supvar(acp,DATA[,x])$coord))[cond2[cond1],]
       rownames(coord) <- colnames(dichotom(DATA))[cond1 & cond2]
-      cos2 <- do.call('rbind',lapply(as.list(colnames(DATA)), function(x) varsup(acp,DATA[,x])$cos2))[cond2[cond1],]
+      cos2 <- do.call('rbind',lapply(as.list(colnames(DATA)), function(x) supvar(acp,DATA[,x])$cos2))[cond2[cond1],]
       rownames(cos2) <- rownames(coord)
       vrc <- list()
-      for(j in 1:ncol(DATA)) vrc[[colnames(DATA)[j]]] <- varsup(acp,DATA[,j])$var
-      #long <- do.call('c',lapply(as.list(colnames(DATA)),function(x) rep(length(DATA[,x]),times=nlevels(DATA[,x]))))[-resmca$my.mca[[i]]$call$excl]
-      #v.test <- sqrt(cos2)*sqrt(long-1)
-      #v.test <- (((abs(coord)+coord)/coord)-1)*v.test
-      v.test <- do.call('rbind',lapply(as.list(colnames(DATA)), function(x) varsup(acp,DATA[,x])$v.test))[cond2[cond1],]
+      for(j in 1:ncol(DATA)) vrc[[colnames(DATA)[j]]] <- supvar(acp,DATA[,j])$var
+      v.test <- do.call('rbind',lapply(as.list(colnames(DATA)), function(x) supvar(acp,DATA[,x])$v.test))[cond2[cond1],]
       rownames(v.test) <- rownames(coord)
       VAR[[paste('mca',i,sep='')]] <- list(weight=resmca$my.mca[[i]]$var$weight,coord=round(coord,6),cos2=round(cos2,6),v.test=round(v.test,6),var=vrc)
       }
@@ -77,10 +68,8 @@ stMCA <- function(resmca,control) {
     acp$call$quali.sup <- acp$quali.sup <- NULL
     acp$call$X <- acp$call$X[,1:ncol(resmca$ind$coord)]
     acp$call$ngroups <- resmca$call$ngroups
-    acp$my.mca <- resmca$my.mca # NEW 2016-04-28
+    acp$my.mca <- resmca$my.mca 
     }
-  #acp$eig$mrate <- round(acp$eig[[2]],1)
-  #acp$eig$cum.mrate <- cumsum(acp$eig$mrate)    
   RES <- acp
   return(RES)
   }

@@ -1,10 +1,10 @@
 homog.test <- function(resmca,var,dim=c(1,2)) {
 
-    type <- attr(resmca,'class')[1]
+  type <- attr(resmca,'class')[1]
   if(type %in% c("MCA","stMCA","multiMCA")) eigen <- resmca$eig[,"eigenvalue"]
   if(type %in% c("speMCA","csMCA")) eigen <- resmca$eig$eigen
 
-  vs <- varsup(resmca,var)
+  vs <- supvar(resmca,var)
   N <- sum(vs$weight)
   a <- sqrt(1/outer(1/vs$weight,1/vs$weight,"+"))
   res <- vector("list",length(dim))

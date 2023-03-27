@@ -9,7 +9,7 @@ dimeta2 <- function(resmca,vars,dim=c(1,2)) {
   ww <- resmca$call$row.w[sub]
   if(class(resmca)[1]=='stMCA') ww <- resmca$call$fit$weights
   for(i in 1:length(dim)) {
-    for(j in 1:ncol(vars)) eta2[j,i] <- summary(lm(resmca$ind$coord[,dim[i]]~vars[,j][sub],weights=ww))$r.squared
+    for(j in 1:ncol(vars)) eta2[j,i] <- summary(stats::lm(resmca$ind$coord[,dim[i]]~vars[,j][sub],weights=ww))$r.squared
    }
   rownames(eta2) <- n
   colnames(eta2) <- paste("dim",dim, sep=".")

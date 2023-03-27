@@ -1,11 +1,3 @@
-# library(GDAtools)
-# data(Taste)
-# resmca = speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
-# axes = c(1,2)
-# type = "partial"
-# K = 5
-
-
 bootvalid_variables <- function(resmca, axes = c(1,2), type = "partial", K = 30) {
   
   # donnees initiales
@@ -20,7 +12,7 @@ bootvalid_variables <- function(resmca, axes = c(1,2), type = "partial", K = 30)
     for(i in 1:K) {
       samp <- sample(1:nrow(X), nrow(X), replace = TRUE)
       Xboot <- X[samp,]
-      iboot <- indsup(resmca, Xboot)$coord[,axes]
+      iboot <- supind(resmca, Xboot)$coord[,axes]
       tdc <- dichotom(Xboot)[,-excl]
       n <- nrow(Xboot)
       FK <- colSums(tdc)/n
@@ -71,10 +63,3 @@ bootvalid_variables <- function(resmca, axes = c(1,2), type = "partial", K = 30)
   
   return(bootco)
 }
-
-# bootvalid_variables(resmca, axes = axes, type = type, K = K)
-# bootvalid_variables(resmca, type = "partial", K = 5)
-# bootvalid_variables(resmca, type = "total1", K = 5)
-# bootvalid_variables(resmca, type = "total2", K = 5)
-# bootvalid_variables(resmca, type = "total3", K = 5)
-# bootvalid_variables(resmca, type = "partial", K = 5, axes = c(3,4))

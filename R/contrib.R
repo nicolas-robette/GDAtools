@@ -1,11 +1,9 @@
-contrib <-
- function(resmca) {
+contrib <- function(resmca) {
     s <- vector()
     for(i in 1:ncol(resmca$call$X)) s <- c(s,rep(i,times=length(levels(resmca$call$X[,i]))))
     e <- 99999
-    classe <- class(resmca)[1] # new
-    #if(classe=='stMCA') classe=resmca$call$input.mca # new
-    if(classe %in% c('speMCA','csMCA')) e <- resmca$call$excl # new
+    classe <- class(resmca)[1] 
+    if(classe %in% c('speMCA','csMCA')) e <- resmca$call$excl 
     s <- s[-e]
     dims <- paste('dim',1:resmca$call$ncp,sep='.')
     x <- aggregate(resmca$var$contrib,list(s),sum)[,-1]
@@ -20,4 +18,4 @@ contrib <-
     colnames(vctr.cloud) <- 'vctr.cloud'
     rownames(vctr.cloud) <- colnames(resmca$call$X)
     list(ctr=round(resmca$var$contrib,6),var.ctr=round(x,6),ctr.cloud=round(ctr.cloud,6),vctr.cloud=round(vctr.cloud,6))
-    }
+}

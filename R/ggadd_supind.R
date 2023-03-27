@@ -1,5 +1,5 @@
 ggadd_supind <- function(p, resmca, dfsup, axes=c(1,2), col="black", textsize=5, pointsize=2) {
-  dt <- as.data.frame(indsup(resmca, dfsup)$coord[,axes])
+  dt <- as.data.frame(supind(resmca, dfsup)$coord[,axes])
   names(dt) <- c('axeX','axeY')
   dt$names <- rownames(dt)
   if(is.null(pointsize)) {

@@ -3,7 +3,7 @@ dimtypicality <- function(resmca,vars,dim=c(1,2),max.pval=1) {
   res1 <- list()
   res2 <- list()
   for(i in 1:length(vars)) {
-    temp <- varsup(resmca,vars[[i]])
+    temp <- supvar(resmca,vars[[i]])
     res1[[i]] <- temp$typic
     rownames(res1[[i]]) <- paste(n[i],rownames(res1[[i]]),sep='.')
     res2[[i]] <- temp$weight

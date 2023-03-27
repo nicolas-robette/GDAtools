@@ -1,31 +1,11 @@
-# resmca = speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
-# var = Taste$Educ
-# var = "Classical"
-# var = NULL
-# axis = 3
-# prop = NULL
-# underline = FALSE
-# color = "black"
-# palette = "khroma::bright"
-# 
-# ggaxis_variables(resmca, var = NULL, axis = 1, prop = NULL, palette = "khroma::bright")
-# ggaxis_variables(resmca, var = NULL, axis = 1, prop = NULL, palette = NULL, color = "orange")
-# ggaxis_variables(resmca, var = NULL, axis = 1, prop = "ctr")
-# ggaxis_variables(resmca, var = NULL, axis = 1, prop = "freq", underline = TRUE)
-# ggaxis_variables(resmca, var = NULL, axis = 1, prop = "cos2")
-# 
-# ggaxis_variables(resmca, var = "Classical", axis = 1, prop = "ctr", underline = TRUE)
-# 
-# ggaxis_variables(resmca, var = Taste$Educ, axis = 1, prop = "pval")
-
-ggaxis_variables <- function(resmca, var = NULL, axis = 1, # multi = FALSE,
+ggaxis_variables <- function(resmca, var = NULL, axis = 1,
                              prop = NULL, underline = FALSE, 
-                             color = "black", palette = "khroma::bright") {
+                             col = NULL) {
 
   type <- attr(resmca,'class')[1]
   
   if(is.factor(var)) {
-    vs <- varsup(resmca,var)
+    vs <- supvar(resmca,var)
     df <- data.frame(names = names(vs$weight),
                      coord = vs$coord[,paste0("dim.",axis)],
                      freq = vs$weight,
@@ -62,11 +42,7 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1, # multi = FALSE,
                      freq = vs$weight,
                      cos2 = vs$cos2[,paste0("dim.",axis)],
                      ctr = vs$contrib[,paste0("dim.",axis)])
-    # if(multi) { 
-    #   df$y <- as.numeric(df$vnames)-1
-    # } else {
-    #   df$y <- rep(0, nrow(df))
-    # }
+
     if(underline) {
       seuil <- 100/nrow(resmca$var$contrib)
       df$names[df$ctr>seuil] <- paste0("underline(",df$names[df$ctr>seuil],")")
@@ -95,14 +71,20 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1, # multi = FALSE,
       # geom_hline(yintercept = 0, colour = "darkgrey", linewidth = .1) +
       ggplot2::geom_point(x = 0, y = 0, colour = "darkgrey", size = ggplot2::rel(1))
   
-  if(is.null(var) & !is.null(palette)) {
+  if(is.null(var)) {
+    if(!is.null(col)) {
     p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size, color = .data$vnames),
                                       direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE) +
-             paletteer::scale_color_paletteer_d(palette = palette)
+             ggplot2::scale_color_manual(values = rep(col, length(vnames)))
+    } else {
+      p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size, color = .data$vnames),
+                                        direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE)
+    }
   } else {
+    if(is.null(col)) col <- "black"
     p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size),
                                       direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE,
-                                      colour = color)
+                                      colour = col)
   }
   
   p <- p +
@@ -119,12 +101,4 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1, # multi = FALSE,
                    legend.position = "none")
   
   return(p)
-  
 }
-
-# data(Taste)
-# resmca <- speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
-# ggaxis_variables(resmca)
-# ggaxis_variables(resmca, prop = "freq", underline = TRUE, color = "black")
-# ggaxis_variables(resmca, var = "Classical", axis = 1, prop = "ctr", underline = TRUE)
-# ggaxis_variables(resmca, var = Taste$Educ, axis = 1, prop = "pval")

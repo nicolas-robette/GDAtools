@@ -1,4 +1,4 @@
-ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), level=0.05, label=TRUE, label.size=3, col=NULL, size=0.5, points=TRUE, legend='right') {
+ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), level=0.05, label=TRUE, label.size=3, size=0.5, points=TRUE, legend='right') {
 
   subvar <- var
   
@@ -15,7 +15,7 @@ ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), leve
   ecoord <- ecoord[subvar %in% levels(subvar)[sel],]
   ecoord$var <- factor(ecoord$var)
 
-  vs <- varsup(resmca,var)
+  vs <- supvar(resmca,var)
   ccoord <- as.data.frame(vs$coord[,axes])
   names(ccoord) <- c('axeX','axeY')
   ccoord$categories <- names(vs$weight)
@@ -27,20 +27,8 @@ ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), leve
               
   if(points) pfin <- pfin + ggplot2::geom_point(data=ecoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, colour=.data$var), size = 0.5, alpha = 0.6)
   
-  if(!is.null(col)) {
-    if(length(col)>1) { pfin <- pfin + ggplot2::scale_colour_manual(values = col)
-    } else if(length(col)==1) {
-      if(col %in% rownames(RColorBrewer::brewer.pal.info)) { pfin <- pfin + ggplot2::scale_color_brewer(palette = col)
-      } else if(col=='bw') { pfin <- pfin + ggplot2::scale_color_grey() 
-      } else if(is.character(col)) { pfin <- pfin + ggplot2::scale_colour_manual(values = rep(col,nrow(ecoord))) }
-    }
-  }
-  
   if(label) { pfin <- pfin + ggplot2::geom_text(key_glyph='blank', data=ccoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, label=.data$categories, colour=.data$categories), size=label.size) 
   } else { pfin <- pfin + ggplot2::geom_point(data=ccoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, colour=.data$categories), shape=8, size=3) }
-
-  # if(legend) pfin <- pfin + guides(color=guide_legend(title="")) + 
-  #                           theme(legend.position='right')
 
   pfin <- pfin + ggplot2::guides(color = ggplot2::guide_legend(title="")) +
                  ggplot2::theme(legend.position = legend)

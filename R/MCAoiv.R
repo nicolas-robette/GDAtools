@@ -1,22 +1,10 @@
-# data(tea)
-# res.mca <- MCA(tea, quanti.sup = 19, quali.sup = 20:36)
-# X <- tea[,1:18]
-# Z <- tea[,19:22]
-# row.w = NULL
-# ncp = 5
-
-# mcavio <- MCAoiv(X, Z)
-# explor(mcavio)
-
-
 MCAoiv <- function(X, Z, excl = NULL, row.w = NULL, ncp = 5) {
   if(is.null(row.w)) row.w <- rep(1, nrow(X))
   if(any(sapply(X, FUN = function(x) !is.factor(x)))) stop("variables in X should all be factors")
   if(any(sapply(Z, FUN = function(x) !is.numeric(x) & !is.integer(x) & !is.factor(x)))) stop("variables in Z should all be factor or numeric")
   if(nrow(X) != nrow(Z)) stop("X and Z should have the same number of rows")
-  # Xdic <- dichotom(X)
   for(i in 1:ncol(Z)) {
-    if(!is.factor(Z[,i])) Z[,i] <- (Z[,i]-weighted.mean(Z[,i],row.w)) / weighted.sd(Z[,i],row.w)
+    if(!is.factor(Z[,i])) Z[,i] <- (Z[,i]-weighted.mean(Z[,i],row.w)) / descriptio::weighted.sd(Z[,i],row.w)
   }
   mca0 <- speMCA(X, excl = excl)
   ncomp <- sum(mca0$eig$eigen > 1e-10)

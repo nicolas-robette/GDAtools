@@ -12,10 +12,6 @@ modif.rate <- function(resmca) {
          Q <- ncol(resmca$call$X)
          eigen <- resmca$eig[,"eigenvalue"]
       }
-      if(type=="PCA") {
-         Q <- length(resmca$call$col.w)
-         eigen <- resmca$eig[,"eigenvalue"]
-      }
       rate <- eigen/sum(eigen)*100
       cum.rate <- cumsum(rate)
       seuil <- 1/Q

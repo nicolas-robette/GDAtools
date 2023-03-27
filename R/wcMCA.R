@@ -1,15 +1,5 @@
-# data(tea)
-# data = tea[,1:18]
-# class = tea$SPC
-# excl = NULL
-# row.w = NULL
-# ncp = 5
-# 
-# res <- wcMCA(tea[,1:18], tea$SPC)
-# explor(res)
-# varsup(res, tea$SPC)
-
 wcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
+
     if(is.null(row.w)) row.w <- rep(1, nrow(data))
     if(any(sapply(data, FUN = function(x) !is.factor(x)))) stop("variables in data should all be factors")
     if(!is.factor(class)) stop("class should be a factor")
@@ -25,9 +15,7 @@ wcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
     centers <- sweep(t(as.matrix(dichotom(class)))%*%diag(row.w)%*%as.matrix(disj), 1, ncl, "/")
     centers <- data.frame(centers)
     row.names(centers) <- levels(class)
-    # names(centers) <- names(disj)
     
-    # n <- nrow(data)
     Q <- ncol(data)
     Z <- as.matrix(disj)
     K <- ncol(Z)
@@ -62,8 +50,8 @@ wcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
     weight=colSums(row.w*Z)
     coord <- YIt[,1:ncp]
     contrib <- 100*row.w/n*coord*coord/matrix(rep(eig[[1]][1:ncp],times=n),ncol=ncp,nrow=n,byrow=T)
-    dimnames(coord) <- list(rownames(data),dims) #new
-    dimnames(contrib) <- list(rownames(data),dims) #new
+    dimnames(coord) <- list(rownames(data),dims) 
+    dimnames(contrib) <- list(rownames(data),dims) 
     ind <- list(coord=coord,contrib=round(contrib,6))
     coord <- YKpt[,1:ncp]
     fK <- colSums(row.w*Z)[-excl]/n
@@ -82,12 +70,12 @@ wcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
     dimnames(contrib) <- list(noms[-excl],dims)
     dimnames(cos2) <- list(noms[-excl],dims)
     eta2 <- matrix(nrow=Q,ncol=ncp)
-    for(j in 1:Q) eta2[j,] <- apply(ind$coord,2,function(x) summary(lm(x~data[,j],weights=row.w))$r.squared)
+    for(j in 1:Q) eta2[j,] <- apply(ind$coord,2,function(x) summary(stats::lm(x~data[,j],weights=row.w))$r.squared)
     dimnames(eta2) <- list(colnames(data),dims)
     v.test <- sqrt(cos2)*sqrt(n-1)*(((abs(coord)+coord)/coord)-1)
     var <- list(weight=round(weight,1)[-excl],coord=coord,contrib=round(contrib,6),ctr.cloud=round(ctr.cloud,6),cos2=round(cos2,6),v.test=round(v.test,6),eta2=round(eta2,6),v.contrib=v.contrib,vctr.cloud=vctr.cloud)
     X <- data
-    marge.col <- colSums(row.w*Z)[-excl]/(n*Q) #new
+    marge.col <- colSums(row.w*Z)[-excl]/(n*Q)
     names(marge.col) <- noms[-excl]
     marge.row <- rep(1/(n*Q),times=n)
     names(marge.row) <- 1:n

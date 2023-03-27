@@ -1,11 +1,3 @@
-# data(tea)
-# Xa <- tea[,1:18]
-# Xb <- tea[,20:22]
-# coi <- coiMCA(Xa, Xb)
-# explor::explor(coi)
-# coi$RV
-
-
 coiMCA <- function(Xa, Xb, excl.a = NULL, excl.b = NULL, row.w = NULL, ncp = 5) {
   
   if(is.null(row.w)) row.w <- rep(1, nrow(Xa))

@@ -1,14 +1,5 @@
-# library(GDAtools)
-# data(Music)
-# getindexcat(Music)
-# resmca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-# vars <- Music[,6:9]
-# varsups(resmca, vars)
-
 supvars <- function(resmca, vars) {
   if(any(sapply(vars, FUN = function(x) !is.factor(x)))) stop("variables in data should all be factors")
-  # nlev <- sapply(vars, nlevels)
-  # vnames <- unlist(tapply(nlev, nlev, FUN = function(x) rep(names(x), x)))
   tmp <- lapply(vars, function(x) supvar(resmca, x))
   res <- list()
   res$weight <- unlist(lapply(tmp, function(x) x$weight))

@@ -5,8 +5,8 @@ rvcoef <- function(Xa, Xb, row.w = NULL) {
   if(any(sapply(Xb, FUN = function(x) !is.numeric(x) & !is.integer(x)))) stop("variables in Xb should all be numeric")
   if(nrow(Xa) != nrow(Xb)) stop("Xa and Xb should have the same number of rows")
   
-  Xas <- as.matrix(data.frame(lapply(Xa, function(x) x-weighted.mean(x,row.w)))) #/descriptio::weighted.sd(x,row.w))))
-  Xbs <- as.matrix(data.frame(lapply(Xb, function(x) x-weighted.mean(x,row.w)))) #/descriptio::weighted.sd(x,row.w))))
+  Xas <- as.matrix(data.frame(lapply(Xa, function(x) x-weighted.mean(x,row.w)))) 
+  Xbs <- as.matrix(data.frame(lapply(Xb, function(x) x-weighted.mean(x,row.w)))) 
   
   tr <- function(Z) {sum(diag(Z))}
   W1 <- t(Xas) %*% diag(row.w) %*% Xas

@@ -2,7 +2,7 @@ ggadd_supvar <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col='b
 
   dim1 <- axes[1]
   dim2 <- axes[2]
-  vs <- varsup(resmca,var)
+  vs <- supvar(resmca,var)
   coord <- as.data.frame(vs$coord[,axes])
   names(coord) <- c('axeX','axeY')
   coord$n <- vs$weight

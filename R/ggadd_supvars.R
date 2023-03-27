@@ -1,26 +1,11 @@
-# library(GDAtools)
-# data(Music)
-# getindexcat(Music)
-# resmca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-# vars <- Music[,6:9]
-# 
-# library(ggnewscale)
-# prop = "cos12"
-# 
-# p <- ggcloud_variables(resmca, palette='lightgrey', shapes=FALSE)
-# ggadd_supvars(p, resmca, vars)
-# ggadd_supvars(p, resmca, vars, shape = FALSE, prop = NULL, textsize = 15)
-# ggadd_supvars(p, resmca, vars, prop = "cos12", shape = TRUE, shapesize = 15, textsize = 1)
-# ggadd_supvars(p, resmca, vars, prop = "cos12", shape = TRUE, vname = FALSE)
-
-ggadd_supvars <- function(p, resmca, vars, axes=c(1,2), palette = "khroma::bright", 
-                          shape=FALSE, prop=NULL, textsize=3, shapesize=6, vname=TRUE) {
+ggadd_supvars <- function(p, resmca, vars, axes = c(1,2), col = NULL, 
+                          shapes = FALSE, prop = NULL, textsize = 3, shapesize = 6, vname = TRUE) {
 
   if(any(sapply(vars, FUN = function(x) !is.factor(x)))) stop("variables in data should all be factors")
 
   dim1 <- axes[1]
   dim2 <- axes[2]
-  vs <- varsups(resmca, vars)
+  vs <- supvars(resmca, vars)
   coord <- as.data.frame(vs$coord[,axes])
   names(coord) <- c('axeX','axeY')
   coord$n <- vs$weight
@@ -41,35 +26,41 @@ ggadd_supvars <- function(p, resmca, vars, axes=c(1,2), palette = "khroma::brigh
   } else if(prop=='cos2') { coord$prop <- vs$cos2[,dim2]
   } else if(prop=='cos12') coord$prop <- rowSums(vs$cos2[,axes])
 
-  # levs <- names(vs$weight) %in% levels(var)[sel]
-  # coord <- coord[levs,]
-
-  old.warn <- options()$warn
-  options(warn = -1)
-
-  # p + ggplot2::guides(color = "none") +
-  #     ggnewscale::new_scale_color() +
-  #     ggrepel::geom_text_repel(data=coord, ggplot2::aes(x=.data$axeX, y=.data$axeY, label=.data$labs, size=.data$prop, color=.data$vnames)) +
-  #     ggplot2::guides(color = "none")
-
-  if(!shape) {
-    pfin <- p +
-      ggplot2::guides(color = "none") +
-      ggnewscale::new_scale_color() +
-      ggrepel::geom_text_repel(data=coord, ggplot2::aes(x=.data$axeX, y=.data$axeY, label=.data$labs, size=.data$prop, color=.data$vnames), size=textsize) +
-      paletteer::scale_color_paletteer_d(palette = palette) +
-      ggplot2::guides(color = "none")
+  if(!shapes) {
+    if(is.null(col)) {
+      if(is.null(prop)) {
+        pfin <- p +
+          ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, color = .data$vnames), size = textsize) +
+          ggplot2::guides(color = "none")        
+      } else {
+        pfin <- p +
+          ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, size = .data$prop, color = .data$vnames)) +
+          ggplot2::guides(color = "none")
+      }
+    } else {
+      if(is.null(prop)) {
+        pfin <- p +
+          ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs), size = textsize, color = col)      
+      } else {
+        pfin <- p +
+          ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, size = .data$prop), color = col)      
+      }
+    }
   } else {
-    pfin <- p +
-      ggplot2::guides(color = "none") +
-      ggnewscale::new_scale_color() +
-      ggplot2::geom_point(data=coord, ggplot2::aes(x=.data$axeX, y=.data$axeY, size=.data$prop, color=.data$vnames, shape=.data$vnames)) +
-      ggplot2::scale_size_area(max_size=shapesize) +
-      paletteer::scale_color_paletteer_d(palette = palette) +
-      ggrepel::geom_text_repel(data=coord, ggplot2::aes(x=.data$axeX, y=.data$axeY, label=.data$labs, color=.data$vnames), size=textsize) +
-      ggplot2::guides(color = "none", shape = "none")
+    if(is.null(col)) {
+      pfin <- p +
+        ggplot2::geom_point(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, size = .data$prop, color = .data$vnames, shape = .data$vnames)) +
+        ggplot2::scale_size_area(max_size = shapesize) +
+        ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, color = .data$vnames), size = textsize) +
+        ggplot2::guides(color = "none", shape = "none")
+    } else {
+      pfin <- p +
+        ggplot2::geom_point(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, size = .data$prop, shape = .data$vnames), color = col) +
+        ggplot2::scale_size_area(max_size = shapesize) +
+        ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs), size = textsize, color = col) +
+        ggplot2::guides(shape = "none")
+    }
   }
 
-  options(warn = old.warn)
   pfin
 }

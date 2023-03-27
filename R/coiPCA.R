@@ -1,13 +1,3 @@
-# data(decathlon)
-# 
-# Xa <- decathlon[,1:10]
-# Xb <- decathlon[,11:12]
-# row.w = NULL
-# coi <- coiPCA(Xa, Xb)
-# coi$RV
-# explor::explor(coi)
-
-
 coiPCA <- function(Xa, Xb, row.w = NULL, ncp = 5) {
   
   if(is.null(row.w)) row.w <- rep(1, nrow(Xa))
