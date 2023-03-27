@@ -84,21 +84,26 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>a ggplot object</p>
+    <p>a <code>ggplot2</code> object</p>
     </div>
     <div id="references">
     <h2>References</h2>
-    <p>Escofier B. and Pagès J., <em>Analyses factorielles simples et multiples</em>, Dunod (2008).</p>
+    <p>Escofier B. and Pagès J., 2008, <em>Analyses factorielles simples et multiples</em>, Dunod.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
     <p>Nicolas Robette</p>
     </div>
+    <div id="see-also">
+    <h2>See also</h2>
+    <div class="dont-index"><p><code><a href="ggcloud_variables.html">ggcloud_variables</a></code>, <code><a href="ggadd_attractions.html">ggadd_attractions</a></code></p></div>
+    </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FrenchPop.NA"</span>,<span class="st">"Rap.NA"</span>,<span class="st">"Jazz.NA"</span>,<span class="st">"Classical.NA"</span>,<span class="st">"Rock.NA"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">junk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FrenchPop.NA"</span>,<span class="st">"Rap.NA"</span>,<span class="st">"Jazz.NA"</span>,<span class="st">"Classical.NA"</span>,<span class="st">"Rock.NA"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, excl <span class="op">=</span> <span class="va">junk</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">ggeta2_variables</span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ggeta2_variables-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>

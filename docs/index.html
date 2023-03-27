@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Geometric Data Analysis">
-<meta property="og:description" content="Many tools for Geometric Data Analysis (Le Roux &amp; Rouanet (2005) &lt;doi:10.1007/1-4020-2236-0&gt;), such as MCA variants (Specific Multiple Correspondence Analysis, Class Specific Analysis), many graphical and statistical aids to interpretation (  structuring factors, concentration ellipses, inductive tests, bootstrap validation, etc.) and multiple table analysis (Multiple Factor Analysis, between-class analysis, PCA and MCA with instrumental variables, etc.).">
+<meta property="og:description" content="Many tools for Geometric Data Analysis (Le Roux &amp; Rouanet (2005) &lt;doi:10.1007/1-4020-2236-0&gt;), such as MCA variants (Specific Multiple Correspondence Analysis, Class Specific Analysis), many graphical and statistical aids to interpretation (structuring factors, concentration ellipses, inductive tests, bootstrap validation, etc.) and multiple-table analysis (Multiple Factor Analysis, between- and inter-class analysis, PCA and MCA with instrumental variables, etc.).">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -91,13 +91,15 @@
 
 <p><a href="https://nicolas-robette.github.io/GDAtools/"><code>GDAtools</code></a> provides functions for Geometric Data Analysis :</p>
 <ul>
-<li>specific Multiple Correspondence Analysis</li>
+<li>Specific Multiple Correspondence Analysis</li>
 <li>Class Specific Analysis</li>
-<li>Two-table and multiple-table analyses : Multiple Factor Analysis, between- and within-class analysis, MCA and PCA with instrumental variables or orthogonal instrumental variables</li>
-<li>guides for interpretation (contributions, test-values, bootstrap validation, etc.)</li>
-<li>inductive tests</li>
+<li>two-table and k-table analyses : Multiple Factor Analysis, between- and within-class analysis, MCA and PCA with instrumental variables or orthogonal instrumental variables, discriminant analysis, coinertia analysis</li>
+<li>guides for interpretation (contributions, test-values, etc.)</li>
 <li>analysis of structuring factors (concentration ellipses, interactions, etc.)</li>
-<li>many graphical representations (with and without <a href="https://ggplot2.tidyverse.org/" class="external-link"><code>ggplot2</code></a>)</li>
+<li>inductive tests</li>
+<li>bootstrap validation</li>
+<li>many graphical representations for MCA and variants (with and without <a href="https://ggplot2.tidyverse.org/" class="external-link"><code>ggplot2</code></a>)</li>
+<li>plots for hierarchical clustering</li>
 </ul>
 </div>
 <div class="section level2">
@@ -125,11 +127,14 @@
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
+<p>Bry X., 1995, <em>Analyses factorielles multiples</em>, Economica.</p>
 <p>Bry X., 1996, <em>Analyses factorielles multiples</em>, Economica.</p>
 <p>Bry X., Robette N., Roueff O., 2016, « A dialogue of the deaf in the statistical theater? Adressing structural effects within a geometric data analysis framework », <em>Quality &amp; Quantity</em>, 50(3), pp 1009–1020 [<a href="https://link.springer.com/article/10.1007/s11135-015-0187-z" class="external-link uri">https://link.springer.com/article/10.1007/s11135-015-0187-z</a>]</p>
+<p>Escofier B. and Pagès J., 2008, <em>Analyses factorielles simples et multiples</em>, Dunod.</p>
 <p>Lebart L., Morineau A. et Warwick K., 1984, <em>Multivariate Descriptive Statistical Analysis</em>, John Wiley and sons, New-York.</p>
 <p>Le Roux B. and Rouanet H., 2004, <em>Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis</em>, Kluwer Academic Publishers, Dordrecht.</p>
 <p>Le Roux B. and Rouanet H., 2010, <em>Multiple Correspondence Analysis</em>, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks.</p>
+<p>Saporta G., 2006, <em>Probabilités, analyses des données et statistique</em>, Editions Technip.</p>
 </div>
 </div>
   </div>

@@ -65,7 +65,7 @@
 <p>Please note that the 1.8 version of GDAtools was not published on CRAN. So, compared to the last version on CRAN, 2.0 version inherits the changes of 1.8 version.</p>
 <div class="section level3">
 <h3 id="major-change-2-0">Major change<a class="anchor" aria-label="anchor" href="#major-change-2-0"></a></h3>
-<ul><li>The package now focuses exclusively on GDA, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new <code>descriptio</code> package : <code><a href="../reference/deprecated.html">wtable()</a></code>, <code><a href="../reference/deprecated.html">pem()</a></code>, <code><a href="../reference/deprecated.html">phi.table()</a></code>, <code>oddsratio.table()</code>, <code><a href="../reference/deprecated.html">catdesc()</a></code>, <code><a href="../reference/deprecated.html">condesc()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocat()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocont()</a></code>, <code><a href="../reference/deprecated.html">assoc.catcont()</a></code>, <code><a href="../reference/deprecated.html">assoc.yx()</a></code>, <code><a href="../reference/deprecated.html">darma()</a></code>, <code>ggassoc_chiasmogram()</code>, <code>ggassoc_assocplot()</code>, <code>ggassoc_bertin()</code>, <code><a href="../reference/deprecated.html">ggassoc_phiplot()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_boxplot()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_crosstab()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_scatter()</a></code>. Lastly, <code><a href="../reference/translate.logit.html">translate.logit()</a></code> has moved to the (also new) <code>deauvieau</code> package.</li>
+<ul><li>The package now focuses exclusively on Geometric Data Analysis, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new <code>descriptio</code> package (available on CRAN or github) : <code><a href="../reference/deprecated.html">wtable()</a></code>, <code><a href="../reference/deprecated.html">pem()</a></code>, <code><a href="../reference/deprecated.html">phi.table()</a></code>, <code>oddsratio.table()</code>, <code><a href="../reference/deprecated.html">catdesc()</a></code>, <code><a href="../reference/deprecated.html">condesc()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocat()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocont()</a></code>, <code><a href="../reference/deprecated.html">assoc.catcont()</a></code>, <code><a href="../reference/deprecated.html">assoc.yx()</a></code>, <code><a href="../reference/deprecated.html">darma()</a></code>, <code>ggassoc_chiasmogram()</code>, <code>ggassoc_assocplot()</code>, <code>ggassoc_bertin()</code>, <code><a href="../reference/deprecated.html">ggassoc_phiplot()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_boxplot()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_crosstab()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_scatter()</a></code>. Lastly, <code><a href="../reference/translate.logit.html">translate.logit()</a></code> has moved to the (also new) <code>deauvieau</code> package (available on CRAN).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="new-functions-2-0">New functions<a class="anchor" aria-label="anchor" href="#new-functions-2-0"></a></h3>
@@ -92,9 +92,13 @@
 <li>
 <code><a href="../reference/coiMCA.html">coiMCA()</a></code> : Coinertia analysis between two groups of categorical variables</li>
 <li>
+<code><a href="../reference/DA.html">DA()</a></code> : Descriptive Discriminant Analysis</li>
+<li>
+<code><a href="../reference/DAQ.html">DAQ()</a></code> : Descriptive Discriminant Analysis with Qualitative Variables (aka disqual)</li>
+<li>
 <code><a href="../reference/rvcoef.html">rvcoef()</a></code> : RV coefficient between two groups of variables</li>
 <li>
-<code><a href="../reference/planecontrib.html">planecontrib()</a></code> : For a given plane of a MCA, computes contributions et squared cosines of the active variables and categories</li>
+<code><a href="../reference/planecontrib.html">planecontrib()</a></code> : For a given plane of a MCA, computes contributions et squared cosines of the active variables and categoriesand of the individuals</li>
 <li>
 <code><a href="../reference/ggeta2_variables.html">ggeta2_variables()</a></code> : Plots the eta-squared of the active variables of a MCA</li>
 <li>
@@ -109,11 +113,26 @@
 <code><a href="../reference/ggbootvalid_variables.html">ggbootvalid_variables()</a></code> : Ellipses for bootstrap validation of active variables of a MCA</li>
 <li>
 <code><a href="../reference/ggbootvalid_supvars.html">ggbootvalid_supvars()</a></code> : Ellipses for bootstrap validation of supplementary variables of a MCA</li>
+<li>
+<code><a href="../reference/supind.html">supind()</a></code> : replaces <code><a href="../reference/supind.html">indsup()</a></code>, which is softly deprecated</li>
+<li>
+<code><a href="../reference/supvar.html">supvar()</a></code> : replaces <code><a href="../reference/supvar.html">varsup()</a></code>, which is softly deprecated</li>
+<li>
+<code><a href="../reference/supvars.html">supvars()</a></code> : replaces <code><a href="../reference/supvars.html">varsups()</a></code>, which is softly deprecated</li>
 </ul></div>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-2-0">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-2-0"></a></h3>
 <ul><li>
-<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : the function has been rewritten to include contributions of deviations (thanks to <a href="https://github.com/419kfj" class="external-link">@419kfj</a>)</li>
+<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : the function has been rewritten to include contributions of deviations (thanks to <a href="https://github.com/419kfj" class="external-link">@419kfj</a>) and quality of representation.</li>
+<li>The handling of colors is simplified in <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code>, <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code>, <code><a href="../reference/ggadd_chulls.html">ggadd_chulls()</a></code>, <code><a href="../reference/ggadd_ellipses.html">ggadd_ellipses()</a></code>, <code><a href="../reference/ggadd_kellipses.html">ggadd_kellipses()</a></code> and <code><a href="../reference/ggadd_interaction.html">ggadd_interaction()</a></code>.</li>
+<li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code>, <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> and <code><a href="../reference/plot.speMCA.html">plot.speMCA()</a></code> can use contributions to the plane to select categories of individuals.</li>
+<li>
+<code><a href="../reference/speMCA.html">speMCA()</a></code> : new items are computed (squared cosines and total distances for individuals, total distances for categories)</li>
+</ul></div>
+<div class="section level3">
+<h3 id="other-changes-2-0">Other changes<a class="anchor" aria-label="anchor" href="#other-changes-2-0"></a></h3>
+<ul><li>The package has much fewer dependencies : some packages are no longer needed, other have been moved to Suggests.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -139,14 +158,14 @@
 <li>
 <code><a href="../reference/ggaxis_variables.html">ggaxis_variables()</a></code>: Plots variables on a single axis of a MCA.</li>
 <li>
-<code><a href="../reference/varsups.html">varsups()</a></code>: Computes statistics for categorical supplementary variables.</li>
+<code><a href="../reference/supvars.html">varsups()</a></code>: Computes statistics for categorical supplementary variables.</li>
 <li>
 <code><a href="../reference/ggadd_supvars.html">ggadd_supvars()</a></code>: Adds categorical supplementary variables to a cloud of variables.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-8">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-8"></a></h3>
 <ul><li>bug fix in <code><a href="../reference/speMCA.html">speMCA()</a></code>, <code><a href="../reference/csMCA.html">csMCA()</a></code> and <code><a href="../reference/getindexcat.html">getindexcat()</a></code> when empty levels or non-factor vectors in the data</li>
-<li>bug fix in <code><a href="../reference/indsup.html">indsup()</a></code> : supdata can now be a tibble</li>
+<li>bug fix in <code><a href="../reference/supind.html">indsup()</a></code> : supdata can now be a tibble</li>
 <li>bug fix in <code><a href="../reference/deprecated.html">assoc.yx()</a></code> : integers are now allowed for y; empty levels are dropped in x</li>
 <li>bug fix in <code><a href="../reference/deprecated.html">wtable()</a></code> : empty cells are replaced by 0.</li>
 </ul></div>
@@ -176,7 +195,7 @@
 </ul></div>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7.2" id="gdatools-172">GDAtools 1.7.2<small>2022-02-22</small><a class="anchor" aria-label="anchor" href="#gdatools-172"></a></h2>
+<h2 class="page-header" data-toc-text="1.7.2" id="gdatools-172-cran">GDAtools 1.7.2 [CRAN]<small>2022-02-22</small><a class="anchor" aria-label="anchor" href="#gdatools-172-cran"></a></h2>
 <div class="section level3">
 <h3 id="bug-fixes-1-7-2">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-7-2"></a></h3>
 <ul><li>bug fix with in <code><a href="../reference/medoids.html">medoids()</a></code>
@@ -206,7 +225,7 @@
 </ul></div>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.7" id="gdatools-17">GDAtools 1.7<small>2021-05-31</small><a class="anchor" aria-label="anchor" href="#gdatools-17"></a></h2>
+<h2 class="page-header" data-toc-text="1.7" id="gdatools-17-cran">GDAtools 1.7 [CRAN]<small>2021-05-31</small><a class="anchor" aria-label="anchor" href="#gdatools-17-cran"></a></h2>
 <div class="section level3">
 <h3 id="new-functions-1-7">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-7"></a></h3>
 <ul><li>
@@ -277,7 +296,7 @@
 <li>
 <code><a href="../reference/dimeta2.html">dimeta2()</a></code> : l argument renamed to vars and n argument removed</li>
 <li>
-<code><a href="../reference/varsup.html">varsup()</a></code> : also computes typicality tests and correlation coefficients</li>
+<code><a href="../reference/supvar.html">varsup()</a></code> : also computes typicality tests and correlation coefficients</li>
 <li>
 <code><a href="../reference/conc.ellipse.html">conc.ellipse()</a></code> : several kinds of inertia ellipses can be plotted thanks to the kappa option</li>
 <li>
@@ -305,7 +324,7 @@
 <li>
 <code><a href="../reference/homog.test.html">homog.test()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
-<code><a href="../reference/varsup.html">varsup()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
+<code><a href="../reference/supvar.html">varsup()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
 <code><a href="../reference/ggadd_chulls.html">ggadd_chulls()</a></code> : compatibility with objects of class MCA, speMCA, csMCA, stMCA and multiMCA</li>
 <li>
@@ -330,7 +349,7 @@
 </ul></div>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.6" id="gdatools-16">GDAtools 1.6<small>2021-03-28</small><a class="anchor" aria-label="anchor" href="#gdatools-16"></a></h2>
+<h2 class="page-header" data-toc-text="1.6" id="gdatools-16-cran">GDAtools 1.6 [CRAN]<small>2021-03-28</small><a class="anchor" aria-label="anchor" href="#gdatools-16-cran"></a></h2>
 <div class="section level3">
 <h3 id="new-functions-1-6">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-6"></a></h3>
 <ul><li>
@@ -374,7 +393,7 @@
 </ul></div>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.5" id="gdatools-15">GDAtools 1.5<small>2020-05-17</small><a class="anchor" aria-label="anchor" href="#gdatools-15"></a></h2>
+<h2 class="page-header" data-toc-text="1.5" id="gdatools-15-cran">GDAtools 1.5 [CRAN]<small>2020-05-17</small><a class="anchor" aria-label="anchor" href="#gdatools-15-cran"></a></h2>
 <div class="section level3">
 <h3 id="new-functions-1-5">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-5"></a></h3>
 <ul><li>
@@ -403,7 +422,7 @@
 </ul></div>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.4" id="gdatools-14">GDAtools 1.4<small>2017-03-07</small><a class="anchor" aria-label="anchor" href="#gdatools-14"></a></h2>
+<h2 class="page-header" data-toc-text="1.4" id="gdatools-14-cran">GDAtools 1.4 [CRAN]<small>2017-03-07</small><a class="anchor" aria-label="anchor" href="#gdatools-14-cran"></a></h2>
 <div class="section level3">
 <h3 id="new-functions-1-4">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-4"></a></h3>
 <ul><li>
@@ -414,7 +433,7 @@
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-4">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-4"></a></h3>
 <ul><li>
-<code><a href="../reference/varsup.html">varsup()</a></code>: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud</li>
+<code><a href="../reference/supvar.html">varsup()</a></code>: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud</li>
 <li>
 <code><a href="../reference/textvarsup.html">textvarsup()</a></code>: with csMCA, the length of variable argument can be equal to the size of the cloud or the subcloud</li>
 <li>
@@ -426,7 +445,7 @@
 </ul></div>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.3" id="gdatools-13">GDAtools 1.3<small>2014-09-06</small><a class="anchor" aria-label="anchor" href="#gdatools-13"></a></h2>
+<h2 class="page-header" data-toc-text="1.3" id="gdatools-13-cran">GDAtools 1.3 [CRAN]<small>2014-09-06</small><a class="anchor" aria-label="anchor" href="#gdatools-13-cran"></a></h2>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-1-3">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-1-3"></a></h3>
 <ul><li>
@@ -452,7 +471,7 @@
 </ul></div>
 </div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.1" id="gdatools-11">GDAtools 1.1<small>2014-04-20</small><a class="anchor" aria-label="anchor" href="#gdatools-11"></a></h2>
+<h2 class="page-header" data-toc-text="1.1" id="gdatools-11-cran">GDAtools 1.1 [CRAN]<small>2014-04-20</small><a class="anchor" aria-label="anchor" href="#gdatools-11-cran"></a></h2>
 <div class="section level3">
 <h3 id="new-functions-1-1">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-1"></a></h3>
 <ul><li>
@@ -475,6 +494,9 @@
 <ul><li>
 <code><a href="../reference/textvarsup.html">textvarsup()</a></code>: plots supplementary variables on the cloud of categories (and not the cloud of individuals as it was mentioned in help).</li>
 </ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0" id="gdatools-10-cran">GDAtools 1.0 [CRAN]<small>2014-03-04</small><a class="anchor" aria-label="anchor" href="#gdatools-10-cran"></a></h2>
 </div>
   </div>
 
