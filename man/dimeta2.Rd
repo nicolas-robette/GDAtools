@@ -2,10 +2,10 @@
 
 \alias{dimeta2}
 
-\title{Describes the eta2 of supplementary variables for the axes of a MCA}
+\title{Correlation ratios (aka eta-squared) of supplementary variables}
 
 \description{
-Computes eta2 for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.
+Computes correlation ratios (also known as eta-squared) for a list of supplementary variables of a MCA.
 }
 
 \usage{dimeta2(resmca, vars, dim = c(1,2))}
@@ -17,7 +17,7 @@ Computes eta2 for a list of supplementary variables. It allows to analyze varian
 }
 
 \value{
-  Returns a data frame with supplementary variables as rows and axes as columns.
+  Returns a data frame with supplementary variables as rows and MCA axes as columns.
 }
 
 \references{
@@ -29,17 +29,16 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{dimdesc}}, \code{\link{dimdescr}}, \code{\link{dimcontrib}}, \code{\link{condes}}, \code{\link{speMCA}}, \code{\link{csMCA}}, \code{\link{dimtypicality}}
+\code{\link{dimdescr}}, \code{\link{dimcontrib}}, \code{\link{dimtypicality}}
 }
 
 \examples{
-## Performs a specific MCA on 'Music' example data set
-## ignoring every 'NA' (i.e. 'not available') categories,
-## and then describes the eta2 for Gender and Age (axes 1 and 2).
+# specific MCA on Music example data set
 data(Music)
-getindexcat(Music[,1:5])
-mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-dimeta2(mca, Music[,c("Gender","Age")])
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
+mca <- speMCA(Music[,1:5], excl = junk)
+# correlation ratios
+dimeta2(mca, Music[, c("Gender", "Age")])
 }
 
 \keyword{ multivariate }

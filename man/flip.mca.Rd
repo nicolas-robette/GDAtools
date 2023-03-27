@@ -2,15 +2,15 @@
 
 \alias{flip.mca}
 
-\title{Flips the coordinates of a MCA}
+\title{Flips the coordinates}
 
 \description{Flips the coordinates of the individuals and the categories on one or more dimensions of a MCA.}
 
-\usage{flip.mca(resmca, dim=1)}
+\usage{flip.mca(resmca, dim = 1)}
 
 \arguments{
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
-  \item{dim}{the dimensions for which the coordinates are flipped. By default, only the 1st dimension is flipped}
+  \item{dim}{numerical vector of the dimensions for which the coordinates are flipped. By default, only the first dimension is flipped}
 }
 
 \value{
@@ -26,17 +26,17 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{MCA}}, \code{\link{speMCA}}, \code{\link{csMCA}}
+\code{\link{ggcloud_variables}}, \code{\link{ggcloud_indiv}}
 }
 
 \examples{
-## Flips dimensions 1 and 2
-## of the MCA of 'Music' example data set
+# MCA of Music example data set
 data(Music)
 mca <- speMCA(Music[,1:5])
-ggcloud_variables(mca, legend="none")
-flipped_mca <- flip.mca(mca, dim=c(1,2))
-ggcloud_variables(flipped_mca, legend="none")
+ggcloud_variables(mca, legend = "none")
+# Flips dimensions 1 and 2
+flipped_mca <- flip.mca(mca, dim = c(1,2))
+ggcloud_variables(flipped_mca, legend = "none")
 }
 
 \keyword{ multivariate }

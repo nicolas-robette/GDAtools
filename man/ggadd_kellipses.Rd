@@ -1,19 +1,20 @@
 \name{ggadd_kellipses}
 \alias{ggadd_kellipses}
 
-\title{Adds k-inertia ellipses to a cloud of individuals}
+\title{Concentration ellipses and k-inertia ellipses}
 
 \description{
-Adds k-inertia ellipses for a categorical variable to a MCA cloud of individuals, using the ggplot2 framework. By default, concentration ellipses are plotted.
+Adds concentration ellipses and other kinds of k-inertia ellipses for a categorical variable to a MCA cloud of individuals.
 }
 
 \usage{
-ggadd_kellipses(p, resmca, var, sel=1:nlevels(var), axes=c(1,2),
-kappa=2, label=TRUE, label.size=3, col=NULL, size=0.5, points=TRUE, legend='right')
+ggadd_kellipses(p, resmca, var, sel = 1:nlevels(var), axes = c(1,2),
+kappa = 2, label = TRUE, label.size = 3, size = 0.5, points = TRUE,
+legend = "right")
 }
 
 \arguments{
-  \item{p}{ggplot object with the cloud of variables}
+  \item{p}{\code{ggplot2} object with the cloud of individuals}
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
   \item{var}{Factor. The categorical variable used to plot ellipses.}
   \item{sel}{numeric vector of indexes of the categories to plot (by default, ellipses are plotted for every categories)}
@@ -21,17 +22,20 @@ kappa=2, label=TRUE, label.size=3, col=NULL, size=0.5, points=TRUE, legend='righ
   \item{kappa}{numeric. The kappa value (i.e. "index") of the inertia ellipses. By default, kappa = 2, which means that concentration ellipses are plotted.}
   \item{label}{Logical. Should the labels of the categories be plotted at the center of ellipses ? Default is TRUE.}
   \item{label.size}{Size of the labels of the categories at the center of ellipses. Default is 3.}  
-  \item{col}{Colors for the ellipses and labels of the categories. Can be the name of a palette from the RcolorBrewer package, 'bw' for a black and white palette (uses \code{scale_color_grey()}), a character vector of colors for a custom palette, or the name of a color for a single color. If NULL (default), the default palette of \code{ggplot2} is used.}
   \item{size}{Size of the lines of the ellipses. Default is 0.5.}
   \item{points}{If TRUE (default), the points are coloured according to their subcloud.}
   \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.}
 }
 
-\value{a ggplot object}
+\value{a \code{ggplot2} object}
 
 \details{
 If kappa=2, ellipses are called "concentration" ellipses and, for a normally shaped subcloud, contain 86.47 percents of the points of the subcloud. If kappa=1, ellipses are "indicator" ellipses and contain 39.35 percents of the points of the subcloud. If kappa=1.177, ellipses are "median" ellipses and contain 50 percents of the points of the subcloud.
 This function has to be used after the cloud of individuals has been drawn.
+}
+
+\note{
+Ellipses are colored according to the categories of the variable, using the default \code{ggplot2} palette. The palette can be customized using any \code{scale_color_*} function, such as \code{scale_color_brewer()}, \code{scale_color_grey()} or \code{scale_color_manual()}.
 }
 
 \references{
@@ -43,17 +47,18 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{ggcloud_variables}}, \code{\link{ggcloud_indiv}}, \code{\link{ggadd_supvar}}, \code{\link{ggadd_corr}}, \code{\link{ggadd_interaction}}, \code{\link{ggadd_density}}, \code{\link{ggadd_ellipses}}
+\code{\link{ggcloud_indiv}}, \code{\link{ggadd_supvar}}, \code{\link{ggadd_supvars}}, \code{\link{ggadd_ellipses}}, \code{\link{ggadd_density}}, \code{\link{ggadd_interaction}}, \code{\link{ggsmoothed_supvar}}, \code{\link{ggadd_chulls}}, \code{\link{ggadd_corr}}
 }
 
 \examples{
-## Performs a specific MCA on 'Music' example data set
-## ignoring every 'NA' (i.e. 'not available') categories,
-## draws the cloud of categories
-## and adds concentration ellipses for Age.
+# specific MCA of Music example data set
 data(Music)
-getindexcat(Music[,1:5])
-mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-p <- ggcloud_indiv(mca, col='lightgrey')
-ggadd_kellipses(p, mca, Music$Age)
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
+mca <- speMCA(Music[,1:5], excl = junk)
+# concentration ellipses for Age
+p <- ggcloud_indiv(mca, col = "lightgrey")
+ggadd_ellipses(p, mca, Music$Age)
 }
+
+\keyword{ aplot }
+\keyword{ multivariate }

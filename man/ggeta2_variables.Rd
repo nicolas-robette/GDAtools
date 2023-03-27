@@ -20,17 +20,22 @@ ggeta2_variables(resmca, axes = c(1,2))
 Eta-squared (i.e. squared correlation ratio) is a measure of global association between a continuous variable and a categorical variable : it measures the share of variance of the continuous variables "explained" by the categorical variable. Here, it is used to plot the association between the active variables and the axes of the MCA cloud.
 }
 
-\value{a ggplot object}
+\value{a \code{ggplot2} object}
 
 \references{
-Escofier B. and Pagès J., \emph{Analyses factorielles simples et multiples}, Dunod (2008).
+Escofier B. and Pagès J., 2008, \emph{Analyses factorielles simples et multiples}, Dunod.
 }
 
 \author{Nicolas Robette}
 
+\seealso{
+\code{\link{ggcloud_variables}}, \code{\link{ggadd_attractions}}
+}
+
 \examples{
 data(Music)
-mca <- speMCA(Music[,1:5],excl=c("FrenchPop.NA","Rap.NA","Jazz.NA","Classical.NA","Rock.NA"))
+junk <- c("FrenchPop.NA","Rap.NA","Jazz.NA","Classical.NA","Rock.NA")
+mca <- speMCA(Music[,1:5], excl = junk)
 ggeta2_variables(mca)
 }
 

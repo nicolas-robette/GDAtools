@@ -4,17 +4,19 @@
 
 \title{Cosine similarities and angles between CSA and MCA}
 
-\description{Computes the cosines similarities and angles between the dimensions of a CSA and those of a MCA.}
+\description{Computes the cosines similarities and angles between the components of a CSA and those of a MCA.}
 
-\usage{angles.csa(rescsa, resmca)}
-
-\arguments{
-  \item{rescsa}{object of class \code{'csMCA'}}
-  \item{resmca}{object of class \code{'MCA'} or \code{'speMCA'}}
+\usage{
+angles.csa(rescsa, resmca)
 }
 
-\details{
-This function is adapted from \code{'csa.measures'} in \code{'sco.ca'} package.
+\arguments{
+  \item{rescsa}{object of class \code{csMCA}}
+  \item{resmca}{object of class \code{MCA} or \code{speMCA}}
+}
+
+\note{
+This function is adapted from \code{csa.measures} in \code{sco.ca} package.
 }
 
 \value{
@@ -36,12 +38,13 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 }
 
 \examples{
-## Performs a specific MCA and a CSA on the 'Music' example data set
-## and compute cosine similarities and angles
+## Performs a specific MCA and a CSA on the Music example data set
+## and computes cosine similarities and angles
 data(Music)
-resmca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-female <- Music$Gender=='Women'
-rescsa <- csMCA(Music[,1:5],subcloud=female,excl=c(3,6,9,12,15))
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
+resmca <- speMCA(Music[,1:5], excl = junk)
+female <- Music$Gender=="Women"
+rescsa <- csMCA(Music[,1:5], subcloud = female, excl = junk)
 angles.csa(rescsa, resmca)
 }
 

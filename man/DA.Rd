@@ -21,7 +21,7 @@ The results are the same with \code{type} "FR" or "GB", only the eigenvalues var
 }
 
 \value{
-An object of class \code{PCA} from \code{FactoMineR} package, with \code{class} as qualitative supplementary variable, and one additional item.
+An object of class \code{PCA} from \code{FactoMineR} package, with \code{class} as qualitative supplementary variable, and one additional item :
 \item{cor_ratio}{correlation ratios between \code{class} and the discriminant factors}
 }
 
@@ -41,7 +41,7 @@ See: https://marie-chavent.perso.math.cnrs.fr/teaching/
 }
 
 \seealso{
-\code{\link{bcPCA}}
+\code{\link{bcPCA}}, \code{\link{PCAiv}}
 }
 
 \examples{

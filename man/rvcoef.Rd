@@ -34,14 +34,18 @@ Nicolas Robette
 }
 
 \seealso{
-\code{\link{coiPCA}}, \code{\link{coiMCA}}
+\code{\link{coiPCA}}, \code{\link{coiMCA}}, \code{\link{multiMCA}}
 }
 
 \examples{
+# RV coefficient between decathlon results by sport
+# and Rank and Points
 library(FactoMineR)
 data(decathlon)
 Xa <- decathlon[,1:10]
 Xb <- decathlon[,11:12]
+str(Xa)
+str(Xb)
 rvcoef(Xa, Xb)
 }
 

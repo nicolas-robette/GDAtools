@@ -16,15 +16,19 @@ bcMCA(data, class, row.w = NULL, ncp = 5)
 \details{
 Between-class MCA is sometimes also called Barycentric Discriminant Analysis or Discriminant Correspondence Analysis. It consists in three steps :
 1. Transformation of \code{data} into an indicator matrix (i.e. disjunctive table)
-2. Computation of the barycenter of the transformed data rows for each category of \code{class}
+2. Computation of the barycenter of the transformed data for each category of \code{class}
 3. Correspondence Analysis of the set of barycenters
+Between-class MCA can also be viewed as a special case of MCA with instrumental variables, with only one categorical instrumental variable.
 }
+
 \value{
-An object of class \code{CA} from \code{FactoMineR} package, with the indicator matrix as supplementary individuals, and an additional item :
+An object of class \code{CA} from \code{FactoMineR} package, with the indicator matrix of \code{data} as supplementary individuals, and an additional item :
 \item{ratio}{the between-class inertia percentage}
 }
 
 \references{
+Abdi H., 2007, "Discriminant Correspondence Analysis", In: Neil Salkind (Ed.), \emph{Encyclopedia of Measurement and Statistics}, Thousand Oaks (CA): Sage. 
+
 Bry X., 1996, \emph{Analyses factorielles multiples}, Economica.
 
 Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Statistical Analysis}, John Wiley and sons, New-York.)
@@ -33,14 +37,19 @@ Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Stati
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{PCAiv}}
+\code{\link{DAQ}}, \code{\link{MCAiv}}
 }
 
 \examples{
 library(FactoMineR)
 data(tea)
 res <- bcMCA(tea[,1:18], tea$SPC)
-plot(res, invisible = "row.sup")
+# categories of class
+plot(res, invisible = c("col", "row.sup"))
+# Variables in tea data
+plot(res, invisible = c("row", "row.sup"))
+# between-class inertia percentage
+res$ratio
 }
 
 \keyword{ multivariate }

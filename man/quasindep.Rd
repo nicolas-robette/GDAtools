@@ -39,8 +39,6 @@ Bouchet-Valat M (2015) L'analyse statistique des tables de contingence carrées 
 France - I, L'analyse des correspondances \emph{Bulletin de Méthodologie Sociologique} 125: 65–88. <doi:10.1177/0759106314555655>
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \examples{
 \dontrun{
 tab <- matrix(c(165,49,70,100,48,223,
@@ -54,7 +52,5 @@ newtab <- quasindep(tab)
 }
 }
 
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{ multivariate }
 \keyword{ misc }

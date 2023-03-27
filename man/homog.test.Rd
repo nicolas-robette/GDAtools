@@ -2,14 +2,14 @@
 
 \alias{homog.test}
 
-\title{Computes a homogeneity test for a categorical supplementary variable}
+\title{Homogeneity test for a categorical supplementary variable}
 
 \description{
-   From MCA results, computes a homogeneity test for a categorical supplementary variable, i.e. 
+   From MCA results, computes a homogeneity test between categories of a supplementary variable, i.e. 
    characterizes the homogeneity of several subclouds.
 }
 
-\usage{homog.test(resmca, var, dim=c(1,2))}
+\usage{homog.test(resmca, var, dim = c(1,2))}
 
 \arguments{
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
@@ -21,7 +21,7 @@
   Returns a list of lists, one for each selected dimension in the MCA.
   Each list has 2 elements :
   \item{test.stat}{The square matrix of test statistics}
-  \item{p.values}{The square matrix of p.values}
+  \item{p.values}{The square matrix of p-values}
 }
 
 \references{
@@ -33,17 +33,16 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{speMCA}}, \code{\link{csMCA}}, \code{\link{stMCA}}, \code{\link{multiMCA}}, \code{\link{textvarsup}}
+\code{\link{supvar}}, \code{\link{supvars}}, \code{\link{dimtypicality}}
 }
 
 \examples{
-## Performs a specific MCA on 'Music' example data set
-## ignoring every 'NA' (i.e. 'not available') categories,
-## and then computes a homogeneity test for age supplementary variable.
+# specific MCA of Music example data set
 data(Music)
-getindexcat(Music)
-mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-homog.test(mca,Music$Age)
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
+mca <- speMCA(Music[,1:5], excl = junk)
+# homogeneity test for variable Age
+homog.test(mca, Music$Age)
 }
 
 \keyword{ multivariate }

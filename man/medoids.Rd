@@ -2,7 +2,7 @@
 
 \alias{medoids}
 
-\title{Computes the medoids of clusters}
+\title{Medoids of clusters}
 
 \description{Computes the medoids of a cluster solution.}
 
@@ -14,8 +14,7 @@
 }
 
 \details{
-Medoids are representative objects of a cluster whose average dissimilarity to all the objects in the cluster is minimal.
-Medoids are always members of the data set (contrary to means or centroids).
+A medoid is a representative object of a cluster whose average dissimilarity to all the objects in the cluster is minimal. Medoids are always members of the data set (contrary to means or centroids).
 }
 
 \value{Returns a numeric vector with the indexes of medoids.}
@@ -33,14 +32,14 @@ Anja Struyf, Mia Hubert & Peter J. Rousseeuw (1996). "Clustering in an Object-Or
 }
 
 \examples{
-## Performs of classification of the 'Music' example data set, 
-## a clustering in 3 groups
-## and then computes the medoids.
+# hierarchical clustering of the Music example data set, 
+# partition into 3 groups
+# and then computation of the medoids.
 data(Music)
 temp <- dichotom(Music[,1:5])
 d <- dist(temp)
-clus <- cutree(hclust(d),3)
-medoids(d,clus)
+clus <- cutree(hclust(d), 3)
+medoids(d, clus)
 }
 
 \keyword{ multivariate }

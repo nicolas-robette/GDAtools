@@ -2,14 +2,14 @@
 
 \alias{contrib}
 
-\title{Computes contributions for a MCA}
+\title{Contributions of active variables}
 
 \description{From MCA results, computes contributions of categories and variables to the axes and the overall cloud.}
 
 \usage{contrib(resmca)}
 
 \arguments{
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'} or \code{'csMCA'}}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA} or \code{csMCA}}
 }
 
 \details{
@@ -35,14 +35,15 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{MCA}}, \code{\link{speMCA}}, \code{\link{csMCA}}, \code{\link{varsup}}
+\code{\link{speMCA}}, \code{\link{supvar}}, \code{\link{tabcontrib}}
 }
 
 \examples{
-## Performs a specific MCA on the 'Music' example data set
-## and compute contributions
+# specific MCA on the Music example data set
 data(Music)
-mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
+mca <- speMCA(Music[,1:5], excl = junk)
+# contributions of variables
 contrib(mca)
 }
 

@@ -2,7 +2,7 @@
 
 \alias{burt}
 
-\title{Computes a Burt table}
+\title{Burt table}
 
 \description{Computes a Burt table from a data frame composed of categorical variables.}
 
@@ -33,7 +33,7 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 
 \examples{
 ## Burt table of variables in columns 1 to 5
-## in the 'Music' example data set
+## in the Music example data set
 data(Music)
 burt(Music[,1:5])
 }

@@ -2,9 +2,9 @@
 
 \alias{modif.rate}
 
-\title{Computes Benzecri's modified rates of variance of a MCA}
+\title{Benzecri's modified rates of variance}
 
-\description{Computes the modified rates of variance of a multiple correspondence analysis.}
+\description{Computes Benzecri's modified rates of variance of a multiple correspondence analysis.}
 
 \usage{modif.rate(resmca)}
 
@@ -13,15 +13,13 @@
 }
 
 \details{
-As MCA clouds often have a high dimensionality, the variance rates of the first principle axes may be quite low, 
-which makes them hard to interpret. Benzecri (1992, p.412) proposed to use \emph{modified rates} to better 
-appreciate the relative importance of the principal axes.
+As MCA clouds often have a high dimensionality, the variance rates of the first principle axes may be quite low, which makes them hard to interpret. Benzecri (1992, p.412) proposed to use \emph{modified rates} to better appreciate the relative importance of the principal axes.
 }
 
 \value{
   Returns a data frame with 2 variables:
-  \item{mrate }{Numeric vector of modified rates}
-  \item{cum.mrate }{Numeric vector of cumulative modified rates}
+  \item{mrate}{modified rates}
+  \item{cum.mrate}{cumulative modified rates}
 }
 
 \references{
@@ -39,10 +37,10 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 }
 
 \examples{
-## Computes the modified rates of variance
-## of the MCA of 'Music' example data set
+# MCA of Music' example data set
 data(Music)
 mca <- speMCA(Music[,1:5])
+# modified rates of variance
 modif.rate(mca)
 }
 

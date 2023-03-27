@@ -3,7 +3,7 @@
 \alias{supind}
 \alias{indsup}
 
-\title{Computes statistics for supplementary individuals}
+\title{Statistics for supplementary individuals}
 
 \description{
    From MCA results, computes statistics (coordinates, squared cosines) for 
@@ -17,14 +17,14 @@ indsup(resmca, supdata)
 }
 
 \arguments{
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'} or \code{'csMCA'}}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA} or \code{csMCA}}
   \item{supdata}{data frame with the supplementary individuals. It must have the same factors as the data frame used as input for the initial MCA.}
 }
 
 \value{
-  Returns a list:
-  \item{coord}{matrix of individuals' coordinates}
-  \item{cos2}{matrix of individuals' square cosines}
+  Returns a list with the following items :
+  \item{coord}{matrix of individuals coordinates}
+  \item{cos2}{matrix of individuals squared cosines}
 }
 
 \note{
@@ -40,17 +40,17 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{textindsup}}, \code{\link{speMCA}}, \code{\link{csMCA}}, \code{\link{varsup}}
+\code{\link{ggadd_supind}},\code{\link{textindsup}}, \code{\link{supvar}}, \code{\link{supvars}}
 }
 
 \examples{
-## Performs a specific MCA on 'Music' example data set
-## ignoring every 'NA' (i.e. 'not available') categories,
-## and excluding the first two observations.
+# specific MCA of Music example data set
+# excluding the first two observations
 data(Music)
-getindexcat(Music)
-mca <- speMCA(Music[3:nrow(Music),1:5],excl=c(3,6,9,12,15))
-## Computes coordinates of the first two (supplementary) observations
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
+mca <- speMCA(Music[3:nrow(Music),1:5], excl = junk)
+# computes coordinates and squared cosines
+# of the first two (supplementary) observations
 supind(mca,Music[1:2,1:5])
 }
 

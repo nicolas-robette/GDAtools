@@ -1,31 +1,35 @@
 \name{ggadd_supvars}
 \alias{ggadd_supvars}
 
-\title{Adds categorical supplementary variables to a cloud of variables}
+\title{Plot of categorical supplementary variables}
 
 \description{
-Adds categorical supplementary variables to a MCA cloud of variables, using the ggplot2 framework.
+Adds categorical supplementary variables to a MCA cloud of variables.
 }
 
 \usage{
-ggadd_supvars(p, resmca, vars, axes=c(1,2), palette = "khroma::bright",
-shape=FALSE, prop=NULL, textsize=3, shapesize=6, vname=TRUE)
+ggadd_supvars(p, resmca, vars, axes = c(1,2), col = NULL,
+shapes = FALSE, prop = NULL, textsize = 3, shapesize = 6, vname = TRUE)
 }
 
 \arguments{
-  \item{p}{ggplot object with the cloud of variables}
+  \item{p}{\code{ggplot2} object with the cloud of variables}
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}.}
   \item{vars}{A data frame of categorical supplementary variables. All these variables should be factors.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
-  \item{palette}{character string. Palette name, in the form packagename::palettename (cf \code{paletteer} package). If NULL, color argument is used. Default is "khroma::bright", a colorblind friendly palette.}
-  \item{shape}{Logical. If TRUE, symbols are used in addition the the labels of categories. Default is FALSE.}
-  \item{prop}{If NULL, the size of the labels (if shape=FALSE) or the shapes (otherwise) is constant. If 'n', the size is proportional the the weights of categories; if 'vtest1', the size is proportional to the test values of the categories on the first dimension of the plot; if 'vtest2', the size is proportional to the test values of the categories on the second dimension of the plot; if 'cos1', the size is proportional to the cosines of the categories on the first dimension of the plot; if 'cos2', the size is proportional to the cosines of the categories on the second dimension of the plot; if 'cos12', the size is proportional to the total cosines of the categories on the two dimensions of the plot.}
-  \item{textsize}{Size of the labels of categories if shape is TRUE, or if shape=FALSE and prop=NULL. Default is 3.}
-  \item{shapesize}{Size of the shapes if prop=NULL, maximum size of the shapes in other cases. Default is 6.}
+  \item{col}{character string. Color name for the labels (and the shapes if \code{shapes=TRUE}) of the categories. If NULL, the default palette of \code{ggplot2} is used, with one color per variable.}
+  \item{shapes}{Logical. If TRUE, symbols are used in addition to the labels of categories. Default is FALSE.}
+  \item{prop}{If NULL, the size of the labels (if \code{shapes=FALSE}), or of the labels and the shapes (if \code{shapes=TRUE}) is constant. If 'n', the size is proportional the the weights of categories; if 'vtest1', the size is proportional to the test values of the categories on the first dimension of the plot; if 'vtest2', the size is proportional to the test values of the categories on the second dimension of the plot; if 'cos1', the size is proportional to the cosines of the categories on the first dimension of the plot; if 'cos2', the size is proportional to the cosines of the categories on the second dimension of the plot; if 'cos12', the size is proportional to the total cosines of the categories on the two dimensions of the plot.}
+  \item{textsize}{Size of the labels of categories if \code{shapes} is TRUE, or if \code{shapes} is FALSE and \code{prop} is NULL. Default is 3.}
+  \item{shapesize}{Size of the shapes if \code{prop=NULL}, maximum size of the shapes in other cases. Default is 6.}
   \item{vname}{Logical. If TRUE (default), the variable name is added as a prefix for the labels of the categories.}
 }
 
-\value{a ggplot object}
+\value{a \code{ggplot2} object}
+
+\note{
+Shapes and labels are colored according to the categories of the variable, using the default \code{ggplot2} palette. The palette can be customized using any \code{scale_color_*} function, such as \code{scale_color_brewer()}, \code{scale_color_grey()} or \code{scale_color_manual()}.
+}
 
 \references{
 Le Roux B. and Rouanet H., \emph{Multiple Correspondence Analysis}, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).
@@ -36,19 +40,18 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{varsups}}, \code{\link{ggcloud_variables}}, \code{\link{ggcloud_indiv}}, \code{\link{ggadd_ellipses}}, \code{\link{ggadd_corr}}, \code{\link{ggadd_interaction}}, \code{\link{ggadd_density}}
+\code{\link{ggcloud_variables}}, \code{\link{ggadd_supvar}}, \code{\link{ggadd_ellipses}}, \code{\link{ggadd_kellipses}}, \code{\link{ggadd_density}}, \code{\link{ggadd_interaction}}, \code{\link{ggsmoothed_supvar}}, \code{\link{ggadd_chulls}}, \code{\link{ggadd_corr}}
 }
 
 \examples{
-## Performs a specific MCA on 'Music' example data set
-## ignoring every 'NA' (i.e. 'not available') categories,
-## draws the cloud of categories
-## and adds Age as a supplementary variable.
+# specific MCA of Music example data set
 data(Music)
-getindexcat(Music[,1:5])
-mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-p <- ggcloud_variables(mca, palette='lightgrey', shapes=FALSE)
-ggadd_supvars(p, mca, Music[,6:9], prop = 'cos12')
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
+mca <- speMCA(Music[,1:5], excl = junk)
+# adds several supplementary variables
+# onto the cloud of variables
+p <- ggcloud_variables(mca, col = "lightgrey", shapes = FALSE)
+ggadd_supvar(p, mca, Music$Age, segment = TRUE)
 }
 
 \keyword{ aplot }

@@ -2,30 +2,29 @@
 
 \alias{dimcontrib}
 
-\title{Describes the contributions to axes for a MCA}
+\title{Description of the contributions to axes}
 
 \description{
 Identifies the categories and individuals that contribute the most to each dimension obtained 
-by a Multiple Correspondence Analysis. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.
+by a Multiple Correspondence Analysis.
 }
 
 \usage{dimcontrib(resmca, dim = c(1,2), best = TRUE)}
 
 \arguments{
-  \item{resmca}{object of class \code{'MCA'}, \code{'speMCA'}, or \code{'csMCA'}}
-  \item{dim}{dimensions to describe (default is c(1,2))}
-  \item{best}{if FALSE, displays all the categories; if TRUE (default), displays only categories and individuals with contributions higher than average}
+  \item{resmca}{object of class \code{MCA}, \code{speMCA}, or \code{csMCA}}
+  \item{dim}{numerical vector of the dimensions to describe (default is c(1,2))}
+  \item{best}{logical. If FALSE, displays all the categories. If TRUE (default), displays only categories and individuals with contributions higher than average}
 }
 
 \details{
-Contributions are sorted and assigned a positive or negative sign according to the corresponding categories or individuals' 
-coordinates, so as to facilitate interpretation.
+Contributions are sorted and assigned a positive or negative sign according to the corresponding categories or individuals coordinates, so as to facilitate interpretation.
 }
 
 \value{
-  Returns a list: 
-  \item{var}{a list of categories' contributions to axes}
-  \item{ind}{a list of individuals' contributions to axes}
+Returns a list with the following items : 
+  \item{var}{a list of categories contributions to axes}
+  \item{ind}{a list of individuals contributions to axes}
 }
 
 \references{
@@ -37,16 +36,15 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{dimdescr}}, \code{\link{dimeta2}}, \code{\link{dimtypicality}}, \code{\link{condes}}, \code{\link{speMCA}}, \code{\link{csMCA}}
+\code{\link{tabcontrib}}, \code{\link{dimdescr}}, \code{\link{dimeta2}}, \code{\link{dimtypicality}}
 }
 
 \examples{
-## Performs a specific MCA on 'Music' example data set
-## ignoring every 'NA' (i.e. 'not available') categories,
-## and then describes the contributions to axes.
+# specific MCA on Music example data set
 data(Music)
-getindexcat(Music[,1:5])
-mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
+mca <- speMCA(Music[,1:5], excl = junk)
+# contributions to axes 1 and 2
 dimcontrib(mca)
 }
 

@@ -14,3 +14,4 @@ translate.logit(...)
 \arguments{
   \item{...}{arguments are ignored}
 }
+

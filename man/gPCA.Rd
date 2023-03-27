@@ -17,11 +17,13 @@ gPCA(X, row.w = NULL, col.w = NULL, center = FALSE, scale = FALSE, tol = 1e-07)
   \item{col.w}{numeric vector of column weights. If NULL (default), a vector of 1 for uniform column weights is used.}
   \item{center}{logical. If TRUE, variables are centered (default is FALSE).}  
   \item{scale}{logical. If TRUE, variables are scaled to unit variance (default is FALSE).} 
-  \item{tol}{a tolerance threshold for null eigenvalues (a value less than tol times the first one is considered as null)}
+  \item{tol}{a tolerance threshold for null eigenvalues (a value less than \code{tol} times the first one is considered as null)}
 }
 
 \details{
 Generalized PCA is basically a PCA with the possibility to specify row weights (i.e. "masses") and variable weights (i.e. the "metric"), and to choose whether to center and scale the variables. This flexibility makes it the building block of many variants of PCA, such as Correspondence Analysis and Multiple Correspondence Analysis.
+
+Generalized PCA is also known as "biweighted PCA", "duality diagram" or "generalized singular value decomposition".
 }
 
 \value{

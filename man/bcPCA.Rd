@@ -26,7 +26,7 @@ Between-class Principal Component Analysis consists in two steps :
 
 It is a quite similar to Linear Discriminant Analysis, but the metric is different.
 
-It can be seen as a special case of PCA with instrumental variables, with only one (categorical) instrumental variable.
+It can be seen as a special case of PCA with instrumental variables, with only one categorical instrumental variable.
 }
 
 \value{
@@ -43,7 +43,7 @@ Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Stati
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{bcMCA}}
+\code{\link{PCAiv}}, \code{\link{DA}}
 }
 
 \examples{
@@ -51,8 +51,12 @@ library(FactoMineR)
 data(decathlon)
 points <- cut(decathlon$Points, c(7300, 7800, 8000, 8120, 8900), c("Q1","Q2","Q3","Q4"))
 res <- bcPCA(decathlon[,1:10], points)
+# categories of class
 plot(res, choix = "ind", invisible = "ind.sup")
+# variables in decathlon data
 plot(res, choix = "var")
+# between-class inertia percentage
+res$ratio
 }
 
 \keyword{ multivariate }

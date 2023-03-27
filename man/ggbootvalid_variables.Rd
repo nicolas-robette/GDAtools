@@ -1,7 +1,7 @@
 \name{ggbootvalid_variables}
 \alias{ggbootvalid_variables}
 
-\title{Ellipses for bootstrap validation for MCA (active variables)}
+\title{Ellipses of bootstrap validation (active variables)}
 
 \description{
 Ellipses for bootstrap validation of MCA, through the computation of the coordinates of active variables for bootstrap replications of the data.
@@ -10,7 +10,7 @@ Ellipses for bootstrap validation of MCA, through the computation of the coordin
 \usage{
 ggbootvalid_variables(resmca, axes = c(1,2), type = "partial", K = 30,
                       ellipse = "norm", level = 0.95,
-                      palette = NULL, legend = "right")
+                      col = NULL, legend = "right")
 }
 
 \arguments{
@@ -20,7 +20,7 @@ ggbootvalid_variables(resmca, axes = c(1,2), type = "partial", K = 30,
   \item{K}{integer. Number of bootstrap replications (default is 30).}
   \item{ellipse}{character string. The type of ellipse. The default "norm" assumes a multivariate normal distribution, "t" assumes a multivariate t-distribution, and "euclid" draws a circle with the radius equal to level, representing the euclidean distance from the center.}
   \item{level}{numerical value. The level at which to draw an ellipse, or, if \code{ellipse}="euclid", the radius of the circle to be drawn.}
-  \item{palette}{Character string or character vector. Colors for the ellipses and labels of the categories, differentiated by variable. Can be the name of a palette from the \code{RcolorBrewer} package, a character vector of colors for a custom palette or a single color name (for no difference between variables). If NULL (default), the default palette of \code{ggplot2} is used.}
+  \item{col}{Character string. Color name for the ellipses and labels of the categories. If NULL (default), the default \code{ggplot2} palette is used, with one color per variable.}
   \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.}
 }
 
@@ -33,6 +33,10 @@ The default parameters for ellipses assume a multivariate normal distribution dr
 
 \value{a \code{ggplot2} object}
 
+\note{
+If \code{col} argument is NULL, ellipses and labels are colored according to the variables, using the default \code{ggplot2} palette. The palette can be customized using any \code{scale_color_*} function, such as \code{scale_color_brewer()}, \code{scale_color_grey()} or \code{scale_color_manual()}.
+}
+
 \references{
 Lebart L. (2006). "Validation Techniques in Multiple Correspondence Analysis". In M. Greenacre et J. Blasius (eds), \emph{Multiple Correspondence Analysis and related techniques}, Chapman and Hall/CRC, p.179-196.
 
@@ -42,13 +46,18 @@ Lebart L. (2007). "Which bootstrap for principal axes methods?". In P. Brito et 
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{bootvalid_variables}} 
+\code{\link{bootvalid_variables}} , \code{\link{ggbootvalid_supvars}}
 }
 
 \examples{
+# specific MCA of Taste example data set
 data(Taste)
-resmca <- speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
-ggbootvalid_variables(resmca, type = "partial", K = 5)
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA",
+          "Comedy.NA", "Crime.NA", "Animation.NA", "SciFi.NA", "Love.NA", 
+          "Musical.NA")
+mca <- speMCA(Taste[,1:11], excl = junk)
+# bootstrap validation ellipses for active variables
+ggbootvalid_variables(mca, type = "partial", K = 5)
 }
 
 \keyword{ multivariate }

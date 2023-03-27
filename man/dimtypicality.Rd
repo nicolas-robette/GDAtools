@@ -2,23 +2,23 @@
 
 \alias{dimtypicality}
 
-\title{Typicality tests for supplementary variables of a MCA}
+\title{Typicality tests for supplementary variables}
 
 \description{
-Computes typicality tests for a list of supplementary variables. It allows to analyze variants of MCA, such as 'specific' MCA or 'class specific' MCA.
+Computes typicality tests for a list of supplementary variables of a MCA.
 }
 
-\usage{dimtypicality(resmca, vars, dim = c(1,2), max.pval=1)}
+\usage{dimtypicality(resmca, vars, dim = c(1,2), max.pval = 1)}
 
 \arguments{
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
   \item{vars}{a data frame of supplementary variables}
   \item{dim}{the axes for which typicality tests are computed. Default is c(1,2)}
-  \item{max.pval}{only categories with a p-value lower or equal to max.pval are displayed. By default, all categories are displayed}
+  \item{max.pval}{only categories with a p-value lower or equal to \code{max.pval} are displayed. If 1 (default), all categories are displayed}
 }
 
 \value{
-  Returns a list of data frames giving the test statistics and p-values of the supplementary categories for the different axes.
+  Returns a list of data frames giving the typicality test statistics and p-values of the supplementary categories for the different axes.
 }
 
 \references{
@@ -30,17 +30,16 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{dimdesc}}, \code{\link{dimdescr}}, \code{\link{dimeta2}}, \code{\link{dimcontrib}}, \code{\link{condes}}, \code{\link{speMCA}}, \code{\link{csMCA}}
+\code{\link{dimdescr}}, \code{\link{dimeta2}}, \code{\link{dimcontrib}}
 }
 
 \examples{
-## Performs a specific MCA on 'Music' example data set
-## ignoring every 'NA' (i.e. 'not available') categories,
-## and then computes the typicality tests for Gender and Age (axes 1 and 2).
+# specific MCA on Music example data set
 data(Music)
-getindexcat(Music[,1:5])
-mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-dimtypicality(mca, Music[,c("Gender","Age")])
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
+mca <- speMCA(Music[,1:5], excl = junk)
+# typicality tests for gender and age
+dimtypicality(mca, Music[, c("Gender", "Age")])
 }
 
 \keyword{ multivariate }

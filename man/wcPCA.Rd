@@ -38,6 +38,10 @@ An object of class \code{PCA} from \code{FactoMineR} package, with an additional
 \item{ratio}{the within-class inertia percentage}.
 }
 
+\note{
+The code is adapted from \code{PCA} function from \code{FactoMineR} package.
+}
+
 \references{
 Escofier B., 1990, Analyse des correspondances multiples conditionnelle, \emph{La revue de Modulad}, 5, 13-28.
 
@@ -47,10 +51,12 @@ Lebart L., Morineau A. et Warwick K., 1984, \emph{Multivariate Descriptive Stati
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{wcMCA}}
+\code{\link{PCAoiv}}, \code{\link{wcMCA}}, \code{\link{MCAoiv}}
 }
 
 \examples{
+# within-class analysis of decathlon data
+# with quatiles of points as class
 library(FactoMineR)
 data(decathlon)
 points <- cut(decathlon$Points, c(7300, 7800, 8000, 8120, 8900), c("Q1","Q2","Q3","Q4"))

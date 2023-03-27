@@ -3,7 +3,7 @@
 
 \title{Discriminant Analysis of Qualitative Variables}
 
-\description{Descriptive discriminant analysis, aka "Analyse Factorielle Discriminante" for the French school of multivariate data analysis, with qualitative variables.}
+\description{Descriptive discriminant analysis (aka "Analyse Factorielle Discriminante" for the French school of multivariate data analysis) with qualitative variables.}
 
 \usage{
 DAQ(data, class, excl = NULL, row.w = NULL,
@@ -11,7 +11,7 @@ DAQ(data, class, excl = NULL, row.w = NULL,
 }
 
 \arguments{
-  \item{data}{data frame with only numeric variables}
+  \item{data}{data frame with only categorical variables}
   \item{class}{factor specifying the class}
   \item{excl}{numeric vector indicating the indexes of the "junk" categories (default is NULL). See \code{\link{getindexcat}} or use \code{\link{ijunk}} interactive function to identify these indexes. It may also be a character vector of junk categories, specified in the form "namevariable.namecategory" (for instance "gender.male").}
   \item{row.w}{numeric vector of row weights. If NULL (default), a vector of 1 for uniform row weights is used.}
@@ -28,7 +28,7 @@ The results are the same with \code{type} "FR" or "GB", only the eigenvalues var
 }
 
 \value{
-An object of class \code{PCA} from \code{FactoMineR} package, with \code{class} as qualitative supplementary variable and the disjunctive table of \code{data} as quantitative supplementary variables, and two additional items.
+An object of class \code{PCA} from \code{FactoMineR} package, with \code{class} as qualitative supplementary variable and the disjunctive table of \code{data} as quantitative supplementary variables, and two additional items :
 \item{cor_ratio}{correlation ratios between \code{class} and the discriminant factors}
 \item{mca}{an object of class \code{speMCA} with the results of the MCA of the first step}
 }
@@ -46,7 +46,7 @@ Saporta G., 2006, \emph{Probabilités, analyses des données et statistique}, Ed
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{DA}}, \code{\link{bcMCA}}, \code{\link{speMCA}}
+\code{\link{DA}}, \code{\link{bcMCA}}, \code{\link{MCAiv}}, \code{\link{speMCA}}
 }
 
 \examples{

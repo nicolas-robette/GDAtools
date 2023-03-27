@@ -1,19 +1,20 @@
 \name{ggadd_supvar}
 \alias{ggadd_supvar}
 
-\title{Adds a categorical supplementary variable to a cloud of variables}
+\title{Plot of a categorical supplementary variable}
 
 \description{
-Adds a categorical supplementary variable to a MCA cloud of variables, using the ggplot2 framework.
+Adds a categorical supplementary variable to a MCA cloud of variables.
 }
 
 \usage{
-ggadd_supvar(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), col='black',
-shape=1, prop=NULL, textsize=3, shapesize=6, segment=FALSE, vname=NULL)
+ggadd_supvar(p, resmca, var, sel = 1:nlevels(var), axes = c(1,2),
+col = "black", shape = 1, prop = NULL, textsize = 3, shapesize = 6,
+segment = FALSE, vname = NULL)
 }
 
 \arguments{
-  \item{p}{ggplot object with the cloud of variables}
+  \item{p}{\code{ggplot2} object with the cloud of variables}
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}.}
   \item{var}{Factor. The categorical supplementary variable. It does not need to have been used at the MCA step.}
   \item{sel}{Numeric vector of indexes of the categories of the supplementary variable to be added to the plot. By default, labels are plotted for every categories.}
@@ -27,7 +28,7 @@ shape=1, prop=NULL, textsize=3, shapesize=6, segment=FALSE, vname=NULL)
   \item{vname}{A character string to be used as a prefix for the labels of the categories. If NULL (default), no prefix is added.}
 }
 
-\value{a ggplot object}
+\value{a \code{ggplot2} object}
 
 \references{
 Le Roux B. and Rouanet H., \emph{Multiple Correspondence Analysis}, SAGE, Series: Quantitative Applications in the Social Sciences, Volume 163, CA:Thousand Oaks (2010).
@@ -38,19 +39,18 @@ Le Roux B. and Rouanet H., \emph{Geometric Data Analysis: From Correspondence An
 \author{Nicolas Robette}
 
 \seealso{
-\code{\link{ggcloud_variables}}, \code{\link{ggcloud_indiv}}, \code{\link{ggadd_ellipses}}, \code{\link{ggadd_corr}}, \code{\link{ggadd_interaction}}, \code{\link{ggadd_density}}
+\code{\link{ggcloud_variables}}, \code{\link{ggadd_supvars}}, \code{\link{ggadd_ellipses}}, \code{\link{ggadd_kellipses}}, \code{\link{ggadd_density}}, \code{\link{ggadd_interaction}}, \code{\link{ggsmoothed_supvar}}, \code{\link{ggadd_chulls}}, \code{\link{ggadd_corr}}
 }
 
 \examples{
-## Performs a specific MCA on 'Music' example data set
-## ignoring every 'NA' (i.e. 'not available') categories,
-## draws the cloud of categories
-## and adds Age as a supplementary variable.
+# specific MCA of Music example data set
 data(Music)
-getindexcat(Music[,1:5])
-mca <- speMCA(Music[,1:5],excl=c(3,6,9,12,15))
-p <- ggcloud_variables(mca, palette='lightgrey', shapes=FALSE)
-ggadd_supvar(p, mca, Music$Age, segment=TRUE)
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
+mca <- speMCA(Music[,1:5], excl = junk)
+# adds Age as a supplementary variable
+# onto the cloud of variables
+p <- ggcloud_variables(mca, col = "lightgrey", shapes = FALSE)
+ggadd_supvar(p, mca, Music$Age, segment = TRUE)
 }
 
 \keyword{ aplot }
