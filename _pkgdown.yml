@@ -16,9 +16,11 @@ reference:
   - ijunk
   - gPCA
   
-- title: Two-table and K-table analysis
+- title: Two-table and k-table analysis
 - desc: Performing MCA or PCA on several tables
 - contents:
+  - DA
+  - DAQ
   - bcMCA
   - bcPCA
   - wcMCA
@@ -44,9 +46,9 @@ reference:
   - dimeta2
   - dimtypicality
   - homog.test
-  - varsup
-  - varsups
-  - indsup
+  - supvar
+  - supvars
+  - supind
   - quadrant
   - flip.mca
   - angles.csa
