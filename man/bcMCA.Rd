@@ -5,11 +5,12 @@
 Between-class MCA, also called Barycentric Discriminant Analysis
 }
 \usage{
-bcMCA(data, class, row.w = NULL, ncp = 5)
+bcMCA(data, class, excl = NULL, row.w = NULL, ncp = 5)
 }
 \arguments{
   \item{data}{data frame with only categorical variables, i.e. factors}
   \item{class}{factor specifying the class}
+  \item{excl}{numeric vector indicating the indexes of the "junk" categories (default is NULL). See \code{\link{getindexcat}} or use \code{\link{ijunk}} interactive function to identify these indexes. It may also be a character vector of junk categories, specified in the form "namevariable.namecategory" (for instance "gender.male").}
   \item{row.w}{numeric vector of row weights. If NULL (default), a vector of 1 for uniform row weights is used.}
   \item{ncp}{number of dimensions kept in the results (by default 5)}
 }
@@ -22,7 +23,7 @@ Between-class MCA can also be viewed as a special case of MCA with instrumental 
 }
 
 \value{
-An object of class \code{CA} from \code{FactoMineR} package, with the indicator matrix of \code{data} as supplementary individuals, and an additional item :
+An object of class \code{CA} from \code{FactoMineR} package, with the indicator matrix of \code{data} as supplementary rows, and an additional item :
 \item{ratio}{the between-class inertia percentage}
 }
 
