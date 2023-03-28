@@ -63,9 +63,9 @@ ggsmoothed_supvar <- function(resmca, var, cat, axes = c(1,2),
   }
 
   p <- 
-    ggplot() +
+    ggplot2::ggplot() +
       ggplot2::geom_sf(data = grid, ggplot2::aes(geometry = .data$x, fill = .data$z), col = NA) +
-      ggplot2::scale_fill_distiller(type = "div", palette = pal, limits = limits)
+      ggplot2::scale_fill_distiller(type = "div", palette = pal, limits = limits, name = "")
   
   p + 
     ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", size=.1) +
