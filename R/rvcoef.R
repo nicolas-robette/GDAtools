@@ -5,6 +5,9 @@ rvcoef <- function(Xa, Xb, row.w = NULL) {
   if(any(sapply(Xb, FUN = function(x) !is.numeric(x) & !is.integer(x)))) stop("variables in Xb should all be numeric")
   if(nrow(Xa) != nrow(Xb)) stop("Xa and Xb should have the same number of rows")
   
+  if(is.matrix(Xa)) Xa <- data.frame(Xa)
+  if(is.matrix(Xb)) Xb <- data.frame(Xb)
+  
   Xas <- as.matrix(data.frame(lapply(Xa, function(x) x-weighted.mean(x,row.w)))) 
   Xbs <- as.matrix(data.frame(lapply(Xb, function(x) x-weighted.mean(x,row.w)))) 
   
