@@ -73,9 +73,10 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
   
   if(is.null(var)) {
     if(!is.null(col)) {
-    p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size, color = .data$vnames),
-                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE) +
-             ggplot2::scale_color_manual(values = rep(col, length(vnames)))
+    p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size), #, color = .data$vnames),
+                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE,
+                                      colour = col) #+
+             #ggplot2::scale_color_manual(values = rep(col, length(vnames)))
     } else {
       p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size, color = .data$vnames),
                                         direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE)
@@ -87,17 +88,25 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
                                       colour = col)
   }
   
+  minc <- min(df$coord)
+  maxc <- max(df$coord)
+  breaks <- c(seq(from = 0, to = minc, by = -0.5), seq(from = 0, to = maxc, by = 0.5))
+  breaks <- sort(unique(breaks))
+  breaks <- breaks[breaks > minc & breaks < maxc]
+  breaks <- round(breaks, 1)
+
   p <- p +
-    ggplot2::xlim(c(min(df$coord)*1.1, max(df$coord)*1.1)) +
-    ggplot2::xlab(paste("Coordinates on axis", axis)) +
-    # coord_flip() +
+    ggplot2::scale_x_continuous(breaks = breaks, 
+                                limits = 1.2*c(minc,maxc),
+                                name = paste("Coordinates on axis", axis)) +
+    ggplot2::scale_size(limits = c(1, NA)) +
     ggplot2::theme_minimal() +
     ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
                    panel.grid.minor = ggplot2::element_blank(),
                    axis.text.y = ggplot2::element_blank(),
                    axis.title.y = ggplot2::element_blank(),
                    axis.title.x = ggplot2::element_text(margin = ggplot2::unit(c(5,0,0,0), units = "mm")),
-                   aspect.ratio = 0.1,
+                   aspect.ratio = 0.3,
                    legend.position = "none")
   
   return(p)
