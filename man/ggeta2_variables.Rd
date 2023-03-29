@@ -17,7 +17,7 @@ ggeta2_variables(resmca, axes = c(1,2))
 }
 
 \details{
-Eta-squared (i.e. squared correlation ratio) is a measure of global association between a continuous variable and a categorical variable : it measures the share of variance of the continuous variables "explained" by the categorical variable. Here, it is used to plot the association between the active variables and the axes of the MCA cloud.
+This plot was proposed by Escofier and Pagès (2008) under the name "carré des liaisons", i.e. square of relationships, using correlation ratios to measure these relationships. Eta-squared (i.e. correlation ratio) is a measure of global association between a continuous variable and a categorical variable : it measures the share of variance of the continuous variables "explained" by the categorical variable. Here, it is used to plot the association between the active variables and the axes of the MCA cloud.
 }
 
 \value{a \code{ggplot2} object}
