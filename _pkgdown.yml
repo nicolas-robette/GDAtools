@@ -19,17 +19,17 @@ reference:
 - title: Two-table and k-table analysis
 - desc: Performing MCA or PCA on several tables
 - contents:
-  - DA
-  - DAQ
+  - MCAiv
+  - PCAiv
   - bcMCA
   - bcPCA
+  - DA
+  - DAQ
+  - MCAoiv
+  - PCAoiv
   - wcMCA
   - wcPCA
   - stMCA
-  - MCAiv
-  - PCAiv
-  - MCAoiv
-  - PCAoiv
   - coiMCA
   - coiPCA
   - multiMCA
@@ -58,13 +58,6 @@ reference:
 - title: Plotting MCA
 - desc: Plotting tools for MCA
 - contents:
-  - plot.speMCA
-  - plot.csMCA
-  - plot.multiMCA
-  - plot.stMCA
-  - textvarsup
-  - textindsup
-  - conc.ellipse
   - ggcloud_indiv
   - ggcloud_variables
   - ggadd_supind
@@ -82,6 +75,13 @@ reference:
   - ggeta2_variables
   - ggbootvalid_variables
   - ggbootvalid_supvars
+  - plot.speMCA
+  - plot.csMCA
+  - plot.multiMCA
+  - plot.stMCA
+  - textvarsup
+  - textindsup
+  - conc.ellipse
   
 - title: Miscellaneous
 - desc: A few additional tools
@@ -92,8 +92,8 @@ reference:
   - medoids
   - ahc.plots
   - dist.chi2
-  - quasindep
   - rvcoef
+  - quasindep
 
 - title: Datasets
 - desc: Datasets used in the examples
