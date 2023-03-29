@@ -32,10 +32,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/GDA_tutorial.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
+      <a href="../articles/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
   </ul></li>
 <li>
@@ -110,19 +110,48 @@ It shows the frequencies for all combinations of categories of pairs of variable
 <span class="r-out co"><span class="r-pr">#&gt;</span> FrenchPop.NA             0             0            5      3       1      1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rap.No                 159           255            3    417       0      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rap.Yes                 33            43            1      0      77      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rap.NA                   2             3            1      0       0      6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rock.No                146           211            3    304      52      4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rock.Yes                47            86            2    108      25      2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rock.NA                  1             4            0      5       0      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jazz.No                150           242            3    327      63      5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jazz.Yes                37            56            2     82      12      1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jazz.NA                  7             3            0      8       2      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classical.No           139           208            4    283      64      4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classical.Yes           52            89            1    129      11      2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classical.NA             3             4            0      5       2      0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               Rock.No Rock.Yes Rock.NA Jazz.No Jazz.Yes Jazz.NA Classical.No</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FrenchPop.No      146       47       1     150       37       7          139</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FrenchPop.Yes     211       86       4     242       56       3          208</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FrenchPop.NA        3        2       0       3        2       0            4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rap.No            304      108       5     327       82       8          283</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rap.Yes            52       25       0      63       12       2           64</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rap.NA              4        2       0       5        1       0            4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rock.No           360        0       0     300       52       8          255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rock.Yes            0      135       0      91       42       2           93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rock.NA             0        0       5       4        1       0            3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jazz.No           300       91       4     395        0       0          304</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jazz.Yes           52       42       1       0       95       0           41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jazz.NA             8        2       0       0        0      10            6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classical.No      255       93       3     304       41       6          351</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classical.Yes      99       41       2      84       54       4            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classical.NA        6        1       0       7        0       0            0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               Classical.Yes Classical.NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FrenchPop.No             52            3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FrenchPop.Yes            89            4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FrenchPop.NA              1            0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rap.No                  129            5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rap.Yes                  11            2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [ reached getOption("max.print") -- omitted 10 rows ]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rap.NA                    2            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rock.No                  99            6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rock.Yes                 41            1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rock.NA                   2            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jazz.No                  84            7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jazz.Yes                 54            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Jazz.NA                   4            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classical.No              0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classical.Yes           142            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classical.NA              0            7</span>
 </code></pre></div>
     </div>
   </div>

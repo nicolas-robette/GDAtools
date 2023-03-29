@@ -32,10 +32,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/GDA_tutorial.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
+      <a href="../articles/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
   </ul></li>
 <li>
@@ -84,13 +84,13 @@
           <p class="section-desc"></p>
         </th>
       </tr></tbody><tbody><tr><td>
-          <p><code><a href="DA.html">DA()</a></code> </p>
+          <p><code><a href="MCAiv.html">MCAiv()</a></code> </p>
         </td>
-        <td><p>Discriminant Analysis</p></td>
+        <td><p>Multiple Correspondence Analysis with Instrumental Variables</p></td>
       </tr><tr><td>
-          <p><code><a href="DAQ.html">DAQ()</a></code> </p>
+          <p><code><a href="PCAiv.html">PCAiv()</a></code> </p>
         </td>
-        <td><p>Discriminant Analysis of Qualitative Variables</p></td>
+        <td><p>Principal Component Analysis with Instrumental Variables</p></td>
       </tr><tr><td>
           <p><code><a href="bcMCA.html">bcMCA()</a></code> </p>
         </td>
@@ -99,6 +99,22 @@
           <p><code><a href="bcPCA.html">bcPCA()</a></code> </p>
         </td>
         <td><p>Between-class Principal Component Analysis</p></td>
+      </tr><tr><td>
+          <p><code><a href="DA.html">DA()</a></code> </p>
+        </td>
+        <td><p>Discriminant Analysis</p></td>
+      </tr><tr><td>
+          <p><code><a href="DAQ.html">DAQ()</a></code> </p>
+        </td>
+        <td><p>Discriminant Analysis of Qualitative Variables</p></td>
+      </tr><tr><td>
+          <p><code><a href="MCAoiv.html">MCAoiv()</a></code> </p>
+        </td>
+        <td><p>Multiple Correspondence Analysis with Orthogonal Instrumental Variables</p></td>
+      </tr><tr><td>
+          <p><code><a href="PCAoiv.html">PCAoiv()</a></code> </p>
+        </td>
+        <td><p>Principal Component Analysis with Orthogonal Instrumental Variables</p></td>
       </tr><tr><td>
           <p><code><a href="wcMCA.html">wcMCA()</a></code> </p>
         </td>
@@ -111,22 +127,6 @@
           <p><code><a href="stMCA.html">stMCA()</a></code> </p>
         </td>
         <td><p>Standardized MCA</p></td>
-      </tr><tr><td>
-          <p><code><a href="MCAiv.html">MCAiv()</a></code> </p>
-        </td>
-        <td><p>Multiple Correspondence Analysis with Instrumental Variables</p></td>
-      </tr><tr><td>
-          <p><code><a href="PCAiv.html">PCAiv()</a></code> </p>
-        </td>
-        <td><p>Principal Component Analysis with Instrumental Variables</p></td>
-      </tr><tr><td>
-          <p><code><a href="MCAoiv.html">MCAoiv()</a></code> </p>
-        </td>
-        <td><p>Multiple Correspondence Analysis with Orthogonal Instrumental Variables</p></td>
-      </tr><tr><td>
-          <p><code><a href="PCAoiv.html">PCAoiv()</a></code> </p>
-        </td>
-        <td><p>Principal Component Analysis with Orthogonal Instrumental Variables</p></td>
       </tr><tr><td>
           <p><code><a href="coiMCA.html">coiMCA()</a></code> </p>
         </td>
@@ -216,34 +216,6 @@
           <p class="section-desc"></p>
         </th>
       </tr></tbody><tbody><tr><td>
-          <p><code><a href="plot.speMCA.html">plot(<i>&lt;speMCA&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plot of specific MCA</p></td>
-      </tr><tr><td>
-          <p><code><a href="plot.csMCA.html">plot(<i>&lt;csMCA&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plot of class specific MCA</p></td>
-      </tr><tr><td>
-          <p><code><a href="plot.multiMCA.html">plot(<i>&lt;multiMCA&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plot of Multiple Factor Analysis</p></td>
-      </tr><tr><td>
-          <p><code><a href="plot.stMCA.html">plot(<i>&lt;stMCA&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plot of standardized MCA</p></td>
-      </tr><tr><td>
-          <p><code><a href="textvarsup.html">textvarsup()</a></code> </p>
-        </td>
-        <td><p>Plot of a categorical supplementary variable</p></td>
-      </tr><tr><td>
-          <p><code><a href="textindsup.html">textindsup()</a></code> </p>
-        </td>
-        <td><p>Plot of supplementary individuals</p></td>
-      </tr><tr><td>
-          <p><code><a href="conc.ellipse.html">conc.ellipse()</a></code> </p>
-        </td>
-        <td><p>Concentration ellipses</p></td>
-      </tr><tr><td>
           <p><code><a href="ggcloud_indiv.html">ggcloud_indiv()</a></code> </p>
         </td>
         <td><p>Plot of the cloud of individuals</p></td>
@@ -311,6 +283,34 @@
           <p><code><a href="ggbootvalid_supvars.html">ggbootvalid_supvars()</a></code> </p>
         </td>
         <td><p>Ellipses of bootstrap validation (supplementary variables)</p></td>
+      </tr><tr><td>
+          <p><code><a href="plot.speMCA.html">plot(<i>&lt;speMCA&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot of specific MCA</p></td>
+      </tr><tr><td>
+          <p><code><a href="plot.csMCA.html">plot(<i>&lt;csMCA&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot of class specific MCA</p></td>
+      </tr><tr><td>
+          <p><code><a href="plot.multiMCA.html">plot(<i>&lt;multiMCA&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot of Multiple Factor Analysis</p></td>
+      </tr><tr><td>
+          <p><code><a href="plot.stMCA.html">plot(<i>&lt;stMCA&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plot of standardized MCA</p></td>
+      </tr><tr><td>
+          <p><code><a href="textvarsup.html">textvarsup()</a></code> </p>
+        </td>
+        <td><p>Plot of a categorical supplementary variable</p></td>
+      </tr><tr><td>
+          <p><code><a href="textindsup.html">textindsup()</a></code> </p>
+        </td>
+        <td><p>Plot of supplementary individuals</p></td>
+      </tr><tr><td>
+          <p><code><a href="conc.ellipse.html">conc.ellipse()</a></code> </p>
+        </td>
+        <td><p>Concentration ellipses</p></td>
       </tr></tbody><tbody><tr><th colspan="2">
           <h2 id="miscellaneous">Miscellaneous <a href="#miscellaneous" class="anchor" aria-hidden="true"></a></h2>
           <p class="section-desc"></p>
@@ -340,13 +340,13 @@
         </td>
         <td><p>Chi-squared distance</p></td>
       </tr><tr><td>
-          <p><code><a href="quasindep.html">quasindep()</a></code> </p>
-        </td>
-        <td><p>Quasi-correspondence analysis</p></td>
-      </tr><tr><td>
           <p><code><a href="rvcoef.html">rvcoef()</a></code> </p>
         </td>
         <td><p>RV coefficient</p></td>
+      </tr><tr><td>
+          <p><code><a href="quasindep.html">quasindep()</a></code> </p>
+        </td>
+        <td><p>Quasi-correspondence analysis</p></td>
       </tr></tbody><tbody><tr><th colspan="2">
           <h2 id="datasets">Datasets <a href="#datasets" class="anchor" aria-hidden="true"></a></h2>
           <p class="section-desc"></p>
