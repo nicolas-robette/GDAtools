@@ -1,0 +1,582 @@
+---
+title: "L'analyse géométrique des données avec GDAtools"
+author: "Nicolas Robette"
+date: "`r Sys.Date()`"
+output: 
+ # pdf_document:
+ #    toc: true
+ #    toc_depth: 3
+ # number_sections: true
+ rmdformats::html_clean:
+   thumbnails: FALSE
+   use_bookdown: FALSE
+   toc_depth: 3
+# vignette: >
+#   %\VignetteIndexEntry{[fr] Tutoriel d'analyse géométrique des données}
+#   %\VignetteEngine{knitr::rmarkdown}
+#   %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmdformats)
+
+oldpar <- par() 
+oldoptions <- options()
+
+## Global options
+options(max.print="75")
+opts_chunk$set(echo=TRUE,
+	             cache=FALSE,
+               prompt=FALSE,
+               tidy=FALSE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=75)
+
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
+```
+
+\
+Ce tutoriel présente l'utilisation du package `GDAtools` pour l'analyse géométrique des données. Pour des approfondissements sur les procédures statistiques elles-mêmes, il est recommandé de se référer aux ouvrages référencés sur la page d'accueil du site.
+
+------------------------------------------------------------------------
+
+# Introduction
+
+Pour cet exemple d'Analyse des Correspondances Multiples (ACM), nous allons utiliser l'un des jeux de données fournis avec le package. Il s'agit d'informations sur les goûts et les pratiques culturelles de 2000 individus : écoute de genres musicaux (variété française, rap, rock, jazz et classique) et goût pour des genres de films (comédie, film policier, animation, science-fiction, film d'amour, comédie musicale). Ces 11 variables serviront de variables "actives" dans l'ACM et sont complétées par 3 variables "supplémentaires" : le sexe, l'âge et le niveau d'éducation.\
+
+```{r load}
+library(ggplot2)  # pour les graphiques
+library(GDAtools)
+data(Taste)
+str(Taste)
+```
+
+\
+Les variables actives ont toutes une modalité "non-réponse" ("NA"), qui concerne quelques individus.
+
+```{r nb_na}
+summary(Taste[,1:11])
+```
+
+\
+L'**ACM spécifique** permet de neutraliser ces modalités dans la construction de l'espace factoriel, tout en conservant l'ensemble des individus. On commence par repérer le rang des modalités que l'on souhaite neutraliser.
+
+```{r see_junk}
+getindexcat(Taste[,1:11])
+```
+
+\
+Le vecteur de ces rangs est ensuite donné comme argument dans la fonction d'ACM spécifique [`speMCA()`](https://nicolas-robette.github.io/GDAtools/reference/speMCA.html).
+
+```{r mca, eval = FALSE}
+mca <- speMCA(Taste[,1:11], excl=c(3,6,9,12,15,18,21,24,27,30,33))
+```
+
+Alternativement, on peut utiliser la liste des *intitulés* des modalités "poubelles".
+
+```{r mca_bis}
+junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA",
+          "Comedy.NA", "Crime.NA", "Animation.NA", "SciFi.NA", "Love.NA", 
+          "Musical.NA")
+mca <- speMCA(Taste[,1:11], excl = junk)
+```
+
+Les intitulés de ces modalités peuvent être identifiés à l'aide de la fonction [`ijunk()`](https://nicolas-robette.github.io/GDAtools/reference/ijunk.html), qui lance une application interactive prévue à cet effet et qui permet de copier-coller le code approprié.
+
+------------------------------------------------------------------------
+
+# Les nuages
+
+Les taux d'inertie corrigés de Benzécri permettent de se faire une idée de la part d'information représentée par chacun des axes.
+
+```{r inertia}
+modif.rate(mca)$modif
+```
+
+On voit ici que les deux premiers axes capturent l'essentiel de l'information (près de 90 %). On va donc dans la suite se concentrer sur le plan formé par les axes 1 et 2.\
+\
+
+### Nuage des individus
+
+Le nuage des individus ne présente pas de forme particulière (triangle, fer à cheval...), les points semblent répartis dans l'ensemble du plan (1,2).
+
+```{r cloud_ind}
+ggcloud_indiv(mca)
+```
+
+Toutefois, dans certains cas, des points peuvent se superposer et la structure du nuage des individus n'est qu'imparfaitement rendue par un nuage de points. Il est alors possible de compléter le premier graphique par une représentation de la densité de points dans le plan. La fonction [`ggcloud_indiv()`](https://nicolas-robette.github.io/GDAtools/reference/ggcloud_indiv.html) permet de le faire à l'aide de contours (à la manière des courbes de niveau d'une carte topographique) ou de surfaces hexagonales (colorées avec un gradient de couleur en fonction du nombre de points situés dans l'hexagone).
+
+```{r cloud_ind_contour}
+ggcloud_indiv(mca, col = "lightgray", density = "contour")
+```
+
+```{r cloud_ind_hex}
+ggcloud_indiv(mca, density = "hex", hex.bin = 10)
+```
+
+Quelle que soit la représentation de la densité utilisée, on observe que les points semblent être plus concentrés dans une zone située immédiatement à droite de l'axe vertical.\
+
+NB : [`ggcloud_indiv()`](https://nicolas-robette.github.io/GDAtools/reference/ggcloud_indiv.html) permet également d'afficher le *nom* des observations, lorsque cela présente un intérêt du point de vue de l'interprétation.\
+\
+
+### Nuage des variables
+
+Sur le nuage des variables :
+
+-   l'écoute de jazz et de musique classique et le goût des comédies musicales semblent s'opposer à l'écoute de rap et au goût pour les comédies sur l'axe 1 ;
+
+-   le goût pour l'animation et la science-fiction à celui pour les films d'amour et les comédies musicales sur l'axe 2.
+
+```{r cloud_var}
+ggcloud_variables(mca, shapes = FALSE, legend = "none")
+```
+
+De nombreuses options sont possibles, notamment : 
+
+  - ajout de symboles (cercles, triangles, etc.) en plus des noms des modalités ;
+  
+  - sélection ou mise en valeur des modalités les plus importantes selon différents critères (contribution, qualité de représentation, typicalité, etc.) ;
+
+  - utilisation de la taille, de l'italique, du gras et du soulignement pour identifier les modalités les plus importantes.
+  
+\ 
+
+On représente traditionnellement les résultats dans un plan, c'est-à-dire en deux dimensions (ici les dimensions 1 et 2). Mais il est parfois plus simple de concentrer l'interprétation sur un seul axe à la fois, ce qui est possible avec la fonction [`ggaxis_variables()`](https://nicolas-robette.github.io/GDAtools/reference/ggaxis_variables.html) (paramétrée ici pour afficher les noms des modalités avec une taille proportionnelle à leur contribution à la construction de l'axe).
+
+```{r axis1, crop = TRUE}
+ggaxis_variables(mca, axis = 1, prop = "ctr")
+```
+
+Toutefois, l'interprétation du plan factoriel, pour être robuste, ne peut s'arrêter à un examen visuel du nuage des variables. Celui-ci doit être complété par l'analyse attentive d'indicateurs statistiques, en particulier des **contributions** des modalités à la construction des axes et de leur **qualité de représentation**.
+
+------------------------------------------------------------------------
+
+# Aides à l'interprétation
+
+La plupart des aides à l'interprétation et autres informations utiles sont présentes dans l'objet créé par [`speMCA()`](https://nicolas-robette.github.io/GDAtools/reference/speMCA.html). Le package propose plusieurs fonctions pour extraire et organiser ces informations.
+
+  - [`contrib()`](https://nicolas-robette.github.io/GDAtools/reference/contrib.html) présente les contributions des variables et des modalités de ces variables à la construction de chacun des axes et à celle du nuage.
+  
+  - [`dimcontrib()`](https://nicolas-robette.github.io/GDAtools/reference/dimcontrib.html) extrait les contributions des individus et des modalités de variables à la construction d'un axe en particulier.
+  
+  - [`dimdescr()`](https://nicolas-robette.github.io/GDAtools/reference/dimdescr.html) identifie les variables et les modalités de variables les plus statistiquement associées aux différents axes. Les mesures d'association utilisées sont les **rapports de corrélation** (**eta²**) pour les variables et les **coefficients de corrélation** pour les modalités.
+  
+  - [`planecontrib()`](https://nicolas-robette.github.io/GDAtools/reference/planecontrib.html) extrait les contributions des individus et des modalités de variables à la construction d'un *plan* en particulier.
+
+La fonction [`tabcontrib()`](https://nicolas-robette.github.io/GDAtools/reference/tabcontrib.html) permet, pour un axe donné, de synthétiser les principales contributions (par défaut, seules les contributions supérieures à la moyenne sont présentées).
+
+```{r tabcontrib1, eval=FALSE}
+tabcontrib(mca, dim = 1)
+```
+
+```{r tabcontrib1bis, echo=FALSE}
+knitr::kable(tabcontrib(mca, dim=1), row.names=FALSE)
+```
+
+Les variables d'écoute de musique classique et de jazz contribuent à elles seules pour plus de 60 % à la construction de l'axe 1. L'écoute de classique et de jazz s'oppose donc à leur non-écoute, et secondairement au goût pour les comédies.\
+
+```{r tabcontrib2, eval=FALSE}
+tabcontrib(mca, dim = 2) 
+```
+
+```{r tabcontrib2bis, echo=FALSE}
+knitr::kable(tabcontrib(mca, dim=2), row.names=FALSE)
+```
+
+Sur l'axe 2, l'écoute de rock et de rap et le goût pour les films de science-fiction s'opposent au goût pour les films d'amour et les comédies musicale et à l'écoute de variété française.
+
+Une manière de synthétiser les relations entre les variables actives et les axes factoriels est le graphique appelé "carré des liaisons", proposé par Escofier et Pagès (2008). Il utilise les rapports de corrélation pour représenter ces liaisons.
+
+```{r eta2_plot}
+ggeta2_variables(mca) + ggtitle("Carré des liaisons")
+```
+
+We see that listening to jazz and classical music is highly correlated with axis 1 and not at all with axis 2, and that the active variables most correlated with axis 2 are only moderately so.
+
+------------------------------------------------------------------------
+
+# Les facteurs structurants
+
+### Les variables supplémentaires
+
+On peut aller plus loin en étudiant la relation entre l'espace factoriel et les variables supplémentaires, en l'occurrence le sexe, l'âge et le niveau d'éducation. Une première étape consiste à projeter les variables supplémentaires sur le nuage des variables.
+
+```{r cloud_varsup}
+vcloud <- ggcloud_variables(mca, shapes=FALSE, col="lightgray")
+ggadd_supvars(vcloud, mca, Taste[,c("Gender","Age","Educ")])
+```
+
+Il est possible de paramétrer séparément l'affichage de chacune des variables supplémentaires avec la fonction [`ggadd_supvar()`](https://nicolas-robette.github.io/GDAtools/reference/ggadd_supvar.html) (sans "s"). Avec toutefois plusieurs contreparties : plus de lignes de code et risque de superposition des noms des modalités.
+
+Le niveau d'éducation semble avant tout associé à l'axe 1, les plus diplômés étant du côté de l'écoute de jazz et de classique. Le sexe ne semble lié qu'à l'axe 2, avec les femmes dans le bas du plan et les hommes en haut. Quant à l'âge, il est associé aux deux axes : les individus se déplacent du quadrant nord-est au quadrant sud-ouest à mesure que leur âge augmente.
+
+On peut confirmer statistiquement ces premières observations en mesurant le degré d'association entre les variables supplémentaires et les axes à l'aide du **rapport de corrélation** (**eta²**).
+
+```{r dimeta2}
+dimeta2(mca, Taste[,c("Gender","Age","Educ")])
+```
+
+Le niveau d'éducation est la variable supplémentaire la plus associée à l'axe 1 : il "explique" 5,9 % de la variance des coordonnées individuelles sur cet axe. L'âge est également associé au premier axe, mais de manière moins marquée, et le sexe pas du tout.
+
+Sur l'axe 2, l'âge est la variable la plus structurante, devant le sexe et le niveau d'éducation. On voit en outre que l'âge est nettement plus lié à l'axe 2 qu'à l'axe 1.
+
+Au niveau des modalités, on peut caractériser l'association d'une modalité de variable supplémentaire avec un axe à partir des **coefficients de corrélation**.
+
+```{r condesc1, eval=FALSE}
+des <- dimdescr(mca, vars = Taste[,c("Gender","Age","Educ")])
+des$dim.1$categories
+```
+
+```{r condesc1bis, echo=FALSE}
+des <- dimdescr(mca, vars = Taste[,c("Gender","Age","Educ")])
+knitr::kable(des$dim.1$categories, row.names=FALSE)
+```
+
+Sur l'axe 1, les non et peu diplômés et les 15-24 ans s'opposent aux plus diplômés et aux 50 ans et plus. Les autres modalités apparaissent peu liées à l'axe (leurs coefficients de corrélation, dans la dernière colonne du tableau, sont proches de 0).
+
+```{r condesc2, eval=FALSE}
+des$dim.2$categories
+```
+
+```{r condesc2bis, echo=FALSE}
+knitr::kable(des$dim.2$categories, row.names=FALSE)
+```
+
+Sur l'axe 2, les hommes, les moins de 50 ans et les plus diplômés s'opposent aux femmes, aux plus de 50 ans et aux sans diplôme.
+
+### Analyse d'une variable supplémentaire
+
+Poursuivons l'analyse en nous concentrant sur *une* variable supplémentaire, le niveau d'éducation. La fonction [`supvar()`](https://nicolas-robette.github.io/GDAtools/reference/supvar.html) fournit : 
+
+  - les coordonnées des modalités sur les axes,
+
+  - leurs *cosinus²* (qui donnent la qualité de représentation d'une modalité sur un axe),
+
+  - leurs dispersions (variances) sur les axes,
+
+  - les rapports de corrélation (*eta²*) entre la variable et les axes,
+
+  - les *tests de typicalité* (sur lesquels nous reviendrons dans la partie suivante),
+
+  - les *coefficients de corrélation* entre les modalités et les axes.
+
+```{r varsup}
+supvar(mca, Taste$Educ)
+```
+
+Graphiquement, on peut représenter le "sous-nuage" de chacune des modalités à l'aide d'une **ellipse de concentration**, qui est centrée sur le point moyen et englobe 86 % des individus ayant cette modalité.
+
+```{r educ_ellipses}
+icloud <- ggcloud_indiv(mca, col = "lightgrey")
+ggadd_kellipses(icloud, mca, Taste$Educ, label = FALSE)
+```
+
+Même si, on l'a vu, les modalités du niveau d'éducation s'ordonnent le long de l'axe 1, les sous-nuages se superposent très largement, car l'association entre la variable et l'axe est modérée.
+
+Observons maintenant plus spécifiquement le sous-nuage des individus les plus diplômés (la 4ème modalité de la variable `Educ`).
+
+```{r educ_ellipse}
+ggadd_kellipses(icloud, mca, Taste$Educ, sel = 4, legend = "none")
+```
+
+Une ellipse de concentration est utile car elle représente conjointement le point moyen de la modalité et la dispersion du sous-nuage sur les axes. Ici, on voit que bien que le point moyen des individus les plus diplômés soit situé dans le quadrant nord-ouest, une part non négligeable des points du sous-nuage se trouve à droite et/ou en bas du plan.
+
+Les ellipses de concentration ne donnent en revanche qu'une représentation imparfaite de la répartition des points du sous-nuage, du fait de l'éventuelle superposition des points (de manière analogue à ce qu'on a vu pour le nuage des individus) et son centrage sur le point moyen. Il peut dès lors être intéressant de compléter une ellipse de concentration par une représentation de la densité des points du sous-nuage, sous forme de contours ou de surfaces.
+
+```{r educ_contour}
+ggadd_density(icloud, mca, var = Taste$Educ, cat = "High", density = "contour")
+```
+
+```{r educ_area}
+ggadd_density(icloud, mca, var = Taste$Educ, cat = "High", density = "area", ellipse = TRUE)
+```
+
+On voit ici qu'il semble y avoir une concentration d'individus très diplômés immédiatement à droite de l'axe vertical, dans une zone qui correspond aussi à une concentration de points du nuage des individus (voir plus haut).
+
+Un pas supplémentaire dans l'analyse consiste à neutraliser l'influence de la répartition des points du nuage des individus sur celle du sous-nuage, en se demandant dans quelles parties du plan les plus diplômés sont sur/sous-représentés. Dans le graphique suivant, on représente dans chaque tuile hexagonale la proportion d'individus très diplômés, centrée par rapport à la proportion d'individus très diplômés dans l'ensemble de l'échantillon. Autrement dit on représente la sur/sous-représentation d'individus très diplômés dans chaque portion du plan. Le graphique est rendu plus lisible par une procédure de lissage issue de l'analyse spatiale en géographie (*inverse distance weighting*).
+
+```{r educ_smoothed}
+ggsmoothed_supvar(mca, var = Taste$Educ, cat = "High", center = TRUE)
+```
+
+Les individus les plus diplômés sont sur-représentés dans l'ensemble du quadrant nord-ouest, mais également parmi les plus à l'ouest du quadrant sud-ouest.
+
+
+### Interaction entre deux variables supplémentaires
+
+On peut également étudier les interactions entre plusieurs variables supplémentaires, par exemple ici entre le sexe et l'âge.
+
+```{r interaction}
+ggadd_interaction(vcloud, mca, Taste$Gender, Taste$Age, legend = "none")
+```
+
+Le sexe et l'âge semblent peu interagir dans le plan 1-2. On remarque toutefois que, sur l'axe 1, les écarts entre les plus jeunes et les plus âgés sont plus importants chez les femmes que chez les hommes et que, sur l'axe 2, les jeunes se différencient plus selon le sexe que les plus âgés. 
+
+NB : Les analyses effectuées ici sur des variables supplémentaires sont réalisables de manière analogue pour des *individus* supplémentaires, à l'aide des fonctions [`supind()`](https://nicolas-robette.github.io/GDAtools/reference/supind.html) et [`ggadd_supind()`](https://nicolas-robette.github.io/GDAtools/reference/ggadd_supind.html). Cela présente un intérêt lorsque certains individus ont été écartés de l'ACM parce que trop atypiques ou que certaines informations manquaient, par exemple.
+
+
+------------------------------------------------------------------------
+
+# Analyse inductive
+
+Si on souhaite évaluer la généralisabilité des résultats, on peut compléter les analyses descriptives qui précèdent par des procédures d'inférence statistique qui empruntent à l'analyse inductive des données et aux approches combinatoires (pour cette partie plus encore que pour les autres, on renvoie à Le Roux et Rouanet, 2004 & 2010).
+
+Le problème de la typicalité consiste à se demander si un groupe d'individus peut être assimilé à la population de référence ou s'il est atypique. Un **test de typicalité** calcule une *p-value combinatoire*, qui définit le "degré de typicalité" du point moyen du groupe d'individus. Une p-value faible est considérée comme statistiquement significative au sens combinatoire et traduit une différence qui n'est probablement pas due au hasard.
+
+```{r typic}
+dimtypicality(mca, Taste[, c("Gender","Age","Educ")], dim = c(1,2))
+```
+
+A un seuil de 5 %, les points moyens des femmes, hommes et âges intermédiaires ne sont pas significativement différents de celui de l'ensemble de la population sur l'axe 1 (autrement dit de 0). Sur l'axe 2, ce sont les points moyens des niveaux d'éducation faibles et moyens qui ne s'écartent pas significativement de l'origine.
+
+On peut étudier les résultats des tests de typicalité d'une variable supplémentaire en particulier à partir de la fonction [`supvar()`](https://nicolas-robette.github.io/GDAtools/reference/supvar.html).
+
+```{r varsup_educ}
+vseduc <- varsup(mca, Taste$Educ)
+vseduc$pval[, c(1,2)]
+```
+
+On voit que, sur l'axe 1, toutes les modalités de niveau d'éducation sont significativement différentes de 0 à un seuil de 5 %, elles sont atypiques du nuage de l'ensemble des individus, mais que ce n'est pas le cas des modalités "Low" et "Medium" sur l'axe 2.
+
+\  
+
+Les **ellipses de confiance** répondent à la même logique que les tests de typicalité. Avec un seuil de significativité conventionnel de 5 %, l'ellipse de confiance est une zone de confiance à 95 % représentant, pour une modalité, l'ensemble des points moyens possibles qui ne sont pas significativement différents du point moyen observé.
+
+```{r educ_conc_ellipses}
+# p <- ggcloud_indiv(mca, col='lightgrey')
+ggadd_ellipses(icloud, mca, Taste$Educ, level = 0.05, label = FALSE)
+```
+
+On retrouve ici graphiquement les résultats obtenus avec les tests de typicalité.
+
+\  
+
+Un **test d'homogénéité** est une procédure combinatoire qui vise à comparer plusieurs groupes d'individus. La question que l'on se pose est de savoir si, sur un axe donné, les positions de deux groupes d'individus sont significativement distinctes (i.e. si les p-values sont toutes très proches de 0). Les groupes correspondent aux différentes modalités d'une variable.
+
+```{r homog_test1}
+ht <- homog.test(mca, Taste$Educ)
+round(ht$dim.1$p.values, 3)
+```
+
+Sur l'axe 1, les points moyens des modalités de niveau d'éducation sont toutes significativement distinctes les unes des autres.
+
+```{r homog_test2}
+round(ht$dim.2$p.values, 3)
+```
+
+Ce n'est pas le cas sur l'axe 2, où les modalités "Low" et "Medium" ne se distinguent pas significativement (p-value = 0,22).
+
+------------------------------------------------------------------------
+
+# Validation interne
+
+Le manque de robustesse des ACM, ou l'absence de moyens de mesurer cette robustesse, est parfois présenté comme l'une des faiblesses de l'analyse géométrique des données. Ces critiques ne sont guère pertinentes, notamment du fait qu'il existe des techniques de "validation interne" des résultats des ACM. Ludovic Lebart (2006 ; 2007) a ainsi proposé de s'appuyer sur le *bootstrap*, i.e. le rééchantillonnage par tirage aléatoire avec remise. Cette approche présente l'avantage d'être non-paramétrique, i.e. de ne reposer sur aucune des hypothèses probabilistes de l'inférence fréquentiste.
+
+Lebart proposer plusieurs méthodes. Le **bootstrap total** utilise de nouvelles ACM calculées à partir de réplications bootstrap des données initiales. 
+
+- Dans le bootstrap total de *type 1*, le signe des coordonnées est corrigé si nécessaire (la direction des axes d'une ACM étant arbitraire). 
+
+- Dans le *type 2*, l'ordre des axes et le signe des coordonnées sont corrigés si nécessaire. 
+
+- Dans le *type 3*, une rotation procustéenne est utilisée pour trouver la meilleure superposition entre les axes initiaux et les axes répliqués. 
+
+Le **bootstrap partiel**, quant à lui, ne calcule pas de nouvelle ACM : il projette des réplications bootstrap des données initiales comme éléments supplémentaires de l'ACM. Il donne une vision plus optimiste (ou moins exigeante) de la stabilité des résultats que le bootstrap total.
+
+Ci-dessous, les résultats d'un bootstrap partiel (avec 30 réplications, nombre considéré comme généralement suffisant par Lebart) sont représentés à l'aide d'ellipses de confiance. On constate que si les points des réplications bootstrap de quelques modalités sont relativement dispersés, ce n'est le cas que de modalités éloignées de l'origine du plan et ne modifie en rien l'interprétation des résultats de l'ACM : ceux-ci sont tout à fait robustes.
+
+```{r bootstrap}
+ggbootvalid_variables(mca, type = "partial", K = 30) + theme(legend.position = "none")
+```
+
+Il est possible de mener le même type d'analyses pour des variables supplémentaires avec la fonction [`ggbootvalid_supvars()`](https://nicolas-robette.github.io/GDAtools/reference/ggbootvalid_supvars.html), et d'obtenir les résultats des calculs de réplications bootstrap (sans représentation graphique) avec les fonctions [`bootvalid_variables()`](https://nicolas-robette.github.io/GDAtools/reference/bootvalid_variables.html) et [`bootvalid_supvars()`](https://nicolas-robette.github.io/GDAtools/reference/bootvalid_supvars.html).
+
+------------------------------------------------------------------------
+
+# ACM et classification
+
+L'ACM et les techniques de classification automatique sont souvent utilisées conjointement. Par exemple, après avoir représenté les données par des plans factoriels, on peut souhaiter obtenir un résumé sous la forme d'une typologie, autrement dit regrouper les individus qui se ressemblent. On peut pour cela s'appuyer sur les données d'origine ou sur les coordonnées des individus dans le nuage de l'ACM.
+
+On réalise ici une **Classification Ascendante Hiérarchique** (CAH) à partir des coordonnées des individus dans le plan factoriel (1,2), puis une partition en 3 classe.
+
+```{r cah}
+d <- dist(mca$ind$coord[, c(1,2)])
+hca <- hclust(d, "ward.D2")
+cluster <- factor(cutree(hca, 3))
+```
+
+On peut ensuite utiliser la partition ainsi créée pour de nouvelles analyses, par exemple en la croisant avec des variables supplémentaires, ou plus simplement représenter les sous-nuages d'individus correspondant aux classes de la typologie, à l'aide d'**enveloppes convexes**. Une enveloppe convexe est le polygone convexe le plus petit parmi ceux qui contiennent un ensemble de points. Dans le contexte de l'ACM, les enveloppes convexes sont une représentation graphique intéressante surtout si les sous-nuages représentés sont relativement peu superposés, comme c'est le cas ici.
+
+```{r chull}
+ggadd_chulls(icloud, mca, cluster)
+```
+
+Quelques remarques :
+
+  - La fonction [`quadrant()`](https://nicolas-robette.github.io/GDAtools/reference/quadrant.html) crée également une typologie des individus, de manière plus simple : chaque individu est classé selon la partie du plan (le "quadrant") où il se situe (nord-ouest, nord-est, sud-est, sud-ouest).
+  
+  - Il existe de nombreuses mesures de distances / ressemblances. Dans l'exemple ci-dessus, on a utilisé la distance euclidienne entre les coordonnées des individus. Si on réalise une classification automatique *à partir des variables d'origine* de l'ACM, il est cohérent d'employer la distance du chi-2, celle qui est utilisée par les analyses des correspondances, ce qui est possible avec la fonction [`dist.chi2()`](https://nicolas-robette.github.io/GDAtools/reference/dist.chi2.html).
+  
+  - La fonction [`ahc.plots()`](https://nicolas-robette.github.io/GDAtools/reference/ahc.plots.html) propose quelques représentations graphiques qui donnent des indications pour le choix du nombre de classes à partir des résultats d'une CAH.
+  
+  - Si la CAH est la technique de classification automatique la plus répandue en analyse géométrique des données, il en existe de nombreuses autres (voir par exemple le package [`cluster`](https://cran.r-project.org/package=cluster)).
+
+------------------------------------------------------------------------
+
+# Variantes de l'ACM
+
+### Class Specific Analysis
+
+La **Class Specific Analysis** (CSA) est un prolongement de l'ACM qui permet d'étudier un sous-nuage d'individus en prenant conjointement en compte la distribution des variables dans le sous-nuage *et* dans l'ensemble du nuage. Il s'agit donc de tenir compte du fait que la structure du sous-nuage n'existe pas *in abstracto* mais en relation avec le nuage dans lequel il s'inscrit.
+
+On illustre ici la CSA à partir du sous-nuage des individus les plus diplômés.
+
+```{r csa}
+csa <- csMCA(Taste[,1:11], Taste$Educ=="High", excl=c(3,6,9,12,15,18,21,24,27,30,33))
+```
+
+```{r csa_cloud_var}
+ggcloud_variables(csa, shapes = FALSE, legend = "none")
+```
+
+```{r csa_tabcontrib1, eval=FALSE}
+tabcontrib(csa, dim = 1)
+```
+
+```{r csa_tabcontrib1bis, echo=FALSE}
+knitr::kable(tabcontrib(csa, dim=1), row.names=FALSE)
+```
+
+On voit que, comme dans l'ACM, l'écoute de jazz et de musique classique structurent l'axe 1, mais cette fois beaucoup plus fortement puisque ces deux variables contribuent à elles seules pour 75 % à la construction de l'axe.
+
+```{r csa_tabcontrib2, eval=FALSE}
+tabcontrib(csa, dim = 2)
+```
+
+```{r csa_tabcontrib2bis, echo=FALSE}
+knitr::kable(tabcontrib(csa, dim=2), row.names=FALSE)
+```
+
+C'est avant tout le goût pour les films d'animation qui contribue à la construction de l'axe 2.
+
+En somme, le sous-nuage des variables des plus diplômés présente des points communs avec celui de l'ensemble de la population, mais aussi quelques spécificités très marquées.
+
+La ressemblance entre l'ACM portant sur l'ensemble des individus et la CSA sur les individus les plus diplômés peut être mesurée en étudiant les angles entre les axes des deux analyses, avec la fonction [`angles.csa()`](https://nicolas-robette.github.io/GDAtools/reference/angles.csa.html).
+
+```{r angles_csa}
+angles.csa(csa, mca)
+```
+
+On voit que la première dimension de la CSA est nettement corrélée à la première dimension de l'ACM (et très peu à la dimension 2), mais que la deuxième dimension de la CSA se distingue assez nettement des deux premières dimensions de l'ACM.
+
+On n'ira pas plus loin ici mais précisons que toutes les techniques de visualisation et d'interprétation décrites précédemment peuvent s'appliquer aux résultats d'une CSA.
+
+
+### Analyses discriminantes
+
+L'approche par variables instrumentales constitue une forme de rapprochement entre l'analyse géométrique des données et les méthodes de régression. En pratique, il s'agit de construire un espace factoriel, à partir d'un premier groupe de variables actives, de manière à ce que cet espace "explique" au mieux un second ensemble de variables, dites **variables instrumentales**. On parle ici d'expliquer dans un sens analogue aux analyses de variance (anova) ou de régression, dans lesquelles une variable explicative "explique" une variable à expliquer, i.e. rend compte le mieux possible de sa variance.
+
+Dans le cas général, il y a plusieurs variables instrumentales, qui peuvent être catégorielles et/ou numériques. Lorsque les variables actives sont toutes numériques, on parle d'Analyse en Composantes Principales sur Variables Instrumentales (fonction [`PCAiv()`](https://nicolas-robette.github.io/GDAtools/reference/PCAiv.html)), et lorsque les variables actives sont toutes catégorielles, d'Analyse des Correspondances sur Variables Instrumentales (fonction [`MCAiv()`](https://nicolas-robette.github.io/GDAtools/reference/MCAiv.html)).
+
+Si la variable instrumentale est unique et catégorielle, on peut dire qu'elle partitionne les individus en groupes ou "classes". Il s'agit donc de faire une **analyse inter-classes**, en construisant un espace factoriel qui rend compte des différences entre classes (fonctions [`bcPCA()`](https://nicolas-robette.github.io/GDAtools/reference/bcPCA.html) pour les cas où les variables actives sont continues et [`bcMCA()`](https://nicolas-robette.github.io/GDAtools/reference/bcMCA.html) pour ceux où elles sont catégorielles). On parle aussi parfois d'**analyse discriminante barycentrique** ou d'*analyse des correspondances discriminantes*. Si les variables actives sont continues, une variante est l'**analyse factorielle discriminante** (AFD), dite aussi *analyse discriminante descriptive* (fonction [`DA()`](https://nicolas-robette.github.io/GDAtools/reference/DA.html)), qui est équivalente à l'*analyse discriminante linéaire* dans la littérature anglo-saxonne. Lorsque les variables actives sont catégorielles, une adaptation de l'AFD a été proposée par Gilbert Saporta (1977) sous le nom de **Disqual** (fonction [`DAQ()`](https://nicolas-robette.github.io/GDAtools/reference/DAQ.html)).
+
+En guise d'exemple, on applique une analyse discriminante barycentrique pour construire l'espace factoriel des différences de goûts entre les individus des différentes catégories d'âge.
+
+```{r between}
+between <- bcMCA(Taste[,1:11], class = Taste$Age, excl = junk)
+factoextra::fviz_ca(between, repel = TRUE, invisible = "row.sup", 
+                    col.col = "dodgerblue3", col.row = "tomato2", title = "Between-class analysis")
+between$ratio
+```
+
+Le premier axe, ou "facteur discriminant", ordonne les catégories d'âge et oppose notamment l'écoute de rap et de rock et le goût pour la science-fiction, du côté des jeunes, à l'écoute de musique classique et au goût pour les comédies musicales, du côté des plus de 50 ans. Mais beaucoup de modalités de goûts sont proches du centre de l'axe 1 et sont donc peu différenciées selon l'âge. Les différences d'âge ne rendent d'ailleurs compte que de 4% de l'inertie totale du nuage.
+
+
+### Analyses conditionnelles
+
+Les *analyses conditionnelles* constituent une autre tentative d'intégration de l'analyse géométrique des données et de la régression. Leur principe consiste à contraindre les axes de l'ACM à être indépendants (i.e. orthogonaux) d'une ou plusieurs variables supplémentaires, c'est-à-dire à construire une ACM "toute chose (de ces variables supplémentaires) égale par ailleurs" (Bry et al, 2016). La comparaison des résultats de l'ACM originelle et de ceux de l'ACM conditionnelle est un moyen d'étudier les effets de structure.
+
+Dans le cas général, il y a plusieurs variables dont il faut "éliminer l'effet" et celles-ci sont parfois appelées **variables instrumentales orthogonales**. On réalisera donc une *Analyse en Composantes Principales sur Variables Instrumentales Orthogonales* si les variables actives sont toutes numériques (fonction [`PCAoiv()`](https://nicolas-robette.github.io/GDAtools/reference/PCAoiv.html)) et une *Analyse des Correspondances sur Variables Instrumentales Orthogonales* si les variables actives sont toutes catégorielles (fonction [`MCAoiv()`](https://nicolas-robette.github.io/GDAtools/reference/MCAoiv.html)).
+
+Comme pour les analyses discriminantes (sous-partie précédente), si la variable instrumentale orthogonale est unique et catégorielle, elle partitionne les individus en "classes". Mais on est cette fois dans le cadre d'une **analyse intra-classes** : il s'agit de construire l'espace factoriel rendant compte des structures communes aux différentes classes. Lorsque les variables actives sont catégorielles, on réalise une **ACM conditionnelle** (Escofier, 1990 et fonction [`wcMCA()`](https://nicolas-robette.github.io/GDAtools/reference/wcMCA.html)), dont l'**ACM standardisée** (Bry et al, 2016) est une alternative (fonction [`stMCA()`](https://nicolas-robette.github.io/GDAtools/reference/stMCA.html)). L'approche conditionnelle s'applique aussi au cas de variables actives numériques (fonction [`wcPCA()`](https://nicolas-robette.github.io/GDAtools/reference/wcPCA.html)).
+
+On construit maintenant l'espace des goûts communs aux femmes et aux hommes, ou, dit autrement, en neutralisant les différences sexuées. Dans le plan (1,2), les résultats obtenus sont très proches de ceux de l'ACM spécifique. La principale différence concerne le goût (très féminin) pour les films d'amour, qui ne se distingue plus sur l'axe 2.
+
+La faible ampleur des différences entre les deux analyses est confirmée par le fait que l'analyse intra-classes rend compte de près de 99% de l'inertie totale du nuage.
+
+```{r within}
+within <- wcMCA(Taste[,1:11], class = Taste$Gender, excl = junk)
+ggcloud_variables(within, legend = "none") + ggtitle("Within-class analysis")
+within$ratio
+```
+
+
+### Analyses multi-tableaux (symétriques)
+
+Un autre cas de figure se présente quand les variables actives sont réparties en plusieurs groupes homogènes et que ces groupes jouent un rôle symétrique (contrairement aux approches avec variables instrumentales).
+
+Avec deux groupes de variables, on peut réaliser une **analyse de co-inertie** (Tucker, 1958 ; Dolédec et Chessel, 1994) afin d'étudier les structures communes aux deux groupes (fonctions [`coiMCA()`](https://nicolas-robette.github.io/GDAtools/reference/coiMCA.html) si les groupes sont composés de variables catégorielles, [`coiPCA()`](https://nicolas-robette.github.io/GDAtools/reference/coiPCA.html) s'ils sont composés de variables numériques).
+
+On applique une analyse de co-inertie à un nouveau jeu de données, dans lequel un groupe de 5 variables décrit les goûts pour différents genres musicaux, et un second groupe de 2 variables décrit la fréquence d'écoute (en général ou "focalisée", c'est-à-dire en ne faisant rien d'autre).
+
+```{r coinertia}
+data(Music)
+Xa <- Music[,1:5]  # music tastes
+Xb <- Music[,8:9]  # frequency of listening
+coin <- coiMCA(Xa, Xb, 
+               excl.a = c("FrenchPop.NA","Rap.NA","Rock.NA","Jazz.NA","Classical.NA"))
+factoextra::fviz_ca(coin, repel = TRUE, title = "Co-inertia analysis",
+                    col.col = "dodgerblue3", col.row = "tomato2")
+```
+
+L'examen du premier axe montre que le rap, le jazz et le rock sont du côté de l'écoute quotidienne et d'une écoute focalisée fréquente ou quotidienne, alors que le goût pour la musique populaire française est du côté d'une écoute non-quotidienne et de l'absence d'écoute focalisée.
+
+L'**Analyse Factorielle Multiple** (AFM, voir Escofier et Pagès, 1994) permet de traiter deux groupes de variables *ou plus*. Elle prend en compte à la fois les structures propres à chacun des groupes et les structures communes aux groupes. La fonction [`multiMCA()`](https://nicolas-robette.github.io/GDAtools/reference/multiMCA.html) permet de réaliser des AFM en utilisant des ACM spécifiques ou des Class Specific Analysis.
+
+Ici, on reprend les données `Taste`. Un groupe de variables décrit l'écoute de genres musicaux et l'autre le goût pour des genres de films, et l'AFM utilise des ACM spécifiques. 
+
+```{r mfa}
+mca1 <- speMCA(Taste[,1:5], excl = c(3,6,9,12,15))
+mca2 <- speMCA(Taste[,6:11], excl = c(3,6,9,12,15,18))
+mfa <- multiMCA(list(mca1,mca2))
+ggcloud_variables(mfa, shapes=FALSE, legend="none") + ggtitle("Analyse factorielle multiple")
+```
+
+On observe que ce sont surtout les variables cinématographiques qui structurent le plan (1,2). Une AFM ne présente guère d'intérêt ici, car les deux espaces sont très peu liés : le coefficient RV est de 1,4% (le **coefficient RV** - fonction [`rvcoef()`](https://nicolas-robette.github.io/GDAtools/reference/rvcoef.html) - est une sorte de coefficient de corrélation entre les groupes de variables).
+
+```{r rvcoef}
+rvcoef(mca1$ind$coord, mca2$ind$coord)
+```
+
+NB : Il existe une autre approche pour traiter les cas de plusieurs groupes de variables, que ces groupes jouent un rôle symétrique ou non, c'est l'**approche PLS** (Partial Least Square, voir Tenenhaus, 1998). La plupart de ces techniques sont disponibles dans le package [`plsdepot`](https://cran.r-project.org/package=plsdepot), développé par [Gaston Sanchez](https://github.com/gastonstat).
+
+
+------------------------------------------------------------------------
+
+# Quelques points pratiques
+
+### Liens avec d'autres packages
+
+Les variantes de l'ACM et de l'ACP proposées dans GDAtools sont, autant que possible, prévues pour créer des objets similaires à ceux créés par les fonctions `PCA()`, `MCA()` et `CA()` du package [`FactoMineR`](https://cran.r-project.org/package=FactoMineR). Cela permet à ces objets d'être (le plus souvent) compatibles avec un certain nombre de fonctionnalités d'interprétation et de visualisation des résultats :
+
+  - les fonctions graphiques du package [`FactoMineR`](https://cran.r-project.org/package=FactoMineR),
+  
+  - le package [`Factoshiny`](https://cran.r-project.org/package=Factoshiny) pour la construction interactive de graphiques,
+  
+  - le formidable package [`explor`](https://juba.github.io/explor/), développé par [Julien Barnier](https://github.com/juba), pour l'exploration interactive des résultats,
+  
+  - le package [`factoextra`](https://rpkgs.datanovia.com/factoextra/index.html) pour extraire et visualiser les résultats.
+
+
+### Gestion des couleurs
+
+La plupart des fonctions de représentations graphiques de `GDAtools` ont été conçues avec la "grammaire" (et les palettes de couleurs par défaut) de [`ggplot2`](https://ggplot2.tidyverse.org/) et de manière à pouvoir personnaliser les couleurs de manière très flexible. On peut en effet utiliser les fonctions de type `scale_color_*`, comme `scale_color_grey()` pour les niveaux de gris, `scale_color_brewer()` pour les palettes [`ColorBrewer`](http://colorbrewer2.org/), `scale_color_manual()` pour utiliser des palettes personnalisées, ou encore `paletteer::scale_color_paletteer_d()` du package [`paletteer`](https://emilhvitfeldt.github.io/paletteer/) pour accéder à un grand nombre de palettes de couleurs existant dans R (dont une liste est accessible [ici](https://pmassicotte.github.io/paletteer_gallery/)). Il faut toutefois veiller à choisir une palette disposant d'au moins autant de couleurs qu'il y a de variables à représenter (faute de quoi certaines variables resteront invisibles).
+
+Par exemple, pour afficher le nuage des variables avec la palette `ColorBrewer` "Paired1", on procédera ainsi.
+
+```{r colors}
+ggcloud_variables(mca) + scale_color_brewer(palette = "Paired")
+```
+
