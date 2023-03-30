@@ -85,7 +85,7 @@
                         <h4 data-toc-skip class="author">Nicolas
 Robette</h4>
             
-            <h4 data-toc-skip class="date">2023-03-29</h4>
+            <h4 data-toc-skip class="date">2023-03-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/articles/GDA_tutorial.Rmd" class="external-link"><code>vignettes/articles/GDA_tutorial.Rmd</code></a></small>
       <div class="hidden name"><code>GDA_tutorial.Rmd</code></div>
@@ -535,6 +535,9 @@ uses correlation ratios to represent these relationships.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ggeta2_variables.html">ggeta2_variables</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Square of relationships"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="GDA_tutorial_files/figure-html/eta2_plot-1.png" width="700"></p>
+<p>We see that listening to jazz and classical music is highly
+correlated with axis 1 and not at all with axis 2, and that the active
+variables most correlated with axis 2 are only moderately so.</p>
 <hr>
 </div>
 <div class="section level2">
@@ -974,7 +977,7 @@ significantly from the origin.</p>
 <p>One can study the results of typicality tests for a supplementary
 variable in particular using the function <a href="https://nicolas-robette.github.io/GDAtools/reference/supvar.html"><code>supvar()</code></a>.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">vseduc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/supvar.html">varsup</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">vseduc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/supvar.html">supvar</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span></span>
 <span><span class="va">vseduc</span><span class="op">$</span><span class="va">pval</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre><code>          dim.1    dim.2
 None   0.000000 0.000000
@@ -1518,6 +1521,68 @@ the <strong>PLS approach</strong> (Partial Least Square, see Tenenhaus,
 1998). Most of these techniques are available in the package <a href="https://cran.r-project.org/package=plsdepot" class="external-link"><code>plsdepot</code></a>,
 developed by <a href="https://github.com/gastonstat" class="external-link">Gaston
 Sanchez</a>.</p>
+</div>
+<div class="section level4">
+<h4 id="nonsymmetric-correspondence-analysis">Nonsymmetric correspondence analysis<a class="anchor" aria-label="anchor" href="#nonsymmetric-correspondence-analysis"></a>
+</h4>
+<p>When dealing with a contingency table with a dependence structure,
+i.e. when the role of the two variables is not symmetrical but, on the
+contrary, one can be considered as predicting the other, nonsymmetric
+correspondence analysis (NSCA) can be used to represent the predictive
+structure in the table and to assess the predictive power of the
+predictor variable.</p>
+<p>Technically, NSCA is very similar to the standard CA, the main
+difference being that the columns of the contingency table are not
+weighted by their rarity (i.e. the inverse of the marginal
+frequencies).</p>
+<p>Here we study data on the distribution of various domestic tasks in
+couples. We consider that the type of domestic task is predictive of
+<em>who</em> performs that task.</p>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://pbil.univ-lyon1.fr/ADE-4/" class="external-link">ade4</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">housetasks</span><span class="op">)</span></span>
+<span><span class="va">housetasks</span></span></code></pre></div>
+<pre><code>           Wife Alternating Husband Jointly
+Laundry     156          14       2       4
+Main_meal   124          20       5       4
+Dinner       77          11       7      13
+Breakfeast   82          36      15       7
+Tidying      53          11       1      57
+Dishes       32          24       4      53
+Shopping     33          23       9      55
+Official     12          46      23      15
+Driving      10          51      75       3
+Finances     13          13      21      66
+Insurance     8           1      53      77
+Repairs       0           3     160       2
+Holidays      0           1       6     153</code></pre>
+<p>The biplots of an NSCA reflect the dependency structure of the
+contingency table and thus should not be interpreted as the planes of a
+standard CA. A first principle is that the graph displays the centred
+row profiles. A second principle is that the relationships between rows
+and columns are contained in their inner products : the rows are
+depicted as vectors, also called biplot axes, and the columns are
+projected on these vectors. If some columns have projections on the row
+vector far away from the origin, then the row has a comparatively large
+increase in predictability, and its profile deviates considerably from
+the marginal one, especially for that column.</p>
+<p>For more detailed interpretational guidelines, see Kroonenberg and
+Lombardo (1999, pp.377-378).</p>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nsCA.html">nsCA</a></span><span class="op">(</span><span class="va">housetasks</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/nsca.biplot.html">nsca.biplot</a></span><span class="op">(</span><span class="va">nsca</span><span class="op">)</span></span></code></pre></div>
+<p><img src="GDA_tutorial_files/figure-html/nsca2-1.png" width="700"></p>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsca</span><span class="op">$</span><span class="va">GK.tau</span></span></code></pre></div>
+<pre><code>[1] 0.4067139</code></pre>
+<p>We find that knowing that household tasks involve laundry or meal
+preparation “increases predictive performance” of female tasks. Repairs
+are associated with male tasks and vacation planning with joint
+tasks.</p>
+<p>The <strong>Goodman and Kruskal tau</strong> is an
+<em>asymmetric</em> measure of global association. Its high value (0.41)
+here indicates that the type of household task does predict who performs
+the task.</p>
 <hr>
 </div>
 </div>
@@ -1529,7 +1594,7 @@ Sanchez</a>.</p>
 </h4>
 <p>The MCA and PCA variants offered in GDAtools are, as far as possible,
 intended to create objects similar to those created by the
-<code><a href="https://rdrr.io/pkg/FactoMineR/man/PCA.html" class="external-link">PCA()</a></code>, <code><a href="https://rdrr.io/pkg/FactoMineR/man/MCA.html" class="external-link">MCA()</a></code> and <code><a href="https://rdrr.io/pkg/FactoMineR/man/CA.html" class="external-link">CA()</a></code> functions
+<code>PCA()</code>, <code>MCA()</code> and <code>CA()</code> functions
 of the [<code>FactoMineR</code>] package (<a href="https://cran.r-project.org/package=FactoMineR" class="external-link uri">https://cran.r-project.org/package=FactoMineR</a>). This
 allows these objects to be (mostly) compatible with a number of
 functions for interpreting and visualizing the results:</p>
@@ -1564,7 +1629,7 @@ will remain invisible).</p>
 <p>For example, to display the cloud of variables with the
 <code>ColorBrewer</code> palette “Paired1”, we will proceed as
 follows.</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Paired"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="GDA_tutorial_files/figure-html/colors-1.png" width="700"></p>
 </div>

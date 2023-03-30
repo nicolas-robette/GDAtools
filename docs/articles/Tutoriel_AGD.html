@@ -86,7 +86,7 @@ GDAtools</h1>
                         <h4 data-toc-skip class="author">Nicolas
 Robette</h4>
             
-            <h4 data-toc-skip class="date">2023-03-29</h4>
+            <h4 data-toc-skip class="date">2023-03-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/articles/Tutoriel_AGD.Rmd" class="external-link"><code>vignettes/articles/Tutoriel_AGD.Rmd</code></a></small>
       <div class="hidden name"><code>Tutoriel_AGD.Rmd</code></div>
@@ -543,9 +543,10 @@ corrélation pour représenter ces liaisons.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ggeta2_variables.html">ggeta2_variables</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Carré des liaisons"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/eta2_plot-1.png" width="700"></p>
-<p>We see that listening to jazz and classical music is highly
-correlated with axis 1 and not at all with axis 2, and that the active
-variables most correlated with axis 2 are only moderately so.</p>
+<p>On constate que l’écoute du jazz et de la musique classique est
+fortement corrélée avec l’axe 1 et pas du tout avec l’axe 2, et que les
+variables actives les plus corrélées avec l’axe 2 ne le sont que
+modérément.</p>
 <hr>
 </div>
 <div class="section level2">
@@ -986,7 +987,7 @@ moyens qui ne s’écartent pas significativement de l’origine.</p>
 <p>On peut étudier les résultats des tests de typicalité d’une variable
 supplémentaire en particulier à partir de la fonction <a href="https://nicolas-robette.github.io/GDAtools/reference/supvar.html"><code>supvar()</code></a>.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">vseduc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/supvar.html">varsup</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">vseduc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/supvar.html">supvar</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span></span>
 <span><span class="va">vseduc</span><span class="op">$</span><span class="va">pval</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 <pre><code>          dim.1    dim.2
 None   0.000000 0.000000
@@ -1547,6 +1548,73 @@ Tenenhaus, 1998). La plupart de ces techniques sont disponibles dans le
 package <a href="https://cran.r-project.org/package=plsdepot" class="external-link"><code>plsdepot</code></a>,
 développé par <a href="https://github.com/gastonstat" class="external-link">Gaston
 Sanchez</a>.</p>
+</div>
+<div class="section level4">
+<h4 id="analyse-des-correspondances-non-symétriques">Analyse des correspondances non-symétriques<a class="anchor" aria-label="anchor" href="#analyse-des-correspondances-non-sym%C3%A9triques"></a>
+</h4>
+<p>Lorsqu’un tableau de contingence présente une structure de
+dépendance, c’est-à-dire lorsque le rôle des deux variables n’est pas
+symétrique mais que, au contraire, l’une peut être considérée comme
+prédisant l’autre, l’analyse des correspondances non symétrique peut
+être utilisée pour représenter la structure prédictive du tableau et
+évaluer le pouvoir prédictif de la variable prédictive.</p>
+<p>Techniquement, l’analyse des correspondances non symétrique est très
+similaire à l’analyse des correspondances standard, la principale
+différence étant que les colonnes du tableau de contingence ne sont pas
+pondérées par leur rareté (c’est-à-dire par l’inverse des fréquences
+marginales).</p>
+<p>On étudie ici des données sur la répartition de diverses tâches
+domestiques dans les couples. On considère que le type de tâche
+domestique est prédicteur de <em>qui</em> réalise cette tâche.</p>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://pbil.univ-lyon1.fr/ADE-4/" class="external-link">ade4</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">housetasks</span><span class="op">)</span></span>
+<span><span class="va">housetasks</span></span></code></pre></div>
+<pre><code>           Wife Alternating Husband Jointly
+Laundry     156          14       2       4
+Main_meal   124          20       5       4
+Dinner       77          11       7      13
+Breakfeast   82          36      15       7
+Tidying      53          11       1      57
+Dishes       32          24       4      53
+Shopping     33          23       9      55
+Official     12          46      23      15
+Driving      10          51      75       3
+Finances     13          13      21      66
+Insurance     8           1      53      77
+Repairs       0           3     160       2
+Holidays      0           1       6     153</code></pre>
+<p>Les biplots d’une analyse des correspondances non symétrique
+reflètent la structure de dépendance du tableau de contingence et ne
+doivent donc pas être interprétés comme les plans d’une analyse des
+correspondances standard. Un premier principe est que le graphique
+affiche les profils-lignes centrés. Un deuxième principe est que les
+relations entre les lignes et les colonnes sont contenues dans leurs
+produits scalaires : les lignes sont représentées sous forme de
+vecteurs, également appelés <em>facteurs</em> du biplot, et les colonnes
+sont projetées sur ces vecteurs. Si certaines colonnes ont des
+projections sur le vecteur-ligne très éloignées de l’origine, la ligne
+présente une augmentation relativement importante de la prévisibilité et
+son profil s’écarte considérablement du profil marginal, en particulier
+pour cette colonne.</p>
+<p>Pour des conseils plus détaillés sur l’interprétation, voir
+Kroonenberg et Lombardo (1999, pp.377-378).</p>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nsCA.html">nsCA</a></span><span class="op">(</span><span class="va">housetasks</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/nsca.biplot.html">nsca.biplot</a></span><span class="op">(</span><span class="va">nsca</span><span class="op">)</span></span></code></pre></div>
+<p><img src="Tutoriel_AGD_files/figure-html/nsca2-1.png" width="700"></p>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nsca</span><span class="op">$</span><span class="va">GK.tau</span></span></code></pre></div>
+<pre><code>[1] 0.4067139</code></pre>
+<p>On constate le fait de savoir que les tâches domestiques concernent
+la lessive ou la préparation des repas “augmente les performances de
+prédiction” de tâches féminines. Les réparations sont associées aux
+tâches masculines et l’organisation des vacances aux tâches
+conjointes.</p>
+<p>Le <strong>tau de Goodman et Kruskal</strong> est une mesure
+d’association globale <em>asymétrique</em>. Sa valeur élevée (0,41)
+indique ici que le type de tâche domestique prédit bien qui réalise la
+tâche.</p>
 <hr>
 </div>
 </div>
@@ -1558,8 +1626,8 @@ Sanchez</a>.</p>
 </h4>
 <p>Les variantes de l’ACM et de l’ACP proposées dans GDAtools sont,
 autant que possible, prévues pour créer des objets similaires à ceux
-créés par les fonctions <code><a href="https://rdrr.io/pkg/FactoMineR/man/PCA.html" class="external-link">PCA()</a></code>, <code><a href="https://rdrr.io/pkg/FactoMineR/man/MCA.html" class="external-link">MCA()</a></code> et
-<code><a href="https://rdrr.io/pkg/FactoMineR/man/CA.html" class="external-link">CA()</a></code> du package <a href="https://cran.r-project.org/package=FactoMineR" class="external-link"><code>FactoMineR</code></a>.
+créés par les fonctions <code>PCA()</code>, <code>MCA()</code> et
+<code>CA()</code> du package <a href="https://cran.r-project.org/package=FactoMineR" class="external-link"><code>FactoMineR</code></a>.
 Cela permet à ces objets d’être (le plus souvent) compatibles avec un
 certain nombre de fonctionnalités d’interprétation et de visualisation
 des résultats :</p>
@@ -1595,7 +1663,7 @@ de couleurs qu’il y a de variables à représenter (faute de quoi
 certaines variables resteront invisibles).</p>
 <p>Par exemple, pour afficher le nuage des variables avec la palette
 <code>ColorBrewer</code> “Paired1”, on procédera ainsi.</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Paired"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="Tutoriel_AGD_files/figure-html/colors-1.png" width="700"></p>
 </div>
