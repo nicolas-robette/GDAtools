@@ -33,6 +33,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 * `supind()` : replaces `indsup()`, which is softly deprecated
 * `supvar()` : replaces `varsup()`, which is softly deprecated
 * `supvars()` : replaces `varsups()`, which is softly deprecated
+* `nsCA()` : Nonsymmetric Correspondence Analysis
 
 ## Changes in existing functions
 

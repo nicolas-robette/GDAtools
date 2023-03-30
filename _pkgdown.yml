@@ -12,9 +12,10 @@ reference:
 - desc: Performing MCA and variants
 - contents:
   - speMCA
-  - csMCA
   - ijunk
+  - csMCA
   - gPCA
+  - nsCA
   
 - title: Two-table and k-table analysis
 - desc: Performing MCA or PCA on several tables

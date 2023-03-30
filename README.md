@@ -12,27 +12,28 @@
 
 * Specific Multiple Correspondence Analysis
 * Class Specific Analysis
-* two-table and k-table analyses : Multiple Factor Analysis, between- and within-class analysis, MCA and PCA with instrumental variables or orthogonal instrumental variables, discriminant analysis, coinertia analysis
-* guides for interpretation (contributions, test-values, etc.)
+* Nonsymmetric Correspondence Analysis
+* two-table and k-table analyses : Multiple Factor Analysis, between- and within-class analysis, MCA and PCA with instrumental variables or orthogonal instrumental variables, discriminant analysis, coinertia analysis, etc.
+* guides for interpretation (contributions, quality of representation, test-values, etc.)
 * analysis of structuring factors (concentration ellipses, interactions, etc.)
-* inductive tests
+* inductive analysis (typicality and homogeneity tests, confidence ellipses)
 * bootstrap validation
 * many graphical representations for MCA and variants (with and without [`ggplot2`](https://ggplot2.tidyverse.org/))
 * plots for hierarchical clustering
 
-\
+\ 
 
 Initially, I developed `GDAtools` because the [`FactoMineR`](http://factominer.free.fr/) package, which I was using at the time, did not offer some of the techniques I needed, in particular specific MCA. So I tried to program the main functions of `GDAtools` to be compatible with the MCA of [`FactoMineR`] and vice versa.
 Then I discovered the [`ade4`](http://pbil.univ-lyon1.fr/ade4/home.php?lang=eng) package, which offers an incredibly rich range of possibilities. However, it is oriented towards ecology, which does not exactly correspond to the needs of social scientists (of which I am one). However, I was very much inspired by it for the GDAtools 2.0 version, in particular for the multi-table methods, with instrumental variables, etc.
 Lately, I have also tried to develop the package a bit beyond the GDA toolkit "à la Le Roux et Rouanet", which was the initial goal.
 
-\
+\ 
 
 ## Documentation
 
 Please visit [https://nicolas-robette.github.io/GDAtools/](https://nicolas-robette.github.io/GDAtools/) for documentation
 
-\
+\ 
 
 ## Installation
 
@@ -46,7 +47,7 @@ if (!require(devtools)){
 install_github("nicolas-robette/GDAtools")
 ```
 
-\
+\ 
 
 ## Citation
 
@@ -54,13 +55,13 @@ To cite `GDAtools` in publications, use :
 
 Robette N. (2023), *`GDAtools` : Geometric Data Analysis in `R`*, version 2.0, https://nicolas-robette.github.io/GDAtools/
 
-\
+\ 
 
 ## References
 
 **A selective list of the handbooks that helped me to develop the package, although there are many other very useful ones (first of all Benzécri's books)**
 
-Bry X., 1995, *Analyses factorielles multiples*, Economica.
+Bry X., 1995, *Analyses factorielles simples*, Economica.
 
 Bry X., 1996, *Analyses factorielles multiples*, Economica.
 
@@ -74,7 +75,7 @@ Le Roux B. and Rouanet H., 2010, *Multiple Correspondence Analysis*, SAGE, Serie
 
 Saporta G., 2006, *Probabilités, analyses des données et statistique*, Editions Technip.
 
-\
+\ 
 
 **More specific references on some techniques present in the package**
 
@@ -99,6 +100,8 @@ Escofier B. and Pages J., 1994, "Multiple Factor Analysis (AFMULT package)", *Co
 Escouffier Y., 1973, "Le traitement des variables vectorielles", *Biometrics*, 29, 751–760.
 
 Escoufier Y., 1987, "The duality diagram : a means of better practical applications". In *Development in numerical ecology*, Legendre, P. & Legendre, L. (Eds.) NATO advanced Institute, Serie G. Springer Verlag, Berlin, 139–156.
+
+Kroonenberg P.M. and Lombardo R., 1999, "Nonsymmetric Correspondence Analysis: A Tool for Analysing Contingency Tables with a Dependence Structure", *Multivariate Behavioral Research*, 34 (3), 367-396.
 
 Lebart L., 2006, "Validation Techniques in Multiple Correspondence Analysis". In M. Greenacre et J. Blasius (eds), *Multiple Correspondence Analysis and related techniques*, Chapman and Hall/CRC, p.179-196.
 
