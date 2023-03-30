@@ -1,7 +1,7 @@
 citHeader("To cite GDAtools in publications, use :")
 
-citEntry(
-  entry    = "manual",
+bibentry(
+  bibtype  = "manual",
   title    = "{GDAtools}: Geometric Data Analysis in {R}",
   author   = "Nicolas Robette",
   year     = "2023",
