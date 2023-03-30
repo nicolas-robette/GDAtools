@@ -83,6 +83,7 @@ reference:
   - textvarsup
   - textindsup
   - conc.ellipse
+  - nsca.biplot
   
 - title: Miscellaneous
 - desc: A few additional tools
