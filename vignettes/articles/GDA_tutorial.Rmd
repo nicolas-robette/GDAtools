@@ -575,7 +575,7 @@ For more detailed interpretational guidelines, see Kroonenberg and Lombardo (199
 
 ```{r nsca2}
 nsca <- nsCA(housetasks)
-biplot.nsca(nsca)
+nsca.biplot(nsca)
 nsca$GK.tau
 ```
 
