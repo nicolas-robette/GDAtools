@@ -194,7 +194,8 @@ Une manière de synthétiser les relations entre les variables actives et les ax
 ggeta2_variables(mca) + ggtitle("Carré des liaisons")
 ```
 
-We see that listening to jazz and classical music is highly correlated with axis 1 and not at all with axis 2, and that the active variables most correlated with axis 2 are only moderately so.
+On constate que l'écoute du jazz et de la musique classique est fortement corrélée avec l'axe 1 et pas du tout avec l'axe 2, et que les variables actives les plus corrélées avec l'axe 2 ne le sont que modérément.
+
 
 ------------------------------------------------------------------------
 
@@ -335,7 +336,7 @@ A un seuil de 5 %, les points moyens des femmes, hommes et âges intermédiaire
 On peut étudier les résultats des tests de typicalité d'une variable supplémentaire en particulier à partir de la fonction [`supvar()`](https://nicolas-robette.github.io/GDAtools/reference/supvar.html).
 
 ```{r varsup_educ}
-vseduc <- varsup(mca, Taste$Educ)
+vseduc <- supvar(mca, Taste$Educ)
 vseduc$pval[, c(1,2)]
 ```
 
@@ -551,6 +552,36 @@ rvcoef(mca1$ind$coord, mca2$ind$coord)
 ```
 
 NB : Il existe une autre approche pour traiter les cas de plusieurs groupes de variables, que ces groupes jouent un rôle symétrique ou non, c'est l'**approche PLS** (Partial Least Square, voir Tenenhaus, 1998). La plupart de ces techniques sont disponibles dans le package [`plsdepot`](https://cran.r-project.org/package=plsdepot), développé par [Gaston Sanchez](https://github.com/gastonstat).
+
+
+### Analyse des correspondances non-symétriques
+
+Lorsqu'un tableau de contingence présente une structure de dépendance, c'est-à-dire lorsque le rôle des deux variables n'est pas symétrique mais que, au contraire, l'une peut être considérée comme prédisant l'autre, l'analyse des correspondances non symétrique peut être utilisée pour représenter la structure prédictive du tableau et évaluer le pouvoir prédictif de la variable prédictive.
+
+Techniquement, l'analyse des correspondances non symétrique est très similaire à l'analyse des correspondances standard, la principale différence étant que les colonnes du tableau de contingence ne sont pas pondérées par leur rareté (c'est-à-dire par l'inverse des fréquences marginales).
+
+On étudie ici des données sur la répartition de diverses tâches domestiques dans les couples. On considère que le type de tâche domestique est prédicteur de *qui* réalise cette tâche.
+
+```{r nsca1}
+library(ade4)
+data(housetasks)
+housetasks
+```
+
+Les biplots d'une analyse des correspondances non symétrique reflètent la structure de dépendance du tableau de contingence et ne doivent donc pas être interprétés comme les plans d'une analyse des correspondances standard. Un premier principe est que le graphique affiche les profils-lignes centrés. Un deuxième principe est que les relations entre les lignes et les colonnes
+sont contenues dans leurs produits scalaires : les lignes sont représentées sous forme de vecteurs, également appelés *facteurs* du biplot, et les colonnes sont projetées sur ces vecteurs. Si certaines colonnes ont des projections sur le vecteur-ligne très éloignées de l'origine, la ligne présente une augmentation relativement importante de la prévisibilité et son profil s'écarte considérablement du profil marginal, en particulier pour cette colonne.
+
+Pour des conseils plus détaillés sur l'interprétation, voir Kroonenberg et Lombardo (1999, pp.377-378).
+
+```{r nsca2}
+nsca <- nsCA(housetasks)
+biplot.nsca(nsca)
+nsca$GK.tau
+```
+
+On constate le fait de savoir que les tâches domestiques concernent la lessive ou la préparation des repas "augmente les performances de prédiction" de tâches féminines. Les réparations sont associées aux tâches masculines et l'organisation des vacances aux tâches conjointes.
+
+Le **tau de Goodman et Kruskal** est une mesure d'association globale *asymétrique*. Sa valeur élevée (0,41) indique ici que le type de tâche domestique prédit bien qui réalise la tâche.
 
 
 ------------------------------------------------------------------------

@@ -194,6 +194,7 @@ One way to summarize the relationships between the active variables and the fact
 ggeta2_variables(mca) + ggtitle("Square of relationships")
 ```
 
+We see that listening to jazz and classical music is highly correlated with axis 1 and not at all with axis 2, and that the active variables most correlated with axis 2 are only moderately so.
 
 
 ------------------------------------------------------------------------
@@ -336,7 +337,7 @@ At a 5 percent threshold, the mean points for women, men, and middle-aged people
 One can study the results of typicality tests for a supplementary variable in particular using the function [`supvar()`](https://nicolas-robette.github.io/GDAtools/reference/supvar.html).
 
 ```{r varsup_educ}
-vseduc <- varsup(mca, Taste$Educ)
+vseduc <- supvar(mca, Taste$Educ)
 vseduc$pval[, c(1,2)]
 ```
 
@@ -552,6 +553,35 @@ rvcoef(mca1$ind$coord, mca2$ind$coord)
 ```
 
 NB: There is another approach to deal with the case of several groups of variables, whether these groups play a symmetrical role or not, it is the **PLS approach** (Partial Least Square, see Tenenhaus, 1998). Most of these techniques are available in the package [`plsdepot`](https://cran.r-project.org/package=plsdepot), developed by [Gaston Sanchez](https://github.com/gastonstat).
+
+
+### Nonsymmetric correspondence analysis
+
+When dealing with a contingency table with a dependence structure, i.e. when the role of the two variables is not symmetrical but, on the contrary, one can be considered as predicting the other, nonsymmetric correspondence analysis (NSCA) can be used to represent the predictive structure in the table and to assess the predictive power of the predictor variable.
+
+Technically, NSCA is very similar to the standard CA, the main difference being that the columns of the contingency table are not weighted by their rarity (i.e. the inverse of the marginal frequencies).
+
+Here we study data on the distribution of various domestic tasks in couples. We consider that the type of domestic task is predictive of *who* performs that task.
+
+```{r nsca1}
+library(ade4)
+data(housetasks)
+housetasks
+```
+
+The biplots of an NSCA reflect the dependency structure of the contingency table and thus should not be interpreted as the planes of a standard CA. A first principle is that the graph displays the centred row profiles. A second principle is that the relationships between rows and columns are contained in their inner products : the rows are depicted as vectors, also called biplot axes, and the columns are projected on these vectors. If some columns have projections on the row vector far away from the origin, then the row has a comparatively large increase in predictability, and its profile deviates considerably from the marginal one, especially for that column.
+
+For more detailed interpretational guidelines, see Kroonenberg and Lombardo (1999, pp.377-378).
+
+```{r nsca2}
+nsca <- nsCA(housetasks)
+biplot.nsca(nsca)
+nsca$GK.tau
+```
+
+We find that knowing that household tasks involve laundry or meal preparation "increases predictive performance" of female tasks. Repairs are associated with male tasks and vacation planning with joint tasks.
+
+The **Goodman and Kruskal tau** is an *asymmetric* measure of global association. Its high value (0.41) here indicates that the type of household task does predict who performs the task.
 
 
 ------------------------------------------------------------------------
