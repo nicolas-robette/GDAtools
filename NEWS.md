@@ -1,10 +1,11 @@
-# GDAtools 2.0
+# GDAtools 2.0 [CRAN]
 
 Please note that the 1.8 version of GDAtools was not published on CRAN. So, compared to the last version on CRAN, 2.0 version inherits the changes of 1.8 version.
 
 ## Major change
 
 * The package now focuses exclusively on Geometric Data Analysis, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new `descriptio` package (available on CRAN or github) : `wtable()`, `pem()`, `phi.table()`, `oddsratio.table()`, `catdesc()`, `condesc()`, `assoc.twocat()`, `assoc.twocont()`, `assoc.catcont()`, `assoc.yx()`, `darma()`, `ggassoc_chiasmogram()`, `ggassoc_assocplot()`, `ggassoc_bertin()`, `ggassoc_phiplot()`, `ggassoc_boxplot()`, `ggassoc_crosstab()`, `ggassoc_scatter()`. Lastly, `translate.logit()` has moved to the (also new) `deauvieau` package (available on CRAN).
+* The vignettes have been extensively rewritten.
 
 ## New functions
 

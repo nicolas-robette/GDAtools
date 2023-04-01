@@ -86,7 +86,7 @@ France - I, L'analyse des correspondances", *Bulletin de Méthodologie Sociologi
 
 Bry X., Robette N., Roueff O., 2016, "A dialogue of the deaf in the statistical theater? Adressing structural effects within a geometric data analysis framework", *Quality & Quantity*, 50(3), 1009–1020 [<doi>](https://link.springer.com/article/10.1007/s11135-015-0187-z)
 
-Cibois P., 2014, *Les méthodes d’analyse d’enquêtes*. Nouvelle édition [en ligne](http://books.openedition.org/enseditions/1443). Lyon: ENS Éditions.
+Cibois P., 2014, *Les méthodes d’analyse d’enquêtes*. Nouvelle édition [en ligne](https://books.openedition.org/enseditions/1443). Lyon: ENS Éditions.
 
 De Leeuw J et van der Heijden PGM, 1985, *Quasi-Correspondence Analysis*, Leiden University.
 of Leiden.
