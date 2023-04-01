@@ -10,6 +10,12 @@
     <loc>https://nicolas-robette.github.io/GDAtools/articles/Tutoriel_AGD.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/articles/articles/GDA_tutorial.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/articles/articles/Tutoriel_AGD.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/articles/english/Tutorial_GDA.html</loc>
   </url>
   <url>
@@ -197,6 +203,12 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/multiMCA.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/nsCA.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/nsca.biplot.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/planecontrib.html</loc>
