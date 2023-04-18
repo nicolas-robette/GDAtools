@@ -23,8 +23,8 @@
 
 \ 
 
-Initially, I developed `GDAtools` because the [`FactoMineR`](http://factominer.free.fr/) package, which I was using at the time, did not offer some of the techniques I needed, in particular specific MCA. So I tried to program the main functions of `GDAtools` to be compatible with the MCA of [`FactoMineR`] and vice versa.
-Then I discovered the [`ade4`](http://pbil.univ-lyon1.fr/ade4/home.php?lang=eng) package, which offers an incredibly rich range of possibilities. However, it is oriented towards ecology, which does not exactly correspond to the needs of social scientists (of which I am one). However, I was very much inspired by it for the GDAtools 2.0 version, in particular for the multi-table methods, with instrumental variables, etc.
+Initially, I developed `GDAtools` because the [`FactoMineR`](http://factominer.free.fr/) package, which I was using at the time, did not offer some of the techniques I needed, in particular specific MCA. So I tried to program the main functions of `GDAtools` to be compatible with the MCA of [`FactoMineR`](http://factominer.free.fr/) and vice versa.
+Then I discovered the [`ade4`](http://pbil.univ-lyon1.fr/ade4/home.php?lang=eng) package, which offers an incredibly rich range of possibilities. However, it is oriented towards ecology, which does not exactly correspond to the needs of social scientists (of which I am one). Still, I was very much inspired by it for the GDAtools 2.0 version, in particular for the multi-table methods, with instrumental variables, etc.
 Lately, I have also tried to develop the package a bit beyond the GDA toolkit "à la Le Roux et Rouanet", which was the initial goal.
 
 \ 
@@ -97,7 +97,7 @@ Escofier B., 1990, "Analyse des correspondances multiples conditionnelle", *La r
 
 Escofier B. and Pages J., 1994, "Multiple Factor Analysis (AFMULT package)", *Computational Statistics and Data Analysis*, 18, 121-140.
 
-Escouffier Y., 1973, "Le traitement des variables vectorielles", *Biometrics*, 29, 751–760.
+Escoufier Y., 1973, "Le traitement des variables vectorielles", *Biometrics*, 29, 751–760.
 
 Escoufier Y., 1987, "The duality diagram : a means of better practical applications". In *Development in numerical ecology*, Legendre, P. & Legendre, L. (Eds.) NATO advanced Institute, Serie G. Springer Verlag, Berlin, 139–156.
 
