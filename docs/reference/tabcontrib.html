@@ -18,7 +18,7 @@ Analysis and organizes these informations into a fancy table."><!-- mathjax --><
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
       </span>
     </div>
 
@@ -68,7 +68,7 @@ Analysis and organizes these informations into a fancy table.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">resmca</span>, dim <span class="op">=</span> <span class="fl">1</span>, best <span class="op">=</span> <span class="cn">TRUE</span>, dec <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">resmca</span>, dim <span class="op">=</span> <span class="fl">1</span>, best <span class="op">=</span> <span class="cn">TRUE</span>, dec <span class="op">=</span> <span class="fl">2</span>, shortlabs <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -84,6 +84,9 @@ Analysis and organizes these informations into a fancy table.</p>
 
   <dt>dec</dt>
 <dd><p>integer. The number of decimals for the results (default is 2)</p></dd>
+
+  <dt>shortlabs</dt>
+<dd><p>logical. If TRUE, the data frame will have short column names, so that all columns can be displayed side by side on a laptop screen. Default is FALSE (long explicit column names).</p></dd>
 
 </dl></div>
     <div id="value">

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
       </span>
     </div>
 
@@ -86,7 +86,8 @@
 </dl></div>
     <div id="details">
     <h2>Details</h2>
-    <p>Undesirable categories may be of several kinds: infrequent categories (say, &lt;5 percents), heterogeneous categories (e.g. "others") or uninterpretable categories (e.g. "not available"). In these cases, specific MCA may be useful to ignore these categories for the determination of distances between individuals (see references).</p>
+    <p>Undesirable (i.e. "junk") categories may be of several kinds: infrequent categories (say, &lt;5 percents), heterogeneous categories (e.g. "others") or uninterpretable categories (e.g. "not available"). In these cases, specific MCA may be useful to ignore these categories for the determination of distances between individuals (see references).</p>
+<p>If there are NAs in <code>data</code>, these NAs will be automatically considered as junk categories. If one desires more flexibility, <code>data</code> should be recoded to add explicit factor levels for NAs and then <code>excl</code> option may be used to select the junk categories.</p>
     </div>
     <div id="value">
     <h2>Value</h2>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
       </span>
     </div>
 
@@ -61,7 +61,21 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="2.0" id="gdatools-20-cran">GDAtools 2.0 [CRAN]<a class="anchor" aria-label="anchor" href="#gdatools-20-cran"></a></h2>
+<h2 class="page-header" data-toc-text="2.0.1" id="gdatools-201">GDAtools 2.0.1<a class="anchor" aria-label="anchor" href="#gdatools-201"></a></h2>
+<div class="section level3">
+<h3 id="changes-in-existing-functions-2-0-1">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-2-0-1"></a></h3>
+<ul><li>
+<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : new shortlabs option, to display short column labels (thanks to <a href="https://github.com/janhovden" class="external-link">@janhovden</a>)</li>
+<li>
+<code><a href="../reference/planecontrib.html">planecontrib()</a></code> : the elements of the resulting lists have been renamed. This fixes a bug in <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> and <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> when points = “best” and axes are not c(1,2) (thanks to Amal Damien Tawfik)</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-2-0-1">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-2-0-1"></a></h3>
+<ul><li>bug fix in <code><a href="../reference/ggbootvalid_variables.html">ggbootvalid_variables()</a></code> and <code><a href="../reference/ggaxis_variables.html">ggaxis_variables()</a></code> when factor levels have special characters (thanks to Amal Damien Tawfik)</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="2.0" id="gdatools-20-cran">GDAtools 2.0 [CRAN]<small>2023-04-01</small><a class="anchor" aria-label="anchor" href="#gdatools-20-cran"></a></h2>
 <p>Please note that the 1.8 version of GDAtools was not published on CRAN. So, compared to the last version on CRAN, 2.0 version inherits the changes of 1.8 version.</p>
 <div class="section level3">
 <h3 id="major-change-2-0">Major change<a class="anchor" aria-label="anchor" href="#major-change-2-0"></a></h3>
