@@ -1,3 +1,12 @@
+# GDAtools 2.0.1
+
+## Changes in existing functions
+
+* `tabcontrib()` : new shortlabs option, to display short column labels (thanks to @janhovden)
+* `planecontrib()` : the elements of the resulting lists have been renamed. This fixes a bug in `ggcloud_variables()` and `ggcloud_indiv()` when points = "best" and axes are not c(1,2) (thanks to Amal Damien Tawfik)
+
+
+
 # GDAtools 2.0 [CRAN]
 
 Please note that the 1.8 version of GDAtools was not published on CRAN. So, compared to the last version on CRAN, 2.0 version inherits the changes of 1.8 version.

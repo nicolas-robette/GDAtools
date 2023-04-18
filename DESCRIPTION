@@ -1,7 +1,7 @@
 Package: GDAtools
 Type: Package
 Title: Geometric Data Analysis
-Version: 2.0
+Version: 2.0.1
 Authors@R: c(person("Nicolas", "Robette", role = c("aut", "cre"), email = "nicolas.robette@uvsq.fr"))
 Imports: descriptio, FactoMineR, ggplot2, ggrepel, rlang
 Suggests: R.rsp, rmarkdown, knitr, rmdformats, TraMineR, sf, shiny, miniUI, esquisse, rclipboard
