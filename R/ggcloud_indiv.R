@@ -8,7 +8,7 @@ ggcloud_indiv <- function(resmca, type = "i", points = "all", axes = c(1,2),
   if(points=='all') condi <- 1:ni
   if (points=='besth') condi <- resmca$ind$contrib[,dim1] >= 100/ni
   if (points=='bestv') condi <- resmca$ind$contrib[,dim2] >= 100/ni
-  if (points=='best') condi <- planecontrib(resmca, axes)$ind$ctr12 >= 100/ni
+  if (points=='best') condi <- planecontrib(resmca, axes)$ind$ctr >= 100/ni
   icoord <- as.data.frame(resmca$ind$coord[condi,axes])
   names(icoord) <- c('axeX','axeY')
   icoord$labs <- rownames(icoord)

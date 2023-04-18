@@ -18,12 +18,12 @@ planecontrib(resmca, axes = c(1,2))
 
 \value{
 A list of two lists. The first deals with variables :
-\item{ctr12}{vector of contributions of the active categories to the plane}
-\item{cos12}{vector of squared cosines of the active categories in the plane}
-\item{vctr12}{vector of contributions of the active variables to the plane}
+\item{ctr}{vector of contributions of the active categories to the plane}
+\item{cos2}{vector of squared cosines of the active categories in the plane}
+\item{vctr}{vector of contributions of the active variables to the plane}
 The second deals with observations :
-\item{ctr12}{vector of contributions of the observations to the plane}
-\item{cos12}{vector of squared cosines of the observations in the plane}
+\item{ctr}{vector of contributions of the observations to the plane}
+\item{cos2}{vector of squared cosines of the observations in the plane}
 }
 
 \references{

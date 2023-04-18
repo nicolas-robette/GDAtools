@@ -41,7 +41,7 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   } else if(prop=='n') { vcoord$prop <- resmca$var$weight
   } else if(prop=='ctr1') { vcoord$prop <- resmca$var$contrib[,dim1] 
   } else if(prop=='ctr2') { vcoord$prop <- resmca$var$contrib[,dim2] 
-  } else if(prop=='ctr12') { vcoord$prop <- planecontrib(resmca, axes)$var$ctr12
+  } else if(prop=='ctr12') { vcoord$prop <- planecontrib(resmca, axes)$var$ctr
   } else if(prop=='ctr.cloud') { vcoord$prop <- unlist(resmca$var$ctr.cloud)
   } else if(prop=='cos1') { vcoord$prop <- resmca$var$cos2[,dim1] 
   } else if(prop=='cos2') { vcoord$prop <- resmca$var$cos2[,dim2] 
@@ -54,7 +54,7 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
     if(points=='all') { condi <- rep(TRUE,nk)
     } else if (points=='besth') { condi <- resmca$var$contrib[,dim1]>=min.ctr
     } else if (points=='bestv') { condi <- resmca$var$contrib[,dim2]>=min.ctr
-    } else if (points=='best') { condi <- planecontrib(resmca, axes)$var$ctr12>=min.ctr }
+    } else if (points=='best') { condi <- planecontrib(resmca, axes)$var$ctr>=min.ctr }
   }
   
   if(type %in% c("stMCA","multiMCA")) {

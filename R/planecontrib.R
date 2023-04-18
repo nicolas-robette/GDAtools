@@ -27,9 +27,11 @@ planecontrib <- function(resmca, axes = c(1,2)) {
   
   # results
   var <- list(ctr12, cos12, vctr12)
-  names(var) <- c(paste0("ctr", paste0(axes, collapse="")),
-                  paste0("cos", paste0(axes, collapse="")),
-                  paste0("vctr", paste0(axes, collapse="")))
+  # names(var) <- c(paste0("ctr", paste0(axes, collapse="")),
+  #                 paste0("cos", paste0(axes, collapse="")),
+  #                 paste0("vctr", paste0(axes, collapse="")))
+  names(var) <- c("ctr", "cos2", "vctr")
+  names(ind) <- c("ctr", "cos2")
   res <- list(var = var, ind = ind)
   return(res)
 }
