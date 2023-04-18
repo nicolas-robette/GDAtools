@@ -74,17 +74,17 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
   if(is.null(var)) {
     if(!is.null(col)) {
     p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size), #, color = .data$vnames),
-                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE,
+                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = FALSE,
                                       colour = col) #+
              #ggplot2::scale_color_manual(values = rep(col, length(vnames)))
     } else {
       p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size, color = .data$vnames),
-                                        direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE)
+                                        direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = FALSE)
     }
   } else {
     if(is.null(col)) col <- "black"
     p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size),
-                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE,
+                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = FALSE,
                                       colour = col)
   }
   

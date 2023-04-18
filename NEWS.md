@@ -5,6 +5,10 @@
 * `tabcontrib()` : new shortlabs option, to display short column labels (thanks to @janhovden)
 * `planecontrib()` : the elements of the resulting lists have been renamed. This fixes a bug in `ggcloud_variables()` and `ggcloud_indiv()` when points = "best" and axes are not c(1,2) (thanks to Amal Damien Tawfik)
 
+## Bug fixes
+
+* bug fix in `ggbootvalid_variables()` and `ggaxis_variables()` when factor levels have special characters (thanks to Amal Damien Tawfik)
+
 
 
 # GDAtools 2.0 [CRAN]

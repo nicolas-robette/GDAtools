@@ -26,12 +26,12 @@ ggbootvalid_variables <- function(resmca, axes = c(1,2), type = "partial", K = 3
   
   if(is.null(col)) {
     p <- p +
-      ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$dimX, y = .data$dimY, label = .data$varcat, col = .data$var), key_glyph='blank', parse = TRUE, max.overlaps = Inf) + 
+      ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$dimX, y = .data$dimY, label = .data$varcat, col = .data$var), key_glyph='blank', parse = FALSE, max.overlaps = Inf) + 
       ggplot2::stat_ellipse(data = boot,  ggplot2::aes(x = .data$dimX, y = .data$dimY, group = .data$varcat, col = .data$var), type = ellipse, level = level, lty = 2) +
       ggplot2::geom_point(data = boot,  ggplot2::aes(x = .data$dimX, y = .data$dimY, col = .data$var), alpha = 0.2)
   } else if(is.character(col)) {
     p <- p +
-      ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$dimX, y = .data$dimY, label = .data$varcat), color = col, key_glyph='blank', parse = TRUE, max.overlaps = Inf) + 
+      ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$dimX, y = .data$dimY, label = .data$varcat), color = col, key_glyph='blank', parse = FALSE, max.overlaps = Inf) + 
       ggplot2::stat_ellipse(data = boot,  ggplot2::aes(x = .data$dimX, y = .data$dimY, group = .data$varcat), color = col, type = ellipse, level = level, lty = 2) +
       ggplot2::geom_point(data = boot,  ggplot2::aes(x = .data$dimX, y = .data$dimY), color = col, alpha = 0.2)
   }
