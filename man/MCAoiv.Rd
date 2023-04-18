@@ -25,6 +25,10 @@ Multiple Correspondence Analysis with Orthogonal Instrumental Variables consists
 3. Principal Component Analysis of the set of residuals from the regressions in 2.
 }
 
+\note{
+If there are NAs in \code{Y}, these NAs will be automatically considered as junk categories. If one desires more flexibility, \code{Y} should be recoded to add explicit factor levels for NAs and then \code{excl} option may be used to select the junk categories.
+}
+
 \value{
 An object of class \code{PCA} from \code{FactoMineR} package, with \code{X} as supplementary variables, and an additional item :
 \item{ratio}{the share of inertia not explained by the instrumental variables}.

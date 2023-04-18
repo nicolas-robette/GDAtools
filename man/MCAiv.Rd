@@ -24,6 +24,10 @@ Multiple Correspondence Analysis with Instrumental Variables consists in three s
 Multiple Correspondence Analysis with Instrumental Variables is also known as "Canonical Correspondence Analysis" or "Constrained Correspondence Analysis".
 }
 
+\note{
+If there are NAs in \code{Y}, these NAs will be automatically considered as junk categories. If one desires more flexibility, \code{Y} should be recoded to add explicit factor levels for NAs and then \code{excl} option may be used to select the junk categories.
+}
+
 \value{
 An object of class \code{PCA} from \code{FactoMineR} package, with \code{Y} and \code{X} as supplementary variables, and an additional item :
 \item{ratio}{the share of inertia explained by the instrumental variables}.

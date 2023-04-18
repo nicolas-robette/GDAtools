@@ -31,6 +31,8 @@ An object of class \code{speMCA}, with an additional item :
 
 \note{
 The code is adapted from \code{speMCA} function.
+
+As in \code{speMCA}, if there are NAs in \code{data}, these NAs will be automatically considered as junk categories. If one desires more flexibility, \code{data} should be recoded to add explicit factor levels for NAs and then \code{excl} option may be used to select the junk categories.
 }
 
 \references{

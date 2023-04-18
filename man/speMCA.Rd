@@ -18,7 +18,9 @@ speMCA(data, excl = NULL, ncp = 5, row.w = NULL)
 }
 
 \details{
-Undesirable categories may be of several kinds: infrequent categories (say, <5 percents), heterogeneous categories (e.g. "others") or uninterpretable categories (e.g. "not available"). In these cases, specific MCA may be useful to ignore these categories for the determination of distances between individuals (see references).
+Undesirable (i.e. "junk") categories may be of several kinds: infrequent categories (say, <5 percents), heterogeneous categories (e.g. "others") or uninterpretable categories (e.g. "not available"). In these cases, specific MCA may be useful to ignore these categories for the determination of distances between individuals (see references).
+
+If there are NAs in \code{data}, these NAs will be automatically considered as junk categories. If one desires more flexibility, \code{data} should be recoded to add explicit factor levels for NAs and then \code{excl} option may be used to select the junk categories.
 }
 
 \value{

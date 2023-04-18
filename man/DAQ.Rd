@@ -27,6 +27,10 @@ This approach is also known as "disqual" and was developed by G. Saporta (see re
 The results are the same with \code{type} "FR" or "GB", only the eigenvalues vary. With \code{type="FR"}, these eigenvalues vary between 0 and 1 and can be interpreted as "discriminant power".
 }
 
+\note{
+If there are NAs in \code{data}, these NAs will be automatically considered as junk categories. If one desires more flexibility, \code{data} should be recoded to add explicit factor levels for NAs and then \code{excl} option may be used to select the junk categories.
+}
+
 \value{
 An object of class \code{PCA} from \code{FactoMineR} package, with \code{class} as qualitative supplementary variable and the disjunctive table of \code{data} as quantitative supplementary variables, and two additional items :
 \item{cor_ratio}{correlation ratios between \code{class} and the discriminant factors}
