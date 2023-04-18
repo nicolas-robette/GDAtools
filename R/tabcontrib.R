@@ -1,4 +1,4 @@
-tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2) {
+tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2, shortlabs = FALSE) {
   
   # initial data frame of contributions
   df1 <- data.frame(varcat = names(resmca$var$weight), weight = resmca$var$weight)
@@ -65,7 +65,7 @@ tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2) {
   res$ctrdev[res$count>1] <- ""
   res$ctrvar[res$count>1] <- ""
   res <- res[, c("var", "cat", "weight", "cos2", "ctr1", "ctr2", "ctrtot", "cumctr", "ctrdev", "ctrvar")]
-  names(res) <- c("Variable", "Category", "Weight", "Quality of representation","Contribution (left)", "Contribution (right)",
-                  "Total contribution", "Cumulated contribution", "Contribution of deviation", "Proportion to variable")
+  if(!shortlabs) names(res) <- c("Variable", "Category", "Weight", "Quality of representation","Contribution (left)", "Contribution (right)",
+                                 "Total contribution", "Cumulated contribution", "Contribution of deviation", "Proportion to variable")
   return(res)
 }
