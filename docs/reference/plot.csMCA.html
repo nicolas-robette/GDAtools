@@ -83,10 +83,7 @@
 <dd><p>numeric vector of length 2, specifying the components (axes) to plot (c(1,2) is default)</p></dd>
 
   <dt>points</dt>
-<dd><p>character string. If 'all' all points are plotted (default); if 'besth' only those 
-                who contribute most to horizontal axis are plotted; if 'bestv' only those who contribute 
-                most to vertical axis are plotted; if 'best' only those who contribute most to horizontal 
-                or vertical axis are plotted.</p></dd>
+<dd><p>character string. If 'all' all points are plotted (default); if 'besth' only those who contribute most to horizontal axis are plotted; if 'bestv' only those who contribute most to vertical axis are plotted; if 'besthv' only those who contribute most to horizontal or vertical axis are plotted.</p></dd>
 
   <dt>col</dt>
 <dd><p>color for the points of the individuals or for the labels of the categories (default is 'dodgerblue4')</p></dd>
@@ -130,7 +127,7 @@ higher than the average contribution, i.e. 100 divided by the total number of ca
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.csMCA-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># cloud of most contributing categories</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mca</span>,axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, points <span class="op">=</span> <span class="st">"best"</span>, col <span class="op">=</span> <span class="st">"darkred"</span>, app <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mca</span>,axes<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, points <span class="op">=</span> <span class="st">"besthv"</span>, col <span class="op">=</span> <span class="st">"darkred"</span>, app <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot.csMCA-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
