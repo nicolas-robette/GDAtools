@@ -10,7 +10,8 @@ plot.csMCA <-
     if(points=='all') condi <- 1:nv
     if (points=='besth') condi <- x$var$contrib[,axes[1]]>=100/nv
     if (points=='bestv') condi <- x$var$contrib[,axes[2]]>=100/nv
-    if (points=='best') condi <- x$var$contrib[,axes[1]]>=100/nv | x$var$contrib[,axes[2]]>=100/nv
+    if (points=='besthv') condi <- x$var$contrib[,axes[1]]>=100/nv | x$var$contrib[,axes[2]]>=100/nv
+    # if (points=='best') condi <- planecontrib(x, axes)$var$ctr >= 100/nv
     coord <- x$var$coord[condi,axes]
     prop <- round(x$var$weight[-x$call$excl]/nrow(x$ind$coord)*2+0.5,1)[condi]
     plot(coord,col='white',xlim=clim[1,],ylim=clim[2,],xlab=tit1,ylab=tit2,...)
@@ -29,7 +30,8 @@ plot.csMCA <-
     if(points=='all') condi <- 1:ni # new
     if (points=='besth') condi <- x$ind$contrib[,axes[1]]>=100/ni # new
     if (points=='bestv') condi <- x$ind$contrib[,axes[2]]>=100/ni # new
-    if (points=='best') condi <- x$ind$contrib[,axes[1]]>=100/ni | x$ind$contrib[,axes[2]]>=100/ni # new
+    if (points=='besthv') condi <- x$ind$contrib[,axes[1]]>=100/ni | x$ind$contrib[,axes[2]]>=100/ni # new
+    if (points=='best') condi <- planecontrib(x, axes)$ind$ctr >= 100/ni
     coord <- x$ind$coord[condi,axes] # new
     if(type=='i') pcol <- col #new
     if(type=='inames') pcol <- 'white' #new

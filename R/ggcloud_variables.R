@@ -54,6 +54,7 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
     if(points=='all') { condi <- rep(TRUE,nk)
     } else if (points=='besth') { condi <- resmca$var$contrib[,dim1]>=min.ctr
     } else if (points=='bestv') { condi <- resmca$var$contrib[,dim2]>=min.ctr
+    } else if (points=='besthv') { condi <- resmca$var$contrib[,dim1]>=min.ctr | resmca$var$contrib[,dim2]>=min.ctr
     } else if (points=='best') { condi <- planecontrib(resmca, axes)$var$ctr>=min.ctr }
   }
   

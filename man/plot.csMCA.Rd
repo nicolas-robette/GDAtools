@@ -15,10 +15,7 @@ col = "dodgerblue4", app = 0, \dots)
   \item{x}{object of class \code{csMCA}}
   \item{type}{character string: 'v' to plot the categories (default), 'i' to plot individuals' points, 'inames' to plot individuals' names}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot (c(1,2) is default)}
-  \item{points}{character string. If 'all' all points are plotted (default); if 'besth' only those 
-                who contribute most to horizontal axis are plotted; if 'bestv' only those who contribute 
-                most to vertical axis are plotted; if 'best' only those who contribute most to horizontal 
-                or vertical axis are plotted.}
+  \item{points}{character string. If 'all' all points are plotted (default); if 'besth' only those who contribute most to horizontal axis are plotted; if 'bestv' only those who contribute most to vertical axis are plotted; if 'besthv' only those who contribute most to horizontal or vertical axis are plotted.}
   \item{col}{color for the points of the individuals or for the labels of the categories (default is 'dodgerblue4')}
   \item{app}{numerical value. If 0 (default), only the labels of the categories are plotted and their size is constant; if 1, only the labels are plotted and their size is proportional to the weights of the categories; if 2, points (triangles) and labels are plotted, and points size is proportional to the weight of the categories.}
   \item{\dots}{further arguments passed to or from other methods, such as cex, cex.main, ...}
@@ -52,7 +49,7 @@ mca <- csMCA(Music[,1:5], subcloud = female, excl = junk)
 # cloud of categories
 plot(mca)
 # cloud of most contributing categories
-plot(mca,axes=c(2,3), points = "best", col = "darkred", app = 1)
+plot(mca,axes=c(2,3), points = "besthv", col = "darkred", app = 1)
 }
 
 \keyword{ aplot }

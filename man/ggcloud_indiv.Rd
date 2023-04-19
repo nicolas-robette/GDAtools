@@ -17,7 +17,7 @@ density = NULL, col.contour = "darkred", hex.bins = 50, hex.pal = "viridis")
 \arguments{
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
   \item{type}{If 'i', points are plotted. If 'inames', labels of individuals are plotted.}
-  \item{points}{character string. If 'all' all points are plotted (default). If 'besth' only those who contribute most to horizontal axis are plotted. If 'bestv' only those who contribute most to vertical axis are plotted. If 'best' only those who contribute most to the plane are plotted.}
+  \item{points}{character string. If 'all' all points are plotted (default). If 'besth' only those who contribute most to horizontal axis are plotted. If 'bestv' only those who contribute most to vertical axis are plotted. If 'besthv' only those who contribute most to horizontal or vertical axis are plotted. If 'best' only those who contribute most to the plane are plotted.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
   \item{col}{If a factor, points or labels are colored according to their category regarding this factor. If a string with color name, every points or labels have the same color. Default is "dodgerblue4".}
   \item{point.size}{Size of the points of individuals. Default is 0.5.}

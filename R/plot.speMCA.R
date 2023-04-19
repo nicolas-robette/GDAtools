@@ -9,6 +9,7 @@ plot.speMCA <- function(x,type='v',axes=c(1,2),points='all',col='dodgerblue4',ap
     if(points=='all') condi <- 1:nv
     if (points=='besth') condi <- x$var$contrib[,axes[1]] >= 100/nv
     if (points=='bestv') condi <- x$var$contrib[,axes[2]] >= 100/nv
+    if (points=='besthv') condi <- x$var$contrib[,axes[1]] >= 100/nv | x$var$contrib[,axes[2]] >= 100/nv
     if (points=='best') condi <- planecontrib(x, axes)$var$ctr >= 100/nv
     coord <- x$var$coord[condi,axes]
     prop <- round(x$var$weight[-x$call$excl]/nrow(x$ind$coord)*2+0.5,1)[condi]
@@ -28,6 +29,7 @@ plot.speMCA <- function(x,type='v',axes=c(1,2),points='all',col='dodgerblue4',ap
     if(points=='all') condi <- 1:ni 
     if (points=='besth') condi <- x$ind$contrib[,axes[1]] >= 100/ni 
     if (points=='bestv') condi <- x$ind$contrib[,axes[2]] >= 100/ni 
+    if (points=='besthv') condi <- x$ind$contrib[,axes[1]] >= 100/ni | x$ind$contrib[,axes[2]] >= 100/ni 
     if (points=='best') condi <- planecontrib(x, axes)$ind$ctr >= 100/ni
     coord <- x$ind$coord[condi,axes] 
     if(type=='i') pcol <- col 
