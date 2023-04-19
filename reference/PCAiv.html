@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
       </span>
     </div>
 
@@ -32,10 +32,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/GDA_tutorial.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
+      <a href="../articles/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
   </ul></li>
 <li>
@@ -89,6 +89,7 @@
     <p>Principal Component Analysis with Instrumental Variables consists in two steps :
 1. Computation of one linear regression for each variable in <code>Y</code>, with this variable as response and all variables in <code>X</code> as explanatory variables.
 2. Principal Component Analysis of the set of predicted values from the regressions in 1 ("Y hat").</p>
+<p>Principal Component Analysis with Instrumental Variables is also known as "redundancy analysis"</p>
     </div>
     <div id="value">
     <h2>Value</h2>
@@ -110,17 +111,23 @@
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="bcMCA.html">bcMCA</a></code>, <code><a href="PCAoiv.html">PCAoiv</a></code></p></div>
+    <div class="dont-index"><p><code><a href="bcPCA.html">bcPCA</a></code>, <code><a href="DA.html">DA</a></code>, <code><a href="bcMCA.html">bcMCA</a></code>, <code><a href="DAQ.html">DAQ</a></code>, <code><a href="MCAiv.html">MCAiv</a></code></p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://factominer.free.fr" class="external-link">FactoMineR</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">decathlon</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># PCAiv of decathlon data set</span></span></span>
+<span class="r-in"><span><span class="co"># with Points and Competition as instrumental variables</span></span></span>
 <span class="r-in"><span><span class="va">pcaiv</span> <span class="op">&lt;-</span> <span class="fu">PCAiv</span><span class="op">(</span><span class="va">decathlon</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, <span class="va">decathlon</span><span class="op">[</span>,<span class="fl">12</span><span class="op">:</span><span class="fl">13</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pcaiv</span><span class="op">$</span><span class="va">ratio</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.3334462</span>
+<span class="r-in"><span><span class="co"># plot of \code{Y} variables + quantitative instrumental variables (here Points)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pcaiv</span>, choix <span class="op">=</span> <span class="st">"var"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="PCAiv-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pcaiv</span>, choix <span class="op">=</span> <span class="st">"ind"</span>, invisible <span class="op">=</span> <span class="st">"ind"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># plot of qualitative instrumental variables (here Competition)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">pcaiv</span>, choix <span class="op">=</span> <span class="st">"ind"</span>, invisible <span class="op">=</span> <span class="st">"ind"</span>, col.quali <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="PCAiv-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>

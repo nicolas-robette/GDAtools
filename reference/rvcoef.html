@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
       </span>
     </div>
 
@@ -32,10 +32,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/GDA_tutorial.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
+      <a href="../articles/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
   </ul></li>
 <li>
@@ -101,15 +101,33 @@
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="coiPCA.html">coiPCA</a></code>, <code><a href="coiMCA.html">coiMCA</a></code></p></div>
+    <div class="dont-index"><p><code><a href="coiPCA.html">coiPCA</a></code>, <code><a href="coiMCA.html">coiMCA</a></code>, <code><a href="multiMCA.html">multiMCA</a></code></p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://factominer.free.fr" class="external-link">FactoMineR</a></span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># RV coefficient between decathlon results by sport</span></span></span>
+<span class="r-in"><span><span class="co"># and Rank and Points</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://factominer.free.fr" class="external-link">FactoMineR</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">decathlon</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">Xa</span> <span class="op">&lt;-</span> <span class="va">decathlon</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">Xb</span> <span class="op">&lt;-</span> <span class="va">decathlon</span><span class="op">[</span>,<span class="fl">11</span><span class="op">:</span><span class="fl">12</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">Xa</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 'data.frame':	41 obs. of  10 variables:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 100m       : num  11 10.8 11 11 11.3 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Long.jump  : num  7.58 7.4 7.3 7.23 7.09 7.6 7.3 7.31 6.81 7.56 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Shot.put   : num  14.8 14.3 14.8 14.2 15.2 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ High.jump  : num  2.07 1.86 2.04 1.92 2.1 1.98 2.01 2.13 1.95 1.86 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 400m       : num  49.8 49.4 48.4 48.9 50.4 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 110m.hurdle: num  14.7 14.1 14.1 15 15.3 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Discus     : num  43.8 50.7 49 40.9 46.3 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Pole.vault : num  5.02 4.92 4.92 5.32 4.72 4.92 4.42 4.42 4.92 4.82 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Javeline   : num  63.2 60.1 50.3 62.8 63.4 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ 1500m      : num  292 302 300 280 276 ...</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">Xb</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 'data.frame':	41 obs. of  2 variables:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Rank  : int  1 2 3 4 5 6 7 8 9 10 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ Points: int  8217 8122 8099 8067 8036 8030 8004 7995 7802 7733 ...</span>
 <span class="r-in"><span><span class="fu">rvcoef</span><span class="op">(</span><span class="va">Xa</span>, <span class="va">Xb</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.09265003</span>
 </code></pre></div>

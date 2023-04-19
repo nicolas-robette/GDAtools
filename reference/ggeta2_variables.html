@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
       </span>
     </div>
 
@@ -32,10 +32,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/GDA_tutorial.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
+      <a href="../articles/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
   </ul></li>
 <li>
@@ -80,25 +80,30 @@
 </dl></div>
     <div id="details">
     <h2>Details</h2>
-    <p>Eta-squared (i.e. squared correlation ratio) is a measure of global association between a continuous variable and a categorical variable : it measures the share of variance of the continuous variables "explained" by the categorical variable. Here, it is used to plot the association between the active variables and the axes of the MCA cloud.</p>
+    <p>This plot was proposed by Escofier and Pagès (2008) under the name "carré des liaisons", i.e. square of relationships, using correlation ratios to measure these relationships. Eta-squared (i.e. correlation ratio) is a measure of global association between a continuous variable and a categorical variable : it measures the share of variance of the continuous variables "explained" by the categorical variable. Here, it is used to plot the association between the active variables and the axes of the MCA cloud.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>a ggplot object</p>
+    <p>a <code>ggplot2</code> object</p>
     </div>
     <div id="references">
     <h2>References</h2>
-    <p>Escofier B. and Pagès J., <em>Analyses factorielles simples et multiples</em>, Dunod (2008).</p>
+    <p>Escofier B. and Pagès J., 2008, <em>Analyses factorielles simples et multiples</em>, Dunod.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
     <p>Nicolas Robette</p>
     </div>
+    <div id="see-also">
+    <h2>See also</h2>
+    <div class="dont-index"><p><code><a href="ggcloud_variables.html">ggcloud_variables</a></code>, <code><a href="ggadd_attractions.html">ggadd_attractions</a></code></p></div>
+    </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Music</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,excl<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FrenchPop.NA"</span>,<span class="st">"Rap.NA"</span>,<span class="st">"Jazz.NA"</span>,<span class="st">"Classical.NA"</span>,<span class="st">"Rock.NA"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">junk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FrenchPop.NA"</span>,<span class="st">"Rap.NA"</span>,<span class="st">"Jazz.NA"</span>,<span class="st">"Classical.NA"</span>,<span class="st">"Rock.NA"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mca</span> <span class="op">&lt;-</span> <span class="fu"><a href="speMCA.html">speMCA</a></span><span class="op">(</span><span class="va">Music</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, excl <span class="op">=</span> <span class="va">junk</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">ggeta2_variables</span><span class="op">(</span><span class="va">mca</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ggeta2_variables-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>

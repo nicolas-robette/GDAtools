@@ -4,10 +4,10 @@
     <loc>https://nicolas-robette.github.io/GDAtools/404.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/english/Tutorial_GDA.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/articles/GDA_tutorial.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/french/Tutoriel_AGD.html</loc>
+    <loc>https://nicolas-robette.github.io/GDAtools/articles/Tutoriel_AGD.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/articles/index.html</loc>
@@ -20,6 +20,12 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/DA.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/DAQ.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/MCAiv.html</loc>
@@ -166,9 +172,6 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/indsup.html</loc>
-  </url>
-  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/medoids.html</loc>
   </url>
   <url>
@@ -176,6 +179,12 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/multiMCA.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/nsCA.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/nsca.biplot.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/planecontrib.html</loc>
@@ -208,6 +217,15 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/stMCA.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/supind.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/supvar.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/supvars.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/tabcontrib.html</loc>
   </url>
   <url>
@@ -218,12 +236,6 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/translate.logit.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/varsup.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/varsups.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/wcMCA.html</loc>

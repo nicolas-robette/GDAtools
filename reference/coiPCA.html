@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
       </span>
     </div>
 
@@ -32,10 +32,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/GDA_tutorial.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
+      <a href="../articles/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
   </ul></li>
 <li>
@@ -89,7 +89,7 @@
     <p>Coinertia analysis aims at capturing the structure common to two groups of variables. With groups of numerical variables, it is equivalent to Tucker's inter-battery analysis.
 It consists in the following steps :
 1. Variables in Xa and Xb are centered and scaled
-2. Computation of the matrix t(Xa).Xb
+2. Computation of the covariance matrix t(Xa).Xb
 3. PCA of the matrix</p>
     </div>
     <div id="value">
@@ -103,7 +103,7 @@ It consists in the following steps :
 </dl></div>
     <div id="references">
     <h2>References</h2>
-    <p>Tucker, L.R. . (1958) An inter-battery method of factor analysis. <em>Psychometrika</em> 23-2 111-136.</p>
+    <p>Tucker, L.R. (1958) An inter-battery method of factor analysis. <em>Psychometrika</em>, 23-2, 111-136.</p>
 <p>Dolédec, S. and Chessel, D. (1994) Co-inertia analysis: an alternative method for studying species-environment relationships. <em>Freshwater Biology</em>, 31, 277–294.</p>
     </div>
     <div id="author">
@@ -112,20 +112,28 @@ It consists in the following steps :
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code>coiPCA</code>, <code><a href="rvcoef.html">rvcoef</a></code></p></div>
+    <div class="dont-index"><p><code><a href="coiMCA.html">coiMCA</a></code>, <code><a href="rvcoef.html">rvcoef</a></code></p></div>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://factominer.free.fr" class="external-link">FactoMineR</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">decathlon</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># variables of results for each sport </span></span></span>
 <span class="r-in"><span><span class="va">Xa</span> <span class="op">&lt;-</span> <span class="va">decathlon</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="co"># rank and points variables</span></span></span>
 <span class="r-in"><span><span class="va">Xb</span> <span class="op">&lt;-</span> <span class="va">decathlon</span><span class="op">[</span>,<span class="fl">11</span><span class="op">:</span><span class="fl">12</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="co"># coinertia analysis</span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">coiPCA</span><span class="op">(</span><span class="va">Xa</span>, <span class="va">Xb</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># plot of variables in Xa</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, choix <span class="op">=</span> <span class="st">"ind"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="coiPCA-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co"># plot of variables in Xb</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, choix <span class="op">=</span> <span class="st">"var"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="coiPCA-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co"># RV coefficient</span></span></span>
+<span class="r-in"><span><span class="va">res</span><span class="op">$</span><span class="va">RV</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.09265003</span>
 </code></pre></div>
     </div>
   </div>

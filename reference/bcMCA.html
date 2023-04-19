@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
       </span>
     </div>
 
@@ -32,10 +32,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/english/Tutorial_GDA.html">Geometric Data Analysis with GDAtools</a>
+      <a href="../articles/GDA_tutorial.html">Geometric Data Analysis with GDAtools</a>
     </li>
     <li>
-      <a href="../articles/french/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
+      <a href="../articles/Tutoriel_AGD.html">L'analyse géométrique des données avec GDAtools</a>
     </li>
   </ul></li>
 <li>
@@ -66,7 +66,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bcMCA</span><span class="op">(</span><span class="va">data</span>, <span class="va">class</span>, row.w <span class="op">=</span> <span class="cn">NULL</span>, ncp <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bcMCA</span><span class="op">(</span><span class="va">data</span>, <span class="va">class</span>, excl <span class="op">=</span> <span class="cn">NULL</span>, row.w <span class="op">=</span> <span class="cn">NULL</span>, ncp <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -76,6 +76,9 @@
 
   <dt>class</dt>
 <dd><p>factor specifying the class</p></dd>
+
+  <dt>excl</dt>
+<dd><p>numeric vector indicating the indexes of the "junk" categories (default is NULL). See <code><a href="getindexcat.html">getindexcat</a></code> or use <code><a href="ijunk.html">ijunk</a></code> interactive function to identify these indexes. It may also be a character vector of junk categories, specified in the form "namevariable.namecategory" (for instance "gender.male").</p></dd>
 
   <dt>row.w</dt>
 <dd><p>numeric vector of row weights. If NULL (default), a vector of 1 for uniform row weights is used.</p></dd>
@@ -88,21 +91,23 @@
     <h2>Details</h2>
     <p>Between-class MCA is sometimes also called Barycentric Discriminant Analysis or Discriminant Correspondence Analysis. It consists in three steps :
 1. Transformation of <code>data</code> into an indicator matrix (i.e. disjunctive table)
-2. Computation of the barycenter of the transformed data rows for each category of <code>class</code>
-3. Correspondence Analysis of the set of barycenters</p>
+2. Computation of the barycenter of the transformed data for each category of <code>class</code>
+3. Correspondence Analysis of the set of barycenters
+Between-class MCA can also be viewed as a special case of MCA with instrumental variables, with only one categorical instrumental variable.</p>
     </div>
     <div id="value">
     <h2>Value</h2>
     
 
-<p>An object of class <code>CA</code> from <code>FactoMineR</code> package, with the indicator matrix as supplementary individuals, and an additional item :</p>
+<p>An object of class <code>CA</code> from <code>FactoMineR</code> package, with the indicator matrix of <code>data</code> as supplementary rows, and an additional item :</p>
 <dl><dt>ratio</dt>
 <dd><p>the between-class inertia percentage</p></dd>
 
 </dl></div>
     <div id="references">
     <h2>References</h2>
-    <p>Bry X., 1996, <em>Analyses factorielles multiples</em>, Economica.</p>
+    <p>Abdi H., 2007, "Discriminant Correspondence Analysis", In: Neil Salkind (Ed.), <em>Encyclopedia of Measurement and Statistics</em>, Thousand Oaks (CA): Sage.</p>
+<p>Bry X., 1996, <em>Analyses factorielles multiples</em>, Economica.</p>
 <p>Lebart L., Morineau A. et Warwick K., 1984, <em>Multivariate Descriptive Statistical Analysis</em>, John Wiley and sons, New-York.)</p>
     </div>
     <div id="author">
@@ -111,7 +116,7 @@
     </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="PCAiv.html">PCAiv</a></code></p></div>
+    <div class="dont-index"><p><code><a href="DAQ.html">DAQ</a></code>, <code><a href="MCAiv.html">MCAiv</a></code></p></div>
     </div>
 
     <div id="ref-examples">
@@ -119,8 +124,16 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://factominer.free.fr" class="external-link">FactoMineR</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">tea</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu">bcMCA</span><span class="op">(</span><span class="va">tea</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">18</span><span class="op">]</span>, <span class="va">tea</span><span class="op">$</span><span class="va">SPC</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, invisible <span class="op">=</span> <span class="st">"row.sup"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># categories of class</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, invisible <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"col"</span>, <span class="st">"row.sup"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="bcMCA-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co"># Variables in tea data</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span>, invisible <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"row"</span>, <span class="st">"row.sup"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>ggrepel: 24 unlabeled data points (too many overlaps). Consider increasing max.overlaps</span>
+<span class="r-plt img"><img src="bcMCA-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co"># between-class inertia percentage</span></span></span>
+<span class="r-in"><span><span class="va">res</span><span class="op">$</span><span class="va">ratio</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.03346136</span>
 </code></pre></div>
     </div>
   </div>
