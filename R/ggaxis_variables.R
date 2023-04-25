@@ -43,6 +43,7 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
                      cos2 = vs$cos2[,paste0("dim.",axis)],
                      ctr = vs$contrib[,paste0("dim.",axis)])
 
+    df$names <- paste0("'",df$names,"'")
     if(underline) {
       seuil <- 100/nrow(resmca$var$contrib)
       df$names[df$ctr>seuil] <- paste0("underline(",df$names[df$ctr>seuil],")")
@@ -74,17 +75,17 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
   if(is.null(var)) {
     if(!is.null(col)) {
     p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size), #, color = .data$vnames),
-                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = FALSE,
+                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE,
                                       colour = col) #+
              #ggplot2::scale_color_manual(values = rep(col, length(vnames)))
     } else {
       p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size, color = .data$vnames),
-                                        direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = FALSE)
+                                        direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE)
     }
   } else {
     if(is.null(col)) col <- "black"
     p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size),
-                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = FALSE,
+                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE,
                                       colour = col)
   }
   
