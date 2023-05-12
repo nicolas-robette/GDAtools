@@ -61,7 +61,7 @@ supvar <- function(resmca,var) {
   typic <- sqrt(cos2)*sqrt(length(v)-1)
   typic <- (((abs(coord)+coord)/coord)-1)*typic
   pval <- 2*(1 -pnorm(abs(as.matrix(typic))))
-  cor <- sapply(as.data.frame(ind), function(x) descriptio::assoc.catcont(v,x,wt,nperm=NULL)$cor)
+  cor <- sapply(as.data.frame(ind), function(x) descriptio::assoc.catcont(v,x,wt,nperm=NULL,na.rm.cat=TRUE)$cor)
   list(weight=round(weight,1),coord=coord,cos2=round(cos2,6),var=round(vrc,6),typic=round(typic,6),pval=round(pval,6),cor=cor)
 }
 
