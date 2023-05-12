@@ -85,7 +85,7 @@
                         <h4 data-toc-skip class="author">Nicolas
 Robette</h4>
             
-            <h4 data-toc-skip class="date">2023-05-01</h4>
+            <h4 data-toc-skip class="date">2023-05-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/articles/GDA_tutorial.Rmd" class="external-link"><code>vignettes/articles/GDA_tutorial.Rmd</code></a></small>
       <div class="hidden name"><code>GDA_tutorial.Rmd</code></div>
@@ -807,10 +807,10 @@ the axes.</p></li>
 
 $coord
            dim.1     dim.2     dim.3     dim.4     dim.5
-None    0.254716 -0.293253 -0.191563  0.094510 -0.050520
-Low     0.140147  0.046951  0.002259 -0.063613 -0.044181
-Medium -0.109057  0.019669  0.054436  0.070183 -0.027962
-High   -0.380835  0.220714  0.153475 -0.059443  0.136194
+None    0.254716 -0.293253 -0.191563  0.094510  0.050520
+Low     0.140147  0.046951  0.002259 -0.063613  0.044181
+Medium -0.109057  0.019669  0.054436  0.070183  0.027962
+High   -0.380835  0.220714  0.153475 -0.059443 -0.136194
 
 $cos2
           dim.1    dim.2    dim.3    dim.4    dim.5
@@ -832,10 +832,10 @@ eta2    0.059123 0.033455 0.015115 0.005279 0.005832
 
 $typic
            dim.1     dim.2     dim.3     dim.4     dim.5
-None    6.487410 -7.468929 -4.878958  2.407110 -1.286704
-Low     4.487336  1.503312  0.072336 -2.036827 -1.414633
-Medium -2.272883  0.409932  1.134503  1.462690 -0.582753
-High   -9.502876  5.507427  3.829615 -1.483270  3.398406
+None    6.487410 -7.468929 -4.878958  2.407110  1.286704
+Low     4.487336  1.503312  0.072336 -2.036827  1.414633
+Medium -2.272883  0.409932  1.134503  1.462690  0.582753
+High   -9.502876  5.507427  3.829615 -1.483270 -3.398406
 
 $pval
           dim.1    dim.2    dim.3    dim.4    dim.5
@@ -846,10 +846,10 @@ High   0.000000 0.000000 0.000128 0.138003 0.000678
 
 $cor
         dim.1  dim.2  dim.3  dim.4  dim.5
-None    0.145 -0.167 -0.109  0.054 -0.029
-Low     0.100  0.034  0.002 -0.046 -0.032
-Medium -0.051  0.009  0.025  0.033 -0.013
-High   -0.213  0.123  0.086 -0.033  0.076</code></pre>
+None    0.145 -0.167 -0.109  0.054  0.029
+Low     0.100  0.034  0.002 -0.046  0.032
+Medium -0.051  0.009  0.025  0.033  0.013
+High   -0.213  0.123  0.086 -0.033 -0.076</code></pre>
 <p>Graphically, we can represent the <em>subcloud</em> of each category
 using a <strong>concentration ellipse</strong>, which is centered on the
 mean point and encompasses 86% of individuals with that category.</p>
@@ -1323,11 +1323,11 @@ between the axes of the two analyses, with the function <a href="https://nicolas
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/angles.csa.html">angles.csa</a></span><span class="op">(</span><span class="va">csa</span>, <span class="va">mca</span><span class="op">)</span></span></code></pre></div>
 <pre><code>$cosines
          mca.dim1 mca.dim2 mca.dim3 mca.dim4 mca.dim5 mca.dim1&amp;2 mca.dim1&amp;3
-csa.dim1    0.772    0.157   -0.051    0.415    0.486      0.787      0.773
-csa.dim2    0.553   -0.481   -0.063   -0.511   -0.535      0.733      0.557
-csa.dim3   -0.017   -0.680   -0.059    0.010    0.480      0.680      0.061
-csa.dim4    0.223    0.182    0.385   -0.482    0.179      0.287      0.445
-csa.dim5   -0.181   -0.296   -0.298   -0.350    0.154      0.347      0.348
+csa.dim1    0.772    0.157   -0.051    0.415   -0.486      0.787      0.773
+csa.dim2    0.553   -0.481   -0.063   -0.511    0.535      0.733      0.557
+csa.dim3   -0.017   -0.680   -0.059    0.010   -0.480      0.680      0.061
+csa.dim4    0.223    0.182    0.385   -0.482   -0.179      0.287      0.445
+csa.dim5   -0.181   -0.296   -0.298   -0.350   -0.154      0.347      0.348
          mca.dim1&amp;4 mca.dim1&amp;5 mca.dim2&amp;3 mca.dim2&amp;4 mca.dim2&amp;5 mca.dim3&amp;4
 csa.dim1      0.876      0.912      0.165      0.444      0.511      0.418
 csa.dim2      0.753      0.770      0.485      0.702      0.719      0.515

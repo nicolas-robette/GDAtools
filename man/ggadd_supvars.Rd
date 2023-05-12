@@ -55,7 +55,7 @@ mca <- speMCA(Music[,1:5], excl = junk)
 p <- ggcloud_variables(mca, col = "lightgrey", shapes = FALSE)
 ggadd_supvars(p, mca, Music[, c("Gender","Age")])
 # the same, excluding men
-ggadd_supvars(p, mca, Music[, c("Gender","Age")], excl = "Gender.men")
+ggadd_supvars(p, mca, Music[, c("Gender","Age")], excl = "Gender.Men")
 # the same, keeping only categories
 # with cos2 >= 0.001 for dimension 1
 cos <- supvars(mca, Music[, c("Gender","Age")])$cos2

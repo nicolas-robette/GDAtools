@@ -66,7 +66,8 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggadd_supvars</span><span class="op">(</span><span class="va">p</span>, <span class="va">resmca</span>, <span class="va">vars</span>, axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, col <span class="op">=</span> <span class="cn">NULL</span>,</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggadd_supvars</span><span class="op">(</span><span class="va">p</span>, <span class="va">resmca</span>, <span class="va">vars</span>, excl <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, col <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>shapes <span class="op">=</span> <span class="cn">FALSE</span>, prop <span class="op">=</span> <span class="cn">NULL</span>, textsize <span class="op">=</span> <span class="fl">3</span>, shapesize <span class="op">=</span> <span class="fl">6</span>, vname <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -80,6 +81,9 @@
 
   <dt>vars</dt>
 <dd><p>A data frame of categorical supplementary variables. All these variables should be factors.</p></dd>
+
+  <dt>excl</dt>
+<dd><p>character vector of supplementary categories to exclude from the plot, specified in the form "namevariable.namecategory" (for instance "Gender.Men"). If NULL (default), all the supplementary categories are plotted.</p></dd>
 
   <dt>axes</dt>
 <dd><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></dd>
@@ -134,8 +138,17 @@
 <span class="r-in"><span><span class="co"># adds several supplementary variables</span></span></span>
 <span class="r-in"><span><span class="co"># onto the cloud of variables</span></span></span>
 <span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="ggcloud_variables.html">ggcloud_variables</a></span><span class="op">(</span><span class="va">mca</span>, col <span class="op">=</span> <span class="st">"lightgrey"</span>, shapes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="ggadd_supvar.html">ggadd_supvar</a></span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Music</span><span class="op">$</span><span class="va">Age</span>, segment <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">ggadd_supvars</span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Music</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="ggadd_supvars-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co"># the same, excluding men</span></span></span>
+<span class="r-in"><span><span class="fu">ggadd_supvars</span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Music</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span><span class="op">)</span><span class="op">]</span>, excl <span class="op">=</span> <span class="st">"Gender.Men"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="ggadd_supvars-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co"># the same, keeping only categories</span></span></span>
+<span class="r-in"><span><span class="co"># with cos2 &gt;= 0.001 for dimension 1</span></span></span>
+<span class="r-in"><span><span class="va">cos</span> <span class="op">&lt;-</span> <span class="fu"><a href="supvars.html">supvars</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Music</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">cos2</span></span></span>
+<span class="r-in"><span><span class="va">drop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">cos</span><span class="op">)</span><span class="op">[</span><span class="va">cos</span><span class="op">$</span><span class="va">dim.1</span> <span class="op">&lt;</span> <span class="fl">0.001</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="fu">ggadd_supvars</span><span class="op">(</span><span class="va">p</span>, <span class="va">mca</span>, <span class="va">Music</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gender"</span>,<span class="st">"Age"</span><span class="op">)</span><span class="op">]</span>, excl <span class="op">=</span> <span class="va">drop</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="ggadd_supvars-3.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </div>
