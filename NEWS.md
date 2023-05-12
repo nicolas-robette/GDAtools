@@ -5,6 +5,7 @@
 * `tabcontrib()` : new shortlabs option, to display short column labels (thanks to @janhovden)
 * `planecontrib()` : the elements of the resulting lists have been renamed. This fixes a bug in `ggcloud_variables()` and `ggcloud_indiv()` when points = "best" and axes are not c(1,2) (thanks to Amal Damien Tawfik)
 * new argument points = "besthv" for `ggcloud_variables()`, `ggcloud_indiv()`, `plot.speMCA()` and `plot.csMCA()`.
+* `ggadd_supvars()` : new option "excl", to exclude some supplementary categories from the plot (thanks to @janhovden)
 
 ## Bug fixes
 

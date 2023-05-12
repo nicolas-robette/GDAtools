@@ -8,7 +8,8 @@ Adds categorical supplementary variables to a MCA cloud of variables.
 }
 
 \usage{
-ggadd_supvars(p, resmca, vars, axes = c(1,2), col = NULL,
+ggadd_supvars(p, resmca, vars, excl = NULL,
+axes = c(1,2), col = NULL,
 shapes = FALSE, prop = NULL, textsize = 3, shapesize = 6, vname = TRUE)
 }
 
@@ -16,6 +17,7 @@ shapes = FALSE, prop = NULL, textsize = 3, shapesize = 6, vname = TRUE)
   \item{p}{\code{ggplot2} object with the cloud of variables}
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}.}
   \item{vars}{A data frame of categorical supplementary variables. All these variables should be factors.}
+  \item{excl}{character vector of supplementary categories to exclude from the plot, specified in the form "namevariable.namecategory" (for instance "Gender.Men"). If NULL (default), all the supplementary categories are plotted.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
   \item{col}{character string. Color name for the labels (and the shapes if \code{shapes=TRUE}) of the categories. If NULL, the default palette of \code{ggplot2} is used, with one color per variable.}
   \item{shapes}{Logical. If TRUE, symbols are used in addition to the labels of categories. Default is FALSE.}
@@ -52,6 +54,13 @@ mca <- speMCA(Music[,1:5], excl = junk)
 # onto the cloud of variables
 p <- ggcloud_variables(mca, col = "lightgrey", shapes = FALSE)
 ggadd_supvars(p, mca, Music[, c("Gender","Age")])
+# the same, excluding men
+ggadd_supvars(p, mca, Music[, c("Gender","Age")], excl = "Gender.men")
+# the same, keeping only categories
+# with cos2 >= 0.001 for dimension 1
+cos <- supvars(mca, Music[, c("Gender","Age")])$cos2
+drop <- rownames(cos)[cos$dim.1 < 0.001]
+ggadd_supvars(p, mca, Music[, c("Gender","Age")], excl = drop)
 }
 
 \keyword{ aplot }

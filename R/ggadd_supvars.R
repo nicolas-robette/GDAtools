@@ -1,4 +1,4 @@
-ggadd_supvars <- function(p, resmca, vars, axes = c(1,2), col = NULL, 
+ggadd_supvars <- function(p, resmca, vars, excl = NULL, axes = c(1,2), col = NULL, 
                           shapes = FALSE, prop = NULL, textsize = 3, shapesize = 6, vname = TRUE) {
 
   if(any(sapply(vars, FUN = function(x) !is.factor(x)))) stop("variables in data should all be factors")
@@ -18,6 +18,7 @@ ggadd_supvars <- function(p, resmca, vars, axes = c(1,2), col = NULL,
   if(vname) coord$labs <- paste(coord$vnames, coord$labs, sep='.')
   coord$vnames <- factor(coord$vnames)
 
+  # size of categories
   if(is.null(prop)) { coord$prop <- rep(1, nrow(coord))
   } else if(prop=='n') { coord$prop <- vs$weight
   } else if(prop=='vtest1') { coord$prop <- abs(vs$typic[,dim1])
@@ -25,6 +26,9 @@ ggadd_supvars <- function(p, resmca, vars, axes = c(1,2), col = NULL,
   } else if(prop=='cos1') { coord$prop <- vs$cos2[,dim1]
   } else if(prop=='cos2') { coord$prop <- vs$cos2[,dim2]
   } else if(prop=='cos12') coord$prop <- rowSums(vs$cos2[,axes])
+
+  # drop some categories
+  coord <- coord[!(rownames(coord) %in% excl),]
 
   if(!shapes) {
     if(is.null(col)) {
