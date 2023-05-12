@@ -51,7 +51,7 @@ mca <- speMCA(Music[,1:5], excl = junk)
 # adds several supplementary variables
 # onto the cloud of variables
 p <- ggcloud_variables(mca, col = "lightgrey", shapes = FALSE)
-ggadd_supvar(p, mca, Music$Age, segment = TRUE)
+ggadd_supvars(p, mca, Music[, c("Gender","Age")])
 }
 
 \keyword{ aplot }
