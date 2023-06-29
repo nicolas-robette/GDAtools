@@ -9,7 +9,7 @@ ggadd_supvars <- function(p, resmca, vars, excl = NULL, axes = c(1,2), col = NUL
   coord <- as.data.frame(vs$coord[,axes])
   names(coord) <- c('axeX','axeY')
   coord$n <- vs$weight
-  coord$categories <- unlist(sapply(vars, levels))
+  coord$categories <- unlist(sapply(vars, levels, simplify = FALSE))
   nlev <- sapply(vars, nlevels)
   vnames <- character()
   for(i in 1:length(nlev)) vnames <- c(vnames, rep(names(vars[i]), nlev[i]))

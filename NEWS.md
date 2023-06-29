@@ -10,6 +10,7 @@
 ## Bug fixes
 
 * bug fix in `ggbootvalid_variables()` and `ggaxis_variables()` when factor levels have special characters (thanks to Amal Damien Tawfik)
+* bug fix in `ggadd_supvars()` when factors have two levels (thanks to Amal Damien Tawfik)
 
 
 
