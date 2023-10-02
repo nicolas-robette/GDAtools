@@ -29,7 +29,7 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
     }
   }
   
-  if(is.null(var)) {
+  if(is.null(var) | (is.character(var) & length(var)>1)) {
     vs <- resmca$var
     nlev <- sapply(resmca$call$X, nlevels)
     vnames <- names(resmca$call$X)
@@ -50,6 +50,8 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
     }
   }
 
+  if(is.character(var) & length(var)>1) df <- df[df$vnames %in% var,]
+  
   if(is.null(prop)) { 
     df$size = rep(1, times = nrow(df))
   } else if(prop=="freq") {
