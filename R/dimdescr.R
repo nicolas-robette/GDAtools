@@ -1,7 +1,8 @@
 dimdescr <- function(resmca, vars = NULL, dim = c(1,2), 
                      limit = NULL, correlation = "pearson",
                      na.rm.cat = FALSE, na.value.cat = "NA", na.rm.cont = FALSE,
-                     nperm = NULL, distrib = "asympt") {
+                     nperm = NULL, distrib = "asympt",
+                     shortlabs = TRUE) {
    classe <- class(resmca)[1]
    if(classe=="MCA") resmca$call$X <- resmca$call$X[,resmca$call$quali]
    if(classe=="multiMCA") {
@@ -24,8 +25,20 @@ dimdescr <- function(resmca, vars = NULL, dim = c(1,2),
                                                                     nperm = nperm, distrib = distrib, dec = c(3,3,3,3), robust = FALSE)
       if(classe == 'csMCA') temp <- descriptio::condesc(resmca$ind$coord[,dim[i]], X[resmca$call$subcloud,], weights = resmca$call$row.w[resmca$call$subcloud],
                                                         limit = limit, correlation = correlation,
-                                                        na.rm.cat = na.rm.cat, na.value.cat = na.value.cat, na.rm.cont = na.rm.cont,                                                        nperm = nperm, distrib = distrib, dec = c(3,3,3,3), robust = FALSE)
-      rownames(temp) <- NULL
+                                                        na.rm.cat = na.rm.cat, na.value.cat = na.value.cat, na.rm.cont = na.rm.cont,
+                                                        nperm = nperm, distrib = distrib, dec = c(3,3,3,3), robust = FALSE)
+      rownames(temp$variables) <- NULL
+      rownames(temp$categories) <- NULL
+      temp$categories$mean.y.global <- NULL
+      if(shortlabs) {
+        colnames(temp$categories) <- c("categories", "avg.coord.in.cat", "sd.coord.in.cat", "sd.coord.in.dim", "cor")
+      } else {
+        colnames(temp$categories) <- c("Categories",
+                                       "Average coordinate of category points",
+                                       "Standard deviation of the coordinates of category points",
+                                       "Standard deviation of all points",
+                                       "Point biserial correlation")        
+      }
       res[[i]] <- temp
       }
    names(res) <- paste('dim', dim, sep='.')

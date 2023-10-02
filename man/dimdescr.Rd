@@ -11,7 +11,8 @@ Identifies the variables and the categories that are the most characteristic acc
 dimdescr(resmca, vars = NULL, dim = c(1,2), 
          limit = NULL, correlation = "pearson",
          na.rm.cat = FALSE, na.value.cat = "NA", na.rm.cont = FALSE,
-         nperm = NULL, distrib = "asympt")}
+         nperm = NULL, distrib = "asympt",
+         shortlabs = TRUE)}
 
 \arguments{
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
@@ -24,6 +25,7 @@ dimdescr(resmca, vars = NULL, dim = c(1,2),
   \item{na.rm.cont}{logical indicating whether NA values in the numerical variables should be silently removed before the computation proceeds. Default is FALSE.}
   \item{nperm}{numeric. Number of permutations for the permutation tests of independence. If NULL (default), no permutation test is performed.}
   \item{distrib}{the null distribution of permutation test of independence can be approximated by its asymptotic distribution (\code{"asympt"}, default) or via Monte Carlo resampling (\code{"approx"}).}
+  \item{shortlabs}{logical. If TRUE (default), the data frame will have short column names, so that all columns can be displayed side by side on a laptop screen.}
 }
 
 \details{
