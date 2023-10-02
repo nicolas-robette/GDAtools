@@ -86,7 +86,7 @@ GDAtools</h1>
                         <h4 data-toc-skip class="author">Nicolas
 Robette</h4>
             
-            <h4 data-toc-skip class="date">2023-06-28</h4>
+            <h4 data-toc-skip class="date">2023-10-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/articles/Tutoriel_AGD.Rmd" class="external-link"><code>vignettes/articles/Tutoriel_AGD.Rmd</code></a></small>
       <div class="hidden name"><code>Tutoriel_AGD.Rmd</code></div>
@@ -598,26 +598,23 @@ modalité de variable supplémentaire avec un axe à partir des
 <span><span class="va">des</span><span class="op">$</span><span class="va">dim.1</span><span class="op">$</span><span class="va">categories</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="17%">
-<col width="20%">
 <col width="18%">
-<col width="17%">
-<col width="16%">
-<col width="9%">
+<col width="24%">
+<col width="23%">
+<col width="23%">
+<col width="10%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">categories</th>
-<th align="right">mean.y.in.xcat</th>
-<th align="right">mean.y.global</th>
-<th align="right">sd.y.in.xcat</th>
-<th align="right">sd.y.global</th>
+<th align="right">avg.coord.in.cat</th>
+<th align="right">sd.coord.in.cat</th>
+<th align="right">sd.coord.in.dim</th>
 <th align="right">cor</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Age.15-24</td>
 <td align="right">0.156</td>
-<td align="right">0</td>
 <td align="right">0.355</td>
 <td align="right">0.369</td>
 <td align="right">0.176</td>
@@ -625,7 +622,6 @@ modalité de variable supplémentaire avec un axe à partir des
 <tr class="even">
 <td align="left">Educ.None</td>
 <td align="right">0.094</td>
-<td align="right">0</td>
 <td align="right">0.324</td>
 <td align="right">0.369</td>
 <td align="right">0.145</td>
@@ -633,7 +629,6 @@ modalité de variable supplémentaire avec un axe à partir des
 <tr class="odd">
 <td align="left">Educ.Low</td>
 <td align="right">0.052</td>
-<td align="right">0</td>
 <td align="right">0.355</td>
 <td align="right">0.369</td>
 <td align="right">0.100</td>
@@ -641,7 +636,6 @@ modalité de variable supplémentaire avec un axe à partir des
 <tr class="even">
 <td align="left">Age.25-49</td>
 <td align="right">0.006</td>
-<td align="right">0</td>
 <td align="right">0.358</td>
 <td align="right">0.369</td>
 <td align="right">0.015</td>
@@ -649,7 +643,6 @@ modalité de variable supplémentaire avec un axe à partir des
 <tr class="odd">
 <td align="left">Gender.Women</td>
 <td align="right">0.004</td>
-<td align="right">0</td>
 <td align="right">0.370</td>
 <td align="right">0.369</td>
 <td align="right">0.012</td>
@@ -657,7 +650,6 @@ modalité de variable supplémentaire avec un axe à partir des
 <tr class="even">
 <td align="left">Gender.Men</td>
 <td align="right">-0.005</td>
-<td align="right">0</td>
 <td align="right">0.368</td>
 <td align="right">0.369</td>
 <td align="right">-0.012</td>
@@ -665,7 +657,6 @@ modalité de variable supplémentaire avec un axe à partir des
 <tr class="odd">
 <td align="left">Educ.Medium</td>
 <td align="right">-0.040</td>
-<td align="right">0</td>
 <td align="right">0.376</td>
 <td align="right">0.369</td>
 <td align="right">-0.051</td>
@@ -673,7 +664,6 @@ modalité de variable supplémentaire avec un axe à partir des
 <tr class="even">
 <td align="left">Age.50+</td>
 <td align="right">-0.061</td>
-<td align="right">0</td>
 <td align="right">0.369</td>
 <td align="right">0.369</td>
 <td align="right">-0.142</td>
@@ -681,7 +671,6 @@ modalité de variable supplémentaire avec un axe à partir des
 <tr class="odd">
 <td align="left">Educ.High</td>
 <td align="right">-0.141</td>
-<td align="right">0</td>
 <td align="right">0.382</td>
 <td align="right">0.369</td>
 <td align="right">-0.213</td>
@@ -696,26 +685,23 @@ colonne du tableau, sont proches de 0).</p>
 <code class="sourceCode R"><span><span class="va">des</span><span class="op">$</span><span class="va">dim.2</span><span class="op">$</span><span class="va">categories</span></span></code></pre></div>
 <table class="table">
 <colgroup>
-<col width="17%">
-<col width="20%">
 <col width="18%">
-<col width="17%">
-<col width="16%">
-<col width="9%">
+<col width="24%">
+<col width="23%">
+<col width="23%">
+<col width="10%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">categories</th>
-<th align="right">mean.y.in.xcat</th>
-<th align="right">mean.y.global</th>
-<th align="right">sd.y.in.xcat</th>
-<th align="right">sd.y.global</th>
+<th align="right">avg.coord.in.cat</th>
+<th align="right">sd.coord.in.cat</th>
+<th align="right">sd.coord.in.dim</th>
 <th align="right">cor</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Age.15-24</td>
 <td align="right">0.236</td>
-<td align="right">0</td>
 <td align="right">0.320</td>
 <td align="right">0.342</td>
 <td align="right">0.288</td>
@@ -723,7 +709,6 @@ colonne du tableau, sont proches de 0).</p>
 <tr class="even">
 <td align="left">Gender.Men</td>
 <td align="right">0.088</td>
-<td align="right">0</td>
 <td align="right">0.302</td>
 <td align="right">0.342</td>
 <td align="right">0.245</td>
@@ -731,7 +716,6 @@ colonne du tableau, sont proches de 0).</p>
 <tr class="odd">
 <td align="left">Age.25-49</td>
 <td align="right">0.049</td>
-<td align="right">0</td>
 <td align="right">0.333</td>
 <td align="right">0.342</td>
 <td align="right">0.123</td>
@@ -739,7 +723,6 @@ colonne du tableau, sont proches de 0).</p>
 <tr class="even">
 <td align="left">Educ.High</td>
 <td align="right">0.076</td>
-<td align="right">0</td>
 <td align="right">0.327</td>
 <td align="right">0.342</td>
 <td align="right">0.123</td>
@@ -747,7 +730,6 @@ colonne du tableau, sont proches de 0).</p>
 <tr class="odd">
 <td align="left">Educ.Low</td>
 <td align="right">0.016</td>
-<td align="right">0</td>
 <td align="right">0.341</td>
 <td align="right">0.342</td>
 <td align="right">0.034</td>
@@ -755,7 +737,6 @@ colonne du tableau, sont proches de 0).</p>
 <tr class="even">
 <td align="left">Educ.Medium</td>
 <td align="right">0.007</td>
-<td align="right">0</td>
 <td align="right">0.335</td>
 <td align="right">0.342</td>
 <td align="right">0.009</td>
@@ -763,7 +744,6 @@ colonne du tableau, sont proches de 0).</p>
 <tr class="odd">
 <td align="left">Educ.None</td>
 <td align="right">-0.100</td>
-<td align="right">0</td>
 <td align="right">0.341</td>
 <td align="right">0.342</td>
 <td align="right">-0.167</td>
@@ -771,7 +751,6 @@ colonne du tableau, sont proches de 0).</p>
 <tr class="even">
 <td align="left">Gender.Women</td>
 <td align="right">-0.081</td>
-<td align="right">0</td>
 <td align="right">0.357</td>
 <td align="right">0.342</td>
 <td align="right">-0.245</td>
@@ -779,7 +758,6 @@ colonne du tableau, sont proches de 0).</p>
 <tr class="odd">
 <td align="left">Age.50+</td>
 <td align="right">-0.131</td>
-<td align="right">0</td>
 <td align="right">0.299</td>
 <td align="right">0.342</td>
 <td align="right">-0.330</td>
@@ -1021,20 +999,20 @@ différentes modalités d’une variable.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ht</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/homog.test.html">homog.test</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ht</span><span class="op">$</span><span class="va">dim.1</span><span class="op">$</span><span class="va">p.values</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<pre><code>       None Low Medium High
-None      1   0      0    0
-Low       0   1      0    0
-Medium    0   0      1    0
-High      0   0      0    1</code></pre>
+<pre><code>        None   Low Medium High
+None   1.000 0.053      0    0
+Low    0.053 1.000      0    0
+Medium 0.000 0.000      1    0
+High   0.000 0.000      0    1</code></pre>
 <p>Sur l’axe 1, les points moyens des modalités de niveau d’éducation
 sont toutes significativement distinctes les unes des autres.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ht</span><span class="op">$</span><span class="va">dim.2</span><span class="op">$</span><span class="va">p.values</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<pre><code>       None   Low Medium High
-None      1 0.000  0.000    0
-Low       0 1.000  0.223    0
-Medium    0 0.223  1.000    0
-High      0 0.000  0.000    1</code></pre>
+<pre><code>       None   Low Medium  High
+None      1 0.000  0.000 0.000
+Low       0 1.000  0.677 0.004
+Medium    0 0.677  1.000 0.004
+High      0 0.004  0.004 1.000</code></pre>
 <p>Ce n’est pas le cas sur l’axe 2, où les modalités “Low” et “Medium”
 ne se distinguent pas significativement (p-value = 0,22).</p>
 <hr>

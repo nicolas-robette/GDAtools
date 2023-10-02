@@ -6,11 +6,14 @@
 * `planecontrib()` : the elements of the resulting lists have been renamed. This fixes a bug in `ggcloud_variables()` and `ggcloud_indiv()` when points = "best" and axes are not c(1,2) (thanks to Amal Damien Tawfik)
 * new argument points = "besthv" for `ggcloud_variables()`, `ggcloud_indiv()`, `plot.speMCA()` and `plot.csMCA()`.
 * `ggadd_supvars()` : new option "excl", to exclude some supplementary categories from the plot (thanks to @janhovden)
+* `dimdescr()` : new shortlabs option, to display short column labels
 
 ## Bug fixes
 
 * bug fix in `ggbootvalid_variables()` and `ggaxis_variables()` when factor levels have special characters (thanks to Amal Damien Tawfik)
 * bug fix in `ggadd_supvars()` when factors have two levels (thanks to Amal Damien Tawfik)
+* correction of computation error in `homog.test()` (thanks to @Yusuke-Ono)
+* bug fix in `ggaxis_variables()` when var argument has two or more variable names (thanks to @janhovden)
 
 
 
