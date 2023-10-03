@@ -34,7 +34,7 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
     nlev <- sapply(resmca$call$X, nlevels)
     vnames <- names(resmca$call$X)
     long_names <- rownames(resmca$var$coord)
-    short_names <- unlist(sapply(resmca$call$X, levels))
+    short_names <- unlist(sapply(resmca$call$X, levels))[-resmca$call$excl]
     variables <- character()
     for(i in 1:length(vnames)) variables <- c(variables, rep(vnames[i], nlev[i]))
     if(type %in% c("csMCA","speMCA","stMCA","multiMCA")) variables <- variables[-resmca$call$excl]
