@@ -2,12 +2,14 @@
 
 ## Changes in existing functions
 
-* `tabcontrib()` : new shortlabs option, to display short column labels (thanks to @janhovden)
+* `tabcontrib()` : new shortlabs option, to display short column labels (as suggested by @janhovden)
 * `planecontrib()` : the elements of the resulting lists have been renamed. This fixes a bug in `ggcloud_variables()` and `ggcloud_indiv()` when points = "best" and axes are not c(1,2) (thanks to Amal Damien Tawfik)
 * new argument points = "besthv" for `ggcloud_variables()`, `ggcloud_indiv()`, `plot.speMCA()` and `plot.csMCA()`.
-* `ggadd_supvars()` : new option "excl", to exclude some supplementary categories from the plot (thanks to @janhovden)
+* `ggadd_supvars()` : new option "excl", to exclude some supplementary categories from the plot (as suggested by @janhovden)
 * `dimdescr()` : new shortlabs option, to display short column labels
-* `ggaxis_variables()` : new vlab argument, to choose whether to use variable names as prefixes (thanks to @janhovden)
+* `ggaxis_variables()` : new vlab argument, to choose whether to use variable names as prefixes (as suggested by @janhovden)
+* `ggadd_supvars()` : vname argument has been renamed to vlab (for consistency with other functions)
+* `ggadd_supvars()` : new arguments (points and min.cos2) to filter categories according to the squared cosine (as suggested by @janhovden)
 
 ## Bug fixes
 
