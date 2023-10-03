@@ -7,6 +7,7 @@
 * new argument points = "besthv" for `ggcloud_variables()`, `ggcloud_indiv()`, `plot.speMCA()` and `plot.csMCA()`.
 * `ggadd_supvars()` : new option "excl", to exclude some supplementary categories from the plot (thanks to @janhovden)
 * `dimdescr()` : new shortlabs option, to display short column labels
+* `ggaxis_variables()` : new vlab argument, to choose whether to use variable names as prefixes (thanks to @janhovden)
 
 ## Bug fixes
 
@@ -23,7 +24,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 
 ## Major change
 
-* The package now focuses exclusively on Geometric Data Analysis, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new `descriptio` package (available on CRAN or github) : `wtable()`, `pem()`, `phi.table()`, `oddsratio.table()`, `catdesc()`, `condesc()`, `assoc.twocat()`, `assoc.twocont()`, `assoc.catcont()`, `assoc.yx()`, `darma()`, `ggassoc_chiasmogram()`, `ggassoc_assocplot()`, `ggassoc_bertin()`, `ggassoc_phiplot()`, `ggassoc_boxplot()`, `ggassoc_crosstab()`, `ggassoc_scatter()`. Lastly, `translate.logit()` has moved to the (also new) `deauvieau` package (available on CRAN).
+* The package now focuses exclusively on Geometric Data Analysis, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new `descriptio` package (available on CRAN or github) : `wtable()`, `pem()`, `phi.table()`, `oddsratio.table()`, `catdesc()`, `condesc()`, `assoc.twocat()`, `assoc.twocont()`, `assoc.catcont()`, `assoc.yx()`, `darma()`, `ggassoc_chiasmogram()`, `ggassoc_assocplot()`, `ggassoc_bertin()`, `ggassoc_phiplot()`, `ggassoc_boxplot()`, `ggassoc_crosstab()`, `ggassoc_scatter()`. Lastly, `translate.logit()` has moved to the (also new) `translate.logit` package (available on CRAN).
 * The vignettes have been extensively rewritten.
 
 ## New functions

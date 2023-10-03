@@ -1,6 +1,6 @@
 ggaxis_variables <- function(resmca, var = NULL, axis = 1,
                              prop = NULL, underline = FALSE, 
-                             col = NULL) {
+                             col = NULL, vlab = TRUE) {
 
   type <- attr(resmca,'class')[1]
   
@@ -33,16 +33,21 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
     vs <- resmca$var
     nlev <- sapply(resmca$call$X, nlevels)
     vnames <- names(resmca$call$X)
+    long_names <- rownames(resmca$var$coord)
+    short_names <- unlist(sapply(resmca$call$X, levels))
     variables <- character()
     for(i in 1:length(vnames)) variables <- c(variables, rep(vnames[i], nlev[i]))
     if(type %in% c("csMCA","speMCA","stMCA","multiMCA")) variables <- variables[-resmca$call$excl]
-    df <- data.frame(names = names(vs$weight),
+    df <- data.frame(short_names,
+                     long_names,
+                     names = long_names,
                      vnames = factor(variables, levels = names(resmca$call$X)),
                      coord = vs$coord[,paste0("dim.",axis)],
                      freq = vs$weight,
                      cos2 = vs$cos2[,paste0("dim.",axis)],
                      ctr = vs$contrib[,paste0("dim.",axis)])
-
+    
+    if(!vlab) df$names <- df$short_names
     df$names <- paste0("'",df$names,"'")
     if(underline) {
       seuil <- 100/nrow(resmca$var$contrib)
