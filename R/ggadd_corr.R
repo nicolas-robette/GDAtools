@@ -27,7 +27,7 @@ ggadd_corr <- function(p, resmca, var, cat=levels(var)[1], axes=c(1,2),
   levels(df$pt_dim1) <- seq(from=xmin+xsize/2, to=xmax-xsize/2, by=xsize)
   levels(df$pt_dim2) <- seq(from=ymin+ysize/2, to=ymax-ysize/2, by=ysize)
   
-  temp <- with(df, descriptio::assoc.catcont(interaction(pt_dim1,pt_dim2),vsup,nperm=NULL)$cor)
+  temp <- with(df, descriptio::assoc.catcont(factor(interaction(pt_dim1,pt_dim2)),vsup,nperm=NULL)$cor)
   temp <- data.frame(cell=factor(names(temp)), cor=temp, stringsAsFactors=FALSE)
   temp <- temp[!is.na(temp$cor),]
   
