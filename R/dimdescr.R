@@ -22,11 +22,11 @@ dimdescr <- function(resmca, vars = NULL, dim = c(1,2),
       if(classe %in% c('MCA','speMCA')) temp <- descriptio::condesc(resmca$ind$coord[,dim[i]], X, weights = resmca$call$row.w,
                                                                     limit = limit, correlation = correlation,
                                                                     na.rm.cat = na.rm.cat, na.value.cat = na.value.cat, na.rm.cont = na.rm.cont,
-                                                                    nperm = nperm, distrib = distrib, dec = c(3,3,3,3), robust = FALSE)
+                                                                    nperm = nperm, distrib = distrib, digits = 3, robust = FALSE)
       if(classe == 'csMCA') temp <- descriptio::condesc(resmca$ind$coord[,dim[i]], X[resmca$call$subcloud,], weights = resmca$call$row.w[resmca$call$subcloud],
                                                         limit = limit, correlation = correlation,
                                                         na.rm.cat = na.rm.cat, na.value.cat = na.value.cat, na.rm.cont = na.rm.cont,
-                                                        nperm = nperm, distrib = distrib, dec = c(3,3,3,3), robust = FALSE)
+                                                        nperm = nperm, distrib = distrib, digits = 3, robust = FALSE)
       rownames(temp$variables) <- NULL
       rownames(temp$categories) <- NULL
       temp$categories$mean.y.global <- NULL
