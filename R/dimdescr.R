@@ -29,15 +29,21 @@ dimdescr <- function(resmca, vars = NULL, dim = c(1,2),
                                                         nperm = nperm, distrib = distrib, digits = 3, robust = FALSE)
       rownames(temp$variables) <- NULL
       rownames(temp$categories) <- NULL
-      temp$categories$mean.y.global <- NULL
+      temp$categories$overall.mean <- NULL
+      if(classe == "speMCA" & is.null(vars)) temp$categories <- temp$categories[!(temp$categories$categories %in% resmca$call$excl.char),]
+      
       if(shortlabs) {
-        colnames(temp$categories) <- c("categories", "avg.coord.in.cat", "sd.coord.in.cat", "sd.coord.in.dim", "cor")
+        labs <- c("categories", "avg.coord.in.cat", "sd.coord.in.cat", "sd.coord.in.dim", "cor")
+        if(!is.null(nperm)) labs <- c(labs, "pval")
+        colnames(temp$categories) <- labs
       } else {
-        colnames(temp$categories) <- c("Categories",
-                                       "Average coordinate of category points",
-                                       "Standard deviation of the coordinates of category points",
-                                       "Standard deviation of all points",
-                                       "Point biserial correlation")        
+        labs <- c("Categories",
+                  "Average coordinate of category points",
+                  "Standard deviation of the coordinates of category points",
+                  "Standard deviation of all points",
+                  "Point biserial correlation")
+        if(!is.null(nperm)) labs <- c(labs, "Permutation p-value")
+        colnames(temp$categories) <- labs
       }
       res[[i]] <- temp
       }
