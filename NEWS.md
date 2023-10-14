@@ -1,4 +1,13 @@
-# GDAtools 2.0.1
+# GDAtools 2.0.2
+
+## Tiny fixes
+
+* `dimdescr()` : fixed column names in the results + junk categories are not displayed for speMCA results
+* `ggadd_density()` : fixed deprecated ggplot2 arguments
+
+
+
+# GDAtools 2.0.1 [CRAN]
 
 ## Changes in existing functions
 
