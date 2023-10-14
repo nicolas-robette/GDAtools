@@ -14,9 +14,9 @@ ggadd_density <- function(p, resmca, var, cat=levels(var)[1], axes=c(1,2),
   names(df) <- c("dim.1","dim.2")
   df <- df[var==cat,]
   
-  if(density=="contour") p <- p + ggplot2::stat_density_2d(data=df, ggplot2::aes(x=.data$dim.1, y=.data$dim.2), colour=col.contour, size=0.2)
+  if(density=="contour") p <- p + ggplot2::stat_density_2d(data=df, ggplot2::aes(x=.data$dim.1, y=.data$dim.2), colour=col.contour, linewidth=0.2)
   
-  if(density=="area") p <- p + ggplot2::stat_density_2d(data=df, ggplot2::aes(x=.data$dim.1, y=.data$dim.2, fill = .data$..level..), geom="polygon", alpha=alpha.area) +
+  if(density=="area") p <- p + ggplot2::stat_density_2d(data=df, ggplot2::aes(x=.data$dim.1, y=.data$dim.2, fill = ggplot2::after_stat(.data$level)), geom="polygon", alpha=alpha.area) +
                                ggplot2::scale_fill_continuous(type="viridis", option=pal.area) +
                                ggplot2::theme(legend.position="none")
     
