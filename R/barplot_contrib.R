@@ -1,4 +1,4 @@
-barplot.contrib <- function(resmca, dim = 1, 
+barplot_contrib <- function(resmca, dim = 1, 
                             which = "var", sort = FALSE, col = "tomato4", repel = FALSE) {
   
   ctr <- resmca[[which]]$contrib * sign(resmca[[which]]$coord)

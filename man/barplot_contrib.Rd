@@ -1,13 +1,16 @@
-\name{barplot.contrib}
+\name{barplot_contrib}
 
-\alias{barplot.contrib}
+\alias{barplot_contrib}
 
 \title{Bar plot of contributions}
 
 \description{From MCA results, plots contributions to the axes.}
 
-\usage{barplot.contrib(resmca, dim = 1, which = "var",
-  sort = FALSE, col = "tomato4", repel = FALSE)}
+\usage{
+
+barplot_contrib(resmca, dim = 1, which = "var",
+  sort = FALSE, col = "tomato4", repel = FALSE)
+  }
 
 \arguments{
   \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{PCA} or \code{CA}}
@@ -44,7 +47,7 @@ data(Music)
 junk <- c("FrenchPop.NA", "Rap.NA", "Rock.NA", "Jazz.NA", "Classical.NA")
 mca <- speMCA(Music[,1:5], excl = junk)
 # contributions of categories
-barplot.contrib(mca)
+barplot_contrib(mca)
 }
 
 \keyword{ multivariate }
