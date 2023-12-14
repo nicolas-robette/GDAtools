@@ -26,7 +26,7 @@ bcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
                         row.w = row.w,
                         ncp = ncp,
                         graph = FALSE,
-                        excl = junk)
+                        excl = excl)
   res$ratio <- sum(res$eig[,"eigenvalue"]) / sum(mca$eig[,"eigenvalue"])
   
   class(res) <- c("CA", "bcMCA", "list")
