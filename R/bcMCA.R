@@ -22,7 +22,11 @@ bcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
                         ncp = ncp, 
                         graph = FALSE)
   
-  mca <- FactoMineR::CA(disj, row.w = row.w, ncp = ncp, graph = FALSE)
+  mca <- FactoMineR::CA(dichotom(data, out = "numeric"),
+                        row.w = row.w,
+                        ncp = ncp,
+                        graph = FALSE,
+                        excl = junk)
   res$ratio <- sum(res$eig[,"eigenvalue"]) / sum(mca$eig[,"eigenvalue"])
   
   class(res) <- c("CA", "bcMCA", "list")
