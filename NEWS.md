@@ -1,9 +1,14 @@
-# GDAtools 2.0.2
+# GDAtools 2.1
+
+## New function
+
+* `barplot_contrib()` : bar plot for contributions
 
 ## Tiny fixes
 
 * `dimdescr()` : fixed column names in the results + junk categories are not displayed for speMCA results
 * `ggadd_density()` : fixed deprecated ggplot2 arguments
+* `bcMCA()` : bug fix when there are junk categories 
 
 
 

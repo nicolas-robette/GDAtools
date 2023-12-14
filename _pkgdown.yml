@@ -84,6 +84,7 @@ reference:
   - textindsup
   - conc.ellipse
   - nsca.biplot
+  - barplot_contrib
   
 - title: Miscellaneous
 - desc: A few additional tools
