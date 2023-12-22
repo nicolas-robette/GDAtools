@@ -91,6 +91,7 @@ reference:
 - contents:
   - burt
   - dichotom
+  - dichotomixed
   - getindexcat
   - medoids
   - ahc.plots

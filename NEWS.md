@@ -3,6 +3,7 @@
 ## New function
 
 * `barplot_contrib()` : bar plot for contributions
+* `dichotomixed()` : dichotomizes the factor variables in a mixed format data frame
 
 ## Tiny fixes
 
