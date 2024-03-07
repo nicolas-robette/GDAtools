@@ -69,7 +69,8 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggadd_supvars</span><span class="op">(</span><span class="va">p</span>, <span class="va">resmca</span>, <span class="va">vars</span>, excl <span class="op">=</span> <span class="cn">NULL</span>, points <span class="op">=</span> <span class="st">"all"</span>, min.cos2 <span class="op">=</span> <span class="fl">0.1</span>,</span>
 <span>axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, col <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>shapes <span class="op">=</span> <span class="cn">FALSE</span>, prop <span class="op">=</span> <span class="cn">NULL</span>, textsize <span class="op">=</span> <span class="fl">3</span>, shapesize <span class="op">=</span> <span class="fl">6</span>,</span>
-<span>vlab <span class="op">=</span> <span class="cn">TRUE</span>, vname <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<span>vlab <span class="op">=</span> <span class="cn">TRUE</span>, vname <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>force <span class="op">=</span> <span class="fl">1</span>, max.overlaps <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -116,6 +117,12 @@
   <dt>vname</dt>
 <dd><p>deprecated, use vlab instead</p></dd>
 
+  <dt>force</dt>
+<dd><p>Force of repulsion between overlapping text labels. Defaults to 1. If 0, labels are not repelled at all.</p></dd>
+
+  <dt>max.overlaps</dt>
+<dd><p>Exclude text labels that overlap too many things. Defaults to Inf, which means no labels are excluded.</p></dd>
+  
 </dl></div>
     <div id="value">
     <h2>Value</h2>
