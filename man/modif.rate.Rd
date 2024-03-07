@@ -17,7 +17,12 @@ As MCA clouds often have a high dimensionality, the variance rates of the first 
 }
 
 \value{
-  Returns a data frame with 2 variables:
+  Returns a list of two data frames.
+  The first one is called \code{raw} and has 3 variables:
+  \item{eigen}{eigen values}
+  \item{rate}{rates}
+  \item{cum.rate}{cumulative rates}
+  The second one is called \code{modif} and has 2 variables:
   \item{mrate}{modified rates}
   \item{cum.mrate}{cumulative modified rates}
 }
