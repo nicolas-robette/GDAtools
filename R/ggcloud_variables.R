@@ -1,4 +1,5 @@
-ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, max.pval=0.01, face="pp", shapes=TRUE, prop=NULL, textsize=3, shapesize=3, col=NULL, col.by.group=TRUE, alpha=1, segment.alpha=0.5, vlab=TRUE, sep='.', legend='right') {
+ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, max.pval=0.01, face="pp", shapes=TRUE, prop=NULL, textsize=3, shapesize=3, col=NULL, col.by.group=TRUE, alpha=1, segment.alpha=0.5, vlab=TRUE, sep='.', legend='right',
+                              force = 1, max.overlaps = Inf) {
 
   type <- attr(resmca,'class')[1]
   dim1 <- axes[1]
@@ -102,28 +103,52 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   p <- ggplot2::ggplot(vcoord, ggplot2::aes(x = .data$axeX, y = .data$axeY))
   
   if(shapes==TRUE & is.null(prop) & is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, color = .data$groups), size = shapesize, alpha = alpha) + 
-                                                           ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$groups), size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf) + 
+                                                           ggrepel::geom_text_repel(key_glyph='blank',
+                                                                                    data=subset(vcoord, condi),
+                                                                                    ggplot2::aes(label = .data$labs, color = .data$groups),
+                                                                                    size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, force = force, max.overlaps = max.overlaps) + 
                                                            ggplot2::scale_shape_manual(name="", values = rep(0:20,10))
 
   if(shapes==TRUE & is.null(prop) & !is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables), color = col, size = shapesize, alpha = alpha) + 
-                                                            ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf) + 
+                                                            ggrepel::geom_text_repel(key_glyph='blank',
+                                                                                     data=subset(vcoord, condi),
+                                                                                     ggplot2::aes(label = .data$labs),
+                                                                                     color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, force = force, max.overlaps = max.overlaps) + 
                                                             ggplot2::scale_shape_manual(name="", values = rep(0:20,10))  
   
   if(shapes==TRUE & !is.null(prop) & is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, size = .data$prop, color = .data$groups), alpha = alpha) + 
-                                                            ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$groups), size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf) + 
+                                                            ggrepel::geom_text_repel(key_glyph='blank',
+                                                                                     data=subset(vcoord, condi),
+                                                                                     ggplot2::aes(label = .data$labs, color = .data$groups),
+                                                                                     size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, force = force, max.overlaps = max.overlaps) + 
                                                             ggplot2::scale_shape_manual(name="", values = rep(0:20,10))
 
   if(shapes==TRUE & !is.null(prop) & !is.null(col)) p <- p + ggplot2::geom_point(data=subset(vcoord, condi), ggplot2::aes(shape = .data$variables, size = .data$prop), color = col, alpha = alpha) + 
-                                                             ggrepel::geom_text_repel(key_glyph='blank', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf) + 
+                                                             ggrepel::geom_text_repel(key_glyph='blank',
+                                                                                      data=subset(vcoord, condi),
+                                                                                      ggplot2::aes(label = .data$labs),
+                                                                                      color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, force = force, max.overlaps = max.overlaps) + 
                                                              ggplot2::scale_shape_manual(name="", values = rep(0:20,10))  
                                                                    
-  if(shapes==FALSE & is.null(prop) & is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, color = .data$groups), size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf)
+  if(shapes==FALSE & is.null(prop) & is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point',
+                                                                                     data=subset(vcoord, condi),
+                                                                                     ggplot2::aes(label = .data$labs, color = .data$groups),
+                                                                                     size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, force = force, max.overlaps = max.overlaps)
 
-  if(shapes==FALSE & is.null(prop) & !is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs), color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf)
+  if(shapes==FALSE & is.null(prop) & !is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point',
+                                                                                      data=subset(vcoord, condi),
+                                                                                      ggplot2::aes(label = .data$labs),
+                                                                                      color = col, size = textsize, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, force = force, max.overlaps = max.overlaps)
   
-  if(shapes==FALSE & !is.null(prop) & is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, size = .data$prop, color = .data$groups), segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf)
+  if(shapes==FALSE & !is.null(prop) & is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point',
+                                                                                      data=subset(vcoord, condi),
+                                                                                      ggplot2::aes(label = .data$labs, size = .data$prop, color = .data$groups),
+                                                                                      segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, force = force, max.overlaps = max.overlaps)
   
-  if(shapes==FALSE & !is.null(prop) & !is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point', data=subset(vcoord, condi), ggplot2::aes(label = .data$labs, size = .data$prop), color = col, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, max.overlaps = Inf)
+  if(shapes==FALSE & !is.null(prop) & !is.null(col)) p <- p + ggrepel::geom_text_repel(key_glyph='point',
+                                                                                       data=subset(vcoord, condi),
+                                                                                       ggplot2::aes(label = .data$labs, size = .data$prop),
+                                                                                       color = col, segment.alpha = segment.alpha, alpha = alpha, parse = TRUE, force = force, max.overlaps = max.overlaps)
 
   p <- p + 
       ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", linewidth = .1) + 

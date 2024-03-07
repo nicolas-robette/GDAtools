@@ -11,7 +11,8 @@ Adds categorical supplementary variables to a MCA cloud of variables.
 ggadd_supvars(p, resmca, vars, excl = NULL, points = "all", min.cos2 = 0.1,
 axes = c(1,2), col = NULL,
 shapes = FALSE, prop = NULL, textsize = 3, shapesize = 6,
-vlab = TRUE, vname = NULL)
+vlab = TRUE, vname = NULL,
+force = 1, max.overlaps = Inf)
 }
 
 \arguments{
@@ -29,6 +30,8 @@ vlab = TRUE, vname = NULL)
   \item{shapesize}{Size of the shapes if \code{prop=NULL}, maximum size of the shapes in other cases. Default is 6.}
   \item{vlab}{Logical. If TRUE (default), the variable name is added as a prefix for the labels of the categories.}
   \item{vname}{deprecated, use vlab instead}
+  \item{force}{Force of repulsion between overlapping text labels. Defaults to 1. If 0, labels are not repelled at all.}
+  \item{max.overlaps}{Exclude text labels that overlap too many things. Defaults to Inf, which means no labels are excluded.}  
 }
 
 \value{a \code{ggplot2} object}

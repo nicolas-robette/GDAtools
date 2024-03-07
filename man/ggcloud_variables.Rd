@@ -12,7 +12,8 @@ ggcloud_variables(resmca, axes = c(1,2), points = "all",
 min.ctr = NULL, max.pval = 0.01, face = "pp",
 shapes = TRUE, prop = NULL, textsize = 3, shapesize = 3,
 col = NULL, col.by.group = TRUE, alpha = 1,
-segment.alpha = 0.5, vlab = TRUE, sep = ".", legend = "right")
+segment.alpha = 0.5, vlab = TRUE, sep = ".", legend = "right",
+force = 1, max.overlaps = Inf)
 }
 
 \arguments{
@@ -33,6 +34,8 @@ segment.alpha = 0.5, vlab = TRUE, sep = ".", legend = "right")
   \item{vlab}{Logical. Should the variable names be used as a prefix for the labels of the categories. Default is TRUE.}
   \item{sep}{Character string used as a separator if vlab=TRUE.}
   \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.}
+  \item{force}{Force of repulsion between overlapping text labels. Defaults to 1. If 0, labels are not repelled at all.}
+  \item{max.overlaps}{Exclude text labels that overlap too many things. Defaults to Inf, which means no labels are excluded.}
 }
 
 \value{a \code{ggplot2} object}

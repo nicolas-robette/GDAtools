@@ -1,7 +1,8 @@
 ggadd_supvars <- function(p, resmca, vars, excl = NULL, points = "all", min.cos2 = 0.1,
                           axes = c(1,2), col = NULL, 
                           shapes = FALSE, prop = NULL, textsize = 3, shapesize = 6,
-                          vlab = TRUE, vname = NULL) {
+                          vlab = TRUE, vname = NULL,
+                          force = 1, max.overlaps = Inf) {
 
   if(any(sapply(vars, FUN = function(x) !is.factor(x)))) stop("variables in data should all be factors")
 
@@ -45,20 +46,28 @@ ggadd_supvars <- function(p, resmca, vars, excl = NULL, points = "all", min.cos2
     if(is.null(col)) {
       if(is.null(prop)) {
         pfin <- p +
-          ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, color = .data$vnames), size = textsize) +
+          ggrepel::geom_text_repel(data = coord,
+                                   ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, color = .data$vnames),
+                                   size = textsize, force = force, max.overlaps = max.overlaps) +
           ggplot2::guides(color = "none")        
       } else {
         pfin <- p +
-          ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, size = .data$prop, color = .data$vnames)) +
+          ggrepel::geom_text_repel(data = coord,
+                                   ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, size = .data$prop, color = .data$vnames),
+                                   force = force, max.overlaps = max.overlaps) +
           ggplot2::guides(color = "none")
       }
     } else {
       if(is.null(prop)) {
         pfin <- p +
-          ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs), size = textsize, color = col)      
+          ggrepel::geom_text_repel(data = coord,
+                                   ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs),
+                                   size = textsize, color = col, force = force, max.overlaps = max.overlaps)      
       } else {
         pfin <- p +
-          ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, size = .data$prop), color = col)      
+          ggrepel::geom_text_repel(data = coord,
+                                   ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, size = .data$prop),
+                                   color = col, force = force, max.overlaps = max.overlaps)      
       }
     }
   } else {
@@ -66,13 +75,17 @@ ggadd_supvars <- function(p, resmca, vars, excl = NULL, points = "all", min.cos2
       pfin <- p +
         ggplot2::geom_point(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, size = .data$prop, color = .data$vnames, shape = .data$vnames)) +
         ggplot2::scale_size_area(max_size = shapesize) +
-        ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, color = .data$vnames), size = textsize) +
+        ggrepel::geom_text_repel(data = coord,
+                                 ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs, color = .data$vnames),
+                                 size = textsize, force = force, max.overlaps = max.overlaps) +
         ggplot2::guides(color = "none", shape = "none")
     } else {
       pfin <- p +
         ggplot2::geom_point(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, size = .data$prop, shape = .data$vnames), color = col) +
         ggplot2::scale_size_area(max_size = shapesize) +
-        ggrepel::geom_text_repel(data = coord, ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs), size = textsize, color = col) +
+        ggrepel::geom_text_repel(data = coord,
+                                 ggplot2::aes(x = .data$axeX, y = .data$axeY, label = .data$labs),
+                                 size = textsize, color = col, force = force, max.overlaps = max.overlaps) +
         ggplot2::guides(shape = "none")
     }
   }
