@@ -1,4 +1,4 @@
-# GDAtools 2.1
+# GDAtools 2.1 [CRAN]
 
 ## New function
 
@@ -273,7 +273,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 ## Changes in existing functions
 
 * `conc.ellipses()`: additional options
- 
+
 
 
 # GDAtools 1.4 [CRAN]
@@ -296,7 +296,7 @@ Please note that the 1.8 version of GDAtools was not published on CRAN. So, comp
 # GDAtools 1.3 [CRAN]
 
 ## Changes in existing functions
-  
+
 * `dimdesc.MCA()`: now uses weights
 
 ## Bug fixes
