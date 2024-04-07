@@ -1,6 +1,6 @@
 # **GDAtools** <img src="man/figures/GDAtools.png" height=140px width=120px alt="" align="right" />
 
-\ 
+<br>
 
 ## Geometric Data Analysis
 
@@ -23,19 +23,19 @@
 * many graphical representations for MCA and variants (with and without [`ggplot2`](https://ggplot2.tidyverse.org/))
 * plots for hierarchical clustering
 
-\ 
+<br>
 
 Initially, I developed `GDAtools` because the [`FactoMineR`](http://factominer.free.fr/) package, which I was using at the time, did not offer some of the techniques I needed, in particular specific MCA. So I tried to program the main functions of `GDAtools` to be compatible with the MCA of [`FactoMineR`](http://factominer.free.fr/) and vice versa.
 Then I discovered the [`ade4`](http://pbil.univ-lyon1.fr/ade4/home.php?lang=eng) package, which offers an incredibly rich range of possibilities. However, it is oriented towards ecology, which does not exactly correspond to the needs of social scientists (of which I am one). Still, I was very much inspired by it for the GDAtools 2.0 version, in particular for the multi-table methods, with instrumental variables, etc.
 Lately, I have also tried to develop the package a bit beyond the GDA toolkit "à la Le Roux et Rouanet", which was the initial goal.
 
-\ 
+<br>
 
 ## Documentation
 
 Please visit [https://nicolas-robette.github.io/GDAtools/](https://nicolas-robette.github.io/GDAtools/) for documentation
 
-\ 
+<br>
 
 ## Installation
 
@@ -49,15 +49,15 @@ if (!require(devtools)){
 install_github("nicolas-robette/GDAtools")
 ```
 
-\ 
+<br>
 
 ## Citation
 
 To cite `GDAtools` in publications, use :
 
-Robette N. (2023), *`GDAtools` : Geometric Data Analysis in `R`*, version 2.0, https://nicolas-robette.github.io/GDAtools/
+Robette N. (2024), *`GDAtools` : Geometric Data Analysis in `R`*, version 2.1, https://nicolas-robette.github.io/GDAtools/
 
-\ 
+<br>
 
 ## References
 
@@ -79,7 +79,7 @@ Le Roux B. and Rouanet H., 2010, *Multiple Correspondence Analysis*, SAGE, Serie
 
 Saporta G., 2006, *Probabilités, analyses des données et statistique*, Editions Technip.
 
-\ 
+<br>
 
 **More specific references on some techniques present in the package**
 
@@ -92,8 +92,7 @@ Bry X., Robette N., Roueff O., 2016, "A dialogue of the deaf in the statistical 
 
 Cibois P., 2014, *Les méthodes d’analyse d’enquêtes*. Nouvelle édition [en ligne](https://books.openedition.org/enseditions/1443). Lyon: ENS Éditions.
 
-De Leeuw J et van der Heijden PGM, 1985, *Quasi-Correspondence Analysis*, Leiden University.
-of Leiden.
+De Leeuw J et van der Heijden PGM, 1985, *Quasi-Correspondence Analysis*, University of Leiden.
 
 Dolédec S. and Chessel D., 1994, "Co-inertia analysis: an alternative method for studying species-environment relationships", *Freshwater Biology*, 31, 277–294.
 
