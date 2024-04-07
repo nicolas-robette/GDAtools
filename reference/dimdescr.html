@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1</span>
       </span>
     </div>
 
@@ -69,7 +69,8 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dimdescr</span><span class="op">(</span><span class="va">resmca</span>, vars <span class="op">=</span> <span class="cn">NULL</span>, dim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, </span>
 <span>         limit <span class="op">=</span> <span class="cn">NULL</span>, correlation <span class="op">=</span> <span class="st">"pearson"</span>,</span>
 <span>         na.rm.cat <span class="op">=</span> <span class="cn">FALSE</span>, na.value.cat <span class="op">=</span> <span class="st">"NA"</span>, na.rm.cont <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>         nperm <span class="op">=</span> <span class="cn">NULL</span>, distrib <span class="op">=</span> <span class="st">"asympt"</span><span class="op">)</span></span></code></pre></div>
+<span>         nperm <span class="op">=</span> <span class="cn">NULL</span>, distrib <span class="op">=</span> <span class="st">"asympt"</span>,</span>
+<span>         shortlabs <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -103,6 +104,9 @@
 
   <dt>distrib</dt>
 <dd><p>the null distribution of permutation test of independence can be approximated by its asymptotic distribution (<code>"asympt"</code>, default) or via Monte Carlo resampling (<code>"approx"</code>).</p></dd>
+
+  <dt>shortlabs</dt>
+<dd><p>logical. If TRUE (default), the data frame will have short column names, so that all columns can be displayed side by side on a laptop screen.</p></dd>
 
 </dl></div>
     <div id="details">
@@ -144,46 +148,57 @@
 <span class="r-in"><span><span class="fu">dimdescr</span><span class="op">(</span><span class="va">mca</span>, limit <span class="op">=</span> <span class="fl">0.1</span>, nperm <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dim.1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dim.1$variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    variable measure association permutation.pvalue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1      Jazz    Eta2       0.611                  0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Classical    Eta2       0.539                  0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      Rock    Eta2       0.160                  0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4       Rap    Eta2       0.075                  0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 FrenchPop    Eta2       0.012                  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable measure association  pvalue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      Jazz    Eta2       0.611 0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 Classical    Eta2       0.539 0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      Rock    Eta2       0.160 0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4       Rap    Eta2       0.075 0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 FrenchPop    Eta2       0.012 0.00043</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dim.1$categories</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       categories mean.y.in.xcat mean.y.global sd.y.in.xcat sd.y.global    cor</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10       Jazz.No          0.204             0        0.324       0.528  0.751</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13  Classical.No          0.244             0        0.335       0.528  0.710</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7        Rock.No          0.131             0        0.471       0.528  0.398</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        Rap.Yes          0.339             0        0.504       0.528  0.274</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   FrenchPop.No          0.072             0        0.543       0.528  0.108</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  FrenchPop.Yes         -0.044             0        0.511       0.528 -0.103</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         Rap.No         -0.062             0        0.510       0.528 -0.264</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8       Rock.Yes         -0.344             0        0.514       0.528 -0.396</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 Classical.Yes         -0.615             0        0.414       0.528 -0.734</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11      Jazz.Yes         -0.849             0        0.340       0.528 -0.780</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       categories avg.coord.in.cat sd.coord.in.cat sd.coord.in.dim    cor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        Jazz.No            0.204           0.324           0.528  0.751</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   Classical.No            0.244           0.335           0.528  0.710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        Rock.No            0.131           0.471           0.528  0.398</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        Rap.Yes            0.339           0.504           0.528  0.274</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   FrenchPop.No            0.072           0.543           0.528  0.108</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  FrenchPop.Yes           -0.044           0.511           0.528 -0.103</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         Rap.No           -0.062           0.510           0.528 -0.264</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8       Rock.Yes           -0.344           0.514           0.528 -0.396</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  Classical.Yes           -0.615           0.414           0.528 -0.734</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10      Jazz.Yes           -0.849           0.340           0.528 -0.780</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       pval</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.00001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  0.01043</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 0.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dim.2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dim.2$variables</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    variable measure association permutation.pvalue</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1       Rap    Eta2       0.526               0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2      Rock    Eta2       0.456               0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Classical    Eta2       0.077               0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4      Jazz    Eta2       0.031               0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 FrenchPop    Eta2       0.003               0.62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable measure association  pvalue</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1       Rap    Eta2       0.526 0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      Rock    Eta2       0.456 0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Classical    Eta2       0.077 0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4      Jazz    Eta2       0.031 0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 FrenchPop    Eta2       0.003 0.55391</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dim.2$categories</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       categories mean.y.in.xcat mean.y.global sd.y.in.xcat sd.y.global    cor</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         Rap.No          0.147             0        0.320       0.467  0.704</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7        Rock.No          0.192             0        0.339       0.467  0.660</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 Classical.Yes          0.205             0        0.445       0.467  0.276</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10       Jazz.No          0.040             0        0.443       0.467  0.165</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11      Jazz.Yes         -0.169             0        0.526       0.467 -0.175</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13  Classical.No         -0.083             0        0.451       0.467 -0.273</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8       Rock.Yes         -0.519             0        0.363       0.467 -0.676</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        Rap.Yes         -0.793             0        0.318       0.467 -0.724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      categories avg.coord.in.cat sd.coord.in.cat sd.coord.in.dim    cor  pval</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        Rap.No            0.147           0.320           0.467  0.704 0e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2       Rock.No            0.192           0.339           0.467  0.660 0e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 Classical.Yes            0.205           0.445           0.467  0.276 0e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4       Jazz.No            0.040           0.443           0.467  0.165 7e-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      Jazz.Yes           -0.169           0.526           0.467 -0.175 5e-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  Classical.No           -0.083           0.451           0.467 -0.273 0e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7      Rock.Yes           -0.519           0.363           0.467 -0.676 0e+00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8       Rap.Yes           -0.793           0.318           0.467 -0.724 0e+00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>

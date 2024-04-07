@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1</span>
       </span>
     </div>
 
@@ -83,7 +83,18 @@
     <h2>Value</h2>
     
 
-<p>Returns a data frame with 2 variables:</p>
+<p>Returns a list of two data frames.
+  The first one is called <code>raw</code> and has 3 variables:</p>
+<dl><dt>eigen</dt>
+<dd><p>eigen values</p></dd>
+
+  <dt>rate</dt>
+<dd><p>rates</p></dd>
+
+  <dt>cum.rate</dt>
+<dd><p>cumulative rates</p></dd>
+
+</dl><p>The second one is called <code>modif</code> and has 2 variables:</p>
 <dl><dt>mrate</dt>
 <dd><p>modified rates</p></dd>
 
@@ -125,11 +136,11 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8  1.691445e-01 8.457224e+00  85.39922</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9  1.658990e-01 8.294950e+00  93.69417</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 1.261165e-01 6.305826e+00 100.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 3.567853e-30 1.783927e-28 100.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 9.779171e-31 4.889585e-29 100.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 6.207510e-31 3.103755e-29 100.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 2.637924e-31 1.318962e-29 100.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 1.649182e-31 8.245909e-30 100.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 2.765345e-30 1.382672e-28 100.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 2.293643e-30 1.146822e-28 100.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 1.376840e-30 6.884199e-29 100.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 1.109218e-30 5.546091e-29 100.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 7.212848e-32 3.606424e-30 100.00000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $modif</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         mrate cum.mrate</span>

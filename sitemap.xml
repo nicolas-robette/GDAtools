@@ -52,6 +52,9 @@
     <loc>https://nicolas-robette.github.io/GDAtools/reference/angles.csa.html</loc>
   </url>
   <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/barplot_contrib.html</loc>
+  </url>
+  <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/bcMCA.html</loc>
   </url>
   <url>
@@ -86,6 +89,9 @@
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/dichotom.html</loc>
+  </url>
+  <url>
+    <loc>https://nicolas-robette.github.io/GDAtools/reference/dichotomixed.html</loc>
   </url>
   <url>
     <loc>https://nicolas-robette.github.io/GDAtools/reference/dimcontrib.html</loc>

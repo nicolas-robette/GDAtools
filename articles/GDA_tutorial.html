@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1</span>
       </span>
     </div>
 
@@ -84,7 +84,7 @@
       <h1 data-toc-skip>Geometric Data Analysis with GDAtools</h1>
                         <h4 data-toc-skip class="author">Nicolas Robette</h4>
             
-            <h4 data-toc-skip class="date">2023-04-19</h4>
+            <h4 data-toc-skip class="date">2024-04-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/nicolas-robette/GDAtools/blob/HEAD/vignettes/articles/GDA_tutorial.Rmd" class="external-link"><code>vignettes/articles/GDA_tutorial.Rmd</code></a></small>
       <div class="hidden name"><code>GDA_tutorial.Rmd</code></div>
@@ -491,17 +491,15 @@ Educ     5.9   3.3</code></pre>
 <table class="table">
 <thead><tr class="header">
 <th align="left">categories</th>
-<th align="right">mean.y.in.xcat</th>
-<th align="right">mean.y.global</th>
-<th align="right">sd.y.in.xcat</th>
-<th align="right">sd.y.global</th>
+<th align="right">avg.coord.in.cat</th>
+<th align="right">sd.coord.in.cat</th>
+<th align="right">sd.coord.in.dim</th>
 <th align="right">cor</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Age.15-24</td>
 <td align="right">0.156</td>
-<td align="right">0</td>
 <td align="right">0.355</td>
 <td align="right">0.369</td>
 <td align="right">0.176</td>
@@ -509,7 +507,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="even">
 <td align="left">Educ.None</td>
 <td align="right">0.094</td>
-<td align="right">0</td>
 <td align="right">0.324</td>
 <td align="right">0.369</td>
 <td align="right">0.145</td>
@@ -517,7 +514,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="odd">
 <td align="left">Educ.Low</td>
 <td align="right">0.052</td>
-<td align="right">0</td>
 <td align="right">0.355</td>
 <td align="right">0.369</td>
 <td align="right">0.100</td>
@@ -525,7 +521,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="even">
 <td align="left">Age.25-49</td>
 <td align="right">0.006</td>
-<td align="right">0</td>
 <td align="right">0.358</td>
 <td align="right">0.369</td>
 <td align="right">0.015</td>
@@ -533,7 +528,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="odd">
 <td align="left">Gender.Women</td>
 <td align="right">0.004</td>
-<td align="right">0</td>
 <td align="right">0.370</td>
 <td align="right">0.369</td>
 <td align="right">0.012</td>
@@ -541,7 +535,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="even">
 <td align="left">Gender.Men</td>
 <td align="right">-0.005</td>
-<td align="right">0</td>
 <td align="right">0.368</td>
 <td align="right">0.369</td>
 <td align="right">-0.012</td>
@@ -549,7 +542,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="odd">
 <td align="left">Educ.Medium</td>
 <td align="right">-0.040</td>
-<td align="right">0</td>
 <td align="right">0.376</td>
 <td align="right">0.369</td>
 <td align="right">-0.051</td>
@@ -557,7 +549,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="even">
 <td align="left">Age.50+</td>
 <td align="right">-0.061</td>
-<td align="right">0</td>
 <td align="right">0.369</td>
 <td align="right">0.369</td>
 <td align="right">-0.142</td>
@@ -565,7 +556,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="odd">
 <td align="left">Educ.High</td>
 <td align="right">-0.141</td>
-<td align="right">0</td>
 <td align="right">0.382</td>
 <td align="right">0.369</td>
 <td align="right">-0.213</td>
@@ -578,17 +568,15 @@ Educ     5.9   3.3</code></pre>
 <table class="table">
 <thead><tr class="header">
 <th align="left">categories</th>
-<th align="right">mean.y.in.xcat</th>
-<th align="right">mean.y.global</th>
-<th align="right">sd.y.in.xcat</th>
-<th align="right">sd.y.global</th>
+<th align="right">avg.coord.in.cat</th>
+<th align="right">sd.coord.in.cat</th>
+<th align="right">sd.coord.in.dim</th>
 <th align="right">cor</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">Age.15-24</td>
 <td align="right">0.236</td>
-<td align="right">0</td>
 <td align="right">0.320</td>
 <td align="right">0.342</td>
 <td align="right">0.288</td>
@@ -596,7 +584,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="even">
 <td align="left">Gender.Men</td>
 <td align="right">0.088</td>
-<td align="right">0</td>
 <td align="right">0.302</td>
 <td align="right">0.342</td>
 <td align="right">0.245</td>
@@ -604,7 +591,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="odd">
 <td align="left">Age.25-49</td>
 <td align="right">0.049</td>
-<td align="right">0</td>
 <td align="right">0.333</td>
 <td align="right">0.342</td>
 <td align="right">0.123</td>
@@ -612,7 +598,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="even">
 <td align="left">Educ.High</td>
 <td align="right">0.076</td>
-<td align="right">0</td>
 <td align="right">0.327</td>
 <td align="right">0.342</td>
 <td align="right">0.123</td>
@@ -620,7 +605,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="odd">
 <td align="left">Educ.Low</td>
 <td align="right">0.016</td>
-<td align="right">0</td>
 <td align="right">0.341</td>
 <td align="right">0.342</td>
 <td align="right">0.034</td>
@@ -628,7 +612,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="even">
 <td align="left">Educ.Medium</td>
 <td align="right">0.007</td>
-<td align="right">0</td>
 <td align="right">0.335</td>
 <td align="right">0.342</td>
 <td align="right">0.009</td>
@@ -636,7 +619,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="odd">
 <td align="left">Educ.None</td>
 <td align="right">-0.100</td>
-<td align="right">0</td>
 <td align="right">0.341</td>
 <td align="right">0.342</td>
 <td align="right">-0.167</td>
@@ -644,7 +626,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="even">
 <td align="left">Gender.Women</td>
 <td align="right">-0.081</td>
-<td align="right">0</td>
 <td align="right">0.357</td>
 <td align="right">0.342</td>
 <td align="right">-0.245</td>
@@ -652,7 +633,6 @@ Educ     5.9   3.3</code></pre>
 <tr class="odd">
 <td align="left">Age.50+</td>
 <td align="right">-0.131</td>
-<td align="right">0</td>
 <td align="right">0.299</td>
 <td align="right">0.342</td>
 <td align="right">-0.330</td>
@@ -681,10 +661,10 @@ Educ     5.9   3.3</code></pre>
 
 $coord
            dim.1     dim.2     dim.3     dim.4     dim.5
-None    0.254716 -0.293253 -0.191563  0.094510 -0.050520
-Low     0.140147  0.046951  0.002259 -0.063613 -0.044181
-Medium -0.109057  0.019669  0.054436  0.070183 -0.027962
-High   -0.380835  0.220714  0.153475 -0.059443  0.136194
+None    0.254716 -0.293253 -0.191563  0.094510  0.050520
+Low     0.140147  0.046951  0.002259 -0.063613  0.044181
+Medium -0.109057  0.019669  0.054436  0.070183  0.027962
+High   -0.380835  0.220714  0.153475 -0.059443 -0.136194
 
 $cos2
           dim.1    dim.2    dim.3    dim.4    dim.5
@@ -706,10 +686,10 @@ eta2    0.059123 0.033455 0.015115 0.005279 0.005832
 
 $typic
            dim.1     dim.2     dim.3     dim.4     dim.5
-None    6.487410 -7.468929 -4.878958  2.407110 -1.286704
-Low     4.487336  1.503312  0.072336 -2.036827 -1.414633
-Medium -2.272883  0.409932  1.134503  1.462690 -0.582753
-High   -9.502876  5.507427  3.829615 -1.483270  3.398406
+None    6.487410 -7.468929 -4.878958  2.407110  1.286704
+Low     4.487336  1.503312  0.072336 -2.036827  1.414633
+Medium -2.272883  0.409932  1.134503  1.462690  0.582753
+High   -9.502876  5.507427  3.829615 -1.483270 -3.398406
 
 $pval
           dim.1    dim.2    dim.3    dim.4    dim.5
@@ -720,10 +700,10 @@ High   0.000000 0.000000 0.000128 0.138003 0.000678
 
 $cor
         dim.1  dim.2  dim.3  dim.4  dim.5
-None    0.145 -0.167 -0.109  0.054 -0.029
-Low     0.100  0.034  0.002 -0.046 -0.032
-Medium -0.051  0.009  0.025  0.033 -0.013
-High   -0.213  0.123  0.086 -0.033  0.076</code></pre>
+None    0.145 -0.167 -0.109  0.054  0.029
+Low     0.100  0.034  0.002 -0.046  0.032
+Medium -0.051  0.009  0.025  0.033  0.013
+High   -0.213  0.123  0.086 -0.033 -0.076</code></pre>
 <p>Graphically, we can represent the <em>subcloud</em> of each category using a <strong>concentration ellipse</strong>, which is centered on the mean point and encompasses 86% of individuals with that category.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">icloud</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ggcloud_indiv.html">ggcloud_indiv</a></span><span class="op">(</span><span class="va">mca</span>, col <span class="op">=</span> <span class="st">"lightgrey"</span><span class="op">)</span></span>
@@ -814,19 +794,19 @@ High   0.000000 0.000000</code></pre>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ht</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/homog.test.html">homog.test</a></span><span class="op">(</span><span class="va">mca</span>, <span class="va">Taste</span><span class="op">$</span><span class="va">Educ</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ht</span><span class="op">$</span><span class="va">dim.1</span><span class="op">$</span><span class="va">p.values</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<pre><code>       None Low Medium High
-None      1   0      0    0
-Low       0   1      0    0
-Medium    0   0      1    0
-High      0   0      0    1</code></pre>
+<pre><code>        None   Low Medium High
+None   1.000 0.053      0    0
+Low    0.053 1.000      0    0
+Medium 0.000 0.000      1    0
+High   0.000 0.000      0    1</code></pre>
 <p>On axis 1, the mean points of the education level categories are all significantly different from each other.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">ht</span><span class="op">$</span><span class="va">dim.2</span><span class="op">$</span><span class="va">p.values</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<pre><code>       None   Low Medium High
-None      1 0.000  0.000    0
-Low       0 1.000  0.223    0
-Medium    0 0.223  1.000    0
-High      0 0.000  0.000    1</code></pre>
+<pre><code>       None   Low Medium  High
+None      1 0.000  0.000 0.000
+Low       0 1.000  0.677 0.004
+Medium    0 0.677  1.000 0.004
+High      0 0.004  0.004 1.000</code></pre>
 <p>This is not the case on axis 2, where the “Low” and “Medium” categories are not significantly different (p-value = 0.22).</p>
 <hr>
 </div>
@@ -1059,11 +1039,11 @@ High      0 0.000  0.000    1</code></pre>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/angles.csa.html">angles.csa</a></span><span class="op">(</span><span class="va">csa</span>, <span class="va">mca</span><span class="op">)</span></span></code></pre></div>
 <pre><code>$cosines
          mca.dim1 mca.dim2 mca.dim3 mca.dim4 mca.dim5 mca.dim1&amp;2 mca.dim1&amp;3
-csa.dim1    0.772    0.157   -0.051    0.415    0.486      0.787      0.773
-csa.dim2    0.553   -0.481   -0.063   -0.511   -0.535      0.733      0.557
-csa.dim3   -0.017   -0.680   -0.059    0.010    0.480      0.680      0.061
-csa.dim4    0.223    0.182    0.385   -0.482    0.179      0.287      0.445
-csa.dim5   -0.181   -0.296   -0.298   -0.350    0.154      0.347      0.348
+csa.dim1    0.772    0.157   -0.051    0.415   -0.486      0.787      0.773
+csa.dim2    0.553   -0.481   -0.063   -0.511    0.535      0.733      0.557
+csa.dim3   -0.017   -0.680   -0.059    0.010   -0.480      0.680      0.061
+csa.dim4    0.223    0.182    0.385   -0.482   -0.179      0.287      0.445
+csa.dim5   -0.181   -0.296   -0.298   -0.350   -0.154      0.347      0.348
          mca.dim1&amp;4 mca.dim1&amp;5 mca.dim2&amp;3 mca.dim2&amp;4 mca.dim2&amp;5 mca.dim3&amp;4
 csa.dim1      0.876      0.912      0.165      0.444      0.511      0.418
 csa.dim2      0.753      0.770      0.485      0.702      0.719      0.515
@@ -1113,7 +1093,7 @@ csa.dim5       70.4       67.5</code></pre>
 <p><img src="GDA_tutorial_files/figure-html/between-1.png" width="700"></p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">between</span><span class="op">$</span><span class="va">ratio</span></span></code></pre></div>
-<pre><code>[1] 0.04077871</code></pre>
+<pre><code>[1] 0.04096847</code></pre>
 <p>The first axis, or “discriminant factor”, orders the age categories and in particular contrasts listening to rap and rock music and taste for science fiction, on the side of the young, with listening to classical music and taste for musicals, on the side of the over 50s. But many of the taste categories are close to the center of axis 1 and are therefore not differentiated much by age. Age differences account for only 4% of the total inertia of the cloud.</p>
 </div>
 <div class="section level4">

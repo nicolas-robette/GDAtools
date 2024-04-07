@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1</span>
       </span>
     </div>
 
@@ -61,25 +61,62 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="2.0.1" id="gdatools-201">GDAtools 2.0.1<a class="anchor" aria-label="anchor" href="#gdatools-201"></a></h2>
+<h2 class="page-header" data-toc-text="2.1" id="gdatools-21">GDAtools 2.1<small>2024-03-07</small><a class="anchor" aria-label="anchor" href="#gdatools-21"></a></h2>
+<div class="section level3">
+<h3 id="new-function-2-1">New function<a class="anchor" aria-label="anchor" href="#new-function-2-1"></a></h3>
+<ul><li>
+<code><a href="../reference/barplot_contrib.html">barplot_contrib()</a></code> : bar plot for contributions</li>
+<li>
+<code><a href="../reference/dichotomixed.html">dichotomixed()</a></code> : dichotomizes the factor variables in a mixed format data frame</li>
+</ul></div>
+<div class="section level3">
+<h3 id="changes-in-existing-functions-2-1">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-2-1"></a></h3>
+<ul><li>
+<code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> and <code><a href="../reference/ggadd_supvars.html">ggadd_supvars()</a></code> : new options (“force” and “max.overlaps”) to adjust how text labels are repelled.</li></ul></div>
+<div class="section level3">
+<h3 id="tiny-fixes-2-1">Tiny fixes<a class="anchor" aria-label="anchor" href="#tiny-fixes-2-1"></a></h3>
+<ul><li>
+<code><a href="../reference/dimdescr.html">dimdescr()</a></code> : fixed column names in the results + junk categories are not displayed for speMCA results</li>
+<li>
+<code><a href="../reference/ggadd_density.html">ggadd_density()</a></code> : fixed deprecated ggplot2 arguments</li>
+<li>
+<code><a href="../reference/bcMCA.html">bcMCA()</a></code> : bug fix when there are junk categories</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="2.0.1" id="gdatools-201-cran">GDAtools 2.0.1 [CRAN]<small>2023-10-06</small><a class="anchor" aria-label="anchor" href="#gdatools-201-cran"></a></h2>
 <div class="section level3">
 <h3 id="changes-in-existing-functions-2-0-1">Changes in existing functions<a class="anchor" aria-label="anchor" href="#changes-in-existing-functions-2-0-1"></a></h3>
 <ul><li>
-<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : new shortlabs option, to display short column labels (thanks to <a href="https://github.com/janhovden" class="external-link">@janhovden</a>)</li>
+<code><a href="../reference/tabcontrib.html">tabcontrib()</a></code> : new shortlabs option, to display short column labels (as suggested by <a href="https://github.com/janhovden" class="external-link">@janhovden</a>)</li>
 <li>
 <code><a href="../reference/planecontrib.html">planecontrib()</a></code> : the elements of the resulting lists have been renamed. This fixes a bug in <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code> and <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code> when points = “best” and axes are not c(1,2) (thanks to Amal Damien Tawfik)</li>
 <li>new argument points = “besthv” for <code><a href="../reference/ggcloud_variables.html">ggcloud_variables()</a></code>, <code><a href="../reference/ggcloud_indiv.html">ggcloud_indiv()</a></code>, <code><a href="../reference/plot.speMCA.html">plot.speMCA()</a></code> and <code><a href="../reference/plot.csMCA.html">plot.csMCA()</a></code>.</li>
+<li>
+<code><a href="../reference/ggadd_supvars.html">ggadd_supvars()</a></code> : new option “excl”, to exclude some supplementary categories from the plot (as suggested by <a href="https://github.com/janhovden" class="external-link">@janhovden</a>)</li>
+<li>
+<code><a href="../reference/dimdescr.html">dimdescr()</a></code> : new shortlabs option, to display short column labels</li>
+<li>
+<code><a href="../reference/ggaxis_variables.html">ggaxis_variables()</a></code> : new vlab argument, to choose whether to use variable names as prefixes (as suggested by <a href="https://github.com/janhovden" class="external-link">@janhovden</a>)</li>
+<li>
+<code><a href="../reference/ggadd_supvars.html">ggadd_supvars()</a></code> : vname argument has been renamed to vlab (for consistency with other functions)</li>
+<li>
+<code><a href="../reference/ggadd_supvars.html">ggadd_supvars()</a></code> : new arguments (points and min.cos2) to filter categories according to the squared cosine (as suggested by <a href="https://github.com/janhovden" class="external-link">@janhovden</a>)</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-2-0-1">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-2-0-1"></a></h3>
-<ul><li>bug fix in <code><a href="../reference/ggbootvalid_variables.html">ggbootvalid_variables()</a></code> and <code><a href="../reference/ggaxis_variables.html">ggaxis_variables()</a></code> when factor levels have special characters (thanks to Amal Damien Tawfik)</li></ul></div>
+<ul><li>bug fix in <code><a href="../reference/ggbootvalid_variables.html">ggbootvalid_variables()</a></code> and <code><a href="../reference/ggaxis_variables.html">ggaxis_variables()</a></code> when factor levels have special characters (thanks to Amal Damien Tawfik)</li>
+<li>bug fix in <code><a href="../reference/ggadd_supvars.html">ggadd_supvars()</a></code> when factors have two levels (thanks to Amal Damien Tawfik)</li>
+<li>correction of computation error in <code><a href="../reference/homog.test.html">homog.test()</a></code> (thanks to <a href="https://github.com/Yusuke-Ono" class="external-link">@Yusuke-Ono</a>)</li>
+<li>bug fix in <code><a href="../reference/ggaxis_variables.html">ggaxis_variables()</a></code> when var argument has two or more variable names (thanks to <a href="https://github.com/janhovden" class="external-link">@janhovden</a>)</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="2.0" id="gdatools-20-cran">GDAtools 2.0 [CRAN]<small>2023-04-01</small><a class="anchor" aria-label="anchor" href="#gdatools-20-cran"></a></h2>
 <p>Please note that the 1.8 version of GDAtools was not published on CRAN. So, compared to the last version on CRAN, 2.0 version inherits the changes of 1.8 version.</p>
 <div class="section level3">
 <h3 id="major-change-2-0">Major change<a class="anchor" aria-label="anchor" href="#major-change-2-0"></a></h3>
-<ul><li>The package now focuses exclusively on Geometric Data Analysis, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new <code>descriptio</code> package (available on CRAN or github) : <code><a href="../reference/deprecated.html">wtable()</a></code>, <code><a href="../reference/deprecated.html">pem()</a></code>, <code><a href="../reference/deprecated.html">phi.table()</a></code>, <code>oddsratio.table()</code>, <code><a href="../reference/deprecated.html">catdesc()</a></code>, <code><a href="../reference/deprecated.html">condesc()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocat()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocont()</a></code>, <code><a href="../reference/deprecated.html">assoc.catcont()</a></code>, <code><a href="../reference/deprecated.html">assoc.yx()</a></code>, <code><a href="../reference/deprecated.html">darma()</a></code>, <code>ggassoc_chiasmogram()</code>, <code>ggassoc_assocplot()</code>, <code>ggassoc_bertin()</code>, <code><a href="../reference/deprecated.html">ggassoc_phiplot()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_boxplot()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_crosstab()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_scatter()</a></code>. Lastly, <code><a href="../reference/translate.logit.html">translate.logit()</a></code> has moved to the (also new) <code>deauvieau</code> package (available on CRAN).</li>
+<ul><li>The package now focuses exclusively on Geometric Data Analysis, which makes it more coherent, lighter and with less dependencies. This implies that many functions have moved to the new <code>descriptio</code> package (available on CRAN or github) : <code><a href="../reference/deprecated.html">wtable()</a></code>, <code><a href="../reference/deprecated.html">pem()</a></code>, <code><a href="../reference/deprecated.html">phi.table()</a></code>, <code>oddsratio.table()</code>, <code><a href="../reference/deprecated.html">catdesc()</a></code>, <code><a href="../reference/deprecated.html">condesc()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocat()</a></code>, <code><a href="../reference/deprecated.html">assoc.twocont()</a></code>, <code><a href="../reference/deprecated.html">assoc.catcont()</a></code>, <code><a href="../reference/deprecated.html">assoc.yx()</a></code>, <code><a href="../reference/deprecated.html">darma()</a></code>, <code>ggassoc_chiasmogram()</code>, <code>ggassoc_assocplot()</code>, <code>ggassoc_bertin()</code>, <code><a href="../reference/deprecated.html">ggassoc_phiplot()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_boxplot()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_crosstab()</a></code>, <code><a href="../reference/deprecated.html">ggassoc_scatter()</a></code>. Lastly, <code><a href="../reference/translate.logit.html">translate.logit()</a></code> has moved to the (also new) <code>translate.logit</code> package (available on CRAN).</li>
 <li>The vignettes have been extensively rewritten.</li>
 </ul></div>
 <div class="section level3">

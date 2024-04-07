@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1</span>
       </span>
     </div>
 
@@ -70,7 +70,8 @@
 <span>min.ctr <span class="op">=</span> <span class="cn">NULL</span>, max.pval <span class="op">=</span> <span class="fl">0.01</span>, face <span class="op">=</span> <span class="st">"pp"</span>,</span>
 <span>shapes <span class="op">=</span> <span class="cn">TRUE</span>, prop <span class="op">=</span> <span class="cn">NULL</span>, textsize <span class="op">=</span> <span class="fl">3</span>, shapesize <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>col <span class="op">=</span> <span class="cn">NULL</span>, col.by.group <span class="op">=</span> <span class="cn">TRUE</span>, alpha <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>segment.alpha <span class="op">=</span> <span class="fl">0.5</span>, vlab <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">"."</span>, legend <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span></code></pre></div>
+<span>segment.alpha <span class="op">=</span> <span class="fl">0.5</span>, vlab <span class="op">=</span> <span class="cn">TRUE</span>, sep <span class="op">=</span> <span class="st">"."</span>, legend <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>force <span class="op">=</span> <span class="fl">1</span>, max.overlaps <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -125,6 +126,12 @@
 
   <dt>legend</dt>
 <dd><p>the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.</p></dd>
+
+  <dt>force</dt>
+<dd><p>Force of repulsion between overlapping text labels. Defaults to 1. If 0, labels are not repelled at all.</p></dd>
+
+  <dt>max.overlaps</dt>
+<dd><p>Exclude text labels that overlap too many things. Defaults to Inf, which means no labels are excluded.</p></dd>
 
 </dl></div>
     <div id="value">

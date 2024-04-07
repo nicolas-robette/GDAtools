@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">GDAtools</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1</span>
       </span>
     </div>
 
@@ -67,7 +67,7 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggaxis_variables</span><span class="op">(</span><span class="va">resmca</span>, var <span class="op">=</span> <span class="cn">NULL</span>, axis <span class="op">=</span> <span class="fl">1</span>, prop <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>underline <span class="op">=</span> <span class="cn">FALSE</span>, col <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<span>underline <span class="op">=</span> <span class="cn">FALSE</span>, col <span class="op">=</span> <span class="cn">NULL</span>, vlab <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -89,6 +89,9 @@
 
   <dt>col</dt>
 <dd><p>character string. Color name for the labels of the categories. If NULL and <code>var=NULL</code>, the default palette of <code>ggplot2</code> is used, with one color per variable. If NULL and <code>var</code> is not NULL, labels are black.</p></dd>
+
+  <dt>vlab</dt>
+<dd><p>Logical. Should the variable names be used as a prefix for the labels of the categories. Default is TRUE.</p></dd>
 
 </dl></div>
     <div id="value">
