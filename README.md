@@ -67,6 +67,8 @@ Bry X., 1996, *Analyses factorielles multiples*, Economica.
 
 Escofier B. and Pagès J., 2008, *Analyses factorielles simples et multiples*, Dunod.
 
+Fénelon J.-P., 1981, *Qu'est-ce que l'Analyse des Données?*, Lefonen. (The image in the package hex sticker is taken from this book's cover.)
+
 Lebart L., Morineau A. and Warwick K., 1984, *Multivariate Descriptive Statistical Analysis*, John Wiley and sons, New-York.
 
 Le Roux B. and Rouanet H., 2004, *Geometric Data Analysis: From Correspondence Analysis to Stuctured Data Analysis*, Kluwer Academic Publishers, Dordrecht.
