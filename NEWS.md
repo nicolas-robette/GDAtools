@@ -1,3 +1,11 @@
+# GDAtools 2.2
+
+## Bug fixes
+
+* `ggadd_supind()` : bug fix when only one supplementary individual (thanks to Mathieu Ferry)
+
+
+
 # GDAtools 2.1 [CRAN]
 
 ## New function
