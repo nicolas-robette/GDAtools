@@ -49,6 +49,7 @@ reference:
   - homog.test
   - supvar
   - supvars
+  - scaled.dev
   - supind
   - quadrant
   - flip.mca

@@ -1,5 +1,9 @@
 # GDAtools 2.2
 
+## New function
+
+* `scaled.dev()` : scaled deviations between categories of a supplementary categorical variable
+
 ## Bug fixes
 
 * `ggadd_supind()` : bug fix when only one supplementary individual (thanks to Mathieu Ferry)
