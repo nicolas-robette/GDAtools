@@ -9,7 +9,7 @@
 \usage{contrib(resmca)}
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA} or \code{csMCA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA} or \code{bcMCA} function}
 }
 
 \details{

@@ -17,7 +17,7 @@ force = 1, max.overlaps = Inf)
 
 \arguments{
   \item{p}{\code{ggplot2} object with the cloud of variables}
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}.}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function}
   \item{vars}{A data frame of categorical supplementary variables. All these variables should be factors.}
   \item{excl}{character vector of supplementary categories to exclude from the plot, specified in the form "namevariable.namecategory" (for instance "Gender.Men"). If NULL (default), all the supplementary categories are plotted.}
   \item{points}{character string. If 'all' all categories are plotted (default); if 'besth' only those with a minimum squared cosine on horizontal axis are plotted; if 'bestv' only those with a minimum squared cosine on vertical axis are plotted; if 'besthv' only those with a minimum squared cosine on horizontal or vertical axis are plotted; if 'best' only those with a minimum squared cosine on the plane are plotted.}

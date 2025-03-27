@@ -11,7 +11,8 @@ Computes correlation ratios (also known as eta-squared) for a list of supplement
 \usage{dimeta2(resmca, vars, dim = c(1,2))}
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function
+}
   \item{vars}{a data frame of supplementary variables}
   \item{dim}{the axes for which eta2 are computed. Default is c(1,2)}
 }

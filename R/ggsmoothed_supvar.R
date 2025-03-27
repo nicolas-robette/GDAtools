@@ -6,7 +6,10 @@ ggsmoothed_supvar <- function(resmca, var, cat, axes = c(1,2),
   if (!requireNamespace("sf", quietly = TRUE))
     stop("sf package should be installed to use this function")
   
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
   type <- attr(resmca,'class')[1]
+  
   if(type=="stMCA") type <- resmca$call$input.mca
   if(type=="csMCA") var <- var[resmca$call$subcloud]
   if(type=="multiMCA") {
@@ -16,10 +19,12 @@ ggsmoothed_supvar <- function(resmca, var, cat, axes = c(1,2),
   if(type %in% c("MCA","speMCA","csMCA")) {
     rate1 <- modif.rate(resmca)$modif$mrate[axes[1]]
     rate2 <- modif.rate(resmca)$modif$mrate[axes[2]]
-  }
-  if(type %in% c("stMCA","multiMCA","PCA")) {
+  } else if(type %in% c("stMCA","multiMCA","PCA")) {
     rate1 <- modif.rate(resmca)$raw$rate[axes[1]]
     rate2 <- modif.rate(resmca)$raw$rate[axes[2]]
+  } else if(type == "bcMCA") {
+    rate1 <- resmca$eig$rate[axes[1]]
+    rate2 <- resmca$eig$rate[axes[2]]
   }
   
   # prepare data  
@@ -68,8 +73,8 @@ ggsmoothed_supvar <- function(resmca, var, cat, axes = c(1,2),
       ggplot2::scale_fill_distiller(type = "div", palette = pal, limits = limits, name = "")
   
   p + 
-    ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", size=.1) +
-    ggplot2::geom_vline(xintercept = 0, colour = "darkgrey", size=.1) +
+    ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", linewidth = .1) +
+    ggplot2::geom_vline(xintercept = 0, colour = "darkgrey", linewidth = .1) +
     ggplot2::xlab(paste0("dim ", axes[1], " (", round(rate1,1), " %)")) +
     ggplot2::ylab(paste0("dim ", axes[2], " (", round(rate2,1), " %)")) +
     ggplot2::theme_bw() +

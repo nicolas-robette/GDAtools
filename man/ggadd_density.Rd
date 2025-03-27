@@ -15,7 +15,7 @@ alpha.area = 0.2, ellipse = FALSE)
 
 \arguments{
   \item{p}{\code{ggplot2} object with the cloud of variables}
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function}
   \item{var}{factor or numerical vector. The supplementary variable to be plotted.}
   \item{cat}{character string. The category of \code{var} to plot (by default, the first level of \code{var} is plotted). Only used if var is a factor.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}

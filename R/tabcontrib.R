@@ -1,5 +1,7 @@
 tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2, shortlabs = FALSE) {
   
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
   # initial data frame of contributions
   df1 <- data.frame(varcat = names(resmca$var$weight), weight = resmca$var$weight)
   df2 <- data.frame(varcat = rownames(resmca$var$coord), coord = resmca$var$coord[,dim])
@@ -65,7 +67,7 @@ tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2, shortlabs = FALSE)
   res$ctrdev[res$count>1] <- ""
   res$ctrvar[res$count>1] <- ""
   res <- res[, c("var", "cat", "weight", "cos2", "ctr1", "ctr2", "ctrtot", "cumctr", "ctrdev", "ctrvar")]
-  if(!shortlabs) names(res) <- c("Variable", "Category", "Weight", "Quality of representation","Contribution (left)", "Contribution (right)",
+  if(!shortlabs) names(res) <- c("Variable", "Category", "Weight", "Quality of representation","Contribution (negative side)", "Contribution (positive side)",
                                  "Total contribution", "Cumulated contribution", "Contribution of deviation", "Proportion to variable")
   return(res)
 }

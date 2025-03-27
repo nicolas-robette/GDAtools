@@ -1,4 +1,4 @@
-bcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
+bcMCA <- function(data, class, excl = NULL, row.w = NULL) {
   
   if(is.null(row.w)) row.w <- rep(1, nrow(data))
   if(any(sapply(data, FUN = function(x) !is.factor(x)))) stop("variables in data should all be factors")
@@ -19,15 +19,23 @@ bcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
   res <- FactoMineR::CA(df, 
                         row.w = as.vector(pk), 
                         row.sup = (nlevels(class)+1):nrow(df), 
-                        ncp = ncp, 
+                        ncp = nrow(centers)-1, 
                         graph = FALSE)
   
   mca <- FactoMineR::CA(dichotom(data, out = "numeric"),
                         row.w = row.w,
-                        ncp = ncp,
+                        ncp = nrow(centers)-1,
                         graph = FALSE,
                         excl = excl)
+  
   res$ratio <- sum(res$eig[,"eigenvalue"]) / sum(mca$eig[,"eigenvalue"])
+  
+  res$mycall <- list(X = data,
+                     excl = excl,
+                     class = class,
+                     row.w = row.w,
+                     ncp = nrow(centers)-1
+                     )
   
   class(res) <- c("CA", "bcMCA", "list")
   return(res)

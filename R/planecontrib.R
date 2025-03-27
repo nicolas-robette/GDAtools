@@ -1,5 +1,9 @@
 planecontrib <- function(resmca, axes = c(1,2)) {
   
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
+  type <- attr(resmca,'class')[1]
+  
   # contributions and cosines of categories
   n <- nrow(resmca$ind$coord)
   Q <- nrow(resmca$var$v.contrib)
@@ -13,6 +17,7 @@ planecontrib <- function(resmca, axes = c(1,2)) {
   # contributions of individuals
   ind <- list()
   fi <- resmca$call$row.w / sum(resmca$call$row.w)
+  if(type == "csMCA") fi <- fi[resmca$call$subcloud]
   yi2 <- rowSums(resmca$ind$coord[,axes] * resmca$ind$coord[,axes])
   ind$ctr12 <- fi*yi2/ltot
   ind$ctr12 <- ind$ctr12 * 100 / sum(ind$ctr12)
@@ -27,9 +32,6 @@ planecontrib <- function(resmca, axes = c(1,2)) {
   
   # results
   var <- list(ctr12, cos12, vctr12)
-  # names(var) <- c(paste0("ctr", paste0(axes, collapse="")),
-  #                 paste0("cos", paste0(axes, collapse="")),
-  #                 paste0("vctr", paste0(axes, collapse="")))
   names(var) <- c("ctr", "cos2", "vctr")
   names(ind) <- c("ctr", "cos2")
   res <- list(var = var, ind = ind)

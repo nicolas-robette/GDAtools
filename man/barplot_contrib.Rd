@@ -13,7 +13,7 @@ barplot_contrib(resmca, dim = 1, which = "var",
   }
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{PCA} or \code{CA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function}
   \item{dim}{the dimension to use. Default is 1.}
   \item{which}{If \code{resmca} is of class \code{MCA}, \code{speMCA}, \code{csMCA} or \code{PCA}, should be \code{"var"} to plot contributions of variables or \code{"ind"} to plot contributions of individuals. If \code{resmca} is of class \code{CA}, should be \code{"row"} to plot contributions of rows or \code{"col"} to plot contributions of columns. Default is \code{"var"}.}
   \item{sort}{logical. If \code{TRUE}, bars are sorted by decreasing VIPs. Default is \code{FALSE}.}

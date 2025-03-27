@@ -1,7 +1,10 @@
 ggadd_attractions <- function(p, resmca, axes=c(1,2), measure="phi", min.asso=0.3,
                               col.segment="lightgray", col.text="black", text.size=3) {
   
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
   type <- attr(resmca,'class')[1]
+
   if(type=="MCA") {
     resmca$call$X <- resmca$call$X[,resmca$call$quali]
     rownames(resmca$var$coord) <- names(dichotom(resmca$call$X))
@@ -31,11 +34,11 @@ ggadd_attractions <- function(p, resmca, axes=c(1,2), measure="phi", min.asso=0.
   l <- list()
   for(i in 1:nrow(paires)) {
     if(measure=="phi") {
-      if(type %in% c("MCA","speMCA")) l[[i]] <- as.data.frame(descriptio::phi.table(resmca$call$X[,paires[i,1]],resmca$call$X[,paires[i,2]],weights=resmca$call$row.w,na.rm=TRUE))
+      if(type %in% c("MCA","speMCA","bcMCA")) l[[i]] <- as.data.frame(descriptio::phi.table(resmca$call$X[,paires[i,1]],resmca$call$X[,paires[i,2]],weights=resmca$call$row.w,na.rm=TRUE))
       if(type=="csMCA") l[[i]] <- as.data.frame(descriptio::phi.table(resmca$call$X[resmca$call$subcloud,paires[i,1]],resmca$call$X[resmca$call$subcloud,paires[i,2]],weights=resmca$call$row.w[resmca$call$subcloud],na.rm=TRUE))
     }
     if(measure=="pem") {
-      if(type %in% c("MCA","speMCA")) l[[i]] <- as.data.frame(descriptio::pem.table(resmca$call$X[,paires[i,1]],resmca$call$X[,paires[i,2]],weights=resmca$call$row.w)$peml/100,na.rm=TRUE)
+      if(type %in% c("MCA","speMCA","bcMCA")) l[[i]] <- as.data.frame(descriptio::pem.table(resmca$call$X[,paires[i,1]],resmca$call$X[,paires[i,2]],weights=resmca$call$row.w)$peml/100,na.rm=TRUE)
       if(type=="csMCA") l[[i]] <- as.data.frame(descriptio::pem.table(resmca$call$X[resmca$call$subcloud,paires[i,1]],resmca$call$X[resmca$call$subcloud,paires[i,2]],weights=resmca$call$row.w[resmca$call$subcloud])$peml/100,na.rm=TRUE)
     }
     l[[i]]$v1 <- paires$v1[i]
@@ -46,7 +49,7 @@ ggadd_attractions <- function(p, resmca, axes=c(1,2), measure="phi", min.asso=0.
   assoc$Var2 <- paste(assoc$v2,assoc$Var2,sep=".")
   assoc <- assoc[,c("Var1","Var2","Freq")]
   noms.cat <- names(dichotom(resmca$call$X))
-  if(type %in% c("speMCA","csMCA")) noms.cat <- noms.cat[-resmca$call$excl]
+  if(type %in% c("speMCA","csMCA","bcMCA")) noms.cat <- noms.cat[-resmca$call$excl]
   assoc <- assoc[assoc$Var1 %in% noms.cat & assoc$Var2 %in% noms.cat,]
   assoc <- assoc[assoc$Freq>=min.asso,]
   assoc$x <- resmca$var$coord[assoc$Var1,axes[1]]

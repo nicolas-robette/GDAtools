@@ -29,13 +29,18 @@ wcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
     H0t <- sqrt(row.w)*(1/sqrt(Q))*Z0t%*%diag(1/sqrt(colSums(row.w*Z)[-excl]))
     svd <- svd(H0t)
     dims <- paste('dim',1:ncp,sep='.')
-    noms <- vector(length=ncol(Z))
-    id=0
-    for(i in 1:Q) {
-      for(j in 1:length(levels(data[,i]))) {
-        id=id+1
-        noms[id] <- paste(colnames(data)[i],levels(data[,i])[j],sep='.')
-      }}
+    # noms <- vector(length=ncol(Z))
+    # id=0
+    # for(i in 1:Q) {
+    #   for(j in 1:length(levels(data[,i]))) {
+    #     id=id+1
+    #     noms[id] <- paste(colnames(data)[i],levels(data[,i])[j],sep='.')
+    #   }}
+    noms <- getindexcat(data)
+    marge.col <- colSums(row.w*Z)[-excl]/(n*Q)
+    names(marge.col) <- noms[-excl]
+    marge.row <- rep(1/(n*Q),times=n)
+    names(marge.row) <- 1:n
     YIt <- (1/sqrt(row.w))*sqrt(n)*svd$u%*%diag(svd$d)
     YKpt <- sqrt(n*Q)*diag(1/sqrt(colSums(row.w*Z)[-excl]))%*%svd$v%*%diag(svd$d)
     eig <- list(svd$d*svd$d)
@@ -52,7 +57,13 @@ wcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
     contrib <- 100*row.w/n*coord*coord/matrix(rep(eig[[1]][1:ncp],times=n),ncol=ncp,nrow=n,byrow=T)
     dimnames(coord) <- list(rownames(data),dims) 
     dimnames(contrib) <- list(rownames(data),dims) 
-    ind <- list(coord=coord,contrib=round(contrib,6))
+    dist <- sqrt(rowSums(H0t^2 / marge.row))
+    names(dist) <- rownames(data)
+    cos2 <- coord^2 / (dist^2)
+    ind <- list(coord = coord,
+                contrib = round(contrib, 6),
+                cos2 = round(cos2, 6),
+                dist = dist)
     coord <- YKpt[,1:ncp]
     fK <- colSums(row.w*Z)[-excl]/n
     contrib <- 100*(fK/Q)*coord*coord/matrix(rep(eig[[1]][1:ncp],times=ncol(Z0t)),ncol=ncp,nrow=ncol(Z0t),byrow=T)
@@ -75,12 +86,8 @@ wcMCA <- function(data, class, excl = NULL, row.w = NULL, ncp = 5) {
     v.test <- sqrt(cos2)*sqrt(n-1)*(((abs(coord)+coord)/coord)-1)
     var <- list(weight=round(weight,1)[-excl],coord=coord,contrib=round(contrib,6),ctr.cloud=round(ctr.cloud,6),cos2=round(cos2,6),v.test=round(v.test,6),eta2=round(eta2,6),v.contrib=v.contrib,vctr.cloud=vctr.cloud)
     X <- data
-    marge.col <- colSums(row.w*Z)[-excl]/(n*Q)
-    names(marge.col) <- noms[-excl]
-    marge.row <- rep(1/(n*Q),times=n)
-    names(marge.row) <- 1:n
     quali <- 1:Q
-    call <- list(X=X,marge.col=marge.col,marge.row=marge.row,ncp=ncp,quali=quali,excl=excl,excl.char=getindexcat(data)[excl],row.w=row.w)
+    call <- list(X=X,marge.col=marge.col,marge.row=marge.row,ncp=ncp,quali=quali,class=class,excl=excl,excl.char=getindexcat(data)[excl],row.w=row.w)
     RES <- list(eig=eig,call=call,ind=ind,var=var,svd=list(vs=svd$d,U=svd$u,V=svd$v))
     mca <- speMCA(data = data, excl = excl, row.w = row.w, ncp = ncp)
     RES$ratio <- sum(RES$eig$eig) / sum(mca$eig$eig)

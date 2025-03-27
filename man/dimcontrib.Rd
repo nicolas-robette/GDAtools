@@ -5,20 +5,23 @@
 \title{Description of the contributions to axes}
 
 \description{
-Identifies the categories and individuals that contribute the most to each dimension obtained 
-by a Multiple Correspondence Analysis.
+Identifies the categories and individuals that contribute the most to each dimension obtained by a Multiple Correspondence Analysis.
 }
 
 \usage{dimcontrib(resmca, dim = c(1,2), best = TRUE)}
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, or \code{csMCA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA} or \code{bcMCA} function}
   \item{dim}{numerical vector of the dimensions to describe (default is c(1,2))}
   \item{best}{logical. If FALSE, displays all the categories. If TRUE (default), displays only categories and individuals with contributions higher than average}
 }
 
 \details{
 Contributions are sorted and assigned a positive or negative sign according to the corresponding categories or individuals coordinates, so as to facilitate interpretation.
+}
+
+\note{
+Contributions of individuals cannot be computed for objects created by \code{wcMCA} function.
 }
 
 \value{

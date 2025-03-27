@@ -1,10 +1,15 @@
 supind <- function(resmca,supdata) {
+  
     supdata <- data.frame(supdata)
+
+    if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+    
     type <- attr(resmca, "class")[1]
     if(type %in% c("MCA", "stMCA", "multiMCA", "PCA")) eigen <- resmca$eig[,"eigenvalue"]
-    if(type %in% c("speMCA", "csMCA")) eigen <- resmca$eig$eigen
+    if(type %in% c("speMCA", "csMCA", "bcMCA")) eigen <- resmca$eig$eigen
+
     z <- as.matrix(dichotom(supdata, out = "numeric"))
-    if(type %in% c("speMCA", "csMCA")) z <- z[,-resmca$call$excl]
+    if(type %in% c("speMCA", "csMCA", "bcMCA")) z <- z[,-resmca$call$excl]
     Q <- ncol(supdata)
     delta <- 1/sqrt(eigen[1:resmca$call$ncp])
     vcoord <- resmca$var$coord

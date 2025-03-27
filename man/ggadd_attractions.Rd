@@ -14,7 +14,7 @@ col.segment = "lightgray", col.text = "black", text.size = 3)
 
 \arguments{
   \item{p}{\code{ggplot2} object with the cloud of variables}
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}.}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
   \item{measure}{character string. The measure for attractions: "phi" (default) for phi coefficients, "pem" for percentages of maximum deviation (PEM).}
   \item{min.asso}{numerical value ranging from 0 to 1. The minimal attraction value for segments to be plotted. Default is 0.3.}

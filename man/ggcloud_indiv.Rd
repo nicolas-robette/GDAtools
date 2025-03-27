@@ -15,7 +15,7 @@ density = NULL, col.contour = "darkred", hex.bins = 50, hex.pal = "viridis")
 }
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function}
   \item{type}{If 'i', points are plotted. If 'inames', labels of individuals are plotted.}
   \item{points}{character string. If 'all' all points are plotted (default). If 'besth' only those who contribute most to horizontal axis are plotted. If 'bestv' only those who contribute most to vertical axis are plotted. If 'besthv' only those who contribute most to horizontal or vertical axis are plotted. If 'best' only those who contribute most to the plane are plotted.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}

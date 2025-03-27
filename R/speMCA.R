@@ -20,13 +20,14 @@ speMCA <- function(data, excl = NULL, ncp = 5, row.w = NULL) {
     H0t <- sqrt(row.w)*(1/sqrt(Q))*Z0t %*% diag(1/sqrt(colSums(row.w*Z)[-excl]))
     svd <- svd(H0t)
     dims <- paste("dim", 1:ncp, sep = ".")
-    noms <- vector(length = ncol(Z))
-    id = 0
-    for(i in 1:Q) {
-      for(j in 1:length(levels(data[,i]))) {
-        id = id+1
-        noms[id] <- paste(colnames(data)[i], levels(data[,i])[j], sep = ".")
-      }}
+    # noms <- vector(length = ncol(Z))
+    # id = 0
+    # for(i in 1:Q) {
+    #   for(j in 1:length(levels(data[,i]))) {
+    #     id = id+1
+    #     noms[id] <- paste(colnames(data)[i], levels(data[,i])[j], sep = ".")
+    #   }}
+    noms <- getindexcat(data)
     YIt <- (1/sqrt(row.w))*sqrt(n)*svd$u %*% diag(svd$d)
     YKpt <- sqrt(n*Q)*diag(1/sqrt(colSums(row.w*Z)[-excl])) %*% svd$v %*% diag(svd$d)
     eig <- list(svd$d*svd$d)

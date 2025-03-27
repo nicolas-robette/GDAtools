@@ -24,13 +24,18 @@ csMCA <- function(data,subcloud=rep(TRUE,times=nrow(data)),excl=NULL,ncp=5,row.w
     YIpc <- (1/sqrt(row.wc))*sqrt(n.w)*svd$u%*%diag(svd$d)
     YKc <- sqrt(N*Q)*diag(1/sqrt(colSums(row.w*Z)[-excl]))%*%svd$v%*%diag(svd$d)
     dims <- paste('dim',1:ncp,sep='.')
-    noms <- vector(length=ncol(Z))
-    id=0
-    for(i in 1:Q) {
-      for(j in 1:length(levels(data[,i]))) {
-        id=id+1
-        noms[id] <- paste(colnames(data)[i],levels(data[,i])[j],sep='.')
-      }}
+    # noms <- vector(length=ncol(Z))
+    # id=0
+    # for(i in 1:Q) {
+    #   for(j in 1:length(levels(data[,i]))) {
+    #     id=id+1
+    #     noms[id] <- paste(colnames(data)[i],levels(data[,i])[j],sep='.')
+    #   }}
+    noms <- getindexcat(data)
+    marge.col <- colSums((row.w*Z)[subcloud,])[-excl]/(n.w*Q) # new
+    names(marge.col) <- noms[-excl]
+    marge.row <- rep(1/(n.w*Q),times=n)
+    names(marge.row) <- 1:n
     eig <- list(svd$d*svd$d)
     eig[[2]] <- round(eig[[1]]/sum(eig[[1]])*100,2)
     eig[[3]] <- cumsum(eig[[2]])
@@ -45,7 +50,13 @@ csMCA <- function(data,subcloud=rep(TRUE,times=nrow(data)),excl=NULL,ncp=5,row.w
     contrib <- 100*row.wc/n.w*coord*coord/matrix(rep(eig[[1]][1:ncp],times=n),ncol=ncp,nrow=n,byrow=T)
     dimnames(coord) <- list(rownames(data)[subcloud],dims) 
     dimnames(contrib) <- list(rownames(data)[subcloud],dims) 
-    ind <- list(coord=coord,contrib=round(contrib,6))
+    dist <- sqrt(rowSums(Hc^2 / marge.row))
+    names(dist) <- rownames(data)[subcloud]
+    cos2 <- coord^2 / (dist^2)
+    ind <- list(coord = coord,
+                contrib = round(contrib,6),
+                cos2 = round(cos2,6),
+                dist = dist)
     coord <- YKc[,1:ncp]
     contrib <- 100*(FK/Q)*coord*coord/matrix(rep(eig[[1]][1:ncp],times=Kp),ncol=ncp,nrow=Kp,byrow=T)
     s <- vector()
@@ -66,10 +77,6 @@ csMCA <- function(data,subcloud=rep(TRUE,times=nrow(data)),excl=NULL,ncp=5,row.w
     dimnames(eta2) <- list(colnames(data),dims)
     v.test <- sqrt(cos2)*sqrt(n.w-1)*(((abs(coord)+coord)/coord)-1)
     var <- list(weight=round(weight,1),coord=coord,contrib=round(contrib,6),ctr.cloud=round(ctr.cloud,6),cos2=round(cos2,6),v.test=round(v.test,6),eta2=round(eta2,6),v.contrib=v.contrib,vctr.cloud=vctr.cloud)
-    marge.col <- colSums((row.w*Z)[subcloud,])[-excl]/(n.w*Q) # new
-    names(marge.col) <- noms[-excl]
-    marge.row <- rep(1/(n.w*Q),times=n)
-    names(marge.row) <- 1:n
     quali <- 1:Q
     call <- list(X=data,marge.col=marge.col,marge.row=marge.row,ncp=ncp,quali=quali,subcloud=subcloud,excl=excl,excl.char=getindexcat(data)[excl],row.w=row.w)
     RES <- list(eig=eig,call=call,ind=ind,var=var,svd=list(vs=svd$d,U=svd$u,V=svd$v))

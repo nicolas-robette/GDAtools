@@ -9,7 +9,7 @@
 \usage{flip.mca(resmca, dim = 1)}
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function}
   \item{dim}{numerical vector of the dimensions for which the coordinates are flipped. By default, only the first dimension is flipped}
 }
 

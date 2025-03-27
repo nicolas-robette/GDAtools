@@ -1,6 +1,8 @@
 ggadd_corr <- function(p, resmca, var, cat=levels(var)[1], axes=c(1,2),
                        xbins=20, ybins=20, min.n=1, pal="RdYlBu", limits=NULL, legend="right") {
 
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
   type <- attr(resmca,'class')[1]
   
   if(type=="stMCA") type <- resmca$call$input.mca

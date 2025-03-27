@@ -1,10 +1,18 @@
 bootvalid_variables <- function(resmca, axes = c(1,2), type = "partial", K = 30) {
   
+  if("bcMCA" %in% attr(resmca,'class')) {
+    newmca = reshape_between(resmca)
+  } else {
+    newmca = resmca
+  }
+  
+  classe <- attr(newmca,'class')[1]
+  
   # donnees initiales
-  X <- resmca$call$X
-  excl <- resmca$call$excl
-  vs <- resmca$svd$vs[axes]
-  coord <- data.frame(resmca$var$coord[,axes])
+  X <- newmca$call$X
+  excl <- newmca$call$excl
+  vs <- newmca$svd$vs[axes]
+  coord <- data.frame(newmca$var$coord[,axes])
   names(coord) <- c("x", "y")
 
   if(type=="partial") {
@@ -28,7 +36,15 @@ bootvalid_variables <- function(resmca, axes = c(1,2), type = "partial", K = 30)
       for(i in 1:K) {
         samp <- sample(1:nrow(X), nrow(X), replace = TRUE)
         Xboot <- X[samp,]
-        mca <- speMCA(Xboot, excl = excl)
+        if(classe %in% c("speMCA", "MCA")) {
+          mca <- speMCA(Xboot, excl = excl, ncp = resmca$call$ncp, row.w = resmca$call$row.w[samp])
+        } else if(classe == "csMCA") {
+          mca <- csMCA(Xboot, excl = excl, subcloud = resmca$call$subcloud, ncp = resmca$call$ncp, row.w = resmca$call$row.w[samp])
+        } else if(classe == "wcMCA") {
+          mca <- wcMCA(Xboot, class = resmca$call$class, excl = excl, ncp = resmca$call$ncp, row.w = resmca$call$row.w[samp])
+        } else if(classe == "bcMCA") {
+          mca <- reshape_between(bcMCA(Xboot, class = resmca$mycall$class[samp], excl = excl, row.w = resmca$mycall$row.w[samp]))
+        }
         temp <- data.frame(mca$var$coord[,axes])
         names(temp) <- c("x", "y")
         

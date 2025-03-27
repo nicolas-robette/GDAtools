@@ -9,19 +9,23 @@ Adds the interactions between two categorical supplementary variables to a MCA c
 
 \usage{
 ggadd_interaction(p, resmca, v1, v2, sel1 = 1:nlevels(v1), sel2 = 1:nlevels(v2),
-axes = c(1,2), textsize = 5, legend = "right")
+axes = c(1,2), textsize = 5, dashed = TRUE, 
+legend = "none", force = 1, max.overlaps = Inf)
 }
 
 \arguments{
   \item{p}{\code{ggplot2} object with the cloud of variables}
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}.}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function}
   \item{v1}{Factor. The first categorical supplementary variable.}
   \item{v2}{Factor. The second categorical supplementary variable.}
   \item{sel1}{Numeric vector of indexes of the categories of the first supplementary variable to be used in interaction. By default, every categories are used.}
   \item{sel2}{Numeric vector of indexes of the categories of the second supplementary variable to be used in interaction. By default, every categories are used.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
   \item{textsize}{Size of the labels of categories. Default is 5.}
-  \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is right.}
+  \item{dashed}{Logical. Whether to add gray dashed lines between the points of the categories. Default is TRUE.}
+  \item{legend}{the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is none.}
+  \item{force}{Force of repulsion between overlapping text labels. Defaults to 1. If 0, labels are not repelled at all.}
+  \item{max.overlaps}{Exclude text labels that overlap too many things. Defaults to Inf, which means no labels are excluded.} 
 }
 
 \value{a \code{ggplot2} object}

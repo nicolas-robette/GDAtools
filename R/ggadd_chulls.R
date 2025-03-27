@@ -2,6 +2,8 @@ ggadd_chulls <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), prop =
 
   subvar <- var
   
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
   type <- attr(resmca,'class')[1]
   if(type=="stMCA") type <- resmca$call$input.mca
   if(type=="csMCA") subvar <- var[resmca$call$subcloud]

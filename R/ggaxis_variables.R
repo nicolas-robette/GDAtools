@@ -1,7 +1,12 @@
 ggaxis_variables <- function(resmca, var = NULL, axis = 1,
+                             min.ctr = NULL,
                              prop = NULL, underline = FALSE, 
-                             col = NULL, vlab = TRUE) {
+                             col = NULL, vlab = TRUE,
+                             force = 1, 
+                             max.overlaps = Inf) {
 
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
   type <- attr(resmca,'class')[1]
   
   if(is.factor(var)) {
@@ -25,7 +30,7 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
                      ctr = vs$contrib[long_names,paste0("dim.",axis)])
     if(underline) {
       seuil <- 100/nrow(resmca$var$contrib)
-      df$names[df$ctr>seuil] <- paste0("underline(",df$names[df$ctr>seuil],")")
+      df$names[df$ctr>=seuil] <- paste0("underline(",df$names[df$ctr>=seuil],")")
     }
   }
   
@@ -34,10 +39,13 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
     nlev <- sapply(resmca$call$X, nlevels)
     vnames <- names(resmca$call$X)
     long_names <- rownames(resmca$var$coord)
-    short_names <- unlist(sapply(resmca$call$X, levels))[-resmca$call$excl]
+    short_names <- unlist(sapply(resmca$call$X, levels))
     variables <- character()
     for(i in 1:length(vnames)) variables <- c(variables, rep(vnames[i], nlev[i]))
-    if(type %in% c("csMCA","speMCA","stMCA","multiMCA")) variables <- variables[-resmca$call$excl]
+    if(type %in% c("csMCA","speMCA","stMCA","multiMCA","bcMCA")) {
+      variables <- variables[-resmca$call$excl]
+      short_names <- short_names[-resmca$call$excl]
+      }
     df <- data.frame(short_names,
                      long_names,
                      names = long_names,
@@ -51,7 +59,15 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
     df$names <- paste0("'",df$names,"'")
     if(underline) {
       seuil <- 100/nrow(resmca$var$contrib)
-      df$names[df$ctr>seuil] <- paste0("underline(",df$names[df$ctr>seuil],")")
+      df$names[df$ctr>=seuil] <- paste0("underline(",df$names[df$ctr>=seuil],")")
+    }
+  }
+
+  if(!is.null(min.ctr)) {
+    if(min.ctr == "best") { 
+      df <- df[df$ctr>=100/nrow(resmca$var$contrib),] 
+    } else if(is.numeric(min.ctr)) {
+      df <- df[df$ctr>=min.ctr,] 
     }
   }
 
@@ -82,23 +98,36 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
   if(is.null(var)) {
     if(!is.null(col)) {
     p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size), #, color = .data$vnames),
-                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE,
+                                      direction = "y", segment.alpha = 0.3,
+                                      force = force, 
+                                      max.overlaps = max.overlaps,
+                                      min.segment.length = 0, parse = TRUE,
                                       colour = col) #+
              #ggplot2::scale_color_manual(values = rep(col, length(vnames)))
     } else {
       p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size, color = .data$vnames),
-                                        direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE)
+                                        direction = "y", segment.alpha = 0.3,
+                                        force = force, 
+                                        max.overlaps = max.overlaps, min.segment.length = 0, parse = TRUE)
     }
   } else {
     if(is.null(col)) col <- "black"
     p <- p + ggrepel::geom_text_repel(ggplot2::aes(x = .data$coord, y = 0, label = .data$names, size = .data$size),
-                                      direction = "y", segment.alpha = 0.3, max.overlaps = Inf, min.segment.length = 0, parse = TRUE,
+                                      direction = "y", segment.alpha = 0.3,
+                                      force = force, 
+                                      max.overlaps = max.overlaps, min.segment.length = 0, parse = TRUE,
                                       colour = col)
   }
   
   minc <- min(df$coord)
   maxc <- max(df$coord)
-  breaks <- c(seq(from = 0, to = minc, by = -0.5), seq(from = 0, to = maxc, by = 0.5))
+  if(minc >= 0) { 
+    breaks <- seq(from = 0, to = maxc, by = 0.5)
+  } else if(maxc<=0) {
+    breaks <- seq(from = 0, to = minc, by = -0.5)
+  } else {
+    breaks <- c(seq(from = 0, to = minc, by = -0.5), seq(from = 0, to = maxc, by = 0.5))
+  }
   breaks <- sort(unique(breaks))
   breaks <- breaks[breaks > minc & breaks < maxc]
   breaks <- round(breaks, 1)

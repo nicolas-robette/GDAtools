@@ -12,7 +12,7 @@ planecontrib(resmca, axes = c(1,2))
 }
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA} or \code{csMCA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA} or \code{bcMCA} function}
   \item{axes}{numeric vector of length 2, specifying the axes forming the plane to describe. Default is c(1,2).}
 }
 

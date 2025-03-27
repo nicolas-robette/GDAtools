@@ -1,4 +1,7 @@
 dimcontrib <- function(resmca,dim=c(1,2),best=TRUE) {
+  
+    if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
     classe <- class(resmca)[1]
     if(classe=="MCA") {
         resmca$var$weight <- colSums(dichotom(resmca$call$X[,resmca$call$quali]))

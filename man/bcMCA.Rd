@@ -5,14 +5,13 @@
 Between-class MCA, also called Barycentric Discriminant Analysis
 }
 \usage{
-bcMCA(data, class, excl = NULL, row.w = NULL, ncp = 5)
+bcMCA(data, class, excl = NULL, row.w = NULL)
 }
 \arguments{
   \item{data}{data frame with only categorical variables, i.e. factors}
   \item{class}{factor specifying the class}
   \item{excl}{numeric vector indicating the indexes of the "junk" categories (default is NULL). See \code{\link{getindexcat}} or use \code{\link{ijunk}} interactive function to identify these indexes. It may also be a character vector of junk categories, specified in the form "namevariable.namecategory" (for instance "gender.male").}
   \item{row.w}{numeric vector of row weights. If NULL (default), a vector of 1 for uniform row weights is used.}
-  \item{ncp}{number of dimensions kept in the results (by default 5)}
 }
 \details{
 Between-class MCA is sometimes also called Barycentric Discriminant Analysis or Discriminant Correspondence Analysis. It consists in three steps :

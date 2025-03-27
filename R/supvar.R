@@ -1,9 +1,11 @@
 supvar <- function(resmca,var) {
   
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
   type <- attr(resmca,'class')[1]
   
   if(type %in% c("MCA","stMCA","multiMCA")) eigen <- resmca$eig[,"eigenvalue"]
-  if(type %in% c("speMCA","csMCA")) eigen <- resmca$eig$eigen
+  if(type %in% c("speMCA","csMCA","bcMCA")) eigen <- resmca$eig$eigen
   
   if(type=="stMCA") {
     if(resmca$call$input.mca %in% c("MCA","speMCA","csMCA")) type <- resmca$call$input.mca
@@ -18,7 +20,7 @@ supvar <- function(resmca,var) {
     }
   }
   
-  if(type %in% c("MCA","speMCA")) {
+  if(type %in% c("MCA","speMCA","bcMCA")) {
     wt <- resmca$call$row.w
     v <- factor(var)
     n <- sum(wt)
@@ -39,6 +41,7 @@ supvar <- function(resmca,var) {
     wt <- wt[resmca$call$subcloud]
     n.w <- sum(wt)
     v <- factor(var[resmca$call$subcloud])
+    if(nlevels(v) ==1 ) stop("The supplementary variable has only 1 category in the subcloud")
     fK <- colSums(wt*(dichotom(as.data.frame(v),out='numeric')))/n.w
     ind <- resmca$ind$coord
     coord <- aggregate(wt*ind,list(v),sum)[-1]/n.w/fK
@@ -52,14 +55,18 @@ supvar <- function(resmca,var) {
   rownames(coord) <- levels(v)
   rownames(cos2) <- levels(v)
   wi <- apply(vrc,2,weighted.mean,w=weight)
-  be <- eigen[1:resmca$call$ncp]-wi
-  eta2 <- be/eigen[1:resmca$call$ncp]
-  vrc <- rbind(vrc,wi,be,eigen[1:resmca$call$ncp],eta2)
+  # total <- eigen[1:resmca$call$ncp]
+  total <- apply(resmca$ind$coord[,1:resmca$call$ncp],2,descriptio::weighted.sd,w=wt)
+  total <- total * total
+  be <- total-wi
+  eta2 <- be/total
+  vrc <- rbind(vrc,wi,be,total,eta2)
   vrc <- round(vrc,6)
   rownames(vrc) <- c(levels(v),'within','between','total','eta2')
   coord <- round(coord,6)
   typic <- sqrt(cos2)*sqrt(length(v)-1)
   typic <- (((abs(coord)+coord)/coord)-1)*typic
+  for(i in 1:ncol(typic)) typic[is.nan(typic[,i]),i] <- 0 
   pval <- 2*(1 -pnorm(abs(as.matrix(typic))))
   cor <- sapply(as.data.frame(ind), function(x) descriptio::assoc.catcont(v,x,wt,nperm=NULL,na.rm.cat=TRUE)$cor)
   list(weight=round(weight,1),coord=coord,cos2=round(cos2,6),var=round(vrc,6),typic=round(typic,6),pval=round(pval,6),cor=cor)

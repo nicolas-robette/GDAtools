@@ -14,7 +14,7 @@ ggbootvalid_supvars(resmca, vars = NULL, axes = c(1,2), K = 30,
 }
 
 \arguments{
-  \item{resmca}{object of class \code{speMCA}.}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA} or \code{bcMCA} function}
   \item{vars}{A data frame of categorical supplementary variables. All these variables should be factors.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
   \item{K}{integer. Number of bootstrap replications (default is 30).}

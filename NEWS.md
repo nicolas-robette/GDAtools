@@ -4,9 +4,17 @@
 
 * `scaled.dev()` : scaled deviations between categories of a supplementary categorical variable
 
+## Changes in existing functions
+
+* `ggaxis_variables()` : new "force" and "max.overlaps" and "min.ctr" options (suggestion from Gregoire Eveillard)
+* `supvar()`, `supvars()`, `supind()`, `ggcloud_variables()`, `ggcloud_indiv()`, `contrib()`, `tabcontrib()`, `planecontrib()`, `scaled.dev()`, `homog.test()`, `ggaxis_variables()`, `ggadd_supvar()`, `ggadd_supvars()`, `ggadd_supind()`, `ggadd_ellipses()`, `ggadd_kellipses()`, `ggadd_interaction()`, `ggadd_density()`, `ggadd_corr()`, `ggadd_attractions()`, `ggeta2_variables()`, `ggsmoothed_supvar()`, `flip.mca()`, `barplot_contrib()`, `dimcontrib()`, `dimdescr()`, `dimtypicality()`, `dimeta2()`, `bootvalid_variables()`, `ggbootvalid_variables()`, `bootvalid_supvars()`, `ggbootvalid_supvars()` and `quadrant()` functions are now compatible with objects created with `bcMCA()` and `wcMCA()`
+* `ggadd_interaction()` : new "dashed", "force" and "max.overlaps" options
+
 ## Bug fixes
 
-* `ggadd_supind()` : bug fix when only one supplementary individual (thanks to Mathieu Ferry)
+* `ggadd_supind()` : bug fix when only one supplementary individual (thanks to Mathieu Ferry) + typo in documentation (thanks to @419kfj)
+* `supvar()` : bug fix when coordinates are exactly 0
+* `ggadd_interaction()` : bug fix when there are empty cells in the crosstabulation of v1 and v2 (thanks to @419kfj)
 
 
 

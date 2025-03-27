@@ -3,8 +3,14 @@ flip.mca <- function(resmca, dim=1) {
   newmca <- resmca
   type <- attr(resmca,'class')[1]
   
-  newmca$ind$coord[,dim] <- -newmca$ind$coord[,dim]
-  newmca$var$coord[,dim] <- -newmca$var$coord[,dim]
+  if("bcMCA" %in% attr(resmca,'class')) {
+    newmca$row$coord[,dim] <- -newmca$row$coord[,dim]
+    newmca$col$coord[,dim] <- -newmca$col$coord[,dim]
+    newmca$row.sup$coord[,dim] <- -newmca$row.sup$coord[,dim]
+  } else {
+    newmca$ind$coord[,dim] <- -newmca$ind$coord[,dim]
+    newmca$var$coord[,dim] <- -newmca$var$coord[,dim]
+  }
   
   if(type %in% c("MCA","speMCA","csMCA","stMCA")) newmca$var$v.test[,dim] <- -newmca$var$v.test[,dim]
 

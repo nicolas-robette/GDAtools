@@ -1,285 +1,92 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/404.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/GDA_tutorial.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/Tutoriel_AGD.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/articles/GDA_tutorial.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/articles/Tutoriel_AGD.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/english/Tutorial_GDA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/english/Tutorial_descr.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/french/Tutoriel_AGD.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/french/Tutoriel_descr.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/DA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/DAQ.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/MCAiv.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/MCAoiv.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/Music.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/PCAiv.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/PCAoiv.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/Taste.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ahc.plots.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ahc_plots.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/angles.csa.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/barplot_contrib.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/bcMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/bcPCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/bootvalid_supvars.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/bootvalid_variables.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/burt.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/coiMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/coiPCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/conc.ellipse.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/contrib.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/csMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/deprecated.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/dichotom.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/dichotomixed.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/dimcontrib.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/dimdescr.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/dimeta2.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/dimtypicality.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/dist.chi2.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/flip.mca.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/gPCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/getindexcat.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_attractions.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_chulls.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_corr.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_density.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_ellipses.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_interaction.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_kellipses.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supind.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supvar.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supvars.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggaxis_variables.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggbootvalid_supvars.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggbootvalid_variables.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggcloud_indiv.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggcloud_variables.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggeta2_variables.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ggsmoothed_supvar.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/homog.test.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/ijunk.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/indsup.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/medoids.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/modif.rate.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/multiMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/nsCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/nsca.biplot.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/planecontrib.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/plot.csMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/plot.multiMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/plot.speMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/plot.stMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/quadrant.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/quasindep.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/rvcoef.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/scaled.dev.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/speMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/stMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/supind.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/supvar.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/supvars.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/tabcontrib.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/textindsup.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/textvarsup.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/translate.logit.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/varsup.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/varsups.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/wcMCA.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolas-robette.github.io/GDAtools/reference/wcPCA.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://nicolas-robette.github.io/GDAtools/404.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/articles/GDA_tutorial.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/articles/Tutoriel_AGD.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/articles/english/Tutorial_GDA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/articles/english/Tutorial_descr.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/articles/french/Tutoriel_AGD.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/articles/french/Tutoriel_descr.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/articles/index.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/authors.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/index.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/news/index.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/DA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/DAQ.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/MCAiv.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/MCAoiv.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/Music.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/PCAiv.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/PCAoiv.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/Taste.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ahc.plots.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ahc_plots.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/angles.csa.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/barplot_contrib.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/bcMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/bcPCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/bootvalid_supvars.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/bootvalid_variables.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/burt.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/coiMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/coiPCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/conc.ellipse.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/contrib.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/csMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/deprecated.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/dichotom.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/dichotomixed.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/dimcontrib.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/dimdescr.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/dimeta2.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/dimtypicality.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/dist.chi2.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/flip.mca.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/gPCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/getindexcat.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_attractions.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_chulls.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_corr.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_density.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_ellipses.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_interaction.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_kellipses.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supind.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supvar.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggadd_supvars.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggaxis_variables.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggbootvalid_supvars.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggbootvalid_variables.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggcloud_indiv.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggcloud_variables.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggeta2_variables.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ggsmoothed_supvar.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/homog.test.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/ijunk.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/index.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/medoids.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/modif.rate.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/multiMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/nsCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/nsca.biplot.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/planecontrib.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/plot.csMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/plot.multiMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/plot.speMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/plot.stMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/quadrant.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/quasindep.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/rvcoef.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/scaled.dev.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/speMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/stMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/supind.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/supvar.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/supvars.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/tabcontrib.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/textindsup.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/textvarsup.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/translate.logit.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/wcMCA.html</loc></url>
+<url><loc>https://nicolas-robette.github.io/GDAtools/reference/wcPCA.html</loc></url>
 </urlset>
+

@@ -15,7 +15,7 @@ segment = FALSE, vname = NULL)
 
 \arguments{
   \item{p}{\code{ggplot2} object with the cloud of variables}
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}.}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function}
   \item{var}{Factor. The categorical supplementary variable. It does not need to have been used at the MCA step.}
   \item{sel}{Numeric vector of indexes of the categories of the supplementary variable to be added to the plot. By default, labels are plotted for every categories.}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}

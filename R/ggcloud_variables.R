@@ -1,6 +1,8 @@
 ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, max.pval=0.01, face="pp", shapes=TRUE, prop=NULL, textsize=3, shapesize=3, col=NULL, col.by.group=TRUE, alpha=1, segment.alpha=0.5, vlab=TRUE, sep='.', legend='right',
                               force = 1, max.overlaps = Inf) {
 
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
   type <- attr(resmca,'class')[1]
   dim1 <- axes[1]
   dim2 <- axes[2]
@@ -8,10 +10,12 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   if(type %in% c("MCA","speMCA","csMCA")) {
     rate1 <- modif.rate(resmca)$modif$mrate[dim1]
     rate2 <- modif.rate(resmca)$modif$mrate[dim2]
-  }
-  if(type %in% c("stMCA","multiMCA","PCA")) {
+  } else if(type %in% c("stMCA","multiMCA","PCA")) {
     rate1 <- modif.rate(resmca)$raw$rate[dim1]
     rate2 <- modif.rate(resmca)$raw$rate[dim2]
+  } else if(type == "bcMCA") {
+    rate1 <- resmca$eig$rate[dim1]
+    rate2 <- resmca$eig$rate[dim2]
   }
   
   if(type=="MCA") resmca$call$X <- resmca$call$X[,resmca$call$quali]
@@ -50,7 +54,7 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   } else if(prop=='vtest1') { vcoord$prop <- abs(resmca$var$v.test[,dim1])
   } else if(prop=='vtest2') vcoord$prop <- abs(resmca$var$v.test[,dim2])
 
-  if(type %in% c("MCA","speMCA","csMCA")) {  
+  if(type %in% c("MCA","speMCA","csMCA","bcMCA")) {  
     if(is.null(min.ctr)) min.ctr <- 100/nk
     if(points=='all') { condi <- rep(TRUE,nk)
     } else if (points=='besth') { condi <- resmca$var$contrib[,dim1]>=min.ctr
@@ -74,7 +78,7 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   names(categories) <- NULL
   varcat <- apply(cbind(variables, categories), 1, paste, collapse=sep)
   
-  if(type %in% c("csMCA","speMCA","stMCA","multiMCA")) {
+  if(type %in% c("csMCA","speMCA","stMCA","multiMCA","bcMCA")) {
     categories <- categories[-resmca$call$excl]
     variables <- variables[-resmca$call$excl]
     varcat <- varcat[-resmca$call$excl]
@@ -91,7 +95,7 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   faceX <- face[1]
   faceY <- face[2]
   vcoord$labs <- paste0("'",vcoord$labs,"'")
-  if(type %in% c("MCA","speMCA","csMCA")) {
+  if(type %in% c("MCA","speMCA","csMCA","bcMCA")) {
     vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="i") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="i")] <- 
       paste0("italic(",vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="i") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="i")],")")
     vcoord$labs[(resmca$var$contrib[,dim1]>=min.ctr & faceX=="b") | (resmca$var$contrib[,dim2]>=min.ctr & faceY=="b")] <- 

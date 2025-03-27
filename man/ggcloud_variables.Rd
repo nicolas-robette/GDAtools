@@ -17,7 +17,7 @@ force = 1, max.overlaps = Inf)
 }
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}.}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
   \item{points}{character string. If 'all' all categories are plotted (default); if 'besth' only those who contribute most to horizontal axis are plotted; if 'bestv' only those who contribute most to vertical axis are plotted; if 'besthv' only those who contribute most to horizontal or vertical axis are plotted; if 'best' only those who contribute most to the plane are plotted.}
   \item{min.ctr}{Numerical value between 0 and 100. The minimum contribution (in percent) for a category to be displayed if the \code{points} argument is equal to "best", "besth" or "bestv" and \code{resmca} is of type \code{MCA}, \code{speMCA} or \code{csMCA}. If NULL (default), only the categories that contribute more than the average (i.e. 100 / number of modalities) are displayed.}

@@ -2,12 +2,14 @@ ggbootvalid_supvars <- function(resmca, vars = NULL, axes = c(1,2), K = 30,
                                 ellipse = "norm", level = 0.95, 
                                 col = NULL, active = FALSE, legend = "right") {
 
-  classe <- attr(resmca,'class')[1]
-  if(classe %in% c("MCA","speMCA","csMCA")) {
+  classes <- attr(resmca,'class')
+  if("bcMCA" %in% classes) {
+    rate1 <- resmca$eig[axes[1],1]
+    rate2 <- resmca$eig[axes[2],1]
+  } else if(classes[1] %in% c("MCA","speMCA","csMCA")) {
     rate1 <- modif.rate(resmca)$modif$mrate[axes[1]]
     rate2 <- modif.rate(resmca)$modif$mrate[axes[2]]
-  }
-  if(classe %in% c("stMCA","multiMCA","PCA")) {
+  } else if(classes[1] %in% c("stMCA","multiMCA","PCA")) {
     rate1 <- modif.rate(resmca)$raw$rate[axes[1]]
     rate2 <- modif.rate(resmca)$raw$rate[axes[2]]
   }

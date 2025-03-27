@@ -11,7 +11,8 @@ Computes typicality tests for a list of supplementary variables of a MCA.
 \usage{dimtypicality(resmca, vars, dim = c(1,2), max.pval = 1)}
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function
+}
   \item{vars}{a data frame of supplementary variables}
   \item{dim}{the axes for which typicality tests are computed. Default is c(1,2)}
   \item{max.pval}{only categories with a p-value lower or equal to \code{max.pval} are displayed. If 1 (default), all categories are displayed}

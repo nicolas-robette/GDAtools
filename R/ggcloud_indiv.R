@@ -2,6 +2,8 @@ ggcloud_indiv <- function(resmca, type = "i", points = "all", axes = c(1,2),
                           col = "dodgerblue4", point.size = 0.5, alpha = 0.6, repel = FALSE, text.size = 2,
                           density = NULL, col.contour = "darkred", hex.bins = 50, hex.pal = "viridis") {
 
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
   dim1 <- axes[1]
   dim2 <- axes[2]
   ni <- nrow(resmca$ind$coord)
@@ -62,6 +64,10 @@ ggcloud_indiv <- function(resmca, type = "i", points = "all", axes = c(1,2),
   if(type %in% c("stMCA","multiMCA","PCA")) {
     rate1 <- modif.rate(resmca)$raw$rate[dim1]
     rate2 <- modif.rate(resmca)$raw$rate[dim2]
+  }
+  if(type == "bcMCA") {
+    rate1 <- resmca$eig$rate[dim1]
+    rate2 <- resmca$eig$rate[dim2]
   }
   
   p + ggplot2::geom_hline(yintercept = 0, colour = "darkgrey", linewidth = .1) +

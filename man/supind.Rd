@@ -17,7 +17,7 @@ indsup(resmca, supdata)
 }
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA} or \code{csMCA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA} or \code{bcMCA} function}
   \item{supdata}{data frame with the supplementary individuals. It must have the same factors as the data frame used as input for the initial MCA.}
 }
 

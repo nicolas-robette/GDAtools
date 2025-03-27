@@ -14,7 +14,7 @@ ggbootvalid_variables(resmca, axes = c(1,2), type = "partial", K = 30,
 }
 
 \arguments{
-  \item{resmca}{object of class \code{speMCA}.}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA} or \code{bcMCA} function}
   \item{axes}{numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).}
   \item{type}{character string. Can be "partial", "total1", "total2" or "total3" (see details). Default is "partial".}
   \item{K}{integer. Number of bootstrap replications (default is 30).}

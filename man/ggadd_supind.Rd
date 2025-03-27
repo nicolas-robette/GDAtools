@@ -11,8 +11,8 @@ col = "black", textsize = 5, pointsize = 2)
 }
 
 \arguments{
-  \item{p}{\code{ggplot2} object with the cloud of variables}
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, \code{csMCA}, \code{stMCA} or \code{multiMCA}.}
+  \item{p}{\code{ggplot2} object with the cloud of individuals.}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA}, \code{bcMCA}, \code{stMCA} or \code{multiMCA} function}
   \item{dfsup}{data frame with the supplementary individuals. It must have the same factors as the data frame used as input for the initial MCA.}
   \item{axes}{numeric vector of length 2, specifying the dimensions (axes) to plot (default is c(1,2))}
   \item{col}{color for the labels and points of the individuals (default is black)}

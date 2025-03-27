@@ -12,7 +12,7 @@ Analysis and organizes these informations into a fancy table.
 \usage{tabcontrib(resmca, dim = 1, best = TRUE, dec = 2, shortlabs = FALSE)}
 
 \arguments{
-  \item{resmca}{object of class \code{MCA}, \code{speMCA}, or \code{csMCA}}
+  \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA} or \code{bcMCA} function}
   \item{dim}{dimension to describe (default is 1st dimension)}
   \item{best}{if FALSE, displays all the categories; if TRUE (default), displays only categories with contributions higher than average}
   \item{dec}{integer. The number of decimals for the results (default is 2)}
