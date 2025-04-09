@@ -15,6 +15,7 @@
 * `ggadd_supind()` : bug fix when only one supplementary individual (thanks to Mathieu Ferry) + typo in documentation (thanks to @419kfj)
 * `supvar()` : bug fix when coordinates are exactly 0
 * `ggadd_interaction()` : bug fix when there are empty cells in the crosstabulation of v1 and v2 (thanks to @419kfj)
+* `dimtypicality()` : bug fix with dim argument (thanks to @blaisemouton)
 
 
 

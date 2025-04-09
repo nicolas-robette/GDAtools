@@ -12,7 +12,7 @@ dimtypicality <- function(resmca,vars,dim=c(1,2),max.pval=1) {
   res2 <- unlist(res2)
   res <- list()
   for(i in 1:length(dim)) {
-    z <- data.frame(weight=res2,test.stat=res1[,i])
+    z <- data.frame(weight=res2,test.stat=res1[,dim[i]])
     z$p.value <- round(2*(1 -pnorm(abs(z$test.stat))),5)
     rownames(z) <- rownames(res1)
     z <- z[order(-z$test.stat),]
