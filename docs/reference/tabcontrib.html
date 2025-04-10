@@ -68,7 +68,9 @@ Analysis and organizes these informations into a fancy table.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">resmca</span>, dim <span class="op">=</span> <span class="fl">1</span>, best <span class="op">=</span> <span class="cn">TRUE</span>, dec <span class="op">=</span> <span class="fl">2</span>, shortlabs <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tabcontrib</span><span class="op">(</span><span class="va">resmca</span>, dim <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>best <span class="op">=</span> <span class="cn">TRUE</span>, limit <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>dec <span class="op">=</span> <span class="fl">2</span>, shortlabs <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -81,7 +83,10 @@ Analysis and organizes these informations into a fancy table.</p>
 <dd><p>dimension to describe (default is 1st dimension)</p></dd>
 
   <dt id="arg-best">best<a class="anchor" aria-label="anchor" href="#arg-best"></a></dt>
-<dd><p>if FALSE, displays all the categories; if TRUE (default), displays only categories with contributions higher than average</p></dd>
+<dd><p>if FALSE, displays all the categories; if TRUE (default), displays only categories which contribute the most (see limit argument below)</p></dd>
+
+  <dt id="arg-limit">limit<a class="anchor" aria-label="anchor" href="#arg-limit"></a></dt>
+<dd><p>numerical value between 0 and 100. If best = TRUE (see above), only categories with percentage of contribution higher or equal to limit are displayed. If best = TRUE and limit = NULL (default), only categories with contributions higher or equal to average are displayed.</p></dd>
 
   <dt id="arg-dec">dec<a class="anchor" aria-label="anchor" href="#arg-dec"></a></dt>
 <dd><p>integer. The number of decimals for the results (default is 2)</p></dd>

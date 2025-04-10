@@ -9,12 +9,15 @@ Identifies the categories that contribute the most to a given dimension of a Mul
 Analysis and organizes these informations into a fancy table.
 }
 
-\usage{tabcontrib(resmca, dim = 1, best = TRUE, dec = 2, shortlabs = FALSE)}
+\usage{tabcontrib(resmca, dim = 1,
+best = TRUE, limit = NULL,
+dec = 2, shortlabs = FALSE)}
 
 \arguments{
   \item{resmca}{object created with \code{MCA}, \code{speMCA}, \code{csMCA}, \code{wcMCA} or \code{bcMCA} function}
   \item{dim}{dimension to describe (default is 1st dimension)}
-  \item{best}{if FALSE, displays all the categories; if TRUE (default), displays only categories with contributions higher than average}
+  \item{best}{if FALSE, displays all the categories; if TRUE (default), displays only categories which contribute the most (see limit argument below)}
+  \item{limit}{numerical value between 0 and 100. If best = TRUE (see above), only categories with percentage of contribution higher or equal to limit are displayed. If best = TRUE and limit = NULL (default), only categories with contributions higher or equal to average are displayed.}
   \item{dec}{integer. The number of decimals for the results (default is 2)}
   \item{shortlabs}{logical. If TRUE, the data frame will have short column names, so that all columns can be displayed side by side on a laptop screen. Default is FALSE (long explicit column names).}
 }

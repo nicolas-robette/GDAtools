@@ -1,4 +1,4 @@
-tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2, shortlabs = FALSE) {
+tabcontrib <- function(resmca, dim = 1, best = TRUE, limit = NULL, dec = 2, shortlabs = FALSE) {
   
   if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
   
@@ -10,7 +10,15 @@ tabcontrib <- function(resmca, dim = 1, best = TRUE, dec = 2, shortlabs = FALSE)
   df <- merge(merge(merge(merge(getvarnames(resmca), df1, by = "varcat"), df2, by = "varcat"), df3, by = "varcat"), df4, by = "varcat")
   df$sign <- sign(df$coord)
   
-  if(best) df <- df[df$ctr >= 100/nrow(df),]
+  if(best & is.null(limit)) { 
+    limit <- 100/nrow(df)
+  } else if (isFALSE(best)) {
+    limit <- 0
+  } else {
+    if(limit<0 | limit>100) stop("limit argument should be set between 0 and 100.")
+  }
+  
+  df <- df[df$ctr >= limit,]
   
   # ctr by variable
   w <- aggregate(cbind(ctrtot = ctr) ~ var, data = df, FUN = sum)
