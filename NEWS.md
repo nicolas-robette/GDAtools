@@ -17,6 +17,7 @@
 * `supvar()` : bug fix when coordinates are exactly 0
 * `ggadd_interaction()` : bug fix when there are empty cells in the crosstabulation of v1 and v2 (thanks to @419kfj)
 * `dimtypicality()` : bug fix with dim argument (thanks to @blaisemouton)
+* `ggadd_kellipses()` : bug fix with objects of class `csMCA` when some categories of `var` are note in the subcloud 
 
 
 

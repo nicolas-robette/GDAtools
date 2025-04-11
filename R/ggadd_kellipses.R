@@ -7,7 +7,7 @@ ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kap
   
   if(type=="stMCA") type <- resmca$call$input.mca
   if(type=="csMCA") {
-    subvar <- var[resmca$call$subcloud]
+    subvar <- factor(var[resmca$call$subcloud])
     wt <- resmca$call$row.w[resmca$call$subcloud]
   }
   if(type=="multiMCA") {
@@ -24,9 +24,9 @@ ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kap
   m <- vs$coord[,axes]
   m[,1] <- m[,1]*resmca$svd$vs[axes[1]]
   m[,2] <- m[,2]*resmca$svd$vs[axes[2]]
-  v <- vs$var[1:length(levels(var)),axes]
+  v <- vs$var[1:length(levels(subvar)),axes]
   
-  c <- vector(length=nlevels(var))
+  c <- vector(length=nlevels(subvar))
   for(i in 1:length(c)) {
     temp1 <- matrix(resmca$ind$coord[subvar==levels(subvar)[i],axes],ncol=2)
     temp1[,1] <- temp1[,1] - m[i,1]
