@@ -53,6 +53,10 @@ reshape_between <- function(resmca) {
   resmca$eig$mrate <- oldeig[,2]
   resmca$eig$cum.mrate <- oldeig[,3]
   
+  Z <- dichotom(resmca$call$X)
+  fK <- colSums(resmca$call$row.w * Z)[-resmca$call$excl] / sum(resmca$call$row.w)
+  resmca$var$ctr.cloud <- data.frame(ctr.cloud = 100 * (1-fK) / (length(fK)-ncol(resmca$call$X)))
+  
   attr(resmca,'class')[1] <- "bcMCA"
   attr(resmca,'class')[2] <- "CA"
 
