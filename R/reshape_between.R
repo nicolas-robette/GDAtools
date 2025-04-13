@@ -1,5 +1,7 @@
 reshape_between <- function(resmca) {
   
+  resmca$mycall$X <- as.data.frame(resmca$mycall$X)
+  
   resmca$var <- resmca$col
   colnames(resmca$var$coord) <- gsub("Dim ","dim.", colnames(resmca$var$coord))
   colnames(resmca$var$contrib) <- gsub("Dim ","dim.", colnames(resmca$var$contrib))
