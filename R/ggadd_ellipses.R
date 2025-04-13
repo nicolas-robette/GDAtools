@@ -1,5 +1,7 @@
 ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), level=0.05, label=TRUE, label.size=3, size=0.5, points=TRUE, legend='right') {
 
+  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  
   subvar <- var
   
   type <- attr(resmca,'class')[1]
