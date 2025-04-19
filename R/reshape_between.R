@@ -1,64 +1,67 @@
-reshape_between <- function(resmca) {
+reshape_between <- function(bcmca) {
   
-  resmca$mycall$X <- as.data.frame(resmca$mycall$X)
+  bcmca$mycall$X <- as.data.frame(bcmca$mycall$X)
   
-  resmca$var <- resmca$col
-  colnames(resmca$var$coord) <- gsub("Dim ","dim.", colnames(resmca$var$coord))
-  colnames(resmca$var$contrib) <- gsub("Dim ","dim.", colnames(resmca$var$contrib))
-  colnames(resmca$var$cos2) <- gsub("Dim ","dim.", colnames(resmca$var$cos2))
+  bcmca$var <- bcmca$col
+  colnames(bcmca$var$coord) <- gsub("Dim ","dim.", colnames(bcmca$var$coord))
+  colnames(bcmca$var$contrib) <- gsub("Dim ","dim.", colnames(bcmca$var$contrib))
+  colnames(bcmca$var$cos2) <- gsub("Dim ","dim.", colnames(bcmca$var$cos2))
   
-  resmca$var$v.contrib <- aggregate(resmca$var$contrib, list(sub("\\..*", "", rownames(resmca$var$contrib))), sum)[,-1]
-  rownames(resmca$var$v.contrib) <- unique(sub("\\..*", "", rownames(resmca$var$contrib)))
-  colnames(resmca$var$v.contrib) <- paste("dim", 1:ncol(resmca$var$v.contrib),".")
+  bcmca$var$v.contrib <- aggregate(bcmca$var$contrib, list(sub("\\..*", "", rownames(bcmca$var$contrib))), sum)[,-1]
+  rownames(bcmca$var$v.contrib) <- unique(sub("\\..*", "", rownames(bcmca$var$contrib)))
+  colnames(bcmca$var$v.contrib) <- paste("dim", 1:ncol(bcmca$var$v.contrib),".")
   
-  disj <- dichotom(resmca$mycall$X, out = "numeric")
-  if(!is.null(resmca$mycall$excl)) disj <- disj[,-resmca$mycall$excl]
-  eff <- t(as.matrix(disj)) %*% resmca$mycall$row.w
-  resmca$var$weight <- as.numeric(eff)
-  names(resmca$var$weight) <- rownames(eff)
+  disj <- dichotom(bcmca$mycall$X, out = "numeric")
+  if(!is.null(bcmca$mycall$excl)) disj <- disj[,-bcmca$mycall$excl]
+  eff <- t(as.matrix(disj)) %*% bcmca$mycall$row.w
+  bcmca$var$weight <- as.numeric(eff)
+  names(bcmca$var$weight) <- rownames(eff)
 
-  eta2 = matrix(nrow=ncol(resmca$mycall$X), ncol=resmca$call$ncp)
+  eta2 = matrix(nrow=ncol(bcmca$mycall$X), ncol=bcmca$call$ncp)
   for(i in 1:nrow(eta2)) {
     for(j in 1:ncol(eta2))
-      eta2[i,j] = summary(stats::lm(resmca$row.sup$coord[,j]~resmca$mycall$X[,i],weights=resmca$mycall$row.w))$r.squared
+      eta2[i,j] = summary(stats::lm(bcmca$row.sup$coord[,j]~bcmca$mycall$X[,i],weights=bcmca$mycall$row.w))$r.squared
   }
-  rownames(eta2) = colnames(resmca$mycall$X)
+  rownames(eta2) = colnames(bcmca$mycall$X)
   colnames(eta2) = paste("dim", 1:ncol(eta2), sep=".")
-  resmca$var$eta2 = eta2
-  dimnames(resmca$var$v.contrib) = dimnames(eta2)
+  bcmca$var$eta2 = eta2
+  dimnames(bcmca$var$v.contrib) = dimnames(eta2)
     
-  resmca$oldcall <- resmca$call
+  bcmca$oldcall <- bcmca$call
   
-  resmca$call = list()
-  resmca$call$X <- resmca$mycall$X
-  if(is.character(resmca$mycall$excl)) {
-    excl <- which(getindexcat(resmca$mycall$X) %in% resmca$mycall$excl)
+  if(is.character(bcmca$mycall$excl)) {
+    excl <- which(getindexcat(bcmca$mycall$X) %in% bcmca$mycall$excl)
   } else {
-    excl <- resmca$mycall$excl
-    }
-  resmca$call$excl <- excl
-  resmca$call$excl.char <- getindexcat(resmca$mycall$X)[excl] 
-  resmca$call$row.w <- resmca$mycall$row.w
-  resmca$call$ncp <- resmca$oldcall$ncp
-  
-  resmca$ind <- resmca$row.sup
-  colnames(resmca$ind$coord) <- gsub("Dim ","dim.", colnames(resmca$ind$coord))
-  colnames(resmca$ind$cos2) <- gsub("Dim ","dim.", colnames(resmca$ind$cos2))
-  
-  oldeig <- resmca$eig
-  resmca$eig <- list()
-  resmca$eig$eigen <- oldeig[,1]
-  resmca$eig$rate <- oldeig[,2]
-  resmca$eig$cum.rate <- oldeig[,3]
-  resmca$eig$mrate <- oldeig[,2]
-  resmca$eig$cum.mrate <- oldeig[,3]
-  
-  Z <- dichotom(resmca$call$X)
-  fK <- colSums(resmca$call$row.w * Z)[-resmca$call$excl] / sum(resmca$call$row.w)
-  resmca$var$ctr.cloud <- data.frame(ctr.cloud = 100 * (1-fK) / (length(fK)-ncol(resmca$call$X)))
-  
-  attr(resmca,'class')[1] <- "bcMCA"
-  attr(resmca,'class')[2] <- "CA"
+    excl <- bcmca$mycall$excl
+  }
 
-  return(resmca)
+  bcmca$call <- list(
+    X = bcmca$mycall$X,
+    excl = excl,
+    excl.char = getindexcat(bcmca$mycall$X)[excl],
+    row.w = bcmca$mycall$row.w,
+    ncp = bcmca$oldcall$ncp
+  )
+  
+  bcmca$ind <- bcmca$row.sup
+  colnames(bcmca$ind$coord) <- gsub("Dim ","dim.", colnames(bcmca$ind$coord))
+  colnames(bcmca$ind$cos2) <- gsub("Dim ","dim.", colnames(bcmca$ind$cos2))
+  
+  oldeig <- bcmca$eig
+  bcmca$eig <- list()
+  bcmca$eig$eigen <- oldeig[,1]
+  bcmca$eig$rate <- oldeig[,2]
+  bcmca$eig$cum.rate <- oldeig[,3]
+  bcmca$eig$mrate <- oldeig[,2]
+  bcmca$eig$cum.mrate <- oldeig[,3]
+  
+  Z <- dichotom(bcmca$call$X)
+  fK <- colSums(bcmca$call$row.w * Z) / sum(bcmca$call$row.w)
+  if(!is.null(bcmca$mycall$excl)) fK <- fK[-bcmca$mycall$excl]
+  bcmca$var$ctr.cloud <- data.frame(ctr.cloud = 100 * (1-fK) / (length(fK)-ncol(bcmca$call$X)))
+  
+  attr(bcmca,'class')[1] <- "bcMCA"
+  attr(bcmca,'class')[2] <- "CA"
+
+  return(bcmca)
 }
