@@ -67,7 +67,7 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">ggadd_interaction</span><span class="op">(</span><span class="va">p</span>, <span class="va">resmca</span>, <span class="va">v1</span>, <span class="va">v2</span>, sel1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">v1</span><span class="op">)</span>, sel2 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">v2</span><span class="op">)</span>,</span>
-<span>axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, textsize <span class="op">=</span> <span class="fl">5</span>, dashed <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>axes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, cloud <span class="op">=</span> <span class="st">"v"</span>, textsize <span class="op">=</span> <span class="fl">5</span>, lines <span class="op">=</span> <span class="cn">TRUE</span>, dashes <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>legend <span class="op">=</span> <span class="st">"none"</span>, force <span class="op">=</span> <span class="fl">1</span>, max.overlaps <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -75,40 +75,46 @@
     <h2>Arguments</h2>
     <p></p>
 <dl><dt id="arg-p">p<a class="anchor" aria-label="anchor" href="#arg-p"></a></dt>
-<dd><p><code>ggplot2</code> object with the cloud of variables</p></dd>
+<dd><p><code>ggplot2</code> object with the cloud of variables or the cloud of individuals</p></dd>
 
   <dt id="arg-resmca">resmca<a class="anchor" aria-label="anchor" href="#arg-resmca"></a></dt>
 <dd><p>object created with <code>MCA</code>, <code>speMCA</code>, <code>csMCA</code>, <code>wcMCA</code>, <code>bcMCA</code>, <code>stMCA</code> or <code>multiMCA</code> function</p></dd>
 
   <dt id="arg-v-">v1<a class="anchor" aria-label="anchor" href="#arg-v-"></a></dt>
-<dd><p>Factor. The first categorical supplementary variable.</p></dd>
+<dd><p>factor. The first categorical supplementary variable.</p></dd>
 
   <dt id="arg-v-">v2<a class="anchor" aria-label="anchor" href="#arg-v-"></a></dt>
-<dd><p>Factor. The second categorical supplementary variable.</p></dd>
+<dd><p>factor. The second categorical supplementary variable.</p></dd>
 
   <dt id="arg-sel-">sel1<a class="anchor" aria-label="anchor" href="#arg-sel-"></a></dt>
-<dd><p>Numeric vector of indexes of the categories of the first supplementary variable to be used in interaction. By default, every categories are used.</p></dd>
+<dd><p>numeric vector of indexes of the categories of the first supplementary variable to be used in interaction. By default, every categories are used.</p></dd>
 
   <dt id="arg-sel-">sel2<a class="anchor" aria-label="anchor" href="#arg-sel-"></a></dt>
-<dd><p>Numeric vector of indexes of the categories of the second supplementary variable to be used in interaction. By default, every categories are used.</p></dd>
+<dd><p>numeric vector of indexes of the categories of the second supplementary variable to be used in interaction. By default, every categories are used.</p></dd>
 
   <dt id="arg-axes">axes<a class="anchor" aria-label="anchor" href="#arg-axes"></a></dt>
 <dd><p>numeric vector of length 2, specifying the components (axes) to plot. Default is c(1,2).</p></dd>
 
-  <dt id="arg-textsize">textsize<a class="anchor" aria-label="anchor" href="#arg-textsize"></a></dt>
-<dd><p>Size of the labels of categories. Default is 5.</p></dd>
+  <dt id="arg-cloud">cloud<a class="anchor" aria-label="anchor" href="#arg-cloud"></a></dt>
+<dd><p>if "v" (default), the categories are plotted in the cloud of variables. If "i", the categories are plotted in the cloud of individuals.</p></dd>
 
-  <dt id="arg-dashed">dashed<a class="anchor" aria-label="anchor" href="#arg-dashed"></a></dt>
-<dd><p>Logical. Whether to add gray dashed lines between the points of the categories. Default is TRUE.</p></dd>
+  <dt id="arg-textsize">textsize<a class="anchor" aria-label="anchor" href="#arg-textsize"></a></dt>
+<dd><p>size of the labels of categories. Default is 5.</p></dd>
+
+  <dt id="arg-lines">lines<a class="anchor" aria-label="anchor" href="#arg-lines"></a></dt>
+<dd><p>logical. Whether to add colored lines between the points of the categories of v1. Default is TRUE.</p></dd>
+
+  <dt id="arg-dashes">dashes<a class="anchor" aria-label="anchor" href="#arg-dashes"></a></dt>
+<dd><p>logical. Whether to add gray dashed lines between the points of the categories of v2. Default is TRUE.</p></dd>
 
   <dt id="arg-legend">legend<a class="anchor" aria-label="anchor" href="#arg-legend"></a></dt>
 <dd><p>the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector). Default is none.</p></dd>
 
   <dt id="arg-force">force<a class="anchor" aria-label="anchor" href="#arg-force"></a></dt>
-<dd><p>Force of repulsion between overlapping text labels. Defaults to 1. If 0, labels are not repelled at all.</p></dd>
+<dd><p>force of repulsion between overlapping text labels. Defaults to 1. If 0, labels are not repelled at all.</p></dd>
 
   <dt id="arg-max-overlaps">max.overlaps<a class="anchor" aria-label="anchor" href="#arg-max-overlaps"></a></dt>
-<dd><p>Exclude text labels that overlap too many things. Defaults to Inf, which means no labels are excluded.</p></dd>
+<dd><p>exclude text labels that overlap too many things. Defaults to Inf, which means no labels are excluded.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -117,7 +123,7 @@
     </div>
     <div id="note">
     <h2>Note</h2>
-    <p>Lines and labels are colored according to the variables, using the default <code>ggplot2</code> palette. The palette can be customized using any <code>scale_color_*</code> function, such as <code>scale_color_brewer()</code>, <code>scale_color_grey()</code> or <code>scale_color_manual()</code>.</p>
+    <p>Lines and labels are colored according to the first variable, using the default <code>ggplot2</code> palette. The palette can be customized using any <code>scale_color_*</code> function, such as <code>scale_color_brewer()</code>, <code>scale_color_grey()</code> or <code>scale_color_manual()</code>.</p>
     </div>
     <div id="references">
     <h2>References</h2>

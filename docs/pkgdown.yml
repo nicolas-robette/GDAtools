@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   articles/GDA_tutorial: GDA_tutorial.html
   articles/Tutoriel_AGD: Tutoriel_AGD.html
-last_built: 2025-03-27T14:54Z
+last_built: 2025-04-19T11:05Z
 urls:
   reference: https://nicolas-robette.github.io/GDAtools/reference
   article: https://nicolas-robette.github.io/GDAtools/articles

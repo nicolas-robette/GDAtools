@@ -72,6 +72,7 @@ reference:
   - ggadd_density
   - ggadd_corr
   - ggadd_interaction
+  - ggadd_partial
   - ggadd_attractions
   - ggaxis_variables
   - ggeta2_variables
@@ -99,6 +100,7 @@ reference:
   - dist.chi2
   - rvcoef
   - quasindep
+  - reshape_between
 
 - title: Datasets
 - desc: Datasets used in the examples
