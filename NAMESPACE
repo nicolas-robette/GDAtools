@@ -5,7 +5,7 @@ import(descriptio, ggplot2, ggrepel)
   importFrom("stats", "aggregate", "as.formula", "cor", "lm",
              "residuals", "weighted.mean",
              "summary.lm", "pnorm", "cutree",
-             "sd", "dist")
+             "sd", "dist", "cov.wt", "coef")
   importFrom("utils", "combn")
   importFrom("FactoMineR", "PCA", "CA", "reconst", "svd.triplet", "tab.disjonctif")
   importFrom("rlang", ".data")
@@ -22,4 +22,6 @@ export(ahc.plots,angles.csa,assoc.twocat,assoc.catcont,assoc.twocont,assoc.yx,bu
        planecontrib, quasindep, ggeta2_variables, ggsmoothed_supvar, bootvalid_variables, bootvalid_supvars, ggbootvalid_variables, ggbootvalid_supvars, 
        bcMCA, bcPCA, wcMCA, wcPCA, PCAiv, PCAoiv, MCAiv, MCAoiv, coiPCA, coiMCA, rvcoef, gPCA, DA, DAQ, nsCA, nsca.biplot,
        supind, supvar, supvars, scaled.dev,
-       barplot_contrib)
+       barplot_contrib,
+       reshape_between,
+       ggadd_partial)
