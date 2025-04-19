@@ -1,7 +1,5 @@
 tabcontrib <- function(resmca, dim = 1, best = TRUE, limit = NULL, dec = 2, shortlabs = FALSE) {
   
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
   # initial data frame of contributions
   df1 <- data.frame(varcat = names(resmca$var$weight), weight = resmca$var$weight)
   df2 <- data.frame(varcat = rownames(resmca$var$coord), coord = resmca$var$coord[,dim])

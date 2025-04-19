@@ -1,8 +1,6 @@
 ggadd_attractions <- function(p, resmca, axes=c(1,2), measure="phi", min.asso=0.3,
                               col.segment="lightgray", col.text="black", text.size=3) {
   
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
   type <- attr(resmca,'class')[1]
 
   if(type=="MCA") {

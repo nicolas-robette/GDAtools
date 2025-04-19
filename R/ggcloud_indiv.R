@@ -2,8 +2,6 @@ ggcloud_indiv <- function(resmca, type = "i", points = "all", axes = c(1,2),
                           col = "dodgerblue4", point.size = 0.5, alpha = 0.6, repel = FALSE, text.size = 2,
                           density = NULL, col.contour = "darkred", hex.bins = 50, hex.pal = "viridis") {
 
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
   dim1 <- axes[1]
   dim2 <- axes[2]
   ni <- nrow(resmca$ind$coord)

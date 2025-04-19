@@ -2,8 +2,6 @@ ggadd_density <- function(p, resmca, var, cat=levels(var)[1], axes=c(1,2),
                           density="contour", col.contour="darkred", pal.area="viridis", alpha.area=0.2,
                           ellipse=FALSE){
 
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
   type <- attr(resmca,'class')[1]
   
   if(type=="stMCA") type <- resmca$call$input.mca

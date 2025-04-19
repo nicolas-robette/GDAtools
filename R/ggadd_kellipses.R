@@ -1,12 +1,15 @@
 ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kappa=2, label=TRUE, label.size=3, size=0.5, points=TRUE, legend="right") {
 
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
-  subvar <- var
-  wt <- resmca$call$row.w
+  subvar <- factor(var)
   
   type <- attr(resmca,'class')[1]
   
+  if(type=="bcMCA") {
+    wt <- resmca$mycall$row.w
+  } else {
+    wt <- resmca$call$row.w
+  }
+
   if(type=="stMCA") type <- resmca$call$input.mca
   if(type=="csMCA") {
     subvar <- factor(var[resmca$call$subcloud])
@@ -16,17 +19,8 @@ ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kap
     if(class(resmca$my.mca[[1]])[1]=="csMCA") subvar <- var[resmca$my.mca[[1]]$call$subcloud]
   }
   
-  icoord <- as.data.frame(resmca$ind$coord[,axes])
-  names(icoord) <- c('x','y')
-  icoord$cat <- subvar
-  icoord <- icoord[subvar %in% levels(subvar)[sel],]
-  icoord$cat <- factor(icoord$cat)
-  
-  vs <- supvar(resmca,var)
-  m <- vs$coord[,axes]
-  m[,1] <- m[,1]*resmca$svd$vs[axes[1]]
-  m[,2] <- m[,2]*resmca$svd$vs[axes[2]]
-  v <- vs$var[1:length(levels(subvar)),axes]
+  m <- agg.wtd.mean(resmca$ind$coord[,axes], subvar, wt)
+  v <- agg.wtd.var(resmca$ind$coord[,axes], subvar, wt)
   
   c <- vector(length=nlevels(subvar))
   for(i in 1:length(c)) {
@@ -40,6 +34,7 @@ ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kap
   g2 <- 0.5*(v[,1]+v[,2])-0.5*sqrt((v[,1]-v[,2])^2+4*c^2)
   sa1 <- kappa*sqrt(g1)
   sa2 <- kappa*sqrt(g2)
+  # sa2 <- kappa*sqrt(abs(g2))
   alph <- atan((g1-v[,1])/c)
   npoints <- 100
   theta <- seq(0, 2 * pi, length=(npoints))
@@ -68,21 +63,32 @@ ggadd_kellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), kap
   rad1 <- do.call('rbind.data.frame',rad1)
   rad2 <- do.call('rbind.data.frame',rad2)
   cent <- do.call('rbind.data.frame',cent)
-  ell$cat <- factor(ell$cat)
-  rad1$cat <- factor(rad1$cat)
-  rad2$cat <- factor(rad2$cat)
-  cent$cat <- factor(cent$cat)
+  ell$cat <- factor(ell$cat, levels = levels(subvar)[sel])
+  rad1$cat <- factor(rad1$cat, levels = levels(subvar)[sel])
+  rad2$cat <- factor(rad2$cat, levels = levels(subvar)[sel])
+  cent$cat <- factor(cent$cat, levels = levels(subvar)[sel])
   
-  pfin <- p + ggplot2::geom_path(data=ell, ggplot2::aes(x = .data$x, y = .data$y, color = .data$cat), size=size) +
-              ggplot2::geom_line(data=rad1, ggplot2::aes(x = .data$x, y = .data$y, color = .data$cat), lty=2, size=0.3, alpha=0.5) +
-              ggplot2::geom_line(data=rad2, ggplot2::aes(x = .data$x, y = .data$y, color = .data$cat), lty=2, size=0.3, alpha=0.5)
+  pfin <- p + ggplot2::geom_path(data=ell, ggplot2::aes(x = .data$x, y = .data$y, color = .data$cat), linewidth=size) +
+              ggplot2::geom_line(data=rad1, ggplot2::aes(x = .data$x, y = .data$y, color = .data$cat), lty=2, linewidth=0.3, alpha=0.5) +
+              ggplot2::geom_line(data=rad2, ggplot2::aes(x = .data$x, y = .data$y, color = .data$cat), lty=2, linewidth=0.3, alpha=0.5)
 
-  if(points) pfin <- pfin + ggplot2::geom_point(data=icoord, aes(x = .data$x, y = .data$y, colour = .data$cat), size=0.5, alpha=0.6)
-                
-  if(label) { pfin <- pfin + ggplot2::geom_text(key_glyph='blank', data=cent, ggplot2::aes(x = .data$x, y = .data$y, label = .data$cat, colour = .data$cat), size=label.size) 
-  } else { pfin <- pfin + ggplot2::geom_point(data=cent, ggplot2::aes(x = .data$x, y = .data$y, colour = .data$cat), shape=8, size=3) }
+  if(points) {
+    icoord <- as.data.frame(resmca$ind$coord[,axes])
+    names(icoord) <- c('x','y')
+    icoord$cat <- subvar
+    icoord <- icoord[subvar %in% levels(subvar)[sel],]
+    icoord$cat <- factor(icoord$cat)
+    pfin <- pfin + ggplot2::geom_point(data=icoord, aes(x = .data$x, y = .data$y, colour = .data$cat), size=0.5, alpha=0.6)
+  }
+  
+  if(label) { 
+    pfin <- pfin + ggplot2::geom_text(key_glyph='blank', data=cent, ggplot2::aes(x = .data$x, y = .data$y, label = .data$cat, colour = .data$cat), size=label.size) 
+  } else { 
+    pfin <- pfin + ggplot2::geom_point(data=cent, ggplot2::aes(x = .data$x, y = .data$y, colour = .data$cat), shape=8, size=3)
+  }
 
   pfin <- pfin + ggplot2::guides(color = ggplot2::guide_legend(title = "")) +
                  ggplot2::theme(legend.position = legend)
+
   pfin
 }

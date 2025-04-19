@@ -1,7 +1,5 @@
 contrib <- function(resmca) {
   
-    if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
     s <- vector()
     for(i in 1:ncol(resmca$call$X)) s <- c(s,rep(i,times=length(levels(resmca$call$X[,i]))))
     e <- 99999

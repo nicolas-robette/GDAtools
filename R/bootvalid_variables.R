@@ -1,18 +1,12 @@
 bootvalid_variables <- function(resmca, axes = c(1,2), type = "partial", K = 30) {
   
-  if("bcMCA" %in% attr(resmca,'class')) {
-    newmca = reshape_between(resmca)
-  } else {
-    newmca = resmca
-  }
-  
-  classe <- attr(newmca,'class')[1]
+  classe <- attr(resmca,'class')[1]
   
   # donnees initiales
-  X <- newmca$call$X
-  excl <- newmca$call$excl
-  vs <- newmca$svd$vs[axes]
-  coord <- data.frame(newmca$var$coord[,axes])
+  X <- resmca$call$X
+  excl <- resmca$call$excl
+  vs <- resmca$svd$vs[axes]
+  coord <- data.frame(resmca$var$coord[,axes])
   names(coord) <- c("x", "y")
 
   if(type=="partial") {

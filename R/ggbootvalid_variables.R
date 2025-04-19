@@ -1,12 +1,6 @@
 ggbootvalid_variables <- function(resmca, axes = c(1,2), type = "partial", K = 30,
                                   ellipse = "norm", level = 0.95, col = NULL, legend = "right") {
 
-  if("bcMCA" %in% attr(resmca,'class')) {
-    newmca = reshape_between(resmca)
-  } else {
-    newmca = resmca
-  }
-  
   classe <- attr(resmca,'class')[1]
   if(classe %in% c("MCA","speMCA","csMCA")) {
     rate1 <- modif.rate(resmca)$modif$mrate[axes[1]]
@@ -15,17 +9,17 @@ ggbootvalid_variables <- function(resmca, axes = c(1,2), type = "partial", K = 3
     rate1 <- modif.rate(resmca)$raw$rate[axes[1]]
     rate2 <- modif.rate(resmca)$raw$rate[axes[2]]
   } else if(classe == "bcMCA") {
-    rate1 <- newmca$eig$rate[axes[1]]
-    rate2 <- newmca$eig$rate[axes[2]]
+    rate1 <- resmca$eig$rate[axes[1]]
+    rate2 <- resmca$eig$rate[axes[2]]
   }
 
-  noms <- getvarnames(newmca)
+  noms <- getvarnames(resmca)
     
   boot <- bootvalid_variables(resmca, axes = axes, type = type, K = K)
   names(boot)[3:4] <- c("dimX", "dimY")
   boot <- merge(boot, noms, by = "varcat")
   
-  coord <- data.frame(newmca$var$coord[, axes])
+  coord <- data.frame(resmca$var$coord[, axes])
   names(coord) <- c("dimX", "dimY")
   coord$varcat <- rownames(coord)
   coord <- merge(coord, noms, by = "varcat")

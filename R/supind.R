@@ -2,8 +2,6 @@ supind <- function(resmca,supdata) {
   
     supdata <- data.frame(supdata)
 
-    if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-    
     type <- attr(resmca, "class")[1]
     if(type %in% c("MCA", "stMCA", "multiMCA", "PCA")) eigen <- resmca$eig[,"eigenvalue"]
     if(type %in% c("speMCA", "csMCA", "bcMCA")) eigen <- resmca$eig$eigen

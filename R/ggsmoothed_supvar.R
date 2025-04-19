@@ -6,8 +6,6 @@ ggsmoothed_supvar <- function(resmca, var, cat, axes = c(1,2),
   if (!requireNamespace("sf", quietly = TRUE))
     stop("sf package should be installed to use this function")
   
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
   type <- attr(resmca,'class')[1]
   
   if(type=="stMCA") type <- resmca$call$input.mca

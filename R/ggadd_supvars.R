@@ -14,13 +14,13 @@ ggadd_supvars <- function(p, resmca, vars, excl = NULL, points = "all", min.cos2
   coord <- as.data.frame(vs$coord[,axes])
   names(coord) <- c('axeX','axeY')
   coord$n <- vs$weight
-  coord$categories <- unlist(sapply(vars, levels, simplify = FALSE))
-  nlev <- sapply(vars, nlevels)
-  vnames <- character()
-  for(i in 1:length(nlev)) vnames <- c(vnames, rep(names(vars[i]), nlev[i]))
-  coord$vnames <- vnames
-  coord$labs <- coord$categories
-  if(vlab) coord$labs <- paste(coord$vnames, coord$labs, sep='.')
+  coord$categories <- gsub(".*\\.", "", rownames(coord))
+  coord$vnames <-  gsub("\\..*", "", rownames(coord))
+  if(vlab) {
+    coord$labs <- rownames(coord)
+  } else {
+    coord$labs <- coord$categories
+  }
   coord$vnames <- factor(coord$vnames)
 
   # size of categories

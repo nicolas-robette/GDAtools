@@ -2,7 +2,6 @@ bootvalid_supvars <- function(resmca, vars = NULL, axes = c(1,2), K = 30) {
   
   if(is.null(vars)) stop("You should provide supplementary variables.")
   
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
   type <- attr(resmca,'class')[1]
   
   # donnees initiales

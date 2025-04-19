@@ -1,7 +1,5 @@
 ggeta2_variables <- function(resmca, axes = c(1,2)) {
   
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-
   type <- attr(resmca,'class')[1]
   dim1 <- axes[1]
   dim2 <- axes[2]

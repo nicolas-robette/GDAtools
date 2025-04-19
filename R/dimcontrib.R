@@ -1,11 +1,11 @@
 dimcontrib <- function(resmca,dim=c(1,2),best=TRUE) {
   
-    if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
-    classe <- class(resmca)[1]
-    if(classe=="MCA") {
+    type <- class(resmca)[1]
+    
+    if(type=="MCA") {
         resmca$var$weight <- colSums(dichotom(resmca$call$X[,resmca$call$quali]))
     }
+
     vardesc <- lapply(as.list(dim),function(x) data.frame(ctr=round(resmca$var$contrib[,x]*resmca$var$coord[,x]/abs(resmca$var$coord[,x]),2),weight=resmca$var$weight))#[-resmca$call$excl]))
     vardesc <- lapply(vardesc,function(x) x[order(x$ctr),])
     if(best==TRUE) vardesc <- lapply(vardesc,function(x) x[abs(x$ctr)>=100/nrow(resmca$var$coord),])

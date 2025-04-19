@@ -5,8 +5,6 @@ ggaxis_variables <- function(resmca, var = NULL, axis = 1,
                              force = 1, 
                              max.overlaps = Inf) {
 
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
   type <- attr(resmca,'class')[1]
   
   if(is.factor(var)) {

@@ -1,8 +1,6 @@
 ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, max.pval=0.01, face="pp", shapes=TRUE, prop=NULL, textsize=3, shapesize=3, col=NULL, col.by.group=TRUE, alpha=1, segment.alpha=0.5, vlab=TRUE, sep='.', legend='right',
                               force = 1, max.overlaps = Inf) {
 
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
   type <- attr(resmca,'class')[1]
   dim1 <- axes[1]
   dim2 <- axes[2]
@@ -79,9 +77,11 @@ ggcloud_variables <- function(resmca, axes=c(1,2), points='all', min.ctr=NULL, m
   varcat <- apply(cbind(variables, categories), 1, paste, collapse=sep)
   
   if(type %in% c("csMCA","speMCA","stMCA","multiMCA","bcMCA")) {
-    categories <- categories[-resmca$call$excl]
-    variables <- variables[-resmca$call$excl]
-    varcat <- varcat[-resmca$call$excl]
+    if(!is.null(resmca$call$excl)) {
+      categories <- categories[-resmca$call$excl]
+      variables <- variables[-resmca$call$excl]
+      varcat <- varcat[-resmca$call$excl]
+    }
   }
   
   vcoord$variables <- factor(variables, levels=names(resmca$call$X))

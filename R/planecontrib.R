@@ -1,7 +1,5 @@
 planecontrib <- function(resmca, axes = c(1,2)) {
   
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
   type <- attr(resmca,'class')[1]
   
   # contributions and cosines of categories

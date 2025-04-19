@@ -1,16 +1,16 @@
 dimeta2 <- function(resmca,vars,dim=c(1,2)) {
   
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
+  type <- class(resmca)[1]
   
   vars <- as.data.frame(vars)
   n <- names(vars)
   eta2 <- matrix(nrow=ncol(vars), ncol=length(dim))
   sub <- rep(TRUE,times=nrow(resmca$ind$coord))
-  if(class(resmca)[1]=='csMCA') sub <- resmca$call$subcloud
-  if(class(resmca)[1]=='stMCA') if(resmca$call$input.mca=='csMCA') sub <- resmca$call$subcloud
-  if(class(resmca)[1]=='multiMCA') if(class(resmca$my.mca[[1]])[1]=='csMCA') sub <- resmca$my.mca[[1]]$call$subcloud
+  if(type=='csMCA') sub <- resmca$call$subcloud
+  if(type=='stMCA') if(resmca$call$input.mca=='csMCA') sub <- resmca$call$subcloud
+  if(type=='multiMCA') if(class(resmca$my.mca[[1]])[1]=='csMCA') sub <- resmca$my.mca[[1]]$call$subcloud
   ww <- resmca$call$row.w[sub]
-  if(class(resmca)[1]=='stMCA') ww <- resmca$call$fit$weights
+  if(type=='stMCA') ww <- resmca$call$fit$weights
   vars = vars[sub,]
   for(i in 1:length(dim)) {
     for(j in 1:ncol(vars)) {

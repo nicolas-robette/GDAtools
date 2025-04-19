@@ -1,14 +1,20 @@
 ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), level=0.05, label=TRUE, label.size=3, size=0.5, points=TRUE, legend='right') {
 
-  if("bcMCA" %in% attr(resmca,'class')) resmca = reshape_between(resmca)
-  
-  subvar <- var
+  subvar <- factor(var)
   
   type <- attr(resmca,'class')[1]
   if(type=="stMCA") type <- resmca$call$input.mca
-  if(type=="csMCA") subvar <- var[resmca$call$subcloud]
+
+  if(type=="bcMCA") {
+    wt <- resmca$mycall$row.w
+  } else {
+    wt <- resmca$call$row.w
+  }  
+  
+  if(type=="csMCA") subvar <- factor(var[resmca$call$subcloud])
+
   if(type=="multiMCA") {
-    if(class(resmca$my.mca[[1]])[1]=="csMCA") subvar <- var[resmca$my.mca[[1]]$call$subcloud]
+    if(class(resmca$my.mca[[1]])[1]=="csMCA") subvar <- factor(var[resmca$my.mca[[1]]$call$subcloud])
   }
   
   ecoord <- as.data.frame(resmca$ind$coord[,axes])
@@ -17,13 +23,10 @@ ggadd_ellipses <- function(p, resmca, var, sel=1:nlevels(var), axes=c(1,2), leve
   ecoord <- ecoord[subvar %in% levels(subvar)[sel],]
   ecoord$var <- factor(ecoord$var)
 
-  vs <- supvar(resmca,var)
-  ccoord <- as.data.frame(vs$coord[,axes])
+  ccoord <- agg.wtd.mean(resmca$ind$coord[,axes], var, wt)
   names(ccoord) <- c('axeX','axeY')
-  ccoord$categories <- names(vs$weight)
+  ccoord$categories <- rownames(ccoord)
   ccoord <- ccoord[sel,]
-  ccoord$axeX <- ccoord$axeX*resmca$svd$vs[axes[1]]
-  ccoord$axeY <- ccoord$axeY*resmca$svd$vs[axes[2]]
 
   pfin <- p + ggplot2::stat_ellipse(data=ecoord, ggplot2::aes(x=.data$axeX, y=.data$axeY, colour=.data$var), level = level, type='norm', size = size)
               
