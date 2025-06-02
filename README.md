@@ -1,4 +1,4 @@
-# **GDAtools** <img src="man/figures/GDAtools.png" height=140px width=120px alt="" align="right" />
+# **GDAtools** <img src="GDAtools.png" height=140px width=120px alt="" align="right" />
 
 <br>
 
